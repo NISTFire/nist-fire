@@ -1,0 +1,9 @@
+Turnout Gear IR Tests				Series: Turnout Gear				Revision Date:			12/30/2013					
+Measurements	Description			Overall Channel Number	Abbr.	Building Side	Module: Channels	Mod.	Mod. Ch. No.	Conv.Units	Wire	Extension	Channel	Label	Slope	Intercept	Enable
+Main Channels	Location	Interval	Range														
+TC	Room Temp		1	0	TC_amb	na		1	0	°C	TC-K	Brown		TC_amb	1		x
+TC	TC_1		1	1	TC_1	na		1	1	°C	TC-K	Brown		TC_1	1		x
+TC	TC_2		1	2	TC_2	na		1	2	°C	TC-K	Brown		TC_2	1		x
+TC	TC_3		1	3	TC_3	na		1	3	°C	TC-K	Brown		TC_3	1		x
+TC	TC_4		1	4	TC_4	na		1	4	°C	TC-K	Brown		TC_4	1		x
+HF	HF_1	15079-3	20	8	HF_1	na		1	8	kW/m^2	Cu	Grey		HF_1	2301		x
