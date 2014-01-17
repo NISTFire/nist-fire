@@ -112,7 +112,7 @@ Squad 5 entered the front of the structure at approximately 5:25 and headed to t
 \vskip.5\baselineskip
 \begin{tabular}{|c|c|c|}
 \hline
-Fire Time & Simulation Time & Action  \\
+Incident Time & Simulation Time & Fire Behavior / Fireground Operation  \\
 \hline \hline
         &        & Reported working fire with heavy smoke\\
 5:17    &        & coming from the front and rear of the \\
@@ -129,7 +129,7 @@ Fire Time & Simulation Time & Action  \\
         &        & increase HRR. \\ \hline
         &  2:15  & Additional self ventilation on beta side. \\ \hline        
         &  2:40  & Top of interior door fails. \\ \hline
-5:23    & $\approx$ 3:40       & No response from Engine 123: Capt. or FF. \\ \hline
+5:23    &  3:40  & No response from Engine 123: Capt. or FF. \\ \hline
 5:24    &  N/A   & Water applied to attic from the rear exterior position. \\ \hline
         &  5:00  & Simulation ends. \\ \hline
 \end{tabular}
@@ -140,7 +140,7 @@ Fire Time & Simulation Time & Action  \\
 \chapter{Fire Dynamics Simulator and Smokeview}
 FDS is a computational fluid dynamics (CFD) model that solves a form of the Navier-Stokes equations appropriate for low-speed, thermally driven flow with an emphasis on smoke and heat transport from fires.  Within a CFD model, the room or building is divided into small three-dimensional rectangular control volumes or computational cells.  The cells are contained together within one larger volume known as a computational domain.  The CFD model computes the density, velocity, temperature, pressure and species concentration of the gas in each cell.  Based on the laws of conservation of mass, momentum,  and energy, the model tracks the generation and movement of fire gasses.  FDS can utilize material properties of the furnishings, walls, floors, and ceilings to compute fire growth and spread.  One of the most important advantages of FDS is that it is verified and validated against fire test data to ensure that it provides the expected results, given sufficient input data \cite{FDS_Verification_Guide,FDS_Validation_Guide}.  A complete description of the FDS model is given in reference \cite{FDS_Tech_Guide}.
 
-Smokeview is a software tool designed to visualize the results of the FDS \cite{Smokeview_Users_Guide}.  Smokeview visualizes smoke and other attributes of the modeled fire using traditional scientific methods such as displaying tracer particle flow, two dimensional (92D) or three dimensional (3D) shaded contours of gas flow data such as temperature and flow vectors showing flow direction and magnitude.  Smokeview allows the fire and fire movement to be visualized.  This is done by displaying a series of partially transparent planes where the transparencies in each plane (at each grid node) are determined from soot densities computed by FDS.  Smokeview also visualizes static data at particular times using 2D or 3D contours of data such as temperature and flow vectors showing flow direction and magnitude.
+Smokeview is a software tool designed to visualize the results of the FDS \cite{Smokeview_Users_Guide}.  Smokeview visualizes smoke and other attributes of the modeled fire using traditional scientific methods such as displaying tracer particle flow, two dimensional (2D) or three dimensional (3D) shaded contours of gas flow data such as temperature and flow vectors showing flow direction and magnitude.  Smokeview allows the fire and fire movement to be visualized.  This is done by displaying a series of partially transparent planes where the transparencies in each plane (at each grid node) are determined from soot densities computed by FDS.  Smokeview also visualizes static data at particular times using 2D or 3D contours of data such as temperature and flow vectors showing flow direction and magnitude.
 
 
 \chapter{Model Input Parameters}
@@ -216,9 +216,41 @@ The heat of combustion of wood for this simulation is 16400 kJ/kg (7050 BTU/lb),
 
 From work by Babrauskas and Grayson \cite{babrauskas1990}, we can find an estimate for the energy release per unit time and unit area (kW/m$^2$). Experiments were conducted in a cone calorimeter to determine the 5 minute average of HRR (kW/m$^2$) for several different types of wood over a range of radiant heat fluxes (kW/m$^2$). Taking a conservative approach, we assume the burning wood in the attic had the lowest energy density of the tested samples \cite{babrauskas1990}, similar to that of Douglas Fir plywood. If we estimate that the average radiation feedback to the pyrolyzing fuel is 30 kW/m$^2$ (assuming under-ventilated conditions within the structure) then an average heat release for wood is 65 kW/m$^2$.
 
-Next, is determining the appropriate burnable area (exposed wood area) in the attic and in the second floor porch enclosure. Based on the floor plan of the structure, the underside of the roof is approximately 134 m$^2$ (1475 ft$^2$) plus there is 105 m$^2$ of floor area in the attic. Examination of post incident images showed the roof sustained more damage than the floor except for the floor area immediately over the back porch. That area will be considered as part of the porch fire. To estimate the attic fire size, we consider the area of the underside of the roof (134 m$^2$) and use an average heat release rate of wood of 65 kW/m$^2$. This results in a fire size of about 9 MW. To estimate the porch fire size, we consider the the four walls of porch enclosure (42 m$^2$) and the ceiling above the porch (13 m$^2$). The total area is 55 m$^2$ (592 ft$^2$). Using the same average heat release of 65 kW/m$^2$, the fire size on the porch is approximately 3.3 MW. The total fire size for this structure is estimated to be 12.3 MW.
+Next, is determining the appropriate burnable area (exposed wood area) in the attic and in the second floor porch enclosure. Based on the floor plan of the structure, the underside of the roof is approximately 134 m$^2$ (1475 ft$^2$) plus there is 105 m$^2$ of floor area in the attic. Examination of post incident images showed the roof sustained more damage than the floor except for the floor area immediately over the back porch. That area will be considered as part of the porch fire. To estimate the attic fire size, we consider the area of the underside of the roof (134 m$^2$) and use an average heat release rate of wood of 65 kW/m$^2$. This results in a fire size of about 9 MW. To estimate the porch fire size, we consider the the four walls of porch enclosure (42 m$^2$) and the ceiling above the porch (13 m$^2$). The total area is 55 m$^2$ (592 ft$^2$). Using the same average heat release of 65 kW/m$^2$, the fire size on the porch is approximately 3.3 MW. The total fire size for this structure is estimated to be 12.3 MW. Since it is unknown when the fire started relative to notification of a fire, the attic fire starts at the beginning of the simulation and ramps up to 9 MW in under 10 seconds. The attic fire starts 40 seconds into the simulation and ramps to 3.3 MW in under 10 seconds.
 
-Since it is unknown when the fire started relative to notification of a fire, the attic fire starts at the beginning of the simulation and ramps up to 9 MW in under 10 seconds. At the same time, part of the second floor window on the charlie side, 0.11 m$^2$ (1.2 ft$^2$) , fails providing initial ventilation.  The attic fire starts 40 seconds into the simulation and ramps to 3.3 MW in under 10 seconds. This corresponds to the report of heavy smoke from both the alpha, 0.08 m$^2$ (0.86 ft$^2$), and charlie, 0.1 m$^2$ (1 ft$^2$), sides of the attic. Additional ventilation occurs 45 and 55 seconds into the simulation as the fire burns through the exterior wall, 0.12 m$^2$ (1.3 ft$^2$), on both the beta and charlie side of the structure. At 130 seconds into the simulation, the back door is opened by a firefighter which results in a final fire induced ventilation. A hole, 0.2 m$^2$ (2.2 ft$^2$),  opens on the rear porch of the beta side at 135 seconds.
+\section{Vents}
+\label{Vents}
+This simulation includes vents that account for the approximate leakage of the building envelope and changes in ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls,breaking windows,etc). The times of the ventilation changes are provided in Table \ref{tab:vents}.
+
+
+At the same time, part of the second floor window on the charlie side, 0.11 m$^2$ (1.2 ft$^2$) , fails providing initial ventilation.  The attic fire starts 40 seconds into the simulation and ramps to 3.3 MW in under 10 seconds. This corresponds to the report of heavy smoke from both the alpha, 0.08 m$^2$ (0.86 ft$^2$), and charlie, 0.1 m$^2$ (1 ft$^2$), sides of the attic. Additional ventilation occurs 45 and 55 seconds into the simulation as the fire burns through the exterior wall, 0.12 m$^2$ (1.3 ft$^2$), on both the beta and charlie side of the structure. At 130 seconds into the simulation, the back door is opened by a firefighter which results in a final fire induced ventilation. A hole, 0.2 m$^2$ (2.2 ft$^2$), opens on the rear porch of the beta side at 135 seconds.
+
+\begin{table}
+\centering
+\caption{Ventilation Timeline}
+\vskip.5\baselineskip
+\begin{tabular}{|c|c|c|}
+\hline
+Incident Time & Simulation Time & Ventilation  \\
+\hline \hline
+        &        & Reported working fire with heavy smoke\\
+5:17    &        & coming from the front and rear of the \\
+        &        & structure's attic. \\ \hline
+        &  0:00  & Attic fire ignites. Initial \\ 
+        &        & self ventilation on charlie side. \\ \hline
+        &  0:20  & Front door opens. \\ \hline
+5:20    &  0:40  & Attic self ventilation - alpha and charlie sides. Porch fire ignites. \\ \hline
+        &  0:45  & Additional self ventilation on charlie side. \\ \hline
+        &  0:55  & Self ventilation on beta side. \\ \hline        
+5:21:30 &  2:10  & 1$^{st}$ floor door to enclosed porch opened \\ \hline
+        &  2:15  & Additional self ventilation on beta side. \\ \hline        
+        &  2:40  & Top of interior door fails. \\ \hline
+        &  5:00  & Simulation ends. \\ \hline
+\end{tabular}
+\label{tab:vents}
+\end{table}
+
+
 
 \section{Mesh}
 \label{mesh}
