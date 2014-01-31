@@ -17,7 +17,7 @@
 #include <SpacebrewYun.h>
 
 // create a variable of type SpacebrewYun and initialize it with the constructor
-SpacebrewYun sb = SpacebrewYun("ArduinoPumper", "Pumper Pressure and Flow");
+SpacebrewYun sb = SpacebrewYun("Arduino_Pumper", "Pumper Pressure and Flow");
 
 // create variables to manage interval between each time we send a string
 long last = 0;
@@ -47,8 +47,8 @@ void setup() {
 	sb.addPublish("range test", "range");
 	sb.addPublish("boolean test", "boolean");
 	sb.addPublish("custom test", "crazy");
-	sb.addPublish("Pump Flow Rate (gpm)", "range");
-	sb.addPublish("Pump Pressure (psi)", "range");
+	sb.addPublish("Flow Rate (gpm)", "range");
+	sb.addPublish("Pressure (psi)", "range");
 	// sb.addSubscribe("string test", "string");
 	// sb.addSubscribe("range test", "range");
 	// sb.addSubscribe("boolean test", "boolean");
@@ -61,7 +61,7 @@ void setup() {
 	// sb.onCustomMessage(handleCustom);
 
 	// connect to cloud spacebrew server at "sandbox.spacebrew.cc"
-	sb.connect("192.168.1.5");
+	sb.connect("192.168.1.100");
 
 	// we give some time to arduino to connect to sandbox, otherwise the first sb.monitor(); call will give an error
 	delay(1000);
@@ -86,8 +86,8 @@ void loop() {
 			sb.send("range test", 500);
 			sb.send("boolean test", true);
 			sb.send("custom test", "you're loco");
-			sb.send("Pump Flow Rate (gpm)", flow_rate);
-			sb.send("Pump Pressure (psi)", 200);
+			sb.send("Flow Rate (gpm)", flow_rate);
+			sb.send("Pressure (psi)", 200);
 
 			last = millis();
 
