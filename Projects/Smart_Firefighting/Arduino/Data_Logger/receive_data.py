@@ -4,14 +4,16 @@ import pika
 import time
 import argparse
 
+
 def callback(ch, method, properties, body):
     print '%r' % (body)
-    with open('output.csv', 'a+') as text_file:
+    with open(args.log_file, 'a+') as text_file:
         text_file.write(body+'\n')
 
 # Parse command line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('broker', help='network or IP address of message broker')
+parser.add_argument('log_file', help='Location of log file')
 args = parser.parse_args()
 
 # Attemps to connect to server and run data receiving loop.
