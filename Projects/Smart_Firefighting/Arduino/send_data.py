@@ -3,6 +3,17 @@
 import pika
 import time
 import argparse
+import urllib2
+import re
+
+
+def read_value():
+    # Read voltage from analog pin 0
+    response = urllib2.urlopen('http://localhost/arduino/analog/0')
+    value = response.read()
+    value = re.findall('\d+', value)
+    response.close()
+    return float(value[1])
 
 # Parse command line arguments
 parser = argparse.ArgumentParser()
@@ -24,7 +35,8 @@ while True:
                                  type='fanout')
 
         while True:
-            message = (time.ctime()+',%s,200') % (args.logger_id)
+            value = read_value()
+            message = (time.ctime()+',%s,%0.2f') % (args.logger_id, value)
             channel.basic_publish(exchange='logs',
                                   routing_key='',
                                   body=message)
@@ -36,4 +48,13 @@ while True:
         connection.close()
     except:
         print 'No broker found. Retrying in 30 seconds...'
-        time.sleep(30)
+        
+        timer = 0
+        retry_value = 30
+        while timer < retry_value:
+            value = read_value()
+            message = (time.ctime()+',%s,%0.2f') % (args.logger_id, value)
+            with open(args.log_file, 'a+') as text_file:
+                text_file.write(message+'\n')
+            time.sleep(1)
+            timer += 1
