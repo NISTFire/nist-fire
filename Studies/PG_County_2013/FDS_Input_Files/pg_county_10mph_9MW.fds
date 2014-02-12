@@ -1,0 +1,181 @@
+&HEAD CHID='pg_county_fire_10mph', TITLE='6404 57th Ave Riverdale MD'  /
+
+&MULT ID='m1', DX=7,DY=4,DZ=4, I_UPPER=1,J_UPPER=3,K_UPPER=1/
+&MESH IJK=70,40,40, XB=-2,5,-3,1,0,4, MULT_ID='m1'/
+
+MESH IJK=140,160,80, XB=-2,12,-3,13,0,8 /
+
+&TIME T_END=300/
+
+&VENT MB = 'XMIN', SURF_ID = 'OPEN' /
+&VENT MB = 'XMAX', SURF_ID = 'OPEN' /
+&VENT MB = 'YMIN', SURF_ID = 'OPEN' /
+VENT MB = 'YMAX', SURF_ID = 'OPEN' /
+&VENT MB = 'ZMAX', SURF_ID = 'OPEN' /
+
+&SURF ID='wind', VEL=-4.47, RAMP_V='WIND RAMP',COLOR='INVISIBLE' /
+&VENT MB = 'YMAX', SURF_ID ='wind' /
+&RAMP ID='WIND RAMP', T=0,F=0.25 /
+&RAMP ID='WIND RAMP', T=10,F=0.50 /
+&RAMP ID='WIND RAMP', T=20,F=0.75 /
+&RAMP ID='WIND RAMP', T=30,F=1.00 /
+
+!------------------------------------------------
+!-------------Geometry---------------------------
+!------------------------------------------------
+
+!Basement Perimeter------------------------------
+&OBST XB = 0.0,9.14,0.0,0.3,0.0,2.28, COLOR='GRAY 60' / A-Side
+&OBST XB = 0.0,0.3,0.3,6.86,0.0,2.28, COLOR='GRAY 60' / B-Side
+&OBST XB = 0.0,9.14,6.86,7.16,0.0,2.28, COLOR='GRAY 60' / C-Side
+&OBST XB = 8.84,9.14,0.3,6.86,0.0,2.28, COLOR='GRAY 60' / D-Side
+
+!Basement Bathroom-------------------------------
+&OBST XB = 0.3,1.67,4.48,4.78,0.0,2.28,COLOR='GRAY 40' / a-side wall
+&OBST XB = 1.37,1.67,4.48,6.86,0.0,2.28, COLOR='GRAY 40' / d-side wall
+&HOLE XB = 1.37,1.67,5.68,6.38,0.0,2.03 / bathroom door
+&HOLE XB = 0.0,0.3,4.98,5.74,1.48,1.98 / bathroom window
+
+!Basement General Room---------------------------
+&OBST XB = 5.79,6.09,0.3,6.86,0.0,2.28, COLOR='GRAY 40' / bedroom general wall
+&OBST XB = 0.3,1.67,3.2,4.48,0.0,2.28, COLOR='GRAY 40' / utility
+&HOLE XB = 0.0,0.3,0.95,1.71,1.48,1.98, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1' / general window
+&HOLE XB = 4.57,5.37,6.86,7.16,0.0,2.03 / general door
+
+!Basement Kitchen--------------------------------
+&HOLE XB = 2.13,2.99,6.86,7.16,0.533,1.98 / kitchen window
+
+!Basement Bedroom 1------------------------------
+&OBST XB = 6.09,8.84,3.75,4.05,0.0,2.28, COLOR='GRAY 40' / bedroom dividing wall
+&HOLE XB = 8.84,9.14,4.65,5.41,1.48,1.98, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  / bedroom d window
+&HOLE XB = 7.02,7.88,6.86,7.16,0.533,1.98, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  / bedroom c window
+
+!Basement Bedroom 2------------------------------
+&HOLE XB = 8.84,9.14,0.95,1.71,1.48,1.98, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  / bedroom window
+
+!First Floor-------------------------------------
+&OBST XB = 0.0,9.14,0.0,7.16,2.28,2.58, OUTLINE=.TRUE. / Floor
+&HOLE XB = 2.37,4.21,3.41,4.42,2.28,2.58 / Stairwell Hole
+&HOLE XB = 2.07,2.37,3.41,4.42,2.36,2.58 / Stairwell Hole
+
+!Stairs------------------------------------------
+&OBST XB = 1.97,2.07,3.41,4.42,2.26,2.58, COLOR = 'GRAY 10' / riser1
+&OBST XB = 2.07,2.27,3.41,4.42,2.26,2.36, COLOR = 'GRAY 10' / runner1
+&OBST XB = 2.27,2.37,3.41,4.42,1.94,2.36, COLOR = 'GRAY 10' / riser2
+&OBST XB = 2.37,2.57,3.41,4.42,1.94,2.04, COLOR = 'GRAY 10' / runner2
+&OBST XB = 2.57,2.67,3.41,4.42,1.61,2.04, COLOR = 'GRAY 10' / riser3
+&OBST XB = 2.67,2.87,3.41,4.42,1.61,1.71, COLOR = 'GRAY 10' / runner3
+&OBST XB = 2.87,2.97,3.41,4.42,1.29,1.71, COLOR = 'GRAY 10' / riser4
+&OBST XB = 2.97,3.17,3.41,4.42,1.29,1.39, COLOR = 'GRAY 10' / runner4
+&OBST XB = 3.17,3.27,3.41,4.42,0.97,1.39, COLOR = 'GRAY 10' / riser5
+&OBST XB = 3.27,3.47,3.41,4.42,0.97,1.07, COLOR = 'GRAY 10' / runner5
+&OBST XB = 3.47,3.57,3.41,4.42,0.65,1.07, COLOR = 'GRAY 10' / riser6
+&OBST XB = 3.57,3.77,3.41,4.42,0.65,0.75, COLOR = 'GRAY 10' / runner6
+&OBST XB = 3.77,3.87,3.41,4.42,0.32,0.75, COLOR = 'GRAY 10' / riser7
+&OBST XB = 3.87,4.07,3.41,4.42,0.32,0.42, COLOR = 'GRAY 10' / runner7
+&OBST XB = 4.07,4.17,3.41,4.42,0.00,0.42, COLOR = 'GRAY 10' / riser8
+
+!First Floor Perimeter---------------------------
+&OBST XB = 0.0,9.14,0.0,0.3,2.58,5.06, COLOR='GRAY 75' / A-Side
+&OBST XB = 0.0,0.3,0.3,6.86,2.58,5.06, COLOR='GRAY 75' / B-Side
+&OBST XB = 0.0,9.14,6.86,7.16,2.58,5.06, COLOR='GRAY 75' / C-Side
+&OBST XB = 8.84,9.14,0.3,6.86,2.58,5.06,, COLOR='GRAY 75' / D-Side
+
+!First Floor Bathroom----------------------------
+&OBST XB = 4.21,4.51,3.41,6.86,2.58,5.06, COLOR='WARM GREY' / b-side wall
+&OBST XB = 5.73,6.03,4.72,6.86,2.58,5.06, COLOR='WARM GREY' / d-side wall
+&OBST XB = 4.51,6.03,4.42,4.72,2.58,5.06, COLOR='WARM GREY' / a-side wall
+
+!First Floor Kitchen-----------------------------
+&OBST XB = 1.97,4.21,4.42,4.72,2.58,5.06, COLOR='WARM GREY' / wall
+&OBST XB = 1.97,4.51,3.11,3.41,2.58,5.06, COLOR='WARM GREY' / wall
+&OBST XB = 1.97,2.27,3.41,4.42,4.63,5.06, COLOR='WARM GREY' / wall
+&HOLE XB = 0.69,1.48,6.86,7.16,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /b-side window
+&HOLE XB = 0.0,0.3,4.32,5.11,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /a-side window
+
+!First Floor Bedroom 1---------------------------
+&OBST XB = 6.03,8.84,3.41,3.71,2.58,5.06, COLOR='WARM GREY' / Bedroom wall split
+&HOLE XB = 7.21,8,6.86,7.16,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /b-side window
+&HOLE XB = 8.84,9.14,4.08,4.87,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /d-side window
+
+!First Floor Bedroom 2---------------------------
+&OBST XB = 5.73,6.03,0.3,4.72,2.58,5.06, COLOR='WARM GREY' / b-side wall
+&HOLE XB = 8.84,9.14,1.22,2.01,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /d-side window
+&HOLE XB = 6.78,7.57,0.0,0.3,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  / a-side window
+
+!First Floor Living Room-------------------------
+&HOLE XB = 0.0,0.3,1.1,1.89,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /a-side window 2
+&HOLE XB = 3.96,4.87,0.0,0.3,2.58,4.63, COLOR='RED', TRANSPARENCY=0.75, CTRL_ID='cycling timer' / front door
+&HOLE XB = 0.77,1.23,0.0,0.3,3.49,4.63, COLOR='RED', TRANSPARENCY=0.75, DEVC_ID='timer bay1' / b-side bay window
+&HOLE XB = 1.33,2.47,0.0,0.3,3.49,4.63, COLOR='RED', TRANSPARENCY=0.75, DEVC_ID='timer bay2' / middle bay window
+&HOLE XB = 2.57,3.05,0.0,0.3,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1' / d-side bay window
+&OBST XB = 3.86,4.97,-1.0,0.0,2.28,2.58 / front door stoop
+
+!First Floor Ceiling-----------------------------
+&OBST XB = 0.0,9.14,0.0,7.16,5.06,5.36, OUTLINE=.TRUE. / Ceiling
+
+!Front Yard---------------------------------------
+&OBST XB = -2,12,-3,0,0,2.28, COLOR='BURNT SIENNA' / ground
+&OBST XB = -2,0,0,2,0.0,1.4, COLOR='BURNT SIENNA' / b-ground
+&OBST XB = -2,0,2,4,0.0,1.0, COLOR='BURNT SIENNA' / b-ground
+&OBST XB = -2,0,4,6,0.0,0.6, COLOR='BURNT SIENNA' / b-ground
+&OBST XB = -2,0,6,7,0.0,0.2, COLOR='BURNT SIENNA' / b-ground
+
+&OBST XB = 9.14,12,0,2,0.0,1.4, COLOR='BURNT SIENNA' / d-ground
+&OBST XB = 9.14,12,2,4,0.0,1.0, COLOR='BURNT SIENNA' / d-ground
+&OBST XB = 9.14,12,4,6,0.0,0.6, COLOR='BURNT SIENNA' / d-ground
+&OBST XB = 9.14,12,6,7,0.0,0.2, COLOR='BURNT SIENNA' / d-ground
+
+!------------------------------------------------
+!-------------Timers-----------------------------
+!------------------------------------------------
+&DEVC XYZ=0.1,0.1,0.1, ID='timer 1', SETPOINT= 10000.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+&DEVC XYZ=0.1,0.1,0.1, ID='timer bay1', SETPOINT= 170.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+&DEVC XYZ=0.1,0.1,0.1, ID='timer bay2', SETPOINT= 10000.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+
+&DEVC ID='TIMER', XYZ=0.0,0.0,0.0, QUANTITY='TIME' /
+&CTRL ID='cycling timer', FUNCTION_TYPE='CUSTOM', INPUT_ID='TIMER', RAMP_ID='cycle' /
+&RAMP ID='cycle', T=  0, F=-1 /
+&RAMP ID='cycle', T=  99, F=-1 /
+&RAMP ID='cycle', T=  100, F= 1 /
+&RAMP ID='cycle', T=  159, F=1 /
+&RAMP ID='cycle', T=  160, F= -1 /
+&RAMP ID='cycle', T=  179, F=-1 /
+&RAMP ID='cycle', T=  180, F= 1 /
+
+!------------------------------------------------
+!------------Fires-------------------------------
+!------------------------------------------------
+
+&REAC FUEL = 'METHANE' /
+
+&SURF ID='burner1', HRRPUA = 2000, COLOR='BURNT ORANGE', TAU_Q=60 /
+&SURF ID='burner2', HRRPUA = 6000, COLOR='BURNT ORANGE', TAU_Q=70 /
+
+&OBST XB=0.6,1.2,5,6.5,0.0,0.4, SURF_IDS='burner1','INERT','INERT' /  Burner1
+&OBST XB=2.5,4,5.0,6.0,0.0,0.4, SURF_IDS='burner2','INERT','INERT' /  Burner2
+
+!------------------------------------------------
+!------------Slices------------------------------
+!------------------------------------------------
+
+&SLCF PBZ = 0.9, QUANTITY='TEMPERATURE', CELL_CENTERED=.TRUE. /
+&SLCF PBZ = 1.9, QUANTITY='TEMPERATURE', CELL_CENTERED=.TRUE.  /
+&SLCF PBZ = 3.75, QUANTITY='TEMPERATURE', CELL_CENTERED=.TRUE.  /
+&SLCF PBZ = 4.5, QUANTITY='TEMPERATURE', CELL_CENTERED=.TRUE.  /
+
+&SLCF PBY = 0.15, QUANTITY='TEMPERATURE', CELL_CENTERED=.TRUE.  / Front
+&SLCF PBY = 3.9, QUANTITY='TEMPERATURE', CELL_CENTERED=.TRUE.  / Stairs
+&SLCF PBY = 7.01, QUANTITY='TEMPERATURE', CELL_CENTERED=.TRUE.  / Back
+
+&SLCF PBX = 0.15, QUANTITY='TEMPERATURE', CELL_CENTERED=.TRUE.  / Left
+&SLCF PBX = 4.43, QUANTITY='TEMPERATURE', CELL_CENTERED=.TRUE.  / Front
+&SLCF PBX = 4.97, QUANTITY='TEMPERATURE', CELL_CENTERED=.TRUE.  / Back
+&SLCF PBX = 8.99, QUANTITY='TEMPERATURE', CELL_CENTERED=.TRUE.  / Right
+
+&SLCF PBX = 4.43, QUANTITY='VELOCITY', CELL_CENTERED=.TRUE.  / Front
+&SLCF PBX = 4.43, QUANTITY='V-VELOCITY', CELL_CENTERED=.TRUE.  / Front
+&SLCF PBX = 4.43, QUANTITY='U-VELOCITY', CELL_CENTERED=.TRUE.  / Front
+&SLCF PBX = 4.43, QUANTITY='W-VELOCITY', CELL_CENTERED=.TRUE.  / Front
+
+&TAIL /
