@@ -122,7 +122,7 @@ Squad 5 entered the front of the structure at approximately 5:25 and headed to t
 \vskip.5\baselineskip
 \begin{tabular}{|c|c|c|}
 \hline
-Incident Time & Simulation Time & Fire Behavior / Fireground Operation  \\
+Incident Time & Baseline Simulation Time & Fire Behavior / Fireground Operation  \\
 \hline \hline
         &        & Reported working fire with heavy smoke\\
 5:17    &        & coming from the front and rear of the \\
@@ -196,37 +196,70 @@ Since there is no all-inclusive, universal fire modeling input data base this ty
 
 \section{Geometry}
 \label{geom}
-The structure is a 2 $\tfrac{1}{2}$ story residential structure with balloon frame construction and a wood gable roofing system. The structure has a 17.15 m (56 ft) by 6.15 m (20 ft) footprint. This results in a floor area of approximately 105 m$^2$ (1100 ft$^2$) per floor and a total living area of approximately 110 m$^2$ (2200 ft$^2$). Additionally there is a half-story attic that was used to house the structure's hot water heater. Interior walls were constructed from wood frame dimensioned lumber with 1.27 cm (0.5 in) gypsum board over top. There were two stairwells in the structure: the front stairwell connected the first and second levels and the rear stairwell (part of the enclosed porch) connected the first and second levels and provided access to the attic. Figs.~(\ref{fig:first_floor} and \ref{fig:second_floor}) show the interior dimensions of the first and second floor, respectively. The dimensions were found from on-scene measurements using a tape measure. Measurements were made to the nearest 1.27 cm (0.5 in). Based on difficulty of making some of the measurements due to the condition of the post-fire structure, the uncertainty in the measurements is estimated to be on the order of $\pm$ 1 \%. This would result in measurements that could change by up $\pm$ 17 cm ($\approx$ 7 in). When considering the uncertainties in the initial fire development, ventilation (vent times and vent areas), and peak heat release rate among other factors, the uncertainty in the overall structure geometry is not expected to be a major factor.
-
-The resolution of the model geometry input is to the nearest centimeter with that the recognition that the resolution is ultimately limited by the mesh resolution which will be discussed in Section \ref{mesh}. Fig.~(\ref{fig:smv_interior}) shows 3D Smokeview renderings of cutaways of the beta and delta sides of the structure interior.
+The structure is a 2 $\tfrac{1}{2}$ story residential structure with balloon frame construction and a wood gable roofing system.  The structure has a 17.15 m (56 ft) by 6.15 m (20 ft) footprint. This results in a floor area of approximately 105 m$^2$ (1100 ft$^2$) per floor and a total living area of approximately 110 m$^2$ (2200 ft$^2$). Interior walls were constructed from wood frame dimensioned lumber with 1.27 cm (0.5 in) gypsum board over top. Additionally there is a half-story attic that was used to house the structure's hot water heater. Fig.~(\ref{fig:alpha_ex}) shows the post-incident exterior of the alpha side of the structure. Note that the damage is to the structure's attic.
 
 \begin{figure}[h!]
-\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-\includegraphics[width=.80\textwidth]{../Figures/interior_beta} \\
-\includegraphics[width=.80\textwidth]{../Figures/interior_delta} \\
-\end{tabular*}
-\caption{3D Smokeview rendering of structure interior looking from the charlie side to both the beta side (top) and to the delta side (bottom)}
-\label{fig:smv_interior}
+\centering
+\includegraphics[width=.65\textwidth]{../Figures/exterior_alpha}
+\caption{Photograph showing the post-incident front (side alpha) exterior of the structure.}
+\label{fig:alpha_ex}
 \end{figure}
+
+There were two stairwells in the structure: the front stairwell connected the first and second levels and the rear stairwell (part of the enclosed porch) connected the first and second levels and provided access to the attic. Figs.~(\ref{fig:first_floor} and \ref{fig:second_floor}) show the interior dimensions of the first and second floor, respectively. The dimensions were found from on-scene measurements using a tape measure. Measurements were made to the nearest 1.27 cm (0.5 in). Based on difficulty of making some of the measurements due to the condition of the post-fire structure, the uncertainty in the measurements is estimated to be on the order of $\pm$ 1 \%. This would result in measurements that could change by up $\pm$ 17 cm ($\approx$ 7 in). When considering the uncertainties in the initial fire development, ventilation (vent times and vent areas), and peak heat release rate among other factors, the uncertainty in the overall structure geometry is not expected to be a major factor.
+
+The resolution of the model geometry input is to the nearest centimeter with that the recognition that the resolution is ultimately limited by the mesh resolution which will be discussed in Section \ref{mesh}. 
+
+%Fig.~(\ref{fig:smv_interior}) shows 3D Smokeview renderings of cutaways of the beta and delta sides of the structure interior.
+%\begin{figure}[h!]
+%\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%\includegraphics[width=.80\textwidth]{../Figures/interior_beta} \\
+%\includegraphics[width=.80\textwidth]{../Figures/interior_delta} \\
+%\end{tabular*}
+%\caption{3D Smokeview rendering of structure interior looking from the charlie side to both the beta side (top) and to the delta side (bottom)}
+%\label{fig:smv_interior}
+%\end{figure}
 
 
 \section{Fire}
 \label{fire}
 
-To estimate the dominant fuel(s), fire size, and structure ventilation, on-scene videos and post-incident reports are used. The fire was first noticed by a person on the street who informed the residents that smoke was pouring out of the attic. The residents, upon notification of the fire, observed that there was fire in their enclosed rear porch. Post-incident, the fire investigation concluded that the fire originated in the structure's attic.
+To estimate the dominant fuel(s), fire size, and structure ventilation, on-scene videos and post-incident reports are used. The fire was first noticed by a person on the street who informed the residents that smoke was pouring out of the attic. The residents, upon notification of the fire, observed that there was fire in their enclosed rear porch. Post-incident, the fire investigation concluded that the fire originated in the structure's attic \cite{NIOSH:Bowyer}.
 
-Based on these findings, the FDS model includes two source fire locations: an initial fire in the attic and a secondary fire on the second floor porch landing. The attic and rear porch consist of a fuel load that is mainly wood: the rear porch was enclosed with wood planks covered by foam board and vinyl siding, the roof was asphalt shingles over wood planking, and the attic had oriented strand board (OSB) floors. If we represent wood with the following chemical formula, $\C\H_{1.7}\O_{0.74}\N_{0.002}$, and use carbon monoxide and soot yields from the SFPE Handbook \cite{SFPE:Tewarson}, we can write a balanced chemical reaction for wood oxidation:
+Based on these findings, the FDS model includes two source fire locations: an initial fire in the attic and a secondary fire on the second floor porch landing. The attic and rear porch consist of a fuel load that is mainly wood: the rear porch was enclosed with wood planks covered by foam board and vinyl siding, the roof was asphalt shingles over wood planking, and the attic had oriented strand board (OSB) floors. Fig.~(\ref{fig:charlie_ex}) shows the post-incident exterior of the charlie side of the structure. The figure shows the composition of the second floor and attic of the structure. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.65\textwidth]{../Figures/exterior_charlie}
+\caption{Photograph showing the post-incident rear (side charlie) exterior of the structure.}
+\label{fig:charlie_ex}
+\end{figure}
+
+
+If we represent wood with the following chemical formula, $\C\H_{1.7}\O_{0.74}\N_{0.002}$, and use carbon monoxide and soot yields from the SFPE Handbook \cite{SFPE:Tewarson}, we can write a balanced chemical reaction for wood oxidation:
 
 \begin{multline}
 \C\H_{1.7}\O_{0.74}\N_{0.002} + 4.86(0.21\,\O_{2} + 0.79\,\N_{2}) \\ 
 \rightarrow 5.69(0.0006\,\C\O + 0.17\,\C\O_{2} + 0.15\,\H_{2}\O + 0.674\,\N_{2} + 0.006\,\C)
 \label{eq:wood_comb}
 \end{multline}
+
+
+\begin{lstlisting}
+&SPEC ID = 'WOOD', FORMULA = 'CH1.7O0.74N0.002' /
+
+&REAC ID = 'wood' 
+    FUEL = 'WOOD', 
+    HEAT_OF_COMBUSTION=16400,
+    SOOT_YIELD = 0.015,
+    CO_YIELD = 0.004/
+\end{lstlisting}
+
+
 The heat of combustion of wood for this simulation is 16400 kJ/kg (7050 BTU/lb), based on data provided in the SFPE Handbook \cite{SFPE:Tewarson}. The heat of combustion quantifies the energy release per unit mass of the fuel.
 
-From work by Babrauskas and Grayson \cite{babrauskas1990}, we can find an estimate for the energy release per unit time and unit area (kW/m$^2$). Experiments were conducted in a cone calorimeter to determine the 5 minute average of HRR (kW/m$^2$) for several different types of wood over a range of radiant heat fluxes (kW/m$^2$). Taking a conservative approach, we assume the burning wood in the attic had the lowest energy density of the tested samples \cite{babrauskas1990}, similar to that of Douglas Fir plywood. If we estimate that the average radiation feedback to the pyrolyzing fuel is 30 kW/m$^2$ (assuming under-ventilated conditions within the structure) then an average heat release for wood is 65 kW/m$^2$.
+From work by Babrauskas and Grayson \cite{babrauskas1990}, we can find an estimate for the energy release per unit time and unit area (kW/m$^2$). Experiments were conducted in a cone calorimeter to determine the 5 minute average of HRR (kW/m$^2$) for several different types of wood over a range of radiant heat fluxes (kW/m$^2$). Taking a conservative approach, we assume the burning wood in the attic had the lowest energy density of the tested samples \cite{babrauskas1990}, similar to that of Douglas Fir plywood. If we estimate that the average radiation feedback to the pyrolyzing fuel is 20 kW/m$^2$ (assuming under-ventilated conditions within the structure) then an average heat release for wood is 51 kW/m$^2$.
 
-Next, is determining the appropriate burnable area (exposed wood area) in the attic and in the second floor porch enclosure. Based on the floor plan of the structure, the underside of the roof is approximately 134 m$^2$ (1475 ft$^2$) plus there is 105 m$^2$ of floor area in the attic. Examination of post incident images showed the roof sustained more damage than the floor except for the floor area immediately over the back porch. That area will be considered as part of the porch fire. To estimate the attic fire size, we consider the area of the underside of the roof (134 m$^2$) and use an average heat release rate of wood of 65 kW/m$^2$. This results in a fire size of about 9 MW. To estimate the porch fire size, we consider the the four walls of porch enclosure (42 m$^2$) and the ceiling above the porch (13 m$^2$). The total area is 55 m$^2$ (592 ft$^2$). Using the same average heat release of 65 kW/m$^2$, the fire size on the porch is approximately 3.3 MW. The total fire size for this structure is estimated to be 12.3 MW. Since it is unknown when the fire started relative to notification of a fire, the attic fire starts at the beginning of the simulation and ramps up to 9 MW in 8 seconds. The attic fire starts 40 seconds into the simulation and ramps to 3.3 MW in 8 seconds.
+Next, is determining the appropriate burnable area (exposed wood area) in the attic and in the second floor porch enclosure. Based on the floor plan of the structure, the underside of the roof is approximately 134 m$^2$ plus there is 105 m$^2$ of floor area in the attic. Examination of post incident images showed that the floor immediately over the back porch was completely burned away. That area will be considered as part of the porch fire. Based on post-incident damage, we consider approximately 50 \% of the remaining floor area as fuel to the attic fire. To estimate the total attic fire size, we consider the area of the underside of the roof (134 m$^2$) plus the floor area (43 m$^2$) and use an average heat release rate of wood of 51 kW/m$^2$. This results in a fire size of 9 MW. To estimate the porch fire size, we consider the the four walls of porch enclosure (42 m$^2$) and the floor and ceiling of the porch (24 m$^2$). The total area is 64 m$^2$. Using the same average heat release of 51 kW/m$^2$, the fire size on the porch is approximately 3.3 MW. The total fire size for this structure is estimated to be 12.3 MW. Since it is unknown when the fire started relative to notification of a fire, the attic fire starts at the beginning of the simulation and ramps up to 9 MW in 10 seconds. The attic fire starts 40 seconds into the simulation and ramps to 3.3 MW in 10 seconds. A ten second ramp to peak was used to prevent sharp velocity changes at the fire boundary condition in FDS.
 
 \section{Vents}
 \label{Vents}
