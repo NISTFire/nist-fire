@@ -191,7 +191,28 @@ The development of the model geometry and development of the input file is strai
 	\item activation energy
 	\end{itemize}
 \end{itemize}
-Since there is no all-inclusive, universal fire modeling input data base this type of information must be gathered from literature or generated for a given incident.  The sections below describe the input data and how it was modeled. 
+Since there is no all-inclusive, universal fire modeling input data base this type of information must be gathered from literature or generated for a given incident. For the simulations performed for this study, Table ~\ref{tab:mod_param} includes the relevant model input parameters. The sections below describe these inputs. 
+
+\begin{table}
+\centering
+\caption{Relevant Modeling Input Parameters}
+\vskip.5\baselineskip
+\begin{tabular}{|c|c|c|}
+\hline
+Category & Details & Report Section  \\
+\hline \hline
+ Simulation Time           & 5 minutes                             & -- \\ \hline
+ Grid Size                 & 10 cm                                 & Section~\ref{mesh} \\ \hline
+ Ambient Temperature       & 20 $^{\circ}$C                        & -- \\ \hline
+\multirow{4}{*}{Reaction}  & Fuel: Wood ($\C\H_{1.7}\O_{0.74}\N_{0.002}$)                & \multirow{4}{*}{Section~\ref{fire}} \\
+                           & CO Yield: 0.004 \; ${\mathrm{kg_{CO}}/\mathrm{kg_{wood}}}$  & \\
+                           & Soot Yield: 0.015 \; ${\mathrm{kg_{C}}/\mathrm{kg_{wood}}}$ & \\
+                           & Heat of Combustion: 16400 kJ/kg                             & \\ \hline
+\multirow{2}{*}{Fire Size} & Attic Fire: 9 MW                      & \multirow{2}{*}{Section~\ref{fire}} \\
+                           & Porch Fire: 3.3 MW                    & \\ \hline                      
+\end{tabular}
+\label{tab:mod_param}
+\end{table}
 
 
 \section{Geometry}
@@ -251,36 +272,48 @@ The heat of combustion of wood used in this simulation is 16400 kJ/kg (7050 BTU/
     CO_YIELD = 0.004/
 \end{lstlisting}
 
+Note that using the input lines above will invoke the simple chemistry reaction balance in FDS. This means that fuel and air react to form only CO$_2$, CO, H$_2$O, Soot, and N$_2$. If there is a desire for any other combustion products then the user must explicitly define those species and the chemical reaction that produces them \cite{FDS_Users_Guide}. Based on above input lines FDS uses the default, mixing-controlled fast chemistry combustion model. This mechanism  states that the rate of fuel consumption is proportional to both the local limiting reactant concentration and the local rate of mixing and extinction is based on the critical flame temperature approach \cite{FDS_Math_Guide}. While FDS provides users to the option to use a more complex finite-rate combustion mechanism, we do not have sufficient evidence to justify deviating from the default specifications. 
 
+To estimate the energy release per unit time and unit area (kW/m$^2$) of wood, we use work by Babrauskas and Grayson \cite{babrauskas1990}. Experiments were conducted in a cone calorimeter to determine the 5 minute average of HRRPUA (kW/m$^2$) for several different types of wood over a range of radiant heat fluxes (kW/m$^2$). Here, we take a conservative approach and assume the burning wood in the structure had the lowest energy density of the tested samples \cite{babrauskas1990}, similar to that of Douglas Fir plywood. Based on the range of heat flux exposures, the data was fit to determine HRRPUA ($y$) as a function of exposure ($x$):
 
+\begin{equation}
+y = ax+b
+\label{eq:heat_flux}
+\end{equation}
 
-From work by Babrauskas and Grayson \cite{babrauskas1990}, we can find an estimate for the energy release per unit time and unit area (kW/m$^2$). Experiments were conducted in a cone calorimeter to determine the 5 minute average of HRR (kW/m$^2$) for several different types of wood over a range of radiant heat fluxes (kW/m$^2$). Taking a conservative approach, we assume the burning wood in the attic had the lowest energy density of the tested samples \cite{babrauskas1990}, similar to that of Douglas Fir plywood. If we estimate that the average radiation feedback to the pyrolyzing fuel is 20 kW/m$^2$ (assuming under-ventilated conditions within the structure) then an average heat release per unit area (HRRPUA) for wood is 51 kW/m$^2$.
+In Eq.~\ref{eq:heat_flux}, $a$ and $b$ are experimental constants. For Douglas Fir plywood these values were found to be 1.43 and 22 respectively. Typically radiative feedback from flaming combustion is between 20 kW/m$^2$ and 35 kW/m$^2$ \cite{tsaidrysdale}. If we estimate that the average radiation feedback to the pyrolyzing fuel is 20 kW/m$^2$ because of under-ventilated conditions within the structure, then following Eq.~\ref{eq:heat_flux} the average heat release per unit area (HRRPUA) for wood is 51 kW/m$^2$.
 
-Next, is determining the appropriate burnable area (exposed wood area) in the attic and in the second floor porch enclosure. Based on the floor plan of the structure, the underside of the roof is approximately 134 m$^2$ plus there is 105 m$^2$ of floor area in the attic. Examination of post incident images showed that the floor immediately over the back porch was completely burned away. That area will be considered as part of the porch fire. Based on post-incident damage, we consider approximately 50 \% of the remaining floor area as fuel to the attic fire. To estimate the total attic fire size, we consider the area of the underside of the roof (134 m$^2$) plus the floor area (43 m$^2$) and use an HRRPUA of wood of 51 kW/m$^2$. This results in a fire size of 9 MW. To estimate the porch fire size, we consider the the four walls of porch enclosure (42 m$^2$) and the floor and ceiling of the porch (24 m$^2$). The total area is 64 m$^2$. Using the same HRRPUA of 51 kW/m$^2$, the fire size on the porch is approximately 3.3 MW. The total fire size for this structure is estimated to be 12.3 MW. Since it is unknown when the fire started relative to notification of a fire, the attic fire starts at the beginning of the simulation and ramps up to 9 MW in 10 seconds. The attic fire starts 40 seconds into the simulation and ramps to 3.3 MW in 10 seconds. A ten second ramp to peak was used to prevent sharp velocity changes at the fire boundary condition in FDS.
+To calculate the total fire size, we need to determine the appropriate burnable area (exposed wood area) of the attic and second floor porch enclosure. Based on the floor plan of the structure, the underside of the roof is approximately 134 m$^2$ plus there is 105 m$^2$ of floor area in the attic. Examination of post incident images showed that the floor immediately over the back porch burned away. That area will be considered as part of the porch fire. Based on post-incident damage, we consider approximately 50 \% of the remaining floor area as fuel to the attic fire. To estimate the total attic fire size, we include the underside roof area (134 m$^2$) and the floor area (43 m$^2$). Using an HRRPUA of wood of 51 kW/m$^2$, results in a fire size of 9 MW. To estimate the porch fire size, we consider the the four walls of porch enclosure (42 m$^2$) and the floor and ceiling of the porch (24 m$^2$). The total area is 64 m$^2$. Using the same HRRPUA of 51 kW/m$^2$, the fire size on the porch is approximately 3.3 MW. The total fire size for this structure is estimated to be 12.3 MW. Since it is unknown when the fire started relative to notification of a fire or how fast the fire spread, several simplifications are made. First is that the attic fire starts at the beginning of the simulation and ramps up to 9 MW in 10 seconds. The porch fire starts 40 seconds into the simulation and ramps to 3.3 MW in 10 seconds. A ten second ramp to peak was used to prevent sharp velocity changes at the fire boundary condition in FDS. The second is that the sources of the gas phase wood fuel are of fixed area and at fixed locations (2 sources for attic, 1 source for porch). The following lines define the source fires for an FDS input file:
+
+\begin{lstlisting}
+&SURF ID='FIRE', HRRPUA=2250., COLOR='ORANGE',TAU_Q=10 /
+&VENT XB=-13.5,-13,1,5,6.16,6.16, SURF_ID='FIRE' / 2 m^2
+&VENT XB=-14.5,-14,1,5,6.16,6.16, SURF_ID='FIRE' / 2 m^2
+&VENT XB=-16.5,-15.5,1,2.5,3.14,3.14, SURF_ID='FIRE',DEVC_ID='SECOND FIRE'/ 1.5 m^2
+&DEVC XYZ = -17.2,2,0 ID = 'SECOND FIRE', QUANTITY = 'TIME', SETPOINT = 40, INITIAL_STATE = .FALSE. /
+\end{lstlisting}
+Note that the coordinates here are unique for the vents are specific to the input files used for these simulations. The key point is that they are 2-D planes of a specific area.
 
 \section{Vents}
 \label{Vents}
-This simulation includes vents that account for the changes in ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). The times of the ventilation changes are provided in Table \ref{tab:vents}.
-
-
-At the same time, part of the second floor window on the charlie side, 0.11 m$^2$ (1.2 ft$^2$) , fails providing initial ventilation.  The attic fire starts 40 seconds into the simulation and ramps to 3.3 MW in under 10 seconds. This corresponds to the report of heavy smoke from both the alpha, 0.08 m$^2$ (0.86 ft$^2$), and charlie, 0.1 m$^2$ (1 ft$^2$), sides of the attic. Additional ventilation occurs 45 and 55 seconds into the simulation as the fire burns through the exterior wall, 0.12 m$^2$ (1.3 ft$^2$), on both the beta and charlie side of the structure. At 130 seconds into the simulation, the back door is opened by a firefighter which results in a final fire induced ventilation. A hole, 0.2 m$^2$ (2.2 ft$^2$), opens on the rear porch of the beta side at 135 seconds.
+This simulation includes vents that account for the changes in ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). The times of the ventilation changes are provided in Table \ref{tab:vents}. Structure leakage has been shown to be important when modeling enclosure fires \cite{beal2009}. The open front door at the start of the simulation and the vents (opening size and open time) created during the simulation are significantly larger than the total effective area of leakage of structure of this type. Therefore, leakage would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
 
 \begin{table}
 \centering
 \caption{Simulation Ventilation Timelines}
 \vskip.5\baselineskip
-\begin{tabular}{|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
-Baseline & No Rear Door Open & Ventilation Area [m$^2$] & Structure Side \\
+Baseline & No Rear Door Open & Ventilation Area [m$^2$] & Type & Structure Side \\
 \hline \hline
-0:00    &  0:00  & 0.11 & Charlie \\ \hline
-0:40    &  0:40  & 0.08 & Alpha and Charlie \\ \hline
-0:45    &  0:45  & 0.12 & Beta \\ \hline
-0:55    &  0:55  & 0.12 & Charlie \\ \hline        
-2:10    &  N/A   & 1.41 & Charlie \\ \hline
-2:15    &  N/A   & 0.2  & Beta \\ \hline        
-2:40    &  2:40  & 0.80 & Interior \\ \hline
-5:00    &  5:00  & \multicolumn{2}{|c|}{Simulation Ends}  \\ \hline
+0:00    &  0:00  & 0.11 & Window      & Charlie \\ \hline
+0:40    &  0:40  & 0.08 & Breach (x2) & Alpha and Charlie \\ \hline
+0:45    &  0:45  & 0.12 & Breach      & Beta \\ \hline
+0:55    &  0:55  & 0.12 & Breach      & Charlie \\ \hline        
+2:10    &  N/A   & 1.41 & Door        & Charlie \\ \hline
+2:15    &  N/A   & 0.2  & Breach      & Beta \\ \hline        
+2:40    &  2:40  & 0.80 & Door        & Interior \\ \hline
+5:00    &  5:00  & \multicolumn{3}{|c|}{Simulation Ends}  \\ \hline
 \end{tabular}
 \label{tab:vents}
 \end{table}
