@@ -197,23 +197,28 @@ Since there is no all-inclusive, universal fire modeling input data base this ty
 \centering
 \caption{Relevant Modeling Input Parameters}
 \vskip.5\baselineskip
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|l|l|l|}
 \hline
-Category & Details & Report Section  \\
+Parameter & Description & Reference  \\
 \hline \hline
  Simulation Time           & 5 minutes                             & -- \\ \hline
  Grid Size                 & 10 cm                                 & Section~\ref{mesh} \\ \hline
  Ambient Temperature       & 20 $^{\circ}$C                        & -- \\ \hline
-\multirow{4}{*}{Reaction}  & Fuel: Wood ($\C\H_{1.7}\O_{0.74}\N_{0.002}$)                & \multirow{4}{*}{Section~\ref{fire}} \\
+\multirow{4}{*}{Reaction: Wood}  & Formula: $\C\H_{1.7}\O_{0.74}\N_{0.002}$              & \multirow{6}{*}{Section~\ref{fire}} \\
                            & CO Yield: 0.004 \; ${\mathrm{kg_{CO}}/\mathrm{kg_{wood}}}$  & \\
                            & Soot Yield: 0.015 \; ${\mathrm{kg_{C}}/\mathrm{kg_{wood}}}$ & \\
-                           & Heat of Combustion: 16400 kJ/kg                             & \\ \hline
-\multirow{2}{*}{Fire Size} & Attic Fire: 9 MW                      & \multirow{2}{*}{Section~\ref{fire}} \\
-                           & Porch Fire: 3.3 MW                    & \\ \hline                      
+                           & Heat of Combustion: 16400 kJ/kg                             & \\ \cline{1-2}
+\multirow{2}{*}{Peak HRR}  & Attic Fire: 9 MW                                            & \\ 
+                           & Porch Fire: 3.3 MW                                          & \\ \hline                      
+\multirow{3}{*}{Material: Wood}    & k: 0.12 \; \si{W/(m.K)})        & \multirow{6}{*}{Section~\ref{matl}} \\
+                                   & $\rho$: 510 \; kg/m$^3$         & \\
+                                   & c$_{p}$: 1.38 \; \si{kJ/(kg.K)} & \\ \cline{1-2}
+\multirow{3}{*}{Material: Gypsum}  & k: 0.48 \; \si{W/(m.K)}         & \\ 
+                                   & $\rho$: 1440 \; kg/m$^3$        & \\ 
+                                   & c$_{p}$: 0.84 \; \si{kJ/(kg.K)} & \\ \hline  
 \end{tabular}
 \label{tab:mod_param}
 \end{table}
-
 
 \section{Geometry}
 \label{geom}
@@ -294,9 +299,27 @@ To calculate the total fire size, we need to determine the appropriate burnable 
 \end{lstlisting}
 Note that the coordinates here are unique for the vents are specific to the input files used for these simulations. The key point is that they are 2-D planes of a specific area.
 
+\section{Materials}
+\label{matl}
+While the fire was simplified to constant area fuel sources (Section~\ref{fire}), defining the material properties of the walls and ceiling are still important from a heat transfer perspective. In this study, we define gypsum \cite{Quintiere:2} for the finished walls and ceilings on the main two floors of the structure and wood \cite{Incropera:1} for the unfinished portions of the attic and rear porch. The text provided below are the lines necessary to define these materials in an FDS input file.
+
+\begin{lstlisting}
+&MATL ID        = 'GYPSUM'
+    FYI = 'Quintiere, Fire Behavior' 
+    CONDUCTIVITY    = 0.48
+    SPECIFIC_HEAT   = 0.84
+    DENSITY = 1440./
+
+&MATL ID        = 'WOOD_MAT'
+    FYI = 'Incropera and DeWitt, Fundamentals of Heat and Mass Transfer'
+    CONDUCTIVITY    = 0.12
+    SPECIFIC_HEAT   = 1.38
+    DENSITY = 510./ 
+\end{lstlisting}
+
 \section{Vents}
 \label{Vents}
-This simulation includes vents that account for the changes in ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). The times of the ventilation changes are provided in Table \ref{tab:vents}. Structure leakage has been shown to be important when modeling enclosure fires \cite{beal2009}. The open front door at the start of the simulation and the vents (opening size and open time) created during the simulation are significantly larger than the total effective area of leakage of structure of this type. Therefore, leakage would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
+This simulation includes vents that account for the changes in ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). There are two ventilation scenarios that are considered in this study. The first is the baseline case where the ventilation times and ventilation areas represent our best understanding of the incident. The second case does not include the firefighter opening the rear door to make entry to the structure and the subsequent beta side wall breach. The times of the ventilation changes are provided in Table \ref{tab:vents}. Structure leakage has been shown to be important when modeling enclosure fires \cite{beal2009}. The open front door at the start of the simulation and the vents (opening size and open time) created during the simulation are significantly larger than the total effective area of leakage of structure of this type. Therefore, leakage would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
 
 \begin{table}
 \centering
@@ -318,8 +341,6 @@ Baseline & No Rear Door Open & Ventilation Area [m$^2$] & Type & Structure Side 
 \label{tab:vents}
 \end{table}
 
-
-
 \section{Mesh}
 \label{mesh}
 
@@ -331,13 +352,30 @@ D^* = \left(
 \label{eq:mesh}
 \end{equation}   
 From the FDS User Guide \cite{FDS_Users_Guide}, ``the characteristic fire diameter is related to the characteristic fire size via the
-relation $Q^* = (D^*/D)^{5/2}$.'' Here, $D$ is the physical diameter of the fire as input to the model. Following Eq.~(\ref{eq:mesh}) and using 10 cm grid cells, the characteristic fire diameter to cell size ratio based on the 3.3 MW porch fire is 15.5 and for the 9 MW fire is 23. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16 \cite{NUREG_1824}. The grid resolution used in the model falls within typical, engineering $D^*/\dx$ values. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10 cm.
+relation $Q^* = (D^*/D)^{5/2}$.'' Here, $D$ is the physical diameter of the fire as input to the model. Following Eq.~(\ref{eq:mesh}) and using 10 cm grid cells, the characteristic fire diameter to cell size ratio based on the 3.3 MW porch fire is 15.5 and for the 9 MW fire is 23. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16 \cite{NUREG_1824}. The grid resolution used in the model falls within typical, engineering $D^*/\dx$ values. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10 cm. Fig.~(\ref{fig:geom_grid}) shows the 
+alpha side (front) of the structure rendered in Smokeview with the 10 cm mesh.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.60\textwidth]{../Figures/smv_exterior_grid}
+\caption{Alpha side of the structure with 10 cm computation mesh.}
+\label{fig:geom_grid}
+\end{figure}
+
+As discussed Section~\ref{geom}, the structure has 17.15 m by 6.15 m footprint with a total height of 8.56 m. To ensure adequately resolved fluid flow into and out of the structure the computational domain is extended beyond the volume of the structure. The total volume of the computational domain is 24 m by 10 m by 10 m. At 10 cm resolution this would result in 2.4 million computational cells. To make the simulation time more tractable, the domain was divided into 16 equal 150 thousand cell meshes to be processed in parallel. Fig.~(\ref{fig:mult_mesh}) shows the entire structure within the computational domain.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.60\textwidth]{../Figures/smv_exterior_mesh}
+\caption{Alpha-Delta side of the structure within computational domain. Each of the 16 meshes is 3 m by 10 m by 5 m.}
+\label{fig:mult_mesh}
+\end{figure}
 
 \chapter{Model Results}
 
 \section{Heat Release Rate}
 \label{HRR}
-The heat release rate output data from FDS quantifies the model-predicted rate of energy release in the simulation. Examination of this information can indicate ignition time, if a fire is under ventilated (FDS HRR less than prescribed HRR), the impact of ventilation, or if complete extinction occurs among other characteristics of fire behavior. Fig.~(\ref{fig:hrr}) shows the HRR versus time based on the defined input fires described in Section \ref{fire}. The two vertical lines represent when a firefighter opened the back door of the structure (dotted) and when the second floor interior door was estimated to fail (dash-dot).
+The heat release rate output data from FDS quantifies the model-predicted rate of energy release in the simulation. Here, we examine the data to examine the impact of ventilation on fire size. Fig.~(\ref{fig:hrr}) shows the HRR versus time based on the prescribed fires described in Section \ref{fire} and the FDS results for two venting scenarios. The two vertical lines represent when a firefighter opened the back door of the structure (t = 130s) and when the second floor interior door was estimated to fail (t = 160s).
 
 \begin{figure}[h!]
 \centering
@@ -346,23 +384,17 @@ The heat release rate output data from FDS quantifies the model-predicted rate o
 \label{fig:hrr}
 \end{figure}
 
-Just prior to the back door being opened, the HRR was 6.6 MW. This is below the specified HRR of 12.3 MW, indicated that the fire was under-ventilated. From the time the back doored was opened to estimated time the interior door failed (approximately 30 seconds), the HRR increased by approximately 35 \% to 8.9 MW.
+%Just prior to the back door being opened, the HRR was 6.6 MW. This is below the specified HRR of 12.3 MW, indicated that the fire was under-ventilated. From the time the back doored was opened to estimated time the interior door failed (approximately 30 seconds), the HRR increased by approximately 35 \% to 8.9 MW.
 
 
 
 \section{Temperature}
 
-\section{Velocity}
-
 \section{Pressure}
-
-\section{Gas Concentrations}
 
 \chapter{Discussion}
 
 \section{Conditions in Hallway}
-
-\section{Comparison of conditions with PPE and Victim Limitations}
 
 \section{Tactical Considerations}
 
