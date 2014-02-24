@@ -282,7 +282,7 @@ text(284,140,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment'
 xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
 axis([220 320 0 120])
-legend('Heat Flux 0.15m','Rad 0.15m','Location','NorthEast')
+legend('Eastside Heat Flux 0.15m','Eastside Rad 0.15m','Location','NorthEast')
 print(gcf,'-dpdf',[plotdirheatflux,'FSE Test 1 Heat Flux Eastside'])
 hold off
 
@@ -302,7 +302,7 @@ text(284,35,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment',
 xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
 axis([220 320 0 30])
-legend('Heat Flux 0.15m','Rad 0.15m','Location','NorthEast')
+legend('Westside Heat Flux 0.15m','Westside Rad 0.15m','Location','NorthEast')
 print(gcf,'-dpdf',[plotdirheatflux,'FSE Test 1 Heat Flux Westside'])
 hold off
 
@@ -322,7 +322,7 @@ text(284,105,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment'
 xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
 axis([220 320 0 90])
-legend('Heat Flux 0.15m','Rad 0.15m','Location','NorthEast')
+legend('Hallway Heat Flux 1.52m','Hallway Heat Flux 1.52m','Location','NorthEast')
 print(gcf,'-dpdf',[plotdirheatflux,'FSE Test 1 Heat Flux Hallway'])
 hold off
 
@@ -342,7 +342,7 @@ text(284,47,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment',
 xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
 axis([220 320 0 40])
-legend('Heat Flux 0.15m','Rad 0.15m','Location','NorthEast')
+legend('Near Fire Room Heat Flux 0.15m','Near Fire Room Heat Flux 1.52m','Location','NorthEast')
 print(gcf,'-dpdf',[plotdirheatflux,'FSE Test 1 Heat Flux Near Fire Room'])
 hold off
 
