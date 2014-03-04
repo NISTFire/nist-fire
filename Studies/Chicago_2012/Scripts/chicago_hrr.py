@@ -12,11 +12,11 @@ def movingaverage(interval, window_size):
 
 C_FDS = np.genfromtxt('../FDS_Output_Files/west_50th_baseline_hrr.csv', delimiter=',', skip_header=1, dtype=None, names=True)
 HRR = C_FDS['HRR']/1000
-HRR_avg = movingaverage(HRR,10)
+HRR_avg = movingaverage(HRR,2)
 
 ND_FDS = np.genfromtxt('../FDS_Output_Files/west_50th_norear_hrr.csv', delimiter=',', skip_header=1, dtype=None, names=True)
 HRR_ND = ND_FDS['HRR']/1000
-HRR_ND_avg = movingaverage(HRR_ND,10)
+HRR_ND_avg = movingaverage(HRR_ND,2)
 
 HRR_theo = [None]*1000
 HRR_time = list(xrange(1000))
@@ -31,7 +31,7 @@ for i in range (0, 999):
 	else:
 		HRR_theo[i] = 12.3
 
-print HRR_avg[129],HRR_avg[160]
+print HRR_avg[129],HRR_avg[161],HRR_ND_avg[161]
 
 plt.figure
 plt.plot(HRR_time,HRR_theo,'b-.',mfc='none',label='Prescribed HRR',linewidth=2)

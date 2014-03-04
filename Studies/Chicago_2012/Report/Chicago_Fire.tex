@@ -384,6 +384,16 @@ The heat release rate output data from FDS quantifies the model-predicted rate o
 \label{fig:hrr}
 \end{figure}
 
+In Fig.~(\ref{fig:hrr}), the solid line is the FDS HRR from the venting conditions that represent our attempt to model the on-scene conditions. The dashed line represents the case where the rear door opening and subsequent beta side breach do not occur. The dash-dotted line is the prescribed FDS input HRR. We can see that within the first 10 seconds, there are under-ventilated conditions within the structure as the modeled HRR is below the prescribed HRR. The HRR first peaks at just under 9 MW at approximately 20 seconds into the simulation. The HRR proceeds to drop to 5 MW as the available oxygen inside the structure gets consumed. There is insufficient available oxygen in the structure to combust all of the fuel. As a result there is excess fuel buildup within the attic and back porch and burning occurs exterior to the structure where fuel at oxygen can mix at the various vents. Fig.~(\ref{fig:smv_ext_fire}) illustrates flaming combustion through the failed Charlie side window and attic breach just after the second fire ignites at 40s. The HRR spikes back up to 9 MW at 58 seconds (after additional wall breaches, see Table~\ref{tab:vents}) before again dropping to 5 MW.  
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.80\textwidth]{../Figures/smv_exterior_fire}
+\caption{Smokeview rendering showing combustion occurring exterior to the structure on the Charlie side.}
+\label{fig:smv_ext_fire}
+\end{figure}
+
+
 %Just prior to the back door being opened, the HRR was 6.6 MW. This is below the specified HRR of 12.3 MW, indicated that the fire was under-ventilated. From the time the back doored was opened to estimated time the interior door failed (approximately 30 seconds), the HRR increased by approximately 35 \% to 8.9 MW.
 
 
