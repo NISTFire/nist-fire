@@ -5,7 +5,7 @@
 % Preferred style for FDS and Smokeview plots 
 
 % Font properties
-Font_Name = 'Times';
+Font_Name = 'Sans Serif';
 Font_Interpreter = 'TeX';
 Key_Font_Size   = 12;
 Title_Font_Size = 16;

@@ -1,4 +1,4 @@
-%Test 7 of DELCO Data 
+    %Test 7 of DELCO Data 
 
 clear all
 close all
@@ -16,6 +16,12 @@ datadir = '../Raw_Data/';
 exp_data_read = importdata([datadir,'FSW_Test_7_093012.csv']); % reads in file into text and data structure
 exp_data = exp_data_read.data; % assigning variable name to test data
 exp_data_header = exp_data_read.textdata; % assigning variable name to test headers
+
+j=1;
+for i=1:10:length(exp_data)
+    exp_data_reduced(j,:)=exp_data(i,:);
+    j=j+1;
+end
 
 %------------------
 % Set Save Location for Plots
@@ -37,8 +43,8 @@ plot_style
 
 Num_TC_arrays = 4;
 TC_per_array = 8;
-TC_array_names = {'FSE1 Eastside Array' 'FSE1 Westside Array' 'FSE1 Hallway Array' 'FSE1 Doorway Array'};
-TC_array_names_suppression = {'Suppression FSE1 Eastside Array' 'Suppression FSE1 Westside Array' 'Suppression FSE1 Hallway Array' 'Suppression FSE1 Doorway Array'};
+TC_array_names = {'FSW7 Eastside Array' 'FSW7 Westside Array' 'FSW7 Hallway Array' 'FSW7 Doorway Array'};
+TC_array_names_suppression = {'Suppression FSW7 Eastside Array' 'Suppression FSW7 Westside Array' 'Suppression FSW7 Hallway Array' 'Suppression FSW7 Doorway Array'};
 % for j=1:Num_TC_arrays
 %     TC_array_suppression = strcat('Suppression ',TC_array_names{j});
 % end
@@ -70,18 +76,18 @@ for j=1:Num_TC_arrays-2
     figure(j)
     hold on
     box on
-    plot(exp_data(:,1),exp_data(:,8*j-6),'Color',red)      % TC1
-    plot(exp_data(:,1),exp_data(:,8*j-5),'Color',blue)      % TC2
-    plot(exp_data(:,1),exp_data(:,8*j-4),'Color',green)      % TC3
-    plot(exp_data(:,1),exp_data(:,8*j-3),'Color',purple)      % TC4
-    plot(exp_data(:,1),exp_data(:,8*j-2),'Color',orange)      % TC5
-    plot(exp_data(:,1),exp_data(:,8*j-1),'Color',grey)      % TC6
-    plot(exp_data(:,1),exp_data(:,8*j),'Color',brown)        % TC7
-    plot(exp_data(:,1),exp_data(:,8*j+1),'Color',pink)   % TC8
-    line([233;233],[0;1100],'Color','k','LineWidth',2)
-    line([248;248],[0;1100],'Color','k','LineWidth',2)
-    line([269;269],[0;1100],'Color','k','LineWidth',2)
-    line([284;284],[0;1100],'Color','k','LineWidth',2)
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j-6),'-^','Color',red)      % TC1
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j-5),'-+','Color',blue)      % TC2
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j-4),'-o','Color',green)      % TC3
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j-3),'-.','Color',purple)      % TC4
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j-2),'-x','Color',orange)      % TC5
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j-1),'-s','Color',grey)      % TC6
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j),'-d','Color',brown)        % TC7
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j+1),'-v','Color',pink)   % TC8
+    line([230;230],[0;1100],'Color','k','LineWidth',1)
+    line([248;248],[0;1100],'Color','k','LineWidth',1)
+    line([269;269],[0;1100],'Color','k','LineWidth',1)
+    line([284;284],[0;1100],'Color','k','LineWidth',1)
     text(240,1050,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
     text(265,1050,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
     text(290,1050,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
@@ -99,15 +105,19 @@ figure(3)
 j=3;
 hold on
 box on
-line([233;233],[0;1100],'Color','k')
-line([248;248],[0;1100],'Color','k')
-line([269;269],[0;1100],'Color','k')
-line([284;284],[0;1100],'Color','k')
-plot(exp_data(:,1),exp_data(:,7*j-3),'Color','b')      % TC1
-plot(exp_data(:,1),exp_data(:,7*j-2),'Color','g')      % TC2
-plot(exp_data(:,1),exp_data(:,7*j-1),'Color','r')      % TC3
-plot(exp_data(:,1),exp_data(:,7*j),'Color','c')        % TC4
-plot(exp_data(:,1),exp_data(:,7*j+3),'Color','k')      % TC7
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-3),'-^','Color',red)      % TC1
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-2),'-+','Color',blue)      % TC2
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-1),'-o','Color',green)      % TC3
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j),'-.','Color',purple)        % TC4
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+3),'-d','Color',brown)      % TC7
+line([230;230],[0;1100],'Color','k','LineWidth',1)
+line([248;248],[0;1100],'Color','k','LineWidth',1)
+line([269;269],[0;1100],'Color','k','LineWidth',1)
+line([284;284],[0;1100],'Color','k','LineWidth',1)
+text(240,1050,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(265,1050,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(290,1050,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(315,1050,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
 xlabel('Time (s)')
 ylabel('Temperature ( \circ C)')
 axis([0 800 0 900])
@@ -120,44 +130,55 @@ figure(4)
 j=4;
 hold on
 box on
-line([233;233],[0;1100],'Color','k')
-line([248;248],[0;1100],'Color','k')
-line([269;269],[0;1100],'Color','k')
-line([284;284],[0;1100],'Color','k')
-plot(exp_data(:,1),exp_data(:,7*j-3),'Color','b')      % TC1
-plot(exp_data(:,1),exp_data(:,7*j-2),'Color','g')      % TC2
-plot(exp_data(:,1),exp_data(:,7*j-1),'Color','r')      % TC3
-plot(exp_data(:,1),exp_data(:,7*j),'Color','c')        % TC4
-plot(exp_data(:,1),exp_data(:,7*j+1),'Color','m')      % TC5
-plot(exp_data(:,1),exp_data(:,7*j+2),'Color','y')      % TC6
-plot(exp_data(:,1),exp_data(:,7*j+3),'Color','k')      % TC7
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-3),'-^','Color',red)      % TC1
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-2),'-+','Color',blue)      % TC2
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-1),'-o','Color',green)      % TC3
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j),'-.','Color',purple)        % TC4
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+1),'-x','Color',orange)      % TC5
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+2),'-s','Color',grey)      % TC6
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+3),'-d','Color',brown)      % TC7
+line([230;230],[0;1100],'Color','k','LineWidth',1)
+line([248;248],[0;1100],'Color','k','LineWidth',1)
+line([269;269],[0;1100],'Color','k','LineWidth',1)
+line([284;284],[0;1100],'Color','k','LineWidth',1)
+text(240,1050,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(265,1050,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(290,1050,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(315,1050,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
 xlabel('Time (s)')
 ylabel('Temperature ( \circ C)')
 axis([0 800 0 900])
 legend(TC_array4(1,:),'Location','NorthEast')
 plotname = [plotdirtemp TC_array_names{j}];
 print(gcf,'-dpdf',plotname)
-hold off
+hold off 
+
+
 
 %------------------
 % Axis to Show Suppression
 %------------------
 
 for j=1:Num_TC_arrays-2
-    figure(j)
+    figure()
     hold on
     box on
-    line([233;233],[0;1100],'Color','k')
-    line([248;248],[0;1100],'Color','k')
-    line([269;269],[0;1100],'Color','k')
-    line([284;284],[0;1100],'Color','k')
-    plot(exp_data(:,1),exp_data(:,8*j-6),'Color','b')      % TC1
-    plot(exp_data(:,1),exp_data(:,8*j-5),'Color','g')      % TC2
-    plot(exp_data(:,1),exp_data(:,8*j-4),'Color','r')      % TC3
-    plot(exp_data(:,1),exp_data(:,8*j-3),'Color','c')      % TC4
-    plot(exp_data(:,1),exp_data(:,8*j-2),'Color','m')      % TC5
-    plot(exp_data(:,1),exp_data(:,8*j-1),'Color','y')      % TC6
-    plot(exp_data(:,1),exp_data(:,8*j),'Color','k')        % TC7
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j-6),'-^','Color',red)      % TC1
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j-5),'-+','Color',blue)      % TC2
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j-4),'-o','Color',green)      % TC3
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j-3),'-.','Color',purple)      % TC4
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j-2),'-x','Color',orange)      % TC5
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j-1),'-s','Color',grey)      % TC6
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j),'-d','Color',brown)        % TC7
+    plot(exp_data_reduced(:,1),exp_data_reduced(:,8*j+1),'-v','Color',pink)   % TC8
+    line([230;230],[0;1100],'Color','k','LineWidth',1)
+    line([248;248],[0;1100],'Color','k','LineWidth',1)
+    line([269;269],[0;1100],'Color','k','LineWidth',1)
+    line([284;284],[0;1100],'Color','k','LineWidth',1)
+    text(230,1050,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+    text(248,1050,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+    text(269,1050,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+    text(284,1050,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
     xlabel('Time (s)')
     ylabel('Temperature ( \circ C)')
     axis([220 320 0 900])
@@ -167,19 +188,23 @@ for j=1:Num_TC_arrays-2
     hold off
 end
 
-figure(3)
+figure()
 j=3;
 hold on
 box on
-line([233;233],[0;1100],'Color','k')
-line([248;248],[0;1100],'Color','k')
-line([269;269],[0;1100],'Color','k')
-line([284;284],[0;1100],'Color','k')
-plot(exp_data(:,1),exp_data(:,7*j-3),'Color','b')      % TC1
-plot(exp_data(:,1),exp_data(:,7*j-2),'Color','g')      % TC2
-plot(exp_data(:,1),exp_data(:,7*j-1),'Color','r')      % TC3
-plot(exp_data(:,1),exp_data(:,7*j),'Color','c')        % TC4
-plot(exp_data(:,1),exp_data(:,7*j+3),'Color','k')      % TC7
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-3),'-^','Color',red)      % TC1
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-2),'-+','Color',blue)      % TC2
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-1),'-o','Color',green)      % TC3
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j),'-.','Color',purple)        % TC4
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+3),'-d','Color',brown)      % TC7
+line([230;230],[0;1100],'Color','k','LineWidth',1)
+line([248;248],[0;1100],'Color','k','LineWidth',1)
+line([269;269],[0;1100],'Color','k','LineWidth',1)
+line([284;284],[0;1100],'Color','k','LineWidth',1)
+text(230,1050,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(248,1050,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(269,1050,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(284,1050,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
 xlabel('Time (s)')
 ylabel('Temperature ( \circ C)')
 axis([220 320 0 900])
@@ -188,21 +213,25 @@ plotname = [plotdirtemp TC_array_names_suppression{j}];
 print(gcf,'-dpdf',plotname)
 hold off
 
-figure(4)
+figure()
 j=4;
 hold on
 box on
-line([233;233],[0;1100],'Color','k')
-line([248;248],[0;1100],'Color','k')
-line([269;269],[0;1100],'Color','k')
-line([284;284],[0;1100],'Color','k')
-plot(exp_data(:,1),exp_data(:,7*j-3),'Color','b')      % TC1
-plot(exp_data(:,1),exp_data(:,7*j-2),'Color','g')      % TC2
-plot(exp_data(:,1),exp_data(:,7*j-1),'Color','r')      % TC3
-plot(exp_data(:,1),exp_data(:,7*j),'Color','c')        % TC4
-plot(exp_data(:,1),exp_data(:,7*j+1),'Color','m')      % TC5
-plot(exp_data(:,1),exp_data(:,7*j+2),'Color','y')      % TC6
-plot(exp_data(:,1),exp_data(:,7*j+3),'Color','k')      % TC7
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-3),'-^','Color',red)      % TC1
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-2),'-+','Color',blue)      % TC2
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-1),'-o','Color',green)      % TC3
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j),'-.','Color',purple)        % TC4
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+1),'-x','Color',orange)      % TC5
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+2),'-s','Color',grey)      % TC6
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+3),'-d','Color',brown)      % TC7
+line([230;230],[0;1100],'Color','k','LineWidth',1)
+line([248;248],[0;1100],'Color','k','LineWidth',1)
+line([269;269],[0;1100],'Color','k','LineWidth',1)
+line([284;284],[0;1100],'Color','k','LineWidth',1)
+text(230,1050,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(248,1050,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(269,1050,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(284,1050,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
 xlabel('Time (s)')
 ylabel('Temperature ( \circ C)')
 axis([220 320 0 900])
@@ -217,7 +246,7 @@ hold off
 
 heat_flux = exp_data(:,47:54);
 devc_data = size(heat_flux);
-hf_conv_cons = [11.91;11.35;6.164;6.281;6.375;6.395;5.1975;4.8216];
+hf_conv_cons = [10.96;12.39;3;6.242;3.37;2.144;2.203;2.457];
 
 for i = 1:devc_data(2)
     heat_flux_avg(i) = mean(heat_flux(1:31,i));                  % zeroing average for heat flux data
@@ -227,6 +256,12 @@ for i = 1:devc_data(2)
     end
 end
 
+j=1;
+for i=1:10:length(heat_flux)
+    heat_flux_reduced(j,:)=heat_flux(i,:);
+    j=j+1;
+end
+
 %------------------
 % Heat Flux Plot
 %------------------
@@ -234,65 +269,81 @@ end
 plot1 = figure;
 hold on
 box on
-line([233;233],[0;1100],'Color','k')
-line([248;248],[0;1100],'Color','k')
-line([269;269],[0;1100],'Color','k')
-line([284;284],[0;1100],'Color','k')
-plot(exp_data(:,1),heat_flux(:,1),'Color','b') % HF1
-plot(exp_data(:,1),heat_flux(:,2),'Color','r') % RAD1
+plot(exp_data_reduced(:,1),heat_flux_reduced(:,1),'-^','Color',blue) % HF1
+plot(exp_data_reduced(:,1),heat_flux_reduced(:,2),'-+','Color',red) % RAD1
+line([230;230],[0;1100],'Color','k','LineWidth',1)
+line([248;248],[0;1100],'Color','k','LineWidth',1)
+line([269;269],[0;1100],'Color','k','LineWidth',1)
+line([284;284],[0;1100],'Color','k','LineWidth',1)
+text(230,140,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(248,140,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(269,140,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(284,140,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
 xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
 axis([220 320 0 120])
-legend('Heat Flux 0.15m','Rad 0.15m','Location','NorthEast')
-print(gcf,'-dpdf',[plotdirheatflux,'FSE Test 1 Heat Flux Eastside'])
+legend('Eastside Heat Flux 0.15m','Eastside Rad 0.15m','Location','NorthEast')
+print(gcf,'-dpdf',[plotdirheatflux,'FSW Test 7 Heat Flux Eastside'])
 hold off
 
 plot1 = figure;
 hold on
 box on
-line([233;233],[0;1100],'Color','k')
-line([248;248],[0;1100],'Color','k')
-line([269;269],[0;1100],'Color','k')
-line([284;284],[0;1100],'Color','k')
-plot(exp_data(:,1),heat_flux(:,3),'Color','b') % HF1
-plot(exp_data(:,1),heat_flux(:,4),'Color','r') % RAD1
+plot(exp_data_reduced(:,1),heat_flux_reduced(:,3),'-^','Color',blue) % HF1
+plot(exp_data_reduced(:,1),heat_flux_reduced(:,4),'-+','Color',red) % RAD1
+line([230;230],[0;1100],'Color','k','LineWidth',1)
+line([248;248],[0;1100],'Color','k','LineWidth',1)
+line([269;269],[0;1100],'Color','k','LineWidth',1)
+line([284;284],[0;1100],'Color','k','LineWidth',1)
+text(230,35,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(248,35,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(269,35,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(284,35,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
 xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
 axis([220 320 0 30])
-legend('Heat Flux 0.15m','Rad 0.15m','Location','NorthEast')
-print(gcf,'-dpdf',[plotdirheatflux,'FSE Test 1 Heat Flux Westside'])
+legend('Westside Heat Flux 0.15m','Westside Rad 0.15m','Location','NorthEast')
+print(gcf,'-dpdf',[plotdirheatflux,'FSW Test 7 Heat Flux Westside'])
 hold off
 
 plot1 = figure;
 hold on
 box on
-line([233;233],[0;1100],'Color','k')
-line([248;248],[0;1100],'Color','k')
-line([269;269],[0;1100],'Color','k')
-line([284;284],[0;1100],'Color','k')
-plot(exp_data(:,1),heat_flux(:,5),'Color','b') % HF1
-plot(exp_data(:,1),heat_flux(:,6),'Color','r') % RAD1
+plot(exp_data_reduced(:,1),heat_flux_reduced(:,5),'-^','Color',blue) % HF1
+plot(exp_data_reduced(:,1),heat_flux_reduced(:,6),'-+','Color',red) % RAD1
+line([230;230],[0;1100],'Color','k','LineWidth',1)
+line([248;248],[0;1100],'Color','k','LineWidth',1)
+line([269;269],[0;1100],'Color','k','LineWidth',1)
+line([284;284],[0;1100],'Color','k','LineWidth',1)
+text(230,105,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(248,105,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(269,105,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(284,105,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
 xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
 axis([220 320 0 90])
-legend('Heat Flux 0.15m','Rad 0.15m','Location','NorthEast')
-print(gcf,'-dpdf',[plotdirheatflux,'FSE Test 1 Heat Flux Hallway'])
+legend('Hallway Heat Flux 1.52m','Hallway Heat Flux 1.52m','Location','NorthEast')
+print(gcf,'-dpdf',[plotdirheatflux,'FSW Test 7 Heat Flux Hallway'])
 hold off
 
 plot1 = figure;
 hold on
 box on
-line([233;233],[0;1100],'Color','k')
-line([248;248],[0;1100],'Color','k')
-line([269;269],[0;1100],'Color','k')
-line([284;284],[0;1100],'Color','k')
-plot(exp_data(:,1),heat_flux(:,7),'Color','b') % HF1
-plot(exp_data(:,1),heat_flux(:,8),'Color','r') % RAD1
+plot(exp_data_reduced(:,1),heat_flux_reduced(:,7),'-^','Color',blue) % HF1
+plot(exp_data_reduced(:,1),heat_flux_reduced(:,8),'-+','Color',red) % RAD1
+line([230;230],[0;1100],'Color','k','LineWidth',1)
+line([248;248],[0;1100],'Color','k','LineWidth',1)
+line([269;269],[0;1100],'Color','k','LineWidth',1)
+line([284;284],[0;1100],'Color','k','LineWidth',1)
+text(230,47,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(248,47,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(269,47,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(284,47,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
 xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
 axis([220 320 0 40])
-legend('Heat Flux 0.15m','Rad 0.15m','Location','NorthEast')
-print(gcf,'-dpdf',[plotdirheatflux,'FSE Test 1 Heat Flux Near Fire Room'])
+legend('Near Fire Room Heat Flux 0.15m','Near Fire Room Heat Flux 1.52m','Location','NorthEast')
+print(gcf,'-dpdf',[plotdirheatflux,'FSW Test 7 Heat Flux Near Fire Room'])
 hold off
 
 %------------------
@@ -318,6 +369,12 @@ for i = 1:bdp_data(2)
     end
 end
 
+j=1;
+for i=1:10:length(velocity)
+    velocity_reduced(j,:)=velocity(i,:);
+    j=j+1;
+end
+
 %------------------
 % Define BDP Arrays
 %------------------
@@ -332,41 +389,49 @@ BDP_array2 = {'Doorway 0.3m' 'Doorway 0.61m' 'Doorway 0.91m' 'Doorway 1.22m' 'Do
 plot1 = figure;
 hold on
 box on
-line([233;233],[-5;5],'Color','k')
-line([248;248],[-5;5],'Color','k')
-line([269;269],[-5;5],'Color','k')
-line([284;284],[-5;5],'Color','k')
-plot(exp_data(:,1),velocity(:,1),'Color','b') 
-plot(exp_data(:,1),velocity(:,2),'Color','g')
-plot(exp_data(:,1),velocity(:,3),'Color','r')
-plot(exp_data(:,1),velocity(:,4),'Color','c')
-plot(exp_data(:,1),velocity(:,5),'Color','m')
-plot(exp_data(:,1),velocity(:,6),'Color','y')
-plot(exp_data(:,1),velocity(:,7),'Color','k')
+plot(exp_data_reduced(:,1),velocity_reduced(:,1),'-^','Color',red) 
+plot(exp_data_reduced(:,1),velocity_reduced(:,2),'-+','Color',blue)
+plot(exp_data_reduced(:,1),velocity_reduced(:,3),'-o','Color',green)
+plot(exp_data_reduced(:,1),velocity_reduced(:,4),'-.','Color',purple)
+plot(exp_data_reduced(:,1),velocity_reduced(:,5),'-x','Color',orange)
+plot(exp_data_reduced(:,1),velocity_reduced(:,6),'-s','Color',grey)
+plot(exp_data_reduced(:,1),velocity_reduced(:,7),'-d','Color',brown)
+line([230;230],[-5;5],'Color','k','Linewidth',1)
+line([248;248],[-5;5],'Color','k','Linewidth',1)
+line([269;269],[-5;5],'Color','k','Linewidth',1)
+line([284;284],[-5;5],'Color','k','Linewidth',1)
+text(230,7,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(248,7,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(269,7,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(284,7,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
 xlabel('Time (s)')
 ylabel('Velocity (m/s)')
 axis([200 350 -5 5])
 legend(BDP_array,'Location','NorthEast')
-print(gcf,'-dpdf',[plotdirvelocity,'FSE Test 1 Hallway Velocity'])
+print(gcf,'-dpdf',[plotdirvelocity,'FSW Test 7 Hallway Velocity'])
 hold off
 
 plot2 = figure;
 hold on
 box on
-line([233;233],[-5;10],'Color','k')
-line([248;248],[-5;10],'Color','k')
-line([269;269],[-5;10],'Color','k')
-line([284;284],[-5;10],'Color','k')
-plot(exp_data(:,1),velocity(:,8),'Color','b') 
-plot(exp_data(:,1),velocity(:,9),'Color','g')
-plot(exp_data(:,1),velocity(:,10),'Color','r')
-plot(exp_data(:,1),velocity(:,11),'Color','c')
-plot(exp_data(:,1),velocity(:,12),'Color','m')
-plot(exp_data(:,1),velocity(:,13),'Color','y')
-plot(exp_data(:,1),velocity(:,14),'Color','k')
+plot(exp_data_reduced(:,1),velocity_reduced(:,8),'-^','Color',red) 
+plot(exp_data_reduced(:,1),velocity_reduced(:,9),'-+','Color',blue)
+plot(exp_data_reduced(:,1),velocity_reduced(:,10),'-o','Color',green)
+plot(exp_data_reduced(:,1),velocity_reduced(:,11),'-.','Color',purple)
+plot(exp_data_reduced(:,1),velocity_reduced(:,12),'-x','Color',orange)
+plot(exp_data_reduced(:,1),velocity_reduced(:,13),'-s','Color',grey)
+plot(exp_data_reduced(:,1),velocity_reduced(:,14),'-d','Color',brown)
+line([230;230],[-5;10],'Color','k','Linewidth',1)
+line([248;248],[-5;10],'Color','k','Linewidth',1)
+line([269;269],[-5;10],'Color','k','Linewidth',1)
+line([284;284],[-5;10],'Color','k','Linewidth',1)
+text(230,13,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(248,13,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(269,13,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(284,13,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
 xlabel('Time (s)')
 ylabel('Velocity (m/s)')
 axis([200 350 -5 10])
 legend(BDP_array2,'Location','NorthEastOutside')
-print(gcf,'-dpdf',[plotdirvelocity,'FSE Test 1 Doorway Velocity'])
+print(gcf,'-dpdf',[plotdirvelocity,'FSW Test 7 Doorway Velocity'])
 hold off
