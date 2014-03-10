@@ -99,7 +99,7 @@ SFPE \> Society of Fire Protection Engineers \\
 \mainmatter
 
 \chapter{Introduction}
-Part of the mission of the Fire Research Division at the National Institute of Standards and Technology (NIST) is to develop and apply technology, measurements and standards, improve the understanding of the behavior, prevention and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) to provide insight on the fire development and thermal conditions of other fatality fires \cite{Madrzykowski:1,Iowa,Texas,Cook_County,Grosshandler:Station,Bryner:Charleston,barowy:texas}. The overriding objective of all of these studies is to improve the safety of fire fighters.
+Part of the mission of the Fire Research Division at the National Institute of Standards and Technology (NIST) is to develop and apply technology, measurements and standards, improve the understanding of the behavior, prevention and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) to provide insight on the fire development and thermal conditions of other fatality fires~\cite{Madrzykowski:1,Iowa,Texas,Cook_County,Grosshandler:Station,Bryner:Charleston,barowy:texas}. The overriding objective of all of these studies is to improve the safety of fire fighters.
 
 On November 2, 2012, a fire in a 2 1/2 story wood frame residential structure claimed the life of a Chicago firefighter.  Changes in the ventilation flow path caused a rapid change in the fire dynamics resulting in fire and smoke penetration to an interior second floor hallway. NIST assisted with examining the fire dynamics of this incident. NIST performed computer simulations of the fire using Fire Dynamics Simulator and Smokeview, to provide insight on the fire development and thermal conditions that may have existed in the residence during the fire. The specific objectives of the simulations detailed in this report are: 
 \begin{enumerate}
@@ -111,7 +111,7 @@ This document describes the input and the results of the FDS (version 6.0.0) sim
 
 
 \chapter{Fire Incident Summary}
-The following account of events is based on information provided by NIST physical measurements on-scene, NIST photographs of the scene, time line information provided by the Chicago Fire Department and information provided from the NIOSH Fire Fighter Fatality Investigation and Prevention Program Report \cite{NIOSH:Bowyer}.
+The following account of events is based on information provided by NIST physical measurements on-scene, NIST photographs of the scene, time line information provided by the Chicago Fire Department and information provided from the NIOSH Fire Fighter Fatality Investigation and Prevention Program Report~\cite{NIOSH:Bowyer}.
 
 On November 2, 2012, a fire in a 2 1/2 story wood frame residential structure resulted in the death of a fire captain and injury to a fire fighter.  At approximately 5:16 in the afternoon, a dispatch was made for ``smoke in the area''.   Within a minute of dispatch, a Battalion Chief (BC) arrived and sized up the structure fire from the exterior and reported a working fire with heavy smoke coming from the front and rear of the structure's attic.  After speaking with the building occupants, the BC entered the structure and found light smoke on the second floor and a glow around the doorway that led from the second floor hallway to enclosed rear porch.  Engine 123 arrived on scene at approximately 17:19. The victims were part of the Engine 123 crew.  The BC met the Captain and the Fire Fighter (victims) at the front door to the structure.  Then the Captain and Fire Fighter took their hose line to the second floor of the structure.  At approximately 5:21, the Captain and Fire Fighter are on the second floor with their hoseline and had begun advancing the charged line toward the rear second floor door between the apartment and the enclosed porch.   Approximately 30 seconds later, a fire fighter from Tower Ladder 39 (TL 39) enters the enclosed porch on the rear of the structure by opening the rear exterior door to the first floor of the porch.   The fire fighter from TL 39, notices ``the fire light up'' in the stairwell of the enclosed porch, and then kicks in the first level door between the rear porch and the main structure.   Both doors remain open and the fire fighter from TL 39 exits the structure.  Given the amount of fire showing from the second floor of the rear porch and ``heavy fire'' in the stairwell of the rear porch, the BC radios the Engine 123 Captain at 17:23, to alert him to the fire conditions and to advise him that Engine 49 would be applying water to the fire on the rear of the structure from the exterior.  No response was made by the Engine 123 Captain.  It is believed that the door between the rear porch and the second floor hallway, where the Engine 123 Captain and Fire Fighter were located may have failed by this time.  Approximately a minute later Engine 49 applied water to the fire in the attic.
 
@@ -136,7 +136,7 @@ Incident Time & Fire Behavior / Fireground Operation  \\
 17:29    & Engine 123 Capt. carried out of structure. \\
 \bottomrule[1.25pt]
 \end{tabular}\par
-\big-skip
+\bigskip
 \end{minipage}
  
 
@@ -165,30 +165,17 @@ From witnesses, first responders, reports, and recorded media such as fire groun
 \end{itemize}
 To develop the simulation, a timeline of events based on the collected information must be developed.   From this time line actions may be input into the model, such as venting a window at a given time. 
   
-The development of the model geometry and development of the input file is straight forward with guidance from the FDS users' manual \cite{FDS_Users_Guide} or third party software.  Engineering judgment, graduate level knowledge of fire dynamics, and modeling experience are required to  translate the information collected from the scene into appropriate and realistic computational information.  Examples of these requirements include:
+The development of the model geometry and development of the input file is straight forward with guidance from the FDS User's Guide  \cite{FDS_Users_Guide} or third party software.  Engineering judgment, graduate level knowledge of fire dynamics, and modeling experience are required to  translate the information collected from the scene into appropriate and realistic computational information.  Examples of these requirements include:
 \begin{itemize}
 \item the computational cell size
 \item model domain and boundaries conditions
 \item the heat release rate (HRR) of the ignition source/initial fire
 \item physical and thermal properties of fuels such as interior finish and furnishings
-	\begin{itemize}
-	\item density
-	\item specific heat
-	\item thermal conductivity
-	\item ignition temperature
-	\item heat of combustion
-	\item heat release rate
-	\item mass loss rate under various fire conditions
-	\item pyrolyzate/combustion product emissions
-	\item response to thermal exposures
-	\item activation energy
-	\end{itemize}
 \end{itemize}
 Since there is no all-inclusive, universal fire modeling input data base this type of information must be gathered from literature or generated for a given incident. For the simulations performed for this study, Table ~\ref{tab:mod_param} includes the relevant model input parameters. The sections below describe these inputs. 
 
 \bigskip
 \begin{minipage}{.8\linewidth}
-\centering
 \captionof{table}{Relevant Modeling Input Parameters}\label{tab:mod_param}
 \begin{tabular}{lll}
 \toprule[1.5pt]
@@ -216,7 +203,7 @@ Parameter & Description & Reference  \\
 
 \section{Geometry}
 \label{geom}
-The structure was a 2 $\tfrac{1}{2}$ story residential structure with balloon frame construction and a wood gable roofing system.  The structure had a 17.15 m (56 ft) by 6.15 m (20 ft) footprint. This results in a floor area of approximately 105 m$^2$ (1100 ft$^2$) per floor and a main living area of approximately 110 m$^2$ (2200 ft$^2$). Interior walls were constructed from wood frame dimensioned lumber with 1.27 cm (0.5 in) gypsum board over top. Additionally there was a half-story attic that was used to house the structure's hot water heater. There were three sets of stairs in the structure: one front stairwell that connected the first and second levels, one rear stairwell that connected the first and second levels and a second rear set of stairs which provided access to the attic. Fig.~(\ref{fig:alpha_ex}) shows the post-incident exterior of the alpha side of the structure. Note that the majority of the damage is to the structure's attic.
+The structure was a 2 1/2 story residential structure with balloon frame construction and a wood gable roofing system.  The structure had a 17.15 m (56 ft) by 6.15 m (20 ft) footprint. This results in a floor area of approximately 105 m$^2$ (1100 ft$^2$) per floor and a main living area of approximately 110 m$^2$ (2200 ft$^2$). Interior walls were constructed from wood frame dimensioned lumber with 1.27 cm (0.5 in) gypsum board over top. Additionally there was a half-story attic that was used to house the structure's hot water heater. There were three sets of stairs in the structure: one front stairwell that connected the first and second levels, one rear stairwell that connected the first and second levels and a second rear set of stairs which provided access to the attic. Fig.~(\ref{fig:alpha_ex}) shows the post-incident exterior of the alpha side of the structure. Note that the majority of the damage is to the structure's attic.
 
 \begin{figure}[h!]
 \centering
