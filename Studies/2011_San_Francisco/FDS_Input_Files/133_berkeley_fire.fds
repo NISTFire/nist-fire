@@ -60,12 +60,12 @@
 #  = Burners =
 #  ===========
 
-&SURF ID='BURNER', HRRPUA=0.25, COLOR='RED', RAMP_Q='Fire_Ramp' / First couch (based on mattress fire)
+&SURF ID='BURNER', HRRPUA=0.25, COLOR='RED', RAMP_Q='Fire_Ramp' / First couch (based on mattress fire, peak of 5.4 MW)
 &VENT XB=4.2, 6.2, 15.2, 17.2, -2.8, -2.8, SURF_ID='BURNER' /
-&VENT XB=2.2, 4.2, 15.2, 17.2, -2.8, -2.8, SURF_ID='BURNER', DEVC_ID='TIMER_SECOND_FIRE' / Second couch (also based on mattress fire)
+&VENT XB=2.2, 4.2, 15.2, 17.2, -2.8, -2.8, SURF_ID='BURNER', DEVC_ID='TIMER_SECOND_FIRE' / Second couch (also based on mattress fire, peak of 5.4 MW)
 &DEVC ID='TIMER_SECOND_FIRE', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.FALSE., SETPOINT=300 /
 
-&SURF ID='FLASHOVER_BURNER', HRRPUA=41.53, COLOR='RED' / Flashover fire, entire basement floor
+&SURF ID='FLASHOVER_BURNER', HRRPUA=180.375, COLOR='RED' / Flashover fire, entire basement floor, 10 MW
 &VENT XB=0.0, 8.4, 8.5, 15.1, -2.8, -2.8, SURF_ID='FLASHOVER_BURNER', DEVC_ID='TIMER_FLASHOVER' /
 &DEVC ID='TIMER_FLASHOVER', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.FALSE., SETPOINT=300 /
 
