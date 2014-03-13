@@ -7,9 +7,9 @@ import urllib2
 import re
 
 
-def read_value():
-    # Read voltage from analog pin 0
-    response = urllib2.urlopen('http://localhost/arduino/analog/0')
+def read_value(pin):
+    # Read voltage from analog pin
+    response = urllib2.urlopen('http://localhost/arduino/analog/' + str(pin))
     value = response.read()
     value = re.findall('\d+', value)
     response.close()
@@ -35,8 +35,14 @@ while True:
                                  type='fanout')
 
         while True:
-            value = read_value()
-            message = (time.ctime()+',%s,%0.2f') % (args.logger_id, value)
+            # Read voltage from pin 0
+            value = read_value(0)
+            # Scale reading of 0-1023 to 0-5 V range
+            value = value / 1024 * 5
+            # Convert voltage to flow rate (gpm)
+            flow_rate = 17.669*value**3 + 414.39*value**2 + 3327.3*value - 9072
+            # Construct message for log
+            message = (time.ctime()+',%s,%0.2f,%0.2f') % (args.logger_id, value, flow_rate)
             channel.basic_publish(exchange='logs',
                                   routing_key='',
                                   body=message)
@@ -52,8 +58,14 @@ while True:
         timer = 0
         retry_value = 30
         while timer < retry_value:
-            value = read_value()
-            message = (time.ctime()+',%s,%0.2f') % (args.logger_id, value)
+            # Read voltage from pin 0
+            value = read_value(0)
+            # Scale reading of 0-1023 to 0-5 V range
+            value = value / 1024 * 5
+            # Convert voltage to flow rate (gpm)
+            flow_rate = 17.669*value**3 + 414.39*value**2 + 3327.3*value - 9072
+            # Construct message for log
+            message = (time.ctime()+',%s,%0.2f,%0.2f') % (args.logger_id, value, flow_rate)
             with open(args.log_file, 'a+') as text_file:
                 text_file.write(message+'\n')
             time.sleep(1)
