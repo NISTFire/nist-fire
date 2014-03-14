@@ -353,6 +353,17 @@ National Institute of Standards and Technology \\
 \definecolor{WHITE}{rgb}{1.00000,1.00000,1.00000}
 \definecolor{YELLOW}{rgb}{1.00000,1.00000,0.00000}
 
+\pgfplotsset{
+	colormap={blackwhite}{[5pt]
+		rgb255(0pt)=(0,0,255); 
+		rgb255(100pt)=(0,255,255); 
+		rgb255(200pt)=(0,255,0); 
+		rgb255(300pt)=(255,255,0); 
+		rgb255(400pt)=(255,0,0)
+	},
+} % defines smokeview colorbar
+
+
 \floatstyle{boxed}
 \newfloat{notebox}{H}{lon}
 \newfloat{warning}{H}{low}
