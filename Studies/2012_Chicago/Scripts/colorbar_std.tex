@@ -1,0 +1,31 @@
+%\documentclass{standalone}
+%\usepackage{pgfplots}
+%\begin{document}
+%\pgfplotsset{
+%	colormap={blackwhite}{[5pt]
+%		rgb255(0pt)=(0,0,255); 
+%		rgb255(100pt)=(0,255,255); 
+%		rgb255(200pt)=(0,255,0); 
+%		rgb255(300pt)=(255,255,0); 
+%		rgb255(400pt)=(255,0,0)
+%	},
+%}
+\begin{tikzpicture}
+\node at (0.45,0.67) {Temperature};
+\node at (0.4,0.3) {$^\circ$F};
+\begin{axis}[
+    hide axis,
+    scale only axis,
+    height=0pt,
+    width=0pt,
+    colorbar,
+    point meta min=77,
+    point meta max=500,
+    colorbar style={
+        height=5cm,
+        ytick={77,140,185,...,500}
+    }]
+    \addplot [draw=none] coordinates {(0,0)};
+\end{axis}
+\end{tikzpicture}
+%\end{document}
