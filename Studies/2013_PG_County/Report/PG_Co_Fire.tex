@@ -1,0 +1,110 @@
+\documentclass[11pt,oneside]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                                                 %
+% The mathematical style of these documents follows                                               %
+%                                                                                                 %
+% A. Thompson and B.N. Taylor. The NIST Guide for the Use of the International System of Units.   %
+%    NIST Special Publication 881, 2008.                                                          %
+%                                                                                                 %
+% http://www.nist.gov/pml/pubs/sp811/index.cfm                                                    %
+%                                                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{../Bibliography/commoncommands}
+
+% Rename chapter headings
+\renewcommand{\chaptername}{Section}
+\renewcommand{\bibname}{References}
+
+% Math shortcuts
+\renewcommand{\sb}[1]{_\mathrm{#1}}
+
+\begin{document}
+
+\bibliographystyle{unsrt}
+\pagestyle{empty}
+
+\begin{minipage}[t][9in][s]{6.25in}
+
+\headerB{
+Fire Investigation\\
+Title\\
+}
+
+\headerC{
+\flushright{
+Authors \\
+{\em Fire Research Division \\
+Engineering Laboratory \\
+Gaithersburg, Maryland, USA} \\ }
+}
+
+\flushright{\today \\
+}
+
+\vfill
+
+\flushright{
+\includegraphics[width=2.in]{../Bibliography/nistident_flright_vec} \\[.3in]
+}
+
+\titlesigs
+
+\end{minipage}
+
+\newpage
+
+\frontmatter
+
+\pagestyle{plain}
+\pagenumbering{roman}
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+\chapter{List of Acronyms}
+
+\begin{tabbing}
+\hspace{1.5in} \= \\
+FDS \> Fire Dynamics Simulator \\
+HGL \> Hot Gas Layer \\
+HRR \> Heat Release Rate \\
+NIST \> National Institute of Standards and Technology \\
+\end{tabbing}
+
+\mainmatter
+
+\chapter{Introduction}
+
+\chapter{Fire Incident Summary}
+
+\chapter{Fire Dynamics Simulator and Smokeview}
+
+\chapter{Model Input Parameters}
+
+\chapter{Model Results}
+
+\chapter{Discussion}
+
+\chapter{Summary}
+
+\chapter{Acknowledgements}
+
+\bibliography{../Bibliography/FDS_refs,../Bibliography/FDS_general,../Bibliography/FDS_mathcomp}
+
+\appendix
+
+\end{document}
