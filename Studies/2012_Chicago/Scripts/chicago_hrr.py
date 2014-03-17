@@ -31,7 +31,7 @@ for i in range (0, 999):
 	else:
 		HRR_theo[i] = 12.3
 
-print HRR_avg[129],HRR_avg[161],HRR_ND_avg[161]
+#print HRR_avg[129],HRR_avg[161],HRR_ND_avg[161]
 
 plt.figure
 plt.plot(HRR_time,HRR_theo,'b-.',mfc='none',label='Prescribed HRR',linewidth=2)
