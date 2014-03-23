@@ -21,7 +21,7 @@ def read_flow_rate(pin):
     # Read voltage from specified analog pin
     value = read_value(pin)
     # Scale reading of 0-1023 to 0-5 V range
-    voltage = value / 1024 * 5
+    voltage = value * (5 / 1023)
     # Convert voltage to flow rate (gpm)
     flow_rate = 141.36*voltage**3 - 1657.6*voltage**2 + 6654.5*voltage - 9072
     return voltage, flow_rate
