@@ -376,7 +376,7 @@ The heat release rate output data from FDS quantifies the model-predicted rate o
 \label{fig:hrr}
 \end{figure}
 
-In Fig.~(\ref{fig:hrr}), the solid line is the baseline FDS simulation (this represents the on-scene conditions). The dashed line represents an alternative series events, specifically the rear door does not get opened and the subsequent beta side breach does not occur. The dash-dotted line is the prescribed FDS input HRR. We can see that within the first 10 seconds, the structure is under-ventilated as the modeled HRR is below the prescribed HRR. The HRR peaks at just under 9 MW (approximately 20 seconds into the simulation) before becoming oxygen limited. The HRR drops to 5 MW as the available oxygen inside the structure gets consumed. There is insufficient available oxygen in the structure to combust all of the fuel and combustion occurs locally at vents. Fig.~(\ref{fig:smv_ext_fire}) illustrates exterior flaming combustion through the failed Charlie side window and attic breach just after the second fire ignites at 40s. After additional wall breaches at 45 and 55 seconds (see Table~\ref{tab:vents}), the abrupt change in ventilation causes the HRR spikes to 9 MW before again dropping to about 6 MW. The HRR then begins to increase towards a sustainable steady state value.
+In Fig.~(\ref{fig:hrr}), the solid line is the baseline FDS simulation (this represents the on-scene conditions). The dashed line represents an alternative series events, specifically the rear door does not get opened and the subsequent beta side breach does not occur. The dash-dotted line is the prescribed FDS input HRR. We can see that within the first 10 seconds, the structure is under-ventilated as the modeled HRR is below the prescribed HRR. The HRR peaks at just under 9 MW (approximately 20 seconds into the simulation) before becoming oxygen limited. The HRR drops to 5 MW as the available oxygen inside the structure gets consumed. There is insufficient available oxygen in the structure to combust all of the fuel and combustion occurs locally at vents. Fig.~(\ref{fig:smv_ext_fire}) illustrates exterior flaming combustion through the failed Charlie side window and attic breach just after the second fire ignites at 40 seconds. After additional wall breaches at 45 and 55 seconds (see Table~\ref{tab:vents}), the abrupt change in ventilation causes the HRR spikes to 9 MW before again dropping to about 6 MW. The HRR then begins to increase towards a sustainable steady state value.
 
 From Fig.~(\ref{fig:hrr}), we see that the HRR for both FDS simulations are identical until 130 seconds (HRR $\approx$ 7 MW). At 130 seconds the rear door is opened in the baseline simulation. At 135 seconds there is an additional beta side breach (Table~\ref{tab:vents}). The open door and breach act as additional pressure releases for the structure. Again, the abrupt change in ventilation causes the HRR to spike. Here we see a rise from 7 MW to 9.7 MW at 139 seconds. At the time of door failure (160 seconds), the HRR in both cases was approximately 9 MW as there was sufficient ventilation in both cases. While there might be some locally different burning characteristics between the baseline simulation and the alternate simulation, in both cases the fire represented a significant hazard to firefighters inside the structure. Therefore, the continued analysis will focus on the results of the baseline simulation results.
 
@@ -394,7 +394,7 @@ Analysis of the predicted simulation temperatures will focus on the high hazard 
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_129}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{Temperature from baseline simulation, 1 second prior to rear door opening.}
+\caption{FDS predicted temperature contours, 1 second prior to rear door opening.}
 \label{fig:temp_129s}
 \end{figure}
 
@@ -402,20 +402,28 @@ Analysis of the predicted simulation temperatures will focus on the high hazard 
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_159}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{Temperature from baseline simulation, 1 second prior to interior door failing.}
+\caption{FDS predicted temperature contours, 1 second prior to interior door failure.}
 \label{fig:temp_159s}
 \end{figure}
 
-The 
-
+Fig.~(\ref{fig:temp_129s}) shows temperatures of at least 260 $^{\circ}$C (500 $^{\circ}$F) in the second floor rear porch and rear portion of the attic. High temperatures, between 80 $^{\circ}$C (185 $^{\circ}$F) and 200 $^{\circ}$C (390 $^{\circ}$F), also extend down to the 1$^{st}$ floor rear entrance. Before the interior door fails, Fig.~(\ref{fig:temp_159s}), the inflow ambient air from the open door lowers the temperature local to the doorway, but we know from Fig.~(\ref{fig:hrr}) that over this interval the HRR spikes because of the additional ventilation. After the second floor door fails, (cf. Fig.~(\ref{fig:temp_161s})), the high temperature gas that filled the back porch flows in the direction of lower pressure (the front door). Note that the conditions in the attic remain  We can focus on this area, (cf. Fig.~(\ref{fig:temp_161s})), to see the the flow of gases through the doorway.  
 
 \begin{figure}[!ht]
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_161}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{Temperature from baseline simulation, 1 second after interior door fails.}
+\caption{FDS predicted temperature contours, 1 second after interior door fails.}
 \label{fig:temp_161s}
 \end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_161v}
+\input{../Scripts/colorbar_std} 
+\input{../Scripts/colorbar_metric}
+\caption{FDS predicted temperature vectors, 1 second after interior door fails.}
+\label{fig:temp_161v}
+\end{figure}
+
 
 
 \begin{figure}[!ht]
@@ -428,6 +436,14 @@ The
 
 
 \section{Pressure}
+
+\begin{figure}[!ht]
+\includegraphics[width=.75\textwidth]{../Figures/west_50th_baseline_pres}
+\input{../Scripts/colorbar_metric_pres}
+\caption{FDS predicted pressure contours, 1 second prior to interior door failure.}
+\label{fig:pres_159s}
+\end{figure}
+
 
 \chapter{Discussion}
 
