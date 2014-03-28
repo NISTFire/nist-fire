@@ -51,22 +51,8 @@ TC_array_names_suppression = {'Suppression FSW2 Eastside Array' 'Suppression FSW
 
 TC_array(1,:) = {'Eastside 0.03m' 'Eastside 0.3m' 'Eastside 0.61m' 'Eastside 0.91m' 'Eastside 1.22m' 'Eastside 1.52m' 'Eastside 1.83m' 'Eastside 2.13m'};
 TC_array(2,:) = {'Westside 0.03m' 'Westside 0.3m' 'Westside 0.61m' 'Westside 0.91m' 'Westside 1.22m' 'Westside 1.52m' 'Westside 1.83m' 'Westside 2.13m'};
-TC_array3(1,:) = {'Hallway 0.3m' 'Hallway 0.61m' 'Hallway 0.91m' 'Hallway 1.22m' 'Hallway 2.13m'};
-TC_array4(1,:) = {'Doorway 0.3m' 'Doorway 0.61m' 'Doorway 0.91m' 'Doorway 1.22m' 'Doorway 1.52m' 'Doorway 1.83m' 'Doorway 2.13m'};
-
-%------------------
-% Define Colors for Plot Lines
-%------------------
-
-red = [.89, .102, .109];
-blue = [.216, .494, .721];
-green = [.302, .686, .29];
-purple = [.596, .306, .639];
-orange = [1, 0.498, 0.0];
-yellow = [1, 1, .2];
-brown = [.651, .337, .157];
-pink = [.968, .506, .749];
-grey = [.6, .6, .6];
+TC_array3(1,:) = {'Hallway 0.3m' 'Hallway 0.61m' 'Hallway 0.91m' 'Hallway 1.22m' 'Hallway 1.52m' 'Hallway 1.83m' 'Hallway 2.13m'};
+TC_array4(1,:) = {'Doorway 0.3m' 'Doorway 0.61m' 'Doorway 0.91m' 'Doorway 1.22m' 'Doorway 1.52m' 'Doorway 1.83m'};
 
 %------------------
 % Plot TC Arrays Showing Full Tests
@@ -88,14 +74,18 @@ for j=1:Num_TC_arrays-2
     line([250;250],[0;1100],'Color','k','LineWidth',1)
     line([272;272],[0;1100],'Color','k','LineWidth',1)
     line([287;287],[0;1100],'Color','k','LineWidth',1)
-    text(240,1050,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-    text(265,1050,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-    text(290,1050,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-    text(315,1050,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+    text(240,1275,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+    text(260,1275,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+    text(282,1275,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+    text(297,1275,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
     xlabel('Time (s)')
     ylabel('Temperature ( \circ C)')
-    axis([0 800 0 900])
-    legend(TC_array(j,:),'Location','NorthEast')
+    axis([0 350 0 1000])
+    legend_handle = legend(TC_array(j,:),'Location','NorthEastOutside');
+    pos = get(legend_handle,'position');
+    set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 3 pos(4)])
+    set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
+    set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
     plotname = [plotdirtemp TC_array_names{j}];
     print(gcf,'-dpdf',plotname)
     hold off
@@ -109,19 +99,25 @@ plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-3),'-^','Color',red)      % TC
 plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-2),'-+','Color',blue)      % TC2
 plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-1),'-o','Color',green)      % TC3
 plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j),'-.','Color',purple)        % TC4
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+1),'-x','Color',orange)      % TC5
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+2),'-s','Color',grey)        % TC6
 plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+3),'-d','Color',brown)      % TC7
 line([230;230],[0;1100],'Color','k','LineWidth',1)
 line([250;250],[0;1100],'Color','k','LineWidth',1)
 line([272;272],[0;1100],'Color','k','LineWidth',1)
 line([287;287],[0;1100],'Color','k','LineWidth',1)
-text(240,1050,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(265,1050,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(290,1050,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(315,1050,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(240,1275,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(260,1275,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(282,1275,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(297,1275,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
 xlabel('Time (s)')
 ylabel('Temperature ( \circ C)')
-axis([0 800 0 900])
-legend(TC_array3(1,:),'Location','NorthEast')
+axis([0 350 0 1000])
+legend_handle = legend(TC_array3(1,:),'Location','NorthEastOutside');
+pos = get(legend_handle,'position');
+set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 3 pos(4)])
+set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
+set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
 plotname = [plotdirtemp TC_array_names{j}];
 print(gcf,'-dpdf',plotname)
 hold off
@@ -141,14 +137,18 @@ line([230;230],[0;1100],'Color','k','LineWidth',1)
 line([250;250],[0;1100],'Color','k','LineWidth',1)
 line([272;272],[0;1100],'Color','k','LineWidth',1)
 line([287;287],[0;1100],'Color','k','LineWidth',1)
-text(240,1050,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(265,1050,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(290,1050,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(315,1050,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(240,1275,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(260,1275,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(282,1275,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(297,1275,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
 xlabel('Time (s)')
 ylabel('Temperature ( \circ C)')
-axis([0 800 0 900])
-legend(TC_array4(1,:),'Location','NorthEast')
+axis([0 350 0 1000])
+legend_handle = legend(TC_array4(1,:),'Location','NorthEastOutside');
+pos = get(legend_handle,'position');
+set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 3 pos(4)])
+set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
+set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
 plotname = [plotdirtemp TC_array_names{j}];
 print(gcf,'-dpdf',plotname)
 hold off
@@ -175,14 +175,18 @@ for j=1:Num_TC_arrays-2
     line([250;250],[0;1100],'Color','k','LineWidth',1)
     line([272;272],[0;1100],'Color','k','LineWidth',1)
     line([287;287],[0;1100],'Color','k','LineWidth',1)
-    text(230,1050,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-    text(248,1050,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-    text(269,1050,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-    text(284,1050,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+    text(230,1275,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+    text(250,1275,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+    text(272,1275,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+    text(287,1275,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
     xlabel('Time (s)')
     ylabel('Temperature ( \circ C)')
-    axis([220 320 0 900])
-    legend(TC_array(j,:),'Location','NorthEast')
+    axis([200 350 0 1000])
+    legend_handle = legend(TC_array(j,:),'Location','NorthEast');
+    pos = get(legend_handle,'position');
+    set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 3 pos(4)])
+    set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
+    set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
     plotname = [plotdirtemp TC_array_names_suppression{j}];
     print(gcf,'-dpdf',plotname)
     hold off
@@ -196,19 +200,25 @@ plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-3),'-^','Color',red)      % TC
 plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-2),'-+','Color',blue)      % TC2
 plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j-1),'-o','Color',green)      % TC3
 plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j),'-.','Color',purple)        % TC4
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+1),'-x','Color',orange)      % TC5
+plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+2),'-s','Color',grey)        % TC6
 plot(exp_data_reduced(:,1),exp_data_reduced(:,7*j+3),'-d','Color',brown)      % TC7
 line([230;230],[0;1100],'Color','k','LineWidth',1)
 line([250;250],[0;1100],'Color','k','LineWidth',1)
 line([272;272],[0;1100],'Color','k','LineWidth',1)
 line([287;287],[0;1100],'Color','k','LineWidth',1)
-text(230,1050,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(248,1050,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(269,1050,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(284,1050,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(230,1275,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(250,1275,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(272,1275,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(287,1275,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
 xlabel('Time (s)')
 ylabel('Temperature ( \circ C)')
-axis([220 320 0 900])
-legend(TC_array3(1,:),'Location','NorthEast')
+axis([200 350 0 1000])
+legend_handle = legend(TC_array3(1,:),'Location','NorthEast');
+pos = get(legend_handle,'position');
+set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 3 pos(4)])
+set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
+set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
 plotname = [plotdirtemp TC_array_names_suppression{j}];
 print(gcf,'-dpdf',plotname)
 hold off
@@ -228,14 +238,18 @@ line([230;230],[0;1100],'Color','k','LineWidth',1)
 line([250;250],[0;1100],'Color','k','LineWidth',1)
 line([272;272],[0;1100],'Color','k','LineWidth',1)
 line([287;287],[0;1100],'Color','k','LineWidth',1)
-text(230,1050,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(248,1050,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(269,1050,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(284,1050,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(230,1275,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(250,1275,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(272,1275,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(287,1275,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
 xlabel('Time (s)')
 ylabel('Temperature ( \circ C)')
-axis([220 320 0 900])
-legend(TC_array4(1,:),'Location','NorthEast')
+axis([200 350 0 1000])
+legend_handle = legend(TC_array4(1,:),'Location','NorthEast');
+pos = get(legend_handle,'position');
+set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 3 pos(4)])
+set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
+set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
 plotname = [plotdirtemp TC_array_names_suppression{j}];
 print(gcf,'-dpdf',plotname)
 hold off
@@ -275,14 +289,18 @@ line([230;230],[0;1100],'Color','k','LineWidth',1)
 line([250;250],[0;1100],'Color','k','LineWidth',1)
 line([272;272],[0;1100],'Color','k','LineWidth',1)
 line([287;287],[0;1100],'Color','k','LineWidth',1)
-text(230,140,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(248,140,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(269,140,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(284,140,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(230,77,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(250,77,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(272,77,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(287,77,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
 xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
-axis([220 320 0 120])
-legend('Eastside Heat Flux 0.15m','Eastside Rad 0.15m','Location','NorthEast')
+axis([200 350 0 60])
+legend_handle = legend('Eastside Heat Flux 0.15m','Eastside Rad 0.15m','Location','NorthEastOutside');
+pos = get(legend_handle,'position');
+set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 4 pos(4)])
+set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
+set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
 print(gcf,'-dpdf',[plotdirheatflux,'FSW Test 2 Heat Flux Eastside'])
 hold off
 
@@ -295,14 +313,18 @@ line([230;230],[0;1100],'Color','k','LineWidth',1)
 line([250;250],[0;1100],'Color','k','LineWidth',1)
 line([272;272],[0;1100],'Color','k','LineWidth',1)
 line([287;287],[0;1100],'Color','k','LineWidth',1)
-text(230,35,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(248,35,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(269,35,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(284,35,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(230,77,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(248,77,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(269,77,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(284,77,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
 xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
-axis([220 320 0 30])
-legend('Westside Heat Flux 0.15m','Westside Rad 0.15m','Location','NorthEast')
+axis([200 350 0 60])
+legend_handle = legend('Westside Heat Flux 0.15m','Westside Rad 0.15m','Location','NorthEastOutside');
+pos = get(legend_handle,'position');
+set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 4 pos(4)])
+set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
+set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
 print(gcf,'-dpdf',[plotdirheatflux,'FSW Test 2 Heat Flux Westside'])
 hold off
 
@@ -315,14 +337,18 @@ line([230;230],[0;1100],'Color','k','LineWidth',1)
 line([250;250],[0;1100],'Color','k','LineWidth',1)
 line([272;272],[0;1100],'Color','k','LineWidth',1)
 line([287;287],[0;1100],'Color','k','LineWidth',1)
-text(230,105,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(248,105,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(269,105,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(284,105,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(230,77,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(248,77,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(269,77,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(284,77,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
 xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
-axis([220 320 0 90])
-legend('Hallway Heat Flux 1.52m','Hallway Heat Flux 1.52m','Location','NorthEast')
+axis([200 350 0 60])
+legend_handle = legend('Hallway Heat Flux 1.52m','Hallway Heat Flux 1.52m','Location','NorthEastOutside');
+pos = get(legend_handle,'position');
+set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 4 pos(4)])
+set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
+set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
 print(gcf,'-dpdf',[plotdirheatflux,'FSW Test 2 Heat Flux Hallway'])
 hold off
 
@@ -335,14 +361,18 @@ line([230;230],[0;1100],'Color','k','LineWidth',1)
 line([250;250],[0;1100],'Color','k','LineWidth',1)
 line([272;272],[0;1100],'Color','k','LineWidth',1)
 line([287;287],[0;1100],'Color','k','LineWidth',1)
-text(230,47,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(248,47,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(269,47,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(284,47,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(230,77,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(248,77,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(269,77,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(284,77,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
 xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
-axis([220 320 0 40])
-legend('Near Fire Room Heat Flux 0.15m','Near Fire Room Heat Flux 1.52m','Location','NorthEast')
+axis([200 350 0 60])
+legend_handle = legend('Near Fire Room Heat Flux 0.15m','Near Fire Room Heat Flux 1.52m','Location','NorthEastOutside');
+pos = get(legend_handle,'position');
+set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 5 pos(4)])
+set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
+set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
 print(gcf,'-dpdf',[plotdirheatflux,'FSW Test 2 Heat Flux Near Fire Room'])
 hold off
 
@@ -379,8 +409,8 @@ end
 % Define BDP Arrays
 %------------------
 
-BDP_array = {'Hallway 0.3m' 'Hallway 0.61m' 'Hallway 0.91m' 'Hallway 1.22m' 'Hallway 1.52m' 'Hallway 1.83m' 'Hallway 1.83m'};
-BDP_array2 = {'Doorway 0.3m' 'Doorway 0.61m' 'Doorway 0.91m' 'Doorway 1.22m' 'Doorway 1.52m' 'Doorway 1.83m' 'Doorway 2.13m'};
+BDP_array = {'Hallway 0.3m' 'Hallway 0.61m' 'Hallway 0.91m' 'Hallway 1.22m' 'Hallway 1.52m' 'Hallway 1.83m' 'Hallway 2.13m'};
+BDP_array2 = {'Doorway 0.15m' 'Doorway 0.3m' 'Doorway 0.61m' 'Doorway 0.91m' 'Doorway 1.22m' 'Doorway 1.52m' 'Doorway 1.83m'};
 
 %------------------
 % Bi-Directional Probe Plots
@@ -400,14 +430,18 @@ line([230;230],[-5;5],'Color','k','Linewidth',1)
 line([250;250],[-5;5],'Color','k','Linewidth',1)
 line([272;272],[-5;5],'Color','k','Linewidth',1)
 line([287;287],[-5;5],'Color','k','Linewidth',1)
-text(230,7,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(248,7,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(269,7,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(284,7,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(230,8,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(250,8,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(272,8,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(287,8,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
 xlabel('Time (s)')
 ylabel('Velocity (m/s)')
 axis([200 350 -5 5])
-legend(BDP_array,'Location','NorthEast')
+legend_handle = legend(BDP_array,'Location','NorthEast');
+pos = get(legend_handle,'position');
+set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 3 pos(4)])
+set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
+set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
 print(gcf,'-dpdf',[plotdirvelocity,'FSW Test 2 Hallway Velocity'])
 hold off
 
@@ -425,13 +459,17 @@ line([230;230],[-5;10],'Color','k','Linewidth',1)
 line([250;250],[-5;10],'Color','k','Linewidth',1)
 line([272;272],[-5;10],'Color','k','Linewidth',1)
 line([287;287],[-5;10],'Color','k','Linewidth',1)
-text(230,13,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(248,13,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(269,13,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
-text(284,13,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','FontSize',10,'Rotation',60)
+text(230,14,{'Hallway Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(250,14,{'Hallway Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(272,14,{'Room Nozzle On'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
+text(287,14,{'Room Nozzle Off'},'VerticalAlignment','top','HorizontalAlignment','center','Rotation',60)
 xlabel('Time (s)')
 ylabel('Velocity (m/s)')
 axis([200 350 -5 10])
-legend(BDP_array2,'Location','NorthEastOutside')
+legend_handle = legend(BDP_array2,'Location','NorthEastOutside');
+pos = get(legend_handle,'position');
+set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 3 pos(4)])
+set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
+set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
 print(gcf,'-dpdf',[plotdirvelocity,'FSW Test 2 Doorway Velocity'])
 hold off
