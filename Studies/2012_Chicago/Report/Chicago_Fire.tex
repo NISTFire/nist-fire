@@ -117,27 +117,28 @@ On November 2, 2012, a fire in a 2 1/2 story wood frame residential structure re
 
 Squad 5 (S5) entered the front of the structure at approximately 17:25 and headed to the second floor. They heard a commotion and found the E123 Captain collapsed on the kitchen floor and entangled with the E123 firefighter. A Mayday was called on the radio by S5 at approximately  17:27 and the E123 Captain was removed from the front of the building at approximately 17:29 and succumbed to his injuries at the hospital at 17:38. Table~\ref{tab:fire_info} presents the timeline of the fire.
 
-\bigskip 
-\begin{minipage}{.8\linewidth}
+\begin{table}
 \centering
 \captionof{table}{Fire Event Timeline}\label{tab:fire_info}
-\begin{tabular}{c m{0.25in}}
+\begin{tabular}{l l}
 \toprule[1.5pt]
 Incident Time & Fire Behavior / Fireground Operation  \\
 \midrule
-17:15    & Reported working fire with heavy smoke coming from the front and rear of the structure's attic. \\
-17:16    & Dispatch for a Still Alarm \\
-17:20    & Attic self ventilation - heavy smoke out of front attic window and heavy smoke and fire out of rear. \\  
-17:21:00 & E123 Capt. and FF on 2$^{nd}$ floor with 1 3/4-in hose line. \\
-17:21:30 & 1$^{st}$ floor exterior porch door opened. \\
-17:23    & Heavy fire report in rear stairwell and enclosed porch. No response from E123: Capt. or FF. \\
-17:24    & Water applied to attic from the rear exterior position. \\
-17:27    & IC calls a Mayday \\
+\multirow{2}{*}{17:15} & \multirow{2}{*}{\parbox{10cm} {Reported working fire with heavy smoke coming from the front and rear of the structure's attic.}} \\ 
+         & \\[.25cm]
+17:16    & Dispatch for a Still Alarm. \\ [.25cm]
+\multirow{2}{*}{17:20}    & \multirow{2}{*}{\parbox{10cm} {Attic self ventilation - heavy smoke out of front attic window and heavy smoke and fire out of rear.}} \\
+         & \\[.25cm] 
+17:21:00 & E123 Capt. and FF on 2$^{nd}$ floor with 1 3/4-in hose line. \\[.25cm]
+17:21:30 & 1$^{st}$ floor exterior porch door opened. \\[.25cm]
+\multirow{2}{*}{17:23}    & \multirow{2}{*}{\parbox{10cm} {Heavy fire report in rear stairwell and enclosed porch. No response from E123: Capt. or FF.}} \\
+         & \\[.25cm]
+17:24    & Water applied to attic from the rear exterior position. \\[.25cm]
+17:27    & IC calls a Mayday. \\[.25cm]
 17:29    & E123 Capt. carried out of structure. \\
 \bottomrule[1.25pt]
 \end{tabular}\par
-\bigskip
-\end{minipage}
+\end{table}
  
 
 \chapter{Fire Dynamics Simulator and Smokeview}
@@ -174,8 +175,8 @@ The development of the model geometry and development of the input file is strai
 \end{itemize}
 Since there is no all-inclusive, universal fire modeling input data base this type of information must be gathered from literature or generated for a given incident. For the simulations performed for this study, Table ~\ref{tab:mod_param} includes the relevant model input parameters. The sections below describe these inputs. 
 
-\bigskip
-\begin{minipage}{.8\linewidth}
+\begin{table}
+\centering
 \captionof{table}{Relevant Modeling Input Parameters}\label{tab:mod_param}
 \begin{tabular}{lll}
 \toprule[1.5pt]
@@ -198,8 +199,7 @@ Parameter & Description & Reference  \\
                                    & c$_{p}$: 0.84 \; \si{kJ/(kg.K)} & \\
 \bottomrule[1.25pt]
 \end{tabular}\par
-\bigskip
-\end{minipage}
+\end{table}
 
 \section{Geometry}
 \label{geom}
@@ -311,8 +311,7 @@ While the fire was simplified to constant area fuel sources (Section~\ref{fire})
 \label{Vents}
 This simulation includes vents that account for the changes in ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). There are two ventilation scenarios that are considered in this study. The first is the baseline simulation where the ventilation times and ventilation areas represent our best understanding of the incident. The alternative simulation does not include the firefighter opening the rear door to make entry to the structure and the subsequent beta side wall breach. The times of the ventilation changes are provided in Table \ref{tab:vents}. Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open front door at the start of the simulation and the vents (opening size and open time) created during the simulation are significantly larger than the total effective area of leakage of structure of this type. Therefore, leakage would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
 
-\bigskip
-\begin{minipage}{.8\linewidth}
+\begin{table}
 \centering
 \captionof{table}{Simulation Ventilation Timelines}\label{tab:vents}
 \begin{tabular}{ccccc}
@@ -326,11 +325,9 @@ Baseline Simulation & Alternative Simulation & Ventilation Area [m$^2$] & Type &
 130   &  N/A  & 1.41 & Door        & Charlie \\
 135   &  N/A  & 0.2  & Breach      & Beta \\        
 160   &  160  & 0.80 & Door        & Interior \\
-300   &  300  & \multicolumn{3}{c}{Simulation Ends}  \\
 \bottomrule[1.25pt]
 \end{tabular}\par
-\bigskip
-\end{minipage}
+\end{table}
 
 \section{Mesh}
 \label{mesh}
