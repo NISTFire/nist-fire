@@ -56,7 +56,7 @@ Qty	Part	Description
 1	S3070	SPEAKER 28MM 8OHMS 6" WIRE LEADS
 3	VO-223	O-RING-223 1-5/8 ID 1/8 C/S
 
-
+-------------------------------------------------------------------------------
 
 The 1.5 in and 2.5 in flow meters use the same circuit board. On the 1.5 in, the flow ports go directly to the pressure sensor; on the 2.5 in, the flow ports go around the inner flow straightener and are measured in very small channels where the pressure ports are.
 
@@ -87,4 +87,32 @@ http://datasheets.maximintegrated.com/en/ds/MAX7219-MAX7221.pdf
 LCD display is a LiteOn part number:
 LTC-4727JR
 http://tge.cmaisonneuve.qc.ca/barbaud/243-420-MA%20Microcontr%C3%B4leurs%20et%20interfaces/Laboratoires/LTC-4727JR.pdf
+
+-------------------------------------------------------------------------------
+
+This is how the microcontroller code is operating.
+ 
+Theoretical Sensor Scale Factor = 250psi / 100mV = 2.5 psi/mV
+ 
+First we do a calibration procedure.  This is done by our assembly personnel during the assembly process.  The Sho-Flow is capped and air pressure is applied at 2 values to establish a scale factor correction for each sensor and the difference between the two sensors.
+1.    Apply 25 psi, read & store sensor #1 and sensor #2 A/D values
+2.    Apply 200 psi, read & store sensor #1 and sensor #2 A/D values
+3.    Scale Factor Correction #1 = (Sensor #1 @ 200psi – Sensor #1 @ 25psi) / 175
+4.    Scale Factor Correction #2 = (Sensor #2 @ 200psi – Sensor #2 @ 25psi) / 175
+5.    Sensor difference = (Sensor #1 @ 25psi / Scale Factor Correction #1) - (Sensor #2 @ 25psi / Scale Factor Correction #2)
+ 
+I don’t know how difficult it will be for you to cap the unit and apply pressure.  Or how accurate you need it.  Maybe you could just try the calculations with only the theoretical scale factor values to start with.
+ 
+Next for the pressure and flow calculation.
+1.    Read Sensor #1 (Sensor #1 reading / Scale Factor Correction #1)
+2.    Read Sensor #2 (Sensor #2 reading / Scale Factor Correction #2)
+3.    The displayed pressure is always Sensor #1
+4.    Calculate flow
+a.    Pressure differential = Sensor #1 – (Sensor #2 + Sensor Difference)
+b.    Flow = CONSTANT x SQRT(Pressure differential)
+c.    For 1 ½” 200 GPM Sho-Flow CONSTANT = 56
+d.    For 2 ½” 500 GPM Sho-Flow CONSTANT = 143
+5.    Correct pressure (sensors are reading sidewall static pressure)
+a.    For 1 ½” model, Pressure Corrected = Sensor #1 + (Flow2 / 4503)
+b.    For 2 ½” model, Pressure Corrected = Sensor #1 + (Flow2 / 34751)
 
