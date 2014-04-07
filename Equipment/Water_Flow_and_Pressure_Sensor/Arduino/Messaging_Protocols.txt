@@ -1,0 +1,24 @@
+AMQP
+Python client
+Supported by RabbitMQ natively
+Code examples well supported
+Performs faster than MQTT using Python client
+Used by: Facebook
+
+ZeroMQ
+AMQP with RabbitMQ makes more sense for our use case
+Article on broker vs. brokerless: http://www.rabbitmq.com/blog/2010/09/22/broker-vs-brokerless/
+
+MQTT
+Supported by RabbitMQ via a plugin
+Slower performance than AMQP using Python client (more than one second delay)
+Code examples not as robust as AMQP
+
+STOMP
+Supported by RabbitMQ via a plugin
+
+XMPP
+
+Comparisons:
+All MQs: http://wiki.secondlife.com/wiki/Message_Queue_Evaluation_Notes
+

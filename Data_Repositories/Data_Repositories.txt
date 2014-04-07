@@ -1,0 +1,20 @@
+Versioned (small) data repository
+Google Code repository
+https://code.google.com/p/nist-fire/
+Contains experimental data, data analysis scripts, software code, reports, FDS files, Python scripts
+
+Unversioned (large) data storage
+Tier 2 - Backed up, NIST hosted
+\\cfs2e.nist.gov
+Contains experimental video and photos; data too large for other repositories
+
+Publicly shared information via website
+Amazon Web Services instance running Wordpress (not yet live)
+http://www.nist.gov/fire
+
+Group-wide (shared) information storage
+Google Drive
+http://drive.google.dom
+Owned by nist.fire.research@gmail.com
+Contains documentation, equipment, manuals, notebooks, references and records, etc.
+

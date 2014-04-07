@@ -1,0 +1,27 @@
+Property Number,Quantity,Device,Model Number,Description,Related Equipment
+855830,1,Dell Laptop (Simula),Latitute E6430,For Arduino data logging and NTP server (Windows 7 64-bit),
+,1,Dell Laptop,Latitute,For data logging (32-bit Windows 7),
+850853,1,Dell Laptop,Latitute,For data logging (32-bit Windows 7 - pending),
+,1,Panasonic Toughbook,,For FLIR IR camera,"SCSI drive, dongle, backpack"
+,,,,,
+,2,ASUS WiFi Routers,RT-AC68U,Primary router and bridge router,
+,1,Linksys Router,E1200,Extra router,
+,,,,,
+,1,Samsung Digital Video Recorder,SRD-1680D(2T),,2 TB HD
+,,TV monitor,,,
+,,Bullet cameras,,,
+,3,GoPro cameras,HERO3+ Black Edition,,64 GB Class 10 microSD cards
+,3,Sony HD cameras,,,64 GB SD cards
+,3,Thermal Imaging Cameras,,,
+,1,FLIR IR Camera,,,
+,,,,,
+,2,Akron Brass Waterflow Meters,,,Display box and 2.5 in coupler
+,10,Arduinos,Yun,,"Smart Power Base, 8 GB SD cards, power adaptors"
+,,,,,
+,2,California Analytical Instruments,NDIR/O2 602P,Gas Analyzer,"2 Pumps, traps, dryers"
+,1,Gas Dryer,Universal Analyzers 570,Dryer for gas analyzers,Gas Analyzer
+,,,,,
+,4,SCXI NI-1600,,USB Data Logger Card,Note: This only works with 32-bit operating sytems
+,,,,,
+,2,Task Force Tips Sho-Flow Flow Indicator,SF-NF-NF-200,"1.5 inch couplings, 50-200 GPM",
+,2,Task Force Tips Sho-Flow Flow Indicator,SF-NJNJ-500,"2.5 inch couplings, 125-500 GPM",

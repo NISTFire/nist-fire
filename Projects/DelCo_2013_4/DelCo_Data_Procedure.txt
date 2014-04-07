@@ -1,0 +1,14 @@
+DelCo Data Procedure
+
+Power on WiFi routers
+Power on Arduino laptop with NTP, RabbitMQ, Python receive_data.py script
+Power on DAQ laptop
+
+Power on Arduino data loggers
+Power on Samsung DVR
+Start TICs
+Start GoPros recording
+Start Sony HD cameras recording
+Start Samsung DVR video recording
+Start DAQ recording data
+

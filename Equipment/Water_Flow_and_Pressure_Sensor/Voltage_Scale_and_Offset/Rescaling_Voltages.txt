@@ -1,0 +1,22 @@
+Sensor to ADC
+http://www.ti.com/lit/an/slyt173/slyt173.pdf
+
+Parts simulator:
+http://www.partsim.com/simulator
+
+Op Amp Tutorial/Basics:
+http://www.gadgetgangster.com/tutorials/428
+http://zebu.uoregon.edu/~rayfrey/431/notes9.pdf
+http://www.ti.com/lit/an/slod006b/slod006b.pdf
+
+Can use op-amp circuit to rescale voltages:
+http://electronics.stackexchange.com/questions/30719/analog-voltage-level-conversion-level-shift
+http://electrotap.com/2004/11/01/op-amps-part-1-scaling-sensor-voltages/
+
+Boards:
+http://www.greystoneenergy.com.cn/pdf/armspec.pdf
+http://www.greystoneenergy.com.cn/pdf/ismspec.pdf
+http://www.inteccontrols.com/pdfs/AIM2.pdf
+http://www.electrocontrols.co.uk/product_datasheets/H17.pdf
+http://www.comfort.com.sg/technical/Price%20Lists/AAM%20Extra/TECHDATA/ACT/pdfs/ism4/ism4_spec.pdf
+

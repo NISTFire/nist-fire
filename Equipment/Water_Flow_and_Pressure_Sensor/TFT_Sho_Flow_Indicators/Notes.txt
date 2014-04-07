@@ -1,0 +1,90 @@
+2.5 inch flow meter
+TFT ONLINE PART SEARCH
+SF-NJNJ-500    SHO-FLOW 2.5"X2.5" NH 125-500 GPM
+BILL OF MATERIALS
+Qty	Part	Description
+1	AY360NJ	SIDE B ADAPTER 2 1/2 NH- HARDCOAT
+1	LIS-200	POLYPACK: ELECTRONIC SHO-FLOW
+1	P197N.1	COUPLING 2.5"NH - PARTS SET
+1	S3031	FLOWMETER BODY 2.5" - LASER
+1	S3068	INSERT 500 GPM - HARDCOAT
+1	S3100	PART SET - ELECTRONIC FLOWMETER
+1	VO-147	O-RING-147 2 11/16 ID 3/32 C/S
+1	VO-234	O-RING-234 3" ID X 1/8 C/S
+1	VT25-20SS312	1/4-20 X 5/16 SOCKET SET SCREW CUP POINT
+
+
+TFT ONLINE PART SEARCH
+S3100    PART SET - ELECTRONIC FLOWMETER
+BILL OF MATERIALS
+Qty	Part	Description
+1	A1303	MODEL NUMBER LABEL
+2	A5845	TRANSDUCER - PRESSURE 250 PSI MAX
+1	S3035	SOLID LID - LASER
+1	S3036	SOLID LID - LASER
+1	S3040	ELECTRONICS LID - HARDCOAT
+1	S3045	LABEL - SHO-FLOW FLOW INDICATOR
+1	S3050	BOARD - FLOWMETER
+1	S3055	BATTERY HOLDER 9VOLT 6" LEADS
+1	S3060	BATTERY - 9VOLT LITHIUM
+2	S3075	VENT - MEMBRANE 14.0X8.0MM
+1	S3080	LABEL: ELEC. FLOWMETER RANGE
+1	S3085	BUTTON COVER
+2	VO-035	O-RING-035 2-1/4 ID 1/16 C/S
+1	VO-039	O-RING-039 2-3/4 ID 1/16 C/S
+2	VT06-32SH250	6-32 X 1/4 SOCKET HEAD CAP SCREW
+2	VT06-32SS250	6-32 X 1/4 SOCKET SET SCREW DOG POINT
+2	VT08-32FI375	8-32 X 3/8 FILLISTER HEAD SCREW
+2	VT08-32SH375	8-32 X 3/8 SOCKET HEAD CAP SCREW
+
+1.5 inch flow meter
+TFT ONLINE PART SEARCH
+SF-NF-NF-200    SHO-FLOW 1.5"X1.5" NH 50-200 GPM
+BILL OF MATERIALS
+Qty	Part	Description
+1	H694N.6	COUPLING 1.5"NH SWIVEL - PARTS SET
+1	LIS-200	POLYPACK: ELECTRONIC SHO-FLOW
+1	S3030N	FLOWMETER BODY 1.5"NH - LASER
+1	S3066	INSERT 200 GPM - MACHINED
+1	S3100	PART SET - ELECTRONIC FLOWMETER
+1	S3110	PART SET - 1.5" FLOWMETER
+
+TFT ONLINE PART SEARCH
+S3110    PART SET - 1.5" FLOWMETER
+BILL OF MATERIALS
+Qty	Part	Description
+1	S3070	SPEAKER 28MM 8OHMS 6" WIRE LEADS
+3	VO-223	O-RING-223 1-5/8 ID 1/8 C/S
+
+
+
+The 1.5 in and 2.5 in flow meters use the same circuit board. On the 1.5 in, the flow ports go directly to the pressure sensor; on the 2.5 in, the flow ports go around the inner flow straightener and are measured in very small channels where the pressure ports are.
+
+On the 1.5 in flow meter, the dip switch settings are D1-off, D2-off, D3-on, D4-on.
+On the 2.5 in flow meter, the dip switch settings are D1-off, D2-on, D3-on, D4-on.
+
+Pressure transducer is a Measurement Specialties Inc. part number:
+MS121-10185X-250PG (051413A085)
+http://media.digikey.com/pdf/Data%20Sheets/Measurement%20Specialties%20PDFs/MSP-100,%20Model%20MS1.pdf
+Breakdown of part number:
+MS1-
+2 (0 to 0.100 mV output)
+1 (2 ft cable)
+10185 (special part number)
+X- (special port)
+250P (0 to 250 psi)
+G (gauge)
+
+Microcontroller is a C8051 Silicon Laboratories part number:
+C8051F350 (CCS067, 1113)
+http://www.silabs.com/Support%20Documents/TechnicalDocs/C8051F350-Short.pdf
+http://www.silabs.com/Support%20Documents/TechnicalDocs/C8051F35x.pdf
+
+IC display driver board is a Maxim Integrated part number:
+MAX7221CWG (Serially Interfaced, 8-Digit LED Display Driver)
+http://datasheets.maximintegrated.com/en/ds/MAX7219-MAX7221.pdf
+
+LCD display is a LiteOn part number:
+LTC-4727JR
+http://tge.cmaisonneuve.qc.ca/barbaud/243-420-MA%20Microcontr%C3%B4leurs%20et%20interfaces/Laboratoires/LTC-4727JR.pdf
+

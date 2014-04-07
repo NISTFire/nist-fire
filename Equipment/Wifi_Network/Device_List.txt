@@ -1,0 +1,16 @@
+Network Device List
+
+Router
+
+192.168.1.1 - Router
+
+Static DHCP devices
+
+192.168.1.100 - Dell Laptop, Prop. Num. 855830 (NTP Server, RabbitMQ)
+192.168.1.200 - Samsung SRD-1680D DVR
+
+Dynamic DHCP devices
+
+arduinoHose1 (arduinohose1.local)
+arduinoPumper1 (arduinopumper1.local)
+

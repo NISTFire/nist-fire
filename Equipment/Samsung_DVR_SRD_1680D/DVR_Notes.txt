@@ -1,0 +1,27 @@
+When running the “Backup” operation (to export the DVR movies to an external HDD), the DVR splits up files into 2.08 GB .avi movie files.
+
+Samsung SRD-1680D
+Supports backup/export to AVI for a given date range
+Product page: https://www.samsung-security.com/products/video-recording-and-management/dvr/16-channel/SRD-1680D.aspx
+Spec sheet: https://www.samsung-security.com/SAMSUNG/upload/Product_Specifications/SRD-1680D_Datasheet.pdf
+
+Samsung Customer Service: 877-213-1222
+
+- Can I dump .avi files directly to an external drive? Quality?
+    Can dump to AVI, retains 1080 HD quality
+- How are hard disks formatted in DVR (FAT32, exFAT, proprietary)?
+    NTFS formatted - update
+- How are files stored internally (.avi, proprietary)?
+    Saved internally in DVR format, can export to AVI to SCC proprietary format
+- Can the internal drives be configured as RAID?
+    Not internally
+- What happens if one drive fails and other internal drives are available while recording?
+    Seamless HD failure
+- How to use RAID with external SATA array (size limits)?
+    SVS unit record simultaneously? RAID 1 done 
+- Can I use any SATA drive? Can I mirror in realtime to .avi?
+Can use any ESATA drive formatted as FAT32.
+    External USB drive should be formatted as FAT32.
+- Limit on number of connected smartphone viewers or remote viewers?
+Remote: Search 3, Live unicast 10, Live multicast 20
+Mobile: 1 Live, 1 CH playback
