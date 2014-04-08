@@ -23,9 +23,7 @@ gas_quantities = ['CO_', 'CO2_', 'O2_']
 #  = Plotting =
 #  ============
 
-data = np.genfromtxt(data_file,
-                     delimiter=',',
-                     names=True)
+data = np.genfromtxt(data_file, delimiter=',', names=True)
 
 # Generate a plot for each quantity
 for channel in data.dtype.names[2:]:
