@@ -1,14 +1,101 @@
-DelCo Data Procedure
+========================
+========================
+= DelCo Data Procedure =
+========================
+========================
 
-Power on WiFi routers
-Power on Arduino laptop with NTP, RabbitMQ, Python receive_data.py script
-Power on DAQ laptop
+===================
+= Initial Startup =
+===================
 
-Power on Arduino data loggers
-Power on Samsung DVR
-Start TICs
-Start GoPros recording
-Start Sony HD cameras recording
-Start Samsung DVR video recording
-Start DAQ recording data
+* Power on:
+    * UPSs
+    * WiFi routers
+    * DAQs and laptops
+    * Arduino laptop with NTP, RabbitMQ, Python receive_data.py script
+    * DVR
+    * Bullet cameras
+    * TICs (check battery level)
+    * GoPros (check battery level)
+    * Camcorders (check battery level)
 
+===============
+= Calibration =
+===============
+
+* Verify operation of all:
+    * Video channels
+    * DAQ channels
+
+* 1 minute calibration run to separate output file (cover BDPs)
+
+=============================
+= Primary Testing Procedure =
+=============================
+
+* Verify testing procedure with all personnel
+* Safety checks
+
+* Check Arduino battery level
+* Power on Arduino data loggers
+
+* Start recording on:
+    * GoPros
+    * Camcorders
+    * Mobile TIC
+
+* Start synced recording on:    [MARK DATE/TIME]
+    * DVR
+    * DAQ data 
+
+* 1 minute pre-test run
+
+* Begin test                    [MARK DATE/TIME]
+
+* Follow testing procedure
+
+* End test                      [MARK DATE/TIME]
+
+* Stop synced recording on:     [MARK DATE/TIME]
+    * DAQ
+    * DVR
+
+* Stop recording on:
+    * GoPros
+    * Camcorders
+    * Mobile TIC
+
+* Power off Arduino data loggers
+
+* Verify successful recording and operation of all DAQ channels in output file
+
+* Prepare for next test
+
+=============
+= Data Dump =
+=============
+
+* Retrieve data from:
+    * DAQ
+    * DVR
+    * GoPros
+    * Camcorders with digital media
+    * Arduinos
+
+* Swap and label tapes from camcorders
+
+* Make 3 copies of all data on external hard drives
+
+* Verify integrity of data
+
+====================
+= Battery Charging =
+====================
+
+* Charge all batteries on:
+    * Laptops
+    * Arduinos
+    * Bullet camera batteries
+    * TICs
+    * GoPros
+    * Camcorders
