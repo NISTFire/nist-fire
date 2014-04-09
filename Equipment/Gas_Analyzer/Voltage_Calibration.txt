@@ -1,0 +1,9 @@
+The calculation to determine measured gas is: measured voltage * calibration coefficient.
+ 
+For the span gas we used (4% CO, 9% CO2), the coefficients would have been:
+·         CO – 4% ÷ 5V = 0.8%  CO per V
+·         CO2 – 9% ÷ 5V = 1.8% CO2 per V
+ 
+The maximum voltage from any channel (CO, CO2, O2) is 5V. So when you span, 5V corresponds to the concentration of span gas. So for the gas we used (4% CO, 9% CO2), 5V on the CO channel was 4%, and 5V on the CO2 channel was 9%. O2, 5V = 20.95%. I assumed a linear relationship between 0V and 5V. So for example, using that same span gas, a 2% CO measurement would have resulted in a 2.5V signal. Had the chance to check this calculation once with Mikey when we had two span gasses available, and it was right on. Sampling ambient air, you should see very close to 0V for CO and CO2, and 5V for O2.
+ 
+The only thing that can change is the span gas you use to calibrate.
