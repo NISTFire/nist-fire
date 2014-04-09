@@ -9,16 +9,16 @@
 ===================
 
 * Power on:
-    * UPSs
+    * Uninterruptible Power Supplies (UPSs)
     * WiFi routers
     * DAQs and laptops
     * Arduino laptop with NTP, RabbitMQ, Python receive_data.py script
-    * DVR
+    * Digital video recorder (DVR)
     * Bullet cameras
-    * TICs (check battery level)
+    * Thermal imaging cameras (TICs) (check battery level)
     * Digital video cassette recorders (check battery level)
     * GoPros (check battery level)
-    * Camcorders (check battery level)
+    * Video cameras (check battery level)
 
 ===============
 = Calibration =
@@ -42,7 +42,7 @@
 
 * Start recording on:
     * GoPros
-    * Camcorders
+    * Video cameras
     * Digital video cassette recorders (Mobile TIC)
 
 * Start synced recording on:    [MARK DATE/TIME]
@@ -63,7 +63,7 @@
 
 * Stop recording on:
     * GoPros
-    * Camcorders
+    * Video cameras
     * Digital video cassette recorders (Mobile TIC)
 
 * Power off Arduino data loggers
@@ -80,14 +80,16 @@
     * DAQ
     * DVR
     * GoPros
-    * Camcorders with digital media
+    * Video cameras with digital media
     * Arduinos
 
-* Swap and label tapes from camcorders and video cassette recorders as needed
+* Swap and label tapes from video cameras and digital video cassette recorders as needed
 
 * Make 3 copies of all data on external hard drives
 
 * Verify integrity of data
+
+* On return from trip, extract video from digital video cassette recorders
 
 ====================
 = Battery Charging =
@@ -99,5 +101,5 @@
     * Bullet camera batteries
     * TICs
     * GoPros
-    * Camcorders
+    * Video cameras
     * Digital video cassette recorders
