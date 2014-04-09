@@ -16,6 +16,7 @@
     * DVR
     * Bullet cameras
     * TICs (check battery level)
+    * Digital video cassette recorders (check battery level)
     * GoPros (check battery level)
     * Camcorders (check battery level)
 
@@ -42,7 +43,7 @@
 * Start recording on:
     * GoPros
     * Camcorders
-    * Mobile TIC
+    * Digital video cassette recorders (Mobile TIC)
 
 * Start synced recording on:    [MARK DATE/TIME]
     * DVR
@@ -63,7 +64,7 @@
 * Stop recording on:
     * GoPros
     * Camcorders
-    * Mobile TIC
+    * Digital video cassette recorders (Mobile TIC)
 
 * Power off Arduino data loggers
 
@@ -82,7 +83,7 @@
     * Camcorders with digital media
     * Arduinos
 
-* Swap and label tapes from camcorders
+* Swap and label tapes from camcorders and video cassette recorders as needed
 
 * Make 3 copies of all data on external hard drives
 
@@ -99,3 +100,4 @@
     * TICs
     * GoPros
     * Camcorders
+    * Digital video cassette recorders
