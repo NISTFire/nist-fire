@@ -16,7 +16,7 @@
     * Digital video recorder (DVR)
     * Bullet cameras
     * Thermal imaging cameras (TICs) (check battery level)
-    * Digital video cassette recorders (check battery level)
+    * Digital video cassette recorders (DVCRs) (check battery level)
     * GoPros (check battery level)
     * Video cameras (check battery level)
 
@@ -43,7 +43,7 @@
 * Start recording on:
     * GoPros
     * Video cameras
-    * Digital video cassette recorders (Mobile TIC)
+    * DVCRs (Mobile TIC)
 
 * Start synced recording on:    [MARK DATE/TIME]
     * DVR
@@ -64,7 +64,7 @@
 * Stop recording on:
     * GoPros
     * Video cameras
-    * Digital video cassette recorders (Mobile TIC)
+    * DVCRs (Mobile TIC)
 
 * Power off Arduino data loggers
 
@@ -83,13 +83,13 @@
     * Video cameras with digital media
     * Arduinos
 
-* Swap and label tapes from video cameras and digital video cassette recorders as needed
+* Swap and label tapes from video cameras and DVCRs as needed
 
 * Make 3 copies of all data on external hard drives
 
 * Verify integrity of data
 
-* On return from trip, extract video from digital video cassette recorders
+* On return from trip, extract video from DVCRs
 
 ====================
 = Battery Charging =
@@ -102,4 +102,4 @@
     * TICs
     * GoPros
     * Video cameras
-    * Digital video cassette recorders
+    * DVCRs
