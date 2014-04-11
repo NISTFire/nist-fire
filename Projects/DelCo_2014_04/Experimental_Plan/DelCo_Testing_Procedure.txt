@@ -25,8 +25,9 @@
 ===============
 
 * Verify operation of all:
-    * Video channels
-    * DAQ channels
+    * Video channels - Jay/Kris - Keith 
+    * DAQ channels - Roy/Craig - Keith
+    * Check toggle switches on TC-2095s for appropriate measurement device
 
 * 1 minute calibration run to separate output file (cover BDPs)
 
