@@ -1,0 +1,19 @@
+Babrauskas' low-order model predicts a peak HRR of about 1.6 MW at a time of about 8 minutes (a triangular HRR with a peak of approximately 8 minutes and base of approximately 16 minutes). Also, for 24 used furniture items from the SwRI tests, this Babrauskas model had a bias of 0.66 and model rel. std. dev. of 315 kW, so the adjusted peak HRR would be about 2.4 MW, which would shorten the time to peak to maintain the area under the curve.
+
+Predicted Peak HRR
+
+Q_max = C * FF * PF * CM * FC * SF = 1641 kW
+
+C: Constant of 210
+FF: Fabric factor of 0.4 for cellulosic fabrics
+PF: Padding factor of 1.0 for PU foam, latex foam, or mixed materials
+CM: Combustible mass of 52.1 kg (~70% of total mass)
+FC: Frame combustibility factor: 0.3 for wood frames
+SF: Style factor of 1.25 (between 1 rectilinear and 1.5 ornate)
+
+Predicted Time to Peak HRR
+
+t_peak = FM * CM * HoC / Q_max / 2 = 468 s = 7.8 min
+		
+FM: Frame material factor of 1.3 for wood frames
+Effective HoC: 22700 kJ/kg
