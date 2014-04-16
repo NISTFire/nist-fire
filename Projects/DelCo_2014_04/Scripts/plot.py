@@ -41,16 +41,25 @@ for channel in data.dtype.names[2:]:
 
     figure()
     t = data['Time']
-    quantity = data[channel] * scale_factor
 
     # Scale channel and set y-axis label depending on quantity
     if 'TC_' in channel:
+        quantity = data[channel] * scale_factor
         ylabel('Temperature ($^\circ$C)', fontsize=20)
     if 'BDP_' in channel:
+        conv_inch_h2o = 0.4;
+        conv_pascal = 248.8;
+        # Convert voltage to pascals
+        pressure = conv_inch_h2o * conv_pascal * (data[channel])
+        # Calculate velocity
+        quantity = 0.0698 * np.sqrt(np.abs(pressure) * \
+                   (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
         ylabel('Velocity (m/s)', fontsize=20)
     if any([substring in channel for substring in heat_flux_quantities]):
+        quantity = data[channel] * scale_factor
         ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
     if any([substring in channel for substring in gas_quantities]):
+        quantity = data[channel] * scale_factor
         ylabel('Concentration (%)', fontsize=20)
 
     plot(t, quantity, lw=2, label=channel)
