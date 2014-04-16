@@ -36,7 +36,7 @@ scaling = pd.read_csv(scaling_file, index_col=2)
 #  ============
 
 # Generate a plot for each quantity
-for channel in data.dtype.names[50:]:
+for channel in data.dtype.names[2:]:
     scale_factor = float(scaling['Calibration'][channel])
 
     figure()
