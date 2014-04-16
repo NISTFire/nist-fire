@@ -8,27 +8,27 @@ Test [1][2][3333][444][5][6][7][88888]
     [F]urniture
 
 2:
-    Fire location, Room [A], [B], [C], or [D]
+    Fire location (Room [A], [B], [C], or [D])
 
 3333:
     [if 1=N]: 0000
-    [if 1=G]: Fire size in kW (4 digits)
+    [if 1=G]: Gas fire size in kW (4 digits)
     [if 1=F]: [#S#C], number of sofas and number of chairs
 
 444:
-    Exterior door A, B1, B2 status ([O]pen or [C]losed)
+    Status of exterior doors A, C_West, C_East ([O]pen or [C]losed)
 
 5:
     [N]atural ventilation or [P]PV (location and rate)
 
 6:
-    Ceiling vent status ([O]pen or [C]losed)
+    Status of ceiling vent ([O]pen or [C]losed)
 
 7:
     Suppression (M[A]nual/m[O]nitor, type of nozzle, angle/setting, duration, movement pattern, location, spray target)
 
 88888:
-    Interior door AB, BC, CD, BD status ([O]pen or [C]losed)
+    Status of interior doors AB, BC, CD, DA, BD ([O]pen or [C]losed)
 
 Example: FA1S0COOONCAOOCCC is a furniture fire with one sofa and no chairs in which the fuel is located in Room A. All exterior doors are open with natural ventilation conditions and the ceiling vent is closed. Fire suppression is performed manually with interior doors AB and BC open and the remaining interior doors closed.
 
