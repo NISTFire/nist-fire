@@ -31,26 +31,26 @@
       MATL_ID       = 'CONCRETE'
       THICKNESS     = 0.610 /
 
-&OBST XB=-0.6,  0.0, -0.6, 7.9, 0.0, 2.4 / Exterior walls
-&OBST XB=12.2, 12.8, -0.6, 7.9, 0.0, 2.4 /
-&OBST XB= 0.0, 12.2, -0.6, 0.0, 0.0, 2.4 /
-&OBST XB= 0.0, 12.2,  7.3, 7.9, 0.0, 2.4 /
+&OBST XB= 0.0,  0.6, 0.0, 7.3, 0.0, 2.4 / Exterior walls
+&OBST XB=11.6, 12.2, 0.0, 7.3, 0.0, 2.4 /
+&OBST XB= 0.0, 12.2, 0.0, 0.6, 0.0, 2.4 /
+&OBST XB= 0.0, 12.2, 6.7, 7.3, 0.0, 2.4 /
 
-&OBST XB=-0.6, 12.8, -0.6, 7.9, 2.4, 3.0 / Roof
+&OBST XB=0.0, 12.2, 0.0, 7.3, 2.4, 3.0 / Roof
 
 &OBST XB=4.3, 4.4, 0.0, 7.3, 0.0, 2.4 / Interior walls
 &OBST XB=7.8, 7.9, 0.0, 7.3, 0.0, 2.4 /
 &OBST XB=4.4, 7.8, 3.5, 3.6, 0.0, 2.4 /
 
-&HOLE XB=4.3, 4.4, 5.0, 5.9, 0.0, 2.4 / Interior door (AB)
-&HOLE XB=7.8, 7.9, 5.0, 5.9, 0.0, 2.4 / Interior door (BC)
-&HOLE XB=7.8, 7.9, 1.3, 2.2, 0.0, 2.4 / Interior door (CD)
-&HOLE XB=4.3, 4.4, 1.3, 2.2, 0.0, 2.4 / Interior door (DA)
+&HOLE XB=4.3, 4.4, 4.7, 5.6, 0.0, 2.4 / Interior door (AB)
+&HOLE XB=7.8, 7.9, 4.7, 5.6, 0.0, 2.4 / Interior door (BC)
+&HOLE XB=7.8, 7.9, 1.6, 2.5, 0.0, 2.4 / Interior door (CD)
+&HOLE XB=4.3, 4.4, 1.6, 2.5, 0.0, 2.4 / Interior door (DA)
 &HOLE XB=5.6, 6.5, 3.5, 3.6, 0.0, 2.4 / Interior door (BD)
 
-&HOLE XB=-0.6,   0.0, 3.0, 4.2, 0.0, 2.0 / South door (A)
-&HOLE XB= 12.2, 12.8, 3.6, 4.5, 0.0, 2.0 / North door (C_West)
-&HOLE XB= 12.2, 12.8, 2.7, 3.6, 0.0, 2.0 / North door (C_East)
+&HOLE XB= 0.0,  0.6, 3.0, 4.2, 0.0, 2.0 / South door (A)
+&HOLE XB=11.6, 12.2, 3.6, 4.5, 0.0, 2.0 / North door (C_West)
+&HOLE XB=11.6, 12.2, 2.7, 3.6, 0.0, 2.0 / North door (C_East)
 
 &VENT MB='XMIN', SURF_ID='OPEN' /
 &VENT MB='XMAX', SURF_ID='OPEN' /
