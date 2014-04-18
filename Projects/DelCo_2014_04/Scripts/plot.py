@@ -71,6 +71,10 @@ for channel in data.dtype.names[2:]:
         quantity = data[channel] * scale_factor
         ylabel('Concentration (%)', fontsize=20)
         ylim([0, np.max(quantity*1.2)])
+    if 'HOSE_' in channel:
+        quantity = data[channel] * scale_factor
+        ylabel('Pressure (psi)', fontsize=20)
+        ylim([0, np.max(quantity*1.2)])
 
     plot(t, quantity, lw=2, label=channel)
     xlabel('Time', fontsize=20)
