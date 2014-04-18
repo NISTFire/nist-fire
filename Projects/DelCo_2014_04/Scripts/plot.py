@@ -23,6 +23,12 @@ scaling_file = '../DAQ_Files/Delco_DAQ_Channel_List.csv'
 # Duration of pre-test time (s)
 pre_test_time = 60
 
+Groups of sensors
+sensor_groups = ['TC_A1_', 'TC_A2_', 'TC_A3_', 'TC_A4_', 'TC_A5_', 'TC_A6_',
+                 'TC_A7_', 'TC_A8_', 'TC_A9_', 'TC_A10_', 'TC_Ignition',
+                 'BDP_A6_', 'BDP_A7_', 'BDP_A8_', 'BDP_A9_', 'BDP_A10_',
+                 ['HF_', 'RAD_'], 'HOSE_']
+
 # Common quantities for y-axis labelling
 heat_flux_quantities = ['HF_', 'RAD_']
 gas_quantities = ['CO_', 'CO2_', 'O2_']
@@ -39,48 +45,53 @@ scaling = pd.read_csv(scaling_file, index_col=2)
 #  ============
 
 # Generate a plot for each quantity
-for channel in data.dtype.names[2:]:
-    print 'Plotting ' + channel 
-
-    scale_factor = float(scaling['Calibration'][channel])
+for group in sensor_groups:
+    print 'Plotting ' + group
 
     figure()
     t = data['Time']
 
-    # Scale channel and set plot options depending on quantity
-    if 'TC_' in channel:
-        quantity = data[channel] * scale_factor
-        ylabel('Temperature ($^\circ$C)', fontsize=20)
-        ylim([0, np.max(quantity*1.2)])
-    if 'BDP_' in channel:
-        conv_inch_h2o = 0.4;
-        conv_pascal = 248.8;
-        # Convert voltage to pascals
-        pressure = conv_inch_h2o * conv_pascal * \
-                   (data[channel] - np.mean(data[channel][0:pre_test_time]))
-        # Calculate velocity
-        quantity = 0.0698 * np.sqrt(np.abs(pressure) * \
-                   (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
-        ylabel('Velocity (m/s)', fontsize=20)
-        ylim([-10, 10])
-    if any([substring in channel for substring in heat_flux_quantities]):
-        quantity = data[channel] * scale_factor
-        ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
-        ylim([0, np.max(quantity*1.2)])
-    if any([substring in channel for substring in gas_quantities]):
-        quantity = data[channel] * scale_factor
-        ylabel('Concentration (%)', fontsize=20)
-        ylim([0, np.max(quantity*1.2)])
-    if 'HOSE_' in channel:
-        quantity = data[channel] * scale_factor
-        ylabel('Pressure (psi)', fontsize=20)
-        ylim([0, np.max(quantity*1.2)])
+    for channel in data.dtype.names[2:]:
 
-    plot(t, quantity, lw=2, label=channel)
+        if group in channel:
+
+            scale_factor = float(scaling['Calibration'][channel])
+
+            # Scale channel and set plot options depending on quantity
+            if 'TC_' in channel:
+                quantity = data[channel] * scale_factor
+                ylabel('Temperature ($^\circ$C)', fontsize=20)
+                ylim([0, np.max(quantity*1.2)])
+            if 'BDP_' in channel:
+                conv_inch_h2o = 0.4;
+                conv_pascal = 248.8;
+                # Convert voltage to pascals
+                pressure = conv_inch_h2o * conv_pascal * \
+                           (data[channel] - np.mean(data[channel][0:pre_test_time]))
+                # Calculate velocity
+                quantity = 0.0698 * np.sqrt(np.abs(pressure) * \
+                           (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
+                ylabel('Velocity (m/s)', fontsize=20)
+                ylim([-10, 10])
+            if any([substring in channel for substring in heat_flux_quantities]):
+                quantity = data[channel] * scale_factor
+                ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
+                ylim([0, np.max(quantity*1.2)])
+            if any([substring in channel for substring in gas_quantities]):
+                quantity = data[channel] * scale_factor
+                ylabel('Concentration (%)', fontsize=20)
+                ylim([0, np.max(quantity*1.2)])
+            if 'HOSE_' in channel:
+                quantity = data[channel] * scale_factor
+                ylabel('Pressure (psi)', fontsize=20)
+                ylim([0, np.max(quantity*1.2)])
+
+            plot(t, quantity, lw=2, label=channel)
+
     xlabel('Time', fontsize=20)
     xticks(fontsize=16)
     yticks(fontsize=16)
     legend(loc='lower right')
     grid(True)
-    savefig('../Figures/' + test_name + '_' + channel + '.png')
+    savefig('../Figures/' + test_name + '_' + group + '.png')
     close('all')
