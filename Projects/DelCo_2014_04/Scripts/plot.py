@@ -12,10 +12,10 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Name of the test
-test_name = 'Test_1'
+test_name = 'PPV_YoOOlNY'
 
 # Location of data file
-data_file = '../Experimental_Data/test_data.csv'
+data_file = '../Experimental_Data/PPV/PPV_YoOOlNY.csv'
 
 # Location of scaling conversion file
 scaling_file = '../DAQ_Files/Delco_DAQ_Channel_List.csv'
@@ -47,32 +47,35 @@ for channel in data.dtype.names[2:]:
     figure()
     t = data['Time']
 
-    # Scale channel and set y-axis label depending on quantity
+    # Scale channel and set plot options depending on quantity
     if 'TC_' in channel:
         quantity = data[channel] * scale_factor
         ylabel('Temperature ($^\circ$C)', fontsize=20)
+        ylim([0, np.max(quantity*1.2)])
     if 'BDP_' in channel:
         conv_inch_h2o = 0.4;
         conv_pascal = 248.8;
         # Convert voltage to pascals
         pressure = conv_inch_h2o * conv_pascal * \
-                   (data[channel] - np.mean(data[channel])[0:pre_test_time])
+                   (data[channel] - np.mean(data[channel][0:pre_test_time]))
         # Calculate velocity
         quantity = 0.0698 * np.sqrt(np.abs(pressure) * \
                    (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
         ylabel('Velocity (m/s)', fontsize=20)
+        ylim([-10, 10])
     if any([substring in channel for substring in heat_flux_quantities]):
         quantity = data[channel] * scale_factor
         ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
+        ylim([0, np.max(quantity*1.2)])
     if any([substring in channel for substring in gas_quantities]):
         quantity = data[channel] * scale_factor
         ylabel('Concentration (%)', fontsize=20)
+        ylim([0, np.max(quantity*1.2)])
 
     plot(t, quantity, lw=2, label=channel)
     xlabel('Time', fontsize=20)
     xticks(fontsize=16)
     yticks(fontsize=16)
-    ylim(ymin=0)
     legend(loc='lower right')
     grid(True)
     savefig('../Figures/' + test_name + '_' + channel + '.png')
