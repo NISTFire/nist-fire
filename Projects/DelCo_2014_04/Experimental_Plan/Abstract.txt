@@ -1,0 +1,14 @@
+DelCo Fire Suppression Tests 2014
+
+Background:
+
+NIST has conducted a significant amount of research examining how ventilation affects the growth and spread of fire within structures and how the air flow to the fire may be controlled to limit or delay the growth of the fire.  The studies have resulted in guidance to the fire service regarding ventilation tactics.  However ventilation tactics alone will not result in the complete extinguishment of the fire, fire suppression with hose streams are needed.
+
+Fire suppression tactics using hose streams also affect the ventilation in a structure and can impact the movement of smoke and heat through a structure as vents are made to advance the line or if ventilation inducing hand line tactics are in practice.  This research addressing the coordination of suppression tactics and the impact on ventilation is needed to complete recommendations on fire control tactics to appropriate standards, education, and training documents.
+
+Test Objectives:
+
+1)	Examine the impact of solid streams, straight streams, fog streams and the movement of the nozzle on the ventilation inside a structure with various flow path configurations (PPV experiments followed by water flow experiments).
+
+2)	Examine the impact of solid streams, straight streams, fog streams, and the movement of the nozzle on the cooling of fire gases inside a structure with various flow path configurations, structure configurations and structure volumes (fire experiments).
+
