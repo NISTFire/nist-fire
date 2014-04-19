@@ -33,3 +33,82 @@ Test [1][2][3333][4][5][6][7][8]
 
 Example: FA1S0COOONCAOOCCC is a furniture fire with one sofa and no chairs in which the fuel is located in Room A. All exterior doors are open with natural ventilation conditions and the ceiling vent is closed. Fire suppression is performed manually with interior doors AB and BC open and the remaining interior doors closed.
 
+PPV Test Key:
+
+PPV_[1][2][3][4][5]
+
+1: 
+    Fan Present at C side doors
+    [N]o PPV Fan
+    [Yo] PPV fan 8ft exterior to structure
+    [Yi] PPV fan 8ft from BC doorway
+
+2:
+    Status of Door A
+    [O]pen doors
+    [C]losed doors
+
+3:
+    Status of Door C
+    [O]pen double doors
+    [O]pen [l]eft C door
+    [O]pen [r]ight C door
+    [C]losed doors
+
+4: 
+    Fan Present at A side door
+    [O]pen
+    [C]losed
+
+5:
+    Status of interior doors AB and DA
+    [O]pen
+    [C]losed
+
+HOSE Test Key:
+
+HOSE_[1][2][3][4][5][6]
+
+1:
+    Position of source
+    [D]oorway of side C
+    [I]nside of room C
+
+2:
+    Nozzle description
+    [S]traight
+    [W]ide fog
+    [N]arrow fog
+    [M]ultiple
+
+3: 
+    Target of nozzle
+    [M]iddle ceiling of Room C
+    [U]pper third of door BC
+    Ceiling of room [A]
+    Variable [T]arget
+
+4:
+    Flow source
+    M[O]nitor
+    M[A]nual
+
+5:
+    C Door Status
+    [O]pen
+    [C]losed
+    Variable [D]oor status
+
+6:
+    Nozzle movement
+    [F]ixed
+    Rotate Clockwise [R]
+    Roate Counterc[L]ockwise
+    [M]ultiple nozzle movements
+
+
+
+
+
+
+
