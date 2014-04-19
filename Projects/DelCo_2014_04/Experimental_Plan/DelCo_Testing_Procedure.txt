@@ -26,8 +26,8 @@
 ===============
 
 * Verify operation of all:
-    * Video channels - Jay/Kris - Keith 
-    * DAQ channels - Roy/Craig - Keith
+    * Video channels
+    * DAQ channels
     * Check toggle switches on TC-2095s for appropriate measurement device
     * Gas analyzers
 
