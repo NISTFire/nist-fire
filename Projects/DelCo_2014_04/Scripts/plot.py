@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import glob
 import numpy as np
 import pandas as pd
 from pylab import *
@@ -14,7 +13,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Location of experimental data files
-data_dir = '../Experimental_Data/PPV/'
+data_dir = '../Experimental_Data/HOSE/'
 
 # Location of scaling conversion file
 scaling_file = '../DAQ_Files/Delco_DAQ_Channel_List.csv'
@@ -71,10 +70,12 @@ for f in os.listdir(data_dir):
                     scale_factor = float(scaling['Calibration'][channel])
 
                     # Scale channel and set plot options depending on quantity
+                    # Plot temperatures
                     if 'TC_' in channel:
                         quantity = data[channel] * scale_factor
                         ylabel('Temperature ($^\circ$C)', fontsize=20)
                         ylim([0, np.max(quantity*1.2)])
+                    # Plot velocities
                     if 'BDP_' in channel:
                         conv_inch_h2o = 0.4;
                         conv_pascal = 248.8;
@@ -86,14 +87,17 @@ for f in os.listdir(data_dir):
                                    (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
                         ylabel('Velocity (m/s)', fontsize=20)
                         ylim([-10, 10])
+                    # Plot heat fluxes
                     if any([substring in channel for substring in heat_flux_quantities]):
                         quantity = data[channel] * scale_factor
                         ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
                         ylim([0, np.max(quantity*1.2)])
+                    # Plot gas measurements
                     if any([substring in channel for substring in gas_quantities]):
                         quantity = data[channel] * scale_factor
                         ylabel('Concentration (%)', fontsize=20)
                         ylim([0, np.max(quantity*1.2)])
+                    # Plot hose pressure and flow
                     if 'HOSE_' in channel:
                         quantity = data[channel] * scale_factor
                         ylabel('Pressure (psi)', fontsize=20)
