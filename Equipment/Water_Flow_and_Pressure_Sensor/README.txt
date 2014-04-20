@@ -5,7 +5,8 @@ Server (Host Computer)
 
 Note: the following assumes that the server/host computer’s address is 192.168.1.100. It’s best to configure the host computer with a static IP address using static DHCP or manually.
 
-Host Computer (RabbitMQ)
+
+=== Host Computer (RabbitMQ) ===
 
 1) Install RabbitMQ for your platform and start the RabbitMQ server (./sbin/rabbitmq-server on Mac or Linux).
 
@@ -13,9 +14,7 @@ https://www.rabbitmq.com/
 
 2) Copy the receive_data.py script from the NIST-FIRE repository to the data logging computer.
 
-https://code.google.com/p/nist-fire/source/browse/trunk#trunk%2FProjects%2FSmart_Firefighting%2FArduino
-
-3) Install Python (Anaconda from Continuum Analytics is recommended)
+3) Install Python (The Anaconda Python distribution from Continuum Analytics is recommended)
 
 4) Install the pika module for Python using
 
@@ -25,7 +24,7 @@ pip install pika
 
 python receive_data.py 192.168.1.100 output.csv
 
-Host Computer (NTP Time Server)
+== Host Computer (NTP Time Server) ==
 
 On Windows, download and install the NTP server
 
@@ -33,9 +32,10 @@ http://www.meinbergglobal.com/english/sw/ntp.htm
 
 Mac and Linux use NTP natively.
 
-Client (Arduino)
 
-Install Bridge Sketch on the Arduino
+=== Client (Arduino) ===
+
+== Install pressure_sensor Sketch on the Arduino ==
 
 1) Install Arduino IDE
 
@@ -45,9 +45,9 @@ http://arduino.cc/
 
 3) Set the Tools > Board to Arduino Yun and the Tools > Port to the /dev/ttyusbmodemXXXXXX setting that matches the plugged-in Arduino.
 
-4) Using the Arduino IDE, install the Bridge sketch on Arduino from File > Examples > Bridge > Bridge. This enables the reading and writing of data from pins using the REST API on the Arduino.
+4) A Sketch is a script that runs on the Arduino microcontroller. Using the Arduino IDE, install the pressure_sensor Sketch on the Arduino from the NIST-FIRE repository. This enables the reading and writing of data from the analog-to-digital converter via the REST API on the Arduino. Note: this sketch requires the Adafruit ADS 1015 library from https://github.com/adafruit/Adafruit_ADS1X15.
 
-Configure the Arduino
+== Configure the Arduino ==
 
 1) Unplug the Arduino from the computer, and power on the Arduino from the battery.
 
@@ -61,8 +61,6 @@ easy_install pip
 pip install pika
 
 4) By default, the microSD card on the Arduino is mounted at /mnt/sda1. Copy the send_data.py script from the NIST-FIRE repository to /mnt/sda1 on the Arduino.
-
-https://code.google.com/p/nist-fire/source/browse/trunk#trunk%2FProjects%2FSmart_Firefighting%2FArduino
 
 5) Go to System > Startup > Local Startup in the Arduino web config and add a startup line to the Local Config section (/etc/rc.local)
 
