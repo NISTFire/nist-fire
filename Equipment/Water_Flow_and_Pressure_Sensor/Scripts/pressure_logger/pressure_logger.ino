@@ -18,7 +18,6 @@ void setup(void)
   digitalWrite(13, LOW);
   Bridge.begin();
   digitalWrite(13, HIGH);
-  Serial.begin(9600); // delete
   
   // The ADC input range (or gain) can be changed via the following
   // functions, but be careful never to exceed VDD +0.3V max, or to
