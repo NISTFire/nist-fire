@@ -24,8 +24,7 @@ while True:
         connection = pika.BlockingConnection(
                     pika.ConnectionParameters(host=args.broker))
         channel = connection.channel()
-        channel.exchange_declare(exchange='logs',
-                                 type='fanout')
+        channel.exchange_declare(exchange='logs', type='fanout')
         result = channel.queue_declare(exclusive=True)
         queue_name = result.method.queue
         channel.queue_bind(exchange='logs',

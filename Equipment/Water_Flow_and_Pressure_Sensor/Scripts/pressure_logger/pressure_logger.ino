@@ -18,6 +18,7 @@ void setup(void)
   digitalWrite(13, LOW);
   Bridge.begin();
   digitalWrite(13, HIGH);
+  Serial.begin(9600); // delete
   
   // The ADC input range (or gain) can be changed via the following
   // functions, but be careful never to exceed VDD +0.3V max, or to
@@ -25,7 +26,7 @@ void setup(void)
   // Setting these values incorrectly may destroy your ADC!
   //                                                                ADS1015  ADS1115
   //                                                                -------  -------
-  ads.setGain(GAIN_TWOTHIRDS);  // 2/3x gain +/- 6.144V  1 bit = 3mV      0.1875mV (default)
+  ads.setGain(GAIN_TWOTHIRDS);     // 2/3x gain +/- 6.144V  1 bit = 3mV      0.1875mV (default)
   // ads.setGain(GAIN_ONE);        // 1x gain   +/- 4.096V  1 bit = 2mV      0.125mV
   // ads.setGain(GAIN_TWO);        // 2x gain   +/- 2.048V  1 bit = 1mV      0.0625mV
   // ads.setGain(GAIN_FOUR);       // 4x gain   +/- 1.024V  1 bit = 0.5mV    0.03125mV
@@ -34,162 +35,48 @@ void setup(void)
   
   ads.begin();
   
-  // Listen for incoming connection only from localhost
+  // Listen for incoming connections only from localhost
   server.listenOnLocalhost();
   server.begin();
 }
 
 void loop() {
-  // Get clients coming from server
+  // Get clients connecting to the server
   YunClient client = server.accept();
 
-  // There is a new client?
+  // There is a new client
   if (client) {
     // Process request
     process(client);
 
-    // Close connection and free resources.
+    // Close connection and free resourcems.
     client.stop();
   }
 
-  delay(50); // Poll every 50ms
+  delay(50); // Poll every 50 ms
 }
 
 void process(YunClient client) {
-  // read the command
+  // Read the command
   String command = client.readStringUntil('/');
-
-  // is "digital" command?
-  if (command == "digital") {
-    digitalCommand(client);
-  }
-
-  // is "analog" command?
-  if (command == "analog") {
-    analogCommand(client);
-  }
-
-  // is "mode" command?
-  if (command == "mode") {
-    modeCommand(client);
-  }
     
-  // is "adc" command?
+  // "adc" command
   if (command == "adc"){
     adcCommand(client);
   }
 }
 
-void digitalCommand(YunClient client) {
-  int pin, value;
-
-  // Read pin number
-  pin = client.parseInt();
-
-  // If the next character is a '/' it means we have an URL
-  // with a value like: "/digital/13/1"
-  if (client.read() == '/') {
-    value = client.parseInt();
-    digitalWrite(pin, value);
-  }
-  else {
-    value = digitalRead(pin);
-  }
-
-  // Send feedback to client
-  client.print(F("Pin D"));
-  client.print(pin);
-  client.print(F(" set to "));
-  client.println(value);
-
-  // Update datastore key with the current pin value
-  String key = "D";
-  key += pin;
-  Bridge.put(key, String(value));
-}
-
-void analogCommand(YunClient client) {
-  int pin, value;
-
-  // Read pin number
-  pin = client.parseInt();
-
-  // If the next character is a '/' it means we have an URL
-  // with a value like: "/analog/5/120"
-  if (client.read() == '/') {
-    // Read value and execute command
-    value = client.parseInt();
-    analogWrite(pin, value);
-
-    // Send feedback to client
-    client.print(F("Pin D"));
-    client.print(pin);
-    client.print(F(" set to analog "));
-    client.println(value);
-
-    // Update datastore key with the current pin value
-    String key = "D";
-    key += pin;
-    Bridge.put(key, String(value));
-  }
-  else {
-    // Read analog pin
-    value = analogRead(pin);
-
-    // Send feedback to client
-    client.print(F("Pin A"));
-    client.print(pin);
-    client.print(F(" reads analog "));
-    client.println(value);
-
-    // Update datastore key with the current pin value
-    String key = "A";
-    key += pin;
-    Bridge.put(key, String(value));
-  }
-}
-
-void modeCommand(YunClient client) {
-  int pin;
-
-  // Read pin number
-  pin = client.parseInt();
-
-  // If the next character is not a '/' we have a malformed URL
-  if (client.read() != '/') {
-    client.println(F("error"));
-    return;
-  }
-
-  String mode = client.readStringUntil('\r');
-
-  if (mode == "input") {
-    pinMode(pin, INPUT);
-    // Send feedback to client
-    client.print(F("Pin D"));
-    client.print(pin);
-    client.print(F(" configured as INPUT!"));
-    return;
-  }
-
-  if (mode == "output") {
-    pinMode(pin, OUTPUT);
-    // Send feedback to client
-    client.print(F("Pin D"));
-    client.print(pin);
-    client.print(F(" configured as OUTPUT!"));
-    return;
-  }
-
-  client.print(F("error: invalid mode "));
-  client.print(mode);
-}
-
 void adcCommand(YunClient client) {
-  int channel, value;
+  int channel;
+  int16_t value;
+  float multiplier, voltage;
 
-  // Read pin number
+  // Read channel
   channel = client.parseInt();
+  
+  /* Be sure to update this value based on the IC and the gain settings! */
+  // multiplier = 3.0;    /* ADS1015 @ +/- 6.144V gain (12-bit results) */
+  multiplier = 0.1875; /* ADS1115  @ +/- 6.144V gain (16-bit results) */  
 
   if (channel == 1) {
     value = ads.readADC_Differential_0_1();
@@ -198,17 +85,15 @@ void adcCommand(YunClient client) {
     value = ads.readADC_Differential_2_3();
   }
   
-  // Send feedback to client
-  client.print(F("Channel "));
-  client.print(channel);
-  client.print(F(" voltage is "));
-  client.println(value);
-  client.print(F(" V"));
+  voltage = value * multiplier;
 
-  // Update datastore key with the current pin value
+  // Send feedback to client
+  client.print(voltage);
+
+  // Update datastore key with the current channel value
   String key = "C";
   key += channel;
-  Bridge.put(key, String(value));
+  Bridge.put(key, String(voltage));
 }
 
 

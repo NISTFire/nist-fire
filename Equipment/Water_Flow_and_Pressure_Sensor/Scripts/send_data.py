@@ -6,25 +6,12 @@ import pika
 import time
 import argparse
 import urllib2
-import re
+from math import sqrt
 
-
-def read_value(pin):
-    # Read voltage from specified analog pin over REST API
-    response = urllib2.urlopen('http://localhost/arduino/analog/' + str(pin))
-    value = response.read()
-    value = re.findall('\d+', value)
-    response.close()
-    return float(value[1])
-
-def read_flow_rate(pin):
-    # Read voltage from specified analog pin
-    value = read_value(pin)
-    # Scale reading of 0-1023 to 0-5 V range
-    voltage = value * (5 / 1023)
-    # Convert voltage to flow rate (gpm)
-    flow_rate = 141.36*voltage**3 - 1657.6*voltage**2 + 6654.5*voltage - 9072
-    return voltage, flow_rate
+voltage_scaling_factor = 2.5 # psi/mV
+flow_constant = 56 # 56 for 1.5 inch coupling, 143 for 2.5 inch coupling
+calibration_timer = 30
+retry_timer = 30
 
 # Parse command line arguments
 parser = argparse.ArgumentParser()
@@ -33,23 +20,93 @@ parser.add_argument('logger_id', help='Logger name or ID')
 parser.add_argument('log_file', help='Location of log file')
 args = parser.parse_args()
 
+
+def read_voltage(channel):
+    # Read voltage from specified ADC channel over REST API
+    response = urllib2.urlopen('http://localhost/arduino/adc/' + str(channel))
+    voltage = response.read()
+    response.close()
+    voltage = float(voltage)
+    return voltage
+
+
+def convert_voltage(voltage, zero_voltage):
+    # Convert voltage to pressure (psi)
+    pressure = (voltage - zero_voltage) * voltage_scaling_factor
+    return pressure
+
+
+def calculate_flow_rate(pressure_1, pressure_2):
+    # Calculate flow rate from pressure differential
+    pressure_differential = pressure_1 - pressure_2
+    try:
+        flow_rate = flow_constant * sqrt(pressure_differential)
+    except:
+        return float('nan')
+    return flow_rate
+
 # Attemps to connect to server and run data broadcast loop.
 # If it fails to connect to the broker, it will wait some time
-# and attempt to reconnect infinitely.
+# and attempt to reconnect indefinitely.
 while True:
     try:
-        connection = pika.BlockingConnection(
-                pika.ConnectionParameters(host=args.broker))
+        connection = pika.BlockingConnection(pika.ConnectionParameters(host=args.broker))
         channel = connection.channel()
+        channel.exchange_declare(exchange='logs', type='fanout')
 
-        channel.exchange_declare(exchange='logs',
-                                 type='fanout')
+        # Read voltage value at zero flow/ambient pressure to calculate offset
+        zero_voltage_1_list = []
+        zero_voltage_2_list = []
+        timer = 1
+        while timer <= calibration_timer:
+            # Read pressure from ADC channels
+            voltage_1 = read_voltage(1)
+            voltage_2 = read_voltage(2)
+            zero_voltage_1_list.append(voltage_1)
+            zero_voltage_2_list.append(voltage_2)
 
+            # Construct message
+            message = (time.ctime()+',%s %s (%i/%i),%0.2f,%0.2f,%0.2f,%0.2f,%0.2f') % (
+                    args.logger_id, 'Calibration', timer, calibration_timer,
+                    voltage_1, 0, voltage_2, 0, 0)
+            channel.basic_publish(exchange='logs',
+                                  routing_key='',
+                                  body=message)
+            print 'Sent %r' % (message)
+            
+            time.sleep(1)
+            timer += 1
+
+        # Calculate average of zero voltage value
+        zero_voltage_1 = sum(zero_voltage_1_list) / len(zero_voltage_1_list)
+        zero_voltage_2 = sum(zero_voltage_2_list) / len(zero_voltage_2_list)
+
+        # Construct message
+        message = (time.ctime()+',%s %s,%0.2f,%0.2f,%0.2f,%0.2f,%0.2f') % (
+                args.logger_id, 'Calibration complete',
+                zero_voltage_1, 0, zero_voltage_2, 0, 0)
+        channel.basic_publish(exchange='logs',
+                              routing_key='',
+                              body=message)
+        print 'Sent %r' % (message)
+
+        # Send voltage, pressure, and flow rate data
         while True:
-            # Read flow rate from pin 0
-            voltage, flow_rate = read_flow_rate(0)
+            # Read voltage from ADC channels
+            voltage_1 = read_voltage(1)
+            voltage_2 = read_voltage(2)
+
+            # Convert voltages to pressures
+            pressure_1 = convert_voltage(voltage_1, zero_voltage_1)
+            pressure_2 = convert_voltage(voltage_2, zero_voltage_2)
+
+            # Calculate flow rate from pressure differential
+            flow_rate = calculate_flow_rate(pressure_1, pressure_2)
+            
             # Construct message for log
-            message = (time.ctime()+',%s,%0.2f,%0.2f') % (args.logger_id, voltage, flow_rate)
+            message = (time.ctime()+',%s,%0.2f,%0.2f,%0.2f,%0.2f,%0.2f') % (
+                    args.logger_id, voltage_1, pressure_1, voltage_2,
+                    pressure_2, flow_rate)
             channel.basic_publish(exchange='logs',
                                   routing_key='',
                                   body=message)
@@ -63,12 +120,13 @@ while True:
         print 'No broker found. Retrying in 30 seconds...'
         
         timer = 0
-        retry_value = 30
-        while timer < retry_value:
-            # Read flow rate from pin 0
-            voltage, flow_rate = read_flow_rate(0)
+        while timer < retry_timer:
+            # Read flow voltage from ADC channels
+            voltage_1 = read_voltage(1)
+            voltage_2 = read_voltage(2)
             # Construct message for log
-            message = (time.ctime()+',%s,%0.2f,%0.2f') % (args.logger_id, voltage, flow_rate)
+            message = (time.ctime()+',%s,%0.2f,%0.2f,%0.2f,%0.2f,%0.2f') % (
+                  args.logger_id, voltage_1, 0, voltage_2, 0, 0)
             with open(args.log_file, 'a+') as text_file:
                 text_file.write(message+'\n')
             time.sleep(1)
