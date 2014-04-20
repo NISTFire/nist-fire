@@ -18,6 +18,8 @@ data_dir = '../Experimental_Data/HOSE/'
 # Location of scaling conversion file
 scaling_file = '../DAQ_Files/Delco_DAQ_Channel_List.csv'
 
+timings_file = '../Experimental_Data/HOSE/All_Times.csv'
+
 # Duration of pre-test time (s)
 pre_test_time = 60
 
@@ -35,12 +37,23 @@ sensor_groups = [['TC_A1_'], ['TC_A2_'], ['TC_A3_'], ['TC_A4_'], ['TC_A5_'],
 heat_flux_quantities = ['HF_', 'RAD_']
 gas_quantities = ['CO_', 'CO2_', 'O2_']
 
+#  ================
+#  = Read in data =
+#  ================
+
+scaling = pd.read_csv(scaling_file, index_col=2)
+timings = pd.read_csv(timings_file, index_col=0)
+
 #  ===============================
 #  = Loop through all data files =
 #  ===============================
 
 for f in os.listdir(data_dir):
     if f.endswith('.csv'):
+
+        # Skip files with time information
+        if 'times' in f.lower():
+            continue
 
         test_name = f[:-4]
         print 'Test ' + test_name
@@ -50,7 +63,6 @@ for f in os.listdir(data_dir):
         #  ================
 
         data = np.genfromtxt(data_dir + f, delimiter=',', names=True)
-        scaling = pd.read_csv(scaling_file, index_col=2)
 
         #  ============
         #  = Plotting =
@@ -60,7 +72,7 @@ for f in os.listdir(data_dir):
         for group in sensor_groups:
             print 'Plotting ', group
 
-            figure()
+            fig = figure()
             t = data['Time']
 
             for channel in data.dtype.names[2:]:
@@ -105,10 +117,33 @@ for f in os.listdir(data_dir):
 
                     plot(t, quantity, lw=2, label=channel)
 
+            ax1 = gca()
+            legend(loc='lower right', fontsize=8)
             xlabel('Time', fontsize=20)
             xticks(fontsize=16)
             yticks(fontsize=16)
-            legend(loc='lower right')
             grid(True)
-            savefig('../Figures/' + test_name + '_' + group[0].rstrip('_') + '.png')
+
+            try:
+                # Add vertical lines for timing information (if available)
+                for index, row in timings.iterrows():
+                    if pd.isnull(row[test_name]):
+                        continue
+                    axvline(index, color='k', lw=2)
+
+                # Add secondary x-axis labels for timing information
+                ax2 = ax1.twiny()
+                ax2.set_xticks(timings[test_name].dropna().index)
+                setp(xticks()[1], rotation=60)
+                ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=10, ha='left')
+            except:
+                pass
+
+            # Save to appropriate plot figure directory
+            if 'PPV_' in test_name:
+                folder_name = 'PPV/'
+            elif 'HOSE_' in test_name:
+                folder_name = 'HOSE/'
+
+            savefig('../Figures/' + folder_name + test_name + '_' + group[0].rstrip('_') + '.pdf')
             close('all')
