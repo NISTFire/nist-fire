@@ -1,6 +1,5 @@
 Time,HOSE_DSTODF,HOSE_DNTODF,HOSE_DSTADF,HOSE_DNTADM,HOSE_IMAODM,HOSE_IMTADM
-0,monitor with straight stream placed in C doorway; fixed stream; A door closed,monitor with narrow fog stream placed in C doorway; fixed stream; A door closed,manual nozzle at C side doorway; A door closed; stream is straight; fixed and rotated,manual nozzle at C side doorway; A door closed; stream is narrow fog fixed and rotated,monitor with straight stream placed near BC doorway; fixed stream; A door closed,manuak with straight stream  near BC doorway; fixed stream; A door closed
-30,,,,,,
+0,monitor with straight stream placed in C doorway; fixed stream; A door closed,monitor with narrow fog stream placed in C doorway; fixed stream; A door closed,manual nozzle at C side doorway; A door closed; stream is straight; fixed and rotated,manual nozzle at C side doorway; A door closed; stream is narrow fog fixed and rotated,monitor with straight stream placed near BC doorway; fixed stream; A door closed,manual with straight stream  near BC doorway; fixed stream; A door closed
 60,,"end of closed door pre-test data, A door opened",,,end of closed door pre-test data; straight stream aimed through AB door,
 64,end of closed door pre-test data; A door opened,,,,,
 90,,,"end of closed door pre-test data, A door opened",,replicate 1; narrow fog; aimed through AB door,
@@ -14,12 +13,12 @@ Time,HOSE_DSTODF,HOSE_DNTODF,HOSE_DSTADF,HOSE_DNTADM,HOSE_IMAODM,HOSE_IMTADM
 240,,replicate 1; stopped water flow,replicate 1; hose rotated to the right,replicate 1; hose rotated to the right,,straight stream aimed into room A; rotated to the right
 270,"replicate 1; monitor applied to door BC target, straight stream",,replicate 1; hose fixed,replicate 1; hose fixed,,narrow fog aimed at ceiling B; fixed stream
 300,replicate 1; A door opened,"replicate 1; monitor applied to door BC target, narrow fog stream",replicate 1; hose rotated to the left,replicate 1; hose rotated to the left,,narrow fog aimed at ceiling B; rotated to the right
-330,replicate 1; A door closed,replicate 1; A door opened,replicate 1; hoseline fixed; door A opened,replicate 1; hoseline fixed,,narrow fog aimed into room A; fixed stream
+330,replicate 1; A door closed,replicate 1; A door opened,replicate 1; hose fixed; door A opened,replicate 1; hoseline fixed,,narrow fog aimed into room A; fixed stream
 344,replicate 1; stopped water flow,,,,,
 360,,replicate 1; A door closed,replicate 1; hose rotated to the right,replicate 1; door A opened,,narrow fog aimed into room A; rotated to the right
 390,,replicate 1; stopped water flow,replicate 1; hose fixed,replicate 1; hose rotated to the right,,wide fog aimed at ceiling B; fixed stream
-420,replicate 2; monitor aoplied to ceiling target; straight stream ,,replicate 1; hose rotated to the left,replicate 1; hose fixed,,wide fog aimed at ceiling B; rotated to the right
-450,replicate 2; A door opened,replicate 2; monitor aoplied to ceiling target; narrow fog stream ,,replicate 1; hose rotated to the left,replicate 2; straight strem aimed through AB door,wide fog aimed into room A; fixed stream
+420,replicate 2; monitor applied to ceiling target; straight stream ,,replicate 1; hose rotated to the left,replicate 1; hose fixed,,wide fog aimed at ceiling B; rotated to the right
+450,replicate 2; A door opened,replicate 2; monitor applied to ceiling target; narrow fog stream ,,replicate 1; hose rotated to the left,replicate 2; straight strem aimed through AB door,wide fog aimed into room A; fixed stream
 455,,,replicate 1; hose fixed; door A closed,,,
 480,replicate 2; A door closed,replicate 2; A door opened,,replicate 1; hoseline fixed,replicate 2; narrow fog aimed through AB door,"wide fog aimed into room A,; rotated to the right"
 499,replicate 2; water flow stopped,,,replicate 1; door A closed,,
@@ -47,7 +46,6 @@ Time,HOSE_DSTODF,HOSE_DNTODF,HOSE_DSTADF,HOSE_DNTADM,HOSE_IMAODM,HOSE_IMTADM
 1080,,,,,,wide fog aimed into room A; fixed stream
 1110,,,,,,"wide fog aimed into room A,; rotated to the left"
 1140,,,,,,water flow stopped
-1170,,,,,,
 1200,,,,replicate 2; hose aimed at ceiling target; fixed narrow fog stream,,
 1230,,,,replicate 2; hose rotated to the right,,
 1260,,,,replicate 2; hose fixed,,
