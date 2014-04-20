@@ -118,10 +118,10 @@ for f in os.listdir(data_dir):
                     plot(t, quantity, lw=2, label=channel)
 
             ax1 = gca()
-            legend(loc='lower right', fontsize=8)
             xlabel('Time', fontsize=20)
             xticks(fontsize=16)
             yticks(fontsize=16)
+            legend(loc='lower right', fontsize=8)
             grid(True)
 
             try:
@@ -145,5 +145,5 @@ for f in os.listdir(data_dir):
             elif 'HOSE_' in test_name:
                 folder_name = 'HOSE/'
 
-            savefig('../Figures/' + folder_name + test_name + '_' + group[0].rstrip('_') + '.pdf')
+            savefig('../Figures/' + folder_name + test_name + '_' + group[0].rstrip('_') + '.png')
             close('all')
