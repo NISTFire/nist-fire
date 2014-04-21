@@ -1,75 +1,75 @@
 Time,HOSE_DSTODF,HOSE_DNTODF,HOSE_DSTADF,HOSE_DNTADM,HOSE_IMAODM,HOSE_IMTADM
-0,monitor with straight stream placed in C doorway; fixed stream; A door closed,monitor with narrow fog stream placed in C doorway; fixed stream; A door closed,manual nozzle at C side doorway; A door closed; stream is straight; fixed and rotated,manual nozzle at C side doorway; A door closed; stream is narrow fog fixed and rotated,monitor with straight stream placed near BC doorway; fixed stream; A door closed,manual with straight stream  near BC doorway; fixed stream; A door closed
-60,,"end of closed door pre-test data, A door opened",,,end of closed door pre-test data; straight stream aimed through AB door,
-64,end of closed door pre-test data; A door opened,,,,,
-90,,,"end of closed door pre-test data, A door opened",,replicate 1; narrow fog; aimed through AB door,
-120,,"end of A door open pre-test data, A door closed to start test",,"end of closed door pre-test data, A door opened",replicate 1; wide fog; aimed through AB door,
-128,"end of A door open pre-test data, A door closed to start test",,,,,
-150,replicate 1; monitor applied to ceiling target; straight stream,replicate 1; monitor applied to ceiling target; narrow fog stream,"end of A door open pre-test data, A door closed to start test",,replicate 1; water flow stopped,"end pre-test data, straight stream aimed a ceiling room B; fixed stream"
-180,replicate 1; A door opened,replicate 1; A door opened,,"end of A door open pre-test data, A door closed to start test",,straight stream aimed at ceiling B; rotated to the right
-210,,replicate 1; A door closed,replicate 1; hose aimed at ceiling target; fixed straight stream,replicate 1; hose aimed at ceiling target; fixed narrow fog stream,,straight stream aimed into room A; fixed stream
-215,replicate 1; A door closed,,,,,
-229,replicate 1; stopped water flow,,,,,
-240,,replicate 1; stopped water flow,replicate 1; hose rotated to the right,replicate 1; hose rotated to the right,,straight stream aimed into room A; rotated to the right
-270,"replicate 1; monitor applied to door BC target, straight stream",,replicate 1; hose fixed,replicate 1; hose fixed,,narrow fog aimed at ceiling B; fixed stream
-300,replicate 1; A door opened,"replicate 1; monitor applied to door BC target, narrow fog stream",replicate 1; hose rotated to the left,replicate 1; hose rotated to the left,,narrow fog aimed at ceiling B; rotated to the right
-330,replicate 1; A door closed,replicate 1; A door opened,replicate 1; hose fixed; door A opened,replicate 1; hoseline fixed,,narrow fog aimed into room A; fixed stream
-344,replicate 1; stopped water flow,,,,,
-360,,replicate 1; A door closed,replicate 1; hose rotated to the right,replicate 1; door A opened,,narrow fog aimed into room A; rotated to the right
-390,,replicate 1; stopped water flow,replicate 1; hose fixed,replicate 1; hose rotated to the right,,wide fog aimed at ceiling B; fixed stream
-420,replicate 2; monitor applied to ceiling target; straight stream ,,replicate 1; hose rotated to the left,replicate 1; hose fixed,,wide fog aimed at ceiling B; rotated to the right
-450,replicate 2; A door opened,replicate 2; monitor applied to ceiling target; narrow fog stream ,,replicate 1; hose rotated to the left,replicate 2; straight strem aimed through AB door,wide fog aimed into room A; fixed stream
-455,,,replicate 1; hose fixed; door A closed,,,
-480,replicate 2; A door closed,replicate 2; A door opened,,replicate 1; hoseline fixed,replicate 2; narrow fog aimed through AB door,"wide fog aimed into room A,; rotated to the right"
-499,replicate 2; water flow stopped,,,replicate 1; door A closed,,
-510,,replicate 2; A door closed,,,replicate 2; wide fog aimed through AB door,water flow stopped
-540,"replicate 2; monitor applied to door BC target, straight stream",replicate 2; water flow stopped,"replicate 1; hose aimed at door BC target; hose fixed, straight stream",,replicate 2; water flow stopped,
-570,replicate 2; A door opened,"replicate 2; monitor applied to door BC target, narrow fog stream",replicate 1; hose rotated to the right,"replicate 1; hose aimed at door BC target; hose fixed, narrow fog stream",door A opened; straight stream aimed through AB door,
-600,replicate 2; A door closed,replicate 2; A door opened,replicate 1; hose fixed,replicate 1; hose rotated to the right,replicate 1; narrow fog; aimed through AB door,
-612,"replicate 2, water flow stopped",,,,,
-630,,replicate 2; A door closed,replicate 1; hose rotated to the left,replicate 1; hose fixed,replicate 1; wide fog; aimed through AB door,
-660,,"replicate 2, water flow stopped",replicate 1; hose fixed,replicate 1; hose rotated to the left,replicate 1; water flow stopped,
-675,,,replicate 1; door A opened,,,
-690,,,replicate 1; hose rotated to the right,replicate 1; hoseline fixed,,
-720,,,replicate 1; hose fixed,replicate 1; door A opened,,
-750,,,replicate 1; hose rotated to the left,replicate 1; hose rotated to the right,,
-780,,,replicate 1; hose fixed,replicate 1; hose fixed,,straight stream aimed a ceiling room B; fixed stream
-810,,,replicate 1; door A closed,replicate 1; hose rotated to the left,,straight stream aimed at ceiling B; rotated to the left
-840,,,replicate 1; water flow stopped,replicate 1; hose fixed,,straight stream aimed into room A; fixed stream
-870,,,,replicate 1; door A closed,,straight stream aimed into room A; rotated to the left
-900,,,,replicate 1; stopped water flow,,narrow fog aimed at ceiling B; fixed stream
-930,,,,,,narrow fog aimed at ceiling B; rotated to the left
-960,,,,,,narrow fog aimed into room A; fixed stream
-990,,,,,,narrow fog aimed into room A; rotated to the left
-1020,,,,,,wide fog aimed at ceiling B; fixed stream
-1050,,,,,,wide fog aimed at ceiling B; rotated to the left
-1080,,,,,,wide fog aimed into room A; fixed stream
-1110,,,,,,"wide fog aimed into room A,; rotated to the left"
-1140,,,,,,water flow stopped
-1200,,,,replicate 2; hose aimed at ceiling target; fixed narrow fog stream,,
-1230,,,,replicate 2; hose rotated to the right,,
-1260,,,,replicate 2; hose fixed,,
-1290,,,replicate 2; hose aimed at ceiling target; straight fixed stream,replicate 2; hose rotated to the left,,
-1320,,,replicate 2; hose rotated to the right,replicate 2; hose fixed,,
-1350,,,replicate 2; hose fixed,replicate 2; door A opened,,
-1380,,,replicate 2; hose rotated to the left,replicate 2; hose rotated to the right,,
-1410,,,replicate 2; hose fixed,replicate 2; hose fixed,,
-1440,,,replicate 2; door A opened,replicate 2; hose rotated to the left,,
-1470,,,replicate 2; hose rotated to the right,replicate 2; hose fixed,,
-1500,,,replicate 2; hose fixed,replicate 2; door A closed,,
-1530,,,replicate 2; hose rotated to the left,replicate 2; stopped water flow,,
-1560,,,replicate 2; hose fixed,,,
-1590,,,replicate 2; door A closed,"replicate 2; hose aimed at door BC target; hose fixed, narrow fog stream",,
-1620,,,,replicate 2; hose rotated to the right,,
-1650,,,replicate 2; hose aimed at door BC target; straight fixed stream,replicate 2; hose fixed,,
-1680,,,replicate 2; hose rotated to the right,replicate 2; hose rotated to the left,,
-1710,,,replicate 2; hose fixed,replicate 2; hose fixed,,
-1740,,,replicate 2; hose rotated to the left,replicate 2; door A opened,,
-1770,,,replicate 2; hose fixed,replicate 2; hose rotated to the right,,
-1800,,,replicate 2; A door opened,replicate 2; hose fixed,,
-1830,,,replicate 2; hose rotated to the right,replicate 2; hose rotated to the left,,
-1860,,,replicate 2; hose fixed,replicate 2; hose fixed,,
-1890,,,replicate 2; hose rotated to the left,replicate 2; door A closed,,
-1920,,,replicate 2; hose fixed,replicate 2; stopped water flow,,
-1950,,,replicate 2; A door closed,,,
-1980,,,replicate 2; water flow stopped,,,
+0,Monitor located at Door C; Rear door is closed,Monitor located at Door C; Rear door is closed,Manual nozzle located at Door C; Rear door is closed,Manual nozzle located at Door C; Rear door is closed,Monitor located near Door BC; Rear door is closed,Manual nozzle ocated near Door BC; Rear door is closed
+60,,Rear door opened,,,Fixed straight stream at Door AB,
+64,Rear door opened,,,,,
+90,,,Rear door opened,,Fixed narrow fog at Door AB,
+120,,Rear door closed,,Rear door opened,Fixed wide fog at Door AB,
+128,Rear door closed,,,,,
+150,Fixed straight stream at Room A ceiling,Narrow fog at Room A ceiling,Rear door closed,,Water flow stopped,Fixed straight stream at Room B ceiling
+180,Rear door opened,Rear door opened,,Rear door closed,,Straight stream rotated right at ceiling B
+210,,Rear door closed,Fixed straight stream at Room A ceiling,Fixed narrow fog stream at Room A ceiling,,Fixed straight stream at Room A
+215,Rear door closed,,,,,
+229,Water flow stopped,,,,,
+240,,Water flow stopped,Hose rotated right,Hose rotated right,,Straight stream rotated right at room A
+270,Fixed straight stream at Door BC,,Hose fixed,Hose fixed,,Fixed narrow fog at Room B ceiling
+300,Rear door opened,Narrow fog at Door BC,Hose rotated left,Hose rotated left,,Narrow fog rotated right at Room B Ceiling
+330,Rear door closed,Rear door opened,Hose fixed; Rear door opened,Hose fixed,,Fixed narrow fog at Room A
+344,Water flow stopped,,,,,
+360,,Rear door closed,Hose rotated right,Rear door opened,,Narrow fog rotated right at Room A
+390,,Water flow stopped,Hose fixed,Hose rotated right,,Fixed wide fog at Room B ceiling
+420,Fixed straight stream at Room A ceiling,,Hose rotated left,Hose fixed,,Wide fog rotated right at Room B ceiling
+450,Rear door opened,Narrow fog at Room A ceiling,,Hose rotated left,Fixed straight stream at Door AB,Fixed wide fog at Room A
+455,,,Hose fixed; Rear door closed,,,
+480,Rear door closed,Rear door opened,,Hose fixed,Fixed narrow fog at Door AB,Wide fog rotated right at Room A
+499,Water flow stopped,,,Rear door closed,,
+510,,Rear door closed,,,Fixed wide fog at Door AB,Water flow stopped
+540,Fixed straight stream at Door BC,Water flow stopped,Fixed straight stream at Door BC,,Water flow stopped,
+570,Rear door opened,Narrow fog at Door BC,Hose rotated right,Fixed narrow fog stream at Door BC,Rear door opened; Fixed straight stream at Door AB,
+600,Rear door closed,Rear door opened,Hose fixed,Hose rotated right,Fixed narrow fog at Door AB,
+612,Water flow stopped,,,,,
+630,,Rear door closed,Hose rotated left,Hose fixed,Fixed wide fog at Door AB,
+660,,Water flow stopped,Hose fixed,Hose rotated left,Water flow stopped,
+675,,,Rear door opened,,,
+690,,,Hose rotated right,Hose fixed,,
+720,,,Hose fixed,Rear door opened,,
+750,,,Hose rotated left,Hose rotated right,,
+780,,,Hose fixed,Hose fixed,,Fixed straight stream at Room B ceiling
+810,,,Rear door closed,Hose rotated left,,Straight stream rotated left at Room B ceiling
+840,,,Water flow stopped,Hose fixed,,Fixed straight stream at Room A
+870,,,,Rear door closed,,Straight stream rotated left at Room A
+900,,,,Water flow stopped,,Fixed narrow fog at Room B ceiling
+930,,,,,,Narrow fog rotated left at Room B ceiling
+960,,,,,,Fixed narrow fog at Room A
+990,,,,,,Narrow fog rotated left at Room A
+1020,,,,,,Fixed wide fog at Room B ceiling
+1050,,,,,,Wide fog rotated left at Room B ceiling
+1080,,,,,,Fixed wide fog at Room A
+1110,,,,,,Wide fog rotated left at Room A
+1140,,,,,,Water flow stopped
+1200,,,,Fixed narrow fog stream at Room A ceiling,,
+1230,,,,Hose rotated right,,
+1260,,,,Hose fixed,,
+1290,,,Fixed straight stream at Room A ceiling,Hose rotated left,,
+1320,,,Hose rotated right,Hose fixed,,
+1350,,,Hose fixed,Rear door opened,,
+1380,,,Hose rotated left,Hose rotated right,,
+1410,,,Hose fixed,Hose fixed,,
+1440,,,Rear door opened,Hose rotated left,,
+1470,,,Hose rotated right,Hose fixed,,
+1500,,,Hose fixed,Rear door closed,,
+1530,,,Hose rotated left,Water flow stopped,,
+1560,,,Hose fixed,,,
+1590,,,Rear door closed,Fixed narrow fog stream at Door BC,,
+1620,,,,Hose rotated right,,
+1650,,,Fixed straight stream at Door BC,Hose fixed,,
+1680,,,Hose rotated right,Hose rotated left,,
+1710,,,Hose fixed,Hose fixed,,
+1740,,,Hose rotated left,Rear door opened,,
+1770,,,Hose fixed,Hose rotated right,,
+1800,,,Rear door opened,Hose fixed,,
+1830,,,Hose rotated right,Hose rotated left,,
+1860,,,Hose fixed,Hose fixed,,
+1890,,,Hose rotated left,Rear door closed,,
+1920,,,Hose fixed,Water flow stopped,,
+1950,,,Rear door closed,,,
+1980,,,Water flow stopped,,,
