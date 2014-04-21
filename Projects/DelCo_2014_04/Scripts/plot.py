@@ -72,7 +72,7 @@ for f in os.listdir(data_dir):
         for group in sensor_groups:
             print 'Plotting ', group
 
-            fig = figure()
+            fig = figure(figsize=[8,8])
             t = data['Time']
 
             for channel in data.dtype.names[2:]:
@@ -115,27 +115,28 @@ for f in os.listdir(data_dir):
                         ylabel('Pressure (psi)', fontsize=20)
                         ylim([0, np.max(quantity*1.2)])
 
-                    plot(t, quantity, lw=2, label=channel)
+                    plot(t, quantity, lw=2, label=channel, rasterized=True)
 
             ax1 = gca()
+            x_limit = ax1.axis()[1]
             xlabel('Time', fontsize=20)
             xticks(fontsize=16)
             yticks(fontsize=16)
             legend(loc='lower right', fontsize=8)
-            grid(True)
 
             try:
                 # Add vertical lines for timing information (if available)
                 for index, row in timings.iterrows():
                     if pd.isnull(row[test_name]):
                         continue
-                    axvline(index, color='k', lw=2)
+                    axvline(index, color='0.50', lw=1)
 
                 # Add secondary x-axis labels for timing information
                 ax2 = ax1.twiny()
+                xlim([0, x_limit])
                 ax2.set_xticks(timings[test_name].dropna().index)
                 setp(xticks()[1], rotation=60)
-                ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=10, ha='left')
+                ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
             except:
                 pass
 
@@ -145,5 +146,5 @@ for f in os.listdir(data_dir):
             elif 'HOSE_' in test_name:
                 folder_name = 'HOSE/'
 
-            savefig('../Figures/' + folder_name + test_name + '_' + group[0].rstrip('_') + '.png')
+            savefig('../Figures/' + folder_name + test_name + '_' + group[0].rstrip('_') + '.pdf')
             close('all')
