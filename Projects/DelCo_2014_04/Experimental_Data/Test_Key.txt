@@ -57,13 +57,13 @@ PPV_[1][2][3][4][5]
 
 4: 
     Fan Present at A side door
-    [O]pen
-    [C]losed
+    [N]o
+    [Y]es
 
 5:
-    Status of interior doors AB and DA
-    [O]pen
-    [C]losed
+    Interior doorways AB and DA present
+    [N]o
+    [Y]es
 
 HOSE Test Key:
 
