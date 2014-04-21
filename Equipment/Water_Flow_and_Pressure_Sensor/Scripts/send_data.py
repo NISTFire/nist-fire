@@ -8,7 +8,8 @@ import argparse
 import urllib2
 from math import sqrt
 
-voltage_scaling_factor = 2.5 # psi/mV
+voltage_scaling_factor_1 = 0.4056 # psi/mV
+voltage_scaling_factor_2 = 0.3519 # psi/mV
 flow_constant = 56 # 56 for 1.5 inch coupling, 143 for 2.5 inch coupling
 calibration_timer = 30
 retry_timer = 30
@@ -30,7 +31,7 @@ def read_voltage(channel):
     return voltage
 
 
-def convert_voltage(voltage, zero_voltage):
+def convert_voltage(voltage, zero_voltage, voltage_scaling_factor):
     # Convert voltage to pressure (psi)
     pressure = (voltage - zero_voltage) * voltage_scaling_factor
     return pressure
@@ -97,8 +98,8 @@ while True:
             voltage_2 = read_voltage(2)
 
             # Convert voltages to pressures
-            pressure_1 = convert_voltage(voltage_1, zero_voltage_1)
-            pressure_2 = convert_voltage(voltage_2, zero_voltage_2)
+            pressure_1 = convert_voltage(voltage_1, zero_voltage_1, voltage_scaling_factor_1)
+            pressure_2 = convert_voltage(voltage_2, zero_voltage_2, voltage_scaling_factor_2)
 
             # Calculate flow rate from pressure differential
             flow_rate = calculate_flow_rate(pressure_1, pressure_2)
