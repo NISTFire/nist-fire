@@ -13,12 +13,13 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Location of experimental data files
-data_dir = '../Experimental_Data/HOSE/'
+data_dirs = ['../Experimental_Data/HOSE/', '../Experimental_Data/PPV/']
+
+# Location of file with timing information
+timings_files = ['../Experimental_Data/HOSE/All_Times.csv', '../Experimental_Data/PPV/All_Times.csv']
 
 # Location of scaling conversion file
 scaling_file = '../DAQ_Files/Delco_DAQ_Channel_List.csv'
-
-timings_file = '../Experimental_Data/HOSE/All_Times.csv'
 
 # Duration of pre-test time (s)
 pre_test_time = 60
@@ -37,114 +38,115 @@ sensor_groups = [['TC_A1_'], ['TC_A2_'], ['TC_A3_'], ['TC_A4_'], ['TC_A5_'],
 heat_flux_quantities = ['HF_', 'RAD_']
 gas_quantities = ['CO_', 'CO2_', 'O2_']
 
-#  ================
-#  = Read in data =
-#  ================
-
+# Load exp. scaling file
 scaling = pd.read_csv(scaling_file, index_col=2)
-timings = pd.read_csv(timings_file, index_col=0)
 
 #  ===============================
 #  = Loop through all data files =
 #  ===============================
 
-for f in os.listdir(data_dir):
-    if f.endswith('.csv'):
+for data_dir, timings_file in zip(data_dirs, timings_files):
 
-        # Skip files with time information
-        if 'times' in f.lower():
-            continue
+    # Load exp. timings file
+    timings = pd.read_csv(timings_file, index_col=0)
 
-        test_name = f[:-4]
-        print 'Test ' + test_name
+    for f in os.listdir(data_dir):
+        if f.endswith('.csv'):
 
-        #  ================
-        #  = Read in data =
-        #  ================
+            # Skip files with time information
+            if 'times' in f.lower():
+                continue
 
-        data = np.genfromtxt(data_dir + f, delimiter=',', names=True)
+            test_name = f[:-4]
+            print 'Test ' + test_name
 
-        #  ============
-        #  = Plotting =
-        #  ============
+            # Load exp. data file
+            data = np.genfromtxt(data_dir + f, delimiter=',', names=True)
 
-        # Generate a plot for each quantity group
-        for group in sensor_groups:
-            print 'Plotting ', group
+            #  ============
+            #  = Plotting =
+            #  ============
 
-            fig = figure(figsize=[8,8])
-            t = data['Time']
+            # Generate a plot for each quantity group
+            for group in sensor_groups:
+                print 'Plotting ', group
 
-            for channel in data.dtype.names[2:]:
+                fig = figure(figsize=[8,8])
+                t = data['Time']
 
-                if any([substring in channel for substring in group]):
+                for channel in data.dtype.names[2:]:
 
-                    scale_factor = float(scaling['Calibration'][channel])
+                    if any([substring in channel for substring in group]):
 
-                    # Scale channel and set plot options depending on quantity
-                    # Plot temperatures
-                    if 'TC_' in channel:
-                        quantity = data[channel] * scale_factor
-                        ylabel('Temperature ($^\circ$C)', fontsize=20)
-                        ylim([0, np.max(quantity*1.2)])
-                    # Plot velocities
-                    if 'BDP_' in channel:
-                        conv_inch_h2o = 0.4;
-                        conv_pascal = 248.8;
-                        # Convert voltage to pascals
-                        pressure = conv_inch_h2o * conv_pascal * \
-                                   (data[channel] - np.mean(data[channel][0:pre_test_time]))
-                        # Calculate velocity
-                        quantity = 0.0698 * np.sqrt(np.abs(pressure) * \
-                                   (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
-                        ylabel('Velocity (m/s)', fontsize=20)
-                        ylim([-10, 10])
-                    # Plot heat fluxes
-                    if any([substring in channel for substring in heat_flux_quantities]):
-                        quantity = data[channel] * scale_factor
-                        ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
-                        ylim([0, np.max(quantity*1.2)])
-                    # Plot gas measurements
-                    if any([substring in channel for substring in gas_quantities]):
-                        quantity = data[channel] * scale_factor
-                        ylabel('Concentration (%)', fontsize=20)
-                        ylim([0, np.max(quantity*1.2)])
-                    # Plot hose pressure and flow
-                    if 'HOSE_' in channel:
-                        quantity = data[channel] * scale_factor
-                        ylabel('Pressure (psi)', fontsize=20)
-                        ylim([0, np.max(quantity*1.2)])
+                        scale_factor = float(scaling['Calibration'][channel])
 
-                    plot(t, quantity, lw=2, label=channel, rasterized=True)
+                        # Scale channel and set plot options depending on quantity
+                        # Plot temperatures
+                        if 'TC_' in channel:
+                            quantity = data[channel] * scale_factor
+                            ylabel('Temperature ($^\circ$C)', fontsize=20)
+                            ylim([0, np.max(quantity*1.2)])
+                        # Plot velocities
+                        if 'BDP_' in channel:
+                            conv_inch_h2o = 0.4;
+                            conv_pascal = 248.8;
+                            # Convert voltage to pascals
+                            pressure = conv_inch_h2o * conv_pascal * \
+                                       (data[channel] - np.mean(data[channel][0:pre_test_time]))
+                            # Calculate velocity
+                            quantity = 0.0698 * np.sqrt(np.abs(pressure) * \
+                                       (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
+                            ylabel('Velocity (m/s)', fontsize=20)
+                            ylim([-10, 10])
+                        # Plot heat fluxes
+                        if any([substring in channel for substring in heat_flux_quantities]):
+                            quantity = data[channel] * scale_factor
+                            ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
+                            ylim([0, np.max(quantity*1.2)])
+                        # Plot gas measurements
+                        if any([substring in channel for substring in gas_quantities]):
+                            quantity = data[channel] * scale_factor
+                            ylabel('Concentration (%)', fontsize=20)
+                            ylim([0, np.max(quantity*1.2)])
+                        # Plot hose pressure and flow
+                        if 'HOSE_' in channel:
+                            quantity = data[channel] * scale_factor
+                            ylabel('Pressure (psi)', fontsize=20)
+                            ylim([0, np.max(quantity*1.2)])
 
-            ax1 = gca()
-            x_limit = ax1.axis()[1]
-            xlabel('Time', fontsize=20)
-            xticks(fontsize=16)
-            yticks(fontsize=16)
-            legend(loc='lower right', fontsize=8)
+                        plot(t, quantity, lw=2, label=channel, rasterized=True)
 
-            try:
-                # Add vertical lines for timing information (if available)
-                for index, row in timings.iterrows():
-                    if pd.isnull(row[test_name]):
-                        continue
-                    axvline(index, color='0.50', lw=1)
+                ax1 = gca()
+                grid(True)
+                x_limit = ax1.axis()[1]
+                xlabel('Time', fontsize=20)
+                xticks(fontsize=16)
+                yticks(fontsize=16)
+                legend(loc='lower right', fontsize=8)
 
-                # Add secondary x-axis labels for timing information
-                ax2 = ax1.twiny()
-                xlim([0, x_limit])
-                ax2.set_xticks(timings[test_name].dropna().index)
-                setp(xticks()[1], rotation=60)
-                ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
-            except:
-                pass
+                try:
+                    # Add vertical lines for timing information (if available)
+                    for index, row in timings.iterrows():
+                        if pd.isnull(row[test_name]):
+                            continue
+                        axvline(index, color='0.50', lw=1)
 
-            # Save to appropriate plot figure directory
-            if 'PPV_' in test_name:
-                folder_name = 'PPV/'
-            elif 'HOSE_' in test_name:
-                folder_name = 'HOSE/'
+                    # Add secondary x-axis labels for timing information
+                    ax2 = ax1.twiny()
+                    xlim([0, x_limit])
+                    ax2.set_xticks(timings[test_name].dropna().index)
+                    setp(xticks()[1], rotation=60)
+                    ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
+                except:
+                    pass
 
-            savefig('../Figures/' + folder_name + test_name + '_' + group[0].rstrip('_') + '.pdf')
-            close('all')
+                # Save to appropriate plot figure directory
+                if 'PPV_' in test_name:
+                    folder_name = 'PPV/'
+                elif 'HOSE_' in test_name:
+                    folder_name = 'HOSE/'
+
+                savefig('../Figures/' + folder_name + test_name + '_' + group[0].rstrip('_') + '.pdf')
+                close('all')
+
+            print

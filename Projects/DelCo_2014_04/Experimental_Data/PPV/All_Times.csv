@@ -1,0 +1,9 @@
+Time,PPV_NOOYY
+0,No PPV fan; all doors open
+120,Electric PPV fan; 1600 rpm
+240,Electric PPV fan; 1800 rpm
+360,Electric PPV fan; 2000 rpm
+480,Electric PPV fan; 2200 rpm
+600,Electric PPV fan turned off; rear door closed
+835,Gas-powered PPV fan; medium throttle
+955,Gas-powered PPV fan; high throttle
