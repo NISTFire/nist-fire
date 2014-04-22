@@ -149,14 +149,14 @@ SC2Mod3,18,,,,,,,,,
 SC2Mod3,19,,,,,,,,,
 SC2Mod3,20,,,,,,,,,
 SC2Mod3,21,,,,,,,,,
-SC2Mod3,22,HF_A1_0p15_AF,Voltage,1,,,0.15 m AF,146592,6613.76,Heat Flux 1 0.15 m AF
-SC2Mod3,23,RAD_A1_0p15_AF,Voltage,1,,,0.15 m AF,179082,5274.26,Radiometer 1 0.15 m AF
-SC2Mod3,24,HF_A2_0p15_AF,Voltage,2,,,0.15 m AF,146131,10964.91,Heat Flux 2 0.15 m AF
-SC2Mod3,25,RAD_A2_0p15_AF,Voltage,2,,,0.15 m AF,91834,12220.91,Radiometer 2 0.15 m AF
+SC2Mod3,22,HF_A1_0p15_AF,Voltage,1,,,0.15 m AF,146131,10964.91,Heat Flux 1 0.15 m AF
+SC2Mod3,23,RAD_A1_0p15_AF,Voltage,1,,,0.15 m AF,91834,12220.91,Radiometer 1 0.15 m AF
+SC2Mod3,24,HF_A2_0p15_AF,Voltage,2,,,0.15 m AF,150792,11210.76,Heat Flux 2 0.15 m AF
+SC2Mod3,25,RAD_A2_0p15_AF,Voltage,2,,,0.15 m AF,179084,11350.74,Radiometer 2 0.15 m AF
 SC2Mod3,26,HF_A3_0p15_AF,Voltage,3,,,0.15 m AF,150313,5537.1,Heat Flux 3 0.15 m AF
 SC2Mod3,27,RAD_A3_0p15_AF,Voltage,3,,,0.15 m AF,179083,11350.74,Radiometer 3 0.15 m AF
-SC2Mod3,28,HF_A4_0p15_AF,Voltage,4,,,0.15 m AF,150792,11210.76,Heat Flux 4 0.15 m AF
-SC2Mod3,29,RAD_A4_0p15_AF,Voltage,4,,,0.15 m AF,179084,11350.74,Radiometer 4 0.15 m AF
+SC2Mod3,28,HF_A4_0p15_AF,Voltage,4,,,0.15 m AF,146502,6613.76,Heat Flux 4 0.15 m AF
+SC2Mod3,29,RAD_A4_0p15_AF,Voltage,4,,,0.15 m AF,179082,5274.26,Radiometer 4 0.15 m AF
 SC2Mod3,30,HF_A5_0p15_AF,Voltage,5,,,0.15 m AF,90321,2976.19,Heat Flux 4 0.15 m AF
 SC2Mod3,31,RAD_A5_0p15_AF,Voltage,5,,,0.15 m AF,179081,6242.2,Radiometer 4 0.15 m AF
 SC2Mod4,0,CO_1,Voltage,,,,,1,0.6,CO Gas Analyzer 1
