@@ -1,4 +1,4 @@
-Time,HOSE_DSTODF,HOSE_DNTODF,HOSE_DSTADF,HOSE_DNTADM,HOSE_IMAODM,HOSE_IMTADM
+Time,HOSE_DSTODF,HOSE_DNTODF,HOSE_DSTADF,HOSE_DNTADM,HOSE_IMTADM,HOSE_IMAODM
 0,monitor with straight stream placed in C doorway; fixed stream; A door closed,monitor with narrow fog stream placed in C doorway; fixed stream; A door closed,manual nozzle at C side doorway; A door closed; stream is straight; fixed and rotated,manual nozzle at C side doorway; A door closed; stream is narrow fog fixed and rotated,monitor with straight stream placed near BC doorway; fixed stream; A door closed,manual with straight stream  near BC doorway; fixed stream; A door closed
 60,,"end of closed door pre-test data, A door opened",,,end of closed door pre-test data; straight stream aimed through AB door,
 64,end of closed door pre-test data; A door opened,,,,,

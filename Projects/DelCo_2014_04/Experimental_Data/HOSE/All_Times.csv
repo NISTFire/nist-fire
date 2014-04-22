@@ -1,4 +1,4 @@
-Time,HOSE_DSTODF,HOSE_DNTODF,HOSE_DSTADF,HOSE_DNTADM,HOSE_IMAODM,HOSE_IMTADM
+Time,HOSE_DSTODF,HOSE_DNTODF,HOSE_DSTADF,HOSE_DNTADM,HOSE_IMTADM,HOSE_IMAODM
 0,Monitor located at Door C; Rear door is closed,Monitor located at Door C; Rear door is closed,Manual nozzle located at Door C; Rear door is closed,Manual nozzle located at Door C; Rear door is closed,Monitor located near Door BC; Rear door is closed,Manual nozzle located near Door BC; Rear door is closed
 60,,Rear door opened,,,Fixed straight stream at Door AB,
 64,Rear door opened,,,,,
