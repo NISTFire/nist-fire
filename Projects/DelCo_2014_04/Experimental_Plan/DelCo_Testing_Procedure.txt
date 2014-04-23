@@ -44,6 +44,8 @@
 
 * Power on gas analyzer pump
 
+* Turn on water for heat flux gauges
+
 * Check Arduino battery level
 * Power on Arduino data loggers
 
