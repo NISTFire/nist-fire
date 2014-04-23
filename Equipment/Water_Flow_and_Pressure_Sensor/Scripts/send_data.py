@@ -10,11 +10,11 @@ from math import sqrt
 
 # User settings
 
-# Calibration of 1.5 inch sensor, 4/21/2014
-# Sensor 1: 2.4584 * voltage - 160.15
-# Sensor 2: 2.8268 * voltage - 0.9595
-voltage_scaling_factor_1 = 2.5 # psi/mV
-voltage_scaling_factor_2 = 2.5 # psi/mV
+# Calibration of 1.5 inch sensor, 4/23/2014
+# Sensor 1: 2.481 * voltage - 140.55
+# Sensor 2: 2.592 * voltage - 1.4806
+voltage_scaling_factor_1 = 2.481 # psi/mV
+voltage_scaling_factor_2 = 2.592 # psi/mV
 
 flow_constant = 56 # 56 for 1.5 inch coupling, 143 for 2.5 inch coupling
 calibration_timer = 30
