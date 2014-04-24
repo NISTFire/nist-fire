@@ -41,6 +41,9 @@ gas_quantities = ['CO_', 'CO2_', 'O2_']
 # Load exp. scaling file
 scaling = pd.read_csv(scaling_file, index_col=2)
 
+# Files to skip
+skip_files = ['_times', '_reduced']
+
 #  ===============================
 #  = Loop through all data files =
 #  ===============================
@@ -53,15 +56,15 @@ for data_dir, timings_file in zip(data_dirs, timings_files):
     for f in os.listdir(data_dir):
         if f.endswith('.csv'):
 
-            # Skip files with time information
-            if 'times' in f.lower():
+            # Skip files with time information or reduced data files
+            if any([substring in f.lower() for substring in skip_files]):
                 continue
 
             test_name = f[:-4]
             print 'Test ' + test_name
 
             # Load exp. data file
-            data = np.genfromtxt(data_dir + f, delimiter=',', names=True)
+            data = pd.read_csv(data_dir + f, index_col=1)
 
             #  ============
             #  = Plotting =
@@ -72,11 +75,11 @@ for data_dir, timings_file in zip(data_dirs, timings_files):
                 print 'Plotting ', group
 
                 fig = figure()
-                t = data['Time']
+                t = data.index
 
                 quantity_max = 0
 
-                for channel in data.dtype.names[2:]:
+                for channel in data.columns[1:]:
 
                     if any([substring in channel for substring in group]):
 
@@ -120,6 +123,9 @@ for data_dir, timings_file in zip(data_dirs, timings_files):
                         # Store maximum quantity value
                         if np.max(quantity) > quantity_max:
                             quantity_max = np.max(quantity)
+
+                        # Save converted quantity back to exp. data array
+                        data[channel] = quantity
 
                         plot(t, quantity, lw=1.5, label=channel, rasterized=True)
 
@@ -168,3 +174,6 @@ for data_dir, timings_file in zip(data_dirs, timings_files):
                 close('all')
 
             print
+
+            # Write converted quantities back to reduced exp. data file
+            data.to_csv(data_dir + test_name + '_Reduced.csv')
