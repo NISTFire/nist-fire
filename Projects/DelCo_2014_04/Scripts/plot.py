@@ -13,10 +13,10 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Location of experimental data files
-data_dirs = ['../Experimental_Data/HOSE/', '../Experimental_Data/PPV/']
+data_dirs = ['../Experimental_Data/HOSE/', '../Experimental_Data/PPV/', '../Experimental_Data/FIRE/']
 
 # Location of file with timing information
-timings_files = ['../Experimental_Data/HOSE/All_Times.csv', '../Experimental_Data/PPV/All_Times.csv']
+timings_files = ['../Experimental_Data/HOSE/All_Times.csv', '../Experimental_Data/PPV/All_Times.csv', '../Experimental_Data/FIRE/All_Times.csv']
 
 # Location of scaling conversion file
 scaling_file = '../DAQ_Files/Delco_DAQ_Channel_List.csv'
@@ -71,8 +71,10 @@ for data_dir, timings_file in zip(data_dirs, timings_files):
             for group in sensor_groups:
                 print 'Plotting ', group
 
-                fig = figure(figsize=[8,8])
+                fig = figure()
                 t = data['Time']
+
+                quantity_max = 0
 
                 for channel in data.dtype.names[2:]:
 
@@ -85,7 +87,7 @@ for data_dir, timings_file in zip(data_dirs, timings_files):
                         if 'TC_' in channel:
                             quantity = data[channel] * scale_factor
                             ylabel('Temperature ($^\circ$C)', fontsize=20)
-                            ylim([0, np.max(quantity*1.2)])
+                            axis_scale = 'auto'
                         # Plot velocities
                         if 'BDP_' in channel:
                             conv_inch_h2o = 0.4;
@@ -98,27 +100,39 @@ for data_dir, timings_file in zip(data_dirs, timings_files):
                                        (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
                             ylabel('Velocity (m/s)', fontsize=20)
                             ylim([-10, 10])
+                            axis_scale = 'mirror'
                         # Plot heat fluxes
                         if any([substring in channel for substring in heat_flux_quantities]):
                             quantity = data[channel] * scale_factor
                             ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
-                            ylim([0, np.max(quantity*1.2)])
+                            axis_scale = 'auto'
                         # Plot gas measurements
                         if any([substring in channel for substring in gas_quantities]):
                             quantity = data[channel] * scale_factor
                             ylabel('Concentration (%)', fontsize=20)
-                            ylim([0, np.max(quantity*1.2)])
+                            axis_scale = 'auto'
                         # Plot hose pressure and flow
                         if 'HOSE_' in channel:
                             quantity = data[channel] * scale_factor
                             ylabel('Pressure (psi)', fontsize=20)
-                            ylim([0, np.max(quantity*1.2)])
+                            axis_scale = 'auto'
 
-                        plot(t, quantity, lw=2, label=channel, rasterized=True)
+                        # Store maximum quantity value
+                        if np.max(quantity) > quantity_max:
+                            quantity_max = np.max(quantity)
+
+                        plot(t, quantity, lw=1.5, label=channel, rasterized=True)
+
+                # Scale y-axis limit based on specified option
+                # auto: Scale 10% above maximum value on plot
+                if axis_scale == 'auto':
+                    ylim([0, quantity_max*1.1])
+                # mirror: Scale positive and negative values around auto scale criteria
+                elif axis_scale == 'mirror':
+                    ylim([-quantity_max*1.1, quantity_max*1.1])
 
                 ax1 = gca()
                 grid(True)
-                x_limit = ax1.axis()[1]
                 xlabel('Time', fontsize=20)
                 xticks(fontsize=16)
                 yticks(fontsize=16)
@@ -133,10 +147,12 @@ for data_dir, timings_file in zip(data_dirs, timings_files):
 
                     # Add secondary x-axis labels for timing information
                     ax2 = ax1.twiny()
-                    xlim([0, x_limit])
                     ax2.set_xticks(timings[test_name].dropna().index)
                     setp(xticks()[1], rotation=60)
                     ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
+
+                    # Increase figure size for plot labels at top
+                    fig.set_size_inches(8, 8)
                 except:
                     pass
 
@@ -145,6 +161,8 @@ for data_dir, timings_file in zip(data_dirs, timings_files):
                     folder_name = 'PPV/'
                 elif 'HOSE_' in test_name:
                     folder_name = 'HOSE/'
+                elif 'FIRE_' in test_name:
+                    folder_name = 'FIRE/'
 
                 savefig('../Figures/' + folder_name + test_name + '_' + group[0].rstrip('_') + '.pdf')
                 close('all')
