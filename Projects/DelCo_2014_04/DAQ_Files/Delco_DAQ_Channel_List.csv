@@ -159,12 +159,12 @@ SC2Mod3,28,HF_A4_0p15_AF,Voltage,4,,,0.15 m AF,146502,6613.76,Heat Flux 4 0.15 m
 SC2Mod3,29,RAD_A4_0p15_AF,Voltage,4,,,0.15 m AF,179082,5274.26,Radiometer 4 0.15 m AF
 SC2Mod3,30,HF_A5_0p15_AF,Voltage,5,,,0.15 m AF,90321,2976.19,Heat Flux 4 0.15 m AF
 SC2Mod3,31,RAD_A5_0p15_AF,Voltage,5,,,0.15 m AF,179081,6242.2,Radiometer 4 0.15 m AF
-SC2Mod4,0,CO_1,Voltage,,,,,1,0.6,CO Gas Analyzer 1
-SC2Mod4,1,CO2_1,Voltage,,,,,1,1.6,CO2 Gas Analyzer 1
-SC2Mod4,2,O2_1,Voltage,,,,,1,4.18,O2 Gas Analyzer 1
-SC2Mod4,3,CO_2,Voltage,,,,,2,0.6,CO Gas Analyzer 2
-SC2Mod4,4,CO2_2,Voltage,,,,,2,1.6,CO2 Gas Analyzer 2
-SC2Mod4,5,O2_2,Voltage,,,,,2,4.18,O2 Gas Analyzer 2
+SC2Mod4,0,CO_1,Voltage,,,,,1,1,CO Gas Analyzer 1
+SC2Mod4,1,CO2_1,Voltage,,,,,1,2,CO2 Gas Analyzer 1
+SC2Mod4,2,O2_1,Voltage,,,,,1,20,O2 Gas Analyzer 1
+SC2Mod4,3,CO_2,Voltage,,,,,2,1,CO Gas Analyzer 2
+SC2Mod4,4,CO2_2,Voltage,,,,,2,2,CO2 Gas Analyzer 2
+SC2Mod4,5,O2_2,Voltage,,,,,2,20,O2 Gas Analyzer 2
 SC2Mod4,6,HOSE_P1_1p5_in,Voltage,,,,,1,2500,"Water Pressure Sensor 1, 1.5 inch"
 SC2Mod4,7,HOSE_P2_1p5_in,Voltage,,,,,1,2500,"Water Pressure Sensor 1, 1.5 inch"
 SC2Mod4,8,HOSE_P1_2p5_in,Voltage,,,,,2,2500,"Water Pressure Sensor 2, 2.5 inch"
