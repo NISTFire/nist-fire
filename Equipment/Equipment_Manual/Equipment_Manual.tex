@@ -1,0 +1,160 @@
+\documentclass[12pt,oneside]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                                                 %
+% The mathematical style of these documents follows                                               %
+%                                                                                                 %
+% A. Thompson and B.N. Taylor. The NIST Guide for the Use of the International System of Units.   %
+%    NIST Special Publication 881, 2008.                                                          %
+%                                                                                                 %
+% http://www.nist.gov/pml/pubs/sp811/index.cfm                                                    %
+%                                                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{../../Bibliography/commoncommands}
+
+\renewcommand{\bibname}{Equipment_Manual}
+
+% Math shortcuts
+\renewcommand{\sb}[1]{_\mathrm{#1}}
+\renewcommand{\C}{\mbox{C}}
+\renewcommand{\H}{\mbox{H}}
+\renewcommand{\O}{\mbox{O}}
+\newcommand{\N}{\mbox{N}}
+
+\begin{document}
+
+\bibliographystyle{unsrt}
+\pagestyle{empty}
+
+\begin{minipage}[t][9in][s]{6.25in}
+
+\headerB{
+Fire Fighting Technology \\
+Equipment Manual
+}
+
+\headerC{
+\flushright{
+Kristopher J. Overholt \\
+Craig G. Weinschenk \\
+Roy A. McLane \\
+Jay A. McElroy \\
+Daniel Madrzykowski \\
+\bigskip
+{\em Fire Research Division \\
+Engineering Laboratory \\
+Gaithersburg, Maryland, USA} \\ }
+}
+
+\flushright{\today \\
+}
+
+\vfill
+
+\flushright{
+\includegraphics[width=2.in]{../../Bibliography/nistident_flright_vec} \\[.3in]
+}
+
+\titlesigs
+
+\end{minipage}
+
+\newpage
+
+\frontmatter
+
+\pagestyle{plain}
+\pagenumbering{roman}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+\chapter{List of Acronyms}
+
+\begin{tabbing}
+\hspace{1.5in} \= \\
+DVR \> Digital Video Recorder \\
+\end{tabbing}
+
+\mainmatter
+
+\chapter{Video}
+\label{chap:Video}
+
+\section{Digital Video Recorder Notes}
+
+Model number: Samsung SRD-1680D
+
+Samsung Customer Service: 877-213-1222
+
+When running the ``Backup'' operation (to export the DVR movies to an external HDD), the DVR splits up files into 2.08 GB .avi movie files. See the video editing workflow section for information on joining multiple split videos into a single video file.
+
+\subsection*{FAQ}
+
+\begin{itemize}
+\item Can I dump .avi files directly to an external drive? Quality?
+    \begin{itemize}
+    \item Can dump directly to AVI for a given date/time range, retains 1080 HD quality
+    \end{itemize}
+\item How are hard disks formatted in DVR (FAT32, exFAT, proprietary)?
+    \begin{itemize}
+    \item NTFS formatted
+    \end{itemize}
+\item How are files stored internally (.avi, proprietary)?
+    \begin{itemize}
+    \item Saved internally in DVR format, can export to AVI or to SCC (proprietary format)
+    \end{itemize}
+\item Can the internal drives be configured as RAID?
+    \begin{itemize}
+    \item Not internally
+    \end{itemize}
+\item What happens if one drive fails and other internal drives are available while recording?
+    \begin{itemize}
+    \item Seamless failover to other available drives
+    \end{itemize}
+\item How should an external drive be formatted?
+    \begin{itemize}
+    \item External USB drive should be formatted as FAT32. You can do this using the built in format function.
+    \end{itemize}
+\item Limit on number of connected smartphone viewers or remote viewers?
+    \begin{itemize}
+    \item Remote: Search 3, Live unicast 10, Live multicast 20
+    \item Mobile: 1 Live, 1 CH playback
+    \end{itemize}
+\end{itemize}
+
+\section{Video Editing Workflow}
+
+\subsection{Digital Video Recorder}
+
+The process for recording and extracting video from the DVR is as follows:
+\begin{enumerate}
+\item Record video.
+\item Backup the video to an external drive to .avi format (H.264 codec and AVI container).
+\item Convert the .avi videos to .mp4 format (H.264 codec and MPEG-4 container) for editing. A tool such as Handbrake is recommended.
+\end{enumerate}
+It is recommended that you maintain the original .avi files and subtitle files, which contain the date/timestamp information for future reference.
+
+\subsection{Combining Videos}
+
+The GoPro cameras and DVR split long videos into multiple files. If you need to combine multiple .mp4 videos into one file, you can use a tool such as MP4Box or Avidemux. Multiple video files can also result from the DVR if a video channel loses signal temporarily. If this is the case, be sure to add blank video to pad any time that passed while the video channel signal was lost.
+
+\subsection{Creating Multi-Camera Videos}
+
+You can combine multiple videos into a multi-camera video using software such as Adobe Premiere or any other non-linear video editing software.
+
+
+\end{document}
