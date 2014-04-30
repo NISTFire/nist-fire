@@ -75,7 +75,11 @@ for f in os.listdir(data_dir):
             fig = figure()
 
             # Read in start of test time to offset plots
-            start_of_test = timings[test_name].dropna()[timings[test_name].str.contains('START OF TEST').dropna()].index[0]
+            start_of_test = 0
+            try:
+                start_of_test = timings[test_name].dropna()[timings[test_name].str.contains('START OF TEST').dropna()].index[0]
+            except:
+                pass
             t = np.array(data.index.tolist()) - start_of_test
 
             quantity_max = 0

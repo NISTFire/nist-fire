@@ -1,12 +1,12 @@
 Time,PPV_NOOYC,HOSE_DSXOXF,HOSE_DNXOXF,HOSE_DSXAXF,HOSE_DNXAXX,HOSE_IXAOXX,HOSE_IXXAXX
-0,No PPV fan; all doors open,Monitor located at Door C; Rear door is closed,Monitor located at Door BC; Rear door is closed,Manual nozzle located at Door C; Rear door is closed,Manual nozzle located at Door C; Rear door is closed,Manual nozzle located near Door BC; Rear door is closed,Monitor located near Door BC; Rear door is closed
-60,,,Rear door opened,,,,Fixed straight stream at Door AB
+0,START OF TEST; No PPV fan; all doors open,Monitor located at Door C; Rear door is closed,Monitor located at Door BC; Rear door is closed,Manual nozzle located at Door C; Rear door is closed,Manual nozzle located at Door C; Rear door is closed,Manual nozzle located near Door BC; Rear door is closed,Monitor located near Door BC; Rear door is closed
+60,,,Rear door opened,,,,START OF TEST; Fixed straight stream at Door AB
 64,,Rear door opened,,,,,
 90,,,,Rear door opened,,,Fixed narrow fog at Door AB
-120,Electric PPV fan; 1600 rpm,,Rear door closed,,Rear door opened,,Fixed wide fog at Door AB
+120,Electric PPV fan; 1600 rpm,,START OF TEST; Rear door closed,,Rear door opened,,Fixed wide fog at Door AB
 128,,START OF TEST; Rear door closed,,,,,
-150,,Fixed straight stream at Room C ceiling,Narrow fog at Room C ceiling,Rear door closed,,Fixed straight stream at Room B ceiling,Water flow stopped
-180,,Rear door opened,Rear door opened,,Rear door closed,Straight stream rotated right at Room B ceiling,
+150,,Fixed straight stream at Room C ceiling,Narrow fog at Room C ceiling,START OF TEST; Rear door closed,,START OF TEST; Fixed straight stream at Room B ceiling,Water flow stopped
+180,,Rear door opened,Rear door opened,,START OF TEST; Rear door closed,Straight stream rotated right at Room B ceiling,
 210,,,Rear door closed,Fixed straight stream at Room C ceiling,Fixed narrow fog stream at Room C ceiling,Fixed straight stream at Room A,
 215,,Rear door closed,,,,,
 229,,Water flow stopped,,,,,
