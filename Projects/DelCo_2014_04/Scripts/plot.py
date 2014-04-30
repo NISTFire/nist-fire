@@ -73,7 +73,10 @@ for f in os.listdir(data_dir):
             print 'Plotting ', group
 
             fig = figure()
-            t = data.index
+
+            # Read in start of test time to offset plots
+            start_of_test = timings[test_name].dropna()[timings[test_name].str.contains('START OF TEST').dropna()].index[0]
+            t = np.array(data.index.tolist()) - start_of_test
 
             quantity_max = 0
 
@@ -139,6 +142,8 @@ for f in os.listdir(data_dir):
                 ylim([-quantity_max*1.1, quantity_max*1.1])
 
             ax1 = gca()
+            xlim(xmin=0)
+            ax1_xlims = ax1.axis()[0:2]
             grid(True)
             xlabel('Time', fontsize=20)
             xticks(fontsize=16)
@@ -150,13 +155,15 @@ for f in os.listdir(data_dir):
                 for index, row in timings.iterrows():
                     if pd.isnull(row[test_name]):
                         continue
-                    axvline(index, color='0.50', lw=1)
+                    axvline(index - start_of_test, color='0.50', lw=1)
 
                 # Add secondary x-axis labels for timing information
                 ax2 = ax1.twiny()
-                ax2.set_xticks(timings[test_name].dropna().index)
+                ax2.set_xlim(ax1_xlims)
+                ax2.set_xticks(np.array(timings[test_name].dropna().index.tolist()) - start_of_test)
                 setp(xticks()[1], rotation=60)
                 ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
+                xlim(xmin=0)
 
                 # Increase figure size for plot labels at top
                 fig.set_size_inches(8, 8)
@@ -170,3 +177,4 @@ for f in os.listdir(data_dir):
 
         # Write converted quantities back to reduced exp. data file
         data.to_csv(data_dir + test_name + '_Reduced.csv')
+

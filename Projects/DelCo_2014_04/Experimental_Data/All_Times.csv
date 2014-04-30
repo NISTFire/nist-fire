@@ -4,7 +4,7 @@ Time,PPV_NOOYC,HOSE_DSXOXF,HOSE_DNXOXF,HOSE_DSXAXF,HOSE_DNXAXX,HOSE_IXAOXX,HOSE_
 64,,Rear door opened,,,,,
 90,,,,Rear door opened,,,Fixed narrow fog at Door AB
 120,Electric PPV fan; 1600 rpm,,Rear door closed,,Rear door opened,,Fixed wide fog at Door AB
-128,,Rear door closed,,,,,
+128,,START OF TEST; Rear door closed,,,,,
 150,,Fixed straight stream at Room C ceiling,Narrow fog at Room C ceiling,Rear door closed,,Fixed straight stream at Room B ceiling,Water flow stopped
 180,,Rear door opened,Rear door opened,,Rear door closed,Straight stream rotated right at Room B ceiling,
 210,,,Rear door closed,Fixed straight stream at Room C ceiling,Fixed narrow fog stream at Room C ceiling,Fixed straight stream at Room A,
