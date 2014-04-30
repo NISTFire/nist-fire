@@ -1,47 +1,87 @@
-Test Key:
+=== Fire Test Key ===
 
-Test [1][2][3333][4][5][6][7][8]
+FIRE_[1][2][3333][444][5][6][7][88888]_[9]
 
 1:
-    [N]o fire
     [G]as burner
     [F]urniture
 
 2:
-    Fire location (Room [A], [B], [C], or [D]), or X for none
+    Fire location (Room [A], [B], [C], [D], or [N]one)
 
 3333:
-    [if 1=N]: 0000
-    [if 1=G]: Gas fire size in kW (4 digits)
-    [if 1=F]: [#S#C], number of sofas and number of chairs
+    If [1]=[G]: Gas fire size in kW (4 digits)
+    If [1]=[F]: [#S#C], number of sofas and number of chairs
 
 4:
-    Status of exterior doors A, C_West, C_East ([O]pen or [C]losed)
-    Scenario 1: 
+    Status of exterior Doors A, C_West, and C_East
+    Scenario [1]: Door A closed; Doors C_West and C_East open
 
 5:
-    [N]atural ventilation or [P]PV (location and rate)
+    [N]atural ventilation
+    [P]PV (location and rate)
 
 6:
     Status of ceiling vent ([O]pen or [C]losed)
 
 7:
-    Suppression (M[A]nual/m[O]nitor, type of nozzle, angle/setting, duration, movement pattern, location, spray target)
+    Suppression (type of nozzle, angle/setting, duration, movement pattern, location, spray target)
+    M[A]nual
+    m[O]nitor
+    [X] Variable suppression
 
 8:
-    Status of interior doors AB, BC, CD, DA, BD ([O]pen or [C]losed)
+    Status of interior Doors AB, BC, CD, DA, and BD
+    Scenario [1]: Doors AB, BC open; Doors DC, DA, and BD closed
 
-Example: FA1S0COOONCAOOCCC is a furniture fire with one sofa and no chairs in which the fuel is located in Room A. All exterior doors are open with natural ventilation conditions and the ceiling vent is closed. Fire suppression is performed manually with interior doors AB and BC open and the remaining interior doors closed.
+9:
+    Optional test replicate number
 
-PPV Test Key:
+Example: FIRE_FA2S1C1NCX1_2 is replicate 2 of a furniture fire with two sofas and one chair in which the primary fuel is located in Room A. Exterior Door A is closed and Doors C_West and C_East are open with natural ventilation conditions and the ceiling vent is closed. Fire suppression is variable with interior Doors AB, BC open and Doors DC, DA, and BD closed.
+
+=== HOSE Test Key ===
+
+HOSE_[1][2][3][4][5][6]
+
+1:
+    Position of water source
+    [D]oor C
+    [I]nside Room C
+
+2:
+    Nozzle description
+    [N]arrow fog
+    [S]traight
+    [X] Variable
+
+3: 
+    Nozzle target
+    Ceiling of Room [A]
+    [X] Variable Target
+
+4:
+    Waterflow source
+    M[O]nitor
+    M[A]nual
+
+5:
+    Status of Door C
+    [X] Variable door status
+
+6:
+    Nozzle movement
+    [F]ixed
+    [X] Variable nozzle movements
+
+=== PPV Test Key ===
 
 PPV_[1][2][3][4][5]
 
 1: 
-    Fan Present at C side doors
+    PPV fan location
     [N]o PPV Fan
-    [Yo] PPV fan 8ft exterior to structure
-    [Yi] PPV fan 8ft from BC doorway
+    [O] PPV fan 8 ft exterior to structure
+    [I] PPV fan 8 ft from BC doorway
 
 2:
     Status of Door A
@@ -51,64 +91,17 @@ PPV_[1][2][3][4][5]
 3:
     Status of Door C
     [O]pen double doors
-    [O]pen [l]eft C door
-    [O]pen [r]ight C door
+    Open [L]eft C door
+    Open [R]ight C door
     [C]losed doors
 
 4: 
-    Fan Present at A side door
-    [N]o
+    Fan present at Door A
     [Y]es
+    [N]o
 
 5:
-    Interior doorways AB and DA present
-    [N]o
-    [Y]es
-
-HOSE Test Key:
-
-HOSE_[1][2][3][4][5][6]
-
-1:
-    Position of source
-    [D]oorway of side C
-    [I]nside of room C
-
-2:
-    Nozzle description
-    [S]traight
-    [W]ide fog
-    [N]arrow fog
-    [M]ultiple
-
-3: 
-    Target of nozzle
-    [M]iddle ceiling of Room C
-    [U]pper third of door BC
-    Ceiling of room [A]
-    Variable [T]arget
-
-4:
-    Flow source
-    M[O]nitor
-    M[A]nual
-
-5:
-    C Door Status
+    Status of interior Doors AB and DA
     [O]pen
     [C]losed
-    Variable [D]oor status
-
-6:
-    Nozzle movement
-    [F]ixed
-    Rotate Clockwise [R]
-    Roate Counterc[L]ockwise
-    [M]ultiple nozzle movements
-
-
-
-
-
-
 
