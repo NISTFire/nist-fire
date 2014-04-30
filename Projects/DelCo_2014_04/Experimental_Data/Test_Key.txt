@@ -7,7 +7,7 @@ FIRE_[1][2][3333][444][5][6][7][88888]_[9]
     [F]urniture
 
 2:
-    Fire location (Room [A], [B], [C], [D], or [N]one)
+    Fire location (Room [A], [B], [C], [D])
 
 3333:
     If [1]=[G]: Gas fire size in kW (4 digits)
