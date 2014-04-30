@@ -3,13 +3,19 @@
 FIRE_[1][2][3333][444][5][6][7][88888]_[9]
 
 1:
+    Fire type
     [G]as burner
     [F]urniture
 
 2:
-    Fire location (Room [A], [B], [C], [D])
+    Fire location
+    Room [A]
+    Room [B]
+    Room [C]
+    Room [D]
 
 3333:
+    Fire description
     If [1]=[G]: Gas fire size in kW (4 digits)
     If [1]=[F]: [#S#C], number of sofas and number of chairs
 
@@ -18,11 +24,14 @@ FIRE_[1][2][3333][444][5][6][7][88888]_[9]
     Scenario [1]: Door A closed; Doors C_West and C_East open
 
 5:
+    Ventilation conditions
     [N]atural ventilation
     [P]PV (location and rate)
 
 6:
-    Status of ceiling vent ([O]pen or [C]losed)
+    Status of ceiling vent
+    [O]pen
+    [C]losed
 
 7:
     Suppression (type of nozzle, angle/setting, duration, movement pattern, location, spray target)
