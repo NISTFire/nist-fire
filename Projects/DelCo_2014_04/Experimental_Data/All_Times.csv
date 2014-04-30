@@ -1,53 +1,53 @@
-Time,PPV_NOOYY,HOSE_DSTODF,HOSE_DNTODF,HOSE_DSTADF,HOSE_DNTADM,HOSE_IMTADM,HOSE_IMAODM
-0,No PPV fan; all doors open,Monitor located at Door C; Rear door is closed,Monitor located at Door BC; Rear door is closed,Manual nozzle located at Door C; Rear door is closed,Manual nozzle located at Door C; Rear door is closed,Monitor located near Door BC; Rear door is closed,Manual nozzle located near Door BC; Rear door is closed
-60,,,Rear door opened,,,Fixed straight stream at Door AB,
+Time,PPV_NOOYC,HOSE_DSXOXF,HOSE_DNXOXF,HOSE_DSXAXF,HOSE_DNXAXX,HOSE_IXAOXX,HOSE_IXXAXX
+0,No PPV fan; all doors open,Monitor located at Door C; Rear door is closed,Monitor located at Door BC; Rear door is closed,Manual nozzle located at Door C; Rear door is closed,Manual nozzle located at Door C; Rear door is closed,Manual nozzle located near Door BC; Rear door is closed,Monitor located near Door BC; Rear door is closed
+60,,,Rear door opened,,,,Fixed straight stream at Door AB
 64,,Rear door opened,,,,,
-90,,,,Rear door opened,,Fixed narrow fog at Door AB,
-120,Electric PPV fan; 1600 rpm,,Rear door closed,,Rear door opened,Fixed wide fog at Door AB,
+90,,,,Rear door opened,,,Fixed narrow fog at Door AB
+120,Electric PPV fan; 1600 rpm,,Rear door closed,,Rear door opened,,Fixed wide fog at Door AB
 128,,Rear door closed,,,,,
-150,,Fixed straight stream at Room C ceiling,Narrow fog at Room C ceiling,Rear door closed,,Water flow stopped,Fixed straight stream at Room B ceiling
-180,,Rear door opened,Rear door opened,,Rear door closed,,Straight stream rotated right at Room B ceiling
-210,,,Rear door closed,Fixed straight stream at Room C ceiling,Fixed narrow fog stream at Room C ceiling,,Fixed straight stream at Room A
+150,,Fixed straight stream at Room C ceiling,Narrow fog at Room C ceiling,Rear door closed,,Fixed straight stream at Room B ceiling,Water flow stopped
+180,,Rear door opened,Rear door opened,,Rear door closed,Straight stream rotated right at Room B ceiling,
+210,,,Rear door closed,Fixed straight stream at Room C ceiling,Fixed narrow fog stream at Room C ceiling,Fixed straight stream at Room A,
 215,,Rear door closed,,,,,
 229,,Water flow stopped,,,,,
-240,Electric PPV fan; 1800 rpm,,Water flow stopped,Hose rotated right,Hose rotated right,,Straight stream rotated right at Room A
-270,,Fixed straight stream at Door BC,,Hose fixed,Hose fixed,,Fixed narrow fog at Room B ceiling
-300,,Rear door opened,Narrow fog at Door BC,Hose rotated left,Hose rotated left,,Narrow fog rotated right at Room B Ceiling
-330,,Rear door closed,Rear door opened,Hose fixed; Rear door opened,Hose fixed,,Fixed narrow fog at Room A
+240,Electric PPV fan; 1800 rpm,,Water flow stopped,Hose rotated right,Hose rotated right,Straight stream rotated right at Room A,
+270,,Fixed straight stream at Door BC,,Hose fixed,Hose fixed,Fixed narrow fog at Room B ceiling,
+300,,Rear door opened,Narrow fog at Door BC,Hose rotated left,Hose rotated left,Narrow fog rotated right at Room B Ceiling,
+330,,Rear door closed,Rear door opened,Hose fixed; Rear door opened,Hose fixed,Fixed narrow fog at Room A,
 344,,Water flow stopped,,,,,
-360,Electric PPV fan; 2000 rpm,,Rear door closed,Hose rotated right,Rear door opened,,Narrow fog rotated right at Room A
-390,,,Water flow stopped,Hose fixed,Hose rotated right,,Fixed wide fog at Room B ceiling
-420,,Fixed straight stream at Room C ceiling,,Hose rotated left,Hose fixed,,Wide fog rotated right at Room B ceiling
-450,,Rear door opened,Narrow fog at Room C ceiling,,Hose rotated left,Fixed straight stream at Door AB,Fixed wide fog at Room A
+360,Electric PPV fan; 2000 rpm,,Rear door closed,Hose rotated right,Rear door opened,Narrow fog rotated right at Room A,
+390,,,Water flow stopped,Hose fixed,Hose rotated right,Fixed wide fog at Room B ceiling,
+420,,Fixed straight stream at Room C ceiling,,Hose rotated left,Hose fixed,Wide fog rotated right at Room B ceiling,
+450,,Rear door opened,Narrow fog at Room C ceiling,,Hose rotated left,Fixed wide fog at Room A,Fixed straight stream at Door AB
 455,,,,Hose fixed; Rear door closed,,,
-480,Electric PPV fan; 2200 rpm,Rear door closed,Rear door opened,,Hose fixed,Fixed narrow fog at Door AB,Wide fog rotated right at Room A
+480,Electric PPV fan; 2200 rpm,Rear door closed,Rear door opened,,Hose fixed,Wide fog rotated right at Room A,Fixed narrow fog at Door AB
 499,,Water flow stopped,,,Rear door closed,,
-510,,,Rear door closed,,,Fixed wide fog at Door AB,Water flow stopped
-540,,Fixed straight stream at Door BC,Water flow stopped,Fixed straight stream at Door BC,,Water flow stopped,
-570,,Rear door opened,Narrow fog at Door BC,Hose rotated right,Fixed narrow fog stream at Door BC,Rear door opened; Fixed straight stream at Door AB,
-600,Electric PPV fan turned off; rear door closed,Rear door closed,Rear door opened,Hose fixed,Hose rotated right,Fixed narrow fog at Door AB,
+510,,,Rear door closed,,,Water flow stopped,Fixed wide fog at Door AB
+540,,Fixed straight stream at Door BC,Water flow stopped,Fixed straight stream at Door BC,,,Water flow stopped
+570,,Rear door opened,Narrow fog at Door BC,Hose rotated right,Fixed narrow fog stream at Door BC,,Rear door opened; Fixed straight stream at Door AB
+600,Electric PPV fan turned off; rear door closed,Rear door closed,Rear door opened,Hose fixed,Hose rotated right,,Fixed narrow fog at Door AB
 612,,Water flow stopped,,,,,
-630,,,Rear door closed,Hose rotated left,Hose fixed,Fixed wide fog at Door AB,
-660,,,Water flow stopped,Hose fixed,Hose rotated left,Water flow stopped,
+630,,,Rear door closed,Hose rotated left,Hose fixed,,Fixed wide fog at Door AB
+660,,,Water flow stopped,Hose fixed,Hose rotated left,,Water flow stopped
 675,,,,Rear door opened,,,
 690,,,,Hose rotated right,Hose fixed,,
 720,,,,Hose fixed,Rear door opened,,
 750,,,,Hose rotated left,Hose rotated right,,
-780,,,,Hose fixed,Hose fixed,,Fixed straight stream at Room B ceiling
-810,,,,Rear door closed,Hose rotated left,,Straight stream rotated left at Room B ceiling
+780,,,,Hose fixed,Hose fixed,Fixed straight stream at Room B ceiling,
+810,,,,Rear door closed,Hose rotated left,Straight stream rotated left at Room B ceiling,
 835,Gas-powered PPV fan; medium throttle,,,,,,
-840,,,,Water flow stopped,Hose fixed,,Fixed straight stream at Room A
-870,,,,,Rear door closed,,Straight stream rotated left at Room A
-900,,,,,Water flow stopped,,Fixed narrow fog at Room B ceiling
-930,,,,,,,Narrow fog rotated left at Room B ceiling
+840,,,,Water flow stopped,Hose fixed,Fixed straight stream at Room A,
+870,,,,,Rear door closed,Straight stream rotated left at Room A,
+900,,,,,Water flow stopped,Fixed narrow fog at Room B ceiling,
+930,,,,,,Narrow fog rotated left at Room B ceiling,
 955,Gas-powered PPV fan; high throttle,,,,,,
-960,,,,,,,Fixed narrow fog at Room A
-990,,,,,,,Narrow fog rotated left at Room A
-1020,,,,,,,Fixed wide fog at Room B ceiling
-1050,,,,,,,Wide fog rotated left at Room B ceiling
-1080,,,,,,,Fixed wide fog at Room A
-1110,,,,,,,Wide fog rotated left at Room A
-1140,,,,,,,Water flow stopped
+960,,,,,,Fixed narrow fog at Room A,
+990,,,,,,Narrow fog rotated left at Room A,
+1020,,,,,,Fixed wide fog at Room B ceiling,
+1050,,,,,,Wide fog rotated left at Room B ceiling,
+1080,,,,,,Fixed wide fog at Room A,
+1110,,,,,,Wide fog rotated left at Room A,
+1140,,,,,,Water flow stopped,
 1200,,,,,Fixed narrow fog stream at Room C ceiling,,
 1230,,,,,Hose rotated right,,
 1260,,,,,Hose fixed,,
