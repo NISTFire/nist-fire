@@ -98,29 +98,47 @@ for f in os.listdir(data_dir):
                     if 'TC_' in channel:
                         quantity = data[channel] * scale_factor
                         ylabel('Temperature ($^\circ$C)', fontsize=20)
+                        line_style = '-'
                         axis_scale = 'Y Scale TC'
+                    
                     # Plot velocities
                     if 'BDP_' in channel:
                         conv_inch_h2o = 0.4;
                         conv_pascal = 248.8;
+                        
                         # Convert voltage to pascals
                         pressure = conv_inch_h2o * conv_pascal * \
                                    (data[channel] - np.mean(data[channel][0:pre_test_time]))
+                        
                         # Calculate velocity
                         quantity = 0.0698 * np.sqrt(np.abs(pressure) * \
                                    (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
                         ylabel('Velocity (m/s)', fontsize=20)
+                        line_style = '-'
                         axis_scale = 'Y Scale BDP'
+                    
                     # Plot heat fluxes
                     if any([substring in channel for substring in heat_flux_quantities]):
+                        plt.rc('axes', color_cycle = ['k', 'k',
+                                                      'r', 'r',
+                                                      'g', 'g',
+                                                      'b', 'b',
+                                                      'c', 'c'])
                         quantity = data[channel] * scale_factor
                         ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
+                        if 'HF' in channel:
+                            line_style = '-'
+                        elif 'RAD' in channel:
+                            line_style = '--'
                         axis_scale = 'Y Scale HF'
+                    
                     # Plot gas measurements
                     if any([substring in channel for substring in gas_quantities]):
                         quantity = data[channel] * scale_factor
                         ylabel('Concentration (%)', fontsize=20)
+                        line_style = '-'
                         axis_scale = 'Y Scale GAS'
+                    
                     # Plot hose pressure and flow
                     if 'HOSE_' in channel:
                         # Skip data other than sensors on 2.5 inch hoseline
@@ -128,12 +146,13 @@ for f in os.listdir(data_dir):
                             continue
                         quantity = data[channel] * scale_factor
                         ylabel('Pressure (psi)', fontsize=20)
+                        line_style = '-'
                         axis_scale = 'Y Scale HOSE'
 
                     # Save converted quantity back to exp. data array
                     data[channel] = quantity
 
-                    plot(t, quantity, lw=1.5, label=channel, rasterized=True)
+                    plot(t, quantity, lw=1.5, ls=line_style, label=channel, rasterized=True)
 
             # Skip plot quantity if disabled
             if info[axis_scale][test_name] == 'None':
