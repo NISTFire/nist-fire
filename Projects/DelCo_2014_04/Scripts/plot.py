@@ -63,6 +63,10 @@ for f in os.listdir(data_dir):
         test_name = f[:-4]
         print 'Test ' + test_name
 
+############################ TESTING ##########################################################################
+        if 'HOSE' not in test_name:
+            continue
+
         # Load exp. data file
         data = pd.read_csv(data_dir + f, index_col=1)
 
@@ -146,7 +150,7 @@ for f in os.listdir(data_dir):
                 ylim([0, np.float(info[axis_scale][test_name])])
 
             ax1 = gca()
-            xlim([0, end_of_test])
+            xlim([0, end_of_test - start_of_test])
             ax1_xlims = ax1.axis()[0:2]
             grid(True)
             xlabel('Time', fontsize=20)
@@ -167,7 +171,7 @@ for f in os.listdir(data_dir):
                 ax2.set_xticks(np.array(timings[test_name].dropna().index.tolist()) - start_of_test)
                 setp(xticks()[1], rotation=60)
                 ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
-                xlim([0, end_of_test])
+                xlim([0, end_of_test - start_of_test])
 
                 # Increase figure size for plot labels at top
                 fig.set_size_inches(8, 8)
