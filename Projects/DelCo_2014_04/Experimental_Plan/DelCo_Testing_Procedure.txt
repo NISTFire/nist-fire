@@ -58,7 +58,7 @@
     * DVR
     * DAQ data
 
-* 1 minute pre-test run
+* 1 minute pre-test run (with all doors closed)
 
 * Begin test                    [MARK DATE/TIME]
 
