@@ -150,12 +150,22 @@ It is recommended that you maintain the original .avi files and subtitle files, 
 
 \subsection{Combining Videos}
 
-The GoPro cameras and DVR split long videos into multiple files because of the format of the file systems that they write to. If you need to combine multiple .mp4 videos into one file, you can use a tool such as MP4Box or Avidemux. Multiple video files can also result from the DVR if a video channel temporarily loses signal. If this is the case, be sure to add blank video to pad any time that passed while the video channel signal was lost.
+The GoPro cameras and DVR split long videos into multiple files because of the format of the file systems that they write to. If you need to combine multiple .mp4 videos into one file, you can use a tool such as MP4Box or Avidemux. The benefit of these tools over a full video editor is that they can perform simple video operations without reencoding the video, so the processing is much faster. 
+
+Multiple video files can also result from the DVR if a video channel temporarily loses signal. If this is the case, be sure to add blank video to pad any time that passed while the video channel signal was lost.
 
 For example, to seamlessly combine two video files (video\_1.mp4 and video\_2.mp4) into one video file (video\_output.mp4), the command line tool MP4Box can be used with the following command
 
 \begin{verbatim}
 MP4Box -cat video_1.mp4 -cat video_2.mp4 -new video_output.mp4
+\end{verbatim}
+
+\subsection{Splitting Videos}
+
+You can split an .mp4 video into multiple videos (without reencoding) with MP4Box. For example, if you have a 60~s video (video\_input.mp4), you can extract video from 30~s to 60~s and save the output to a new file (video\_output.mp4) with the following command
+
+\begin{verbatim}
+MP4Box -splitx 30:60 video_input.mp4 -out video_output.mp4
 \end{verbatim}
 
 \subsection{Creating Multi-Camera Videos}
