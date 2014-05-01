@@ -178,6 +178,7 @@ for f in os.listdir(data_dir):
             savefig('../Figures/' + test_name + '_' + group[0].rstrip('_') + '.pdf')
             close('all')
 
+        close('all')
         print
 
         # Write converted quantities back to reduced exp. data file
