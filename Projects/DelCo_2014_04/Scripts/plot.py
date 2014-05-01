@@ -63,10 +63,6 @@ for f in os.listdir(data_dir):
         test_name = f[:-4]
         print 'Test ' + test_name
 
-############################ TESTING ##########################################################################
-        if 'HOSE' not in test_name:
-            continue
-
         # Load exp. data file
         data = pd.read_csv(data_dir + f, index_col=1)
 
