@@ -21,6 +21,9 @@ timings_file = '../Experimental_Data/All_Times.csv'
 # Location of scaling conversion file
 scaling_file = '../DAQ_Files/Delco_DAQ_Channel_List.csv'
 
+# Location of test description file
+info_file = '../Experimental_Data/Description_of_Experiments.csv'
+
 # Duration of pre-test time (s)
 pre_test_time = 60
 
@@ -38,8 +41,10 @@ sensor_groups = [['TC_A1_'], ['TC_A2_'], ['TC_A3_'], ['TC_A4_'], ['TC_A5_'],
 heat_flux_quantities = ['HF_', 'RAD_']
 gas_quantities = ['CO_', 'CO2_', 'O2_']
 
-# Load exp. scaling file
+# Load exp. scaling, timings, and description file
 scaling = pd.read_csv(scaling_file, index_col=2)
+timings = pd.read_csv(timings_file, index_col=0)
+info = pd.read_csv(info_file, index_col=3)
 
 # Files to skip
 skip_files = ['_times', '_reduced', 'description_']
@@ -47,9 +52,6 @@ skip_files = ['_times', '_reduced', 'description_']
 #  ===============================
 #  = Loop through all data files =
 #  ===============================
-
-# Load exp. timings file
-timings = pd.read_csv(timings_file, index_col=0)
 
 for f in os.listdir(data_dir):
     if f.endswith('.csv'):
@@ -77,11 +79,13 @@ for f in os.listdir(data_dir):
             # Read in start of test time to offset plots
             start_of_test = 0
             try:
-                start_of_test = timings[test_name].dropna()[timings[test_name].str.contains('START OF TEST').dropna()].index[0]
+                start_of_test = info['Start of Test'][test_name]
+                end_of_test = info['End of Test'][test_name]
             except:
                 pass
             t = np.array(data.index.tolist()) - start_of_test
 
+            # Initialize maximum quantity value
             quantity_max = 0
 
             for channel in data.columns[1:]:
@@ -146,13 +150,13 @@ for f in os.listdir(data_dir):
                 ylim([-quantity_max*1.1, quantity_max*1.1])
 
             ax1 = gca()
-            xlim(xmin=0)
+            xlim([0, end_of_test])
             ax1_xlims = ax1.axis()[0:2]
             grid(True)
             xlabel('Time', fontsize=20)
             xticks(fontsize=16)
             yticks(fontsize=16)
-            legend(loc='lower right', fontsize=8)
+            legend(loc=0, fontsize=8)
 
             try:
                 # Add vertical lines for timing information (if available)
@@ -167,7 +171,7 @@ for f in os.listdir(data_dir):
                 ax2.set_xticks(np.array(timings[test_name].dropna().index.tolist()) - start_of_test)
                 setp(xticks()[1], rotation=60)
                 ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
-                xlim(xmin=0)
+                xlim([0, end_of_test])
 
                 # Increase figure size for plot labels at top
                 fig.set_size_inches(8, 8)
