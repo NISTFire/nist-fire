@@ -175,7 +175,7 @@ for f in os.listdir(data_dir):
                 pass
 
             print 'Plotting ', group
-            savefig('../Figures/' + test_name + '_' + group[0].rstrip('_') + '.pdf')
+            savefig('../Figures_Plots/' + test_name + '_' + group[0].rstrip('_') + '.pdf')
             close('all')
 
         close('all')
