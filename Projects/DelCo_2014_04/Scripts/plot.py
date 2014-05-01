@@ -72,8 +72,6 @@ for f in os.listdir(data_dir):
 
         # Generate a plot for each quantity group
         for group in sensor_groups:
-            print 'Plotting ', group
-
             fig = figure()
 
             # Read in start of test time to offset plots
@@ -85,10 +83,11 @@ for f in os.listdir(data_dir):
                 pass
             t = np.array(data.index.tolist()) - start_of_test
 
-            # Initialize maximum quantity value
-            quantity_max = 0
-
             for channel in data.columns[1:]:
+
+                # Skip excluded channels listed in test description file
+                if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
+                    continue
 
                 if any([substring in channel for substring in group]):
 
@@ -99,7 +98,7 @@ for f in os.listdir(data_dir):
                     if 'TC_' in channel:
                         quantity = data[channel] * scale_factor
                         ylabel('Temperature ($^\circ$C)', fontsize=20)
-                        axis_scale = 'auto'
+                        axis_scale = 'Y Scale TC'
                     # Plot velocities
                     if 'BDP_' in channel:
                         conv_inch_h2o = 0.4;
@@ -111,18 +110,17 @@ for f in os.listdir(data_dir):
                         quantity = 0.0698 * np.sqrt(np.abs(pressure) * \
                                    (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
                         ylabel('Velocity (m/s)', fontsize=20)
-                        ylim([-10, 10])
-                        axis_scale = 'mirror'
+                        axis_scale = 'Y Scale BDP'
                     # Plot heat fluxes
                     if any([substring in channel for substring in heat_flux_quantities]):
                         quantity = data[channel] * scale_factor
                         ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
-                        axis_scale = 'auto'
+                        axis_scale = 'Y Scale HF'
                     # Plot gas measurements
                     if any([substring in channel for substring in gas_quantities]):
                         quantity = data[channel] * scale_factor
                         ylabel('Concentration (%)', fontsize=20)
-                        axis_scale = 'auto'
+                        axis_scale = 'Y Scale GAS'
                     # Plot hose pressure and flow
                     if 'HOSE_' in channel:
                         # Skip data other than sensors on 2.5 inch hoseline
@@ -130,24 +128,22 @@ for f in os.listdir(data_dir):
                             continue
                         quantity = data[channel] * scale_factor
                         ylabel('Pressure (psi)', fontsize=20)
-                        axis_scale = 'auto'
-
-                    # Store maximum quantity value
-                    if np.max(quantity) > quantity_max:
-                        quantity_max = np.max(quantity)
+                        axis_scale = 'Y Scale HOSE'
 
                     # Save converted quantity back to exp. data array
                     data[channel] = quantity
 
                     plot(t, quantity, lw=1.5, label=channel, rasterized=True)
 
-            # Scale y-axis limit based on specified option
-            # auto: Scale 10% above maximum value on plot
-            if axis_scale == 'auto':
-                ylim([0, quantity_max*1.1])
-            # mirror: Scale positive and negative values around auto scale criteria
-            elif axis_scale == 'mirror':
-                ylim([-quantity_max*1.1, quantity_max*1.1])
+            # Skip plot quantity if disabled
+            if info[axis_scale][test_name] == 'None':
+                continue
+
+            # Scale y-axis limit based on specified option in test description file
+            if axis_scale == 'Y Scale BDP':
+                ylim([-np.float(info[axis_scale][test_name]), np.float(info[axis_scale][test_name])])
+            else:
+                ylim([0, np.float(info[axis_scale][test_name])])
 
             ax1 = gca()
             xlim([0, end_of_test])
@@ -178,6 +174,7 @@ for f in os.listdir(data_dir):
             except:
                 pass
 
+            print 'Plotting ', group
             savefig('../Figures/' + test_name + '_' + group[0].rstrip('_') + '.pdf')
             close('all')
 
