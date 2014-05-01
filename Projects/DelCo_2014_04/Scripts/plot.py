@@ -96,6 +96,7 @@ for f in os.listdir(data_dir):
                     # Scale channel and set plot options depending on quantity
                     # Plot temperatures
                     if 'TC_' in channel:
+                        plt.rc('axes', color_cycle = ['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         quantity = data[channel] * scale_factor
                         ylabel('Temperature ($^\circ$C)', fontsize=20)
                         line_style = '-'
@@ -103,6 +104,7 @@ for f in os.listdir(data_dir):
                     
                     # Plot velocities
                     if 'BDP_' in channel:
+                        plt.rc('axes', color_cycle = ['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         conv_inch_h2o = 0.4;
                         conv_pascal = 248.8;
                         
@@ -134,6 +136,7 @@ for f in os.listdir(data_dir):
                     
                     # Plot gas measurements
                     if any([substring in channel for substring in gas_quantities]):
+                        plt.rc('axes', color_cycle = ['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         quantity = data[channel] * scale_factor
                         ylabel('Concentration (%)', fontsize=20)
                         line_style = '-'
@@ -141,6 +144,7 @@ for f in os.listdir(data_dir):
                     
                     # Plot hose pressure and flow
                     if 'HOSE_' in channel:
+                        plt.rc('axes', color_cycle = ['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         # Skip data other than sensors on 2.5 inch hoseline
                         if '2p5' not in channel:
                             continue
