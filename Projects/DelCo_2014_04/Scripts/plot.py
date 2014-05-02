@@ -72,7 +72,7 @@ for f in os.listdir(data_dir):
         end_of_test = info['End of Test'][test_name]
 
         # Offset data time to start of test
-        t = np.array(data['Time'].tolist()) - start_of_test
+        t = data['Time'].values - start_of_test
 
         # Save converted time back to dataframe
         data['Time'] = t
@@ -189,7 +189,7 @@ for f in os.listdir(data_dir):
                 # Add secondary x-axis labels for timing information
                 ax2 = ax1.twiny()
                 ax2.set_xlim(ax1_xlims)
-                ax2.set_xticks(np.array(timings[test_name].dropna().index.tolist()) - start_of_test)
+                ax2.set_xticks(timings[test_name].dropna().index.values - start_of_test)
                 setp(xticks()[1], rotation=60)
                 ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
                 xlim([0, end_of_test - start_of_test])
