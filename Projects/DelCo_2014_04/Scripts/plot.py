@@ -60,11 +60,22 @@ for f in os.listdir(data_dir):
         if any([substring in f.lower() for substring in skip_files]):
             continue
 
+        # Strip test name from file name
         test_name = f[:-4]
         print 'Test ' + test_name
 
         # Load exp. data file
-        data = pd.read_csv(data_dir + f, index_col=1)
+        data = pd.read_csv(data_dir + f, index_col=0)
+
+        # Read in test times to offset plots
+        start_of_test = info['Start of Test'][test_name]
+        end_of_test = info['End of Test'][test_name]
+
+        # Offset data time to start of test
+        t = np.array(data['Time'].tolist()) - start_of_test
+
+        # Save converted time back to dataframe
+        data['Time'] = t
 
         #  ============
         #  = Plotting =
@@ -73,15 +84,6 @@ for f in os.listdir(data_dir):
         # Generate a plot for each quantity group
         for group in sensor_groups:
             fig = figure()
-
-            # Read in start of test time to offset plots
-            start_of_test = 0
-            try:
-                start_of_test = info['Start of Test'][test_name]
-                end_of_test = info['End of Test'][test_name]
-            except:
-                pass
-            t = np.array(data.index.tolist()) - start_of_test
 
             for channel in data.columns[1:]:
 
@@ -142,7 +144,7 @@ for f in os.listdir(data_dir):
                         line_style = '-'
                         axis_scale = 'Y Scale GAS'
                     
-                    # Plot hose pressure and flow
+                    # Plot hose pressure
                     if 'HOSE_' in channel:
                         plt.rc('axes', color_cycle = ['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         # Skip data other than sensors on 2.5 inch hoseline
@@ -153,7 +155,7 @@ for f in os.listdir(data_dir):
                         line_style = '-'
                         axis_scale = 'Y Scale HOSE'
 
-                    # Save converted quantity back to exp. data array
+                    # Save converted quantity back to exp. dataframe
                     data[channel] = quantity
 
                     plot(t, quantity, lw=1.5, ls=line_style, label=channel, rasterized=True)
@@ -162,7 +164,7 @@ for f in os.listdir(data_dir):
             if info[axis_scale][test_name] == 'None':
                 continue
 
-            # Scale y-axis limit based on specified option in test description file
+            # Scale y-axis limit based on specified range in test description file
             if axis_scale == 'Y Scale BDP':
                 ylim([-np.float(info[axis_scale][test_name]), np.float(info[axis_scale][test_name])])
             else:
@@ -177,8 +179,8 @@ for f in os.listdir(data_dir):
             yticks(fontsize=16)
             legend(loc=0, fontsize=8)
 
+            # Add vertical lines for timing information (if available)
             try:
-                # Add vertical lines for timing information (if available)
                 for index, row in timings.iterrows():
                     if pd.isnull(row[test_name]):
                         continue
@@ -197,6 +199,7 @@ for f in os.listdir(data_dir):
             except:
                 pass
 
+            # Save plot to file
             print 'Plotting ', group
             savefig('../Figures_Plots/' + test_name + '_' + group[0].rstrip('_') + '.pdf')
             close('all')
@@ -204,6 +207,6 @@ for f in os.listdir(data_dir):
         close('all')
         print
 
-        # Write converted quantities back to reduced exp. data file
+        # Write offset times and converted quantities back to reduced exp. data file
         data.to_csv(data_dir + test_name + '_Reduced.csv')
 
