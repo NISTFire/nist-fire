@@ -179,7 +179,7 @@ for f in os.listdir(data_dir):
             xlabel('Time', fontsize=20)
             xticks(fontsize=16)
             yticks(fontsize=16)
-            legend(loc=0, fontsize=8)
+            legend(loc='lower right', fontsize=8)
 
             try:
                 # Add vertical lines for timing information (if available)
