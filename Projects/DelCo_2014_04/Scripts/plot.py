@@ -170,8 +170,10 @@ for f in os.listdir(data_dir):
             else:
                 ylim([0, np.float(info[axis_scale][test_name])])
 
+            # Set axis options, legend, tickmarks, etc.
             ax1 = gca()
             xlim([0, end_of_test - start_of_test])
+            ax1.xaxis.set_major_locator(MaxNLocator(8))
             ax1_xlims = ax1.axis()[0:2]
             grid(True)
             xlabel('Time', fontsize=20)
@@ -179,8 +181,8 @@ for f in os.listdir(data_dir):
             yticks(fontsize=16)
             legend(loc=0, fontsize=8)
 
-            # Add vertical lines for timing information (if available)
             try:
+                # Add vertical lines for timing information (if available)
                 for index, row in timings.iterrows():
                     if pd.isnull(row[test_name]):
                         continue
