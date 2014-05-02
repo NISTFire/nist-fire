@@ -16,6 +16,7 @@ Time,PPV_NOOYC,HOSE_DSXOXF,HOSE_DNXOXF,HOSE_DSXAXF,HOSE_DNXAXX,HOSE_IXXAXX,HOSE_
 270,,Fixed straight stream at Door BC,,Hose fixed,Hose fixed,,Fixed narrow fog at Room B ceiling,,,
 285,,,,,,,,Second couch has ignited,,
 300,,Rear door opened,Narrow fog at Door BC,Hose rotated left,Hose rotated left,,Narrow fog rotated right at Room B Ceiling,,,
+320,,,,,,,,,,Smoke out of C Doors
 330,,Rear door closed,Rear door opened,Hose fixed; Rear door opened,Hose fixed,,Fixed narrow fog at Room A,,,
 344,,Water flow stopped,,,,,,,,
 360,Electric PPV fan; 2000 rpm,,Rear door closed,Hose rotated right,Rear door opened,,Narrow fog rotated right at Room A,,,
