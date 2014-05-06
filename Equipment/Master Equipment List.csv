@@ -1,70 +1,47 @@
-Property Number,Quantity,Device,Manufacturer,Model Number,Description,Related Equipment
-855830,1,Laptop (Simula),Dell,Latitude E6430,For Arduino data logging and NTP server (Windows 7 64-bit),
-,1,Laptop,Dell,Latitude,For data logging (32-bit Windows 7),
-850853,1,Laptop,Dell,Latitude,For data logging (32-bit Windows 7),
-,1,Toughbook,Panasonic,,For FLIR IR camera,"SCSI drive, dongle, backpack"
-,,,,,,
-,2,Wireless Routers,Asus,RT-AC68U,Primary router and bridge router,
-,1,Wireless Router,Linksys,E1200,Extra router,
-,,,,,,
-,2,Digital Video Recorders,Samsung,SRD-1680D(2T),,2 TB HD
-,3,46 in TV screens,,,,
-,,,,,,
-,,Bullet Cameras,Marshall,,,
-,17,Video Cameras,GoPro,HERO3+ Black Edition,,"64 GB Class 10 microSD cards, mounts, batteries"
-,3,Video Cameras,Sony,Handycam,,64 GB SD cards
-,3,Thermal Imaging Cameras,,,,
-,1,Infrared Camera,FLIR,,,
-,,,,,,
-,2,Akron Brass Waterflow Meters,,,,Display box and 2.5 in coupler
-,10,Data Loggers,Arduino,Yun,,"Smart Power Base, 8 GB SD cards, power adaptors"
-,,,,,,
-,2,"Gas Analyzer (CO2, CO, O2)",California Analytical Instruments,NDIR/O2 602P,Gas Analyzer,"2 Pumps, traps, dryers"
-,1,Gas Dryer,,Universal Analyzers 570,Dryer for gas analyzers,Gas Analyzer
-,,,,,,
-,4,DAQ Cards,National Instruments,SCXI NI-1600,USB Data Logger Cards,Note: This only works with 32-bit operating systems
-,,,,,,
-,2,Sho-Flow Indicator,Task Force Tips,SF-NF-NF-200,"1.5 inch couplings, 50-200 GPM",
-,2,Sho-Flow Indicator,Task Force Tips,SF-NJNJ-500,"2.5 inch couplings, 125-500 GPM",
-,,,,,,
-,2,Weather Consoles,Davis Instruments,,Weather display console,
-,2,Weather Stations,Davis Instruments,,"Weather stations w/ wind, temperature, humidity",
-,1,Weather Data Logger,Davis Instruments,Envoy8X,Weather station data receiver,
-,,,,,,
-Pelican Cases and Boxes,Cases,Quantity inside case,,Label,,
-,,,,,,
-,1,10,,Arduino Data Loggers,,
-,1,1,,Electronic Components and Accessories,,
-,1,3,,Wireless Routers,(2 Asus and 1 Linksys),
-,1,1,,HP Printer,,
-,1,6,,Data External Hard Drives,,
-,1,1,,Sage Helmet TIC,,
-,1,1,,Bullard T3 TIC,,
-,1,1,,Bullard MX TIC,,
-,1,1,,ISG K90 Talisman,,
-,1,1,,ISG FireCam,,
-,1,1,,GigaPan w/ Fujifilm,Manual shutter trigger w/ Fujifilm camera,
-,1,1,,GigaPan Pro,Automatic shutter trigger,
-,1,1,,Canon EOS 40D,Still camera,
-,1,1,,Canon EOS 20D,Still camera,
-,2,1,,Olympus SP-560UZ,Still camera,
-,1,1,,Sony TRV-950,Video camera,
-,1,3,,Sony TRV-950 / Canon,"Video cameras (2 Sony, 1 Canon)",
-,1,3,,Sony Handycams,Video cameras,
-,1,10,,GoPro Cameras,w/ accessories,
-,1,7,,GoPro Cameras,w/ accessories,
-,1,1,,Sony Vixia HFG20,Video camera,
-,2,1,,Samsung Digital Video Recorders,,
-,1,1,,Jay's Video Box,Misc. power and video connectors,
-,4,,,12 V batteries,w/ chargers,
-,1,,,UPSs,,
-,1,,,Sony Cassette (Walkman) Recorders,,
-,1,,,"Video Cables, Tapes, and Accessories",,
-,1,,,Video Camera and Tape Deck Batteries,,
-,1,,,Sony Cassette Recorder Power Supplies,,
-,1,,,TFT Sho-Flow Meters and Hose Couplings w/ Pressure Gauges,,
-,2,1,,Akron Brass Flow Meter,,
-,1,,,Smart FF Hose Flow Meter,,
-,1,,,Bullet cameras,,
-,1,,,Bullet camera BNC extensions,,
-,2,,,Tripods,,
+Cases/Boxes/Bags,Quantity inside case,Device/Label,Manufacturer,Model Number,Description,Notes
+1,1,Laptop (Simula),Dell,Latitude E6430,For Arduino data logging and NTP server (Windows 7 64-bit),Property Number 855830
+1,1,Laptop,Dell,Latitude,For data logging (Windows 7 32-bit),
+1,1,Laptop,Dell,Latitude,For data logging (Windows 7 32-bit),Property Number 850853
+1,1,Toughbook Laptop,Panasonic,,For FLIR IR camera,"SCSI drive, dongle, backpack"
+1,1,Infrared Camera,FLIR,,,
+2,1,"Gas Analyzer (CO2, CO, O2)",California Analytical Instruments,NDIR/O2 602P,Gas Analyzer,"2 pumps, traps, dryers"
+1,1,Gas Sample Dryer,Universal Analyzers,570,Dryer for gas analyzers,
+4,1,DAQ Cards,National Instruments,SCXI NI-1600,USB Data Logger Cards,Note: This only works with 32-bit operating systems
+1,10,Arduino Data Loggers,Arduino,Yun,,"Batteries, 8 GB microSD cards, power adaptors"
+1,,Electronic Components and Accessories,,,,
+1,3,Wireless Routers,"Asus, Linksys","RT-AC68U, E1200","Primary router and repeater, extra router",
+1,1,HP Printer,HP,,,
+1,6,Data External Hard Drives,Western Digital,Passport,2 TB external drives,
+1,1,Sage Helmet TIC,Sage,,,
+1,1,Bullard T3 TIC,Bullard,,,
+1,1,Bullard MX TIC,Bullard,,,
+1,1,ISG K90 Talisman,ISG,K90 Talisman,,
+1,1,ISG FireCam,ISG,FireCam,,
+1,1,GigaPan w/ Fujifilm camera,GigaPan,EPIC 100,Manual shutter trigger w/ Fujifilm camera,
+1,1,GigaPan Pro,GigaPan,EPIC Pro,Automatic shutter trigger,
+1,1,Canon EOS 40D,Canon,EOS 40D,Still camera,
+1,1,Canon EOS 20D,Canon,EOS 20D,Still camera,
+2,1,Olympus SP-560UZ,Olympus,SP-560UZ,Still camera,
+1,1,Sony TRV-950,Sony,TRV-950,Video camera,
+1,3,Sony TRV-950 / Canon,Sony,TRV-950,"Video cameras (2 Sony, 1 Canon)",
+1,3,Sony Handycams,Sony,Handycam,Video cameras,64 GB SD cards
+1,10,GoPro Cameras,GoPro,HERO3+ Black Edition,,"64 GB Class 10 microSD cards, mounts, batteries, accessories"
+1,7,GoPro Cameras,GoPro,,,Accessories
+1,1,Sony Vixia HFG20,Sony,,Video camera,
+2,1,Samsung Digital Video Recorders,Samsung,SRD-1680D(2T),2 TB HD,
+1,1,Jay's Video Box,,,Misc. power and video connectors,
+4,,12 V batteries,,,,Chargers
+1,,UPSs,,,,
+1,,Sony Cassette (Walkman) Recorders,Sony,,,
+1,,Sony Cassette Recorder Power Supplies,Sony,,,
+1,,"Video Cables, Tapes, and Accessories",,,,
+1,,Video Camera and Tape Deck Batteries,,,,
+1,,TFT Sho-Flow Meters and Hose Couplings w/ Pressure Gauges,Task Force Tips,"SF-NJNJ-500, SF-NF-NF-200","1.5 inch couplings, 50-200 GPM; 2.5 inch couplings, 125-500 GPM",
+2,1,Akron Brass Flow Meter,Akron Brass,,Display box and 2.5 in coupler,
+1,,Smart FF Hose Flow Meter,,,,
+1,60,Bullet cameras,Marshall,,,
+1,,Bullet camera BNC extensions,,,,
+2,,Tripods,,,,
+3,1,46 in TV screens,Samsung,,,
+1,2,Weather Stations,Davis Instruments,,Weather display console,
+1,2,Weather Consoles,Davis Instruments,,"Weather stations w/ wind, temperature, humidity",w/ Envoy8X weather data receiver/logger
