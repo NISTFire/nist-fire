@@ -31,17 +31,17 @@ SC1Mod2,28,TC_A4_1p22_BC,TC,4,,,1.22 m BC,,1,TC 4 1.22 m BC
 SC1Mod2,29,TC_A4_1p52_BC,TC,4,,,1.52 m BC,,1,TC 4 1.52 m BC
 SC1Mod2,30,TC_A4_1p83_BC,TC,4,,,1.83 m BC,,1,TC 4 1.83 m BC
 SC1Mod2,31,TC_A4_2p13_BC,TC,4,,,2.13 m BC,,1,TC 4 2.13 m BC
-SC1Mod3,0,TC_A5_0p03_BC,TC,5,,,0.03 m BC,,1,TC 5 0.03 m BC
-SC1Mod3,1,TC_A5_0p30_BC,TC,5,,,0.30 m BC,,1,TC 5 0.30 m BC
-SC1Mod3,2,TC_A5_0p61_BC,TC,5,,,0.61 m BC,,1,TC 5 0.61 m BC
-SC1Mod3,3,TC_A6_0p61_BC,TC,5,,,0.61 m BC,,1,TC 5 0.61 m BC
-SC1Mod3,4,TC_A6_0p30_BC,TC,6,,,0.30 m BC,,1,TC 6 0.30 m BC
-SC1Mod3,5,TC_A6_0p90_BC,TC,6,,,0.90 m BC,,1,TC 6 0.90 m BC
-SC1Mod3,6,TC_A6_1p50_BC,TC,6,,,1.50 m BC,,1,TC 6 1.50 m BC
-SC1Mod3,7,TC_A7_0p30_BC,TC,7,,,0.30 m BC,,1,TC 7 0.30 m BC
-SC1Mod3,8,TC_A7_0p90_BC,TC,7,,,0.90 m BC,,1,TC 7 0.90 m BC
-SC1Mod3,9,TC_A7_1p50_BC,TC,7,,,1.50 m BC,,1,TC 7 1.50 m BC
-SC1Mod3,10,TC_A7_1p50_BC,TC,7,,,1.50 m BC,,1,TC 7 1.50 m BC
+SC1Mod3,0,TC_A5_0p15_BC,TC,5,,,0.15 m BC,,1,TC 5 0.15 m BC
+SC1Mod3,1,TC_A5_0p45_BC,TC,5,,,0.45 m BC,,1,TC 5 0.45 m BC
+SC1Mod3,2,TC_A5_0p75_BC,TC,5,,,0.75 m BC,,1,TC 5 0.75 m BC
+SC1Mod3,3,TC_Attic_S1,TC,,,,,,1,TC Attic S1
+SC1Mod3,4,TC_Attic_S2,TC,,,,,,1,TC Attic S2
+SC1Mod3,5,TC_Attic_S3,TC,,,,,,1,TC Attic S3
+SC1Mod3,6,TC_Attic_S4,TC,,,,,,1,TC Attic S4
+SC1Mod3,7,TC_Attic_S5,TC,,,,,,1,TC Attic S5
+SC1Mod3,8,TC_Attic_S6,TC,,,,,,1,TC Attic S6
+SC1Mod3,9,TC_Attic_S7,TC,,,,,,1,TC Attic S7
+SC1Mod3,10,TC_Attic_S8,TC,,,,,,1,TC Attic S8
 SC1Mod3,11,TC_Ignition,TC,,,,,,1,TC Ignition
 SC1Mod3,12,TC_Sprinkler,TC,,,,,,1,TC Sprinkler
 SC1Mod3,13,,,,,,,,,
@@ -67,8 +67,8 @@ SC1Mod4,0,HF_A1_VERT,Voltage,1,,,0.30 m AF,,,HF 1 V 0.30 m AF
 SC1Mod4,1,HF_A1_HORZ,Voltage,1,,,0.30 m AF,,,HF 1 H 0.30 m AF
 SC1Mod4,2,,,,,,,,,
 SC1Mod4,3,,,,,,,,,
-SC1Mod4,4,,,,,,,,,
-SC1Mod4,5,,,,,,,,,
+SC1Mod4,4,HOSE_1,Voltage,,,,,,1,Hose Sensor 1
+SC1Mod4,5,HOSE_2,Voltage,,,,,,1,Hose Sensor 2
 SC1Mod4,6,,,,,,,,,
 SC1Mod4,7,,,,,,,,,
 SC1Mod4,8,,,,,,,,,
@@ -79,15 +79,15 @@ SC1Mod4,12,,,,,,,,,
 SC1Mod4,13,,,,,,,,,
 SC1Mod4,14,,,,,,,,,
 SC1Mod4,15,,,,,,,,,
-SC1Mod4,16,,,,,,,,,
-SC1Mod4,17,,,,,,,,,
-SC1Mod4,18,,,,,,,,,
-SC1Mod4,19,,,,,,,,,
-SC1Mod4,20,,,,,,,,,
-SC1Mod4,21,,,,,,,,,
-SC1Mod4,22,,,,,,,,,
-SC1Mod4,23,,,,,,,,,
-SC1Mod4,24,,,,,,,,,
+SC1Mod4,16,P_A1_A_0p03_BC,Voltage,,,,0.03 m BC,,,P A1 AD 0p03 BC
+SC1Mod4,17,P_A1_A_1p20_BC,Voltage,,,,1.20 m BC,,,P A1 AD 1p20 BC
+SC1Mod4,18,P_A1_A_2p10_BC,Voltage,,,,2.10 m BC,,,P A1 AD 2p10 BC
+SC1Mod4,19,P_A3_AD_0p03_BC,Voltage,4,,,0.03 m BC,,,P A3 AD 0p03 BC
+SC1Mod4,20,P_A3_AD_1p20_BC,Voltage,4,,,1.20 m BC,,,P A3 AD 1p20 BC
+SC1Mod4,21,P_A3_AD_2p10_BC,Voltage,4,,,2.10 m BC,,,P A3 AD 2p10 BC
+SC1Mod4,22,P_Ax_xx_0p03_BC,Voltage,4,,,0.03 m BC,,,P Ax xx 0p03 BC
+SC1Mod4,23,P_Ax_xx_1p20_BC,Voltage,4,,,1.20 m BC,,,P Ax xx 1p20 BC
+SC1Mod4,24,P_Ax_xx_2p10_BC,Voltage,4,,,2.10 m BC,,,P Ax xx 2p10 BC
 SC1Mod4,25,O2_A,Voltage,,,,,,,O2 A
 SC1Mod4,26,CO_A,Voltage,,,,,,,CO A
 SC1Mod4,27,CO2_A,Voltage,,,,,,,CO2 A

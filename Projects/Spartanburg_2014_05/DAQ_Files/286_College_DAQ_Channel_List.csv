@@ -67,8 +67,8 @@ SC1Mod4,0,HF_A2_VERT,Voltage,2,,,0.30 m AF,,,HF 2 V 0.30 m AF
 SC1Mod4,1,HF_A2_HORZ,Voltage,2,,,0.30 m AF,,,HF 2 H 0.30 m AF
 SC1Mod4,2,,,,,,,,,
 SC1Mod4,3,,,,,,,,,
-SC1Mod4,4,,,,,,,,,
-SC1Mod4,5,,,,,,,,,
+SC1Mod4,4,HOSE_1,Voltage,,,,,,,Hose Sensor 1
+SC1Mod4,5,HOSE_2,Voltage,,,,,,,Hose Sensor 2
 SC1Mod4,6,,,,,,,,,
 SC1Mod4,7,,,,,,,,,
 SC1Mod4,8,,,,,,,,,
