@@ -34,37 +34,37 @@ SC1Mod2,31,TC_A4_2p13_BC,TC,4,,,2.13 m BC,,1,TC 4 2.13 m BC
 SC1Mod3,0,TC_A5_0p03_BC,TC,5,,,0.03 m BC,,1,TC 5 0.03 m BC
 SC1Mod3,1,TC_A5_0p30_BC,TC,5,,,0.30 m BC,,1,TC 5 0.30 m BC
 SC1Mod3,2,TC_A5_0p61_BC,TC,5,,,0.61 m BC,,1,TC 5 0.61 m BC
-SC1Mod3,3,TC_A5_0p91_BC,TC,5,,,0.91 m BC,,1,TC 5 0.91 m BC
-SC1Mod3,4,TC_A5_1p22_BC,TC,5,,,1.22 m BC,,1,TC 5 1.22 m BC
-SC1Mod3,5,TC_A5_1p52_BC,TC,5,,,1.52 m BC,,1,TC 5 1.52 m BC
-SC1Mod3,6,TC_A5_1p83_BC,TC,5,,,1.83 m BC,,1,TC 5 1.83 m BC
-SC1Mod3,7,TC_A5_2p13_BC,TC,5,,,2.13 m BC,,1,TC 5 2.13 m BC
-SC1Mod3,8,TC_A6_0p30_BC,TC,6,,,0.30 m BC,,1,TC 6 0.30 m BC
-SC1Mod3,9,TC_A6_0p90_BC,TC,6,,,0.90 m BC,,1,TC 6 0.90 m BC
-SC1Mod3,10,TC_A6_1p50_BC,TC,6,,,1.50 m BC,,1,TC 6 1.50 m BC
-SC1Mod3,11,TC_A6_2p10_BC,TC,6,,,2.10 m BC,,1,TC 6 2.10 m BC
-SC1Mod3,12,TC_A6_2p70_BC,TC,6,,,2.70 m BC,,1,TC 6 2.70 m BC
-SC1Mod3,13,TC_A6_3p40_BC,TC,6,,,3.40 m BC,,1,TC 6 3.40 m BC
-SC1Mod3,14,TC_A7_0p30_BC,TC,7,,,0.30 m BC,,1,TC 7 0.30 m BC
-SC1Mod3,15,TC_A7_0p90_BC,TC,7,,,0.90 m BC,,1,TC 7 0.90 m BC
-SC1Mod3,16,TC_A7_1p50_BC,TC,7,,,1.50 m BC,,1,TC 7 1.50 m BC
-SC1Mod3,17,TC_A7_2p10_BC,TC,7,,,2.10 m BC,,1,TC 7 2.10 m BC
-SC1Mod3,18,TC_A7_2p70_BC,TC,7,,,2.70 m BC,,1,TC 7 2.70 m BC
-SC1Mod3,19,TC_A7_3p40_BC,TC,7,,,3.40 m BC,,1,TC 7 3.40 m BC
-SC1Mod3,20,TC_A7_4p00_BC,TC,7,,,4.00 m BC,,1,TC 7 4.00 m BC
-SC1Mod3,21,TC_A8_0p30_BC,TC,8,,,0.30 m BC,,1,TC 8 0.30 m BC
-SC1Mod3,22,TC_A8_0p90_BC,TC,8,,,0.90 m BC,,1,TC 8 0.90 m BC
-SC1Mod3,23,TC_A8_1p50_BC,TC,8,,,1.50 m BC,,1,TC 8 1.50 m BC
-SC1Mod3,24,TC_A8_2p10_BC,TC,8,,,2.10 m BC,,1,TC 8 2.10 m BC
-SC1Mod3,25,TC_A8_2p70_BC,TC,8,,,2.70 m BC,,1,TC 8 2.70 m BC
-SC1Mod3,26,TC_A8_3p40_BC,TC,8,,,3.40 m BC,,1,TC 8 3.40 m BC
-SC1Mod3,27,TC_Ignition,TC,,,,,,,TC Ignition
-SC1Mod3,28,TC_Sprinkler,TC,,,,,,,TC Sprinkler
+SC1Mod3,3,TC_A6_0p61_BC,TC,5,,,0.61 m BC,,1,TC 5 0.61 m BC
+SC1Mod3,4,TC_A6_0p30_BC,TC,6,,,0.30 m BC,,1,TC 6 0.30 m BC
+SC1Mod3,5,TC_A6_0p90_BC,TC,6,,,0.90 m BC,,1,TC 6 0.90 m BC
+SC1Mod3,6,TC_A6_1p50_BC,TC,6,,,1.50 m BC,,1,TC 6 1.50 m BC
+SC1Mod3,7,TC_A7_0p30_BC,TC,7,,,0.30 m BC,,1,TC 7 0.30 m BC
+SC1Mod3,8,TC_A7_0p90_BC,TC,7,,,0.90 m BC,,1,TC 7 0.90 m BC
+SC1Mod3,9,TC_A7_1p50_BC,TC,7,,,1.50 m BC,,1,TC 7 1.50 m BC
+SC1Mod3,10,TC_A7_1p50_BC,TC,7,,,1.50 m BC,,1,TC 7 1.50 m BC
+SC1Mod3,11,TC_Ignition,TC,,,,,,1,TC Ignition
+SC1Mod3,12,TC_Sprinkler,TC,,,,,,1,TC Sprinkler
+SC1Mod3,13,,,,,,,,,
+SC1Mod3,14,,,,,,,,,
+SC1Mod3,15,,,,,,,,,
+SC1Mod3,16,,,,,,,,,
+SC1Mod3,17,,,,,,,,,
+SC1Mod3,18,,,,,,,,,
+SC1Mod3,19,,,,,,,,,
+SC1Mod3,20,,,,,,,,,
+SC1Mod3,21,,,,,,,,,
+SC1Mod3,22,,,,,,,,,
+SC1Mod3,23,,,,,,,,,
+SC1Mod3,24,,,,,,,,,
+SC1Mod3,25,,,,,,,,,
+SC1Mod3,26,,,,,,,,,
+SC1Mod3,27,,,,,,,,,
+SC1Mod3,28,,,,,,,,,
 SC1Mod3,29,,,,,,,,,
 SC1Mod3,30,,,,,,,,,
 SC1Mod3,31,,,,,,,,,
-SC1Mod4,0,HF_A2_VERT,Voltage,2,,,0.30 m AF,,,HF 2 V 0.30 m AF
-SC1Mod4,1,HF_A2_HORZ,Voltage,2,,,0.30 m AF,,,HF 2 H 0.30 m AF
+SC1Mod4,0,HF_A1_VERT,Voltage,1,,,0.30 m AF,,,HF 1 V 0.30 m AF
+SC1Mod4,1,HF_A1_HORZ,Voltage,1,,,0.30 m AF,,,HF 1 H 0.30 m AF
 SC1Mod4,2,,,,,,,,,
 SC1Mod4,3,,,,,,,,,
 SC1Mod4,4,,,,,,,,,
@@ -79,15 +79,15 @@ SC1Mod4,12,,,,,,,,,
 SC1Mod4,13,,,,,,,,,
 SC1Mod4,14,,,,,,,,,
 SC1Mod4,15,,,,,,,,,
-SC1Mod4,16,P_A1_A_0p03_BC,Voltage,,,,0.03 m BC,,,P A1 AD 0p03 BC
-SC1Mod4,17,P_A1_A_1p20_BC,Voltage,,,,1.20 m BC,,,P A1 AD 1p20 BC
-SC1Mod4,18,P_A1_A_2p10_BC,Voltage,,,,2.10 m BC,,,P A1 AD 2p10 BC
-SC1Mod4,19,P_A4_AB_0p03_BC,Voltage,4,,,0.03 m BC,,,P A4 AB 0p03 BC
-SC1Mod4,20,P_A4_AB_1p20_BC,Voltage,4,,,1.20 m BC,,,P A4 AB 1p20 BC
-SC1Mod4,21,P_A4_AB_2p10_BC,Voltage,4,,,2.10 m BC,,,P A4 AB 2p10 BC
-SC1Mod4,22,P_A4_AD_0p03_BC,Voltage,4,,,0.03 m BC,,,P A4 AD 0p03 BC
-SC1Mod4,23,P_A4_AD_1p20_BC,Voltage,4,,,1.20 m BC,,,P A4 AD 1p20 BC
-SC1Mod4,24,P_A4_AD_2p10_BC,Voltage,4,,,2.10 m BC,,,P A4 AD 2p10 BC
+SC1Mod4,16,,,,,,,,,
+SC1Mod4,17,,,,,,,,,
+SC1Mod4,18,,,,,,,,,
+SC1Mod4,19,,,,,,,,,
+SC1Mod4,20,,,,,,,,,
+SC1Mod4,21,,,,,,,,,
+SC1Mod4,22,,,,,,,,,
+SC1Mod4,23,,,,,,,,,
+SC1Mod4,24,,,,,,,,,
 SC1Mod4,25,O2_A,Voltage,,,,,,,O2 A
 SC1Mod4,26,CO_A,Voltage,,,,,,,CO A
 SC1Mod4,27,CO2_A,Voltage,,,,,,,CO2 A
