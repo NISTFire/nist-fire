@@ -31,30 +31,30 @@ SC1Mod2,28,TC_A4_5,TC,,,1.22 m BC,,1,0,TC_A4_1p22_BC
 SC1Mod2,29,TC_A4_6,TC,,,1.52 m BC,,1,0,TC_A4_1p52_BC
 SC1Mod2,30,TC_A4_7,TC,,,1.83 m BC,,1,0,TC_A4_1p83_BC
 SC1Mod2,31,TC_A4_8,TC,,,2.13 m BC,,1,0,TC_A4_2p13_BC
-SC1Mod3,0,TC_A5_1,TC,,,0.03 m BC,,1,0,TC_A5_0p03_BC
-SC1Mod3,1,TC_A5_2,TC,,,0.30 m BC,,1,0,TC_A5_0p30_BC
-SC1Mod3,2,TC_A5_3,TC,,,0.61 m BC,,1,0,TC_A5_0p61_BC
-SC1Mod3,3,TC_A5_4,TC,,,0.91 m BC,,1,0,TC_A5_0p91_BC
-SC1Mod3,4,TC_A5_5,TC,,,1.22 m BC,,1,0,TC_A5_1p22_BC
-SC1Mod3,5,TC_A5_6,TC,,,1.52 m BC,,1,0,TC_A5_1p52_BC
-SC1Mod3,6,TC_A5_7,TC,,,1.83 m BC,,1,0,TC_A5_1p83_BC
-SC1Mod3,7,TC_A5_8,TC,,,2.13 m BC,,1,0,TC_A5_2p13_BC
-SC1Mod3,8,TC_A6_1,TC,,,0.03 m BC,,1,0,TC_A6_0p03_BC
-SC1Mod3,9,TC_A6_2,TC,,,0.30 m BC,,1,0,TC_A6_0p30_BC
-SC1Mod3,10,TC_A6_3,TC,,,0.61 m BC,,1,0,TC_A6_0p61_BC
-SC1Mod3,11,TC_A6_4,TC,,,0.91 m BC,,1,0,TC_A6_0p91_BC
-SC1Mod3,12,TC_A6_5,TC,,,1.22 m BC,,1,0,TC_A6_1p22_BC
-SC1Mod3,13,TC_A6_6,TC,,,1.52 m BC,,1,0,TC_A6_1p52_BC
-SC1Mod3,14,TC_A6_7,TC,,,1.83 m BC,,1,0,TC_A6_1p83_BC
-SC1Mod3,15,TC_A6_8,TC,,,2.13 m BC,,1,0,TC_A6_2p13_BC
-SC1Mod3,16,TC_A7_1,TC,,,0.03 m BC,,1,0,TC_A7_0p03_BC
-SC1Mod3,17,TC_A7_2,TC,,,0.30 m BC,,1,0,TC_A7_0p30_BC
-SC1Mod3,18,TC_A7_3,TC,,,0.61 m BC,,1,0,TC_A7_0p61_BC
-SC1Mod3,19,TC_A7_4,TC,,,0.91 m BC,,1,0,TC_A7_0p91_BC
-SC1Mod3,20,TC_A7_5,TC,,,1.22 m BC,,1,0,TC_A7_1p22_BC
-SC1Mod3,21,TC_A7_6,TC,,,1.52 m BC,,1,0,TC_A7_1p52_BC
-SC1Mod3,22,TC_A7_7,TC,,,1.83 m BC,,1,0,TC_A7_1p83_BC
-SC1Mod3,23,TC_A7_8,TC,,,2.13 m BC,,1,0,TC_A7_2p13_BC
+SC1Mod3,0,TC_A5_1,TC,,,,,1,0,
+SC1Mod3,1,TC_A5_2,TC,,,,,1,0,
+SC1Mod3,2,TC_A5_3,TC,,,,,1,0,
+SC1Mod3,3,TC_A5_4,TC,,,,,1,0,
+SC1Mod3,4,TC_A5_5,TC,,,,,1,0,
+SC1Mod3,5,TC_A5_6,TC,,,,,1,0,
+SC1Mod3,6,TC_A5_7,TC,,,,,1,0,
+SC1Mod3,7,TC_A5_8,TC,,,,,1,0,
+SC1Mod3,8,TC_A6_1,TC,,,,,1,0,
+SC1Mod3,9,TC_A6_2,TC,,,,,1,0,
+SC1Mod3,10,TC_A6_3,TC,,,,,1,0,
+SC1Mod3,11,TC_A6_4,TC,,,,,1,0,
+SC1Mod3,12,TC_A6_5,TC,,,,,1,0,
+SC1Mod3,13,TC_A6_6,TC,,,,,1,0,
+SC1Mod3,14,TC_A6_7,TC,,,,,1,0,
+SC1Mod3,15,TC_A6_8,TC,,,,,1,0,
+SC1Mod3,16,TC_A7_1,TC,,,,,1,0,
+SC1Mod3,17,TC_A7_2,TC,,,,,1,0,
+SC1Mod3,18,TC_A7_3,TC,,,,,1,0,
+SC1Mod3,19,TC_A7_4,TC,,,,,1,0,
+SC1Mod3,20,TC_A7_5,TC,,,,,1,0,
+SC1Mod3,21,TC_A7_6,TC,,,,,1,0,
+SC1Mod3,22,TC_A7_7,TC,,,,,1,0,
+SC1Mod3,23,TC_A7_8,TC,,,,,1,0,
 SC1Mod3,24,TC_A8_1,TC,,,,,1,0,
 SC1Mod3,25,TC_A8_2,TC,,,,,1,0,
 SC1Mod3,26,TC_A8_3,TC,,,,,1,0,
@@ -72,10 +72,10 @@ SC1Mod4,5,TC_S_6,TC,,,,,1,0,
 SC1Mod4,6,TC_S_7,TC,,,,,1,0,
 SC1Mod4,7,TC_S_8,TC,,,,,1,0,
 SC1Mod4,8,TC_Ignition,TC,,,,,1,0,TC_Ignition
-SC1Mod4,9,HF_1_V,Voltage,,,0.30 m AF,,1,0,HF_A2_V
-SC1Mod4,10,HF_1_H,Voltage,,,0.30 m AF,,1,0,HF_A2_H
-SC1Mod4,11,HF_2_V,Voltage,,,0.30 m AF,,1,0,HF_A5_V
-SC1Mod4,12,HF_2_H,Voltage,,,0.30 m AF,,1,0,HF_A5_H
+SC1Mod4,9,HF_1_V,Voltage,,,0.30 m AF,,1,0,
+SC1Mod4,10,HF_1_H,Voltage,,,0.30 m AF,,1,0,
+SC1Mod4,11,HF_2_V,Voltage,,,,,1,0,
+SC1Mod4,12,HF_2_H,Voltage,,,,,1,0,
 SC1Mod4,13,HF_3_V,Voltage,,,,,1,0,
 SC1Mod4,14,HF_3_H,Voltage,,,,,1,0,
 SC1Mod4,15,Voltage_1,Voltage,,,,,1,0,
@@ -89,9 +89,9 @@ SC1Mod4,22,P_S_6,Voltage,,,,,99.52,-248.8,
 SC1Mod4,23,P_S_7,Voltage,,,,,99.52,-248.8,
 SC1Mod4,24,P_S_8,Voltage,,,,,99.52,-248.8,
 SC1Mod4,25,P_S_9,Voltage,,,,,99.52,-248.8,
-SC1Mod4,26,O2_A,Voltage,,,,,1,0,O2_A
-SC1Mod4,27,CO_A,Voltage,,,,,1,0,CO_A
-SC1Mod4,28,CO2_A,Voltage,,,,,1,0,CO2_A
-SC1Mod4,29,O2_B,Voltage,,,,,1,0,O2_B
-SC1Mod4,30,CO_B,Voltage,,,,,1,0,CO_B
-SC1Mod4,31,CO2_B,Voltage,,,,,1,0,CO2_B
+SC1Mod4,26,O2_A,Voltage,,,,,1,0,
+SC1Mod4,27,CO_A,Voltage,,,,,1,0,
+SC1Mod4,28,CO2_A,Voltage,,,,,1,0,
+SC1Mod4,29,O2_B,Voltage,,,,,1,0,
+SC1Mod4,30,CO_B,Voltage,,,,,1,0,
+SC1Mod4,31,CO2_B,Voltage,,,,,1,0,
