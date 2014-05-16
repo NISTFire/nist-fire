@@ -63,17 +63,17 @@ SC1Mod3,28,TC_A8_5,TC,,,,,1,0,
 SC1Mod3,29,TC_A8_6,TC,,,,,1,0,
 SC1Mod3,30,TC_A8_7,TC,,,,,1,0,
 SC1Mod3,31,TC_A8_8,TC,,,,,1,0,
-SC1Mod4,0,TC_S_1,TC,,,,,1,0,TC_Attic_1
-SC1Mod4,1,TC_S_2,TC,,,,,1,0,TC_Attic_2
-SC1Mod4,2,TC_S_3,TC,,,,,1,0,TC_Attic_3
-SC1Mod4,3,TC_S_4,TC,,,,,1,0,TC_Attic_4
+SC1Mod4,0,TC_S_1,TC,,,,,1,0,
+SC1Mod4,1,TC_S_2,TC,,,,,1,0,
+SC1Mod4,2,TC_S_3,TC,,,,,1,0,
+SC1Mod4,3,TC_S_4,TC,,,,,1,0,
 SC1Mod4,4,TC_S_5,TC,,,,,1,0,
 SC1Mod4,5,TC_S_6,TC,,,,,1,0,
 SC1Mod4,6,TC_S_7,TC,,,,,1,0,
 SC1Mod4,7,TC_S_8,TC,,,,,1,0,TC_Sprinkler
 SC1Mod4,8,TC_Ignition,TC,,,,,1,0,TC_Ignition
-SC1Mod4,9,HF_1_V,Voltage,,,0.30 m AF,,1,0,HF_A1_V
-SC1Mod4,10,HF_1_H,Voltage,,,0.30 m AF,,1,0,HF_A1_H
+SC1Mod4,9,HF_1_V,Voltage,,,0.30 m AF,65285,1563.72,0,HF_A1_V
+SC1Mod4,10,HF_1_H,Voltage,,,0.30 m AF,65287,1568.63,0,HF_A1_H
 SC1Mod4,11,HF_2_V,Voltage,,,,,1,0,
 SC1Mod4,12,HF_2_H,Voltage,,,,,1,0,
 SC1Mod4,13,HF_3_V,Voltage,,,,,1,0,
