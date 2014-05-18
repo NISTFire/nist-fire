@@ -1,0 +1,130 @@
+=================================
+=================================
+= Spartanburg Testing Procedure =
+=================================
+=================================
+
+===================
+= Initial Startup =
+===================
+
+* Power on:
+    * Uninterruptible Power Supplies (UPSs)
+    * WiFi routers/repeaters
+    * Arduino laptop with NTP, RabbitMQ, Python receive_data.py script
+    * DAQs and laptops
+    * Gas analyzers (leave running as long as possible during testing)
+    * Weather stations
+    * Digital video recorder (DVR)
+    * Bullet cameras
+    * Thermal imaging cameras (TICs) (check battery level)
+    * Digital video cassette recorders (DVCRs) (check battery level)
+    * GoPros (check battery level)
+    * Video cameras (check battery level)
+
+===============
+= Calibration =
+===============
+
+* Verify operation of all:
+    * Video channels
+    * DAQ channels
+    * Check toggle switches on TC-2095s for appropriate measurement device
+    * Gas analyzers
+
+* Calibrate gas analyzers with zero and span gases
+
+* Check lag time on gas analyzer probes
+
+* 1 minute calibration run to separate output file (cover BDPs, check TCs, etc.)
+
+=============================
+= Primary Testing Procedure =
+=============================
+
+* Verify testing procedure with all personnel
+
+* Safety checks
+
+* Take GigaPan picture before test
+
+* Distribute still cameras
+
+* Power on gas analyzer pump
+
+* Turn on water for heat flux gauges
+
+* Check Arduino battery level
+* Power on Arduino data loggers
+
+* Start recording on:
+    * DAQ data
+    * DVR
+    * GoPros
+    * Video cameras
+    * Mobile TIC
+
+* 1 minute pre-test run (with all doors closed)
+
+* Begin test
+
+* Follow testing procedure
+
+* End test
+
+* Stop recording on:
+    * DAQ data
+    * DVR
+    * GoPros
+    * Video cameras
+    * Mobile TIC
+
+* Power off gas analyzer pump
+
+* Power off Arduino data loggers
+
+* Verify successful recording and operation of all DAQ channels in output file
+
+* Take GigaPan picture after test
+
+* Prepare for next test
+
+=============
+= Data Dump =
+=============
+
+* Collect and organize data from:
+    * DAQ
+    * DVR
+    * GoPros
+    * Video cameras with digital media
+    * Still cameras with digital media
+    * Mobile TIC
+    * GigaPan
+    * Weather station data logger
+    * Arduinos
+
+* Archive, swap, and label tapes from video cameras and DVCRs as needed
+
+* Make copies of all data on external hard drives
+
+* Verify integrity of data
+
+* Format GoPros, video and still camera media, mobile TIC, Arduinos, and GigaPan camera
+
+* On return from trip, extract video from DVCR tapes
+
+====================
+= Battery Charging =
+====================
+
+* Charge/change all batteries on:
+    * Laptops
+    * Arduinos
+    * Bullet camera batteries
+    * TICs
+    * GoPros
+    * Video cameras
+    * Still cameras
+    * GigaPan
+    * DVCRs
