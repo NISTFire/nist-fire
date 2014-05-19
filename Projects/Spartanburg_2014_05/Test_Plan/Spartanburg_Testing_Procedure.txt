@@ -10,13 +10,13 @@
 
 * Power on:
     * Uninterruptible Power Supplies (UPSs)
+    * Gas analyzers (leave running as long as possible during testing)
     * WiFi routers/repeaters
     * Arduino laptop with NTP, RabbitMQ, Python receive_data.py script
     * DAQs and laptops
-    * Gas analyzers (leave running as long as possible during testing)
     * Weather stations
     * Digital video recorder (DVR)
-    * Bullet cameras
+    * Bullet cameras and power supplies
     * Thermal imaging cameras (TICs) (check battery level)
     * Digital video cassette recorders (DVCRs) (check battery level)
     * GoPros (check battery level)
@@ -34,7 +34,7 @@
 
 * Calibrate gas analyzers with zero and span gases
 
-* Check lag time on gas analyzer probes
+* Check and record lag time on gas analyzer probes
 
 * 1 minute calibration run to separate output file (cover BDPs, check TCs, etc.)
 
@@ -52,17 +52,16 @@
 
 * Power on gas analyzer pump
 
-* Turn on water for heat flux gauges
+* Turn on water for heat flux gauges and cool cans
 
-* Check Arduino battery level
 * Power on Arduino data loggers
 
 * Start recording on:
-    * DAQ data
-    * DVR
     * GoPros
     * Video cameras
     * Mobile TIC
+    * DAQ data
+    * DVR
 
 * 1 minute pre-test run (with all doors closed)
 
@@ -119,12 +118,12 @@
 ====================
 
 * Charge/change all batteries on:
-    * Laptops
-    * Arduinos
-    * Bullet camera batteries
+    * Laptops and tablets
     * TICs
     * GoPros
     * Video cameras
     * Still cameras
-    * GigaPan
+    * GigaPan camera
     * DVCRs
+    * Bullet camera batteries
+    * Arduinos
