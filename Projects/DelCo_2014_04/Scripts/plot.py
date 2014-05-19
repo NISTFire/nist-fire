@@ -34,7 +34,7 @@ sensor_groups = [['TC_A1_'], ['TC_A2_'], ['TC_A3_'], ['TC_A4_'], ['TC_A5_'],
                  ['BDP_A6_'], ['BDP_A7_'], ['BDP_A8_'], ['BDP_A9_'],
                  ['BDP_A10_'],
                  ['HF_', 'RAD_'],
-                 ['GAS_', 'CO_', 'CO2', 'O2_'],
+                 ['GAS_', 'CO_', 'CO2_', 'O2_'],
                  ['HOSE_']]
 
 # Common quantities for y-axis labelling

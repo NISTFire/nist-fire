@@ -89,9 +89,9 @@ SC1Mod4,22,P_S_6,Voltage,,,,,99.52,-248.8,P_A4_3
 SC1Mod4,23,P_S_7,Voltage,,,,,99.52,-248.8,P_A4_4
 SC1Mod4,24,P_S_8,Voltage,,,,,99.52,-248.8,P_A4_5
 SC1Mod4,25,P_S_9,Voltage,,,,,99.52,-248.8,P_A4_6
-SC1Mod4,26,O2_A,Voltage,,,,,1,0,O2_A
+SC1Mod4,26,O2_A,Voltage,,,,,20,0,O2_A
 SC1Mod4,27,CO_A,Voltage,,,,,1,0,CO_A
-SC1Mod4,28,CO2_A,Voltage,,,,,1,0,CO2_A
-SC1Mod4,29,O2_B,Voltage,,,,,1,0,O2_B
+SC1Mod4,28,CO2_A,Voltage,,,,,2,0,CO2_A
+SC1Mod4,29,O2_B,Voltage,,,,,20,0,O2_B
 SC1Mod4,30,CO_B,Voltage,,,,,1,0,CO_B
-SC1Mod4,31,CO2_B,Voltage,,,,,1,0,CO2_B
+SC1Mod4,31,CO2_B,Voltage,,,,,2,0,CO2_B
