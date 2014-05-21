@@ -9,6 +9,7 @@
 ===================
 
 * Power on:
+    * Generators (check gas and oil levels)
     * Uninterruptible Power Supplies (UPSs)
     * Gas analyzers (leave running as long as possible during testing)
     * WiFi routers/repeaters
@@ -49,6 +50,8 @@
 * Take GigaPan picture before test
 
 * Distribute still cameras
+
+* Place dry ice in gas sample traps
 
 * Power on gas analyzer pump
 
