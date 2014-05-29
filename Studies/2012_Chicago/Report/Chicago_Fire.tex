@@ -125,7 +125,7 @@ Squad 5 (S5) entered the front of the structure at approximately 17:25 and heade
 Incident Time & Fire Behavior / Fireground Operation  \\
 \midrule
 \multirow{2}{*}{17:15} & \multirow{2}{*}{\parbox{10cm} {Reported working fire with heavy smoke coming from the front and rear of the structure's attic.}} \\ 
-         & \\[.25cm]
+         & \\[.25cm] %blank rows exist for wrapping text. # of blanks is 1 less than number of rows
 17:16    & Dispatch for a Still Alarm. \\ [.25cm]
 \multirow{2}{*}{17:20}    & \multirow{2}{*}{\parbox{10cm} {Attic self ventilation - heavy smoke out of front attic window and heavy smoke and fire out of rear.}} \\
          & \\[.25cm] 
@@ -203,7 +203,7 @@ Parameter & Description & Reference  \\
 
 \section{Geometry}
 \label{geom}
-The structure was a 2 1/2 story residential structure with balloon frame construction and a wood gable roofing system.  The structure had a 17.15 m (56 ft) by 6.15 m (20 ft) footprint (cf. Fig.~(\ref{fig:simp_geom})). This results in a floor area of approximately 105 m$^2$ (1100 ft$^2$) per floor and a main living area of approximately 110 m$^2$ (2200 ft$^2$). Interior walls were constructed from wood frame dimensioned lumber with 1.27 cm (0.5 in) gypsum board over top. Additionally there was a half-story attic that was used to house the structure's hot water heater. There were three sets of stairs in the structure: one front stairwell that connected the first and second levels, one rear stairwell that connected the first and second levels and a second rear set of stairs which provided access to the attic. Entry to the structure can be made either in the front (Alpha side) or rear (Charlie side). The fire, which is described in Section~\ref{fire}, started in the attic and spread to the rear porch (cf. Fig.~(\ref{fig:simp_geom})). A second floor interior door, connecting the rear porch and the hallway, failed and rapidly changed the tenability conditions for firefighters present on the second floor. More discussion on interior conditions can be found in Chapter~\ref{results}. Fig.~(\ref{fig:alpha_ex}) shows the post-incident exterior of the alpha side of the structure. Note that the majority of the damage is to the structure's attic.
+The structure was a 2 1/2 story residential building with balloon frame construction and a wood gable roofing system. The structure had a 17.15 m (56 ft) by 6.15 m (20 ft) footprint (cf. Fig.~(\ref{fig:simp_geom})). This results in a floor area of approximately 105 m$^2$ (1100 ft$^2$) per floor and a main living area of approximately 110 m$^2$ (2200 ft$^2$). Interior walls were constructed from wood frame dimensioned lumber with 1.27 cm (0.5 in) gypsum board over top. Additionally there was a half-story attic that was used to house the structure's hot water heater. There were three sets of stairs in the structure: one front stairwell that connected the first and second levels, one rear stairwell that connected the first and second levels and a second rear set of stairs which provided access to the attic. Entry to the structure can be made either in the front (Alpha side) or rear (Charlie side). The fire, which is described in Section~\ref{fire}, started in the attic and spread to the rear porch (cf. Fig.~(\ref{fig:simp_geom})). Discussion of the fire's impact on interior conditions can be found in Section~\ref{results}. Fig.~(\ref{fig:alpha_ex}) shows the post-incident exterior of the alpha side of the structure. Note that the majority of the damage is to the structure's attic.
 
 \begin{figure}[h!]
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
@@ -221,7 +221,7 @@ The structure was a 2 1/2 story residential structure with balloon frame constru
 \label{fig:alpha_ex}
 \end{figure}
 
-Figs.~(\ref{fig:first_floor} and \ref{fig:second_floor}) show the interior dimensions of the first and second floor, respectively. The dimensions were found from on-scene measurements using a tape measure. Measurements were made to the nearest 1.27 cm (0.5 in). Based on difficulty of making some of the measurements due to the condition of the post-fire structure, the uncertainty in the measurements is estimated to be on the order of $\pm$ 1 \%. This would result in measurements that could change by up $\pm$ 17 cm ($\approx$ 7 in). When considering the uncertainties in the initial fire development, ventilation (vent times and vent areas), and peak heat release rate among other factors, the uncertainty in the overall structure geometry is not expected to be a major factor.
+Figs.~(\ref{fig:first_floor} and \ref{fig:second_floor}) show the interior dimensions of the first and second floor, respectively. The dimensions were found from on-scene measurements using a tape measure. Measurements were made to the nearest 1.27 cm (0.5 in). Based on difficulty of making some of the measurements due to the condition of the post-fire structure, the uncertainty in the measurements is estimated to be on the order of $\pm$ 1 \%. This would result in measurements that could change by up $\pm$ 17 cm ($\approx$ 7 in). When considering the uncertainties in the initial fire development, ventilation (vent times and vent areas), and peak heat release rate among other factors, the uncertainty in the overall structure geometry is not a major factor.
 
 %Fig.~(\ref{fig:smv_interior}) shows 3D Smokeview renderings of cutaways of the beta and delta sides of the structure interior.
 %\begin{figure}[h!]
@@ -385,7 +385,7 @@ From Fig.~(\ref{fig:hrr}), we see that the HRR for both FDS simulations are iden
 \end{figure}
 
 \section{Temperature}
-Analysis of the predicted simulation temperatures will focus on the high hazard areas of the structure: the attic, the rear porch and stairwell, and the interior hallway which connects the rear porch to the front stairwell. Here, we will examine the temperature profile through these high hazards area at several snapshots in time to illustrate how several key events correspond to changing interior conditions. The first times are 129 seconds into the simulation, just before a firefighter opened the rear porch door (cf. Fig.~(\ref{fig:temp_129s})) and 159 seconds into the simulation, just before the interior door fails (cf. Fig.~(\ref{fig:temp_159s})).
+Analysis of the predicted simulation temperatures will focus on the high hazard areas of the structure: the attic, the rear porch and stairwell, and the interior hallway which connects the rear porch to the front stairwell. Here, we will examine the temperature profile through these high hazards area at several snapshots in time to illustrate the changing interior conditions. The first times are 129 seconds into the simulation, just before a firefighter opened the rear porch door (cf. Fig.~(\ref{fig:temp_129s})) and 159 seconds into the simulation, just before the interior door fails (cf. Fig.~(\ref{fig:temp_159s})).
 
 \begin{figure}[!ht]
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_129}
@@ -403,8 +403,7 @@ Analysis of the predicted simulation temperatures will focus on the high hazard 
 \label{fig:temp_159s}
 \end{figure}
 
-Fig.~(\ref{fig:temp_129s}) shows temperatures of at least 260 $^{\circ}$C (500 $^{\circ}$F) in the second floor rear porch and rear portion of the attic. High temperatures, between 80 $^{\circ}$C (185 $^{\circ}$F) and 200 $^{\circ}$C (390 $^{\circ}$F), also extend down to the 1$^{st}$ floor rear entrance. Before the interior door fails, Fig.~(\ref{fig:temp_159s}), the inflow ambient air from the open door lowers the temperature local to the doorway, but we know from Fig.~(\ref{fig:hrr}) that over this interval the HRR spikes because of the additional ventilation. After the second floor door fails, (cf. Fig.~(\ref{fig:temp_161s})), the high temperature gas that filled the back porch flows in the direction of lower pressure (the front door). Note that the conditions in the attic remain  We can focus on this area, (cf. Fig.~(\ref{fig:temp_161s})), to see the the flow of gases through the doorway.  
-
+Fig.~(\ref{fig:temp_129s}) shows temperatures of at least 260 $^{\circ}$C (500 $^{\circ}$F) in the second floor rear porch and rear portion of the attic. High temperatures, between 80 $^{\circ}$C (185 $^{\circ}$F) and 200 $^{\circ}$C (390 $^{\circ}$F), also extend down to the 1$^{st}$ floor rear entrance. Before the interior door fails, Fig.~(\ref{fig:temp_159s}), the inflow ambient air from the open door lowers the temperature local to the doorway, but we know from Fig.~(\ref{fig:hrr}) that over this interval the HRR spikes because of the additional ventilation. After the second floor door fails, (cf. Fig.~(\ref{fig:temp_161s})), the high temperature gas that filled the back porch flows in the direction of lower pressure (towards the front door). Note that the conditions in the attic do not seem to be influenced.
 \begin{figure}[!ht]
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_161}
 \input{../Scripts/colorbar_std} 
@@ -424,7 +423,7 @@ Fig.~(\ref{fig:temp_129s}) shows temperatures of at least 260 $^{\circ}$C (500 $
 
 
 \begin{figure}[!ht]
-\includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_175}
+\includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_165v}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
 \caption{Temperature from baseline simulation, 15 seconds after interior door fails.}
@@ -443,7 +442,7 @@ Fig.~(\ref{fig:temp_129s}) shows temperatures of at least 260 $^{\circ}$C (500 $
 
 
 \chapter{Discussion}
-
+The discussion will be broken up into two parts. The first part will address the results of the computational modeling as they relate to the interior hallways conditions. The second part will examine the the model results and observed outcomes of fire as they relate to tactics discussed in recent experimental research.  
 \section{Conditions in Hallway}
 
 \section{Tactical Considerations}
