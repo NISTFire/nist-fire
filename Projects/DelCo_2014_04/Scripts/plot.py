@@ -111,8 +111,9 @@ for f in os.listdir(data_dir):
                         conv_pascal = 248.8;
                         
                         # Convert voltage to pascals
-                        pressure = conv_inch_h2o * conv_pascal * \
-                                   (data[channel] - np.mean(data[channel][0:pre_test_time]))
+                        # Get zero voltage from pre-test data
+                        zero_voltage = np.mean(data[channel][0:pre_test_time])
+                        pressure = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)
                         
                         # Calculate velocity
                         quantity = 0.0698 * np.sqrt(np.abs(pressure) * \
@@ -128,7 +129,10 @@ for f in os.listdir(data_dir):
                                                       'g', 'g',
                                                       'b', 'b',
                                                       'c', 'c'])
-                        quantity = data[channel] * scale_factor
+
+                        # Get zero voltage from pre-test data
+                        zero_voltage = np.mean(data[channel][0:pre_test_time])
+                        quantity = (data[channel] - zero_voltage) * scale_factor
                         ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
                         if 'HF' in channel:
                             line_style = '-'

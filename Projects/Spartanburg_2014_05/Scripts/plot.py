@@ -132,6 +132,7 @@ for f in os.listdir(data_dir):
                                                       'g', 'g',
                                                       'b', 'b',
                                                       'c', 'c'])
+                        
                         # Get zero voltage from pre-test data
                         zero_voltage = np.mean(data[channel][0:pre_test_time])
                         quantity = (data[channel] - zero_voltage) * calibration_slope + calibration_intercept
