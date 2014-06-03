@@ -86,7 +86,10 @@ Gaithersburg, Maryland, USA} \\ }
 
 \begin{tabbing}
 \hspace{1.5in} \= \\
+BDP \> Bi-Directional Probe \\
 DVR \> Digital Video Recorder \\
+NI \> National Instruments \\
+TC \> Thermocouple \\
 \end{tabbing}
 
 \mainmatter
@@ -94,12 +97,35 @@ DVR \> Digital Video Recorder \\
 
 \chapter{Data Acquisition System}
 
+Data acquisition systems are constructed using National Instruments (NI) hardware. The systems starts with the chassis - NI SCXI-1000/NI SCXI-1001. The 1000 is a 4-slot chassis while the 1001 is a 12-slot chassis. The max scan rate of the chassis is (5 $\mu$s $\times$ \# of channels used)$^{-1}$. Connecting the chassis to the computer (via USB) is the NI SCXI-1600 which is a 200 kS/s 16-bit digitizer.
+
+
 
 \chapter{Thermocouples}
+\label{chap:thermocouple}
+
+Two types of k-type thermocouples (TCs) are used: bare bead and metal sheathed. The bare bead TCs are made from 30 gauge glass braid insulated solid wire. The bare bead thermocouples are used in the TC trees and single point measurements. The metal sheathed TCs (\#125-KSL-600-U from Furnace Parts) feature a 1/8 in diameter Inconel 600 sheath and an ungrounded junction. These TCs are moisture proof and are used in conjunction with the bi-directional probes. 
 
 \section{Uncertainty}
 
-Uncertainty
+\begin{table}
+\centering
+\captionof{table}{Thermocouple Uncertainty}\label{tab:TC_uncertain}
+\begin{tabular}{l l l}
+\toprule[1.5pt]
+Thermocouple Type & Temperature Range & Error  \\
+\midrule
+Bare bead  &  & \\ 
+Inconel sheathed    & 0 - 1260 $^{\circ}$C &  MAX($\pm$ 1.11$^{\circ}$C; $\pm$ 0.4 $\%$)   \\ 
+\bottomrule[1.25pt]
+\end{tabular}\par
+\end{table}
+
+\section{Thermocouple Welders}
+
+Two different welders are used to construct the bare bead TCs.
+
+\section{Thermocouple Extension Wire}
 
 
 \chapter{Bi-Directional Probes}
