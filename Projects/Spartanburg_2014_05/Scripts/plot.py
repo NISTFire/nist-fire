@@ -165,7 +165,7 @@ for f in os.listdir(data_dir):
                     # Save converted quantity back to exp. dataframe
                     data[channel] = quantity
 
-                    plot(t, quantity, lw=1.5, ls=line_style, label=channel, rasterized=True)
+                    plot(t, quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
 
             # Skip plot quantity if disabled
             if info[axis_scale][test_name] == 'None':
