@@ -24,7 +24,7 @@ scaling_file = '../DAQ_Files/Delco_DAQ_Channel_List.csv'
 # Location of test description file
 info_file = '../Experimental_Data/Description_of_Experiments.csv'
 
-# Duration of pre-test time for bi-directional probes (s)
+# Duration of pre-test time for bi-directional probes and heat flux gauges (s)
 pre_test_time = 60
 
 # List of sensor groups for each plot
