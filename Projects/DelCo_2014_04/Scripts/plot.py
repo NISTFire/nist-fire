@@ -83,6 +83,11 @@ for f in os.listdir(data_dir):
 
         # Generate a plot for each quantity group
         for group in sensor_groups:
+
+            # Skip excluded groups listed in test description file
+            if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
+                continue
+
             fig = figure()
 
             for channel in data.columns[1:]:
