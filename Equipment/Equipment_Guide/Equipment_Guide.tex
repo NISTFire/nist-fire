@@ -96,36 +96,68 @@ TC \> Thermocouple \\
 
 
 \chapter{Data Acquisition System}
+\label{chap:DAQ}
 
-Data acquisition systems are constructed using National Instruments (NI) hardware. The systems starts with the chassis - NI SCXI-1000/NI SCXI-1001. The 1000 is a 4-slot chassis while the 1001 is a 12-slot chassis. The max scan rate of the chassis is (5 $\mu$s $\times$ \# of channels used)$^{-1}$. Connecting the chassis to the computer (via USB) is the NI SCXI-1600 which is a 200 kS/s 16-bit digitizer.
+\section{Hardware}
+Data acquisition systems are constructed using National Instruments (NI) hardware. The systems starts with the chassis - NI SCXI-1000/NI SCXI-1001. The 1000 is a 4-slot chassis while the 1001 is a 12-slot chassis. The max scan rate of the chassis is (5 $\mu$s $\times$ \# of channels used)$^{-1}$. A 200 kS/s 16-bit digitizer, NI SCXI-1600, connects the chassis to the computer (via USB). The remaining chassis slots are filled with the NI SCXI-1102. The SCXI-1102 is a 32 channel thermocouple amplifier/voltage input module. Each SCXI-1102 is connected to a TC-2095; a shielded, 32 channel, rack-mountable terminal accessory. All of the measurement devices connect to the TC-2095 using either chromel-alomel connectors (temperature) or copper-copper connectors (voltage). A schematic of the hardware configuration is shown in Fig.~(\ref{fig:daq_schem}).
 
+\begin{figure}[h!]
+\includegraphics[width=5in]{Figures/DAQ_Schematic}
+\caption{Schematic of data acquisition hardware.}
+\label{fig:daq_schem}
+\end{figure}
 
+\section{Software}
+Channel lists are built using NI-MAX and fed into 32-bit NI LabVIEW as a task using DAQ-mX. Note that in the current configuration, the laptop must also have a 32-bit operating system on it.
 
 \chapter{Thermocouples}
 \label{chap:thermocouple}
 
-Two types of k-type thermocouples (TCs) are used: bare bead and metal sheathed. The bare bead TCs are made from 30 gauge glass braid insulated solid wire. The bare bead thermocouples are used in the TC trees and single point measurements. The metal sheathed TCs (\#125-KSL-600-U from Furnace Parts) feature a 1/8 in diameter Inconel 600 sheath and an ungrounded junction. These TCs are moisture proof and are used in conjunction with the bi-directional probes. 
+Two types of k-type thermocouples (TCs) are used: bare bead and metal sheathed. The bare bead TCs are made from 30 gauge glass braid insulated solid wire. The bare bead thermocouples are used in the TC trees and single point measurements. The metal sheathed TCs (\#125-KSL-600-U from Furnace Parts) feature a 1/8 in diameter Inconel 600 sheath and an ungrounded junction. These TCs are moisture proof and are typically used in conjunction with bi-directional probes. 
 
 \section{Uncertainty}
 
-\begin{table}
+\begin{table}[h!]
 \centering
 \captionof{table}{Thermocouple Uncertainty}\label{tab:TC_uncertain}
 \begin{tabular}{l l l}
 \toprule[1.5pt]
 Thermocouple Type & Temperature Range & Error  \\
 \midrule
-Bare bead  &  & \\ 
-Inconel sheathed    & 0 - 1260 $^{\circ}$C &  MAX($\pm$ 1.11$^{\circ}$C; $\pm$ 0.4 $\%$)   \\ 
+Bare bead (SLE)     & 0 - 1250 $^{\circ}$C &  MAX($\pm$ 1.1$^{\circ}$C; $\pm$ 0.4 $\%$)  \\ 
+Inconel sheathed    & 0 - 1260 $^{\circ}$C &  MAX($\pm$ 1.1$^{\circ}$C; $\pm$ 0.4 $\%$)   \\ 
 \bottomrule[1.25pt]
 \end{tabular}\par
 \end{table}
 
 \section{Thermocouple Welders}
 
-Two different welders are used to construct the bare bead TCs.
+Two different welders are used to construct the bare bead TCs. 
 
 \section{Thermocouple Extension Wire}
+
+Two sets of type K extension wire are used: single pair (EXPP-K-24-S-1000) or 20 pair (20KX24SPP). Both wires are 24 gauge, 7-32 stranded, polyvinyl coated wire.
+
+\section{Thermocouple Connectors}
+
+Thermocouple miniature connectors are high temperature liquid crystal polymer (HMPW-K-M). Thermocouple miniature panel jacks are used with the BDP boxes (MPJ-K-F).
+
+\begin{table}[h!]
+\centering
+\captionof{table}{Thermocouple Connections}\label{tab:TC_connect}
+\begin{tabular}{l l l}
+\toprule[1.5pt]
+Use & Connection End 1 & Connection End 2  \\
+\midrule
+TC Tree/Single TC    & TC Bead                 & Male  \\ 
+Inconel sheathed      & TC Bead                 & Male  \\
+Single Extension       & Female                   & Male  \\
+BDP TC Extension    & Male                       & Male \\
+20 Pair Extension     & Female Panel Jack & Male \\
+\bottomrule[1.25pt]
+\end{tabular}\par
+\end{table}
+
 
 
 \chapter{Bi-Directional Probes}
@@ -137,9 +169,11 @@ Uncertainty
 
 \chapter{Heat Flux Gauges}
 
+Medtherm Corporation Schmidt-Boelter total heat flux gages and radiometers are used with full scale outputs that range from 20 kW/m$^2$ to 100 kW/m$^2$. Each transducer outputs millivolts. Voltage is converted to heat flux using a conversion factor provided on each device's unique data sheet.
+
 \section{Uncertainty}
 
-Uncertainty
+Calibration is performed in compliance with ISO/IEC 17025, ANSI/NCSL Z540-1, and MIL-STD-45662A to Medtherm PI-20 with traceability to the National Institute of Standards and Technology. The total expanded uncertainty is $\pm 3\%$ with a coverage factor = 2 (95 $\%$ confidence level).
 
 
 \chapter{Gas Analyzer}
