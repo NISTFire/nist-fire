@@ -89,6 +89,7 @@ Gaithersburg, Maryland, USA} \\ }
 BDP \> Bi-Directional Probe \\
 DVR \> Digital Video Recorder \\
 NI \> National Instruments \\
+NIST \> National Institute of Standards and Technology \\
 TC \> Thermocouple \\
 \end{tabbing}
 
@@ -113,7 +114,7 @@ Channel lists are built using NI-MAX and fed into 32-bit NI LabVIEW as a task us
 \chapter{Thermocouples}
 \label{chap:thermocouple}
 
-Two types of k-type thermocouples (TCs) are used: bare bead and metal sheathed. The bare bead TCs are made from 30 gauge glass braid insulated solid wire. The bare bead thermocouples are used in the TC trees and single point measurements. The metal sheathed TCs (\#125-KSL-600-U from Furnace Parts) feature a 1/8 in diameter Inconel 600 sheath and an ungrounded junction. These TCs are moisture proof and are typically used in conjunction with bi-directional probes. 
+Two types of k-type thermocouples (TCs) are used: bare bead and metal sheathed. The bare bead TCs are made from 30 gauge glass braid insulated solid wire. The bare bead thermocouples are used in the TC trees and single point measurements. The metal sheathed TCs (\#125-KSL-600-U from Furnace Parts) feature a 1/8 in diameter Inconel 600 sheath and an ungrounded junction. These TCs are moisture proof and are typically used in conjunction with bi-directional probes. The sheathed TCs are typically ordered with a 48 in TC and 120 in type K lead wire (NIST01A from Furnace Parts) or a 144 in TC and 120 in type K lead wire (NIST01B from Furnace Parts).
 
 \section{Uncertainty}
 
@@ -140,7 +141,7 @@ Two sets of type K extension wire are used: single pair (EXPP-K-24-S-1000) or 20
 
 \section{Thermocouple Connectors}
 
-Thermocouple miniature connectors are high temperature liquid crystal polymer (HMPW-K-M). Thermocouple miniature panel jacks are used with the BDP boxes (MPJ-K-F).
+Thermocouple miniature connectors are high temperature liquid crystal polymer (HMPW-K-M/F). Thermocouple miniature panel jacks are used with the BDP boxes (MPJ-K-F).
 
 \begin{table}[h!]
 \centering
@@ -153,6 +154,7 @@ TC Tree/Single TC    & TC Bead                 & Male  \\
 Inconel sheathed      & TC Bead                 & Male  \\
 Single Extension       & Female                   & Male  \\
 BDP TC Extension    & Male                       & Male \\
+BDP Box                   & Female Panel Jack & Female Panel Jack \\
 20 Pair Extension     & Female Panel Jack & Male \\
 \bottomrule[1.25pt]
 \end{tabular}\par
@@ -161,6 +163,15 @@ BDP TC Extension    & Male                       & Male \\
 
 
 \chapter{Bi-Directional Probes}
+\label{chap:bdp}
+
+Bi-directional probes are order from ... size specs. Pressure measurements are made using a XX Setra.
+
+\begin{figure}[h!]
+\includegraphics[width=5in]{Figures/BDP_Box}
+\caption{Schematic of pressure measurement setup for use with BDPs.}
+\label{fig:daq_schem}
+\end{figure}
 
 \section{Uncertainty}
 
