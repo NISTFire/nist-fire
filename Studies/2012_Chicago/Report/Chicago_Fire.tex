@@ -111,6 +111,7 @@ This document describes the input and the results of the FDS (version 6.0.0) sim
 
 
 \chapter{Fire Incident Summary}
+\label{fire_sum}
 The following account of events is based on information provided by NIST physical measurements on-scene, NIST photographs of the scene, time line information provided by the Chicago Fire Department and information provided from the NIOSH Fire Fighter Fatality Investigation and Prevention Program Report~\cite{NIOSH:Bowyer}.
 
 On November 2, 2012, a fire in a 2 1/2 story wood frame residential structure resulted in the death of a fire captain and injury to a fire fighter. At approximately 5:16 in the afternoon, a dispatch was made for ``smoke in the area''. Within a minute of dispatch, a Battalion Chief (BC) arrived and sized up the structure fire from the exterior and reported a working fire with heavy smoke coming from the front and rear of the structure's attic. After speaking with the building occupants, the BC entered the structure and found light smoke on the second floor and a glow around the doorway that led from the second floor hallway to enclosed rear porch. Engine 123 (E123) arrived on scene at approximately 17:19. The victims were part of the E123 crew.  The BC met the Captain and the Firefighter (victims) at the front door to the structure.  Then the Captain and Firefighter took their hose line to the second floor of the structure. At approximately 5:21, the Captain and Fire Fighter are on the second floor with their hoseline and had begun advancing the charged line toward the rear second floor door between the apartment and the enclosed porch. Approximately 30 seconds later, a fire fighter from Tower Ladder 39 (TL39) enters the enclosed porch on the rear of the structure by opening the rear exterior door to the first floor of the porch. The firefighter from TL39, notices ``the fire light up'' in the stairwell of the enclosed porch, and then kicks in the first level door between the rear porch and the main structure. Both doors remain open and the firefighter from TL39 exits the structure. Given the amount of fire showing from the second floor of the rear porch and ``heavy fire'' in the stairwell of the rear porch, the BC radios the E123 Captain at 17:23, to alert him to the fire conditions and to advise him that E49 would be applying water to the fire on the rear of the structure from the exterior. No response was made by the E123 Captain. It is believed that the door between the rear porch and the second floor hallway, where the E123 Captain and firefighter were located may have failed by this time.  Approximately a minute later E49 applied water to the fire in the attic.
@@ -375,11 +376,11 @@ Incident Time & Simulation Time & Fire Behavior / Fireground Operation  \\
 17:16 &      & Dispatch for a Still Alarm. \\ [0.25cm]
          &  \multirow{2}{*} {0:00} &  \multirow{2}{*}{\parbox{10cm} {Simulation starts. Attic fire ignites. Initial self ventilation on charlie side. Front door open.}} \\
          & & \\[0.25cm]
-\multirow{2}{*}{17:20} & \multirow{2}{*}{0:40}  & \multirow{2}{*}{\parbox{10cm} {Attic self ventilation - heavy smoke out of front attic window and heavy smoke and fire out of rear.}} \\
+\multirow{2}{*}{17:20} & \multirow{2}{*}{0:40}  & \multirow{2}{*}{\parbox{10cm} {Attic self ventilation - heavy smoke out of front attic window and heavy smoke and fire out of rear. Rear porch ignites in model.}} \\
          & & \\[.25cm] 
          & 0:45 & Model ventilation on charlie side. \\[.25cm] 
          & 0:55 & Model ventilation on beta side. \\[.25cm] 
-17:21:00 &  & E123 Capt. and FF on 2$^{nd}$ floor with 1 3/4-in hose line. \\[.25cm]
+17:21:00 & 1:40 & E123 Capt. and FF on 2$^{nd}$ floor with 1 3/4-in hose line. \\[.25cm]
 17:21:30 & 2:10 & 1$^{st}$ floor exterior porch door opened. Attic fire ignites in model. \\[.25cm]
         & 2:15 & Additional model ventilation on beta side. \\[.25cm] 
         & 2:40 & Top of interior door fails in model. \\[.25cm] 
@@ -439,6 +440,7 @@ Gases at elevated pressure will always travel toward an area of lower pressure. 
 
 
 \section{Temperature}
+\label{temp}
 Analysis of the predicted simulation temperatures will focus on the high hazard areas of the structure: the attic, the rear porch and stairwell, and the interior hallway which connects the rear porch to the front stairwell. Here, we will examine the temperature profile through these high hazards area at several snapshots in time to illustrate the changing interior conditions. The first times are 129 seconds into the simulation, just before a firefighter opened the rear porch door (cf. Fig.~(\ref{fig:temp_129s})) and 159 seconds into the simulation, just before the interior door fails (cf. Fig.~(\ref{fig:temp_159s})).
 
 \begin{figure}[!ht]
@@ -478,14 +480,49 @@ From Fig.~(\ref{fig:temp_175s}), 15 seconds after the door failed, high temperat
 
 
 \chapter{Discussion}
-The discussion will be broken up into two parts. The first part will address the results of the computational modeling as they relate to the interior hallways conditions. The second part will examine the the model results and observed outcomes of fire as they relate to tactics discussed in recent experimental research.  
-\section{Conditions in Hallway}
+The discussion will be broken up into two parts. The first part will address the results of the computational modeling as they relate to the interior hallways conditions. The second part will examine the the model results and observed outcomes of fire as they relate to tactics discussed in recent experimental research. 
+
+\section{Hallway Flow Path}
+From on-reports from the BC (Chapter~\ref{fire_sum}) and simulation results (Chapter~\ref{temp}), interior conditions on the second floor of the structure were initially tenable. The simulation, however, showed a high hazard environment developing on the second floor. By the time the E123 Captain and FF arrived on the second floor (Table~\ref{tab:firesim}) and approached the rear of the structure, the rear porch was involved. Temperature and pressure, greater than 260 $^{\circ}$C (500 $^{\circ}$F) and 5 Pa respectively, were on the Charlie side of the steel door at the rear of the structure. Exposure to these conditions weakened the structural integrity of the door, eventually leading to a partial failure. Fig.~(\ref{fig:chicago_doorfold}) shows the state of the rear door post fire. Note the large crease in the door just above the knob.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.4\textwidth]{../Figures/Porch_Door_1}
+\caption{Post fire image of interior door.}
+\label{fig:chicago_doorfold}
+\end{figure}
+Recent experiments conducting by the National Institute of Standards and Technology revealed similar post-fire states after doors were exposed to fires. Fig.~(\ref{fig:SC_doorfold}) shows doors from two different house fire experiments in which the door folded in the direction of the flow path.
+
+\begin{figure}[h!]
+\centering
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+   \scalebox{1.0}{ \includegraphics[width=3in]{../Figures/SC_Door_1} } &
+   \scalebox{1.0}{ \includegraphics[width=2in]{../Figures/SC_Door_2} } \\
+\end{tabular*}
+\caption{Post experiment images of door failures.}
+\label{fig:SC_doorfold}
+\end{figure}
+
+While we have an estimated time of failure for the door, the key take away is that after the door failed an interior flow path from the Charlie side to the Alpha side of the structure was created. This resulted in a rapid change in the conditions within the flow path. The combustion gases at elevated temperature and pressure flowed toward ambient conditions; the flow path was through the interior hallway, kitchen, and down the Alpha-Delta stairwell and out of the structure through the front door. The arrows in Fig.~(\ref{fig:flowpath_1}) show the flow direction of gases  on the second flow following the door failure.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.7\textwidth]{../Figures/ChicagoFlow}
+\caption{Flow path on second floor following interior door failure.}
+\label{fig:flowpath_1}
+\end{figure}
+
+\subsection{Assessing the Hazard}
+
+A firefighter inside is susceptible to second degree burn injuries when exposed to temperatures 55 $^{\circ}$C (130 $^{\circ}$F) \cite{designation2003c}. While firefighters wear protective gear, the gear only offers finite levels of protection. The polycarbonate in a self contained breathing apparatus begins to soften when the material temperature reaches approximately 140 $^{\circ}$C (284 $^{\circ}$F) \cite{mensch2011emergency}. Structural fire fighting coats and pants are tested to withstand temperatures of 260 $^{\circ}$C (500 $^{\circ}$F) \cite{nfpa2013standard}. Extended exposure to elevated temperatures can result in significant heat being transferred to the firefighter, putting him/her at risk. For the analysis of the model predicted exposure temperatures in the flow path, we have set the maximum visualized temperature to be all values that are 260 $^{\circ}$C (500 $^{\circ}$F) or above. This means that temperatures visualized in the highest range in the model output are at a minimum of 260 $^{\circ}$C (500 $^{\circ}$F); the temperatures could be higher.
 
 \section{Tactical Considerations}
 
 \chapter{Summary}
 
 \chapter{Acknowledgements}
+The authors would like to thank the Chicago Fire Department, especially {\em names}. The authors would also like to thank Keith Stakes of NIST and Joseph Willi of University of Illinois Urbana-Champagne for their assistance in creating the drawings of the structure.
+
 
 \bibliography{../../../Bibliography/FDS_refs,../../../Bibliography/FDS_general,chicago}
 
