@@ -148,6 +148,21 @@ for f in os.listdir(data_dir):
                             line_style = '--'
                         axis_scale = 'Y Scale HF'
                     
+                    # Plot pressures
+                    if 'P_' in channel:
+                        plt.rc('axes', color_cycle = ['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+                        conv_inch_h2o = 0.4;
+                        conv_pascal = 248.8;
+                        
+                        # Convert voltage to pascals
+                        # Get zero voltage from pre-test data
+                        zero_voltage = np.mean(data[channel][0:pre_test_time])
+                        quantity = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)
+
+                        ylabel('Pressure (Pa)', fontsize=20)
+                        line_style = '-'
+                        axis_scale = 'Y Scale PRESSURE'
+
                     # Plot gas measurements
                     if any([substring in channel for substring in gas_quantities]):
                         plt.rc('axes', color_cycle = ['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
