@@ -6,19 +6,13 @@ import pika
 import time
 import argparse
 import urllib2
-from math import sqrt
 
 # User settings
-
-# Calibration of 1.5 inch sensor, 4/23/2014
-# Sensor 1: 2.481 * voltage - 140.55
-# Sensor 2: 2.592 * voltage - 1.4806
-voltage_scaling_factor_1 = 2.481 # psi/mV
-voltage_scaling_factor_2 = 2.592 # psi/mV
-
-flow_constant = 56 # 56 for 1.5 inch coupling, 143 for 2.5 inch coupling
-calibration_timer = 30
-retry_timer = 30
+# Flow meter is configured for 1 V = 0 gpm and 5 V = 200 gpm, or 50 gpm/V
+# This is done by scaling the 4 mA to 20 mA signal using a 250 ohm resistor
+voltage_scaling_factor = 50 # gpm/V
+zero_voltage = 1 # V
+retry_timer = 30 # s
 
 # Parse command line arguments
 parser = argparse.ArgumentParser()
@@ -33,23 +27,14 @@ def read_voltage(channel):
     response = urllib2.urlopen('http://localhost/arduino/adc/' + str(channel))
     voltage = response.read()
     response.close()
-    voltage = float(voltage)
+    # Convert mV to V and round to 1 decimal place
+    voltage = round(float(voltage)/1000, 1)
     return voltage
 
 
-def convert_voltage(voltage, zero_voltage, voltage_scaling_factor):
-    # Convert voltage to pressure (psi)
-    pressure = (voltage - zero_voltage) * voltage_scaling_factor
-    return pressure
-
-
-def calculate_flow_rate(pressure_1, pressure_2):
-    # Calculate flow rate from pressure differential
-    pressure_differential = pressure_1 - pressure_2
-    try:
-        flow_rate = flow_constant * sqrt(pressure_differential)
-    except:
-        return float('nan')
+def calculate_flow_rate(voltage):
+    # Calculate flow rate
+    flow_rate = (voltage - zero_voltage) * voltage_scaling_factor
     return flow_rate
 
 # Attemps to connect to server and run data broadcast loop.
@@ -61,59 +46,16 @@ while True:
         channel = connection.channel()
         channel.exchange_declare(exchange='logs', type='fanout')
 
-        # Read voltage value at zero flow/ambient pressure to calculate offset
-        zero_voltage_1_list = []
-        zero_voltage_2_list = []
-        timer = 1
-        while timer <= calibration_timer:
-            # Read pressure from ADC channels
-            voltage_1 = read_voltage(1)
-            voltage_2 = read_voltage(2)
-            zero_voltage_1_list.append(voltage_1)
-            zero_voltage_2_list.append(voltage_2)
-
-            # Construct message
-            message = (time.ctime()+',%s %s (%i/%i),%0.2f,%0.2f,%0.2f,%0.2f,%0.2f') % (
-                    args.logger_id, 'Calibration', timer, calibration_timer,
-                    voltage_1, 0, voltage_2, 0, 0)
-            channel.basic_publish(exchange='logs',
-                                  routing_key='',
-                                  body=message)
-            print 'Sent %r' % (message)
-            
-            time.sleep(1)
-            timer += 1
-
-        # Calculate average of zero voltage value
-        zero_voltage_1 = sum(zero_voltage_1_list) / len(zero_voltage_1_list)
-        zero_voltage_2 = sum(zero_voltage_2_list) / len(zero_voltage_2_list)
-
-        # Construct message
-        message = (time.ctime()+',%s %s,%0.2f,%0.2f,%0.2f,%0.2f,%0.2f') % (
-                args.logger_id, 'Calibration complete',
-                zero_voltage_1, 0, zero_voltage_2, 0, 0)
-        channel.basic_publish(exchange='logs',
-                              routing_key='',
-                              body=message)
-        print 'Sent %r' % (message)
-
-        # Send voltage, pressure, and flow rate data
+        # Send voltage and flow rate data
         while True:
-            # Read voltage from ADC channels
-            voltage_1 = read_voltage(1)
-            voltage_2 = read_voltage(2)
+            # Read voltage from ADC channel
+            voltage = read_voltage(1)
 
-            # Convert voltages to pressures
-            pressure_1 = convert_voltage(voltage_1, zero_voltage_1, voltage_scaling_factor_1)
-            pressure_2 = convert_voltage(voltage_2, zero_voltage_2, voltage_scaling_factor_2)
-
-            # Calculate flow rate from pressure differential
-            flow_rate = calculate_flow_rate(pressure_1, pressure_2)
+            # Calculate flow rate
+            flow_rate = calculate_flow_rate(voltage)
             
             # Construct message for log
-            message = (time.ctime()+',%s,%0.2f,%0.2f,%0.2f,%0.2f,%0.2f') % (
-                    args.logger_id, voltage_1, pressure_1, voltage_2,
-                    pressure_2, flow_rate)
+            message = (time.ctime()+',%s,%0.1f,%0.1f') % (args.logger_id, voltage, flow_rate)
             channel.basic_publish(exchange='logs',
                                   routing_key='',
                                   body=message)
@@ -128,12 +70,14 @@ while True:
         
         timer = 0
         while timer < retry_timer:
-            # Read flow voltage from ADC channels
-            voltage_1 = read_voltage(1)
-            voltage_2 = read_voltage(2)
+            # Read voltage from ADC channel
+            voltage = read_voltage(1)
+
+            # Calculate flow rate
+            flow_rate = calculate_flow_rate(voltage)
+
             # Construct message for log
-            message = (time.ctime()+',%s,%0.2f,%0.2f,%0.2f,%0.2f,%0.2f') % (
-                  args.logger_id, voltage_1, 0, voltage_2, 0, 0)
+            message = (time.ctime()+',%s,%0.1f,%0.1f') % (args.logger_id, voltage, flow_rate)
             with open(args.log_file, 'a+') as text_file:
                 text_file.write(message+'\n')
             time.sleep(1)
