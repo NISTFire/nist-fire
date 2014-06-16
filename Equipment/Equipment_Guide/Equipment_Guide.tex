@@ -100,7 +100,7 @@ TC \> Thermocouple \\
 \label{chap:DAQ}
 
 \section{Hardware}
-Data acquisition systems are constructed using National Instruments (NI) hardware. The systems starts with the chassis - NI SCXI-1000/NI SCXI-1001. The 1000 is a 4-slot chassis while the 1001 is a 12-slot chassis. The max scan rate of the chassis is (5 $\mu$s $\times$ \# of channels used)$^{-1}$. A 200 kS/s 16-bit digitizer, NI SCXI-1600, connects the chassis to the computer (via USB). The remaining chassis slots are filled with the NI SCXI-1102. The SCXI-1102 is a 32 channel thermocouple amplifier/voltage input module. Each SCXI-1102 is connected to a TC-2095; a shielded, 32 channel, rack-mountable terminal accessory. All of the measurement devices connect to the TC-2095 using either chromel-alomel connectors (temperature) or copper-copper connectors (voltage). A schematic of the hardware configuration is shown in Fig.~(\ref{fig:daq_schem}).
+Data acquisition systems are constructed using National Instruments (NI) hardware. The systems starts with the chassis - NI SCXI-1000/NI SCXI-1001. The 1000 is a 4-slot chassis while the 1001 is a 12-slot chassis. The max scan rate of the chassis is (5~$\mu$s $\times$ \# of channels used)$^{-1}$. A 200~kS/s 16-bit digitizer, NI SCXI-1600, connects the chassis to the computer (via USB). The remaining chassis slots are filled with the NI SCXI-1102. The SCXI-1102 is a 32-channel thermocouple amplifier/voltage input module. Each SCXI-1102 is connected to a TC-2095; a shielded, 32-channel, rack-mountable terminal accessory. All of the measurement devices connect to the TC-2095 using either chromel-alumel connectors (temperature) or copper-copper connectors (voltage). A schematic of the hardware configuration is shown in Fig.~(\ref{fig:daq_schem}).
 
 \begin{figure}[h!]
 \includegraphics[width=5in]{Figures/DAQ_Schematic}
@@ -109,35 +109,35 @@ Data acquisition systems are constructed using National Instruments (NI) hardwar
 \end{figure}
 
 \section{Software}
-Channel lists are built using NI-MAX and fed into 32-bit NI LabVIEW as a task using DAQ-mX. Note that in the current configuration, the computer must also have a 32-bit operating system on it.
+Channel lists are built using NI-MAX and fed into 32-bit NI LabVIEW as a task using NI-DAQmx. Note that in the current configuration, the computer must also have a 32-bit operating system on it.
 
 \chapter{Thermocouples}
 \label{chap:thermocouple}
 
-Two types of k-type thermocouples (TCs) are used: bare bead and metal sheathed. The bare bead TCs are made from 30 gauge glass braid insulated solid wire. The bare bead thermocouples are used in the TC trees and single point measurements. The metal sheathed TCs (\#125-KSL-600-U from Furnace Parts) feature a 1/8 in diameter Inconel 600 sheath and an ungrounded junction. These TCs are moisture proof and are typically used in conjunction with bi-directional probes. The sheathed TCs are typically ordered with a 48 in TC and 120 in type K lead wire (NIST01A from Furnace Parts) or a 144 in TC and 120 in type K lead wire (NIST01B from Furnace Parts).
+Two types of type~K thermocouples (TCs) are used: bare bead and metal sheathed. The bare bead TCs are made from 30~gauge glass braid insulated solid wire. The bare bead thermocouples are used in the TC trees and single point measurements. The metal sheathed TCs (\#125-KSL-600-U from Furnace Parts) have a 1/8~in diameter Inconel 600 sheath and an ungrounded junction. These TCs are moisture proof and are typically used in conjunction with bi-directional probes. The sheathed TCs are typically ordered with a 48~in TC and 120~in type~K lead wire (NIST01A from Furnace Parts) or a 144~in TC and 120~in type K lead wire (NIST01B from Furnace Parts).
 
 \section{Uncertainty}
 
 \begin{table}[h!]
 \centering
 \captionof{table}{Thermocouple Uncertainty}\label{tab:TC_uncertain}
-\begin{tabular}{l l l}
+\begin{tabular}{lll}
 \toprule[1.5pt]
-Thermocouple Type & Temperature Range & Error  \\
+Thermocouple Type  &  Temperature Range     &  Error                                      \\
 \midrule
-Bare bead (SLE)     & 0 - 1250 $^{\circ}$C &  MAX($\pm$ 1.1$^{\circ}$C; $\pm$ 0.4 $\%$)  \\ 
-Inconel sheathed    & 0 - 1260 $^{\circ}$C &  MAX($\pm$ 1.1$^{\circ}$C; $\pm$ 0.4 $\%$)   \\ 
+Bare bead (SLE)    &  0 - 1250 $^{\circ}$C  &  MAX($\pm$ 1.1$^{\circ}$C; $\pm$ 0.4 $\%$)  \\
+Inconel sheathed   &  0 - 1260 $^{\circ}$C  &  MAX($\pm$ 1.1$^{\circ}$C; $\pm$ 0.4 $\%$)  \\
 \bottomrule[1.25pt]
 \end{tabular}\par
 \end{table}
 
 \section{Thermocouple Welders}
 
-Two different welders are used to construct the bare bead TCs. The Miyachi Unitek TC Welder (01-0196-02) is a manual feed thermocouple welder designed to weld thermocouple wires together without oxide layers by using argon cover gas. The welder can handle wires from 38 gauge to 20 gauge. 
+Two different welders are used to construct the bare bead TCs. The Miyachi Unitek TC Welder (01-0196-02) is a manual feed thermocouple welder designed to weld thermocouple wires together without oxide layers by using argon cover gas. The welder can handle wires from 38~gauge to 20~gauge. 
 
 \section{Thermocouple Extension Wire}
 
-Two sets of type K extension wire are used: single pair (EXPP-K-24-S-1000) or 20 pair (20KX24SPP). Both wires are 24 gauge, 7-32 stranded, polyvinyl coated wire.
+Two sets of type~K extension wire are used: single pair (EXPP-K-24-S-1000) or 20 pair (20KX24SPP). Both wires are 24~gauge, 7-32 stranded, polyvinyl coated wire.
 
 \section{Thermocouple Connectors}
 
@@ -146,16 +146,16 @@ Thermocouple miniature connectors are high temperature liquid crystal polymer (H
 \begin{table}[h!]
 \centering
 \captionof{table}{Thermocouple Connections}\label{tab:TC_connect}
-\begin{tabular}{l l l}
+\begin{tabular}{lll}
 \toprule[1.5pt]
-Use & Connection End 1 & Connection End 2  \\
+Use                & Connection End 1   & Connection End 2    \\
 \midrule
-TC Tree/Single TC    & TC Bead                 & Male  \\ 
-Inconel sheathed      & TC Bead                 & Male  \\
-Single Extension       & Female                   & Male  \\
-BDP TC Extension    & Male                       & Male \\
-BDP Box                   & Female Panel Jack & Female Panel Jack \\
-20 Pair Extension     & Female Panel Jack & Male \\
+TC Tree/Single TC  & TC Bead            &  Male               \\ 
+Inconel sheathed   & TC Bead            &  Male               \\
+Single Extension   & Female             &  Male               \\
+BDP TC Extension   & Male               &  Male               \\
+BDP Box            & Female Panel Jack  &  Female Panel Jack  \\
+20 Pair Extension  & Female Panel Jack  &  Male               \\
 \bottomrule[1.25pt]
 \end{tabular}\par
 \end{table}
@@ -170,7 +170,7 @@ Bi-directional probes are order from ... size specs. Pressure measurements are m
 \begin{figure}[h!]
 \includegraphics[width=5in]{Figures/BDP_Box}
 \caption{Schematic of pressure measurement setup for use with BDPs.}
-\label{fig:daq_schem}
+\label{fig:bdp_schem}
 \end{figure}
 
 \section{Uncertainty}
