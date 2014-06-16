@@ -330,90 +330,74 @@ You can combine multiple videos into a multi-camera video using software such as
 \chapter{Water Flow Sensor}
 \label{chap:Water_Flow_Sensor}
 
-Arduino Config, Setup, and Data Logging
+\section{Arduino Config, Setup, and Data Logging}
 
 The Arduinos record voltage data locally, and they transmit voltage data to the host computer via the AMQP messaging protocol. The host computer uses RabbitMQ to act as a broker. Python scripts and the pika module send and receive AMQP messages. The following steps setup the host computer and Arduinos for this purpose.
-Server (Host Computer)
 
-Note: the following assumes that the server/host computer’s address is 192.168.1.100. It’s best to configure the host computer with a static IP address using static DHCP or manually.
+\subsection{Host Computer (RabbitMQ)}
 
+Note: the following assumes that the server/host computer's address is 192.168.1.100. It's best to configure the host computer with a static IP address using static DHCP or manually.
 
-=== Host Computer (RabbitMQ) ===
-
-1) Install RabbitMQ for your platform and start the RabbitMQ server (./sbin/rabbitmq-server on Mac or Linux).
-
+\begin{enumerate}
+\item Install RabbitMQ for your platform and start the RabbitMQ server (./sbin/rabbitmq-server on Mac or Linux).
 https://www.rabbitmq.com/
-
-2) Copy the receive\_data.py script from the NIST-FIRE repository to the data logging computer.
-
-3) Install Python (The Anaconda Python distribution from Continuum Analytics is recommended)
-
-4) Install the pika module for Python using
-
+\item Copy the receive\_data.py script from the NIST-FIRE repository to the data logging computer.
+\item Install Python (The Anaconda Python distribution from Continuum Analytics is recommended)
+\item Install the pika module for Python using
 \begin{verbatim}
 pip install pika
 \end{verbatim}
-
-5) Run the receive\_data.py script as
-
+\item Run the receive\_data.py script as
 \begin{verbatim}
-python receive\_data.py 192.168.1.100 output.csv
+python receive_data.py 192.168.1.100 output.csv
 \end{verbatim}
+\end{enumerate}
 
-== Host Computer (NTP Time Server) ==
+\subsection{Host Computer (NTP Time Server)}
 
 On Windows, download and install the NTP server
 
 http://www.meinbergglobal.com/english/sw/ntp.htm
 
+Note: you might need to disable the Windows Firewall service so that incoming connections will not be blocked.
+
 Mac and Linux use NTP natively.
 
+\subsection{Arduino Client (Sketch)}
 
-=== Client (Arduino) ===
-
-== Install pressure\_sensor Sketch on the Arduino ==
-
-1) Install Arduino IDE
-
+\begin{enumerate}
+\item Install Arduino IDE
 http://arduino.cc/
+\item Plug the Arduino Yun into the USB port of the host computer.
+\item Set the Tools > Board to Arduino Yun and the Tools > Port to the /dev/ttyusbmodemXXXXXX setting that matches the plugged-in Arduino.
+\item A Sketch is a script that runs on the Arduino microcontroller. Using the Arduino IDE, install the pressure\_sensor Sketch on the Arduino from the NIST-FIRE repository. This enables the reading and writing of data from the analog-to-digital converter via the REST API on the Arduino. Note: this sketch requires the Adafruit ADS 1015 library from https://github.com/adafruit/Adafruit\_ADS1X15.
+\end{enumerate}
 
-2) Plug the Arduino Yun into the USB port of the host computer.
+\subsection{Arduino Client (Linux)}
 
-3) Set the Tools > Board to Arduino Yun and the Tools > Port to the /dev/ttyusbmodemXXXXXX setting that matches the plugged-in Arduino.
-
-4) A Sketch is a script that runs on the Arduino microcontroller. Using the Arduino IDE, install the pressure\_sensor Sketch on the Arduino from the NIST-FIRE repository. This enables the reading and writing of data from the analog-to-digital converter via the REST API on the Arduino. Note: this sketch requires the Adafruit ADS 1015 library from https://github.com/adafruit/Adafruit\_ADS1X15.
-
-== Configure the Arduino ==
-
-1) Unplug the Arduino from the computer, and power on the Arduino from the battery.
-
-2) Connect to the Arduino WiFi network. Access the Arduino web interface (http://arduino.local) with the default password of “arduino”. Set the Arduino name (referred to as <arduino\_name> in the following steps), time zone, and WiFi network information on the Arduino web config. Also, set the “REST API Access” to be “Open”.
-
-3) SSH to the Arduino at root@<arduino\_name>.local and install the SFTP server, ntpclient, pip, and pika (for AMQP) on the Arduino
-
+\begin{enumerate}
+\item Unplug the Arduino from the computer, and power on the Arduino from the battery.
+\item Connect to the Arduino WiFi network. Access the Arduino web interface (http://arduino.local) with the default password of ``arduino''. Set the Arduino name (referred to as <arduino\_name> in the following steps), time zone, and WiFi network information on the Arduino web config. Also, set the ``REST API Access'' to be ``Open''.
+\item SSH to the Arduino at root@<arduino\_name>.local and install the SFTP server, ntpclient, pip, and pika (for AMQP) on the Arduino
 \begin{verbatim}
 opkg update
 opkg install openssh-sftp-server ntpclient distribute python-openssl
-easy\_install pip
+easy_install pip
 pip install pika
 \end{verbatim}
-
-4) By default, the microSD card on the Arduino is mounted at /mnt/sda1. Copy the send\_data.py script from the NIST-FIRE repository to /mnt/sda1 on the Arduino.
-
-5) Go to System > Startup > Local Startup in the Arduino web config and add a startup line to the Local Config section (/etc/rc.local)
-
+\item By default, the microSD card on the Arduino is mounted at /mnt/sda1. Copy the send\_data.py script from the NIST-FIRE repository to /mnt/sda1 on the Arduino.
+\item Go to System > Startup > Local Startup in the Arduino web config and add a startup line to the Local Config section (/etc/rc.local)
+\small
 \begin{verbatim}
-python /mnt/sda1/send\_data.py 192.168.1.100 <arduino\_name> /mnt/sda1/output.csv
+python /mnt/sda1/send_data.py 192.168.1.100 <arduino_name> /mnt/sda1/output.csv
 \end{verbatim}
-
-6) The default NTP service is not very robust, so we will replace it with ntpclient and have it sync with the NTP server every 2 minutes. Disable the default NTP service using
-
+\normalsize
+\clearpage
+\item The default NTP service is not very robust, so we will replace it with ntpclient and have it sync with the NTP server every 2 minutes. Disable the default NTP service using
 \begin{verbatim}
 /etc/init.d/sysntpd disable
 \end{verbatim}
-
 Configure the ntpclient service by editing /etc/config/ntpclient to be
-
 \begin{verbatim}
 config ntpserver
         option hostname '192.168.1.100'
@@ -441,75 +425,27 @@ config ntpdrift
 config ntpclient                                
         option interval 120
 \end{verbatim}
-
-7) Reset power to the Arduino, and then it should start broadcasting data values within about 2 minutes of booting.
+\item Reset power to the Arduino, and then it should start broadcasting data values within about 2 minutes of booting.
+\end{enumerate}
 
 \section{Parts}
 
-Mouser \#: 72-T93YB-1K 
-Mfr. \#: T93YB102KT20
-Desc.:  Trimmer Resistors - Through Hole 3/8" SQ V/ADJ 1K
-\$1.48
-
-Mouser \#:   595-TLV2772IP   
-Mfr. \#: TLV2772IP
-Desc.:  Operational Amplifiers - Op Amps Dual 2.7V R/R
-\$2.36
-
-Mouser \#:   517-929834-02-36-RK 
-Mfr. \#: 929834-02-36-RK
-Desc.: Headers \& Wire Housings FULL STICK HDR/36POS
+\begin{itemize}
+\item Mouser \#:   517-929834-02-36-RK \\
+Mfr. \#: 929834-02-36-RK \\
+Desc.: Headers \& Wire Housings FULL STICK HDR/36POS \\
 \$1.13
 
-Mouser \#:   932-MIKROE-513  
-Mfr. \#: MIKROE-513
-Desc.:  Jumper Wires WIRE JUMPER MALE TO MALE 15CM 10PK
-\$3.00
-
-Mouser \#:   932-MIKROE-197  
-Mfr. \#: MIKROE-197
-Desc.:  Daughter Cards \& OEM Boards SMARTPROTO PROTO ADAPTER BOARD
+\item Mouser \#:   932-MIKROE-197 \\
+Mfr. \#: MIKROE-197 \\
+Desc.:  Daughter Cards \& OEM Boards SMARTPROTO PROTO ADAPTER BOARD \\
 \$4.90
-
-Mouser \#:   652-PDB12-H4251102BF    
-Mfr. \#: PDB12-H4251-102BF
-Desc.:  Potentiometers 1K LINEAR 12MM
-\$0.649
+\end{itemize}
 
 
-\section{Flow Meters}
-
-Fire Research Corp.
-http://www.fireresearch.com/product.php?id=fta400
-
-Elkhart Brass Hose and Nozzle Accessories
-http://www.elkhartbrass.com/products/accessories/hose-nozzle/multimedia
-http://www.elkhartbrass.com/files/aa/downloads/catalog/catalog-f2-02-01.pdf
-
-Akron Brass Zero Torque Nozzle
-http://www.akronbrass.com/1-1-2-x-1-1-2-zero-torque-shutoff
-
-Omega Pressure Transducers
-http://www.omega.com/prodinfo/pressuretransducers.html
-
-Omega Flow Meters
-http://www.omega.com/pptst/FP7002.html
-http://www.omega.com/pptst/FPB100.html
-
-Task Force Tips Sho-Flow
-http://www.tft.com/productsearch/product\_details.cfm?product=SF-BF-BF-11L\&ProductGroup=Sho-Flow\%20Indicator
-
-Flow Equipment
-http://www.firehydrant.org/links/flowequip.html
-
-Hose Monster Equipment
-http://www.hosemonster.com/products-pages-30.php
-
-Pollard Water
-http://www.pollardwater.com/pages\_index/index\_flow\_testing.asp
-
-
-
+%  ==============
+%  = Appendices =
+%  ==============
 
 
 \appendix
