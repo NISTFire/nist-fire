@@ -6,7 +6,11 @@ Cases/Boxes/Bags,Quantity inside case,Device/Label,Manufacturer,Model Number,Des
 1,1,Infrared Camera,FLIR,,,
 2,1,"Gas Analyzer (CO2, CO, O2)",California Analytical Instruments,NDIR/O2 602P,Gas Analyzer,"2 pumps, traps, dryers"
 1,1,Gas Sample Dryer,Universal Analyzers,570,Dryer for gas analyzers,
-4,1,DAQ Cards,National Instruments,SCXI NI-1600,USB Data Logger Cards,Note: This only works with 32-bit operating systems
+1,1,Large Data Acquisition System,National Instruments,SXCI-1001/SCXI-1600/SCXI-1102 (x10)/TC-2095(x10),320 channel data system,Note: This only works with 32-bit operating systems
+1,1,Small Data Acquisition System,National Instruments,SXCI-1000/SCXI-1600/SCXI-1102 (x3)/TC-2095(x3),96 channel data system,Note: This only works with 32-bit operating systems
+1,3,BDP/Pressure Box,Setra,Model # 264 Part # 2641001WB2DT1C,"Tackle box with 3 pressure sensors, power, and TC passthrough",
+3,4,BDP/Pressure Box,Setra,Model # 264 Part # 2641001WB2DT1C,"Tackle box with 4 pressure sensors, power, and TC passthrough",
+2,6,BDP/Pressure Box,Setra,Model # 264 Part # 2641001WB2DT1C,"Tackle box with 6 pressure sensors, power, and TC passthrough",
 ,,,,,,
 Pelican Cases,,,,,,
 1,10,Arduino Data Loggers,Arduino,Yun,,"Batteries, 8 GB microSD cards, power adaptors"
@@ -38,7 +42,7 @@ Pelican Cases,,,,,,
 1,,TFT Sho-Flow Meters and Hose Couplings w/ Pressure Gauges,Task Force Tips,"SF-NJNJ-500, SF-NF-NF-200","1.5 inch couplings, 50-200 GPM; 2.5 inch couplings, 125-500 GPM",
 2,1,Akron Brass Flow Meter,Akron Brass,,Display box and 2.5 in coupler,
 1,,Smart FF Hose Flow Meter,,,,
-1,,Omega Flow Meter,Omega,"FPB151, FP-5320BR",Paddle wheel flow meter and 2” brass tee coupling,
+1,,Omega Flow Meter,Omega,"FPB151, FP-5320BR",Paddle wheel flow meter and 2�۝ brass tee coupling,
 1,1,DJI Phantom Vision 2+,DJI,Phantom Vision 2+,,w/ mounted HD video and still camera
 2,1,Portable Printer,,,,
 ,,,,,,
