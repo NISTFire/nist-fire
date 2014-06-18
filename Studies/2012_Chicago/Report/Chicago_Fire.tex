@@ -88,22 +88,27 @@ Gaithersburg, Maryland, USA} \\ }
 \begin{tabbing}
 \hspace{1.5in} \= \\
 BC \> Battalion Chief \\
+E \> Engine \\
 FDS \> Fire Dynamics Simulator \\
 HGL \> Hot Gas Layer \\
 HRR \> Heat Release Rate \\
 HRRPUA \> Heat Release Rate per Unit Area \\
+LODD \> Line of Duty Death \\
+NIOSH \> National Institute for Occupational Safety and  Health \\
 NIST \> National Institute of Standards and Technology \\
 SFPE \> Society of Fire Protection Engineers \\
+SQ \> Squad \\
+TL \> Tower Ladder \\
 \end{tabbing}
 
 \mainmatter
 
 \chapter{Introduction}
-Part of the mission of the Fire Research Division at the National Institute of Standards and Technology (NIST) is to develop and apply technology, measurements and standards, improve the understanding of the behavior, prevention and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) to provide insight on the fire development and thermal conditions of other fatality fires~\cite{Madrzykowski:1,Iowa,Texas,Cook_County,Grosshandler:Station,Bryner:Charleston,barowy:texas}. The overriding objective of all of these studies is to improve the safety of fire fighters.
+Part of the mission of the Fire Research Division at the National Institute of Standards and Technology (NIST) is to develop and apply technology, measurements and standards, improve the understanding of the behavior, prevention and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) to provide insight on the fire development and thermal conditions of other line of duty death (LODD) fires~\cite{Madrzykowski:1,Iowa,Texas,Cook_County,Grosshandler:Station,Bryner:Charleston,barowy:texas}. The overriding objective of all of these studies is to improve the safety of fire fighters.
 
-On November 2, 2012, a fire in a 2 1/2 story wood frame residential structure claimed the life of a Chicago firefighter.  Changes in the ventilation flow path caused a rapid change in the fire dynamics resulting in fire and smoke penetration to an interior second floor hallway. NIST assisted with examining the fire dynamics of this incident. NIST performed computer simulations of the fire using Fire Dynamics Simulator and Smokeview, to provide insight on the fire development and thermal conditions that may have existed in the residence during the fire. The specific objectives of the simulations detailed in this report are: 
+On November 2, 2012, a fire in a 2 1/2 story wood frame residential structure claimed the life of a Chicago firefighter.  Changes in the ventilation flow path resulted in fire and smoke penetration to an interior second floor hallway. NIST examined the fire dynamics of this incident at the request of NIOSH and Chicago Fire Department (CFD) . Computer simulations of the fire using Fire Dynamics Simulator and Smokeview, provide insight on the fire development and thermal conditions that may have existed in the residence during the fire. The specific objectives of the simulations detailed in this report are: 
 \begin{enumerate}
-\item To examine with physics-based calculations the effect of flow path on the thermal and fire conditions in this multi-story residential structure.
+\item To examine with physics-based calculations the effect of flow path on the temperature, pressure and fire conditions in this multi-story residential structure.
 \item To provide visualization of fire behavior representative of what Chicago Fire Department members experienced during the course of their interior operations.
 \end{enumerate}
 This document describes the input and the results of the FDS (version 6.0.0) simulations.
@@ -114,7 +119,7 @@ This document describes the input and the results of the FDS (version 6.0.0) sim
 \label{fire_sum}
 The following account of events is based on information provided by NIST physical measurements on-scene, NIST photographs of the scene, time line information provided by the Chicago Fire Department and information provided from the NIOSH Fire Fighter Fatality Investigation and Prevention Program Report~\cite{NIOSH:Bowyer}.
 
-On November 2, 2012, a fire in a 2 1/2 story wood frame residential structure resulted in the death of a fire captain and injury to a fire fighter. At approximately 5:16 in the afternoon, a dispatch was made for ``smoke in the area''. Within a minute of dispatch, a Battalion Chief (BC) arrived and sized up the structure fire from the exterior and reported a working fire with heavy smoke coming from the front and rear of the structure's attic. After speaking with the building occupants, the BC entered the structure and found light smoke on the second floor and a glow around the doorway that led from the second floor hallway to enclosed rear porch. Engine 123 (E123) arrived on scene at approximately 17:19. The victims were part of the E123 crew.  The BC met the Captain and the Firefighter (victims) at the front door to the structure.  Then the Captain and Firefighter took their hose line to the second floor of the structure. At approximately 5:21, the Captain and Fire Fighter are on the second floor with their hoseline and had begun advancing the charged line toward the rear second floor door between the apartment and the enclosed porch. Approximately 30 seconds later, a fire fighter from Tower Ladder 39 (TL39) enters the enclosed porch on the rear of the structure by opening the rear exterior door to the first floor of the porch. The firefighter from TL39, notices ``the fire light up'' in the stairwell of the enclosed porch, and then kicks in the first level door between the rear porch and the main structure. Both doors remain open and the firefighter from TL39 exits the structure. Given the amount of fire showing from the second floor of the rear porch and ``heavy fire'' in the stairwell of the rear porch, the BC radios the E123 Captain at 17:23, to alert him to the fire conditions and to advise him that E49 would be applying water to the fire on the rear of the structure from the exterior. No response was made by the E123 Captain. It is believed that the door between the rear porch and the second floor hallway, where the E123 Captain and firefighter were located may have failed by this time.  Approximately a minute later E49 applied water to the fire in the attic.
+On November 2, 2012, a fire in a 2 1/2 story wood frame residential structure resulted in the death of a fire captain and injury to a fire fighter. At approximately 5:16 in the afternoon, a dispatch was made for ``smoke in the area''. Within a minute of dispatch, a Battalion Chief (BC) arrived and sized up the structure fire from the exterior and reported a working fire with heavy smoke coming from the front and rear of the structure's attic. After speaking with the building occupants, the BC entered the structure and found light smoke on the second floor and a glow around the doorway that led from the second floor hallway to enclosed rear porch. Engine 123 (E123) arrived on scene at approximately 17:19. The victims were part of the E123 crew.  The BC met the Captain and the Firefighter (victims) at the front door to the structure.  Then the Captain and Firefighter took their hose line to the second floor of the structure. At approximately 5:21, the Captain and Fire Fighter were on the second floor with their hoseline and had begun advancing the charged line toward the rear second floor door between the apartment and the enclosed porch. Approximately 30 seconds later, a fire fighter from Tower Ladder 39 (TL39) enters the enclosed porch on the rear of the structure by opening the rear exterior door to the first floor of the porch. The firefighter from TL39, notices ``the fire light up'' in the stairwell of the enclosed porch, and then kicks in the first level door between the rear porch and the main structure. Both doors remain open and the firefighter from TL39 exits the structure. Given the amount of fire showing from the second floor of the rear porch and ``heavy fire'' in the stairwell of the rear porch, the BC radios the E123 Captain at 17:23, to alert him to the fire conditions and to advise him that E49 would be applying water to the fire on the rear of the structure from the exterior. No response was made by the E123 Captain. It is believed that the door between the rear porch and the second floor hallway, where the E123 Captain and firefighter were located may have failed by this time.  Approximately a minute later E49 applied water to the fire in the attic.
 
 Squad 5 (S5) entered the front of the structure at approximately 17:25 and headed to the second floor. They heard a commotion and found the E123 Captain collapsed on the kitchen floor and entangled with the E123 firefighter. A Mayday was called on the radio by S5 at approximately  17:27 and the E123 Captain was removed from the front of the building at approximately 17:29 and succumbed to his injuries at the hospital at 17:38. Table~\ref{tab:fire_info} presents the timeline of the fire.
 
@@ -123,20 +128,22 @@ Squad 5 (S5) entered the front of the structure at approximately 17:25 and heade
 \captionof{table}{Fire Event Timeline}\label{tab:fire_info}
 \begin{tabular}{l l}
 \toprule[1.5pt]
-Incident Time & Fire Behavior / Fireground Operation  \\
+Incident Time [hr:min:s] & Fire Behavior / Fireground Operation  \\
 \midrule
-\multirow{2}{*}{17:15} & \multirow{2}{*}{\parbox{10cm} {Reported working fire with heavy smoke coming from the front and rear of the structure's attic.}} \\ 
+\multirow{2}{*}{17:15:00} & \multirow{2}{*}{\parbox{10cm} {Reported working fire with heavy smoke coming from the front and rear of the structure's attic.}} \\ 
          & \\[.25cm] %blank rows exist for wrapping text. # of blanks is 1 less than number of rows
-17:16    & Dispatch for a Still Alarm. \\ [.25cm]
-\multirow{2}{*}{17:20}    & \multirow{2}{*}{\parbox{10cm} {Attic self ventilation - heavy smoke out of front attic window and heavy smoke and fire out of rear.}} \\
+\multirow{2}{*}{17:16:00}    &  \multirow{2}{*}{\parbox{10cm} {Dispatch for a ``Still'' alarm $-$ is two engine companies, two truck companies, and a battalion chief.}} \\
+         & \\[.25cm]
+\multirow{2}{*}{17:20:00}    & \multirow{2}{*}{\parbox{10cm} {Attic self ventilation - heavy smoke out of front attic window and heavy smoke and fire out of rear.}} \\
          & \\[.25cm] 
 17:21:00 & E123 Capt. and FF on 2$^{nd}$ floor with 1 3/4-in hose line. \\[.25cm]
 17:21:30 & 1$^{st}$ floor exterior porch door opened. \\[.25cm]
-\multirow{2}{*}{17:23}    & \multirow{2}{*}{\parbox{10cm} {Heavy fire report in rear stairwell and enclosed porch. No response from E123: Capt. or FF.}} \\
+\multirow{2}{*}{17:23:00}    & \multirow{2}{*}{\parbox{10cm} {Heavy fire report in rear stairwell and enclosed porch. No response from E123: Capt. or FF.}} \\
          & \\[.25cm]
-17:24    & Water applied to attic from the rear exterior position. \\[.25cm]
-17:27    & IC calls a Mayday. \\[.25cm]
-17:29    & E123 Capt. carried out of structure. \\
+17:24:00    & Water applied to attic from the rear exterior position. \\[.25cm]
+17:25:00    & SQ5 makes entry through front of structure. \\[.25cm]
+17:27:00    & After hearing a Mayday call from SQ5, IC calls a Mayday. \\[.25cm]
+17:29:00    & E123 Capt. carried out of structure. \\
 \bottomrule[1.25pt]
 \end{tabular}\par
 \end{table}
@@ -165,9 +172,7 @@ From witnesses, first responders, reports, and recorded media such as fire groun
 \item Order and timing of ventilation opening to the outside
 \item Weather conditions at the time of the fire
 \end{itemize}
-To develop the simulation, a timeline of events based on the collected information must be developed.   From this time line actions may be input into the model, such as venting a window at a given time. 
-  
-The development of the model geometry and development of the input file is straight forward with guidance from the FDS User's Guide ~\cite{FDS_Users_Guide} or third party software.  Engineering judgment, graduate level knowledge of fire dynamics, and modeling experience are required to  translate the information collected from the scene into appropriate and realistic computational information.  Examples of these requirements include:
+To develop the simulation, a timeline of events based on the collected information is developed. From this time line actions may be input into the model, such as venting a window at a given time. To develop the model geometry and remainder of the input file is straight forward with guidance from the FDS User's Guide ~\cite{FDS_Users_Guide} or third party software.  Engineering judgment, graduate level knowledge of fire dynamics, and modeling experience are required to  translate the information collected from the scene into appropriate and realistic computational information.  Examples of these requirements include:
 \begin{itemize}
 \item the computational cell size
 \item model domain and boundaries conditions
@@ -204,7 +209,7 @@ Parameter & Description & Reference  \\
 
 \section{Geometry}
 \label{geom}
-The structure was a 2 1/2 story residential building with balloon frame construction and a wood gable roofing system. The structure had a 17.15 m (56 ft) by 6.15 m (20 ft) footprint (cf. Fig.~(\ref{fig:simp_geom})). This results in a floor area of approximately 105 m$^2$ (1100 ft$^2$) per floor and a main living area of approximately 110 m$^2$ (2200 ft$^2$). Interior walls were constructed from wood frame dimensioned lumber with 1.27 cm (0.5 in) gypsum board over top. Additionally there was a half-story attic that was used to house the structure's hot water heater. There were three sets of stairs in the structure: one front stairwell that connected the first and second levels, one rear stairwell that connected the first and second levels and a second rear set of stairs which provided access to the attic. Entry to the structure can be made either in the front (Alpha side) or rear (Charlie side), see Fig.~(\ref{fig:simp_geom}). The fire, which is described in Section~\ref{fire}, started in the attic and spread to the rear porch. Discussion of the fire's impact on interior conditions can be found in Section~\ref{results}. Fig.~(\ref{fig:alpha_ex}) shows the post-incident exterior of the alpha side of the structure. Note that the majority of the damage is to the structure's attic.
+The structure was a 2 1/2 story residential building with balloon frame construction and gable roof. The structure had a 17.15 m (56 ft) by 6.15 m (20 ft) footprint (cf. Fig.~(\ref{fig:simp_geom})). This results in a floor area of approximately 105 m$^2$ (1100 ft$^2$) per floor and a main living area of approximately 110 m$^2$ (2200 ft$^2$). Interior walls were constructed from wood frame dimensioned lumber with 12.7 mm (0.5 in) gypsum board over top. Additionally there was a half-story attic that was used to house the structure's hot water heater. There were three sets of stairs in the structure: one front stairwell that connected the first and second levels, one rear stairwell that connected the first and second levels and a second rear set of stairs which provided access to the attic. Entry to the structure can be made either in the front (Alpha side) or rear (Charlie side), see Fig.~(\ref{fig:simp_geom}). The fire, which is described in Section~\ref{fire}, started in the attic and spread to the rear porch. Discussion of the fire's impact on interior conditions can be found in Section~\ref{results}. Fig.~(\ref{fig:alpha_ex}) shows the post-incident exterior of the alpha side of the structure. Note that the majority of the damage is to the structure's attic.
 
 \begin{figure}[h!]
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
@@ -222,7 +227,7 @@ The structure was a 2 1/2 story residential building with balloon frame construc
 \label{fig:alpha_ex}
 \end{figure}
 
-Figs.~(\ref{fig:first_floor} and \ref{fig:second_floor}) show the interior dimensions of the first and second floor, respectively. The dimensions were found from on-scene measurements using a tape measure. Measurements were made to the nearest 1.27 cm (0.5 in). Based on difficulty of making some of the measurements due to the condition of the post-fire structure, the uncertainty in the measurements is estimated to be on the order of $\pm$ 1 \%. This would result in measurements that could change by up $\pm$ 17 cm ($\approx$ 7 in). When considering the uncertainties in the initial fire development, ventilation (vent times and vent areas), and peak heat release rate among other factors, the uncertainty in the overall structure geometry is not a major factor.
+Figs.~(\ref{fig:first_floor} and \ref{fig:second_floor}) show the interior dimensions of the first and second floor, respectively. The dimensions were found from on-scene measurements using a tape measure. Measurements were made to the nearest 12.7 mm (0.5 in). Based on difficulty of making some of the measurements due to the condition of the post-fire structure, the uncertainty in the measurements is estimated to be on the order of $\pm$ 1 \%. This would result in measurements that could change by up $\pm$ 17 cm ($\approx$ 7 in). When considering the uncertainties in the initial fire development, ventilation (vent times and vent areas), and peak heat release rate among other factors, the uncertainty in the overall structure geometry is not a major factor.
 
 %Fig.~(\ref{fig:smv_interior}) shows 3D Smokeview renderings of cutaways of the beta and delta sides of the structure interior.
 %\begin{figure}[h!]
@@ -317,9 +322,9 @@ This simulation includes vents that account for the changes in ventilation due t
 \captionof{table}{Simulation Ventilation Timelines}\label{tab:vents}
 \begin{tabular}{ccccc}
 \toprule[1.5pt]
-Baseline Simulation & Alternative Simulation & Ventilation Area [m$^2$] & Type & Structure Side \\
+Baseline Simulation [s] & Alternative Simulation [s] & Ventilation Area [m$^2$] & Type & Structure Side \\
 \midrule
-00    &  00   & 0.11 & Window      & Charlie \\
+0    &  0   & 0.11 & Window      & Charlie \\
 40    &  40   & 0.08 & Breach (x2) & Alpha and Charlie \\
 45    &  45   & 0.12 & Breach      & Beta \\
 55    &  55   & 0.12 & Breach      & Charlie \\     
@@ -341,7 +346,7 @@ D^* = \left(
 \label{eq:mesh}
 \end{equation}   
 From the FDS User Guide~\cite{FDS_Users_Guide}, ``the characteristic fire diameter is related to the characteristic fire size via the
-relation $Q^* = (D^*/D)^{5/2}$.'' Here, $D$ is the physical diameter of the fire as input to the model. Following Eq.~(\ref{eq:mesh}) and using 10 cm grid cells, the characteristic fire diameter to cell size ratio based on the 3.3 MW porch fire is 15.5 and for the 9 MW fire is 23. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 1~\cite{NUREG_1824}. The grid resolution used in the model falls within typical, engineering $D^*/\dx$ values. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10 cm. Fig.~(\ref{fig:geom_grid}) shows the 
+relation $Q^* = (D^*/D)^{5/2}$.'' Here, $D$ is the physical diameter of the fire as input to the model. Following Eq.~(\ref{eq:mesh}) and using 10 cm grid cells, the characteristic fire diameter to cell size ratio based on the 3.3 MW porch fire is 15.5 and for the 9 MW fire is 23. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824}. The grid resolution used in this model falls within typical, engineering $D^*/\dx$ values. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10 cm. Fig.~(\ref{fig:geom_grid}) shows the 
 alpha side (front) of the structure rendered in Smokeview with the 10 cm mesh.
 
 \begin{figure}[h!]
@@ -369,26 +374,29 @@ From the NIOSH report~\cite{NIOSH:Bowyer}, a timeline of events was able to be c
 \captionof{table}{Fire - Simulation Event Timeline}\label{tab:firesim}
 \begin{tabular}{l l l}
 \toprule[1.5pt]
-Incident Time & Simulation Time & Fire Behavior / Fireground Operation  \\
+Incident Time [hr:min:s] & Simulation Time [s] & Fire Behavior / Fireground Operation  \\
 \midrule
-\multirow{2}{*}{17:15} &    & \multirow{2}{*}{\parbox{10cm} {Reported working fire with heavy smoke coming from the front and rear of the structure's attic.}} \\ 
+\multirow{2}{*}{17:15:00} &    & \multirow{2}{*}{\parbox{10cm} {Reported working fire with heavy smoke coming from the front and rear of the structure's attic.}} \\ 
          & & \\[.25cm] %blank rows exist for wrapping text. # of blanks is 1 less than number of rows
-17:16 &      & Dispatch for a Still Alarm. \\ [0.25cm]
-         &  \multirow{2}{*} {0:00} &  \multirow{2}{*}{\parbox{10cm} {Simulation starts. Attic fire ignites. Initial self ventilation on charlie side. Front door open.}} \\
+\multirow{2}{*}{17:16:00} & \multirow{2}{*}{}   &  \multirow{2}{*}{\parbox{10cm} {Dispatch for a ``Still'' alarm $-$ is two engine companies, two truck companies, and a battalion chief.}} \\
+         & \\[.25cm]
+         &  \multirow{2}{*} {0} &  \multirow{2}{*}{\parbox{10cm} {Simulation starts. Attic fire ignites. Initial self ventilation on charlie side. Front door open.}} \\
          & & \\[0.25cm]
-\multirow{2}{*}{17:20} & \multirow{2}{*}{0:40}  & \multirow{2}{*}{\parbox{10cm} {Attic self ventilation - heavy smoke out of front attic window and heavy smoke and fire out of rear. Rear porch ignites in model.}} \\
+\multirow{2}{*}{17:20:00} & \multirow{2}{*}{0:40}  & \multirow{2}{*}{\parbox{10cm} {Attic self ventilation - heavy smoke out of front attic window and heavy smoke and fire out of rear. Rear porch ignites in model.}} \\
          & & \\[.25cm] 
          & 0:45 & Model ventilation on charlie side. \\[.25cm] 
          & 0:55 & Model ventilation on beta side. \\[.25cm] 
-17:21:00 & 1:40 & E123 Capt. and FF on 2$^{nd}$ floor with 1 3/4-in hose line. \\[.25cm]
-17:21:30 & 2:10 & 1$^{st}$ floor exterior porch door opened. Attic fire ignites in model. \\[.25cm]
-        & 2:15 & Additional model ventilation on beta side. \\[.25cm] 
-        & 2:40 & Top of interior door fails in model. \\[.25cm] 
-\multirow{2}{*}{17:23}    & \multirow{2}{*}{3:40} & \multirow{2}{*}{\parbox{10cm} {Heavy fire report in rear stairwell and enclosed porch. No response from E123: Capt. or FF.}} \\
+17:21:00 & 100 & E123 Capt. and FF on 2$^{nd}$ floor with 1 3/4-in hose line. \\[.25cm]
+17:21:30 & 130 & 1$^{st}$ floor exterior porch door opened. Attic fire ignites in model. \\[.25cm]
+        & 135 & Additional model ventilation on beta side. \\[.25cm] 
+        & 160 & Top of interior door fails in model. \\[.25cm] 
+\multirow{2}{*}{17:23:00}    & \multirow{2}{*}{220} & \multirow{2}{*}{\parbox{10cm} {Heavy fire report in rear stairwell and enclosed porch. No response from E123: Capt. or FF.}} \\
          & & \\[.25cm]
-17:24    &   & Water applied to attic from the rear exterior position. \\[.25cm]
-17:27    & 5:00  & IC calls a Mayday. Simulation ends. \\[.25cm]
-17:29    &   & E123 Capt. carried out of structure. \\
+17:24:00    &   & Water applied to attic from the rear exterior position. \\[.25cm]
+17:25:00    &   & SQ5 makes entry through front of structure. \\[.25cm]
+\multirow{2}{*}{17:27:00}    & \multirow{2}{*}{300}  & \multirow{2}{*}{\parbox{10cm} {After hearing a Mayday call from SQ5, IC calls a Mayday. Simulation ends.}}\\
+         & &  \\[.25cm]
+17:29:00    &   & E123 Capt. carried out of structure. \\
 \bottomrule[1.25pt]
 \end{tabular}\par
 \end{table}
