@@ -56,9 +56,7 @@ while True:
             
             # Construct message for log
             message = (time.ctime()+',%s,%0.1f,%0.1f') % (args.logger_id, voltage, flow_rate)
-            channel.basic_publish(exchange='logs',
-                                  routing_key='',
-                                  body=message)
+            channel.basic_publish(exchange='logs', routing_key='', body=message)
             print 'Sent %r' % (message)
             with open(args.log_file, 'a+') as text_file:
                 text_file.write(message+'\n')
