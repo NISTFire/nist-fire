@@ -209,12 +209,12 @@ Parameter & Description & Reference  \\
 
 \section{Geometry}
 \label{geom}
-The structure was a 2 1/2 story residential building with balloon frame construction and gable roof. The structure had a 17.15 m (56 ft) by 6.15 m (20 ft) footprint (cf. Fig.~(\ref{fig:simp_geom})). This results in a floor area of approximately 105 m$^2$ (1100 ft$^2$) per floor and a main living area of approximately 110 m$^2$ (2200 ft$^2$). Interior walls were constructed from wood frame dimensioned lumber with 12.7 mm (0.5 in) gypsum board over top. Additionally there was a half-story attic that was used to house the structure's hot water heater. There were three sets of stairs in the structure: one front stairwell that connected the first and second levels, one rear stairwell that connected the first and second levels and a second rear set of stairs which provided access to the attic. Entry to the structure can be made either in the front (Alpha side) or rear (Charlie side), see Fig.~(\ref{fig:simp_geom}). The fire, which is described in Section~\ref{fire}, started in the attic and spread to the rear porch. Discussion of the fire's impact on interior conditions can be found in Section~\ref{results}. Fig.~(\ref{fig:alpha_ex}) shows the post-incident exterior of the alpha side of the structure. Note that the majority of the damage is to the structure's attic.
+The structure was a 2 1/2 story residential building with balloon frame construction and gable roof. The structure had a 17.15 m (56 ft) by 6.15 m (20 ft) footprint (cf. Fig.~(\ref{fig:simp_geom})). This results in a floor area of approximately 105 m$^2$ (1100 ft$^2$) per floor and a main living area of approximately 110 m$^2$ (2200 ft$^2$). Interior walls were constructed from wood frame dimensioned lumber with 12.7 mm (0.5 in) gypsum board over top. Additionally there was a half-story attic that was used to house the structure's hot water heater. There were three sets of stairs in the structure: one front stairwell that connected the first and second levels (Stair 1 in Fig.~(\ref{fig:simp_geom})), one rear stairwell that connected the first and second levels (Stair 2 in Fig.~(\ref{fig:simp_geom})) and a second rear set of stairs which provided access to the attic (Stair 3 in Fig.~(\ref{fig:simp_geom})). Entry to the first floor of thep structure can be made either in the front (Alpha side) or rear (Charlie side), see Fig.~(\ref{fig:simp_geom}). The fire, which is described in Section~\ref{fire}, started in the attic and spread to the rear porch. Discussion of the fire's impact on interior conditions can be found in Section~\ref{results}. Fig.~(\ref{fig:alpha_ex}) shows the post-incident exterior of the alpha side of the structure. Note that the majority of the damage is to the structure's attic.
 
 \begin{figure}[h!]
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-\includegraphics[width=6in]{../Figures/Simple_1_metric} \\
-\includegraphics[width=6in]{../Figures/Simple_2_metric}
+\includegraphics[width=6in]{../Figures/1st_Floor_Metric} \\
+\includegraphics[width=6in]{../Figures/2nd_Floor_Metric}
 \end{tabular*}
 \caption{Top view of 1st (top) and 2nd (bottom) floor of structure. Stairs and key rooms are identified.}
 \label{fig:simp_geom}
@@ -251,7 +251,6 @@ To estimate the fuel, fire size, and structure ventilation, on-scene videos and 
 \caption{Photograph showing the post-incident rear (side charlie) exterior of the structure.}
 \label{fig:charlie_ex}
 \end{figure}
-
 
 If we represent wood with the following chemical formula, $\C\H_{1.7}\O_{0.74}\N_{0.002}$, and use carbon monoxide ($y_{\mathrm{CO}}=0.004 \; {\mathrm{kg_{CO}}/\mathrm{kg_{wood}}}$) and soot ($y_{\mathrm{C}}=0.015 \; {\mathrm{kg_{C}}/\mathrm{kg_{wood}}}$) yields from the SFPE Handbook~\cite{SFPE:Tewarson}, we can write a balanced chemical reaction for wood oxidation:
 
@@ -382,10 +381,10 @@ Incident Time [hr:min:s] & Simulation Time [s] & Fire Behavior / Fireground Oper
          & \\[.25cm]
          &  \multirow{2}{*} {0} &  \multirow{2}{*}{\parbox{10cm} {Simulation starts. Attic fire ignites. Initial self ventilation on charlie side. Front door open.}} \\
          & & \\[0.25cm]
-\multirow{2}{*}{17:20:00} & \multirow{2}{*}{0:40}  & \multirow{2}{*}{\parbox{10cm} {Attic self ventilation - heavy smoke out of front attic window and heavy smoke and fire out of rear. Rear porch ignites in model.}} \\
+\multirow{2}{*}{17:20:00} & \multirow{2}{*}{40}  & \multirow{2}{*}{\parbox{10cm} {Attic self ventilation - heavy smoke out of front attic window and heavy smoke and fire out of rear. Rear porch ignites in model.}} \\
          & & \\[.25cm] 
-         & 0:45 & Model ventilation on charlie side. \\[.25cm] 
-         & 0:55 & Model ventilation on beta side. \\[.25cm] 
+         & 45 & Model ventilation on charlie side. \\[.25cm] 
+         & 55 & Model ventilation on beta side. \\[.25cm] 
 17:21:00 & 100 & E123 Capt. and FF on 2$^{nd}$ floor with 1 3/4-in hose line. \\[.25cm]
 17:21:30 & 130 & 1$^{st}$ floor exterior porch door opened. Attic fire ignites in model. \\[.25cm]
         & 135 & Additional model ventilation on beta side. \\[.25cm] 
@@ -409,7 +408,7 @@ Incident Time [hr:min:s] & Simulation Time [s] & Fire Behavior / Fireground Oper
 
 \section{Heat Release Rate}
 \label{HRR}
-The heat release rate output data from FDS quantifies the model-predicted rate of energy release in the simulation. Here, we examine impact of ventilation on fire size. Fig.~(\ref{fig:hrr}) shows the HRR versus time based on the prescribed fires described in Section \ref{fire} and the FDS results for two venting scenarios. The two vertical lines represent when a firefighter opened the back door of the structure (t = 130 s) and when the second floor interior door was estimated to fail (t = 160 s).
+The heat release rate output data from FDS quantifies the simulated rate of energy release in the simulation. Here, we examine impact of ventilation on fire size. Fig.~(\ref{fig:hrr}) shows the HRR versus time based on the prescribed fires described in Section \ref{fire} and the FDS results for two venting scenarios. The two vertical lines represent when a firefighter opened the back door of the structure (t = 130 s) and when the second floor interior door was estimated to fail (t = 160 s).
 
 \begin{figure}[h!]
 \centering
@@ -434,28 +433,28 @@ As the fire grows in the attic and back porch, the pressure rises. Fig.~(\ref{fi
 \begin{figure}[!ht]
 \includegraphics[width=.75\textwidth]{../Figures/west_50th_baseline_pres2}
 \input{../Scripts/colorbar_metric_pres}
-\caption{FDS predicted pressure contours, 1 second prior to interior door failure.}
+\caption{FDS simulated pressure contours, 1 second prior to interior door failure. Note 1 Pa is 1.4 $\times 10 ^{-4}$ psi.}
 \label{fig:pres_159s}
 \end{figure}
-Gases at elevated pressure will always travel toward an area of lower pressure. When the interior door fails, the lower pressure outlet is through the front door on the alpha side of the structure. As a result, the gases produced by the fire will flow through the interior hallway, through the kitchen, down the front stairs and out the front door. The velocity vectors in Fig.~(\ref{fig:velo_175s}), 15 seconds after the interior door fails, confirms this flow direction within the structure.
+Gases at elevated pressure will always travel toward an area of lower pressure. The door acts as a boundary between the high and low pressure areas. Once the door fails open, the high pressure gases flow toward the low pressure areas in the house, hallway, kitchen, and front stairwell. The velocity vectors in Fig.~(\ref{fig:velo_175s}), 15 seconds after the interior door fails, confirms this flow direction within the structure.
 \begin{figure}[!ht]
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_velo_175}
 \input{../Scripts/colorbar_std_velo}
 \input{../Scripts/colorbar_metric_velo}
-\caption{FDS predicted velocity vectors, 15 second after interior door failure.}
+\caption{FDS simulated velocity vectors, 15 second after interior door failure.}
 \label{fig:velo_175s}
 \end{figure}
 
 
 \section{Temperature}
 \label{temp}
-Analysis of the predicted simulation temperatures will focus on the high hazard areas of the structure: the attic, the rear porch and stairwell, and the interior hallway which connects the rear porch to the front stairwell. Here, we will examine the temperature profile through these high hazards area at several snapshots in time to illustrate the changing interior conditions. The first times are 129 seconds into the simulation, just before a firefighter opened the rear porch door (cf. Fig.~(\ref{fig:temp_129s})) and 159 seconds into the simulation, just before the interior door fails (cf. Fig.~(\ref{fig:temp_159s})).
+Analysis of the simulation temperatures will focus on the high hazard areas of the structure: the attic, the rear porch and stairwell, and the interior hallway which connects the rear porch to the front stairwell. Here, we will examine the temperature profile through these high hazards area at several snapshots in time to illustrate the changing interior conditions. The first times are 129 seconds into the simulation, just before a firefighter opened the rear porch door (cf. Fig.~(\ref{fig:temp_129s})) and 159 seconds into the simulation, just before the interior door fails (cf. Fig.~(\ref{fig:temp_159s})).
 
 \begin{figure}[!ht]
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_129}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{FDS predicted temperature contours, 1 second prior to rear door opening.}
+\caption{FDS simulated temperature contours, 1 second prior to rear door opening.}
 \label{fig:temp_129s}
 \end{figure}
 
@@ -463,7 +462,7 @@ Analysis of the predicted simulation temperatures will focus on the high hazard 
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_159}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{FDS predicted temperature contours, 1 second prior to interior door failure.}
+\caption{FDS simulated temperature contours, 1 second prior to interior door failure.}
 \label{fig:temp_159s}
 \end{figure}
 
@@ -472,7 +471,7 @@ Fig.~(\ref{fig:temp_129s}) shows temperatures of at least 260 $^{\circ}$C (500 $
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_161}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{FDS predicted temperature contours, 1 second after interior door fails.}
+\caption{FDS simulated temperature contours, 1 second after interior door fails.}
 \label{fig:temp_161s}
 \end{figure}
 
@@ -480,7 +479,7 @@ Fig.~(\ref{fig:temp_129s}) shows temperatures of at least 260 $^{\circ}$C (500 $
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_175}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{FDS predicted temperature contours, 15 seconds after interior door fails.}
+\caption{FDS simulated temperature contours, 15 seconds after interior door fails.}
 \label{fig:temp_175s}
 \end{figure}
 
@@ -491,7 +490,7 @@ From Fig.~(\ref{fig:temp_175s}), 15 seconds after the door failed, high temperat
 The discussion will be broken up into two parts. The first part will address the results of the computational modeling as they relate to the interior hallways conditions. The second part will examine the the model results and observed outcomes of fire as they relate to tactics discussed in recent experimental research. 
 
 \section{Hallway Flow Path}
-From on-reports from the BC (Chapter~\ref{fire_sum}) and simulation results (Chapter~\ref{temp}), interior conditions on the second floor of the structure were initially tenable. The simulation, however, showed a high hazard environment developing on the second floor. By the time the E123 Captain and FF arrived on the second floor (Table~\ref{tab:firesim}) and approached the rear of the structure, the rear porch was involved. Temperature and pressure, greater than 260 $^{\circ}$C (500 $^{\circ}$F) and 5 Pa respectively, were on the Charlie side of the steel door at the rear of the structure. Exposure to these conditions weakened the structural integrity of the door, eventually leading to a partial failure. Fig.~(\ref{fig:chicago_doorfold}) shows the state of the rear door post fire. Note the large crease in the door just above the knob.
+From on-scene reports from the BC (Chapter~\ref{fire_sum}) and simulation results (Chapter~\ref{temp}), interior conditions on the second floor of the structure were initially tenable. From the NIOSH report, while the BC was inside the structure on the second floor, the  BC observed only a light haze and a glow around the door between the hallway and enclosed porch. This indicated that some amount of the fire was burring in the area of the enclosed porch. The simulation shows a high hazard area in the attic and the enclosed porch at this time. By the time the E123 Captain and FF arrived on the second floor (Table~\ref{tab:firesim}) and approached the rear of the structure, the rear porch was fully involved. Temperature and pressure, greater than 260 $^{\circ}$C (500 $^{\circ}$F) and 5 Pa respectively, were on the Charlie side of the steel door at the rear of the structure. Exposure to these conditions weakened the structural integrity of the door, eventually leading to a partial failure. Fig.~(\ref{fig:chicago_doorfold}) shows the state of the rear door post fire. Note the large crease in the door just above the knob.
 
 \begin{figure}[h!]
 \centering
@@ -499,7 +498,7 @@ From on-reports from the BC (Chapter~\ref{fire_sum}) and simulation results (Cha
 \caption{Post fire image of interior door.}
 \label{fig:chicago_doorfold}
 \end{figure}
-Recent experiments conducting by the National Institute of Standards and Technology revealed similar post-fire states after doors were exposed to fires. Fig.~(\ref{fig:SC_doorfold}) shows doors from two different house fire experiments in which the door folded in the direction of the flow path.
+Recent experiments conducting by the National Institute of Standards and Technology revealed similar post-fire states after doors were exposed to fires. Fig.~(\ref{fig:SC_doorfold}) shows doors from two different house fire experiments in different stages of degradation. In both cases note that the door knob assembly served as a pivot point for the upper portion of the steel from the door to collapse around. This is similar to the location of the folds in the remains of the steel door that was located between the hallway and the enclosed porch.
 
 \begin{figure}[h!]
 \centering
@@ -511,7 +510,7 @@ Recent experiments conducting by the National Institute of Standards and Technol
 \label{fig:SC_doorfold}
 \end{figure}
 
-While we have an estimated time of failure for the door, the key take away is that after the door failed an interior flow path from the Charlie side to the Alpha side of the structure was created. This resulted in a rapid change in the conditions within the flow path. The combustion gases at elevated temperature and pressure flowed toward ambient conditions; the flow path was through the interior hallway, kitchen, and down the Alpha-Delta stairwell and out of the structure through the front door. The arrows in Fig.~(\ref{fig:flowpath_1}) show the flow direction of gases  on the second flow following the door failure.
+While we have estimated the time of failure for the door, the key take away is that after the door failed an interior flow path from the enclosed porch (Charlie side) to the kitchen (Alpha side) of the structure was created. This resulted in a rapid change in the conditions within the flow path. The combustion-gases at elevated temperature and pressure  in the enclosed porch were vented by the failure of the door to lower pressure areas in the hallways and kitchen, where the conditions seems to equalize. The arrows in Fig.~(\ref{fig:flowpath_1}) show the flow direction of gases on the second floor following the door failure.
 
 \begin{figure}[h!]
 \centering
@@ -522,10 +521,9 @@ While we have an estimated time of failure for the door, the key take away is th
 
 \subsection{Assessing the Hazard}
 
-A firefighter is susceptible to second degree burn injuries when exposed to temperatures 55 $^{\circ}$C (130 $^{\circ}$F) \cite{designation2003c}. While firefighters wear protective gear, gear only offers finite levels of protection. The polycarbonate in a self contained breathing apparatus begins to soften when the material temperature reaches approximately 140 $^{\circ}$C (284 $^{\circ}$F) \cite{mensch2011emergency}. Structural fire fighting coats and pants are tested to withstand temperatures of 260 $^{\circ}$C (500 $^{\circ}$F) \cite{nfpa2013standard}. Extended exposure to elevated temperatures can result in significant heat transferred to the firefighter, putting him/her at risk. Therefore, for analysis of the model predicted exposure temperatures, we set the maximum visualized temperature to be all values that are 260 $^{\circ}$C (500 $^{\circ}$F) or above. This means that temperatures visualized in the highest range in the model output are at a minimum of 260 $^{\circ}$C (500 $^{\circ}$F); predicted temperatures could in fact be higher.
+A person is susceptible to second degree burn injuries when exposed to temperatures 55 $^{\circ}$C (130 $^{\circ}$F) \cite{designation2003c}. While firefighters wear protective gear, gear only offers finite levels of protection. The polycarbonate in a self contained breathing apparatus begins to soften when the material temperature reaches approximately 140 $^{\circ}$C (284 $^{\circ}$F) \cite{mensch2011emergency}. Structural fire fighting coats and pants are tested to withstand temperatures of 260 $^{\circ}$C (500 $^{\circ}$F) \cite{nfpa2013standard}. Extended exposure to elevated temperatures can result in significant heat transferred to the firefighter, putting him/her at risk. Therefore, for analysis of the modeled exposure temperatures, we set the maximum visualized temperature to be all values that are 260 $^{\circ}$C (500 $^{\circ}$F) or above. This means that temperatures visualized in the highest range in the model output are at a minimum of 260 $^{\circ}$C (500 $^{\circ}$F); predicted temperatures could in fact be higher.
 
-Prior to door failure, the elevated temperatures on the second floor were limited to the rear porch, Fig.~(\ref{fig:temp_top_159}). Temperatures are highest at the Beta-Charlie corner where there is sufficient oxygen due to self-ventilation. Five seconds after the door fails, hot gases have traveled the length of the interior hallway and approached the doorway into the kitchen, approximately 4.5 m (14.8 ft) away from the source fire (cf Fig.~(\ref{fig:temp_top_165})). One minute after the door fails, the hallway temperatures are nominally at or above 260 $^{\circ}$C (500 $^{\circ}$F) through out the hallways corridor (cf Fig.~(\ref{fig:temp_top_220})). This illustrates the the high temperature gases seen five seconds after failure were not just a burst but rather the front of a sustained exhaust gas flow from the fire burning on the rear porch. The conditions in this hallway changed from tenable to high-hazard very rapidly following the door failure. Fig.~(\ref{fig:temp_top_220}) also shows that the temperatures in the kitchen were at or below 90 $^{\circ}$C (194 $^{\circ}$F) and temperatures at the top of the stairs were at or below 70 $^{\circ}$C (158 $^{\circ}$F). At these points in the structure, the exhaust gases in the flow path are air cooled/diluted by the inflow ambient gas. Based on post-incident images of the kitchen and second floor stairwell, these predicted temperatures are on the appropriate order or magnitude.
-
+Prior to door failure, the elevated temperatures on the second floor were limited to the rear porch, Fig.~(\ref{fig:temp_top_159}). Temperatures are highest at the Beta-Charlie corner where there is sufficient oxygen due to the section of porch wall that had burned away allowing additional oxygen to mix with the fuel rich fire gases. Five seconds after the door fails, hot gases have traveled the length of the interior hallway and approached the doorway into the kitchen, approximately 4.5 m (14.8 ft) away from the source fire (cf Fig.~(\ref{fig:temp_top_165})). Within one minute after the door fails, the hallway temperatures are nominally at or above 260 $^{\circ}$C (500 $^{\circ}$F) through out the hallway (cf Fig.~(\ref{fig:temp_top_220})). This illustrates that the high temperature gases seen five seconds after failure were not just a burst but rather the front of a sustained exhaust gas flow from the fire burning in the enclosed rear porch. The conditions in this hallway changed from tenable to high-hazard very rapidly following the door failure. Fig.~(\ref{fig:temp_top_220}) also shows that the temperatures in the kitchen were at or below 90 $^{\circ}$C (194 $^{\circ}$F) and temperatures at the top of the stairs were at or below 70 $^{\circ}$C (158 $^{\circ}$F). At these points in the structure, the exhaust gases in the flow path are air cooled/diluted by the inflow ambient gas. These modeled temperatures are consistent with the post-incident conditions documented in the kitchen and second floor stairwell.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=.7\textwidth]{../Figures/west_50th_baseline_top_159_6ft}
@@ -555,7 +553,11 @@ Prior to door failure, the elevated temperatures on the second floor were limite
 
 
 \section{Tactical Considerations}
-In the last fifteen years, there have been fires throughout the country where the change in a flow path has had a significant impact on firefighter and occupant safety. Table~\ref{tab:lodd} lists the NIOSH investigation report number, the outcome, and description of the flow path. It is clear that fires with rapid developing/changing flow paths, whether fire service induced, structure-failure induced, or nature induced are a significant hazard to the fire service. Prediction of the failure mode and failure time of the second floor door is not a reasonable expectation given the large set of unknowns the fire service faced on the fire ground. However, the timing of an interior attack on the structure given the state of fire growth in the rear of the structure identified by a size up, may not have been ideal. Research has shown that applying water from the exterior \cite{madrzykowski2009fire,kerber2009fire} into the structure can have a significant impact on controlling the fire prior to beginning interior operations.
+There have been many fires where the change in a flow path has had an adverse impact on firefighter and occupant safety. Table~\ref{tab:lodd} lists the NIOSH investigation reports from the past 15 years, where it could be determined that it was a flow path related incident. The table lists the NIOSH investigation number, the outcome, and a brief description of the flow path. 
+
+Based on a review of these incidents, it is clear that fires with rapidly developing or changing flow paths are a significant hazard to the fire service. The development of, or changes in a flow path could be caused by the failure of a component of the structure, such as a door, window or portion of a ceiling, wall or floor. Environmental conditions such as wind can generate hazardous thermal conditions within a flow path. Uncoordinated ventilation can also be the cause of increased thermal hazards within a flow path. 
+
+In this case, the thermal degradation of the steel faced, wood framed, door led to a rapid change in thermal conditions in the hallway resulting in a lethal exposure to victim.  Prediction of the failure mode and failure time of the door is not a reasonable expectation given the large number of unknowns the fire fighters faced on the fire ground.  In this case, the timing of the interior attack appears to have coincided with the failure time of the door. Research has been conducted \cite{madrzykowski2009fire, kerber2009fire} and continues to be conducted by NIST, UL and others that demonstrates that applying water from the exterior into the fire area of a structure, prior to the start of interior operations, can significantly improve the safety of fire fighters by reducing the thermal hazard from the fire and reducing the potential for developing high velocity hot gas flows within the structure.
 
 \begin{table}
 \centering
@@ -586,12 +588,13 @@ F2012-28 \cite{NIOSH:Bowyer}        & 1 LODD/1LODI                            & 
 \end{table}
 
 \chapter{Summary}
-NIST's Fire Dynamics Simulator was used to provide insight into the fire dynamics within a 2 1/2 story single family structure in Chicago, Il that resulted in the death of a firefighter. The modeled fuel, fire size, and fire growth rate were estimated taking into account all available information: NIOSH post-incident report~\cite{NIOSH:Bowyer}, post-incident pictures, videos, and relevant literature. This resulted in a specified source fire of 12.3 MW, however based on ventilation the model predicted a peak HRR of $\approx$ 10 MW. The fire began in the attic and spread into the rear (Charlie side) porch. Spread of high temperature, toxic gases into the structure was limited by a closed steel door on the second floor. After prolonged exposure to elevated temperature and pressure, the door eventually failed. Prior to the door failure, a FF and Captain were on the second floor in the interior hallway. The door failure lead to the creation of flow path towards the front (Alpha side) door on the first floor of the structure. The flow path was comprised of toxic, high temperature combustion gases that rapidly changed the conditions where the FF and Captain were working. The rapid change in hazard level overcame the Captain before he could find egress to safety. After a MayDay, the Captain was rescued from the structure but later succumbed to his injuries. 
+NIST's Fire Dynamics Simulator was used to provide insight into the fire dynamics within a 2 1/2 story single family structure in Chicago, Il that resulted in the death of a firefighter. The modeled fuel, fire size, and fire growth rate were estimated taking into account all available information: NIOSH post-incident report~\cite{NIOSH:Bowyer}, post-incident pictures, videos, and relevant literature. This resulted in a specified source fire of 12.3 MW, however based on the limited ventilation in the attic and enclosed porch the model generated a peak HRR of approximately 10 MW as a result of the limited supply of oxygen.  The fire began in the attic and spread down into the enclosed porch on the rear (Charlie side) of the structure.  The spread of heat and fire gases into the second floor of the structure was limited by a closed steel faced, wood framed door that was located between the enclosed porch and the hallway.  After exposure to the elevated temperature and pressure from the fire in the porch area, the wood frame of the door decomposed and the steel faces of the door failed and collapsed inward.  The door failure resulted in the creation of a flow path between the higher pressure and higher temperature conditions in the enclosed porch and the lower pressure and lower temperature conditions in the hallway and kitchen areas of the second floor.  The temperature of the gases that flowed into the hallway at face height exceeded 260 $^{\circ}$C (500 $^{\circ}$F). 
 
+Unfortunately a FF and a Captain were advancing a hose line in the hallway at the time of the failure of the door.  The Captain was overcome by the rapid change in conditions before he could exit to the safety of the kitchen area.  After a Mayday, the Captain was rescued from the structure but later succumbed to his injuries.
 
 
 \chapter{Acknowledgements}
-The authors would like to thank the Chicago Fire Department, especially {\em names}. The authors would also like to thank Keith Stakes of NIST and Joseph Willi of University of Illinois Urbana-Champagne for their assistance in creating the drawings of the structure.
+The authors would like to thank the Chicago Fire Department, especially Commissioner Jose Santiago, District Chief Donald Hroma, and District Chief Kevin Krasneck. The authors would also like to thank John Culbertson of Central Valley Fire District, MT for his assistance in compiling Table~\ref{tab:lodd}. Finally, the authors would also like to thank Keith Stakes of NIST and Joseph Willi of University of Illinois Urbana-Champagne for their assistance in creating the drawings of the structure.
 
 
 \bibliography{../../../Bibliography/FDS_refs,../../../Bibliography/FDS_general,chicago}
