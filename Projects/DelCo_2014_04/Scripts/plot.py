@@ -19,7 +19,10 @@ data_dir = '../Experimental_Data/'
 timings_file = '../Experimental_Data/All_Times.csv'
 
 # Location of scaling conversion file
-scaling_file = '../DAQ_Files/Delco_DAQ_Channel_List.csv'
+scaling_file_default = '../DAQ_Files/Delco_DAQ_Channel_List.csv'
+scaling_file_master = '../DAQ_Files/Master_DelCo_DAQ_Channel_List.csv'
+scaling_file_west = '../DAQ_Files/West_DelCo_DAQ_Channel_List.csv'
+scaling_file_east = '../DAQ_Files/East_DelCo_DAQ_Channel_List.csv'
 
 # Location of test description file
 info_file = '../Experimental_Data/Description_of_Experiments.csv'
@@ -41,8 +44,7 @@ sensor_groups = [['TC_A1_'], ['TC_A2_'], ['TC_A3_'], ['TC_A4_'], ['TC_A5_'],
 heat_flux_quantities = ['HF_', 'RAD_']
 gas_quantities = ['CO_', 'CO2_', 'O2_']
 
-# Load exp. scaling, timings, and description file
-scaling = pd.read_csv(scaling_file, index_col=2)
+# Load exp. timings and description file
 timings = pd.read_csv(timings_file, index_col=0)
 info = pd.read_csv(info_file, index_col=3)
 
@@ -66,6 +68,15 @@ for f in os.listdir(data_dir):
 
         # Load exp. data file
         data = pd.read_csv(data_dir + f, index_col=0)
+
+        # Load exp. scaling file
+        if 'West' in test_name:
+            scaling_file = scaling_file_east
+        if 'East' in test_name:
+            scaling_file = scaling_file_east
+        else:
+            scaling_file = scaling_file_default
+        scaling = pd.read_csv(scaling_file, index_col=2)
 
         # Read in test times to offset plots
         start_of_test = info['Start of Test'][test_name]
@@ -167,7 +178,7 @@ for f in os.listdir(data_dir):
                     # Save converted quantity back to exp. dataframe
                     data[channel] = quantity
 
-                    plot(t, quantity, lw=1.5, ls=line_style, label=scaling['Common Name'][channel])
+                    plot(t, quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
 
             # Skip plot quantity if disabled
             if info[axis_scale][test_name] == 'None':

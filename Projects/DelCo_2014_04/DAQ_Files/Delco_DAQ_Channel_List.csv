@@ -1,4 +1,4 @@
-Panel,Channel,Device Name,Type,Array,X,Y,Z,Serial Number,Calibration,Common Name
+Panel,Channel,Device Name,Type,Array,X,Y,Z,Serial Number,Calibration,Test Specific Name
 SC1Mod2,0,TC_A1_0p03_BC,TC,1,,,0.03 m BC,,1,TC 1 0.03 m BC
 SC1Mod2,1,TC_A1_0p30_BC,TC,1,,,0.30 m BC,,1,TC 1 0.30 m BC
 SC1Mod2,2,TC_A1_0p61_BC,TC,1,,,0.61 m BC,,1,TC 1 0.61 m BC
