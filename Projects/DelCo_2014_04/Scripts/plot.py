@@ -18,7 +18,7 @@ data_dir = '../Experimental_Data/'
 # Location of file with timing information
 timings_file = '../Experimental_Data/All_Times.csv'
 
-# Location of scaling conversion file
+# Location of scaling conversion files
 scaling_file_default = '../DAQ_Files/Delco_DAQ_Channel_List.csv'
 scaling_file_master = '../DAQ_Files/Master_DelCo_DAQ_Channel_List.csv'
 scaling_file_west = '../DAQ_Files/West_DelCo_DAQ_Channel_List.csv'
