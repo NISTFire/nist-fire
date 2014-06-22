@@ -195,7 +195,7 @@ Calibration is performed in compliance with ISO/IEC 17025, ANSI/NCSL Z540-1, and
 \chapter{Gas Analyzer}
 \label{chap:Gas_Analyzer}
 
-The CAI 602P Gas Analyzer can detect gas concentrations for CO$_2$, CO, and O$_2$ and output a voltage from 0~V to 5~V, which corresponds to 0~\% gas concentration to full-scale concentration.
+The CAI 602P Gas Analyzer can detect gas concentrations for CO$_2$, CO, and O$_2$ and output a voltage from 0~V to 5~V, which corresponds to 0~\% gas concentration to a programmable full-scale concentration.
 
 \section{Internals}
 
@@ -215,18 +215,18 @@ An overview of the internal components of the gas analyzer is shown in Fig.~\ref
 
 \section{Usage}
 
-Important Note: The optimal pressure from the upstream sample and calibration gas is 0~psi! The internal gas analyzer components should never have an upstream pressure in excess of 2~psi. Pressures to the gas analyzer in excess of 2~psi may damage or dislodge the internal plumbing or pump diaphragms.
+Important note: The optimal pressure from the upstream sample and calibration gas is 0~psi! The internal gas analyzer components should never have an upstream pressure in excess of 2~psi. Pressures to the gas analyzer in excess of 2~psi may damage or dislodge the internal plumbing or pump diaphragm.
 
 \begin{itemize}
-\item Turn on the gas analyzers. The gas analyzers should warm up for about one hour before usage
-\item Perform zero and span calibration on all analyzers.
+\item Turn on the gas analyzers. The gas analyzers should warm up for about one hour before usage. Keep them powered on as long as possible during testing.
+\item Perform zero and span calibration on all analyzers. The F5 and F6 keys can be used as a shortcut to go from the home measurement screen to the zero and span screens.
     \begin{itemize}
     \item Flow N$_2$ and zero the CO$_2$, CO, and O$_2$ channels.
     \item Flow CO$_2$/CO calibration gas and span the CO$_2$ and CO channels.
     \item Use ambient air to span the O$_2$ channel.
     \end{itemize}
 \item Set the upper ranges to the appropriate setting, which corresponds to 5~V on the output to the DAQ.
-\item Measure the delay time for the sample gas to travel in the plumbing to the analyzer. You can do this by holding a CO$_2$ source near the sample port and measuring the time from exposing the sample port until the gas analyzer reads an increased value. Record this time so that the gas concentration can be offset later.
+\item Measure the delay time for the sample gas to travel through all of the plumbing (from the sample port to the analyzer). You can do this by holding a CO$_2$ source near the sample port and measuring the time from exposing the sample port until the gas analyzer reads an increased value. Record this time so that the gas concentration data can be offset at a later time.
 \item You are ready to record data to the DAQ.
 \end{itemize}
 
@@ -244,7 +244,7 @@ Uncertainty
 
 \subsection{No Internal Flow}
 
-If the flow drops to zero, then display the flow diagnostics by pressing Main $\rightarrow$ F3. Check the internal flow value for the three gases. If it is zero, then there might be a issue with the internal plumbing if the upstream pressure (from sample or calibration gases) exceeded 2~psi. Check power to the internal pump and ensure that it is operating.
+If the flow drops to zero, then display the flow diagnostics by pressing Main $\rightarrow$ F3. Check the internal flow value for the three gases. If it is zero, then there might be a issue with the internal plumbing if the upstream pressure (from sample or calibration gases) exceeded 2~psi. An internal gas line might have been disonnected or the pump might have been damaged. Check power to the internal pump and ensure that it is operating, and check the internal plumbing connections.
 
 \subsection{Bad Gas Concentration Readings}
 
