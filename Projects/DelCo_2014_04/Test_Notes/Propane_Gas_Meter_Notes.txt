@@ -1,0 +1,16 @@
+Propane gas meter notes
+Jason - Field Tech
+Phone: 617-290-2134
+
+For the gas meter, the uncompensated flow rate is continuous (dial on side of the meter), and the temperature compensated rate (dial on top of the meter) depends on the uncompensated rate. The uncompensated flow rate winds the compensated dial three ft^3, then the compensated dial unwinds and adjusts for the current temperature. The inlet temperature is shown on a separate dial above the comensated dial.
+
+Jason noted that for longer readings on the order of hours, the compensated reading may be more accurate, whereas the uncompensated meter may be more accurate for shorter readings on the order of minutes.
+
+You can also adjust the uncompensated reading manually. For example, if you read 100 ft^3 over some time period, then the adjusted volume is:
+
+actual calcualted volume = uncompensated volume * (line_pressure + atmospheric_pressure)/base_pressure * temperature_factor
+
+where the line_pressure is the upstream pressure, the base pressure is a factory value of 14.73 psi, and the temperature_factor is 1% up or down for every 5 degrees F above or below the base temperature of 60 degrees F. For example, a temperature of 70 degrees F would require an adjustment of 2% reduction in volume.
+
+For example, after day 1 of testing, the uncompensated meter read 725 ft^3, and the compensated meter read 675 ft^3, and the inlet temperature throughout the day ranged from 70 degrees F to 90 degrees F.
+
