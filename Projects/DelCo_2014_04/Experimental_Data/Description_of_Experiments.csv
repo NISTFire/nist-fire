@@ -37,3 +37,7 @@ Test Number,Test Type,Old Test Key,New Test Key,Start of Test,End of Test,Test D
 36,FIRE,FIRE_NCONN,FIRE_FA2S1C1NCX1_1,90,2000,,None,None,20,200,3000,25,None
 37,FIRE,FIRE_NCONN,FIRE_FA2S1C1NCX1_2,480,2700,,None,None,20,200,1500,25,None
 38,FIRE,FIRE_NCONN,FIRE_FA2S1C1NCX1_3,240,2700,,None,None,20,200,1500,25,None
+39,GAS,Test_1_East_062514,Test_1_East_062514,0,450,Wind and door test only,None,None,20,200,1500,25,None
+40,GAS,Test_2_East_062514,Test_2_East_062514,0,3310,"Propane fire, Replicate 1",None,None,20,200,1500,25,None
+41,GAS,Test_3_East_062514,Test_3_East_062514,0,2160,"Propane fire, Replicate 2",None,None,20,200,1500,25,None
+42,GAS,Test_4_East_062514,Test_4_East_062514,0,1976,"Propane fire, Replicate 3",None,None,20,200,1500,25,None

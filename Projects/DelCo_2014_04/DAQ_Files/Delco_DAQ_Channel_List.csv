@@ -1,193 +1,193 @@
-Panel,Channel,Device Name,Type,Array,X,Y,Z,Serial Number,Calibration,Test Specific Name
-SC1Mod2,0,TC_A1_0p03_BC,TC,1,,,0.03 m BC,,1,TC 1 0.03 m BC
-SC1Mod2,1,TC_A1_0p30_BC,TC,1,,,0.30 m BC,,1,TC 1 0.30 m BC
-SC1Mod2,2,TC_A1_0p61_BC,TC,1,,,0.61 m BC,,1,TC 1 0.61 m BC
-SC1Mod2,3,TC_A1_0p91_BC,TC,1,,,0.91 m BC,,1,TC 1 0.91 m BC
-SC1Mod2,4,TC_A1_1p22_BC,TC,1,,,1.22 m BC,,1,TC 1 1.22 m BC
-SC1Mod2,5,TC_A1_1p52_BC,TC,1,,,1.52 m BC,,1,TC 1 1.52 m BC
-SC1Mod2,6,TC_A1_1p83_BC,TC,1,,,1.83 m BC,,1,TC 1 1.83 m BC
-SC1Mod2,7,TC_A1_2p13_BC,TC,1,,,2.13 m BC,,1,TC 1 2.13 m BC
-SC1Mod2,8,TC_A2_0p03_BC,TC,2,,,0.03 m BC,,1,TC 2 0.03 m BC
-SC1Mod2,9,TC_A2_0p30_BC,TC,2,,,0.30 m BC,,1,TC 2 0.30 m BC
-SC1Mod2,10,TC_A2_0p61_BC,TC,2,,,0.61 m BC,,1,TC 2 0.61 m BC
-SC1Mod2,11,TC_A2_0p91_BC,TC,2,,,0.91 m BC,,1,TC 2 0.91 m BC
-SC1Mod2,12,TC_A2_1p22_BC,TC,2,,,1.22 m BC,,1,TC 2 1.22 m BC
-SC1Mod2,13,TC_A2_1p52_BC,TC,2,,,1.52 m BC,,1,TC 2 1.52 m BC
-SC1Mod2,14,TC_A2_1p83_BC,TC,2,,,1.83 m BC,,1,TC 2 1.83 m BC
-SC1Mod2,15,TC_A2_2p13_BC,TC,2,,,2.13 m BC,,1,TC 2 2.13 m BC
-SC1Mod2,16,TC_A3_0p03_BC,TC,3,,,0.03 m BC,,1,TC 3 0.03 m BC
-SC1Mod2,17,TC_A3_0p30_BC,TC,3,,,0.30 m BC,,1,TC 3 0.30 m BC
-SC1Mod2,18,TC_A3_0p61_BC,TC,3,,,0.61 m BC,,1,TC 3 0.61 m BC
-SC1Mod2,19,TC_A3_0p91_BC,TC,3,,,0.91 m BC,,1,TC 3 0.91 m BC
-SC1Mod2,20,TC_A3_1p22_BC,TC,3,,,1.22 m BC,,1,TC 3 1.22 m BC
-SC1Mod2,21,TC_A3_1p52_BC,TC,3,,,1.52 m BC,,1,TC 3 1.52 m BC
-SC1Mod2,22,TC_A3_1p83_BC,TC,3,,,1.83 m BC,,1,TC 3 1.83 m BC
-SC1Mod2,23,TC_A3_2p13_BC,TC,3,,,2.13 m BC,,1,TC 3 2.13 m BC
-SC1Mod2,24,TC_A4_0p03_BC,TC,4,,,0.03 m BC,,1,TC 4 0.03 m BC
-SC1Mod2,25,TC_A4_0p30_BC,TC,4,,,0.30 m BC,,1,TC 4 0.30 m BC
-SC1Mod2,26,TC_A4_0p61_BC,TC,4,,,0.61 m BC,,1,TC 4 0.61 m BC
-SC1Mod2,27,TC_A4_0p91_BC,TC,4,,,0.91 m BC,,1,TC 4 0.91 m BC
-SC1Mod2,28,TC_A4_1p22_BC,TC,4,,,1.22 m BC,,1,TC 4 1.22 m BC
-SC1Mod2,29,TC_A4_1p52_BC,TC,4,,,1.52 m BC,,1,TC 4 1.52 m BC
-SC1Mod2,30,TC_A4_1p83_BC,TC,4,,,1.83 m BC,,1,TC 4 1.83 m BC
-SC1Mod2,31,TC_A4_2p13_BC,TC,4,,,2.13 m BC,,1,TC 4 2.13 m BC
-SC1Mod3,0,TC_A5_0p03_BC,TC,5,,,0.03 m BC,,1,TC 5 0.03 m BC
-SC1Mod3,1,TC_A5_0p30_BC,TC,5,,,0.30 m BC,,1,TC 5 0.30 m BC
-SC1Mod3,2,TC_A5_0p61_BC,TC,5,,,0.61 m BC,,1,TC 5 0.61 m BC
-SC1Mod3,3,TC_A5_0p91_BC,TC,5,,,0.91 m BC,,1,TC 5 0.91 m BC
-SC1Mod3,4,TC_A5_1p22_BC,TC,5,,,1.22 m BC,,1,TC 5 1.22 m BC
-SC1Mod3,5,TC_A5_1p52_BC,TC,5,,,1.52 m BC,,1,TC 5 1.52 m BC
-SC1Mod3,6,TC_A5_1p83_BC,TC,5,,,1.83 m BC,,1,TC 5 1.83 m BC
-SC1Mod3,7,TC_A5_2p13_BC,TC,5,,,2.13 m BC,,1,TC 5 2.13 m BC
-SC1Mod3,8,TC_A6_0p30_BS,TC,6,,,0.30 m BS,,1,TC 6 0.30 m BS
-SC1Mod3,9,TC_A6_0p60_BS,TC,6,,,0.60 m BS,,1,TC 6 0.60 m BS
-SC1Mod3,10,TC_A6_0p90_BS,TC,6,,,0.90 m BS,,1,TC 6 0.90 m BS
-SC1Mod3,11,TC_A6_1p20_BS,TC,6,,,1.20 m BS,,1,TC 6 1.20 m BS
-SC1Mod3,12,TC_A6_1p50_BS,TC,6,,,1.50 m BS,,1,TC 6 1.50 m BS
-SC1Mod3,13,TC_A6_1p80_BS,TC,6,,,1.80 m BS,,1,TC 6 1.80 m BS
-SC1Mod3,,,,,,,,,,
-SC1Mod3,,,,,,,,,,
-SC1Mod3,16,TC_A7_0p08_BS,TC,7,,,0.08 m BS,,1,TC 7 0.08 m BS
-SC1Mod3,17,TC_A7_0p34_BS,TC,7,,,0.34 m BS,,1,TC 7 0.34 m BS
-SC1Mod3,18,TC_A7_0p61_BS,TC,7,,,0.61 m BS,,1,TC 7 0.61 m BS
-SC1Mod3,19,TC_A7_0p88_BS,TC,7,,,0.88 m BS,,1,TC 7 0.88 m BS
-SC1Mod3,20,TC_A7_1p15_BS,TC,7,,,1.15 m BS,,1,TC 7 1.15 m BS
-SC1Mod3,21,TC_A7_1p42_BS,TC,7,,,1.42 m BS,,1,TC 7 1.42 m BS
-SC1Mod3,22,TC_A7_1p68_BS,TC,7,,,1.68 m BS,,1,TC 7 1.68 m BS
-SC1Mod3,23,TC_A7_1p95_BS,TC,7,,,1.95 m BS,,1,TC 7 1.95 m BS
-SC1Mod3,24,TC_A8_0p08_BS,TC,8,,,0.08 m BS,,1,TC 8 0.08 m BS
-SC1Mod3,25,TC_A8_0p34_BS,TC,8,,,0.34 m BS,,1,TC 8 0.34 m BS
-SC1Mod3,26,TC_A8_0p61_BS,TC,8,,,0.61 m BS,,1,TC 8 0.61 m BS
-SC1Mod3,27,TC_A8_0p88_BS,TC,8,,,0.88 m BS,,1,TC 8 0.88 m BS
-SC1Mod3,28,TC_A8_1p15_BS,TC,8,,,1.15 m BS,,1,TC 8 1.15 m BS
-SC1Mod3,29,TC_A8_1p42_BS,TC,8,,,1.42 m BS,,1,TC 8 1.42 m BS
-SC1Mod3,30,TC_A8_1p68_BS,TC,8,,,1.68 m BS,,1,TC 8 1.68 m BS
-SC1Mod3,31,TC_A8_1p95_BS,TC,8,,,1.95 m BS,,1,TC 8 1.95 m BS
-SC1Mod4,0,TC_A9_0p08_BS,TC,9,,,0.08 m BS,,1,TC 9 0.08 m BS
-SC1Mod4,1,TC_A9_0p34_BS,TC,9,,,0.34 m BS,,1,TC 9 0.34 m BS
-SC1Mod4,2,TC_A9_0p61_BS,TC,9,,,0.61 m BS,,1,TC 9 0.61 m BS
-SC1Mod4,3,TC_A9_0p88_BS,TC,9,,,0.88 m BS,,1,TC 9 0.88 m BS
-SC1Mod4,4,TC_A9_1p15_BS,TC,9,,,1.15 m BS,,1,TC 9 1.15 m BS
-SC1Mod4,5,TC_A9_1p42_BS,TC,9,,,1.42 m BS,,1,TC 9 1.42 m BS
-SC1Mod4,6,TC_A9_1p68_BS,TC,9,,,1.68 m BS,,1,TC 9 1.68 m BS
-SC1Mod4,7,TC_A9_1p95_BS,TC,9,,,1.95 m BS,,1,TC 9 1.95 m BS
-SC1Mod4,8,TC_A10_NXNY,TC,10,-0.4572,-0.4572,Vertical Vent,,1,TC Vertical Vent Quad 3
-SC1Mod4,9,TC_A10_NXPY,TC,10,-0.4572,0.4572,Vertical Vent,,1,TC Vertical Vent Quad 1
-SC1Mod4,10,TC_A10_CEN,TC,10,0,0,Vertical Vent,,1,TC Vertical Vent Center
-SC1Mod4,11,TC_A10_PXNY,TC,10,0.4572,-0.4572,Vertical Vent,,1,TC Vertical Vent Quad 4
-SC1Mod4,12,TC_A10_PXPY,TC,10,0.4572,0.4572,Vertical Vent,,1,TC Vertical Vent Quad 2
-SC1Mod4,13,TC_Ignition,TC,,,,,,1,Ignition
-SC1Mod4,14,,,,,,,,,
-SC1Mod4,15,,,,,,,,,
-SC1Mod4,16,,,,,,,,,
-SC1Mod4,17,,,,,,,,,
-SC1Mod4,18,,,,,,,,,
-SC1Mod4,19,,,,,,,,,
-SC1Mod4,20,,,,,,,,,
-SC1Mod4,21,,,,,,,,,
-SC1Mod4,22,,,,,,,,,
-SC1Mod4,23,,,,,,,,,
-SC1Mod4,24,,,,,,,,,
-SC1Mod4,25,,,,,,,,,
-SC1Mod4,26,,,,,,,,,
-SC1Mod4,27,,,,,,,,,
-SC1Mod4,28,,,,,,,,,
-SC1Mod4,29,,,,,,,,,
-SC1Mod4,30,,,,,,,,,
-SC1Mod4,31,,,,,,,,,
-SC2Mod2,0,BDP_A6_0p30_BS,Voltage,6,,,0.30 m BS,6_7,99.52,BDP 6 0.30 m BS
-SC2Mod2,1,BDP_A6_0p60_BS,Voltage,6,,,0.60 m BS,6_7,99.52,BDP 6 0.60 m BS
-SC2Mod2,2,BDP_A6_0p90_BS,Voltage,6,,,0.90 m BS,6_7,99.52,BDP 6 0.90 m BS
-SC2Mod2,3,BDP_A6_1p20_BS,Voltage,6,,,1.20 m BS,6_7,99.52,BDP 6 1.20 m BS
-SC2Mod2,4,BDP_A6_1p50_BS,Voltage,6,,,1.50 m BS,6_7,99.52,BDP 6 1.50 m BS
-SC2Mod2,5,BDP_A6_1p80_BS,Voltage,6,,,1.80 m BS,6_7,99.52,BDP 6 1.80 m BS
-SC2Mod2,6,,,,,,,,,
-SC2Mod2,7,,,,,,,,,
-SC2Mod2,8,BDP_A7_0p08_BS,Voltage,7,,,0.08 m BS,6_4,99.52,BDP 7 0.08 m BS
-SC2Mod2,9,BDP_A7_0p34_BS,Voltage,7,,,0.34 m BS,6_4,99.52,BDP 7 0.34 m BS
-SC2Mod2,10,BDP_A7_0p61_BS,Voltage,7,,,0.61 m BS,6_4,99.52,BDP 7 0.61 m BS
-SC2Mod2,11,BDP_A7_0p88_BS,Voltage,7,,,0.88 m BS,6_4,99.52,BDP 7 0.88 m BS
-SC2Mod2,12,BDP_A7_1p15_BS,Voltage,7,,,1.15 m BS,6_4,99.52,BDP 7 1.15 m BS
-SC2Mod2,13,BDP_A7_1p42_BS,Voltage,7,,,1.42 m BS,6_4,99.52,BDP 7 1.42 m BS
-SC2Mod2,14,BDP_A7_1p68_BS,Voltage,7,,,1.68 m BS,3_3,99.52,BDP 7 1.68 m BS
-SC2Mod2,15,BDP_A7_1p95_BS,Voltage,7,,,1.95 m BS,3_3,99.52,BDP 7 1.95 m BS
-SC2Mod2,16,BDP_A8_0p08_BS,Voltage,8,,,0.08 m BS,6_1,99.52,BDP 8 0.08 m BS
-SC2Mod2,17,BDP_A8_0p34_BS,Voltage,8,,,0.34 m BS,6_1,99.52,BDP 8 0.34 m BS
-SC2Mod2,18,BDP_A8_0p61_BS,Voltage,8,,,0.61 m BS,6_1,99.52,BDP 8 0.61 m BS
-SC2Mod2,19,BDP_A8_0p88_BS,Voltage,8,,,0.88 m BS,6_1,99.52,BDP 8 0.88 m BS
-SC2Mod2,20,BDP_A8_1p15_BS,Voltage,8,,,1.15 m BS,6_1,99.52,BDP 8 1.15 m BS
-SC2Mod2,21,BDP_A8_1p42_BS,Voltage,8,,,1.42 m BS,6_1,99.52,BDP 8 1.42 m BS
-SC2Mod2,22,BDP_A8_1p68_BS,Voltage,8,,,1.68 m BS,3_8,99.52,BDP 8 1.68 m BS
-SC2Mod2,23,BDP_A8_1p95_BS,Voltage,8,,,1.95 m BS,3_8,99.52,BDP 8 1.95 m BS
-SC2Mod2,24,BDP_A9_0p08_BS,Voltage,9,,,0.08 m BS,6_5,99.52,BDP 9 0.08 m BS
-SC2Mod2,25,BDP_A9_0p34_BS,Voltage,9,,,0.34 m BS,6_5,99.52,BDP 9 0.34 m BS
-SC2Mod2,26,BDP_A9_0p61_BS,Voltage,9,,,0.61 m BS,6_5,99.52,BDP 9 0.61 m BS
-SC2Mod2,27,BDP_A9_0p88_BS,Voltage,9,,,0.88 m BS,6_5,99.52,BDP 9 0.88 m BS
-SC2Mod2,28,BDP_A9_1p15_BS,Voltage,9,,,1.15 m BS,6_5,99.52,BDP 9 1.15 m BS
-SC2Mod2,29,BDP_A9_1p42_BS,Voltage,9,,,1.42 m BS,6_5,99.52,BDP 9 1.42 m BS
-SC2Mod2,30,BDP_A9_1p68_BS,Voltage,9,,,1.68 m BS,3_6,99.52,BDP 9 1.68 m BS
-SC2Mod2,31,BDP_A9_1p95_BS,Voltage,9,,,1.95 m BS,3_6,99.52,BDP 9 1.95 m BS
-SC2Mod3,0,BDP_A10_NXNY,Voltage,10,-0.4572,-0.4572,Vertical Vent,,99.52,BDP Vertical Vent Quad 3
-SC2Mod3,1,BDP_A10_NXPY,Voltage,10,-0.4572,0.4572,Vertical Vent,,99.52,BDP Vertical Vent Quad 1
-SC2Mod3,2,BDP_A10_CEN,Voltage,10,0,0,Vertical Vent,,99.52,BDP Vertical Vent Center
-SC2Mod3,3,BDP_A10_PXNY,Voltage,10,0.4572,-0.4572,Vertical Vent,,99.52,BDP Vertical Vent Quad 4
-SC2Mod3,4,BDP_A10_PXPY,Voltage,10,0.4572,0.4572,Vertical Vent,,99.52,BDP Vertical Vent Quad 2
-SC2Mod3,5,,,,,,,,,
-SC2Mod3,6,,,,,,,,,
-SC2Mod3,7,,,,,,,,,
-SC2Mod3,8,,,,,,,,,
-SC2Mod3,9,,,,,,,,,
-SC2Mod3,10,,,,,,,,,
-SC2Mod3,11,,,,,,,,,
-SC2Mod3,12,,,,,,,,,
-SC2Mod3,13,,,,,,,,,
-SC2Mod3,14,,,,,,,,,
-SC2Mod3,15,,,,,,,,,
-SC2Mod3,16,,,,,,,,,
-SC2Mod3,17,,,,,,,,,
-SC2Mod3,18,,,,,,,,,
-SC2Mod3,19,,,,,,,,,
-SC2Mod3,20,,,,,,,,,
-SC2Mod3,21,,,,,,,,,
-SC2Mod3,22,HF_A1_0p15_AF,Voltage,1,,,0.15 m AF,146131,10964.91,Heat Flux 1 0.15 m AF
-SC2Mod3,23,RAD_A1_0p15_AF,Voltage,1,,,0.15 m AF,91834,12220.91,Radiometer 1 0.15 m AF
-SC2Mod3,24,HF_A2_0p15_AF,Voltage,2,,,0.15 m AF,150792,11210.76,Heat Flux 2 0.15 m AF
-SC2Mod3,25,RAD_A2_0p15_AF,Voltage,2,,,0.15 m AF,179084,11350.74,Radiometer 2 0.15 m AF
-SC2Mod3,26,HF_A3_0p15_AF,Voltage,3,,,0.15 m AF,150313,5537.1,Heat Flux 3 0.15 m AF
-SC2Mod3,27,RAD_A3_0p15_AF,Voltage,3,,,0.15 m AF,179083,11350.74,Radiometer 3 0.15 m AF
-SC2Mod3,28,HF_A4_0p15_AF,Voltage,4,,,0.15 m AF,146502,6613.76,Heat Flux 4 0.15 m AF
-SC2Mod3,29,RAD_A4_0p15_AF,Voltage,4,,,0.15 m AF,179082,5274.26,Radiometer 4 0.15 m AF
-SC2Mod3,30,HF_A5_0p15_AF,Voltage,5,,,0.15 m AF,90321,2976.19,Heat Flux 4 0.15 m AF
-SC2Mod3,31,RAD_A5_0p15_AF,Voltage,5,,,0.15 m AF,179081,6242.2,Radiometer 4 0.15 m AF
-SC2Mod4,0,CO_1,Voltage,,,,,1,1,CO Gas Analyzer 1
-SC2Mod4,1,CO2_1,Voltage,,,,,1,2,CO2 Gas Analyzer 1
-SC2Mod4,2,O2_1,Voltage,,,,,1,20,O2 Gas Analyzer 1
-SC2Mod4,3,CO_2,Voltage,,,,,2,1,CO Gas Analyzer 2
-SC2Mod4,4,CO2_2,Voltage,,,,,2,2,CO2 Gas Analyzer 2
-SC2Mod4,5,O2_2,Voltage,,,,,2,20,O2 Gas Analyzer 2
-SC2Mod4,6,HOSE_P1_1p5_in,Voltage,,,,,1,2500,"Water Pressure Sensor 1, 1.5 inch"
-SC2Mod4,7,HOSE_P2_1p5_in,Voltage,,,,,1,2500,"Water Pressure Sensor 1, 1.5 inch"
-SC2Mod4,8,HOSE_P1_2p5_in,Voltage,,,,,2,2500,"Water Pressure Sensor 2, 2.5 inch"
-SC2Mod4,9,HOSE_P2_2p5_in,Voltage,,,,,2,2500,"Water Pressure Sensor 2, 2.5 inch"
-SC2Mod4,10,,,,,,,,,
-SC2Mod4,11,,,,,,,,,
-SC2Mod4,12,,,,,,,,,
-SC2Mod4,13,,,,,,,,,
-SC2Mod4,14,,,,,,,,,
-SC2Mod4,15,,,,,,,,,
-SC2Mod4,16,,,,,,,,,
-SC2Mod4,17,,,,,,,,,
-SC2Mod4,18,,,,,,,,,
-SC2Mod4,19,,,,,,,,,
-SC2Mod4,20,,,,,,,,,
-SC2Mod4,21,,,,,,,,,
-SC2Mod4,22,,,,,,,,,
-SC2Mod4,23,,,,,,,,,
-SC2Mod4,24,,,,,,,,,
-SC2Mod4,25,,,,,,,,,
-SC2Mod4,26,,,,,,,,,
-SC2Mod4,27,,,,,,,,,
-SC2Mod4,28,,,,,,,,,
-SC2Mod4,29,,,,,,,,,
-SC2Mod4,30,,,,,,,,,
-SC2Mod4,31,Marker_Button,Voltage,,,,,,1,Event Marker
+Panel,Channel,Device Name,Type,Array,X,Y,Z,Serial Number,Calibration Slope,Calibration Intercept,Test Specific Name
+SC1Mod2,0,TC_A1_0p03_BC,TC,1,,,0.03 m BC,,1,0,TC 1 0.03 m BC
+SC1Mod2,1,TC_A1_0p30_BC,TC,1,,,0.30 m BC,,1,0,TC 1 0.30 m BC
+SC1Mod2,2,TC_A1_0p61_BC,TC,1,,,0.61 m BC,,1,0,TC 1 0.61 m BC
+SC1Mod2,3,TC_A1_0p91_BC,TC,1,,,0.91 m BC,,1,0,TC 1 0.91 m BC
+SC1Mod2,4,TC_A1_1p22_BC,TC,1,,,1.22 m BC,,1,0,TC 1 1.22 m BC
+SC1Mod2,5,TC_A1_1p52_BC,TC,1,,,1.52 m BC,,1,0,TC 1 1.52 m BC
+SC1Mod2,6,TC_A1_1p83_BC,TC,1,,,1.83 m BC,,1,0,TC 1 1.83 m BC
+SC1Mod2,7,TC_A1_2p13_BC,TC,1,,,2.13 m BC,,1,0,TC 1 2.13 m BC
+SC1Mod2,8,TC_A2_0p03_BC,TC,2,,,0.03 m BC,,1,0,TC 2 0.03 m BC
+SC1Mod2,9,TC_A2_0p30_BC,TC,2,,,0.30 m BC,,1,0,TC 2 0.30 m BC
+SC1Mod2,10,TC_A2_0p61_BC,TC,2,,,0.61 m BC,,1,0,TC 2 0.61 m BC
+SC1Mod2,11,TC_A2_0p91_BC,TC,2,,,0.91 m BC,,1,0,TC 2 0.91 m BC
+SC1Mod2,12,TC_A2_1p22_BC,TC,2,,,1.22 m BC,,1,0,TC 2 1.22 m BC
+SC1Mod2,13,TC_A2_1p52_BC,TC,2,,,1.52 m BC,,1,0,TC 2 1.52 m BC
+SC1Mod2,14,TC_A2_1p83_BC,TC,2,,,1.83 m BC,,1,0,TC 2 1.83 m BC
+SC1Mod2,15,TC_A2_2p13_BC,TC,2,,,2.13 m BC,,1,0,TC 2 2.13 m BC
+SC1Mod2,16,TC_A3_0p03_BC,TC,3,,,0.03 m BC,,1,0,TC 3 0.03 m BC
+SC1Mod2,17,TC_A3_0p30_BC,TC,3,,,0.30 m BC,,1,0,TC 3 0.30 m BC
+SC1Mod2,18,TC_A3_0p61_BC,TC,3,,,0.61 m BC,,1,0,TC 3 0.61 m BC
+SC1Mod2,19,TC_A3_0p91_BC,TC,3,,,0.91 m BC,,1,0,TC 3 0.91 m BC
+SC1Mod2,20,TC_A3_1p22_BC,TC,3,,,1.22 m BC,,1,0,TC 3 1.22 m BC
+SC1Mod2,21,TC_A3_1p52_BC,TC,3,,,1.52 m BC,,1,0,TC 3 1.52 m BC
+SC1Mod2,22,TC_A3_1p83_BC,TC,3,,,1.83 m BC,,1,0,TC 3 1.83 m BC
+SC1Mod2,23,TC_A3_2p13_BC,TC,3,,,2.13 m BC,,1,0,TC 3 2.13 m BC
+SC1Mod2,24,TC_A4_0p03_BC,TC,4,,,0.03 m BC,,1,0,TC 4 0.03 m BC
+SC1Mod2,25,TC_A4_0p30_BC,TC,4,,,0.30 m BC,,1,0,TC 4 0.30 m BC
+SC1Mod2,26,TC_A4_0p61_BC,TC,4,,,0.61 m BC,,1,0,TC 4 0.61 m BC
+SC1Mod2,27,TC_A4_0p91_BC,TC,4,,,0.91 m BC,,1,0,TC 4 0.91 m BC
+SC1Mod2,28,TC_A4_1p22_BC,TC,4,,,1.22 m BC,,1,0,TC 4 1.22 m BC
+SC1Mod2,29,TC_A4_1p52_BC,TC,4,,,1.52 m BC,,1,0,TC 4 1.52 m BC
+SC1Mod2,30,TC_A4_1p83_BC,TC,4,,,1.83 m BC,,1,0,TC 4 1.83 m BC
+SC1Mod2,31,TC_A4_2p13_BC,TC,4,,,2.13 m BC,,1,0,TC 4 2.13 m BC
+SC1Mod3,0,TC_A5_0p03_BC,TC,5,,,0.03 m BC,,1,0,TC 5 0.03 m BC
+SC1Mod3,1,TC_A5_0p30_BC,TC,5,,,0.30 m BC,,1,0,TC 5 0.30 m BC
+SC1Mod3,2,TC_A5_0p61_BC,TC,5,,,0.61 m BC,,1,0,TC 5 0.61 m BC
+SC1Mod3,3,TC_A5_0p91_BC,TC,5,,,0.91 m BC,,1,0,TC 5 0.91 m BC
+SC1Mod3,4,TC_A5_1p22_BC,TC,5,,,1.22 m BC,,1,0,TC 5 1.22 m BC
+SC1Mod3,5,TC_A5_1p52_BC,TC,5,,,1.52 m BC,,1,0,TC 5 1.52 m BC
+SC1Mod3,6,TC_A5_1p83_BC,TC,5,,,1.83 m BC,,1,0,TC 5 1.83 m BC
+SC1Mod3,7,TC_A5_2p13_BC,TC,5,,,2.13 m BC,,1,0,TC 5 2.13 m BC
+SC1Mod3,8,TC_A6_0p30_BS,TC,6,,,0.30 m BS,,1,0,TC 6 0.30 m BS
+SC1Mod3,9,TC_A6_0p60_BS,TC,6,,,0.60 m BS,,1,0,TC 6 0.60 m BS
+SC1Mod3,10,TC_A6_0p90_BS,TC,6,,,0.90 m BS,,1,0,TC 6 0.90 m BS
+SC1Mod3,11,TC_A6_1p20_BS,TC,6,,,1.20 m BS,,1,0,TC 6 1.20 m BS
+SC1Mod3,12,TC_A6_1p50_BS,TC,6,,,1.50 m BS,,1,0,TC 6 1.50 m BS
+SC1Mod3,13,TC_A6_1p80_BS,TC,6,,,1.80 m BS,,1,0,TC 6 1.80 m BS
+SC1Mod3,,,,,,,,,,,
+SC1Mod3,,,,,,,,,,,
+SC1Mod3,16,TC_A7_0p08_BS,TC,7,,,0.08 m BS,,1,0,TC 7 0.08 m BS
+SC1Mod3,17,TC_A7_0p34_BS,TC,7,,,0.34 m BS,,1,0,TC 7 0.34 m BS
+SC1Mod3,18,TC_A7_0p61_BS,TC,7,,,0.61 m BS,,1,0,TC 7 0.61 m BS
+SC1Mod3,19,TC_A7_0p88_BS,TC,7,,,0.88 m BS,,1,0,TC 7 0.88 m BS
+SC1Mod3,20,TC_A7_1p15_BS,TC,7,,,1.15 m BS,,1,0,TC 7 1.15 m BS
+SC1Mod3,21,TC_A7_1p42_BS,TC,7,,,1.42 m BS,,1,0,TC 7 1.42 m BS
+SC1Mod3,22,TC_A7_1p68_BS,TC,7,,,1.68 m BS,,1,0,TC 7 1.68 m BS
+SC1Mod3,23,TC_A7_1p95_BS,TC,7,,,1.95 m BS,,1,0,TC 7 1.95 m BS
+SC1Mod3,24,TC_A8_0p08_BS,TC,8,,,0.08 m BS,,1,0,TC 8 0.08 m BS
+SC1Mod3,25,TC_A8_0p34_BS,TC,8,,,0.34 m BS,,1,0,TC 8 0.34 m BS
+SC1Mod3,26,TC_A8_0p61_BS,TC,8,,,0.61 m BS,,1,0,TC 8 0.61 m BS
+SC1Mod3,27,TC_A8_0p88_BS,TC,8,,,0.88 m BS,,1,0,TC 8 0.88 m BS
+SC1Mod3,28,TC_A8_1p15_BS,TC,8,,,1.15 m BS,,1,0,TC 8 1.15 m BS
+SC1Mod3,29,TC_A8_1p42_BS,TC,8,,,1.42 m BS,,1,0,TC 8 1.42 m BS
+SC1Mod3,30,TC_A8_1p68_BS,TC,8,,,1.68 m BS,,1,0,TC 8 1.68 m BS
+SC1Mod3,31,TC_A8_1p95_BS,TC,8,,,1.95 m BS,,1,0,TC 8 1.95 m BS
+SC1Mod4,0,TC_A9_0p08_BS,TC,9,,,0.08 m BS,,1,0,TC 9 0.08 m BS
+SC1Mod4,1,TC_A9_0p34_BS,TC,9,,,0.34 m BS,,1,0,TC 9 0.34 m BS
+SC1Mod4,2,TC_A9_0p61_BS,TC,9,,,0.61 m BS,,1,0,TC 9 0.61 m BS
+SC1Mod4,3,TC_A9_0p88_BS,TC,9,,,0.88 m BS,,1,0,TC 9 0.88 m BS
+SC1Mod4,4,TC_A9_1p15_BS,TC,9,,,1.15 m BS,,1,0,TC 9 1.15 m BS
+SC1Mod4,5,TC_A9_1p42_BS,TC,9,,,1.42 m BS,,1,0,TC 9 1.42 m BS
+SC1Mod4,6,TC_A9_1p68_BS,TC,9,,,1.68 m BS,,1,0,TC 9 1.68 m BS
+SC1Mod4,7,TC_A9_1p95_BS,TC,9,,,1.95 m BS,,1,0,TC 9 1.95 m BS
+SC1Mod4,8,TC_A10_NXNY,TC,10,-0.4572,-0.4572,Vertical Vent,,1,0,TC Vertical Vent Quad 3
+SC1Mod4,9,TC_A10_NXPY,TC,10,-0.4572,0.4572,Vertical Vent,,1,0,TC Vertical Vent Quad 1
+SC1Mod4,10,TC_A10_CEN,TC,10,0,0,Vertical Vent,,1,0,TC Vertical Vent Center
+SC1Mod4,11,TC_A10_PXNY,TC,10,0.4572,-0.4572,Vertical Vent,,1,0,TC Vertical Vent Quad 4
+SC1Mod4,12,TC_A10_PXPY,TC,10,0.4572,0.4572,Vertical Vent,,1,0,TC Vertical Vent Quad 2
+SC1Mod4,13,TC_Ignition,TC,,,,,,1,0,Ignition
+SC1Mod4,14,,,,,,,,,,
+SC1Mod4,15,,,,,,,,,,
+SC1Mod4,16,,,,,,,,,,
+SC1Mod4,17,,,,,,,,,,
+SC1Mod4,18,,,,,,,,,,
+SC1Mod4,19,,,,,,,,,,
+SC1Mod4,20,,,,,,,,,,
+SC1Mod4,21,,,,,,,,,,
+SC1Mod4,22,,,,,,,,,,
+SC1Mod4,23,,,,,,,,,,
+SC1Mod4,24,,,,,,,,,,
+SC1Mod4,25,,,,,,,,,,
+SC1Mod4,26,,,,,,,,,,
+SC1Mod4,27,,,,,,,,,,
+SC1Mod4,28,,,,,,,,,,
+SC1Mod4,29,,,,,,,,,,
+SC1Mod4,30,,,,,,,,,,
+SC1Mod4,31,,,,,,,,,,
+SC2Mod2,0,BDP_A6_0p30_BS,Voltage,6,,,0.30 m BS,6_7,99.52,-248.8,BDP 6 0.30 m BS
+SC2Mod2,1,BDP_A6_0p60_BS,Voltage,6,,,0.60 m BS,6_7,99.52,-248.8,BDP 6 0.60 m BS
+SC2Mod2,2,BDP_A6_0p90_BS,Voltage,6,,,0.90 m BS,6_7,99.52,-248.8,BDP 6 0.90 m BS
+SC2Mod2,3,BDP_A6_1p20_BS,Voltage,6,,,1.20 m BS,6_7,99.52,-248.8,BDP 6 1.20 m BS
+SC2Mod2,4,BDP_A6_1p50_BS,Voltage,6,,,1.50 m BS,6_7,99.52,-248.8,BDP 6 1.50 m BS
+SC2Mod2,5,BDP_A6_1p80_BS,Voltage,6,,,1.80 m BS,6_7,99.52,-248.8,BDP 6 1.80 m BS
+SC2Mod2,6,,,,,,,,,,
+SC2Mod2,7,,,,,,,,,,
+SC2Mod2,8,BDP_A7_0p08_BS,Voltage,7,,,0.08 m BS,6_4,99.52,-248.8,BDP 7 0.08 m BS
+SC2Mod2,9,BDP_A7_0p34_BS,Voltage,7,,,0.34 m BS,6_4,99.52,-248.8,BDP 7 0.34 m BS
+SC2Mod2,10,BDP_A7_0p61_BS,Voltage,7,,,0.61 m BS,6_4,99.52,-248.8,BDP 7 0.61 m BS
+SC2Mod2,11,BDP_A7_0p88_BS,Voltage,7,,,0.88 m BS,6_4,99.52,-248.8,BDP 7 0.88 m BS
+SC2Mod2,12,BDP_A7_1p15_BS,Voltage,7,,,1.15 m BS,6_4,99.52,-248.8,BDP 7 1.15 m BS
+SC2Mod2,13,BDP_A7_1p42_BS,Voltage,7,,,1.42 m BS,6_4,99.52,-248.8,BDP 7 1.42 m BS
+SC2Mod2,14,BDP_A7_1p68_BS,Voltage,7,,,1.68 m BS,3_3,99.52,-248.8,BDP 7 1.68 m BS
+SC2Mod2,15,BDP_A7_1p95_BS,Voltage,7,,,1.95 m BS,3_3,99.52,-248.8,BDP 7 1.95 m BS
+SC2Mod2,16,BDP_A8_0p08_BS,Voltage,8,,,0.08 m BS,6_1,99.52,-248.8,BDP 8 0.08 m BS
+SC2Mod2,17,BDP_A8_0p34_BS,Voltage,8,,,0.34 m BS,6_1,99.52,-248.8,BDP 8 0.34 m BS
+SC2Mod2,18,BDP_A8_0p61_BS,Voltage,8,,,0.61 m BS,6_1,99.52,-248.8,BDP 8 0.61 m BS
+SC2Mod2,19,BDP_A8_0p88_BS,Voltage,8,,,0.88 m BS,6_1,99.52,-248.8,BDP 8 0.88 m BS
+SC2Mod2,20,BDP_A8_1p15_BS,Voltage,8,,,1.15 m BS,6_1,99.52,-248.8,BDP 8 1.15 m BS
+SC2Mod2,21,BDP_A8_1p42_BS,Voltage,8,,,1.42 m BS,6_1,99.52,-248.8,BDP 8 1.42 m BS
+SC2Mod2,22,BDP_A8_1p68_BS,Voltage,8,,,1.68 m BS,3_8,99.52,-248.8,BDP 8 1.68 m BS
+SC2Mod2,23,BDP_A8_1p95_BS,Voltage,8,,,1.95 m BS,3_8,99.52,-248.8,BDP 8 1.95 m BS
+SC2Mod2,24,BDP_A9_0p08_BS,Voltage,9,,,0.08 m BS,6_5,99.52,-248.8,BDP 9 0.08 m BS
+SC2Mod2,25,BDP_A9_0p34_BS,Voltage,9,,,0.34 m BS,6_5,99.52,-248.8,BDP 9 0.34 m BS
+SC2Mod2,26,BDP_A9_0p61_BS,Voltage,9,,,0.61 m BS,6_5,99.52,-248.8,BDP 9 0.61 m BS
+SC2Mod2,27,BDP_A9_0p88_BS,Voltage,9,,,0.88 m BS,6_5,99.52,-248.8,BDP 9 0.88 m BS
+SC2Mod2,28,BDP_A9_1p15_BS,Voltage,9,,,1.15 m BS,6_5,99.52,-248.8,BDP 9 1.15 m BS
+SC2Mod2,29,BDP_A9_1p42_BS,Voltage,9,,,1.42 m BS,6_5,99.52,-248.8,BDP 9 1.42 m BS
+SC2Mod2,30,BDP_A9_1p68_BS,Voltage,9,,,1.68 m BS,3_6,99.52,-248.8,BDP 9 1.68 m BS
+SC2Mod2,31,BDP_A9_1p95_BS,Voltage,9,,,1.95 m BS,3_6,99.52,-248.8,BDP 9 1.95 m BS
+SC2Mod3,0,BDP_A10_NXNY,Voltage,10,-0.4572,-0.4572,Vertical Vent,,99.52,-248.8,BDP Vertical Vent Quad 3
+SC2Mod3,1,BDP_A10_NXPY,Voltage,10,-0.4572,0.4572,Vertical Vent,,99.52,-248.8,BDP Vertical Vent Quad 1
+SC2Mod3,2,BDP_A10_CEN,Voltage,10,0,0,Vertical Vent,,99.52,-248.8,BDP Vertical Vent Center
+SC2Mod3,3,BDP_A10_PXNY,Voltage,10,0.4572,-0.4572,Vertical Vent,,99.52,-248.8,BDP Vertical Vent Quad 4
+SC2Mod3,4,BDP_A10_PXPY,Voltage,10,0.4572,0.4572,Vertical Vent,,99.52,-248.8,BDP Vertical Vent Quad 2
+SC2Mod3,5,,,,,,,,,,
+SC2Mod3,6,,,,,,,,,,
+SC2Mod3,7,,,,,,,,,,
+SC2Mod3,8,,,,,,,,,,
+SC2Mod3,9,,,,,,,,,,
+SC2Mod3,10,,,,,,,,,,
+SC2Mod3,11,,,,,,,,,,
+SC2Mod3,12,,,,,,,,,,
+SC2Mod3,13,,,,,,,,,,
+SC2Mod3,14,,,,,,,,,,
+SC2Mod3,15,,,,,,,,,,
+SC2Mod3,16,,,,,,,,,,
+SC2Mod3,17,,,,,,,,,,
+SC2Mod3,18,,,,,,,,,,
+SC2Mod3,19,,,,,,,,,,
+SC2Mod3,20,,,,,,,,,,
+SC2Mod3,21,,,,,,,,,,
+SC2Mod3,22,HF_A1_0p15_AF,Voltage,1,,,0.15 m AF,146131,10964.91,0,Heat Flux 1 0.15 m AF
+SC2Mod3,23,RAD_A1_0p15_AF,Voltage,1,,,0.15 m AF,91834,12220.91,0,Radiometer 1 0.15 m AF
+SC2Mod3,24,HF_A2_0p15_AF,Voltage,2,,,0.15 m AF,150792,11210.76,0,Heat Flux 2 0.15 m AF
+SC2Mod3,25,RAD_A2_0p15_AF,Voltage,2,,,0.15 m AF,179084,11350.74,0,Radiometer 2 0.15 m AF
+SC2Mod3,26,HF_A3_0p15_AF,Voltage,3,,,0.15 m AF,150313,5537.1,0,Heat Flux 3 0.15 m AF
+SC2Mod3,27,RAD_A3_0p15_AF,Voltage,3,,,0.15 m AF,179083,11350.74,0,Radiometer 3 0.15 m AF
+SC2Mod3,28,HF_A4_0p15_AF,Voltage,4,,,0.15 m AF,146502,6613.76,0,Heat Flux 4 0.15 m AF
+SC2Mod3,29,RAD_A4_0p15_AF,Voltage,4,,,0.15 m AF,179082,5274.26,0,Radiometer 4 0.15 m AF
+SC2Mod3,30,HF_A5_0p15_AF,Voltage,5,,,0.15 m AF,90321,2976.19,0,Heat Flux 4 0.15 m AF
+SC2Mod3,31,RAD_A5_0p15_AF,Voltage,5,,,0.15 m AF,179081,6242.2,0,Radiometer 4 0.15 m AF
+SC2Mod4,0,CO_1,Voltage,,,,,1,1,0,CO Gas Analyzer 1
+SC2Mod4,1,CO2_1,Voltage,,,,,1,2,0,CO2 Gas Analyzer 1
+SC2Mod4,2,O2_1,Voltage,,,,,1,20,0,O2 Gas Analyzer 1
+SC2Mod4,3,CO_2,Voltage,,,,,2,1,0,CO Gas Analyzer 2
+SC2Mod4,4,CO2_2,Voltage,,,,,2,2,0,CO2 Gas Analyzer 2
+SC2Mod4,5,O2_2,Voltage,,,,,2,20,0,O2 Gas Analyzer 2
+SC2Mod4,6,HOSE_P1_1p5_in,Voltage,,,,,1,2500,0,"Water Pressure Sensor 1, 1.5 inch"
+SC2Mod4,7,HOSE_P2_1p5_in,Voltage,,,,,1,2500,0,"Water Pressure Sensor 1, 1.5 inch"
+SC2Mod4,8,HOSE_P1_2p5_in,Voltage,,,,,2,2500,0,"Water Pressure Sensor 2, 2.5 inch"
+SC2Mod4,9,HOSE_P2_2p5_in,Voltage,,,,,2,2500,0,"Water Pressure Sensor 2, 2.5 inch"
+SC2Mod4,10,,,,,,,,,,
+SC2Mod4,11,,,,,,,,,,
+SC2Mod4,12,,,,,,,,,,
+SC2Mod4,13,,,,,,,,,,
+SC2Mod4,14,,,,,,,,,,
+SC2Mod4,15,,,,,,,,,,
+SC2Mod4,16,,,,,,,,,,
+SC2Mod4,17,,,,,,,,,,
+SC2Mod4,18,,,,,,,,,,
+SC2Mod4,19,,,,,,,,,,
+SC2Mod4,20,,,,,,,,,,
+SC2Mod4,21,,,,,,,,,,
+SC2Mod4,22,,,,,,,,,,
+SC2Mod4,23,,,,,,,,,,
+SC2Mod4,24,,,,,,,,,,
+SC2Mod4,25,,,,,,,,,,
+SC2Mod4,26,,,,,,,,,,
+SC2Mod4,27,,,,,,,,,,
+SC2Mod4,28,,,,,,,,,,
+SC2Mod4,29,,,,,,,,,,
+SC2Mod4,30,,,,,,,,,,
+SC2Mod4,31,Marker_Button,Voltage,,,,,,1,0,Event Marker

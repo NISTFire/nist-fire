@@ -69,9 +69,13 @@ for f in os.listdir(data_dir):
         # Load exp. data file
         data = pd.read_csv(data_dir + f, index_col=0)
 
+        # Uncomment the following two lines to run only DelCo June/July tests
+        # if 'Test' not in test_name:
+            # continue
+
         # Load exp. scaling file
         if 'West' in test_name:
-            scaling_file = scaling_file_east
+            scaling_file = scaling_file_west
         if 'East' in test_name:
             scaling_file = scaling_file_east
         else:
@@ -109,13 +113,14 @@ for f in os.listdir(data_dir):
 
                 if any([substring in channel for substring in group]):
 
-                    scale_factor = float(scaling['Calibration'][channel])
+                    calibration_slope = float(scaling['Calibration Slope'][channel])
+                    calibration_intercept = float(scaling['Calibration Intercept'][channel])
 
                     # Scale channel and set plot options depending on quantity
                     # Plot temperatures
                     if 'TC_' in channel:
                         plt.rc('axes', color_cycle = ['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-                        quantity = data[channel] * scale_factor
+                        quantity = data[channel] * calibration_slope + calibration_intercept
                         ylabel('Temperature ($^\circ$C)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale TC'
@@ -148,7 +153,7 @@ for f in os.listdir(data_dir):
 
                         # Get zero voltage from pre-test data
                         zero_voltage = np.mean(data[channel][0:pre_test_time])
-                        quantity = (data[channel] - zero_voltage) * scale_factor
+                        quantity = (data[channel] - zero_voltage) * calibration_slope + calibration_intercept
                         ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
                         if 'HF' in channel:
                             line_style = '-'
@@ -159,7 +164,7 @@ for f in os.listdir(data_dir):
                     # Plot gas measurements
                     if any([substring in channel for substring in gas_quantities]):
                         plt.rc('axes', color_cycle = ['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-                        quantity = data[channel] * scale_factor
+                        quantity = data[channel] * calibration_slope + calibration_intercept
                         ylabel('Concentration (%)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale GAS'
@@ -170,7 +175,7 @@ for f in os.listdir(data_dir):
                         # Skip data other than sensors on 2.5 inch hoseline
                         if '2p5' not in channel:
                             continue
-                        quantity = data[channel] * scale_factor
+                        quantity = data[channel] * calibration_slope + calibration_intercept
                         ylabel('Pressure (psi)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale HOSE'
