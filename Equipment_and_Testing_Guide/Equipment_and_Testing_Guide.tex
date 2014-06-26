@@ -474,17 +474,19 @@ Desc.:  Daughter Cards \& OEM Boards SMARTPROTO PROTO ADAPTER BOARD \\
 \begin{itemize}
 \item Power on the following devices:
     \begin{itemize}
+    \item Generators (check oil and gas levels)
     \item Uninterruptible Power Supplies (UPSs)
-    \item WiFi routers
-    \item Hose flow / Arduino laptop with NTP, RabbitMQ, Python receive\_data.py script
+    \item WiFi routers/repeaters
+    \item Arduino laptop with NTP, RabbitMQ, Python receive\_data.py script
     \item DAQs and laptops
+    \item Weather stations
     \item Gas analyzers (leave running as long as possible during testing)
     \item Digital video recorder (DVR)
-    \item Bullet cameras
-    \item Thermal imaging cameras (TICs) (check battery level)
-    \item Digital video cassette recorders (DVCRs) (check battery level)
-    \item GoPros (check battery level)
-    \item Video cameras (check battery level)
+    \item Bullet cameras and power supplies
+    \item Thermal imaging cameras (TICs)
+    \item Digital video cassette recorders (DVCRs)
+    \item GoPros
+    \item Video cameras
     \end{itemize}
 \end{itemize}
 
@@ -503,6 +505,8 @@ Desc.:  Daughter Cards \& OEM Boards SMARTPROTO PROTO ADAPTER BOARD \\
 
 \item Calibrate gas analyzers with zero and span gases
 
+\item Check and record lag time on gas analyzer probes
+
 \item 1 minute calibration run to separate output file (cover BDPs, check TCs, etc.)
 
 \end{itemize}
@@ -510,49 +514,43 @@ Desc.:  Daughter Cards \& OEM Boards SMARTPROTO PROTO ADAPTER BOARD \\
 \section{Primary Testing Procedure}
 
 \begin{itemize}
+\item Take GigaPan pictures as needed
+\item Distribute still cameras
+
 \item Verify testing procedure with all personnel
 \item Safety checks
 
 \item Power on gas analyzer pump
-\item Add dry ice to traps (or turn on gas dryer)
+\item Add dry ice to gas sample traps (or turn on gas dryer)
 
-\item Turn on water for heat flux gauges
+\item Turn on water for heat flux gauges, cool cans, etc.
 
-\item Check Arduino battery level
 \item Power on Arduino data loggers
 
 \item Start recording on:
     \begin{itemize}
     \item GoPros (Sync GoPro time to DVR screen time)
     \item Video cameras
-    \item DVCRs (Mobile TIC)
-    \end{itemize}
-
-\item Start synced recording on: [MARK DATE/TIME]
-    \begin{itemize}
-    \item DVR
-    \item DAQ data
-    \end{itemize}
-
-\item 1 minute pre-test run (with all doors closed)
-
-\item Begin test [MARK DATE/TIME]
-
-\item Follow testing procedure
-
-\item End test [MARK DATE/TIME]
-
-\item Stop synced recording on: [MARK DATE/TIME]
-    \begin{itemize}
+    \item Mobile TIC
     \item DAQ
     \item DVR
     \end{itemize}
 
+\item 1 minute pre-test run (with all doors closed)
+
+\item Begin test
+
+\item Follow testing procedure
+
+\item End test
+
 \item Stop recording on:
     \begin{itemize}
+    \item DAQ
+    \item DVR
     \item GoPros
     \item Video cameras
-    \item DVCRs (Mobile TIC)
+    \item Mobile TIC
     \end{itemize}
 
 \item Power off gas analyzer pump
@@ -561,28 +559,36 @@ Desc.:  Daughter Cards \& OEM Boards SMARTPROTO PROTO ADAPTER BOARD \\
 
 \item Verify successful recording and operation of all DAQ channels in output file
 
+\item Take GigaPan pictures as needed
+
 \item Prepare for next test
 \end{itemize}
 
 \section{Data Dump}
 
 \begin{itemize}
-\item Retrieve data from:
+\item Collect and organize data from:
     \begin{itemize}
     \item DAQ
     \item DVR
     \item GoPros
-    \item Video cameras with digital media
+    \item GigaPan
+    \item Weather station data logger
+    \item Mobile TIC
     \item Arduinos
+    \item Video cameras with digital media
+    \item Still cameras with digital media
     \end{itemize}
 
-\item Swap and label tapes from video cameras and DVCRs as needed
+\item Archive, swap and label tapes from video cameras and DVCRs if needed
 
-\item Make 3 copies of all data on external hard drives
+\item Make copies of all data on external hard drives
 
 \item Verify integrity of data
 
-\item On return from trip, extract video from DVCRs
+\item Format GoPros, video and still camera media, mobile TIC, Arduinos, and GigaPan camera
+
+\item On return from trip, extract video from DVCR tapes
 \end{itemize}
 
 \section{Battery Charging}
@@ -590,14 +596,16 @@ Desc.:  Daughter Cards \& OEM Boards SMARTPROTO PROTO ADAPTER BOARD \\
 \begin{itemize}
 \item Charge all batteries on:
     \begin{itemize}
-    \item Laptops
-    \item Arduinos
-    \item Bullet camera batteries
+    \item Laptops and tablets
+    \item 12 V batteries
     \item TICs
     \item GoPros
     \item Video cameras
+    \item Still cameras
+    \item GigaPan camera
     \item DVCRs
     \item Radios
+    \item Arduinos
     \end{itemize}
 \end{itemize}
 
