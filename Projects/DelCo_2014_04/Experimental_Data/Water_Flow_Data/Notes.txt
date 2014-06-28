@@ -1,0 +1,5 @@
+hydrant pressure - 80 psi
+
+95 gpm discs at 50 psi
+
+nominal flow: 100 gpm
