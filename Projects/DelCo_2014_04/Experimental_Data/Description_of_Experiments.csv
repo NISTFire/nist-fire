@@ -43,3 +43,8 @@ Test Number,Test Type,Old Test Key,New Test Key,Start of Test,End of Test,Test D
 42,GAS,Test_4_East_062514,Test_4_East_062514,0,1976,"Propane fire w/ doors, Replicate 3",None,None,20,200,1500,25,None
 43,GAS,Test_5_East_062614,Test_5_East_062614,0,4140,Propane fire w/ ceiling vent/door; 3 tests,None,None,20,200,1500,25,None
 44,GAS,Test_6_East_062614,Test_6_East_062614,0,1941,Propane fire w/ door/ceiling vent; 3 tests,None,None,20,200,1500,25,None
+45,GAS,Test_7_East_062714,Test_7_East_062714,0,542,Cold flow U-shape setup,None,None,20,200,1500,25,None
+46,GAS,Test_8_East_062714,Test_8_East_062714,0,1490,"Hot flow U-shape setup, no targets",None,None,20,200,1500,25,None
+47,GAS,Test_9_East_062714,Test_9_East_062714,0,356,"Hot flow U-shape setup, targets (plastic helmet and fabric)",None,None,20,200,1500,25,None
+48,GAS,Test_10_East_062714,Test_10_East_062714,0,3818,"Hot flow U-shape setup, targets (leather helmet and fabric)",None,None,20,200,1500,25,None
+49,GAS,Test_11_East_062714,Test_11_East_062714,0,966,"Hot flow U-shape setup, targets (plastic helmet and fabric)",None,None,20,200,1500,25,None
