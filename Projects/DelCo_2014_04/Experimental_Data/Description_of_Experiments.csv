@@ -48,3 +48,5 @@ Test Number,Test Type,Old Test Key,New Test Key,Start of Test,End of Test,Test D
 47,GAS,Test_9_East_062714,Test_9_East_062714,0,356,"Hot flow U-shape setup, targets (plastic helmet and fabric)",None,None,20,200,1500,25,None
 48,GAS,Test_10_East_062714,Test_10_East_062714,0,3818,"Hot flow U-shape setup, targets (leather helmet and fabric)",None,None,20,200,1500,25,None
 49,GAS,Test_11_East_062714,Test_11_East_062714,0,966,"Hot flow U-shape setup, targets (plastic helmet and fabric)",None,None,20,200,1500,25,None
+50,GAS,Test_12_East_062914,Test_12_East_062914,0,1030,"Fire test, single couch in SW corner of fire room",None,None,20,200,1500,25,None
+51,GAS,Test_13_East_062914,Test_13_East_062914,0,4151,"Fire test, two couches in SE corner of fire room",None,None,20,200,1500,25,None
