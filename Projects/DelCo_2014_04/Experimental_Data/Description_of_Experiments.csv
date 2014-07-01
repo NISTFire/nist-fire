@@ -58,3 +58,4 @@ Test Number,Test Type,Old Test Key,New Test Key,Start of Test,End of Test,Test D
 57,HOSE,Test_5_West_063014,Test_5_West_063014,0,2961,Hose Test,None,None,20,200,1500,25,None
 58,HOSE,Test_6_West_063014,Test_6_West_063014,0,2953,Hose Test,None,None,20,200,1500,25,None
 59,HOSE,Test_7_West_063014,Test_7_West_063014,0,5,"Hose Test, lost data",None,None,20,200,1500,25,None
+60,FIRE,Test_14_East_070114,Test_14_East_070114,0,1750,"Fire Test, full fuel load",None,None,20,200,1500,25,None
