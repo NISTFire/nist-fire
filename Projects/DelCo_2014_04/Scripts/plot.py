@@ -76,7 +76,7 @@ for f in os.listdir(data_dir):
         # Load exp. scaling file
         if 'West' in test_name:
             scaling_file = scaling_file_west
-        if 'East' in test_name:
+        elif 'East' in test_name:
             scaling_file = scaling_file_east
         else:
             scaling_file = scaling_file_default
