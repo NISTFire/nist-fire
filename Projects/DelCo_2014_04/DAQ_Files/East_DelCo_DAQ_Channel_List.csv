@@ -57,12 +57,12 @@ SC1Mod3,22,TC_A7_5,TC,,,1.15 m BS,,1,0,TC 7 1.15 m BS East
 SC1Mod3,23,TC_A7_6,TC,,,1.42 m BS,,1,0,TC 7 1.42 m BS East
 SC1Mod3,24,TC_A7_7,TC,,,1.68 m BS,,1,0,TC 7 1.68 m BS East
 SC1Mod3,25,TC_A7_8,TC,,,1.95 m BS,,1,0,TC 7 1.95 m BS East
-SC1Mod3,26,TC_Helmet_1,TC,,,,,1,,TC Helmet 1 East
-SC1Mod3,27,TC_Helmet_2,TC,,,,,1,,TC Helmet 2 East
-SC1Mod3,28,TC_Helmet_3,TC,,,,,1,,TC Helmet 3 East
-SC1Mod3,29,TC_Helmet_4,TC,,,,,1,,TC Helmet 4 East
-SC1Mod3,30,TC_Helmet_5,TC,,,,,1,,TC Helmet 5 East
-SC1Mod3,31,TC_Helmet_6,TC,,,,,1,,TC Helmet 6 East
+SC1Mod3,26,TC_Helmet_1,TC,,,,,1,0,TC Helmet 1 East
+SC1Mod3,27,TC_Helmet_2,TC,,,,,1,0,TC Helmet 2 East
+SC1Mod3,28,TC_Helmet_3,TC,,,,,1,0,TC Helmet 3 East
+SC1Mod3,29,TC_Helmet_4,TC,,,,,1,0,TC Helmet 4 East
+SC1Mod3,30,TC_Helmet_5,TC,,,,,1,0,TC Helmet 5 East
+SC1Mod3,31,TC_Helmet_6,TC,,,,,1,0,TC Helmet 6 East
 SC1Mod4,0,TC_A8_1,TC,,,0.08 m BS,,1,0,TC 8 0.08 m BS East
 SC1Mod4,1,TC_A8_2,TC,,,0.34 m BS,,1,0,TC 8 0.34 m BS East
 SC1Mod4,2,TC_A8_3,TC,,,0.61 m BS,,1,0,TC 8 0.61 m BS East
