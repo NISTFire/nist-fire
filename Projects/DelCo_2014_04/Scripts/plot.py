@@ -35,7 +35,7 @@ sensor_groups = [['TC_A1_'], ['TC_A2_'], ['TC_A3_'], ['TC_A4_'], ['TC_A5_'],
                  ['TC_A6_'], ['TC_A7_'], ['TC_A8_'], ['TC_A9_'], ['TC_A10_'],
                  ['TC_A11_'], ['TC_A12_'], ['TC_A13_'], ['TC_A14_'], ['TC_A15_'],
                  ['TC_Ignition'],
-                 ['TC_Helmet'],
+                 ['TC_Helmet_'],
                  ['BDP_A4_'], ['BDP_A5_'], ['BDP_A6_'], ['BDP_A7_'],
                  ['BDP_A8_'], ['BDP_A9_'], ['BDP_A10_'], ['BDP_A11_'],
                  ['BDP_A12_'], ['BDP_A13_'], ['BDP_A14_'], ['BDP_A15_'],
@@ -126,7 +126,10 @@ for f in os.listdir(data_dir):
                         quantity = data[channel] * calibration_slope + calibration_intercept
                         ylabel('Temperature ($^\circ$C)', fontsize=20)
                         line_style = '-'
-                        axis_scale = 'Y Scale TC'
+                        if 'TC_Helmet_' in channel:
+                            axis_scale = 'Y Scale TC_Helmet'
+                        else:
+                            axis_scale = 'Y Scale TC'
                     
                     # Plot velocities
                     if 'BDP_' in channel:
