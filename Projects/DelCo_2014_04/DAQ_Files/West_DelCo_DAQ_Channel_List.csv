@@ -127,10 +127,10 @@ SC1Mod9,19,O2_A,Voltage,,,,A,20,0,O2 Gas Analyzer A
 SC1Mod9,20,CO_B,Voltage,,,,B,1,0,CO Gas Analyzer B
 SC1Mod9,21,CO2_B,Voltage,,,,B,2,0,CO2 Gas Analyzer B
 SC1Mod9,22,O2_B,Voltage,,,,B,20,0,O2 Gas Analyzer B
-SC1Mod9,23,HF_1_V,Voltage,,,0.3 m AF,,1,0,Heat Flux 1 V West
-SC1Mod9,24,HF_1_H,Voltage,,,0.3 m AF,,1,0,Heat Flux 1 H West
-SC1Mod9,25,HF_2_V,Voltage,,,0.3 m AF,,1,0,Heat Flux 2 V West
-SC1Mod9,26,HF_2_H,Voltage,,,0.3 m AF,,1,0,Heat Flux 2 H West
+SC1Mod9,23,HF_1_V,Voltage,,,0.3 m AF,,1563.72,0,Heat Flux 1 V West
+SC1Mod9,24,HF_1_H,Voltage,,,0.3 m AF,,1568.63,0,Heat Flux 1 H West
+SC1Mod9,25,HF_2_V,Voltage,,,0.3 m AF,,1859,0,Heat Flux 2 V West
+SC1Mod9,26,HF_2_H,Voltage,,,0.3 m AF,,1842,0,Heat Flux 2 H West
 SC1Mod9,27,HF_3_V,Voltage,,,0.3 m AF,,1,0,Heat Flux 3 V West
 SC1Mod9,28,HF_3_H,Voltage,,,0.3 m AF,,1,0,Heat Flux 3 H West
 SC1Mod9,29,BDP_A15_1,Voltage,,,,,99.52,-248.8,BDP 15 1 West
