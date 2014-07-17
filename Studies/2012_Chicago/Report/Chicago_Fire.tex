@@ -32,9 +32,8 @@
 \begin{minipage}[t][9in][s]{6.25in}
 
 \headerB{
-Simulation of the Dynamics of an \\
-Attic Fire in a 2 1/2 Story Wood \\
-Frame Residential Structure \\
+Simulation of an Attic Fire \\
+in a Wood Frame Residential Structure \\
 Chicago, IL \\
 }
 
@@ -106,7 +105,7 @@ TL \> Tower Ladder \\
 \chapter{Introduction}
 Part of the mission of the Fire Research Division at the National Institute of Standards and Technology (NIST) is to develop and apply technology, measurements and standards, improve the understanding of the behavior, prevention and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) to provide insight on the fire development and thermal conditions of other line of duty death (LODD) fires~\cite{Madrzykowski:1,Iowa,Texas,Cook_County,Grosshandler:Station,Bryner:Charleston,barowy:texas}. The overriding objective of all of these studies is to improve the safety of fire fighters.
 
-On November 2, 2012, a fire in a 2 1/2 story wood frame residential structure claimed the life of a Chicago firefighter.  Changes in the ventilation flow path resulted in fire and smoke penetration to an interior second floor hallway. NIST examined the fire dynamics of this incident at the request of NIOSH and Chicago Fire Department (CFD) . Computer simulations of the fire using Fire Dynamics Simulator and Smokeview, provide insight on the fire development and thermal conditions that may have existed in the residence during the fire. The specific objectives of the simulations detailed in this report are: 
+On November 2, 2012, a fire in a 2 1/2 story wood frame residential structure claimed the life of a Chicago firefighter. NIST examined the fire dynamics of this incident at the request of NIOSH and Chicago Fire Department (CFD). Computer simulations of the fire using Fire Dynamics Simulator and Smokeview, provide insight on the fire development and thermal conditions that may have existed in the residence during the fire. The specific objectives of the simulations detailed in this report are: 
 \begin{enumerate}
 \item To examine with physics-based calculations the effect of flow path on the temperature, pressure, and fire conditions in this multi-story residential structure.
 \item To provide visualization of fire behavior representative of what Chicago Fire Department members experienced during the course of their interior operations.
@@ -149,74 +148,24 @@ Incident Time [hr:min:s] & Fire Behavior / Fireground Operation  \\
 \end{table}
  
 
-\chapter{Fire Dynamics Simulator and Smokeview}
+\chapter{Model Description}
+\label{model}
 FDS is a computational fluid dynamics (CFD) model that solves a form of the Navier-Stokes equations appropriate for low-speed, thermally driven flow with an emphasis on smoke and heat transport from fires.  Within a CFD model, the room or building is divided into small three-dimensional rectangular control volumes or computational cells.  The cells are contained together within one larger volume known as a computational domain.  The CFD model computes the density, velocity, temperature, pressure and species concentration of the gas in each cell.  Based on the laws of conservation of mass, momentum,  and energy, the model tracks the generation and movement of fire gasses. One of the most important advantages of FDS is that it is  mathematically verified~\cite{FDS_Verification_Guide} and validated against fire test data to ensure that it provides the expected results, given sufficient input data~\cite{FDS_Validation_Guide}.  A complete description of the FDS model is given in reference~\cite{FDS_Math_Guide}.
 
 Smokeview is a software tool designed to visualize the results of the FDS~\cite{Smokeview_Users_Guide}.  Smokeview visualizes smoke and other attributes of the modeled fire using traditional scientific methods such as displaying tracer particle flow, two dimensional (2D) or three dimensional (3D) shaded contours of gas flow data such as temperature and flow vectors showing flow direction and magnitude.  Smokeview allows the fire and fire movement to be visualized.  This is done by displaying a series of partially transparent planes where the transparencies in each plane (at each grid node) are determined from soot densities computed by FDS.  Smokeview also visualizes static data at particular times using 2D or 3D contours of data such as temperature and flow vectors showing flow direction and magnitude.
 
-
-\chapter{Model Input Parameters}
-Input data from a number of sources must be collected and documented in order to simulate a fire with FDS or any other model. 
-From the fire scene the following information must be gathered:
-\begin{itemize}
-\item The geometry of the building and the compartments being modeled.
-\item The size and location of exterior and interior ventilation openings. 
-\item Documentation and identification of the fuels used in the construction and finish of the building and their installed location
-\item Documentation and identification of the fuels used as the contents of the building. 
-\item Area of origin and approximate size of ignition source.
-\item Documentation of fire damage to the building, fuel loads, victims or equipment.
-\end{itemize}
-From witnesses, first responders, reports, and recorded media such as fire ground radios or videos:
-\begin{itemize}
-\item Information on the timing of the fire development
-\item Order and timing of ventilation opening to the outside
-\item Weather conditions at the time of the fire
-\end{itemize}
-To develop the simulation, a timeline of events based on the collected information is developed. From this time line actions may be input into the model, such as venting a window at a given time. To develop the model geometry and remainder of the input file is straight forward with guidance from the FDS User's Guide ~\cite{FDS_Users_Guide} or third party software.  Engineering judgment, graduate level knowledge of fire dynamics, and modeling experience are required to  translate the information collected from the scene into appropriate and realistic computational information.  Examples of these requirements include:
-\begin{itemize}
-\item the computational cell size
-\item model domain and boundaries conditions
-\item the heat release rate (HRR) of the ignition source/initial fire
-\item physical and thermal properties of fuels such as interior finish and furnishings
-\end{itemize}
-Since there is no all-inclusive, universal fire modeling input data base this type of information must be gathered from literature or generated for a given incident. For the simulations performed for this study, Table ~\ref{tab:mod_param} includes the relevant model input parameters. The sections below describe these inputs. 
-
-\begin{table}
-\centering
-\captionof{table}{Relevant Modeling Input Parameters}\label{tab:mod_param}
-\begin{tabular}{lll}
-\toprule[1.5pt]
-Parameter & Description & Reference  \\
-\midrule
- Simulation Time           & 5 minutes                             & -- \\[.25cm]
- Grid Size                 & 10 cm                                 & Section~\ref{mesh} \\ [.25cm]
- Ambient Temperature       & 25 $^{\circ}$C                        & -- \\ [.1cm]
-\multirow{4}{*}{Reaction: Wood}  & Formula: $\C\H_{1.7}\O_{0.74}\N_{0.002}$              & \multirow{4}{*}{Section~\ref{fire}} \\
-                           & CO Yield: 0.004 \; ${\mathrm{kg_{CO}}/\mathrm{kg_{wood}}}$  & \\
-                           & Soot Yield: 0.015 \; ${\mathrm{kg_{C}}/\mathrm{kg_{wood}}}$ & \\
-                           & Heat of Combustion: 16400 kJ/kg                             & \\ [.25cm]
-\multirow{2}{*}{Peak HRR}  & Attic Fire: 9 MW                                            & \multirow{2}{*}{Section~\ref{fire}}\\ 
-                           & Porch Fire: 3.3 MW                                          & \\ [.25cm]                     
-\multirow{3}{*}{Material: Wood}    & k: 0.12 \; \si{W/(m.K)})        & \multirow{3}{*}{Section~\ref{matl}} \\
-                                   & $\rho$: 510 \; kg/m$^3$         & \\
-                                   & c$_{p}$: 1.38 \; \si{kJ/(kg.K)} & \\[.25cm]
-\multirow{3}{*}{Material: Gypsum}  & k: 0.48 \; \si{W/(m.K)}         &  \multirow{3}{*}{Section~\ref{matl}}\\ 
-                                   & $\rho$: 1440 \; kg/m$^3$        & \\ 
-                                   & c$_{p}$: 0.84 \; \si{kJ/(kg.K)} & \\
-\bottomrule[1.25pt]
-\end{tabular}\par
-\end{table}
+Input data from a number of sources must be collected and documented in order to simulate a fire with FDS or any other model. For the model presented here, information was obtained from two main sources. From the fire scene the following information was gathered: the geometry of the building and the compartments being modeled, the size and location of exterior and interior ventilation openings, and documentation of fire damage to the building. From witnesses, first responders, reports, and recorded media such as fire ground radios or videos: information on the timing of the fire development, order and approximate timing of ventilation openings to the outside, and weather conditions at the time of the fire. The following subsections will describe the inputs used to construct the simulation, including any engineering approximations or assumptions that were made.
 
 \section{Geometry}
 \label{geom}
-The structure was a 2 1/2 story residential building with balloon frame construction and gable roof. The structure had a 17.15 m (56 ft) by 6.15 m (20 ft) footprint (cf. Fig.~(\ref{fig:simp_geom})). This results in a floor area of approximately 105 m$^2$ (1100 ft$^2$) per floor and a main living area of approximately 110 m$^2$ (2200 ft$^2$). Interior walls were constructed from wood frame dimensioned lumber with 12.7 mm (0.5 in) gypsum board over top. Additionally there was a half-story attic that was used to house the structure's hot water heater. There were three sets of stairs in the structure: one front stairwell that connected the first and second levels (Stair 1 in Fig.~(\ref{fig:simp_geom})), one rear stairwell that connected the first and second levels (Stair 2 in Fig.~(\ref{fig:simp_geom})) and a second rear set of stairs which provided access to the attic (Stair 3 in Fig.~(\ref{fig:simp_geom})). Entry to the first floor of thep structure can be made either in the front (Alpha side) or rear (Charlie side), see Fig.~(\ref{fig:simp_geom}). The fire, which is described in Section~\ref{fire}, started in the attic and spread to the rear porch. Discussion of the fire's impact on interior conditions can be found in Section~\ref{results}. Fig.~(\ref{fig:alpha_ex}) shows the post-incident exterior of the alpha side of the structure. Note that the majority of the damage is to the structure's attic.
+The structure was a 2 1/2 story residential building with balloon frame construction and gable roof. Balloon frame construction is a method of framing where a continuous stud runs from the bottom horizontal member to the top plate. Intermediate floors are built directly off of the studs. One potential issue with balloon frame construction, is that without fire stops, there is void space for fire to potentially travel between the floors. The structure had a 17.15 m (56 ft) by 6.15 m (20 ft) footprint (cf. Fig.~(\ref{fig:simp_geom})). This results in a floor area of approximately 105 m$^2$ (1100 ft$^2$) per floor and a main living area of approximately 110 m$^2$ (2200 ft$^2$). Interior walls were constructed from nominal lumber with 12.7 mm (0.5 in) gypsum board over top. Additionally there was a half-story attic that was used to house the structure's hot water heater. There were three sets of stairs in the structure: one front stairwell that connected the first and second levels (Stair 1 in Fig.~(\ref{fig:simp_geom})), one rear stairwell that connected the first and second levels (Stair 2 in Fig.~(\ref{fig:simp_geom})) and a second rear set of stairs which provided access to the attic (Stair 3 in Fig.~(\ref{fig:simp_geom})). Entry to the first floor of the structure can be made either in the front or rear, see Fig.~(\ref{fig:simp_geom}). The fire, which is described in Section~\ref{fire}, started in the attic and spread to the rear porch. Discussion of the fire's impact on interior conditions can be found in Section~\ref{results}. Fig.~(\ref{fig:alpha_ex}) shows the post-incident exterior of the alpha side of the structure. Note that the majority of the damage is to the structure's attic.
 
 \begin{figure}[h!]
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-\includegraphics[width=6in]{../Figures/1st_Floor_Metric} \\
-\includegraphics[width=6in]{../Figures/2nd_Floor_Metric}
+\includegraphics[width=\textwidth]{../Figures/1st_Floor_Metric} \\
+\includegraphics[width=\textwidth]{../Figures/2nd_Floor_Metric}
 \end{tabular*}
-\caption{Top view of 1st (top) and 2nd (bottom) floor of structure. Stairs and key rooms are identified.}
+\caption{Plan view of 1st (top) and 2nd (bottom) floor of structure. Stairs and key rooms are identified.}
 \label{fig:simp_geom}
 \end{figure}
 
@@ -300,10 +249,10 @@ While the fire was simplified to constant area fuel sources (Section~\ref{fire})
 
 \begin{lstlisting}
 &MATL ID        = 'GYPSUM'
-    FYI = 'Quintiere, Fire Behavior' 
-    CONDUCTIVITY    = 0.48
-    SPECIFIC_HEAT   = 0.84
-    DENSITY = 1440./
+    FYI = 'Drysdale' 
+    CONDUCTIVITY    = 0.17
+    SPECIFIC_HEAT   = 1.09
+    DENSITY = 930./
 
 &MATL ID        = 'WOOD_MAT'
     FYI = 'Incropera and DeWitt, Fundamentals of Heat and Mass Transfer'
@@ -312,7 +261,7 @@ While the fire was simplified to constant area fuel sources (Section~\ref{fire})
     DENSITY = 510./ 
 \end{lstlisting}
 
-\section{Vents}
+\section{Ventilation}
 \label{Vents}
 This simulation includes vents that account for the changes in ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). There are two ventilation scenarios that are considered in this study. The first is the baseline simulation where the ventilation times and ventilation areas represent our best understanding of the incident. The alternative simulation does not include the firefighter opening the rear door to make entry to the structure and the subsequent beta side wall breach. The times of the ventilation changes are provided in Table \ref{tab:vents}. Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open front door at the start of the simulation and the vents (opening size and open time) created during the simulation are significantly larger than the total effective area of leakage of structure of this type. Therefore, leakage would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
 
@@ -363,6 +312,35 @@ As discussed Section~\ref{geom}, the structure has 17.15 m (56 ft) by 6.15 m (20
 \caption{Alpha-Delta side of the structure within computational domain. Each of the 16 meshes is 3 m (9.8 ft) by 10 m (33 ft) by 5 m (16.4 ft).}
 \label{fig:mult_mesh}
 \end{figure}
+
+For the simulations performed for this study, Table ~\ref{tab:mod_param} includes the relevant model input parameters discussed in Section~\ref{model}.
+
+\begin{table}
+\centering
+\captionof{table}{Relevant Modeling Input Parameters}\label{tab:mod_param}
+\begin{tabular}{lll}
+\toprule[1.5pt]
+Parameter & Description & Reference  \\
+\midrule
+ Simulation Time           & 5 minutes                             & -- \\[.25cm]
+ Grid Size                 & 10 cm                                 & Section~\ref{mesh} \\ [.25cm]
+ Ambient Temperature       & 25 $^{\circ}$C                        & -- \\ [.1cm]
+\multirow{4}{*}{Reaction: Wood}  & Formula: $\C\H_{1.7}\O_{0.74}\N_{0.002}$              & \multirow{4}{*}{Section~\ref{fire}} \\
+                           & CO Yield: 0.004 \; ${\mathrm{kg_{CO}}/\mathrm{kg_{wood}}}$  & \\
+                           & Soot Yield: 0.015 \; ${\mathrm{kg_{C}}/\mathrm{kg_{wood}}}$ & \\
+                           & Heat of Combustion: 16400 kJ/kg                             & \\ [.25cm]
+\multirow{2}{*}{Peak HRR}  & Attic Fire: 9 MW                                            & \multirow{2}{*}{Section~\ref{fire}}\\ 
+                           & Porch Fire: 3.3 MW                                          & \\ [.25cm]                     
+\multirow{3}{*}{Material: Wood}    & k: 0.12 \; \si{W/(m.K)})        & \multirow{3}{*}{Section~\ref{matl}} \\
+                                   & $\rho$: 510 \; kg/m$^3$         & \\
+                                   & c$_{p}$: 1.38 \; \si{kJ/(kg.K)} & \\[.25cm]
+\multirow{3}{*}{Material: Gypsum}  & k: 0.17 \; \si{W/(m.K)}         &  \multirow{3}{*}{Section~\ref{matl}}\\ 
+                                   & $\rho$: 930 \; kg/m$^3$        & \\ 
+                                   & c$_{p}$: 1.09 \; \si{kJ/(kg.K)} & \\
+\bottomrule[1.25pt]
+\end{tabular}\par
+\end{table}
+
 
 \section{Timeline}
 \label{timeline}
