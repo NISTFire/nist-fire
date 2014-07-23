@@ -92,6 +92,7 @@ FDS \> Fire Dynamics Simulator \\
 HGL \> Hot Gas Layer \\
 HRR \> Heat Release Rate \\
 HRRPUA \> Heat Release Rate per Unit Area \\
+IC \> Incident Command \\
 LODD \> Line of Duty Death \\
 NIOSH \> National Institute for Occupational Safety and  Health \\
 NIST \> National Institute of Standards and Technology \\
@@ -116,15 +117,17 @@ This document describes the input and the results of the FDS (version 6.0.0) sim
 
 \chapter{Fire Incident Summary}
 \label{fire_sum}
-The following account of events is based on information provided by NIST physical measurements on-scene, NIST photographs of the scene, time line information provided by the Chicago Fire Department and information provided from the NIOSH Fire Fighter Fatality Investigation and Prevention Program Report~\cite{NIOSH:Bowyer}.
+The following account of events is based on information provided from the National Institute for Occupational Safety and Health (NIOSH) Fire Fighter Fatality Investigation and Prevention Program Report~\cite{NIOSH:Bowyer}. Details regarding times are taken from the report and should be considered approximate values.
 
-On November 2, 2012, a fire in a 2 1/2 story wood frame residential structure resulted in the death of a fire captain and injury to a fire fighter. At approximately 5:16 in the afternoon, a dispatch was made for ``smoke in the area''. Within a minute of dispatch, a Battalion Chief (BC) arrived and sized up the structure fire from the exterior and reported a working fire with heavy smoke coming from the front and rear of the structure's attic. After speaking with the building occupants, the BC entered the structure and found light smoke on the second floor and a glow around the doorway that led from the second floor hallway to enclosed rear porch. Engine 123 (E123) arrived on scene at approximately 17:19. The victims were part of the E123 crew.  The BC met the Captain and the Firefighter (victims) at the front door to the structure.  Then the Captain and Firefighter took their hose line to the second floor of the structure. At approximately 5:21, the Captain and Fire Fighter were on the second floor with their hoseline and had begun advancing the charged line toward the rear second floor door between the apartment and the enclosed porch. Approximately 30 seconds later, a fire fighter from Tower Ladder 39 (TL39) enters the enclosed porch on the rear of the structure by opening the rear exterior door to the first floor of the porch. The firefighter from TL39, notices ``the fire light up'' in the stairwell of the enclosed porch, and then kicks in the first level door between the rear porch and the main structure. Both doors remain open and the firefighter from TL39 exits the structure. Given the amount of fire showing from the second floor of the rear porch and ``heavy fire'' in the stairwell of the rear porch, the BC radios the E123 Captain at 17:23, to alert him to the fire conditions and to advise him that E49 would be applying water to the fire on the rear of the structure from the exterior. No response was made by the E123 Captain. It is believed that the door between the rear porch and the second floor hallway, where the E123 Captain and firefighter were located may have failed by this time.  Approximately a minute later E49 applied water to the fire in the attic.
+On November 2, 2012, a fire in a 2 1/2 story wood frame residential structure resulted in the death of a fire captain and injury to a fire fighter. At approximately 17:16 hours, a dispatch was made for ``smoke in the area''. The dispatch was made because a person on the street saw smoke and notified the residents, who all promptly left the structure. A battalion chief (BC19) from the nearest station arrived on-scene about one minute after dispatch; the station was only several blocks away. BC19 performed an exterior size-up and reported a working fire with heavy smoke coming from the front and rear of the structure's attic.  BC19 assumed incident command (IC) of the fire scene. After speaking with the building occupants, the IC confirmed the structure was evacuated. The IC entered the structure to investigate the second floor. He found only light smoke on the second floor and a glow around the doorway that led to enclosed rear porch. 
 
-Squad 5 (S5) entered the front of the structure at approximately 17:25 and headed to the second floor. They heard a commotion and found the E123 Captain collapsed on the kitchen floor and entangled with the E123 firefighter. A Mayday was called on the radio by S5 at approximately  17:27 and the E123 Captain was removed from the front of the building at approximately 17:29 and succumbed to his injuries at the hospital at 17:38. Table~\ref{tab:fire_info} presents the timeline of the fire.
+Engine 123 (E123) arrived on scene at approximately 17:18. The IC met the E123 captain and firefighter at the front door to the structure. The captain and firefighter took their hose line to the second floor of the structure. At approximately 17:21, the captain and firefighter were on the second floor with their hoseline and had begun advancing the charged line toward the rear second floor door between the apartment and the enclosed porch. Approximately 30 seconds later, a fire fighter from Tower Ladder 39 (TL39) enters the enclosed porch on the rear of the structure by opening the rear exterior door to the first floor of the porch. The firefighter from TL39, notices ``the fire light up'' in the stairwell of the enclosed porch, and then kicks in the first level door between the rear porch and the main structure. The firefighter did not see any fire in the main part of the structure and proceeded to exit the structure. Given the amount of fire showing from the second floor of the rear porch and ``heavy fire'' in the stairwell of the rear porch, the BC radios the E123 Captain at 17:23, to alert him to the fire conditions and to advise him that E49 would be applying water to the fire on the rear of the structure from the exterior. No response was made by the E123 Captain. It is believed that the door between the rear porch and the second floor hallway, where the E123 Captain and firefighter were located may have failed by this time.  Approximately a minute later E49 applied water to the fire in the attic.
+
+Squad 5 (S5) entered the front of the structure at approximately 17:25 and headed to the second floor. They heard a commotion and found the E123 Captain collapsed on the kitchen floor and entangled with the E123 firefighter. A Mayday was called on the radio by S5 at approximately 17:27 and the E123 Captain was removed from the front of the building at approximately 17:29 and succumbed to his injuries at the hospital at 17:38. Table~\ref{tab:fire_info} presents the timeline of the fire.
 
 \begin{table}
 \centering
-\captionof{table}{Fire Event Timeline}\label{tab:fire_info}
+\captionof{table}{Abridged NISOH approximate fire event timeline}\label{tab:fire_info}
 \begin{tabular}{l l}
 \toprule[1.5pt]
 Incident Time [hr:min:s] & Fire Behavior / Fireground Operation  \\
@@ -165,7 +168,7 @@ The structure was a 2 1/2 story residential building with balloon frame construc
 \includegraphics[width=\textwidth]{../Figures/1st_Floor_Metric} \\
 \includegraphics[width=\textwidth]{../Figures/2nd_Floor_Metric}
 \end{tabular*}
-\caption{Plan view of 1st (top) and 2nd (bottom) floor of structure. Stairs and key rooms are identified.}
+\caption{Plan view of 1st (top) and 2nd (bottom) floor of structure. Stairs and key rooms are identified Drawn using measurements collected by NIST staff.}
 \label{fig:simp_geom}
 \end{figure}
 
@@ -249,7 +252,7 @@ While the fire was simplified to constant area fuel sources (Section~\ref{fire})
 
 \section{Ventilation}
 \label{Vents}
-The simulations in this study account for the changes in ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). There are two ventilation scenarios that are considered in this study. The first is the baseline simulation where the ventilation times and ventilation areas represent our best understanding of the incident. The alternative simulation does not include the firefighter opening the rear door to make entry to the structure and the subsequent exterior left wall fire penetration. The times of the ventilation changes are provided in Table \ref{tab:vents}. Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open front door at the start of the simulation and the vents (opening size and open time) created during the simulation are significantly larger than the total effective area of leakage of a structure of this type. Therefore, leakage would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
+The simulations in this study account for the changes in ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). There are two ventilation scenarios that are considered in this study. The first is the baseline simulation where the ventilation times and ventilation areas represent our best understanding of the incident. The alternative simulation does not include the firefighter opening the rear door to make entry to the structure and the subsequent exterior left wall fire penetration. The times of the ventilation changes are provided in Table~\ref{tab:vents}. Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open front door at the start of the simulation and the vents (opening size and open time) created during the simulation are significantly larger than the total effective area of leakage of a structure of this type. Therefore, leakage would have a negligible impact on the fluid mechanics within the structure and is not included in this study. An unknown in Table~\ref{tab:vents} that needed to be estimated was the time when the second floor interior/porch door failed (2:40 into the simulation). While this time may not be exact, the takeaway from the analysis in the following sections should be impact of the door's failure on the interior conditions of the structure.
 
 \begin{table}
 \centering
@@ -330,34 +333,36 @@ Parameter & Description & Reference  \\
 
 \section{Timeline}
 \label{timeline}
-From the NIOSH report~\cite{NIOSH:Bowyer}, a timeline of events was able to be created, see Table~\ref{tab:fire_info}. Due to a lack of information about when the fire ignited, an ignition time/start of the simulation needed to be estimated.  We estimate that the simulation starts at 17:19:20. Since the actually time was unknown, the fire growth rate in the computational model is such that when firefighters enter the structure, the hazard level in the model is similar to the real situation. A second unknown that was estimated was the time when the second floor door fails (2:40 into the simulation). While this time is not exact, the takeaway from the analysis in the following sections should be impact of the door's failure on the interior conditions of the structure. Table~\ref{tab:firesim} shows the fireground timeline along with the corresponding simulation times.
+Table~\ref{tab:firesim} shows the fireground timeline along with the corresponding simulation times.
 
 \begin{table}
 \centering
 \captionof{table}{Fire - Simulation Event Timeline}\label{tab:firesim}
 \begin{tabular}{l l l}
 \toprule[1.5pt]
-Incident Time [hr:min:s] & Simulation Time [s] & Fire Behavior / Fireground Operation  \\
+Incident Time [hr:min:s] & Model Time [s] & Fire Behavior / Fireground Operation  \\
 \midrule
-\multirow{2}{*}{17:15:00} &    & \multirow{2}{*}{\parbox{10cm} {Reported working fire with heavy smoke coming from the front and rear of the structure's attic.}} \\ 
+\multirow{2}{*}{17:15:00} &    & \multirow{2}{*}{\parbox{9cm} {Reported working fire with heavy smoke coming from the front and rear of the structure's attic.}} \\ 
          & & \\[.25cm] %blank rows exist for wrapping text. # of blanks is 1 less than number of rows
-\multirow{2}{*}{17:16:00} & \multirow{2}{*}{}   &  \multirow{2}{*}{\parbox{10cm} {Dispatch for a ``Still'' alarm $-$ two engine companies, two truck companies, and a battalion chief.}} \\
+\multirow{2}{*}{17:16:00} & \multirow{2}{*}{}   &  \multirow{2}{*}{\parbox{9cm} {Dispatch for a ``Still'' alarm $-$ two engine companies, two truck companies, and a battalion chief.}} \\
          & \\[.25cm]
-         &  \multirow{2}{*} {0} &  \multirow{2}{*}{\parbox{10cm} {Simulation starts. Attic fire ignites. Initial self ventilation on charlie side. Front door open.}} \\
+         &  \multirow{2}{*} {0} &  \multirow{2}{*}{\parbox{9cm} {Simulation starts. Attic fire ignites. Initial self ventilation on charlie side. Front door open.}} \\
          & & \\[0.25cm]
-\multirow{2}{*}{17:20:00} & \multirow{2}{*}{40}  & \multirow{2}{*}{\parbox{10cm} {Attic self ventilation - heavy smoke out of front attic window and heavy smoke and fire out of rear. Rear porch ignites in model.}} \\
-         & & \\[.25cm] 
-         & 45 & Model ventilation on charlie side. \\[.25cm] 
-         & 55 & Model ventilation on beta side. \\[.25cm] 
+\multirow{3}{*}{17:20:00} & \multirow{3}{*}{40}  & \multirow{3}{*}{\parbox{9cm} {Attic windows break - heavy smoke out of front attic window and heavy smoke and fire out of rear. Rear porch ignites in model.}} \\
+         & & \\[.25cm]
+         & & \\[.25cm]  
+         & 45 & Ventilation through wall penetration on rear of structure. \\[.25cm] 
+         & 55 & Ventilation through wall penetration on left side of structure. \\[.25cm] 
 17:21:00 & 100 & E123 Capt. and FF on 2$^{nd}$ floor with 1 3/4-in hose line. \\[.25cm]
-17:21:30 & 130 & 1$^{st}$ floor exterior porch door opened. Attic fire ignites in model. \\[.25cm]
-        & 135 & Additional model ventilation on beta side. \\[.25cm] 
-        & 160 & Top of interior door fails in model. \\[.25cm] 
-\multirow{2}{*}{17:23:00}    & \multirow{2}{*}{220} & \multirow{2}{*}{\parbox{10cm} {Heavy fire report in rear stairwell and enclosed porch. No response from E123: Capt. or FF.}} \\
+\multirow{2}{*}{17:21:30} & \multirow{2}{*}{130} &  \multirow{2}{*}{\parbox{9cm}{1$^{st}$ floor exterior porch door opened. Porch fire ignites in FDS model.}} \\
+        &  & \\[.25cm]
+        & 135 & Additional ventilation through left side of structure. \\[.25cm] 
+        & 160 & Top of interior door fails in FDS model. \\[.25cm] 
+\multirow{2}{*}{17:23:00}    & \multirow{2}{*}{220} & \multirow{2}{*}{\parbox{9cm} {Heavy fire report in rear stairwell and enclosed porch. No response from E123: Capt. or FF.}} \\
          & & \\[.25cm]
 17:24:00    &   & Water applied to attic from the rear exterior position. \\[.25cm]
 17:25:00    &   & SQ5 makes entry through front of structure. \\[.25cm]
-\multirow{2}{*}{17:27:00}    & \multirow{2}{*}{300}  & \multirow{2}{*}{\parbox{10cm} {After hearing a Mayday call from SQ5, IC calls a Mayday. Simulation ends.}}\\
+\multirow{2}{*}{17:27:00}    & \multirow{2}{*}{300}  & \multirow{2}{*}{\parbox{9cm} {After hearing a Mayday call from SQ5, IC calls a Mayday. Simulation ends.}}\\
          & &  \\[.25cm]
 17:29:00    &   & E123 Capt. carried out of structure. \\
 \bottomrule[1.25pt]
@@ -370,7 +375,7 @@ Incident Time [hr:min:s] & Simulation Time [s] & Fire Behavior / Fireground Oper
 
 \section{Heat Release Rate}
 \label{HRR}
-The heat release rate output data from FDS quantifies the simulated rate of energy release in the simulation. Fig.~(\ref{fig:hrr}) shows the HRR versus time based on the prescribed fires described in Section \ref{fire} and the FDS results for two venting scenarios. The two vertical lines represent when a firefighter opened the back door of the structure (t = 130 s) and when the second floor interior door was estimated to fail (t = 160 s). Due to a lack of information about when the fire ignited or how fast it grew, these parameters needed to be estimated.  While the growth rate shown in Fig.~(\ref{fig:hrr}) (10~MW in approximately 20 seconds) is atypically fast, analysis of the incipient stage of the fire growth was not considered in this study. The goal was to have a fire approach its estimated peak and become ventilation limited quickly to minimize computation time while aligning with the constraints of videos taken during the fire. Accuracy of heat transfer to the walls of the structure may be sacrificed by taking this approach, however all window, door, and wall failure were driven by the event timeline not modeling predicted failure temperatures.
+The heat release rate output data from FDS quantifies the simulated rate of energy release in the simulation. Fig.~(\ref{fig:hrr}) shows the HRR versus time based on the prescribed fires described in Section \ref{fire} and the FDS results for two venting scenarios. The two vertical lines represent when a firefighter opened the back door of the structure (t = 130 s) and when the second floor interior door was estimated to fail (t = 160 s). Due to a lack of information about when the fire ignited or how fast it grew, these parameters needed to be estimated.  While the growth rate shown in Fig.~(\ref{fig:hrr}) (10~MW in approximately 20 seconds) is atypically fast, analysis of the incipient stage of the fire growth was not considered in this study. The goal was to have a fire approach its estimated peak and become ventilation limited quickly to minimize computation time while still aligning with the observations of video and picture evidence from the fire. Accuracy of heat transfer to the walls of the structure may be sacrificed by taking this approach, however all window, door, and wall failure were driven by the event timeline not modeling predicted failure temperatures.
 
 \begin{figure}[h!]
 \centering
@@ -395,7 +400,7 @@ As the fire grows in the attic and back porch, the pressure rises. Fig.~(\ref{fi
 \begin{figure}[!ht]
 \includegraphics[width=.75\textwidth]{../Figures/west_50th_baseline_pres2}
 \input{../Scripts/colorbar_metric_pres}
-\caption{FDS simulated pressure contours, 1 second prior to interior door failure. Note 1~Pa is 1.4 $\times 10 ^{-4}$ psi.}
+\caption{FDS simulated pressure contours, 1 second prior to interior door failure. Note 1~Pa is 1.4 $\times 10 ^{-4}$~psi.}
 \label{fig:pres_159s}
 \end{figure}
 Gases at elevated pressure will always travel toward an area of lower pressure. The door acts as a boundary between the high and low pressure areas. Once the door fails open, the high pressure gases flow toward the low pressure areas in the house, hallway, kitchen, and front stairwell. The velocity vectors in Fig.~(\ref{fig:velo_175s}), 15 seconds after the interior door fails, confirms this flow direction within the structure.
@@ -452,7 +457,7 @@ From Fig.~(\ref{fig:temp_175s}), 15 seconds after the door failed, high temperat
 The discussion will be broken up into two parts. The first part will address the results of the computational modeling as they relate to the interior hallways conditions. The second part will examine the the model results and observed outcomes of fire as they relate to tactics discussed in recent experimental research. 
 
 \section{Hallway Flow Path}
-From on-scene reports from the BC (Section~\ref{fire_sum}) and simulation results (Section~\ref{temp}), interior conditions on the second floor of the structure were initially tenable. From the NIOSH report, while the BC was inside the structure on the second floor, the  BC observed only a light haze and a glow around the door between the hallway and enclosed porch. This indicated that some amount of the fire was burring in the area of the enclosed porch. The simulation shows a high hazard area in the attic and the enclosed porch at this time. By the time the E123 Captain and FF arrived on the second floor (Table~\ref{tab:firesim}) and approached the rear of the structure, the rear porch was fully involved. Temperature and pressure, greater than 260~$^{\circ}$C (500~$^{\circ}$F) and 5~Pa respectively, were on the rear side of the steel door at the rear of the structure. Exposure to these conditions weakened the structural integrity of the door, eventually leading to a partial failure. Fig.~(\ref{fig:chicago_doorfold}) shows the state of the rear door post fire. Note the large crease in the door just above the knob.
+From on-scene reports from the BC (Section~\ref{fire_sum}) and simulation results (Section~\ref{temp}), interior conditions on the second floor of the structure were initially tenable. From the NIOSH report, while the BC was inside the structure on the second floor, the  BC observed only a light haze and a glow around the door between the hallway and enclosed porch. This indicated that some amount of the fire was burring in the area of the enclosed porch. The simulation shows a high hazard area in the attic and the enclosed porch at this time. By the time the E123 Captain and FF arrived on the second floor (Table~\ref{tab:firesim}) and approached the rear of the structure, the rear porch was fully involved. Temperature and pressure, greater than 260~$^{\circ}$C (500~$^{\circ}$F) and 5~Pa respectively, were on the porch side of the steel door at the rear of the structure. Exposure to these conditions weakened the structural integrity of the door, eventually leading to a partial failure. Fig.~(\ref{fig:chicago_doorfold}) shows the state of the rear door post fire. Note the large crease in the door just above the knob.
 
 \begin{figure}[h!]
 \centering
