@@ -6,14 +6,14 @@ This applies to Tests FIRE_FA2S1C1NCX1_1, FIRE_FA2S1C1NCX1_2, and FIRE_FA2S1C1NC
 Note that the pump in analyzer B was damaged and was replaced after these tests.
 
 
-For the fire tests in April 2014, the gas analyzer lag times are as follows
+For the fire tests in April 2014, the gas analyzer lag times were as follows
 
 FIRE_FA2S1C1NCX1_1, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
 FIRE_FA2S1C1NCX1_2, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
 FIRE_FA2S1C1NCX1_3, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
 
 
-For the fire tests in June/July 2014, the gas analyzer lag times are as follows:
+For the fire tests in June/July 2014, the gas analyzer lag times were as follows:
 
 Test_1_East_062514, No gas data, door/wind test only
 Test_2_East_062514, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
@@ -45,3 +45,5 @@ Test_26_East_070714, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
 Test_27_West_070814, Analyzer A lag time: 12 s, Analyzer B lag time: 12 s
 Test_28_East_070814, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
 Test_29_West_071014, Analyzer A lag time: 10 s, Analyzer B lag time: 13 s
+
+Note that as of 7/24/2014, the gas concentrations for the above tests were offset in the raw data files and committed to the repository by K. Overholt.
