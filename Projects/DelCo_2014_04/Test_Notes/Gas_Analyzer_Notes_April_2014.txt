@@ -1,9 +1,47 @@
-For the fire tests in April 2014, the gas analyzers were configured as followed:
+For the fire tests in April 2014, the gas analyzers were configured as follows:
 
 The sampling probe for gas analyzer A was located near TC array A1 (SE corner of East building).
-
 The sampling probe for gas analyer B was located near TC array A2 (SW corner of East building).
-
 This applies to Tests FIRE_FA2S1C1NCX1_1, FIRE_FA2S1C1NCX1_2, and FIRE_FA2S1C1NCX1_3.
-
 Note that the pump in analyzer B was damaged and was replaced after these tests.
+
+
+For the fire tests in April 2014, the gas analyzer lag times are as follows
+
+FIRE_FA2S1C1NCX1_1, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
+FIRE_FA2S1C1NCX1_2, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
+FIRE_FA2S1C1NCX1_3, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
+
+
+For the fire tests in June/July 2014, the gas analyzer lag times are as follows:
+
+Test_1_East_062514, No gas data, door/wind test only
+Test_2_East_062514, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
+Test_3_East_062514, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
+Test_4_East_062514, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
+Test_5_East_062614, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
+Test_6_East_062614, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
+Test_7_East_062714, No gas data, cold flow only
+Test_8_East_062714, No gas data
+Test_9_East_062714, No gas data
+Test_10_East_062714, No gas data
+Test_11_East_062714, No gas data
+Test_12_East_062914, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
+Test_13_East_062914, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
+Test_14_West_063014, No gas data, PPV only
+Test_15_West_063014, No gas data, PPV only
+Test_16_West_063014, No gas data, HOSE only
+Test_17_West_063014, No gas data, HOSE only
+Test_17b_West_063014, No gas data, HOSE only
+Test_18_West_063014, No gas data, HOSE only
+Test_19_West_063014, No gas data, HOSE only
+Test_20_West_063014, No gas data, HOSE only
+Test_21_East_070114, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
+Test_22_West_070214, Analyzer A lag time: 12 s, Analyzer B lag time: 12 s
+Test_23_West_070214, Analyzer A lag time: 12 s, Analyzer B lag time: 12 s
+Test_24_West_070214, Analyzer A lag time: 12 s, Analyzer B lag time: 12 s
+Test_25_West_070214, Analyzer A lag time: 12 s, Analyzer B lag time: 12 s
+Test_26_East_070714, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
+Test_27_West_070814, Analyzer A lag time: 12 s, Analyzer B lag time: 12 s
+Test_28_East_070814, Analyzer A lag time: 12 s, Analyzer B lag time: 35 s
+Test_29_West_071014, Analyzer A lag time: 10 s, Analyzer B lag time: 13 s
