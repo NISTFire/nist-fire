@@ -230,7 +230,7 @@ for f in os.listdir(data_dir):
 
             # Save plot to file
             print 'Plotting ', group
-            savefig('../Figures_Plots/' + test_name + '_' + group[0].rstrip('_') + '.pdf')
+            savefig('../Figures/Script_Figures/' + test_name + '_' + group[0].rstrip('_') + '.pdf')
             close('all')
 
         close('all')
