@@ -1,0 +1,9 @@
+start,event,data,data
+0,Ignition,Event,0
+273,D-side BR wndw fail,Event,273
+420,Bed2 wndw vent,Event,420
+528,Suppr in BR - start,Event,528
+597,Suppr in BR  - end,Event,597
+692,Suppr in Bed2 - start,Event,692
+715,Suppr in Bed2 - end,Event,715
+776,End of test ,Event,776

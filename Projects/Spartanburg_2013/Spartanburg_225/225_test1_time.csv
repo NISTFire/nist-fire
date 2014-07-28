@@ -1,0 +1,10 @@
+start,event,data,data
+0,Ignition,Event,0
+364,Ign. of 2nd couch,Event,364
+588,Ceil. collapse in kitch,Event,588
+603,LR side-b wndw failed,Event,603
+634,LR side-a wndw failed,Event,634
+745,Kitch. wndw failed,Event,745
+747,Burnroom wndw vented,Event,747
+767,Suppr. in FD/wndw - start,Event,767
+822,Suppr.  in FD/wndw - end,Event,822

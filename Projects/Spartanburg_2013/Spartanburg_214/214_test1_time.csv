@@ -1,0 +1,12 @@
+start,event,data,data
+0,Ignition,Event,0
+301,D-side LR wndw vented,Event,301
+403,Supp. In D-side LR wndw - start,Event,403
+408,Supp. In D-side LR wndw - end,Event,408
+422,Supp. In D-side LR wndw - start,Event,422
+435,Supp. In D-side LR wndw - end,Event,435
+474,A-side LR wndw vented,Event,474
+499,Supp. In A-side LR wndw - start,Event,499
+528,Supp. In A-side LR wndw - end,Event,528
+556,FD open,Event,556
+559,Test End,Event,559

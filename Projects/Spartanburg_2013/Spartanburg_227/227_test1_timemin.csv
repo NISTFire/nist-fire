@@ -1,0 +1,12 @@
+start,event,data,data
+0,Ignition,Event,0
+6.633333333,Suppr. in bsmnt wndw - start,Event,0.110555556
+6.783333333,Suppr. in bsmnt wndw - end,Event,0.113055556
+7.316666667,Suppr in BD - start,Event,0.121944444
+7.616666667,Suppr in BD - end,Event,0.126944444
+7.75,Suppr in BD - start,Event,0.129166667
+8.216666667,Suppr in BD - end,Event,0.136944444
+8.3,Suppr. - bsmnt wndw - start,Event,0.138333333
+8.616666667,Suppr. - bsmnt wndw -end,Event,0.143611111
+9.983333333,Suppr. - bsmnt wndw - start,Event,0.166388889
+10.46666667,Suppr. - bsmnt wndw -end,Event,0.174444444

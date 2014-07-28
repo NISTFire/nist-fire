@@ -1,0 +1,18 @@
+start,event,data,data
+0,Ignition,Event,0
+8.583333333,Plywood burns through side A,Event,8.583333333
+10.75,Water onto Side A plywood - s,Event,10.75
+11.56666667,Water onto Side A plywood - e,Event,11.56666667
+11.8,Water into Side A wndw - s,Event,11.8
+12.15,Water into Side A wndw - e,Event,12.15
+12.45,Water into FD/wndw - s,Event,12.45
+12.86666667,Water into FD - e,Event,12.86666667
+13.25,Water into Side A wndw - s,Event,13.25
+13.58333333,Water into Side A wndw - e,Event,13.58333333
+7.333333333,D wndw fail?,Event,7.333333333
+9.733333333,Water into D side - s,Event,9.733333333
+10.26666667,Water into D side - e,Event,10.26666667
+12.98333333,Water into D side - s,Event,12.98333333
+14.43333333,Water into D side - e,Event,14.43333333
+14.58333333,Water into D side - s,Event,14.58333333
+15,Water into D side - e,Event,15

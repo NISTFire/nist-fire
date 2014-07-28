@@ -1,0 +1,9 @@
+start,event,data,data
+0,Ignition,Event,0
+196,Burn rm wndw vented,Event,196
+481,Suppr. into BR wndw - start ,Event,481
+505,Suppr. into BR wndw - end,Event,505
+509,Suppr. into BR wndw - start ,Event,509
+597,Suppr. into BR wndw - end,Event,597
+709,FD Open,Event,709
+729,Interior supp,Event,729

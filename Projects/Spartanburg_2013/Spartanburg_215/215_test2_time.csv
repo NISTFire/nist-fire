@@ -1,0 +1,6 @@
+start,event,data,data
+0,Ignition,Event,0
+198,BR wndw fails/blocks,Event,198
+354,BR wndw fully vented,Event,354
+407,Fog suppr. in BR wndw - start,Event,407
+468,Fog suppr. in BR wndw - end,Event,468

@@ -1,0 +1,7 @@
+start,event,data,data
+0,Ignition,Event,0
+312,CAFS Suppr. In FD - start ,Event,312
+329,Suppr switch to porch,Event,329
+349,Overall Suppr. - end,Event,349
+356,Suppr. In F. wndw - start,Event,356
+369,Suppr. In F. wndw - end,Event,369

@@ -1,0 +1,11 @@
+start,event,data,data
+0,Ignition,Event,0
+167,A-side LR wndw - partial self vent,Event,167
+238,FD open,Event,238
+241,B-side LR wndw - self vent,Event,241
+251,FD shuts self,Event,251
+333,FD open,Event,333
+379,Suppr in FD/wndw - start,Event,379
+387,Suppr in FD/wndw - end,Event,387
+392,Suppr in FD/wndw - start,Event,392
+452,Suppr in FD/wndw - end,Event,452

@@ -1,0 +1,8 @@
+start,event,data,data
+0.00,Ignition,Event,0.00
+185.00,CB wndw 1/2 vented,Event,185.00
+198.00,CB wndw fully vented,Event,198.00
+298.00,OB side A wndw self vent 1/2,Event,298.00
+313.00,OB side A wndw self vent full,Event,313.00
+397.00,Suppr. In OB side D wndw - start,Event,397.00
+451.00,Suppr. In OB side D wndw - end,Event,451.00

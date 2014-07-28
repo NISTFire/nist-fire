@@ -1,0 +1,9 @@
+start,event,data,data
+0,Ignition,Event,0
+4.55,D-side BR wndw fail,Event,4.55
+7,Bed2 wndw vent,Event,7
+8.8,Suppr in BR - start,Event,8.8
+9.95,Suppr in BR  - end,Event,9.95
+11.53333333,Suppr in Bed2 - start,Event,11.53333333
+11.91666667,Suppr in Bed2 - end,Event,11.91666667
+12.93333333,End of test ,Event,12.93333333

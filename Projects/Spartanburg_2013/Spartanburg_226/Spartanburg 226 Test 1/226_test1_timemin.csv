@@ -1,0 +1,4 @@
+start,event,data,data
+0,Ignition,Event,0
+1.25,Spk. activiation,Event,0.020833333
+5.35,Spk. flow stopped,Event,0.089166667

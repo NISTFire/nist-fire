@@ -1,0 +1,9 @@
+closed bedroom
+20.4
+19.6
+19.1
+
+open bedroom
+33.0
+29.4
+31
