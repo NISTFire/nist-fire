@@ -328,14 +328,14 @@ Note that the coordinates here are unique for the vents are specific to the inpu
 
 \section{Materials}
 \label{matl}
-While the fires were represented as fuel sources with a constant area (Section~\ref{fire}), from a heat transfer perspective, it is important to define the material properties (density, thermal conductivity, and specific heat) to account for heat transfer and energy storage in the ceiling, walls, and floor. In this study, the material properties of gypsum~\cite{Drysdale:1} were specified on the finished walls and ceilings on the main two floors of the structure, and the material properties of wood~\cite{Incropera:1} were specified on the unfinished portions of the attic and rear porch. The following lines define these materials in the FDS input file:
+While the fires were represented as fuel sources with a constant area (Section~\ref{fire}), from a heat transfer perspective, it is important to define the material properties (density, thermal conductivity, and specific heat) to account for heat transfer and energy storage in the ceiling, walls, and floor. In this study, the material properties of gypsum~\cite{WAKILI2007} were specified on the finished walls and ceilings on the main two floors of the structure, and the material properties of wood~\cite{Incropera:1} were specified on the unfinished portions of the attic and rear porch. The following lines define these materials in the FDS input file:
 
 \begin{lstlisting}
 &MATL ID = 'GYPSUM'
-    FYI = 'Drysdale' 
-    CONDUCTIVITY = 0.17
-    SPECIFIC_HEAT = 1.09
-    DENSITY = 930. /
+    FYI = 'Wakili - Journal of Fire Sciences 2007' 
+    CONDUCTIVITY = 0.28
+    SPECIFIC_HEAT = 1.0
+    DENSITY = 810. /
 
 &MATL ID = 'WOOD_MAT'
     FYI = 'Incropera and DeWitt, Fundamentals of Heat and Mass Transfer'
