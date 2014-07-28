@@ -230,8 +230,8 @@ Incident Time  &  Fire Behavior / Fireground Operation  \\
          & \\[.25cm]
 \multirow{2}{*}{17:20:00}    & \multirow{2}{*}{\parbox{10cm} {Attic windows break - heavy smoke out of front attic window and heavy smoke and fire out of rear.}} \\
          & \\[.25cm] 
-17:21:00 & E123 captain and firefighter on 2nd floor with 1\sfrac{3}{4}-inch hoseline. \\[.25cm]
-17:21:30 & 1st floor exterior porch door opened. \\[.25cm]
+17:21:00 & E123 captain and firefighter on second floor with 1\sfrac{3}{4}-inch hoseline. \\[.25cm]
+17:21:30 & First floor exterior porch door opened. \\[.25cm]
 \multirow{2}{*}{17:23:00}    & \multirow{2}{*}{\parbox{10cm} {Heavy fire report in rear stairwell and enclosed porch. No response from E123 captain or firefighter.}} \\
          & \\[.25cm]
 17:24:00    & Water applied to attic from the rear exterior position. \\[.25cm]
@@ -260,7 +260,7 @@ The structure involved in this fire incident was a 2~\sfrac{1}{2} story resident
 \includegraphics[width=\textwidth]{../Figures/1st_Floor_Metric} \\
 \includegraphics[width=\textwidth]{../Figures/2nd_Floor_Metric}
 \end{tabular*}
-\caption[Plan view of 1st (top) and 2nd (bottom) floor of structure.]{Plan view of 1st (top) and 2nd (bottom) floor of structure. Stairs and key rooms are identified using measurements collected by NIST.}
+\caption[Plan view of first (top) and second (bottom) floor of structure.]{Plan view of first (top) and second (bottom) floor of structure. Stairs and key rooms are identified using measurements collected by NIST.}
 \label{fig:simp_geom}
 \end{figure}
 
@@ -391,7 +391,7 @@ As discussed in Section~\ref{geom}, the structure has dimensions of 17.15~m (56~
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=.60\textwidth]{../Figures/smv_exterior_mesh}
-\caption[Front-right side of the structure within the computational domain (with multiple meshes).]{Front-right side of the structure within the computational domain (with multiple meshes). Each of the 16 meshes is 3~m (9.8~ft) by 10~m (33~ft) by 5~m (16.4~ft).}
+\caption[Front-right side of the structure within the computational domain.]{Front-right side of the structure within the computational domain (with multiple meshes). Each of the 16 meshes is 3~m (9.8~ft) by 10~m (33~ft) by 5~m (16.4~ft).}
 \label{fig:mult_mesh}
 \end{figure}
 
@@ -445,8 +445,8 @@ Incident Time  &  Simulation Time  &  Fire Behavior / Fireground Operation  \\
          & & \\[.25cm]  
          & 45 & Ventilation through wall penetration on rear of structure. \\[.25cm] 
          & 55 & Ventilation through wall penetration on left side of structure. \\[.25cm] 
-17:21:00 & 100 & E123 captain and firefighter on 2nd floor with 1\sfrac{3}{4}-inch hoseline. \\[.25cm]
-\multirow{2}{*}{17:21:30} & \multirow{2}{*}{130} &  \multirow{2}{*}{\parbox{9cm}{1st floor exterior porch door opened. Porch fire ignites in FDS model.}} \\
+17:21:00 & 100 & E123 captain and firefighter on second floor with 1\sfrac{3}{4}-inch hoseline. \\[.25cm]
+\multirow{2}{*}{17:21:30} & \multirow{2}{*}{130} &  \multirow{2}{*}{\parbox{9cm}{First floor exterior porch door opened. Porch fire ignites in FDS model.}} \\
         &  & \\[.25cm]
         & 135 & Additional ventilation through left side of structure. \\[.25cm] 
         & 160 & Top of interior door fails in FDS model. \\[.25cm] 
@@ -469,7 +469,7 @@ The heat release rate output data from FDS quantifies the simulated rate of ener
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=.80\textwidth]{../Figures/Chicago_Fire_HRR}
-\caption[HRR versus time from FDS simulations of the West 50th St. fire.]{HRR versus time from FDS simulations of the West 50th St. fire. The first vertical line indicates when the back door failed, and the second vertical line indicates when the interior hallway door failed.}
+\caption[HRR versus time from the FDS simulations.]{HRR versus time from the FDS simulations. The first vertical line indicates the time at which the back door failed, and the second vertical line indicates the time at which the interior hallway door failed.}
 \label{fig:hrr}
 \end{figure}
 
@@ -524,7 +524,7 @@ Analysis of the temperatures from the FDS simulation will focus on the high haza
 \label{fig:temp_159s}
 \end{figure}
 
-Figure~(\ref{fig:temp_129s}) shows temperatures of at least 260~$^{\circ}$C (500~$^{\circ}$F) in the second floor rear porch and rear portion of the attic. High temperatures, between 80~$^{\circ}$C (185~$^{\circ}$F) and 200~$^{\circ}$C (390~$^{\circ}$F), also extend down to the rear entrance on the 1st floor. Before the interior door fails (Fig.~(\ref{fig:temp_159s})), the inflow of ambient air from the open rear door reduces the temperatures near the interior doorway, but at the same time the HRR increases because of the additional ventilation, as shown in Fig.~(\ref{fig:hrr}). As shown in Fig.~(\ref{fig:temp_161s}), after the second floor interior door fails, the high temperature gas that filled the rear porch flows in the direction of lower pressure (i.e., towards the front door). Note that the conditions in the attic do not appear to change.
+Figure~(\ref{fig:temp_129s}) shows temperatures of at least 260~$^{\circ}$C (500~$^{\circ}$F) in the second floor rear porch and rear portion of the attic. High temperatures, between 80~$^{\circ}$C (185~$^{\circ}$F) and 200~$^{\circ}$C (390~$^{\circ}$F), also extend down to the rear entrance on the first floor. Before the interior door fails (Fig.~(\ref{fig:temp_159s})), the inflow of ambient air from the open rear door reduces the temperatures near the interior doorway, but at the same time the HRR increases because of the additional ventilation, as shown in Fig.~(\ref{fig:hrr}). As shown in Fig.~(\ref{fig:temp_161s}), after the second floor interior door fails, the high temperature gas that filled the rear porch flows in the direction of lower pressure (i.e., towards the front door). Note that the conditions in the attic do not appear to change.
 \begin{figure}[!ht]
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_161}
 \input{../Scripts/colorbar_std} 
@@ -574,7 +574,7 @@ After the interior door failed, an interior flow path from the enclosed porch to
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=.7\textwidth]{../Figures/ChicagoFlow}
-\caption{Flow path on the second floor after the interior door failure.}
+\caption{Flow path on the second floor after interior door failure.}
 \label{fig:flowpath_1}
 \end{figure}
 
@@ -588,7 +588,8 @@ Prior to the interior door failure, the elevated temperatures on the second floo
 \includegraphics[width=.68\textwidth]{../Figures/west_50th_baseline_top_159_6ft}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{Temperature contours on the second floor, 1~s prior to door failure, 1.83~m (6~ft) above the floor.}
+\caption[Temperature contours on the second floor, 1~s prior to interior door failure.]
+{Temperature contours on the second floor, 1~s prior to interior door failure, 1.83~m (6~ft) above the floor.}
 \label{fig:temp_top_159}
 \end{figure}
 
@@ -597,7 +598,8 @@ Prior to the interior door failure, the elevated temperatures on the second floo
 \includegraphics[width=.68\textwidth]{../Figures/west_50th_baseline_top_165_6ft}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{Temperature contours on the second floor, 5~s after door failure, 1.83~m (6~ft) above the floor.}
+\caption[Temperature contours on the second floor, 5~s after interior door failure.]
+{Temperature contours on the second floor, 5~s after interior door failure, 1.83~m (6~ft) above the floor.}
 \label{fig:temp_top_165}
 \end{figure}
 
@@ -606,7 +608,8 @@ Prior to the interior door failure, the elevated temperatures on the second floo
 \includegraphics[width=.68\textwidth]{../Figures/west_50th_baseline_top_220_6ft}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{Temperature contours on the second floor, 60~s after door failure, 1.83~m (6~ft) above the floor.}
+\caption[Temperature contours on the second floor, 60~s after interior door failure.]
+{Temperature contours on the second floor, 60~s after interior door failure, 1.83~m (6~ft) above the floor.}
 \label{fig:temp_top_220}
 \end{figure}
 
@@ -675,14 +678,14 @@ The authors would like to thank the Chicago Fire Department, especially Commissi
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=1\textwidth]{../Figures/50th_Place_1st_Floor}
-\caption[Dimensioned drawing of 1st floor.]{Dimensioned drawing of 1st floor. The measurements are accurate to within 15~cm (6~in).}
+\caption[Dimensioned drawing of first floor.]{Dimensioned drawing of first floor. The measurements are accurate to within 15~cm (6~in).}
 \label{fig:first_floor}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=1\textwidth]{../Figures/50th_Place_2nd_Floor}
-\caption[Dimensioned drawing of 2nd floor.]{Dimensioned drawing of 2nd floor. The measurements are accurate to within 15~cm (6~in).}
+\caption[Dimensioned drawing of second floor.]{Dimensioned drawing of second floor. The measurements are accurate to within 15~cm (6~in).}
 \label{fig:second_floor}
 \end{figure}
 
