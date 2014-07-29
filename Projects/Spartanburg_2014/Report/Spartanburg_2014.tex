@@ -29,6 +29,9 @@
 \g@addto@macro\@floatboxreset\centering
 \makeatother
 
+% Extra packages
+\usepackage{xfrac}
+
 \begin{document}
 
 \bibliographystyle{unsrt}
@@ -36,30 +39,113 @@
 
 \begin{minipage}[t][9in][s]{6.25in}
 
+\begin{flushright}
+\fontsize{20}{24}\selectfont
+\bf{NIST Technical Note XXXX}
+\end{flushright}
+
 \headerB{
-Spartanburg 2014
+Spartanburg Fire Tests \\
+2013--2014 \\
 }
+
+\normalsize
 
 \headerC{
+{
 \flushright{
 Daniel Madrzykowski \\
-Craig G. Weinschenk \\
 Kristopher J. Overholt \\
-{\em Fire Research Division \\
-Engineering Laboratory \\
-Gaithersburg, Maryland, USA} \\ }
-}
+Craig G. Weinschenk \\
 
-\flushright{\today \\
+\vspace*{2\baselineskip}
+
+\begingroup
+\hypersetup{urlcolor=black}
+\href{http://dx.doi.org/10.6028/NIST.TN.XXXX}{http://dx.doi.org/10.6028/NIST.TN.XXXX}
+\endgroup
 }
 
 \vfill
 
 \flushright{
+
 \includegraphics[width=2.in]{../../../Bibliography/nistident_flright_vec} \\[.3in]
 }
+}
+}
+
+\end{minipage}
+
+\newpage
+\hspace{5in}
+\newpage
+
+\frontmatter
+
+\pagenumbering{roman}
+
+\begin{minipage}[t][9in][s]{6.25in}
+
+\begin{flushright}
+\fontsize{20}{24}\selectfont
+\bf{NIST Technical Note XXXX}
+\end{flushright}
+
+\headerB{
+Spartanburg Fire Tests \\
+2013--2014 \\
+}
+
+\headerC{
+\flushright{
+Daniel Madrzykowski \\
+Kristopher J. Overholt \\
+Craig G. Weinschenk \\
+{\em Fire Research Division \\
+Engineering Laboratory} \\
+
+\vspace*{2\baselineskip}
+
+\begingroup
+\hypersetup{urlcolor=black}
+\href{http://dx.doi.org/10.6028/NIST.TN.XXXX}{http://dx.doi.org/10.6028/NIST.TN.XXXX} \\
+\endgroup
+
+\vspace*{2\baselineskip}
+
+August 2014}}
+
+\vfill
+
+\flushright{\includegraphics[width=1in]{../../../Bibliography/doc} }
 
 \titlesigs
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}[t][9in][s]{6.25in}
+
+\flushright{Certain commercial entities, equipment, or materials may be identified in this \\
+document in order to describe an experimental procedure or concept adequately. \\
+Such identification is not intended to imply recommendation or endorsement by the \\
+National Institute of Standards and Technology, nor is it intended to imply that the \\
+entities, materials, or equipment are necessarily the best available for the purpose. \\
+}
+
+\vspace{3in}
+
+\large
+\flushright{\bf National Institute of Standards and Technology Technical Note XXXX \\
+Natl.~Inst.~Stand.~Technol.~Tech.~Note~XX, \pageref{LastPage} pages (August 2014) \\
+% http://dx.doi.org/10.6028/NIST.TN.XXXX \\
+CODEN: NTNOEF }
+
+\vfill
+
+\hspace{1in}
 
 \end{minipage}
 
@@ -109,6 +195,55 @@ NIST \> National Institute of Standards and Technology \\
 
 \section{Construction}
 \label{sec:Construction}
+
+\section{Instrumentation}
+\label{sec:Instrumentation}
+
+\begin{figure}[!ht]
+\includegraphics[width=6in]{../Figures/Instrumentation/286_College}
+\caption{Instrumentation, 286 College}
+\label{fig:Instrumentation_286_College}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width=6in]{../Figures/Instrumentation/489_N_Forest_1st_Floor}
+\caption{Instrumentation, 489 N. Forest, first floor}
+\label{fig:Instrumentation_489_N_Forest_1st_Floor}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width=6in]{../Figures/Instrumentation/489_N_Forest_2nd_Floor}
+\caption{Instrumentation, 489 N. Forest, second floor}
+\label{fig:Instrumentation_489_N_Forest_2nd_Floor}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width=6in]{../Figures/Instrumentation/302_College}
+\caption{Instrumentation, 302 College}
+\label{fig:Instrumentation_302_College}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width=6in]{../Figures/Instrumentation/305_Manning}
+\caption{Instrumentation, 305 Manning}
+\label{fig:Instrumentation_305_Manning}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width=6in]{../Figures/Instrumentation/289_Manning_1st_Floor}
+\caption{Instrumentation, 305 Manning, first floor}
+\label{fig:Instrumentation_305_Manning_1st_Floor}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width=6in]{../Figures/Instrumentation/289_Manning_2nd_Floor}
+\caption{Instrumentation, 305 Manning, second floor}
+\label{fig:Instrumentation_305_Manning_2nd_Floor}
+\end{figure}
+
+
+\clearpage
+
 
 \section{Fuel Load}
 \label{sec:Fuel_Load}
@@ -678,16 +813,17 @@ Floral Chair                 &  289 College (sprinkler room)     &  1.02 m x 1.0
 \end{figure}
 
 
-\clearpage
+% \clearpage
 
+% Heat flux measurements are large negative values
 
-\subsection{Test 3, Complete burndown}
+% \subsection{Test 3, Complete burndown}
 
-\begin{figure}[!ht]
-\includegraphics[width=5in]{../Figures/Script_Figures/305_Manning_Test_3_HF}
-\caption{305 Manning, Test 3, Heat Flux}
-\label{fig:305_Manning_Test_3_HF}
-\end{figure}
+% \begin{figure}[!ht]
+% \includegraphics[width=5in]{../Figures/Script_Figures/305_Manning_Test_3_HF}
+% \caption{305 Manning, Test 3, Heat Flux}
+% \label{fig:305_Manning_Test_3_HF}
+% \end{figure}
 
 
 \clearpage
