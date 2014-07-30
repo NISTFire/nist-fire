@@ -220,7 +220,7 @@ At 1727 hours, the TL39 crew had just completed the first hole in the roof about
 \noindent Table~\ref{tab:fire_info} shows an overview of the timeline of events. A plan view of the structure and the location where the captain collapsed are shown in Fig.~(\ref{fig:simp_geom}).
 \begin{table}
 \centering
-\captionof{table}{Abridged NOISH approximate fire event timeline}\label{tab:fire_info}
+\captionof{table}{Abridged NIOSH approximate fire event timeline}\label{tab:fire_info}
 \begin{tabular}{cl}
 \toprule[1.5pt]
 Incident Time  &  Fire Behavior / Fireground Operation  \\
@@ -289,9 +289,9 @@ The structure involved in this fire incident was a 2~\sfrac{1}{2} story resident
 \section{Fire}
 \label{fire}
 
-To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these findings, the FDS model includes two source fire locations: an initial fire in the attic and a secondary fire on the second floor porch landing. The attic and rear porch primarily consisted of wood fuel: the rear porch was enclosed with wood planks covered with foam board and vinyl siding, the roof consisted of asphalt shingles over wood planking, and the attic and porch floors were composed of oriented strand board (OSB).
+To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these findings, the FDS model includes two source fire locations: an initial fire in the attic and a secondary fire on the second floor porch landing. The attic and rear porch primarily consisted of wood fuel: the rear porch was enclosed with wood planks covered with foam board and vinyl siding, the roof consisted of asphalt shingles over wood planking, and the attic and porch floors were composed of oriented strand board.
 
-Wood can be represented by the the following chemical formula, $\C\H_{1.7}\O_{0.74}\N_{0.002}$, with yields of carbon monoxide ($y_{\mathrm{CO}}=0.004 \; {\mathrm{kg_{CO}}/\mathrm{kg_{wood}}}$) and soot ($y_{\mathrm{C}}=0.015 \; {\mathrm{kg_{C}}/\mathrm{kg_{wood}}}$) found from the SFPE Handbook~\cite{SFPE:Tewarson}. A balanced chemical reaction for wood oxidation can written as:
+Wood can be represented by the the following chemical formula, $\C\H_{1.7}\O_{0.74}\N_{0.002}$, with yields of carbon monoxide ($y_{\mathrm{CO}}=0.004 \; {\mathrm{kg_{CO}}/\mathrm{kg_{wood}}}$) and soot ($y_{\mathrm{C}}=0.015 \; {\mathrm{kg_{C}}/\mathrm{kg_{wood}}}$) found from the SFPE Handbook~\cite{SFPE:Tewarson}. A balanced chemical reaction for wood combustion can written as:
 
 \begin{multline}
 \C\H_{1.7}\O_{0.74}\N_{0.002} + 4.89(0.208\,\O_{2} + 0.783\,\N_{2} + 0.387\text{\sc{e}-}3\,\C\O_{2} + 0.834\text{\sc{e}-}2\,\H_{2}\O) \\ 
@@ -311,7 +311,7 @@ The value for the heat of combustion of wood used in this simulation was 16,400 
     CO_YIELD = 0.004/
 \end{lstlisting}
 
-Note that using the input lines above will invoke the simple chemistry reaction mechanism in FDS in which fuel and air react to form only CO$_2$, CO, H$_2$O, soot, and N$_2$. If the inclusion for other combustion products is desired, then the user must explicitly define those species and the chemical reaction that produces them~\cite{FDS_Users_Guide}. Based on the above input lines, FDS uses the default, mixing-controlled fast chemistry combustion model. This mechanism states that the rate of fuel consumption is proportional to both the local limiting reactant concentration and the local rate of mixing and extinction is based on the critical flame temperature approach~\cite{FDS_Math_Guide}. While FDS provides users to the option to use a more complex finite-rate combustion mechanism, we do not have sufficient evidence to justify deviating from the default specifications. 
+Note that using the input lines above will invoke the simple chemistry reaction mechanism in FDS in which fuel and air react to form only CO$_2$, CO, H$_2$O, soot, and N$_2$. If the inclusion for other combustion products is desired, then the user must explicitly define those species and the chemical reaction that produces them~\cite{FDS_Users_Guide}. Based on the above input lines, FDS uses the default, mixing-controlled fast chemistry combustion model. This mechanism states that the rate of fuel consumption is proportional to both the local limiting reactant concentration and the local rate of mixing and extinction is based on the critical flame temperature approach~\cite{FDS_Math_Guide}. While FDS provides users with the option to use a more complex finite-rate combustion mechanism, there is not sufficient evidence in this case to justify deviating from the default specifications. 
 
 To estimate the energy release rate per unit area (kW/m$^2$) of wood, we use work by Babrauskas and Grayson~\cite{babrauskas1990}. Experiments were conducted in a cone calorimeter\footnote{The cone calorimeter is an experimental apparatus used to gather data about ignition time, mass loss, combustion products, and heat release rate among other properties associated with burning small samples of materials.} to determine the 5 minute average of HRRPUA\footnote{HRRPUA is the heat release rate per unit area.} (kW/m$^2$) for several different types of wood over a range of radiant heat fluxes (kW/m$^2$). Babrauskas and Grayson~\cite{babrauskas1990} suggest that the heat release rate per unit area for a variety of woods is approximately 50~kW/m$^2$.
 
@@ -319,9 +319,9 @@ To calculate the total fire size, the appropriate burning area (exposed wood are
 
 \begin{lstlisting}
 &SURF ID='FIRE', HRRPUA=2250., COLOR='ORANGE', TAU_Q=10 /
-&VENT XB=-13.5,-13,1,5,6.16,6.16, SURF_ID='FIRE' / 2 m^2
-&VENT XB=-14.5,-14,1,5,6.16,6.16, SURF_ID='FIRE' / 2 m^2
-&VENT XB=-16.5,-15.5,1,2.5,3.14,3.14, SURF_ID='FIRE', DEVC_ID='SECOND FIRE'/ 1.5 m^2
+&VENT XB=-13.5,-13,1,5,6.16,6.16, SURF_ID='FIRE' / 
+&VENT XB=-14.5,-14,1,5,6.16,6.16, SURF_ID='FIRE' / 
+&VENT XB=-16.5,-15.5,1,2.5,3.14,3.14, SURF_ID='FIRE', DEVC_ID='SECOND FIRE'/ 
 &DEVC XYZ = -17.2,2,0 ID = 'SECOND FIRE', QUANTITY = 'TIME', SETPOINT = 40, INITIAL_STATE = .FALSE. /
 \end{lstlisting}
 Note that the coordinates here are unique for the vents are specific to the input files used for these simulations. The key point is that they are 2-D planes located at a specific area.
@@ -377,7 +377,7 @@ Simulation  &  Simulation   &  Area         &               &  Structure       \
 \end{tabular}\par
 \end{table}
 
-\section{Mesh}
+\section{Numerical Mesh}
 \label{mesh}
 
 For the simulation in this study, we can estimate a measure of how well the flow field is resolved by using the non-dimensional expression $D^*/\dx$. Here, $D^*$ is the characteristic fire diameter, $\dx$ is the nominal size of a mesh cell, and $\dQ$ is the total heat release rate of the fire:
@@ -388,7 +388,7 @@ D^* = \left(
 \label{eq:mesh}
 \end{equation}   
 From the FDS User Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the
-relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the fire as it is specified in the simulation. Following Eq.~(\ref{eq:mesh}) and using 10 cm grid cells, the ratio of the characteristic fire diameter to the cell size ($D^*/\dx$) is 15.5 for the 3.3~MW porch fire and 23 for the 9~MW attic fire. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced reasonable results. The grid resolution used in this model is within typical engineering $D^*/\dx$ values. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~(\ref{fig:geom_grid}) shows the front of the structure rendered in Smokeview with the 10 cm mesh.
+relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the fire as it is specified in the simulation. Following Eq.~(\ref{eq:mesh}) and using 10 cm grid cells, the ratio of the characteristic fire diameter to the cell size ($D^*/\dx$) is 15.5 for the 3.3~MW porch fire and 23 for the 9~MW attic fire. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were judged to be adequate for engineering calculations. The grid resolution used in this model is within typical engineering $D^*/\dx$ values. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~(\ref{fig:geom_grid}) shows the front of the structure rendered in Smokeview with the 10 cm mesh.
 
 \begin{figure}[!ht]
 \centering
@@ -400,7 +400,7 @@ relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the fire a
 \label{fig:geom_grid}
 \end{figure}
 
-As discussed in Section~\ref{geom}, the structure has dimensions of 17.15~m (56~ft) by 6.15~m (20~ft) and a total height of 8.56~m (28~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 24~m (79~ft) by 10~m (33~ft) by 10~m (33~ft). At a grid resolution of 10~cm (3.9~in), this would result in 2.4 million computational cells. To make the simulation time more reasonable, the domain was divided into 16 equal meshes (each containing 150 thousand grid cells) to be processed in parallel. Figure~(\ref{fig:mult_mesh}) shows the entire structure within the computational domain that has been divided into multiple meshes. For the simulations that were conducted as part of this study, Table~\ref{tab:mod_param} shows the relevant model input parameters that were discussed in Section~\ref{model}.
+As discussed in Section~\ref{geom}, the structure has dimensions of 17.15~m (56~ft) by 6.15~m (20~ft) and a total height of 8.56~m (28~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 24~m (79~ft) by 10~m (33~ft) by 10~m (33~ft). At a grid resolution of 10~cm (3.9~in), this would result in 2.4 million computational cells. To make the simulation time more reasonable (a run time of approximately one and a half days), the domain was divided into 16 equal meshes (each containing 150 thousand grid cells) to be processed in parallel. Figure~(\ref{fig:mult_mesh}) shows the entire structure within the computational domain that has been divided into multiple meshes. For the simulations that were conducted as part of this study, Table~\ref{tab:mod_param} shows the relevant model input parameters that were discussed in Section~\ref{model}.
 
 \begin{figure}[!ht]
 \centering
@@ -451,24 +451,29 @@ Incident Time  &  Simulation Time  &  Fire Behavior / Fireground Operation  \\
 \multirow{2}{*}{17:15:00} &    & \multirow{2}{*}{\parbox{9cm} {Reported working fire with heavy smoke coming from the front and rear of the structure's attic.}} \\ 
          & & \\[.25cm] %blank rows exist for wrapping text. # of blanks is 1 less than number of rows
 \multirow{2}{*}{17:16:00} & \multirow{2}{*}{}   &  \multirow{2}{*}{\parbox{9cm} {Dispatch for a ``Still'' alarm - two engine companies, two truck companies, and a battalion chief.}} \\
-         & \\[.25cm]
-         &  \multirow{2}{*} {0} &  \multirow{2}{*}{\parbox{9cm} {Simulation starts. Attic fire ignites. Initial ventilation through rear of structure. Front door open.}} \\
+         & & \\[.25cm]
+\multirow{3}{*} {} &  \multirow{3}{*} {0} &  \multirow{3}{*}{\parbox{8cm} {Simulation starts. Attic fire ignites. Initial ventilation through rear of structure. Front door open.}} \\
+         & & \\[0.25cm]
          & & \\[0.25cm]
 \multirow{3}{*}{17:20:00} & \multirow{3}{*}{40}  & \multirow{3}{*}{\parbox{9cm} {Attic windows break - heavy smoke out of front attic window and heavy smoke and fire out of rear. Rear porch ignites in model.}} \\
          & & \\[.25cm]
          & & \\[.25cm]  
-         & 45 & Ventilation through wall penetration on rear of structure. \\[.25cm] 
-         & 55 & Ventilation through wall penetration on left side of structure. \\[.25cm] 
-17:21:00 & 100 & E123 captain and firefighter on second floor with 1\sfrac{3}{4}-inch hoseline. \\[.25cm]
-\multirow{2}{*}{17:21:30} & \multirow{2}{*}{130} &  \multirow{2}{*}{\parbox{9cm}{First floor exterior porch door opened. Porch fire ignites in FDS model.}} \\
+\multirow{2}{*}{}  & \multirow{2}{*}{45} & \multirow{2}{*}{\parbox{8cm}{Ventilation through wall penetration on rear of structure.}} \\
+          & & \\[.25cm] 
+\multirow{2}{*}{}  & \multirow{2}{*}{55}  & \multirow{2}{*}{\parbox{8cm}{Ventilation through wall penetration on left side of structure.}} \\ 
+          & & \\[.25cm] 
+\multirow{2}{*}{17:21:00} & \multirow{2}{*}{100} & \multirow{2}{*}{\parbox{8cm}{E123 captain and firefighter on second floor with 1\sfrac{3}{4}-inch hoseline.}} \\
+         &  & \\[.25cm]
+\multirow{2}{*}{17:21:30} & \multirow{2}{*}{130} &  \multirow{2}{*}{\parbox{8cm}{First floor exterior porch door opened. Porch fire ignites in FDS model.}} \\
         &  & \\[.25cm]
         & 135 & Additional ventilation through left side of structure. \\[.25cm] 
         & 160 & Top of interior door fails in FDS model. \\[.25cm] 
-\multirow{2}{*}{17:23:00}    & \multirow{2}{*}{220} & \multirow{2}{*}{\parbox{9cm} {Heavy fire report in rear stairwell and enclosed porch. No response from E123 captain or firefighter.}} \\
+\multirow{3}{*}{17:23:00}    & \multirow{3}{*}{220} & \multirow{3}{*}{\parbox{8cm} {Heavy fire report in rear stairwell and enclosed porch. No response from E123 captain or firefighter.}} \\
          & & \\[.25cm]
+         & & \\[.25cm]  
 17:24:00    &   & Water applied to attic from the rear exterior position. \\[.25cm]
 17:25:00    &   & SQ5 makes entry through front of structure. \\[.25cm]
-\multirow{2}{*}{17:27:00}    & \multirow{2}{*}{300}  & \multirow{2}{*}{\parbox{9cm} {After hearing a Mayday call from SQ5, IC calls a Mayday. Simulation ends.}}\\
+\multirow{2}{*}{17:27:00}    & \multirow{2}{*}{300}  & \multirow{2}{*}{\parbox{8cm} {After hearing a Mayday call from SQ5, IC calls a Mayday. Simulation ends.}}\\
          & &  \\[.25cm]
 17:29:00    &   & E123 captain carried out of structure. \\
 \bottomrule[1.25pt]
