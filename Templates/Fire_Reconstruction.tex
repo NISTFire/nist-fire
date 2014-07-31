@@ -11,7 +11,7 @@
 %                                                                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{../Bibliography/commoncommands}
+\input{../../../Bibliography/commoncommands}
 
 % Rename chapter headings
 \renewcommand{\chaptername}{Section}
@@ -19,6 +19,13 @@
 
 % Math shortcuts
 \renewcommand{\sb}[1]{_\mathrm{#1}}
+\renewcommand{\C}{\mbox{C}}
+\renewcommand{\H}{\mbox{H}}
+\renewcommand{\O}{\mbox{O}}
+\newcommand{\N}{\mbox{N}}
+
+% Extra packages
+\usepackage{xfrac}
 
 \begin{document}
 
@@ -27,29 +34,107 @@
 
 \begin{minipage}[t][9in][s]{6.25in}
 
+\begin{flushright}
+\fontsize{20}{24}\selectfont
+\bf{NIST Technical Note XXXX}
+\end{flushright}
+
 \headerB{
-Fire Investigation\\
 Title\\
+}
+
+\normalsize
+
+\headerC{
+{
+\flushright{
+Authors \\
+
+\vspace*{2\baselineskip}
+
+\begingroup
+\hypersetup{urlcolor=black}
+\href{http://dx.doi.org/10.6028/NIST.TN.1838}{http://dx.doi.org/10.6028/NIST.TN.XXXX}
+\endgroup
+}
+
+\vfill
+
+\flushright{
+
+\includegraphics[width=2.in]{../../../Bibliography/nistident_flright_vec} \\[.3in]
+}
+}
+}
+
+\end{minipage}
+
+\newpage
+\hspace{5in}
+\newpage
+
+\frontmatter
+
+\pagenumbering{roman}
+
+\begin{minipage}[t][9in][s]{6.25in}
+
+\begin{flushright}
+\fontsize{20}{24}\selectfont
+\bf{NIST Technical Note XXXX}
+\end{flushright}
+
+\headerB{
+Title \\
 }
 
 \headerC{
 \flushright{
 Authors \\
 {\em Fire Research Division \\
-Engineering Laboratory \\
-Gaithersburg, Maryland, USA} \\ }
-}
+Engineering Laboratory} \\
 
-\flushright{\today \\
-}
+\vspace*{2\baselineskip}
+
+\begingroup
+\hypersetup{urlcolor=black}
+\href{http://dx.doi.org/10.6028/NIST.TN.1838}{http://dx.doi.org/10.6028/NIST.TN.XXXX} \\
+\endgroup
+
+\vspace*{2\baselineskip}
+
+August 2014}}
 
 \vfill
 
-\flushright{
-\includegraphics[width=2.in]{../Bibliography/nistident_flright_vec} \\[.3in]
-}
+\flushright{\includegraphics[width=1in]{../../../Bibliography/doc} }
 
 \titlesigs
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}[t][9in][s]{6.25in}
+
+\flushright{Certain commercial entities, equipment, or materials may be identified in this \\
+document in order to describe an experimental procedure or concept adequately. \\
+Such identification is not intended to imply recommendation or endorsement by the \\
+National Institute of Standards and Technology, nor is it intended to imply that the \\
+entities, materials, or equipment are necessarily the best available for the purpose. \\
+}
+
+\vspace{3in}
+
+\large
+\flushright{\bf National Institute of Standards and Technology Technical Note XXXX \\
+Natl.~Inst.~Stand.~Technol.~Tech.~Note~XXXX, \pageref{LastPage} pages (August 2014) \\
+% http://dx.doi.org/10.6028/NIST.TN.XXXX \\
+CODEN: NTNOEF }
+
+\vfill
+
+\hspace{1in}
 
 \end{minipage}
 
@@ -60,17 +145,17 @@ Gaithersburg, Maryland, USA} \\ }
 \pagestyle{plain}
 \pagenumbering{roman}
 
-\clearpage
+\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Contents}
 \tableofcontents
 
-\clearpage
+\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
 
-\clearpage
+\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
@@ -87,21 +172,48 @@ NIST \> National Institute of Standards and Technology \\
 
 \mainmatter
 
+\chapter*{\centering Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
 \chapter{Introduction}
 
 \chapter{Fire Incident Summary}
+\label{fire_sum}
 
-\chapter{Fire Dynamics Simulator and Smokeview}
+\chapter{Model Description}
+\label{model}
 
-\chapter{Model Input Parameters}
+\section{Geometry}
+\label{geom}
+
+\section{Fire}
+\label{fire}
+
+\section{Materials}
+\label{matl}
+
+\section{Ventilation}
+\label{Vents}
+
+\section{Numerical Mesh}
+\label{mesh}
 
 \chapter{Model Results}
+\label{results}
+
+\section{Heat Release Rate}
+\label{HRR}
+
+\section{Pressure}
+
+\section{Temperature}
+\label{temp}
 
 \chapter{Discussion}
 
 \chapter{Summary}
 
-\chapter{Acknowledgements}
+\chapter{Acknowledgments}
 
 \bibliography{../Bibliography/FDS_refs,../Bibliography/FDS_general,../Bibliography/FDS_mathcomp}
 
