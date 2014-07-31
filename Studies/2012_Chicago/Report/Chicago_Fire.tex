@@ -291,7 +291,7 @@ The structure involved in this fire incident was a 2~\sfrac{1}{2} story resident
 
 To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these findings, the FDS model includes two source fire locations: an initial fire in the attic and a secondary fire on the second floor porch landing. The attic and rear porch primarily consisted of wood fuel: the rear porch was enclosed with wood planks covered with foam board and vinyl siding, the roof consisted of asphalt shingles over wood planking, and the attic and porch floors were composed of oriented strand board.
 
-Wood can be represented by the the following chemical formula, $\C\H_{1.7}\O_{0.74}\N_{0.002}$, with yields of carbon monoxide ($y_{\mathrm{CO}}=0.004 \; \mathrm{kg}/\mathrm{kg}$) and soot ($y_{\mathrm{C}}=0.015 \; \mathrm{kg}/\mathrm{kg}$) per kg of fuel consumed found from the SFPE Handbook~\cite{SFPE:Tewarson}. A balanced chemical reaction for wood combustion can written as:
+Wood fuel can be represented by the chemical formula, $\C\H_{1.7}\O_{0.74}\N_{0.002}$, with specified yields of carbon monoxide ($y_{\mathrm{CO}}=0.004 \; \mathrm{kg}/\mathrm{kg}$) and soot ($y_{\mathrm{C}}=0.015 \; \mathrm{kg}/\mathrm{kg}$). The product yields are expressed in terms of the amount of carbon monoxide or soot emitted per unit mass of fuel consumed (kg/kg) and can be found in the SFPE Handbook~\cite{SFPE:Tewarson}. A balanced chemical reaction for wood combustion can written as:
 
 \begin{multline}
 \C\H_{1.7}\O_{0.74}\N_{0.002} + 4.89(0.208\,\O_{2} + 0.783\,\N_{2} + 0.387\text{\sc{e}-}3\,\C\O_{2} + 0.834\text{\sc{e}-}2\,\H_{2}\O) \\ 
@@ -299,7 +299,7 @@ Wood can be represented by the the following chemical formula, $\C\H_{1.7}\O_{0.
 \label{eq:wood_comb}
 \end{multline}
 
-The value for the heat of combustion of wood used in this simulation was 16,400 kJ/kg, based on data provided in the SFPE Handbook~\cite{SFPE:Tewarson}. The heat of combustion quantifies the amount of energy per unit mass of the fuel. The following text defines Eq.~\ref{eq:wood_comb} for an FDS input file with the desired fuel and reaction properties discussed above:
+The value for the heat of combustion of wood used in this simulation was~16,400 kJ/kg, based on data provided in the SFPE Handbook~\cite{SFPE:Tewarson}. The heat of combustion quantifies the amount of energy per unit mass of the fuel. The following text defines Eq.~\ref{eq:wood_comb} for an FDS input file with the desired fuel and reaction properties discussed above:
 
 \begin{lstlisting}
 &SPEC ID = 'WOOD', FORMULA = 'CH1.7O0.74N0.002' /
@@ -568,7 +568,7 @@ As shown in Fig.~(\ref{fig:temp_175s}), 15~s after the door failed, high tempera
 
 
 \chapter{Discussion}
-The results of the FDS simulations will be discussed in two sections. The first section will address the results of the computational modeling as they relate to the interior hallways conditions. The second section will examine the the model results and observed outcomes of the fire incident as they relate to tactics discussed in recent experimental research. 
+The results of the FDS simulations will be discussed in two sections. The first section will address the results of the computational modeling as they relate to the interior hallways conditions. The second section will examine the model results and observed outcomes of the fire incident as they relate to tactics discussed in recent experimental research. 
 
 \section{Hallway Flow Path}
 From on-scene reports (Section~\ref{fire_sum}) and the FDS simulation results (Section~\ref{temp}), the interior conditions on the second floor of the structure were initially tenable. From the NIOSH report, while the IC was inside the structure on the second floor, only light haze and a glow around the door between the hallway and enclosed porch was observed. This indicated the presence of fire in the area of the enclosed porch. The simulation results indicate a high hazard area in the attic and the enclosed porch at this time. By the time the E123 captain and firefighter arrived on the second floor (Table~\ref{tab:firesim}) and approached the rear of the structure, the rear porch was fully involved. Temperature conditions greater than 260~$^{\circ}$C (500~$^{\circ}$F) were present on the porch side of the steel-faced, wood-framed door at the rear of the structure. Exposure to these conditions weakened the structural integrity of the door, which may have lead to a partial failure. Figure~(\ref{fig:chicago_doorfold}) shows the state of the rear door after the fire. Note the large crease in the steel face of the door just above the knob.
