@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import division
+
 import itertools
 import numpy as np
 import pandas as pd
@@ -168,7 +170,37 @@ for condition in conditions:
 
     close('all')
 
+# Heat transfer model
+t = np.arange(300)
+A = 0.01 # m^2
+m = 0.05 # kg
+c = 1 # kJ/kg-K
+### q = h * A * (T_gas - T) = m * c * dT/dt
+# h = 11 # W/m^2-K
+# h = 13 # W/m^2-K
+# tau = m*c/h*A
+
+T_i_1 = 25; tau_1 = 65; T_gas_1 = 40.5; offset_1 = 10
+T_i_2 = 26; tau_2 = 60; T_gas_2 = 41; offset_2 = 7
+T_i_3 = 27; tau_3 = 70; T_gas_3 = 74; offset_3 = 10
+T_i_4 = 27; tau_4 = 65; T_gas_4 = 70; offset_4 = 10
+T_i_5 = 30; tau_5 = 68; T_gas_5 = 115; offset_5 = 10
+T_i_6 = 30; tau_6 = 55; T_gas_6 = 113; offset_6 = 10
+
+T_1 = T_gas_1 - (T_gas_1 - T_i_1) * np.exp(-t/tau_1)
+T_2 = T_gas_2 - (T_gas_2 - T_i_2) * np.exp(-t/tau_2)
+T_3 = T_gas_3 - (T_gas_3 - T_i_3) * np.exp(-t/tau_3)
+T_4 = T_gas_4 - (T_gas_4 - T_i_4) * np.exp(-t/tau_4)
+T_5 = T_gas_5 - (T_gas_5 - T_i_5) * np.exp(-t/tau_5)
+T_6 = T_gas_6 - (T_gas_6 - T_i_6) * np.exp(-t/tau_6)
+
 fig = figure()
+plot(t+offset_1, T_1, lw=1.5, ls='--', color='r')
+plot(t+offset_2, T_2, lw=1.5, ls='--', color='g')
+plot(t+offset_3, T_3, lw=1.5, ls='--', color='b')
+plot(t+offset_4, T_4, lw=1.5, ls='--', color='c')
+plot(t+offset_5, T_5, lw=1.5, ls='--', color='m')
+plot(t+offset_6, T_6, lw=1.5, ls='--', color='k')
 plot(np.arange(301), data['50_C_40_Hz_Inside_Average'], lw=1.5, ls='-', color='r', label='50 $^\circ$C at 2 m/s')
 plot(np.arange(301), data['50_C_60_Hz_Inside_Average'], lw=1.5, ls='-', color='g', label='50 $^\circ$C at 3 m/s')
 plot(np.arange(301), data['100_C_40_Hz_Inside_Average'], lw=1.5, ls='-', color='b', label='100 $^\circ$C at 2 m/s')
@@ -180,8 +212,9 @@ xlabel('Time', fontsize=20)
 ylabel('Temperature ($^\circ$C)', fontsize=20)
 xticks(fontsize=16)
 yticks(fontsize=16)
+xlim([0, 300])
 ylim([0, 200])
-legend(loc='upper right')
+legend(loc='upper left')
 savefig('../Figures/Gear_No_Slug_Inside_Temperature_Average_Comparison.pdf')
 
 fig = figure()
