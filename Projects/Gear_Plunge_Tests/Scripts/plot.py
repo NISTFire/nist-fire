@@ -157,14 +157,13 @@ for condition in conditions:
     data[condition + '_Inside_Average_Diff'] = np.diff(smooth(data[condition + '_Inside_Average'], 10))
 
     fig = figure()
-    plot(np.arange(309), data[condition + '_Outside_Average_Diff'], lw=1.5, ls='-', color='r', label='Gear Outside')
     plot(np.arange(309), data[condition + '_Inside_Average_Diff'], lw=1.5, ls='--', color='r', label='Gear Inside')
     grid(True)
     xlabel('Time', fontsize=20)
     ylabel('Temperature ($^\circ$C)', fontsize=20)
     xticks(fontsize=16)
     yticks(fontsize=16)
-    ylim([0, 30])
+    ylim([0, 1.2])
     legend(loc='upper right')
     savefig('../Figures/Gear_No_Slug_Temperature_' + condition + '_Diff.pdf')
 
