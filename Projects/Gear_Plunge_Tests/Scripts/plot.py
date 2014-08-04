@@ -171,9 +171,9 @@ for condition in conditions:
 
 # Heat transfer model
 t = np.arange(300)
-A = 0.01 # m^2
-m = 0.05 # kg
-c = 1 # kJ/kg-K
+A = 0.206 # m^2
+m = 0.0134737 # kg
+c = 1 # kJ/kg-K (1.24 -1.75)
 ### q = h * A * (T_gas - T) = m * c * dT/dt
 # h = 11 # W/m^2-K
 # h = 13 # W/m^2-K
