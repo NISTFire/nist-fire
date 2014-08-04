@@ -225,7 +225,7 @@ plot(np.arange(309), data['150_C_40_Hz_Inside_Average_Diff'], lw=1.5, ls='-', co
 plot(np.arange(309), data['150_C_60_Hz_Inside_Average_Diff'], lw=1.5, ls='-', color='k', label='150 $^\circ$C at 3 m/s')
 grid(True)
 xlabel('Time', fontsize=20)
-ylabel('Temperature ($^\circ$C)', fontsize=20)
+ylabel('Rate of Temperature Rise ($^\circ$C/s)', fontsize=20)
 xticks(fontsize=16)
 yticks(fontsize=16)
 ylim([0, 1.2])
