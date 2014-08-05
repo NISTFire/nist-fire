@@ -435,19 +435,19 @@ Parameter & Description & Reference  \\
 \midrule
  Simulation Time                   &  5 min                                                        & -- \\[.25cm]
  Grid Cell Size                    &  10 cm                                                        & Section~\ref{mesh} \\ [.25cm]
- Ambient Temperature               &  25 $^{\circ}$C                                               & -- \\ [.1cm]
-\multirow{4}{*}{Reaction: Wood}    &  Formula: $\C\H_{1.7}\O_{0.74}\N_{0.002}$                     & \multirow{4}{*}{Section~\ref{fire}} \\
-                                   &  CO Yield: 0.004 \; $\mathrm{kg}/\mathrm{kg}$   & \\
-                                   &  Soot Yield: 0.015 \; $\mathrm{kg}/\mathrm{kg}$  & \\
+ Ambient Temperature~\cite{NIOSH:Bowyer}              &  7~$^{\circ}$C (45~$^{\circ}$F)                                               & -- \\ [.1cm]
+\multirow{4}{*}{Reaction: Wood~\cite{SFPE:Tewarson}}    &  Formula: $\C\H_{1.7}\O_{0.74}\N_{0.002}$                     & \multirow{4}{*}{Section~\ref{fire}} \\
+                                   &  CO Yield: 0.004~$\mathrm{kg}/\mathrm{kg}$   & \\
+                                   &  Soot Yield: 0.015~$\mathrm{kg}/\mathrm{kg}$  & \\
                                    &  Heat of Combustion: 16,400~kJ/kg                             & \\ [.25cm]
 \multirow{2}{*}{Peak HRR}          &  Attic Fire: 9~MW                                             & \multirow{2}{*}{Section~\ref{fire}}\\ 
                                    &  Porch Fire: 3.3~MW                                           & \\ [.25cm]                     
-\multirow{3}{*}{Material: Wood}    &  $k$: 0.12 \; \si{W/(m.K)})                                   & \multirow{3}{*}{Section~\ref{matl}} \\
-                                   &  $\rho$: 510 \; kg/m$^3$                                      & \\
-                                   &  $c_{p}$: 1.38 \; \si{kJ/(kg.K)}                              & \\[.25cm]
-\multirow{3}{*}{Material: Gypsum}  &  $k$: 0.28 \; \si{W/(m.K)}                                    &  \multirow{3}{*}{Section~\ref{matl}}\\ 
-                                   &  $\rho$: 810 \; kg/m$^3$                                      & \\ 
-                                   &  $c_{p}$: 1.0 \; \si{kJ/(kg.K)}                               & \\
+\multirow{3}{*}{Material: Wood~\cite{Incropera:1} }   &  $k$: 0.12~\si{W/(m.K)})                                   & \multirow{3}{*}{Section~\ref{matl}} \\
+                                   &  $\rho$: 510~kg/m$^3$                                      & \\
+                                   &  $c_{p}$: 1.38~\si{kJ/(kg.K)}                              & \\[.25cm]
+\multirow{3}{*}{Material: Gypsum Board~\cite{WAKILI2007}}  &  $k$: 0.28~\si{W/(m.K)}                                    &  \multirow{3}{*}{Section~\ref{matl}}\\ 
+                                   &  $\rho$: 810~kg/m$^3$                                      & \\ 
+                                   &  $c_{p}$: 1.0~\si{kJ/(kg.K)}                               & \\
 \bottomrule[1.25pt]
 \end{tabular}\par
 \end{table}
