@@ -431,11 +431,11 @@ As discussed in Section~\ref{geom}, the structure has dimensions of 17.15~m (56~
 \captionof{table}{Relevant fire model input parameters}\label{tab:mod_param}
 \begin{tabular}{lll}
 \toprule[1.5pt]
-Parameter & Description & Reference  \\
+Parameter & Description & Discussion  \\
 \midrule
  Simulation Time                   &  5 min                                                        & -- \\[.25cm]
  Grid Cell Size                    &  10 cm                                                        & Section~\ref{mesh} \\ [.25cm]
- Ambient Temperature~\cite{NIOSH:Bowyer}              &  7~$^{\circ}$C (45~$^{\circ}$F)                                               & -- \\ [.1cm]
+ Ambient Temperature             &  25~$^{\circ}$C (77~$^{\circ}$F)$^{*}$                                               & -- \\ [.1cm]
 \multirow{4}{*}{Reaction: Wood~\cite{SFPE:Tewarson}}    &  Formula: $\C\H_{1.7}\O_{0.74}\N_{0.002}$                     & \multirow{4}{*}{Section~\ref{fire}} \\
                                    &  CO Yield: 0.004~$\mathrm{kg}/\mathrm{kg}$   & \\
                                    &  Soot Yield: 0.015~$\mathrm{kg}/\mathrm{kg}$  & \\
@@ -450,6 +450,7 @@ Parameter & Description & Reference  \\
                                    &  $c_{p}$: 1.0~\si{kJ/(kg.K)}                               & \\
 \bottomrule[1.25pt]
 \end{tabular}\par
+$^{*}$ Initial interior temperatures were assumed to be 25~$^{\circ}$C, exterior temperatures were 7~$^{\circ}$C~\cite{NIOSH:Bowyer}
 \end{table}
 
 \chapter{Model Results}
