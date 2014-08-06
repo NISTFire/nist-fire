@@ -1,0 +1,4 @@
+\beamer@endinputifotherversion {3.33pt}
+\beamer@sectionintoc {1}{Importance of Researching Fireground Tactics}{2}{0}{1}
+\beamer@sectionintoc {2}{Hose Streams}{5}{0}{2}
+\beamer@sectionintoc {3}{Experimental Setup and Results}{9}{0}{3}
