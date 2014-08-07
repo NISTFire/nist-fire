@@ -17,7 +17,7 @@ MESH IJK=15,50,25, XB=-22.5,-19.5,-2,8.0,-0.1,4.9, MULT_ID='mesh array' / 20 cm
 #  = Reactions =
 #  =============
 
-&SPEC ID = 'WOOD', FORMULA = 'CH1.7O0.74N0.002' /
+&SPEC ID='WOOD', FORMULA='CH1.7O0.74N0.002' /
 
 &REAC ID = 'wood' 
     FUEL = 'WOOD', 
@@ -29,12 +29,12 @@ MESH IJK=15,50,25, XB=-22.5,-19.5,-2,8.0,-0.1,4.9, MULT_ID='mesh array' / 20 cm
 #  = Burners =
 #  ===========
 
-&SURF ID='FIRE1', HRRPUA=2250., COLOR='ORANGE',TAU_Q=10 /
-&SURF ID='FIRE2', HRRPUA=2250., COLOR='ORANGE',TAU_Q=10 /
+&SURF ID='FIRE1', HRRPUA=2250., COLOR='ORANGE', TAU_Q=10 /
+&SURF ID='FIRE2', HRRPUA=2250., COLOR='ORANGE', TAU_Q=10 /
 &VENT XB=-13.5,-13,1,5,6.16,6.16, SURF_ID='FIRE1' /
 &VENT XB=-14.5,-14,1,5,6.16,6.16, SURF_ID='FIRE1' /
-&VENT XB=-16.5,-15.5,1,2.5,3.14,3.14, SURF_ID='FIRE2',DEVC_ID='SECOND FIRE'/
-&DEVC XYZ = -17.2,2,0 ID = 'SECOND FIRE', QUANTITY = 'TIME', SETPOINT = 40, INITIAL_STATE = .FALSE. / 
+&VENT XB=-16.5,-15.5,1,2.5,3.14,3.14, SURF_ID='FIRE2', DEVC_ID='SECOND FIRE'/
+&DEVC XYZ = -17.2,2,0, ID='SECOND FIRE', QUANTITY='TIME', SETPOINT=40, INITIAL_STATE=.FALSE. / 
 
 #  ====================================
 #  = Material and surface definitions =
