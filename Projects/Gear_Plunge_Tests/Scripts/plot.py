@@ -160,7 +160,7 @@ for condition in conditions:
     plot(np.arange(309), data[condition + '_Inside_Average_Diff'], lw=1.5, ls='--', color='r', label='Gear Inside')
     grid(True)
     xlabel('Time', fontsize=20)
-    ylabel('Temperature ($^\circ$C)', fontsize=20)
+    ylabel('Rate of Temperature Rise ($^\circ$C/s)', fontsize=20)
     xticks(fontsize=16)
     yticks(fontsize=16)
     ylim([0, 1.2])
