@@ -27,18 +27,16 @@
 
 &DUMP NFRAMES=1080, DT_HRR=1, DT_DEVC=1 /
 
-&MISC TMPA=14 /
-
 #  =============
 #  = Reactions =
 #  =============
 
 &REAC FUEL = 'POLYURETHANE'
-    SOOT_YIELD = 0.10
     N          = 1.0
     C          = 6.3
     H          = 7.1
-    O          = 2.1 /
+    O          = 2.1
+    SOOT_YIELD = 0.10 /
 
 #  ====================================
 #  = Material and surface definitions =
