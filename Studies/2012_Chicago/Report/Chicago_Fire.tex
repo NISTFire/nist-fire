@@ -266,11 +266,7 @@ Smokeview is a software tool designed to visualize simulation results from FDS~\
 
 Input data from various sources must be collected and documented to simulate a fire using FDS or any other fire model. For the simulation results presented in this document, information was obtained from two primary sources. The following information was gathered from the fire scene: the geometry of the building and the compartments being modeled, the size and location of exterior and interior ventilation openings, and documentation of fire damage to the building. The following information was gathered from witnesses, first responders, reports, and recorded media such as fire ground radios or videos: information on the timing of the fire development, the sequence and approximate timing of ventilation openings to the outside, and weather conditions at the time of the fire. 
 
-Based on the information collected, several engineering approximations were made. The actual ignition time is unknown.
- 
-The following subsections will describe the inputs that were used to construct the simulation, including any approximations or assumptions that were made.
-
-
+The focus of the analysis of the model results is on the interior second floor conditions prior to and after the interior door failure. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, it is known that the fire showed signs of being under-ventilated when firefighters arrived~\cite{NIOSH:Bowyer}, however the exact ignition time, fire growth rate, and energy release of the fire were not known. The ignition time and growth rate were estimated to balance computational runtime while adhering to documented observations. The energy release of the fire was estimated using documentation of the potential fuel load within the structure. Though there may exist differences with respect to the actual values compared to though used in the model, the inputs were determined to best model this fire scenario. The following subsections will describe the inputs that were used to construct the simulation, including any approximations or assumptions that were made.
 
 \section{Geometry}
 \label{geom}
@@ -338,6 +334,8 @@ To calculate the total fire size, the appropriate burning area (exposed wood are
 \end{lstlisting}
 Note that the coordinates here are unique for the vents are specific to the input files used for these simulations. The key point is that they are 2-D planes located at a specific area.
 
+\clearpage
+
 \section{Materials}
 \label{matl}
 While the fires were represented as fuel sources with a constant area (Section~\ref{fire}), from a heat transfer perspective, it is important to define the material properties (density, thermal conductivity, and specific heat) to account for heat transfer and energy storage in the ceiling, walls, and floor. In this study, the material properties of gypsum board~\cite{WAKILI2007} were specified on the finished walls and ceilings on the main two floors of the structure, and the material properties of wood~\cite{Incropera:1} were specified on the unfinished portions of the attic and rear porch. The following lines define these materials in the FDS input file:
@@ -355,10 +353,6 @@ While the fires were represented as fuel sources with a constant area (Section~\
     SPECIFIC_HEAT = 1.38
     DENSITY = 510. / 
 \end{lstlisting}
-
-
-\clearpage
-
 
 \section{Ventilation}
 \label{Vents}
