@@ -1,4 +1,4 @@
-&HEAD CHID='pg_county_10mph_9MW', TITLE='6404 57th Ave Riverdale MD'  /
+&HEAD CHID='pg_county_0mph_9MW', TITLE='6404 57th Ave Riverdale MD'  /
 
 &MULT ID='m1', DX=7,DY=4,DZ=4, I_UPPER=1,J_UPPER=3,K_UPPER=1/
 &MESH IJK=70,40,40, XB=-2,5,-3,1,0,4, MULT_ID='m1'/
@@ -15,15 +15,15 @@ MESH IJK=140,160,80, XB=-2,12,-3,13,0,8 /
 &VENT MB = 'XMIN', SURF_ID = 'OPEN' /
 &VENT MB = 'XMAX', SURF_ID = 'OPEN' /
 &VENT MB = 'YMIN', SURF_ID = 'OPEN' /
-VENT MB = 'YMAX', SURF_ID = 'OPEN' /
+&VENT MB = 'YMAX', SURF_ID = 'OPEN' /
 &VENT MB = 'ZMAX', SURF_ID = 'OPEN' /
 
-&SURF ID='wind', VEL=-4.47, RAMP_V='WIND RAMP',COLOR='INVISIBLE' /
-&VENT MB = 'YMAX', SURF_ID ='wind' /
-&RAMP ID='WIND RAMP', T=0,F=0.25 /
-&RAMP ID='WIND RAMP', T=10,F=0.50 /
-&RAMP ID='WIND RAMP', T=20,F=0.75 /
-&RAMP ID='WIND RAMP', T=30,F=1.00 /
+SURF ID='wind', VEL=-8.94, RAMP_V='WIND RAMP',COLOR='INVISIBLE' /
+VENT MB = 'YMAX', SURF_ID ='wind' /
+RAMP ID='WIND RAMP', T=0,F=0.25 /
+RAMP ID='WIND RAMP', T=10,F=0.50 /
+RAMP ID='WIND RAMP', T=20,F=0.75 /
+RAMP ID='WIND RAMP', T=30,F=1.00 /
 
 #  =============
 #  = Reactions =

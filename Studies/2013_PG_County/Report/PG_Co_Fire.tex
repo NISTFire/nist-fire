@@ -11,7 +11,7 @@
 %                                                                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{../Bibliography/commoncommands}
+\input{../../../Bibliography/commoncommands}
 
 % Rename chapter headings
 \renewcommand{\chaptername}{Section}
@@ -19,6 +19,13 @@
 
 % Math shortcuts
 \renewcommand{\sb}[1]{_\mathrm{#1}}
+\renewcommand{\C}{\mbox{C}}
+\renewcommand{\H}{\mbox{H}}
+\renewcommand{\O}{\mbox{O}}
+\newcommand{\N}{\mbox{N}}
+
+% Extra packages
+\usepackage{xfrac}
 
 \begin{document}
 
@@ -27,29 +34,115 @@
 
 \begin{minipage}[t][9in][s]{6.25in}
 
+\begin{flushright}
+\fontsize{20}{24}\selectfont
+\bf{NIST Technical Note XXXX}
+\end{flushright}
+
 \headerB{
-Fire Investigation\\
-Title\\
+Simulation of a Wind Driven \\
+Basement Fire - \\
+Riverdale Heights, MD \\
 }
+
+\normalsize
 
 \headerC{
+{
 \flushright{
-Authors \\
-{\em Fire Research Division \\
-Engineering Laboratory \\
-Gaithersburg, Maryland, USA} \\ }
-}
+Craig G. Weinschenk \\
+Kristopher J. Overholt \\
+Daniel Madrzykowski \\
 
-\flushright{\today \\
+\vspace*{2\baselineskip}
+
+\begingroup
+\hypersetup{urlcolor=black}
+\href{http://dx.doi.org/10.6028/NIST.TN.1838}{http://dx.doi.org/10.6028/NIST.TN.XXXX}
+\endgroup
 }
 
 \vfill
 
 \flushright{
-\includegraphics[width=2.in]{../Bibliography/nistident_flright_vec} \\[.3in]
+
+\includegraphics[width=2.in]{../../../Bibliography/nistident_flright_vec} \\[.3in]
+}
+}
 }
 
+\end{minipage}
+
+\newpage
+\hspace{5in}
+\newpage
+
+\frontmatter
+
+\pagenumbering{roman}
+
+\begin{minipage}[t][9in][s]{6.25in}
+
+\begin{flushright}
+\fontsize{20}{24}\selectfont
+\bf{NIST Technical Note XXXX}
+\end{flushright}
+
+\headerB{
+Simulation of a Wind Driven \\
+Basement Fire - \\
+Riverdale Heights, MD \\
+}
+
+\headerC{
+\flushright{
+Craig G. Weinschenk \\
+Kristopher J. Overholt \\
+Daniel Madrzykowski \\
+{\em Fire Research Division \\
+Engineering Laboratory} \\
+
+\vspace*{2\baselineskip}
+
+\begingroup
+\hypersetup{urlcolor=black}
+\href{http://dx.doi.org/10.6028/NIST.TN.1838}{http://dx.doi.org/10.6028/NIST.TN.XXXX} \\
+\endgroup
+
+\vspace*{2\baselineskip}
+
+August 2014}}
+
+\vfill
+
+\flushright{\includegraphics[width=1in]{../../../Bibliography/doc} }
+
 \titlesigs
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}[t][9in][s]{6.25in}
+
+\flushright{Certain commercial entities, equipment, or materials may be identified in this \\
+document in order to describe an experimental procedure or concept adequately. \\
+Such identification is not intended to imply recommendation or endorsement by the \\
+National Institute of Standards and Technology, nor is it intended to imply that the \\
+entities, materials, or equipment are necessarily the best available for the purpose. \\
+}
+
+\vspace{3in}
+
+\large
+\flushright{\bf National Institute of Standards and Technology Technical Note XXXX \\
+Natl.~Inst.~Stand.~Technol.~Tech.~Note~XXXX, \pageref{LastPage} pages (August 2014) \\
+% http://dx.doi.org/10.6028/NIST.TN.XXXX \\
+CODEN: NTNOEF }
+
+\vfill
+
+\hspace{1in}
 
 \end{minipage}
 
@@ -60,17 +153,17 @@ Gaithersburg, Maryland, USA} \\ }
 \pagestyle{plain}
 \pagenumbering{roman}
 
-\clearpage
+\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Contents}
 \tableofcontents
 
-\clearpage
+\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
 
-\clearpage
+\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
@@ -87,15 +180,52 @@ NIST \> National Institute of Standards and Technology \\
 
 \mainmatter
 
+\chapter*{\centering Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
 \chapter{Introduction}
 
 \chapter{Fire Incident Summary}
+\label{fire_sum}
 
-\chapter{Fire Dynamics Simulator and Smokeview}
+\chapter{Model Description}
+\label{model}
+Fire Dynamics Simulator~\cite{FDS_Users_Guide} is a computational fluid dynamics (CFD) model that solves a form of the Navier-Stokes equations appropriate for low-speed, thermally driven flow with an emphasis on smoke and heat transport from fires.  Within a CFD model, the room or building is divided into small three-dimensional rectangular control volumes or computational cells.  The cells are contained together within one larger volume known as a computational domain.  The CFD model computes the density, velocity, temperature, pressure, and species concentration of the gas in each cell.  Based on the laws of conservation of mass, momentum,  and energy, the model tracks the generation and movement of fire gasses. One of the most important advantages of FDS is that it is  mathematically verified~\cite{FDS_Verification_Guide} and validated against fire test data to ensure that it provides the expected results, given sufficient input data~\cite{FDS_Validation_Guide}. A complete description of the FDS model is provided in the FDS Technical Reference Guide~\cite{FDS_Math_Guide}.
 
-\chapter{Model Input Parameters}
+Smokeview is a software tool designed to visualize simulation results from FDS~\cite{Smokeview_Users_Guide}. Smokeview visualizes smoke and other attributes of the fire simulation using traditional scientific methods such as displaying tracer particle flow, two dimensional (2D) or three dimensional (3D) shaded contours of gas flow data such as temperature and flow vectors showing flow direction and magnitude. Smokeview allows the fire and fire movement to be visualized. This is done by displaying a series of partially transparent planes where the transparencies in each plane (at each grid node) are determined from soot densities computed by FDS. Smokeview also visualizes static data at particular times using 2D or 3D contours of data such as temperature and flow vectors showing flow direction and magnitude.
+
+Input data from various sources must be collected and documented to simulate a fire using FDS or any other fire model. For the simulation results presented in this document, information was obtained from two primary sources. The following information was gathered from the fire scene: the geometry of the building and the compartments being modeled, the size and location of exterior and interior ventilation openings, and documentation of fire damage to the building. The following information was gathered from witnesses, first responders, reports, and recorded media such as fire ground radios or videos: information on the timing of the fire development, the sequence and approximate timing of ventilation openings to the outside, and weather conditions at the time of the fire. 
+
+The analysis of the simulation results is focused on the interior conditions on the second floor before and after the interior door failure. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, the fire exhibited signs of under-ventilated conditions when firefighters arrived~\cite{NIOSH:Bowyer}; however, the exact ignition time, fire growth rate, and heat release rate (HRR) of the fire were not known. The ignition time and growth rate were estimated to reduce the amount of required calculation time while adhering to documented observations. The HRR of the fire was estimated using documentation of the potential fuel load within the structure.
+
+In reality, the quantities associated with these input parameters are not fixed values; rather, a model input parameter can be thought of as a point estimate from a distribution of possible input parameters with some associated amount of uncertainty. Any change in an input parameter (such as the HRR) for a given scenario would result in a change in the output quantity (such as the hot gas layer (HGL) temperature). For example, according to the McCaffrey, Quintiere, and Harkleroad~\cite{SFPE:Walton} empirical correlation, the HGL temperature in a well-ventilated compartment fire is proportional to the HRR raised to the two-thirds power. Following this relationship, a 7.5~\% increase in the HRR would result in a 5~\% increase in the HGL temperature~\cite{NUREG_1824_Sup_1}. More detailed discussion on the propagation of parameter uncertainty in fire models is available in a validation study that was sponsored by the U.S. Nuclear Regulatory Commission~\cite{NUREG_1824_Sup_1}. The following subsections describe the inputs that were used to develop the simulation, including any approximations or assumptions that were made.
+
+
+\section{Geometry}
+\label{geom}
+
+\section{Fire}
+\label{fire}
+
+\section{Materials}
+\label{matl}
+
+\section{Ventilation}
+\label{Vents}
+
+\section{Mesh}
+\label{mesh}
 
 \chapter{Model Results}
+\label{results}
+
+\section{Heat Release Rate}
+\label{HRR}
+
+\section{Pressure}
+
+\section{Temperature}
+\label{temp}
 
 \chapter{Discussion}
 

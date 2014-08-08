@@ -8,15 +8,15 @@
 &MESH IJK=25,40,40, XB=-7,-2,-3,5,0,8 /
 &MESH IJK=25,40,40, XB=-7,-2,5,13,0,8 /
 
-MISC MEAN_FORCING(1:2)=.TRUE.,.TRUE., U0=6.36, V0=6.36 /
+MESH IJK=140,160,80, XB=-2,12,-3,13,0,8 /
 
 &TIME T_END=300/
 
-&VENT MB = 'XMIN', SURF_ID = 'MIRROR' /
-&VENT MB = 'XMAX', SURF_ID = 'MIRROR' /
+&VENT MB = 'XMIN', SURF_ID = 'OPEN' /
+&VENT MB = 'XMAX', SURF_ID = 'OPEN' /
 &VENT MB = 'YMIN', SURF_ID = 'OPEN' /
 VENT MB = 'YMAX', SURF_ID = 'OPEN' /
-&VENT MB = 'ZMAX', SURF_ID = 'MIRROR' /
+&VENT MB = 'ZMAX', SURF_ID = 'OPEN' /
 
 &SURF ID='wind', VEL=-8.94, RAMP_V='WIND RAMP',COLOR='INVISIBLE' /
 &VENT MB = 'YMAX', SURF_ID ='wind' /
@@ -36,6 +36,31 @@ VENT MB = 'YMAX', SURF_ID = 'OPEN' /
     HEAT_OF_COMBUSTION=16400,
     SOOT_YIELD = 0.015,
     CO_YIELD = 0.004/
+
+#  ====================================
+#  = Material and surface definitions =
+#  ====================================
+
+&MATL ID          = 'GYPSUM' 
+    CONDUCTIVITY  = 0.28
+    SPECIFIC_HEAT = 1.00
+    DENSITY       = 810./
+
+&MATL ID          = 'WOOD_MAT'
+    CONDUCTIVITY  = 0.12
+    SPECIFIC_HEAT = 1.38
+    DENSITY       = 510./ 
+
+&SURF ID        = 'SLAB',
+      COLOR     = 'GRAY 70'
+      MATL_ID   = 'GYPSUM'
+      THICKNESS = 0.016 
+      DEFAULT   =.TRUE. /
+
+&SURF ID        = 'ROOF' 
+      MATL_ID   = 'WOOD_MAT'
+      COLOR     = 'BURLY WOOD 4'
+      THICKNESS = 0.016/
 
 #  ===========
 #  = Burners =
@@ -61,6 +86,10 @@ VENT MB = 'YMAX', SURF_ID = 'OPEN' /
 &RAMP ID='cycle', T=  160, F= -1 /
 &RAMP ID='cycle', T=  179, F=-1 /
 &RAMP ID='cycle', T=  180, F= 1 /
+
+
+&HOLE XB = 4.57,5.37,6.86,7.16,0.0,2.03, COLOR='RED', TRANSPARENCY=0.75, DEVC_ID='timer rear door' / rear door
+&DEVC XYZ=0.1,0.1,0.1, ID='timer rear door', SETPOINT= 0.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
 
 #  ===========
 #  = Windows =
@@ -169,6 +198,25 @@ VENT MB = 'YMAX', SURF_ID = 'OPEN' /
 &OBST XB = 0.0,9.14,0.0,7.16,5.06,5.36, OUTLINE=.TRUE. / Ceiling
 
 #  ====================
+#  = Roof Geometry =
+#  ====================
+
+&MULT ID='roof a' DY=0.3, DZ=0.15, N_LOWER=0, N_UPPER=11 /   
+&OBST XB = 0.0,9.14,0.0,0.3,5.36,5.51, MULT_ID='roof a', SURF_ID='ROOF' /
+&MULT ID='wall ab' DXB=0.0,0.0,-0.3,-0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
+&OBST XB = 0.0,0.3,3.3,3.6,5.36,7.16, MULT_ID='wall ab', SURF_ID='ROOF' / side wall b
+&MULT ID='wall bc' DXB=0.0,0.0,0.3,0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
+&OBST XB = 0.0,0.3,3.6,3.9,5.36,7.16, MULT_ID='wall bc', SURF_ID='ROOF' / side wall b
+
+
+&MULT ID='roof c' DY=-0.3, DZ=0.15, N_LOWER=0, N_UPPER=11 /   
+&OBST XB = 0.0,9.14,6.86,7.16,5.36,5.51, MULT_ID='roof c', SURF_ID='ROOF' /
+&MULT ID='wall cd' DXB=0.0,0.0,-0.3,-0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
+&OBST XB = 8.84,9.14,3.3,3.6,5.36,7.16, MULT_ID='wall cd', SURF_ID='ROOF' / side wall b
+&MULT ID='wall ad' DXB=0.0,0.0,0.3,0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
+&OBST XB = 8.84,9.14,3.6,3.9,5.36,7.16, MULT_ID='wall ad', SURF_ID='ROOF' / side wall b
+
+#  ====================
 #  = Outside Geometry =
 #  ====================
 
@@ -185,6 +233,9 @@ VENT MB = 'YMAX', SURF_ID = 'OPEN' /
 #  =====================
 #  = Output quantities =
 #  =====================
+
+&DEVC XB = 0.0,9.14,0.0,7.16,0.0,2.28, QUANTITY='HRR', ID='Basement_HRR' /
+&DEVC XB = 0.0,9.14,0.0,7.16,2.58,5.06, QUANTITY='HRR', ID='First_Floor_HRR' /
 
 &SLCF PBZ = 0.9, QUANTITY='TEMPERATURE', VECTOR=.TRUE. /
 &SLCF PBZ = 1.9, QUANTITY='TEMPERATURE', VECTOR=.TRUE.  /

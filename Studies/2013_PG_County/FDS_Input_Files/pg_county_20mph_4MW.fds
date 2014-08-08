@@ -39,12 +39,37 @@ VENT MB = 'YMAX', SURF_ID = 'OPEN' /
     SOOT_YIELD = 0.015,
     CO_YIELD = 0.004/
 
+#  ====================================
+#  = Material and surface definitions =
+#  ====================================
+
+&MATL ID          = 'GYPSUM' 
+    CONDUCTIVITY  = 0.28
+    SPECIFIC_HEAT = 1.00
+    DENSITY       = 810./
+
+&MATL ID          = 'WOOD_MAT'
+    CONDUCTIVITY  = 0.12
+    SPECIFIC_HEAT = 1.38
+    DENSITY       = 510./ 
+
+&SURF ID        = 'SLAB',
+      COLOR     = 'GRAY 70'
+      MATL_ID   = 'GYPSUM'
+      THICKNESS = 0.016 
+      DEFAULT   =.TRUE. /
+
+&SURF ID        = 'ROOF' 
+      MATL_ID   = 'WOOD_MAT'
+      COLOR     = 'BURLY WOOD 4'
+      THICKNESS = 0.016/
+
 #  ===========
 #  = Burners =
 #  ===========
 
-&SURF ID='burner1', HRRPUA = 1000, COLOR='BURNT ORANGE', TAU_Q=50 /
-&SURF ID='burner2', HRRPUA = 2000, COLOR='BURNT ORANGE', TAU_Q=50 /
+&SURF ID='burner1', HRRPUA = 1000, COLOR='BURNT ORANGE', TAU_Q=30 /
+&SURF ID='burner2', HRRPUA = 2000, COLOR='BURNT ORANGE', TAU_Q=30 /
 
 &OBST XB=0.6,1.2,5,6.5,0.0,0.4, SURF_IDS='burner1','INERT','INERT' /  Burner1
 &OBST XB=2.5,4,5.0,6.0,0.0,0.4, SURF_IDS='burner2','INERT','INERT' /  Burner2
@@ -63,6 +88,11 @@ VENT MB = 'YMAX', SURF_ID = 'OPEN' /
 &RAMP ID='cycle', T=  160, F= -1 /
 &RAMP ID='cycle', T=  179, F=-1 /
 &RAMP ID='cycle', T=  180, F= 1 /
+
+
+&HOLE XB = 4.57,5.37,6.86,7.16,0.0,2.03, COLOR='RED', TRANSPARENCY=0.75, DEVC_ID='timer rear door' / rear door
+&DEVC XYZ=0.1,0.1,0.1, ID='timer rear door', SETPOINT= 170.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+
 
 #  ===========
 #  = Windows =
@@ -94,7 +124,6 @@ VENT MB = 'YMAX', SURF_ID = 'OPEN' /
 &OBST XB = 5.79,6.09,0.3,6.86,0.0,2.28, COLOR='GRAY 40' / bedroom general wall
 &OBST XB = 0.3,1.67,3.2,4.48,0.0,2.28, COLOR='GRAY 40' / utility
 &HOLE XB = 0.0,0.3,0.95,1.71,1.48,1.98, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1' / general window
-&HOLE XB = 4.57,5.37,6.86,7.16,0.0,2.03 / general door
 
 !Basement Kitchen--------------------------------
 &HOLE XB = 2.13,2.99,6.86,7.16,0.533,1.98 / kitchen window
@@ -108,7 +137,7 @@ VENT MB = 'YMAX', SURF_ID = 'OPEN' /
 &HOLE XB = 8.84,9.14,0.95,1.71,1.48,1.98, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  / bedroom window
 
 !First Floor-------------------------------------
-&OBST XB = 0.0,9.14,0.0,7.16,2.28,2.58, OUTLINE=.TRUE. / Floor
+&OBST XB = 0.0,9.14,0.0,7.16,2.28,2.58 / Floor
 &HOLE XB = 2.37,4.21,3.41,4.42,2.28,2.58 / Stairwell Hole
 &HOLE XB = 2.07,2.37,3.41,4.42,2.36,2.58 / Stairwell Hole
 
@@ -163,12 +192,32 @@ VENT MB = 'YMAX', SURF_ID = 'OPEN' /
 
 !First Floor Living Room-------------------------
 &HOLE XB = 0.0,0.3,1.1,1.89,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /a-side window 2
-&HOLE XB = 1.33,2.47,0.0,0.3,3.49,4.63, COLOR='RED', TRANSPARENCY=0.75, DEVC_ID='timer bay2' / middle bay window
+&HOLE XB = 1.33,2.47,0.0,0.3,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer bay2' / middle bay window
 &HOLE XB = 2.57,3.05,0.0,0.3,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1' / d-side bay window
 &OBST XB = 3.86,4.97,-1.0,0.0,2.28,2.58 / front door stoop
 
 !First Floor Ceiling-----------------------------
-&OBST XB = 0.0,9.14,0.0,7.16,5.06,5.36, OUTLINE=.TRUE. / Ceiling
+&OBST XB = 0.0,9.14,0.0,7.16,5.06,5.36 / Ceiling
+
+#  ====================
+#  = Roof Geometry =
+#  ====================
+
+&MULT ID='roof a' DY=0.3, DZ=0.15, N_LOWER=0, N_UPPER=11 /   
+&OBST XB = 0.0,9.14,0.0,0.3,5.36,5.51, MULT_ID='roof a', SURF_ID='ROOF' /
+&MULT ID='wall ab' DXB=0.0,0.0,-0.3,-0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
+&OBST XB = 0.0,0.3,3.3,3.6,5.36,7.16, MULT_ID='wall ab', SURF_ID='ROOF' / side wall b
+&MULT ID='wall bc' DXB=0.0,0.0,0.3,0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
+&OBST XB = 0.0,0.3,3.6,3.9,5.36,7.16, MULT_ID='wall bc', SURF_ID='ROOF' / side wall b
+
+
+&MULT ID='roof c' DY=-0.3, DZ=0.15, N_LOWER=0, N_UPPER=11 /   
+&OBST XB = 0.0,9.14,6.86,7.16,5.36,5.51, MULT_ID='roof c', SURF_ID='ROOF' /
+&MULT ID='wall cd' DXB=0.0,0.0,-0.3,-0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
+&OBST XB = 8.84,9.14,3.3,3.6,5.36,7.16, MULT_ID='wall cd', SURF_ID='ROOF' / side wall b
+&MULT ID='wall ad' DXB=0.0,0.0,0.3,0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
+&OBST XB = 8.84,9.14,3.6,3.9,5.36,7.16, MULT_ID='wall ad', SURF_ID='ROOF' / side wall b
+
 
 #  ====================
 #  = Outside Geometry =
@@ -187,6 +236,9 @@ VENT MB = 'YMAX', SURF_ID = 'OPEN' /
 #  =====================
 #  = Output quantities =
 #  =====================
+
+&DEVC XB = 0.0,9.14,0.0,7.16,0.0,2.28, QUANTITY='HRR', ID='Basement_HRR' /
+&DEVC XB = 0.0,9.14,0.0,7.16,2.58,5.06, QUANTITY='HRR', ID='First_Floor_HRR' /
 
 &SLCF PBZ = 0.9, QUANTITY='TEMPERATURE', VECTOR=.TRUE. /
 &SLCF PBZ = 1.9, QUANTITY='TEMPERATURE', VECTOR=.TRUE.  /
