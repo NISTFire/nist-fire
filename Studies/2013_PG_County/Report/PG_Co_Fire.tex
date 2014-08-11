@@ -196,7 +196,8 @@ Smokeview is a software tool designed to visualize simulation results from FDS~\
 
 Input data from various sources must be collected and documented to simulate a fire using FDS or any other fire model. For the simulation results presented in this document, information was obtained from two primary sources. The following information was gathered from the fire scene: the geometry of the building and the compartments being modeled, the size and location of exterior and interior ventilation openings, and documentation of fire damage to the building. The following information was gathered from witnesses, first responders, reports, and recorded media such as fire ground radios or videos: information on the timing of the fire development, the sequence and approximate timing of ventilation openings to the outside, and weather conditions at the time of the fire. 
 
-The analysis of the simulation results is focused on the interior conditions on the second floor before and after the interior door failure. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, the fire exhibited signs of under-ventilated conditions when firefighters arrived~\cite{NIOSH:Bowyer}; however, the exact ignition time, fire growth rate, and heat release rate (HRR) of the fire were not known. The ignition time and growth rate were estimated to reduce the amount of required calculation time while adhering to documented observations. The HRR of the fire was estimated using documentation of the potential fuel load within the structure.
+The analysis of the simulation results is focused on the impact of ventilation, specifically opening and closing the front door, on the conditions on the first floor of the structure. 
+
 
 In reality, the quantities associated with these input parameters are not fixed values; rather, a model input parameter can be thought of as a point estimate from a distribution of possible input parameters with some associated amount of uncertainty. Any change in an input parameter (such as the HRR) for a given scenario would result in a change in the output quantity (such as the hot gas layer (HGL) temperature). For example, according to the McCaffrey, Quintiere, and Harkleroad~\cite{SFPE:Walton} empirical correlation, the HGL temperature in a well-ventilated compartment fire is proportional to the HRR raised to the two-thirds power. Following this relationship, a 7.5~\% increase in the HRR would result in a 5~\% increase in the HGL temperature~\cite{NUREG_1824_Sup_1}. More detailed discussion on the propagation of parameter uncertainty in fire models is available in a validation study that was sponsored by the U.S. Nuclear Regulatory Commission~\cite{NUREG_1824_Sup_1}. The following subsections describe the inputs that were used to develop the simulation, including any approximations or assumptions that were made.
 
@@ -213,7 +214,7 @@ In reality, the quantities associated with these input parameters are not fixed 
 \section{Ventilation}
 \label{Vents}
 
-\section{Mesh}
+\section{Numerical Mesh}
 \label{mesh}
 
 \chapter{Model Results}
@@ -233,7 +234,7 @@ In reality, the quantities associated with these input parameters are not fixed 
 
 \chapter{Acknowledgments}
 
-\bibliography{../Bibliography/FDS_refs,../Bibliography/FDS_general,../Bibliography/FDS_mathcomp}
+\bibliography{../../../Bibliography/FDS_refs,../../../Bibliography/FDS_general}
 
 \appendix
 
