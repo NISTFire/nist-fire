@@ -24,6 +24,11 @@
 \renewcommand{\O}{\mbox{O}}
 \newcommand{\N}{\mbox{N}}
 
+% Center all figures
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
 \begin{document}
 
 \bibliographystyle{unsrt}
@@ -202,10 +207,15 @@ $c_{p}$ \> specific heat \\
 
 \mainmatter
 
+
 \chapter*{\centering Abstract}
+
 The Fire Dynamics Simulator (FDS) fire model, which is developed and maintained by the National Institute of Standards and Technology (NIST), was used to provide insight into the dynamics of a fire that occurred on XXXX, within a 2~\sfrac{1}{2}~story, single family structure in San Francisco, CA, that resulted in the death of two firefighters. The inputs for the FDS simulations are documented in this report and are based on the fire scenario, including the building geometry, interior furnishings, and ventilation conditions. The fire started in the attic and spread down through an opening into the enclosed porch on the rear of the structure. This resulted in ventilation limited (fuel rich) fire conditions in the attic and rear porch areas. The spread of fire and hot gases into the second floor of the structure was limited by a closed steel-faced, wood-framed door. After exposure to the elevated temperatures and pressure from the fire in the porch area, the wood frame of the door decomposed, the steel faces of the door failed, and the door collapsed inward. The door failure resulted in the establishment of a flow path between the higher pressure and higher temperature conditions in the enclosed porch and the lower pressure and lower temperature conditions in the hallway and kitchen areas of the second floor. The temperature of the gases that flowed into the hallway exceeded 260~$^{\circ}$C (500~$^{\circ}$F) at a height of 1.86~m (6~ft). Unfortunately, a captain and firefighter were advancing a hose line in the hallway near the door at the time of the door failure. It appears that the captain was likely overcome by the rapid change in conditions before he could exit to the safety of the kitchen area. After a Mayday call, the captain was rescued from the structure, but later succumbed to his injuries.
 
+
 \chapter{Introduction}
+\label{sec:introduction}
+
 Part of the function of the Fire Research Division at NIST is to develop and apply technology, measurements, and standards to improve the understanding of the behavior, prevention, and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) fire model to provide insight into the fire development and thermal conditions of fires that have resulted in line of duty deaths (LODDs)~\cite{Madrzykowski:1,Iowa,Texas,Bryner:Charleston,barowy:texas}. The objective of these studies has been to improve the safety and effectiveness of firefighters.
 
 On November 2, 2012, a fire in a 2~\sfrac{1}{2}~story wood frame residential structure claimed the life of a captain of the Chicago Fire Department. NIST examined the fire dynamics of this incident at the request of NIOSH and the Chicago Fire Department. Computer simulations of the fire incident were conducted using the NIST Fire Dynamics Simulator~\cite{FDS_Users_Guide} and Smokeview~\cite{Smokeview_Users_Guide}  software to provide insight into the fire development and thermal conditions that likely existed in the residence during the fire. The specific objectives of the simulations detailed in this report are: 
@@ -213,11 +223,12 @@ On November 2, 2012, a fire in a 2~\sfrac{1}{2}~story wood frame residential str
 \item To examine the effect of the flow path (including temperature, pressure, and fire conditions) in this multi-story residential structure using physics-based calculations.
 \item To provide visualizations of the fire behavior that are representative of the conditions that members of the Chicago Fire Department likely experienced during the course of their interior operations.
 \end{enumerate}
-This document describes the input and the results of the FDS (version 6.0.0) simulations. The simulations were developed using a combination of knowledge of the fire scenario and appropriate engineering approximations and assumptions. Analysis of the simulation results focuses on the hazardous conditions that developed following the development of a flow path inside of the structure. This document is organized as follows: Section~\ref{fire_sum} provides a summary of the fire incident, Section~\ref{model} describes the relevant model input parameters and assumptions that were used to develop the simulations, Section~\ref{results} presents the simulation results, and Section~\ref{discussion} discusses the simulation results as they relate to firefighter safety and effectiveness. Appendix~\ref{app_draw} contains dimensioned drawings of the first and second floor of the structure.
+This document describes the input and the results of the FDS (version 6.0.0) simulations. The simulations were developed using a combination of knowledge of the fire scenario and appropriate engineering approximations and assumptions. Analysis of the simulation results focuses on the hazardous conditions that developed following the development of a flow path inside of the structure. This document is organized as follows: Section~\ref{sec:incident_summary} provides a summary of the fire incident, Section~\ref{sec:model_description} describes the relevant model input parameters and assumptions that were used to develop the simulations, Section~\ref{sec:model_results} presents the simulation results, and Section~\ref{sec:discussion} discusses the simulation results as they relate to firefighter safety and effectiveness. Appendix~\ref{sec:drawings} contains dimensioned drawings of the first and second floor of the structure.
 
 
 \chapter{Summary of the Fire Incident}
-\label{fire_sum}
+\label{sec:incident_summary}
+
 The account of events for this incident was documented by the National Institute for Occupational Safety and Health (NIOSH) Fire Fighter Fatality Investigation and Prevention Program Report \#F2012-28~\cite{NIOSH:Bowyer}. For the purpose of this analysis, the details regarding the timeline are considered to be approximate values. The following narrative of the incident was extracted from the NIOSH incident report~\cite{NIOSH:Bowyer}:
 \begin{quote}
 On November 2, 2012, a 54-year-old male career captain sustained injuries at a 2-1/2 story apartment building fire then died at the hospital. At 1716 hours, dispatch called a ``Still'' alarm\footnote{The department defines a ``Still'' alarm to be two engine companies, two truck companies, and a battalion chief.} for smoke in the area. Battalion Chief (BC) 19 was the first to leave the station that was just blocks away. He approached the fire structure by driving behind it then around to the front arriving on scene at 1717 hours. He reported a working fire with heavy smoke coming from the rear and front of the structure's attic. Per fire department standard operating procedures, dispatch initiated a RIT response\footnote{The department defines a rapid intervention team (RIT) response to be one truck company, one battalion chief, one advanced life support (ALS) ambulance, and one emergency medical services (EMS) field officer.}. At 1718 hours, E123 arrived on scene and BC19 was on scene and had assumed incident command (IC). The IC spoke with one of the occupants who stated everyone was out. The IC made entry through the front door to the stairwell to survey the interior of the 2\textsuperscript{nd} floor. He noticed only a light haze throughout and glow around the [rear] door to the covered porch. The IC came back to the front door and met the E123 captain and a firefighter. They had stretched a [hose] load which is 100 feet of 2\sfrac{1}{2}-inch, a gated wye, and 150 feet of 1\sfrac{3}{4}-inch hoseline to go to the 2\textsuperscript{nd} floor, which is a standard department hose lay for this type occupancy. At 1720 hours, E49, T33, and TL39 arrived on scene.
@@ -231,35 +242,46 @@ At 1727 hours, the TL39 crew had just completed the first hole in the roof about
 
 \noindent Table~\ref{tab:fire_info} shows an overview of the timeline of events. A plan view of the structure and the location where the captain collapsed are shown in Fig.~\ref{fig:simp_geom}, and more details of the fire development are provided in the following sections.
 
-\begin{table}
-\centering
-\captionof{table}[Abridged NIOSH approximate fire event timeline]{Abridged NIOSH approximate fire event timeline~\cite{NIOSH:Bowyer}}\label{tab:fire_info}
+\begin{table}[!ht]
+\caption[Abridged NIOSH approximate fire event timeline]{Abridged NIOSH approximate fire event timeline~\cite{NIOSH:Bowyer}}
 \begin{tabular}{cl}
-\toprule[1.5pt]
-Incident Time              &  Fire Behavior / Fireground Operation                                                                                                    \\
-{[hh:mm:ss]}               &                                                                                                                                          \\
+\toprule
+Incident Time  &  Fire Behavior / Fireground Operation                       \\
+{(hh:mm:ss)}   &                                                             \\
 \midrule
-\multirow{2}{*}{17:15:00}  &  \multirow{2}{*}{\parbox{10cm} {Reported working fire with heavy smoke coming from the front and rear of the structure's attic.}}        \\ 
-                           &                                                                                                                                          \\[.25cm] %blank rows exist for wrapping text. # of blanks is 1 less than number of rows
-\multirow{2}{*}{17:16:00}  &   \multirow{2}{*}{\parbox{10cm} {Dispatch for a ``Still'' alarm - two engine companies, two truck companies, and a battalion chief.}}    \\
-                           &                                                                                                                                          \\[.25cm]
-\multirow{2}{*}{17:20:00}  &  \multirow{2}{*}{\parbox{10cm} {Attic windows break - heavy smoke out of front attic window and heavy smoke and fire out of rear.}}      \\
-                           &                                                                                                                                          \\[.25cm] 
-17:21:00                   &  E123 captain and firefighter on second floor with 1\sfrac{3}{4}-inch hoseline.                                                          \\[.25cm]
-17:21:30                   &  First floor exterior porch door opened.                                                                                                 \\[.25cm]
-\multirow{2}{*}{17:23:00}  &  \multirow{2}{*}{\parbox{10cm} {Heavy fire report in rear stairwell and enclosed porch. No response from E123 captain or firefighter.}}  \\
-                           &                                                                                                                                          \\[.25cm]
-17:24:00                   &   Water applied to attic from the rear exterior position.                                                                                \\[.25cm]
-17:25:00                   &   SQ5 makes entry through front of structure.                                                                                            \\[.25cm]
-17:27:00                   &   After hearing a Mayday call from SQ5, IC calls a Mayday.                                                                               \\[.25cm]
-17:29:00                   &   E123 captain carried out of structure.                                                                                                 \\
-\bottomrule[1.25pt]
-\end{tabular}\par
+17:15:00       &  Reported working fire with heavy smoke coming from the     \\ 
+               &  front and rear of the structure's attic.                   \\
+               &                                                             \\
+17:16:00       &  Dispatch for a ``Still'' alarm - two engine companies,     \\
+               &  two truck companies, and a battalion chief.                \\
+               &                                                             \\
+17:20:00       &  Attic windows break - heavy smoke out of front attic       \\
+               &  window and heavy smoke and fire out of rear.               \\
+               &                                                             \\
+17:21:00       &  E123 captain and firefighter on second floor               \\
+               &  with 1\sfrac{3}{4}-inch hoseline.                          \\
+               &                                                             \\
+17:21:30       &  First floor exterior porch door opened.                    \\
+               &                                                             \\
+17:23:00       &  Heavy fire report in rear stairwell and enclosed porch.    \\
+               &  No response from E123 captain or firefighter.              \\
+               &                                                             \\
+17:24:00       &  Water applied to attic from the rear exterior position.    \\
+               &                                                             \\
+17:25:00       &  SQ5 makes entry through front of structure.                \\
+               &                                                             \\
+17:27:00       &  After hearing a Mayday call from SQ5, IC calls a Mayday.   \\
+               &                                                             \\
+17:29:00       &  E123 captain carried out of structure.                     \\
+\bottomrule
+\end{tabular}
+\label{tab:fire_info}
 \end{table}
  
 
 \chapter{Model Description}
-\label{model}
+\label{sec:model_description}
+
 Fire Dynamics Simulator~\cite{FDS_Users_Guide} is a computational fluid dynamics (CFD) model that solves a form of the Navier-Stokes equations appropriate for low-speed, thermally driven flow with an emphasis on smoke and heat transport from fires.  Within a CFD model, the room or building is divided into small three-dimensional rectangular control volumes or computational cells.  The cells are contained together within one larger volume known as a computational domain.  The CFD model computes the density, velocity, temperature, pressure, and species concentration of the gas in each cell.  Based on the laws of conservation of mass, momentum,  and energy, the model tracks the generation and movement of fire gasses. One of the most important advantages of FDS is that it is  mathematically verified~\cite{FDS_Verification_Guide} and validated against fire test data to ensure that it provides the expected results, given sufficient input data~\cite{FDS_Validation_Guide}. A complete description of the FDS model is provided in the FDS Technical Reference Guide~\cite{FDS_Math_Guide}.
 
 Smokeview is a software tool designed to visualize simulation results from FDS~\cite{Smokeview_Users_Guide}. Smokeview visualizes smoke and other attributes of the fire simulation using traditional scientific methods such as displaying tracer particle flow, two dimensional (2D) or three dimensional (3D) shaded contours of gas flow data such as temperature and flow vectors showing flow direction and magnitude. Smokeview allows the fire and fire movement to be visualized. This is done by displaying a series of partially transparent planes where the transparencies in each plane (at each grid node) are determined from soot densities computed by FDS. Smokeview also visualizes static data at particular times using 2D or 3D contours of data such as temperature and flow vectors showing flow direction and magnitude.
@@ -271,26 +293,22 @@ The analysis of the simulation results is focused on the interior conditions on 
 In reality, the quantities associated with these input parameters are not fixed values; rather, a model input parameter can be thought of as a point estimate from a distribution of possible input parameters with some associated amount of uncertainty. Any change in an input parameter (such as the HRR) for a given scenario would result in a change in the output quantity (such as the hot gas layer (HGL) temperature). For example, according to the McCaffrey, Quintiere, and Harkleroad~\cite{SFPE:Walton} empirical correlation, the HGL temperature in a well-ventilated compartment fire is proportional to the HRR raised to the two-thirds power. Following this relationship, a 7.5~\% increase in the HRR would result in a 5~\% increase in the HGL temperature~\cite{NUREG_1824_Sup_1}. More detailed discussion on the propagation of parameter uncertainty in fire models is available in a validation study that was sponsored by the U.S. Nuclear Regulatory Commission~\cite{NUREG_1824_Sup_1}. The following subsections describe the inputs that were used to develop the simulation, including any approximations or assumptions that were made.
 
 \section{Geometry}
-\label{geom}
+\label{sec:geometry}
+
 The structure involved in this fire incident was a 2~\sfrac{1}{2}~story residential building with balloon frame construction and a gable roof.\footnote{Balloon frame construction is a method of framing where a continuous stud runs from the bottom horizontal member to the top plate. Intermediate floors are built directly off of the studs. One potential issue with balloon frame construction is that without fire stops there is void space for fire to potentially travel between the floors within the wall cavity.} The structure had a 17.15~m (56~ft) by 6.15~m (20~ft) footprint, as shown in Fig.~\ref{fig:simp_geom}. This results in a floor area of approximately 105~m$^2$ (1100~ft$^2$) per floor and a main living area of approximately 110~m$^2$ (2200~ft$^2$). The interior walls were constructed from nominal lumber covered by 12.7~mm (0.5~in) gypsum board~\cite{NIOSH:Bowyer}. Additionally, there was a half-story attic that contained the structure's hot water heater. Three sets of stairs were present in the structure: one front stairwell that connected the first and second levels (Stair 1 in Fig.~\ref{fig:simp_geom}), one rear stairwell that connected the first and second levels (Stair 2 in Fig.~\ref{fig:simp_geom}) and a second rear set of stairs which provided access to the attic (Stair 3 in Fig.~\ref{fig:simp_geom}). Entry to the first floor of the structure can be made either in the front or rear, as shown in Fig.~\ref{fig:simp_geom}.
 
-The fire, which is described in Section~\ref{fire}, started in the attic and spread to the rear porch. Discussion of the fire's impact on the interior conditions is provided in Section~\ref{results}. Figure~\ref{fig:alpha_ex} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the damage occurred in the attic and rear porch on the second floor. Fully dimensioned drawings of the interior of the first and second floors are shown in Figs.~\ref{fig:first_floor} and \ref{fig:second_floor}, respectively.
+The fire, which is described in Section~\ref{sec:fire}, started in the attic and spread to the rear porch. Discussion of the fire's impact on the interior conditions is provided in Section~\ref{sec:model_results}. Figure~\ref{fig:alpha_ex} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the damage occurred in the attic and rear porch on the second floor. Fully dimensioned drawings of the interior of the first and second floors are shown in Figs.~\ref{fig:first_floor} and \ref{fig:second_floor}, respectively.
 
 % \begin{figure}[!ht]
-% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-% \includegraphics[width=\textwidth]{../Figures/1st_Floor_Metric} \\
-% \includegraphics[width=\textwidth]{../Figures/2nd_Floor_Metric}
-% \end{tabular*}
+% \includegraphics[width=in]{../Figures/1st_Floor_Metric} \\
+% \includegraphics[width=in]{../Figures/2nd_Floor_Metric}
 % \caption[Plan view of first (top) and second (bottom) floor of structure.]{Plan view of first (top) and second (bottom) floor of structure. Stairs and key rooms are identified using measurements collected by NIST.}
 % \label{fig:simp_geom}
 % \end{figure}
 
 % \begin{figure}[!ht]
-% \centering
-% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-%    \scalebox{1.0}{ \includegraphics[width=3in]{../Figures/exterior_alpha} } &
-%    \scalebox{1.0}{ \includegraphics[width=2.67in]{../Figures/exterior_charlie} } \\
-% \end{tabular*}
+% \includegraphics[width=3in]{../Figures/exterior_alpha} \\
+% \includegraphics[width=2.67in]{../Figures/exterior_charlie}
 % \caption{Photographs showing the front (left) and rear (right) exterior of the structure after the incident.}
 % \label{fig:alpha_ex}
 % \end{figure}
@@ -300,7 +318,7 @@ The fire, which is described in Section~\ref{fire}, started in the attic and spr
 
 
 \section{Fire}
-\label{fire}
+\label{sec:fire}
 
 To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these sources of information, the FDS model includes two source fire locations: an initial fire in the attic and a secondary fire on the second floor porch landing. The attic and rear porch primarily consisted of wood fuel: the rear porch was enclosed with wood planks covered with foam board and vinyl siding, the roof consisted of asphalt shingles over wood planking, and the attic and porch floors were composed of oriented strand board.
 
@@ -344,8 +362,9 @@ Note that the coordinates here are unique for the vents are specific to the inpu
 
 
 \section{Materials}
-\label{matl}
-While the fires were represented as fuel sources with a constant area (Section~\ref{fire}), from a heat transfer perspective, it is important to define the material properties (density, thermal conductivity, and specific heat) to account for heat transfer and energy storage in the ceiling, walls, and floor. In this study, the material properties of gypsum board~\cite{WAKILI2007} were specified on the finished walls and ceilings on the main two floors of the structure, and the material properties of wood~\cite{Incropera:1} were specified on the unfinished portions of the attic and rear porch. The following lines define these materials in the FDS input file:
+\label{sec:materials}
+
+While the fires were represented as fuel sources with a constant area (Section~\ref{sec:fire}), from a heat transfer perspective, it is important to define the material properties (density, thermal conductivity, and specific heat) to account for heat transfer and energy storage in the ceiling, walls, and floor. In this study, the material properties of gypsum board~\cite{WAKILI2007} were specified on the finished walls and ceilings on the main two floors of the structure, and the material properties of wood~\cite{Incropera:1} were specified on the unfinished portions of the attic and rear porch. The following lines define these materials in the FDS input file:
 
 \begin{lstlisting}
 &MATL ID = 'GYPSUM BOARD'
@@ -362,7 +381,8 @@ While the fires were represented as fuel sources with a constant area (Section~\
 \end{lstlisting}
 
 \section{Ventilation}
-\label{Vents}
+\label{sec:ventilation}
+
 The simulations in this study account for changes in the ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). Two different ventilation scenarios were considered in this study. The first scenario involves a baseline simulation in which the ventilation times and ventilation areas represent our best understanding of the incident. The second scenario, or alternative simulation, does not include the firefighter opening the rear door to make entry to the structure and the subsequent exterior left wall fire penetration. The times of the ventilation changes are provided in Table~\ref{tab:vents}. Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open front door at the start of the simulation and the vents (opening size and open time) created during the simulation are significantly larger than the total effective area of leakage of a structure of this type. Therefore, any leakage in the structure would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
 
 An unknown parameter in Table~\ref{tab:vents} that needed to be estimated was the time when the second floor interior/porch door failed (160~s into the simulation). The area of failure was also estimated based on the following observations. The bottom hinge from the door appeared to be closed throughout the fire due to the lack of fire damage and the lack of soot deposited on the interior faces of the hinge and remaining wood, as shown in Fig.~\ref{fig:door_frame}. It appears that the door collapsed and failed partially open. In the simulations, only the upper portion of the door was assumed to fail. While this time and area may not be exact, the takeaway from the analysis in the following sections should be impact of the door's failure on the interior conditions of the structure.
@@ -371,11 +391,10 @@ An unknown parameter in Table~\ref{tab:vents} that needed to be estimated was th
 \clearpage
 
 
-\begin{table}
-\centering
-\captionof{table}{Timeline of ventilation changes in the simulation}\label{tab:vents}
+\begin{table}[!ht]
+\caption[Timeline of ventilation changes in the simulation]{Timeline of ventilation changes in the simulation}
 \begin{tabular}{cccll}
-\toprule[1.5pt]
+\toprule
 Baseline    &  Alternative  &  Ventilation  &  Type         &  Side of         \\
 Simulation  &  Simulation   &  Area         &               &  Structure       \\
 {[s]}       &  {[s]}        &  [m$^2$]      &               &                  \\
@@ -387,16 +406,16 @@ Simulation  &  Simulation   &  Area         &               &  Structure       \
 130         &  N/A$^*$      &  1.41         &  Door         &  Rear            \\
 135         &  N/A$^*$      &  0.2          &  Breach       &  Left            \\
 160         &  160          &  0.80         &  Door         &  Interior        \\
-\bottomrule[1.25pt]
-\end{tabular}\par
+\bottomrule
+\end{tabular}
 \footnotesize
-$^*$These ventilation events were not included in the alternative simulation.
+\\$^*$These ventilation events were not included in the alternative simulation.
 \normalsize
+\label{tab:vents}
 \end{table}
 
 % \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=.80\textwidth]{../Figures/door_frame_burn}
+% \includegraphics[width=.80in]{../Figures/door_frame_burn}
 % \caption[Post-incident image of rear porch door frame.]{Post-incident image of the second floor porch door frame that failed taken from inside the structure looking toward the porch. Note that the hinge is still intact and there is unburned, ``clean'' wood along the bottom portion of the frame.}
 % \label{fig:door_frame}
 % \end{figure}
@@ -406,7 +425,7 @@ $^*$These ventilation events were not included in the alternative simulation.
 
 
 \section{Numerical Mesh}
-\label{mesh}
+\label{sec:numerical_mesh}
 
 For the simulation, a measure of how well the flow field is resolved can be estimated by using the non-dimensional expression $D^*/\dx$. Here, $D^*$ is the characteristic fire diameter, $\dx$ is the nominal size of a mesh cell, and $\dQ$ is the total heat release rate of the fire:
 \begin{equation}
@@ -418,110 +437,120 @@ D^* = \left(
 From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the
 relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm, the characteristic fire diameter to cell size ($D^*/\dx$) ratio is 15.5 for the 3.3~MW porch fire and 23 for the 9~MW attic fire. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. The grid resolution used in this model is within or exceeds typical engineering $D^*/\dx$ values.
 
-As discussed in Section~\ref{geom}, the structure has dimensions of 17.15~m (56~ft) by 6.15~m (20~ft) and a total height of 8.56~m (28~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 24~m (79~ft) by 10~m (33~ft) by 10~m (33~ft). A grid resolution of 10~cm (3.9~in) was used, which required 2.4 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:geom_grid} shows the front of the structure rendered in Smokeview with the 10~cm mesh. The domain was divided into 16 equally sized meshes (each containing 150,000 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 1.5~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:mod_param} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
+As discussed in Section~\ref{sec:geometry}, the structure has dimensions of 17.15~m (56~ft) by 6.15~m (20~ft) and a total height of 8.56~m (28~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 24~m (79~ft) by 10~m (33~ft) by 10~m (33~ft). A grid resolution of 10~cm (3.9~in) was used, which required 2.4 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:geom_grid} shows the front of the structure rendered in Smokeview with the 10~cm mesh. The domain was divided into 16 equally sized meshes (each containing 150,000 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 1.5~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:mod_param} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
 
 % \begin{figure}[!ht]
-% \centering
-% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-%    \scalebox{1.0}{\includegraphics[width=.49\textwidth]{../Figures/smv_exterior_grid}} &
-%    \scalebox{1.0}{\includegraphics[width=.488\textwidth]{../Figures/smv_exterior_grid_rear}} \\
-% \end{tabular*}
+% \includegraphics[width=.49in]{../Figures/smv_exterior_grid} \\
+% \includegraphics[width=.488in]{../Figures/smv_exterior_grid_rear}
 % \caption{Front (left) and rear (right) of the structure with 10~cm computational mesh.}
 % \label{fig:geom_grid}
 % \end{figure}
 
 % \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=.60\textwidth]{../Figures/smv_exterior_mesh}
-% \caption[Front-right side of the structure within the computational domain.]{Front-right side of the structure within the computational domain (with multiple meshes). Each of the 16 meshes is 3~m (9.8~ft) by 10~m (33~ft) by 5~m (16.4~ft).}
+% \includegraphics[width=.60in]{../Figures/smv_exterior_mesh}
+% \caption[Front-right side of the structure within the computational domain.]
+% {Front-right side of the structure within the computational domain (with multiple meshes). Each of the 16 meshes is 3~m (9.8~ft) by 10~m (33~ft) by 5~m (16.4~ft).}
 % \label{fig:mult_mesh}
 % \end{figure}
 
-\begin{table}
-\centering
-\captionof{table}{Relevant fire model input parameters}\label{tab:mod_param}
+\begin{table}[!ht]
+\caption[Relevant fire model input parameters]{Relevant fire model input parameters}
 \begin{tabular}{lll}
-\toprule[1.5pt]
-Parameter                                                  & Description                                   & Discussion                            \\
+\toprule
+Parameter                                                  & Description                                   & Discussion                                     \\
 \midrule
-Simulation Time                                            &  5~min                                        & --                                    \\ [.25cm]
-Grid Cell Size                                             &  10~cm                                        & Section~\ref{mesh}                    \\ [.25cm]
-Ambient Temperature$^*$                                    &  20~$^{\circ}$C (77~$^{\circ}$F)              & --                                    \\ [.1cm]
-\multirow{4}{*}{Reaction: Wood~\cite{SFPE:Tewarson}}       &  Formula: $\C\H_{1.7}\O_{0.74}\N_{0.002}$     & \multirow{4}{*}{Section~\ref{fire}}   \\
-                                                           &  CO Yield: 0.004~$\mathrm{kg}/\mathrm{kg}$    &                                       \\
-                                                           &  Soot Yield: 0.015~$\mathrm{kg}/\mathrm{kg}$  &                                       \\
-                                                           &  Heat of Combustion: 16,400~kJ/kg             &                                       \\ [.25cm]
-\multirow{2}{*}{Peak HRR}                                  &  Attic Fire: 9~MW                             & \multirow{2}{*}{Section~\ref{fire}}   \\ 
-                                                           &  Porch Fire: 3.3~MW                           &                                       \\ [.25cm]                     
-\multirow{3}{*}{Material: Wood~\cite{Incropera:1} }        &  $k$: 0.12~\si{W/(m.K)})                      & \multirow{3}{*}{Section~\ref{matl}}   \\
-                                                           &  $\rho$: 510~kg/m$^3$                         &                                       \\
-                                                           &  $c_{p}$: 1.38~\si{kJ/(kg.K)}                 &                                       \\ [.25cm]
-\multirow{3}{*}{Material: Gypsum Board~\cite{WAKILI2007}}  &  $k$: 0.28~\si{W/(m.K)}                       &  \multirow{3}{*}{Section~\ref{matl}}  \\ 
-                                                           &  $\rho$: 810~kg/m$^3$                         &                                       \\ 
-                                                           &  $c_{p}$: 1.0~\si{kJ/(kg.K)}                  &                                       \\
-\bottomrule[1.25pt]
-\end{tabular}\par
+Simulation Time                                            &  5~min                                        & --                                             \\ [.25cm]
+Grid Cell Size                                             &  10~cm                                        & Section~\ref{sec:numerical_mesh}               \\ [.25cm]
+Ambient Temperature$^*$                                    &  20~$^{\circ}$C (77~$^{\circ}$F)              & --                                             \\ [.1cm]
+\multirow{4}{*}{Reaction: Wood~\cite{SFPE:Tewarson}}       &  Formula: $\C\H_{1.7}\O_{0.74}\N_{0.002}$     & \multirow{4}{*}{Section~\ref{sec:fire}}        \\
+                                                           &  CO Yield: 0.004~$\mathrm{kg}/\mathrm{kg}$    &                                                \\
+                                                           &  Soot Yield: 0.015~$\mathrm{kg}/\mathrm{kg}$  &                                                \\
+                                                           &  Heat of Combustion: 16,400~kJ/kg             &                                                \\ [.25cm]
+\multirow{2}{*}{Peak HRR}                                  &  Attic Fire: 9~MW                             & \multirow{2}{*}{Section~\ref{sec:fire}}        \\ 
+                                                           &  Porch Fire: 3.3~MW                           &                                                \\ [.25cm]                     
+\multirow{3}{*}{Material: Wood~\cite{Incropera:1} }        &  $k$: 0.12~\si{W/(m.K)})                      & \multirow{3}{*}{Section~\ref{sec:materials}}   \\
+                                                           &  $\rho$: 510~kg/m$^3$                         &                                                \\
+                                                           &  $c_{p}$: 1.38~\si{kJ/(kg.K)}                 &                                                \\ [.25cm]
+\multirow{3}{*}{Material: Gypsum Board~\cite{WAKILI2007}}  &  $k$: 0.28~\si{W/(m.K)}                       &  \multirow{3}{*}{Section~\ref{sec:materials}}  \\ 
+                                                           &  $\rho$: 810~kg/m$^3$                         &                                                \\ 
+                                                           &  $c_{p}$: 1.0~\si{kJ/(kg.K)}                  &                                                \\
+\bottomrule
+\end{tabular}
 \footnotesize
-$^{*}$ Initial interior temperatures were assumed to be 20~$^{\circ}$C; exterior temperatures were 7~$^{\circ}$C~\cite{NIOSH:Bowyer}.
+\\ $^{*}$ Initial interior temperatures were assumed to be 20~$^{\circ}$C; exterior temperatures were 7~$^{\circ}$C~\cite{NIOSH:Bowyer}.
 \normalsize
+\label{tab:mod_param}
 \end{table}
 
+
 \chapter{Model Results}
-\label{results}
+\label{sec:model_results}
 
 To examine the results of the simulations, it is important to link the timelines from the fire scene to the simulation times. Table~\ref{tab:firesim} shows the fireground timeline~\cite{NIOSH:Bowyer} along with the corresponding simulation times.
 
-\begin{table}
-\centering
-\captionof{table}{Fire incident and simulation event timeline}\label{tab:firesim}
+\begin{table}[!ht]
+\caption[Fire incident and simulation event timeline]{Fire incident and simulation event timeline}
 \begin{tabular}{ccl}
-\toprule[1.5pt]
-Incident Time  &  Simulation Time  &  Fire Behavior / Fireground Operation  \\
-{[hh:mm:ss]}   &  {[s]}            &                                        \\
+\toprule
+Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation                            \\
+               &  Time        &                                                                  \\
+{(hh:mm:ss)}   &  {(s)}       &                                                                  \\
 \midrule
-\multirow{2}{*}{17:15:00} &    & \multirow{2}{*}{\parbox{9cm} {Fire is reported with heavy smoke coming from the front and rear of the structure's attic.}} \\ 
-         & & \\[.25cm] %blank rows exist for wrapping text. # of blanks is 1 less than number of rows
-\multirow{2}{*}{17:16:00} & \multirow{2}{*}{}   &  \multirow{2}{*}{\parbox{9cm} {Dispatch for a ``Still'' alarm - two engine companies, two truck companies, and a battalion chief.}} \\
-         & & \\[.25cm]
-\multirow{3}{*} {} &  \multirow{3}{*} {0} &  \multirow{3}{*}{\parbox{8cm} {FDS simulation starts. Attic fire ignites. Initial ventilation through rear of structure. Front door open.}} \\
-         & & \\[0.25cm]
-         & & \\[0.25cm]
-\multirow{3}{*}{17:20:00} & \multirow{3}{*}{40}  & \multirow{3}{*}{\parbox{9cm} {Attic windows break - heavy smoke out of front attic window and heavy smoke and fire out of rear. Rear porch ignites in model.}} \\
-         & & \\[.25cm]
-         & & \\[.25cm]  
-\multirow{2}{*}{}  & \multirow{2}{*}{45} & \multirow{2}{*}{\parbox{8cm}{Ventilation through wall penetration on rear of structure.}} \\
-          & & \\[.25cm] 
-\multirow{2}{*}{}  & \multirow{2}{*}{55}  & \multirow{2}{*}{\parbox{8cm}{Ventilation through wall penetration on left side of structure.}} \\ 
-          & & \\[.25cm] 
-\multirow{2}{*}{17:21:00} & \multirow{2}{*}{100} & \multirow{2}{*}{\parbox{8cm}{E123 captain and firefighter on second floor with 1\sfrac{3}{4}-inch hoseline.}} \\
-         &  & \\[.25cm]
-\multirow{2}{*}{17:21:30} & \multirow{2}{*}{130} &  \multirow{2}{*}{\parbox{8cm}{First floor exterior porch door opened. Porch fire ignites in FDS model.}} \\
-        &  & \\[.25cm]
-        & 135 & Ventilation through left side of structure. \\[.25cm] 
-        & 160 & Top of interior door fails in FDS model. \\[.25cm] 
-\multirow{3}{*}{17:23:00}    & \multirow{3}{*}{220} & \multirow{3}{*}{\parbox{8cm} {Heavy fire report in rear stairwell and enclosed porch. No response from E123 captain or firefighter.}} \\
-         & & \\[.25cm]
-         & & \\[.25cm]  
-17:24:00    &   & Water applied to attic from the rear exterior position. \\[.25cm]
-17:25:00    &   & SQ5 makes entry through front of structure. \\[.25cm]
-\multirow{2}{*}{17:27:00}    & \multirow{2}{*}{300}  & \multirow{2}{*}{\parbox{8cm} {After hearing a Mayday call from SQ5, IC calls a Mayday. Simulation ends.}}\\
-         & &  \\[.25cm]
-17:29:00    &   & E123 captain carried out of structure. \\
-\bottomrule[1.25pt]
-\end{tabular}\par
+17:15:00       &              &  Fire is reported with heavy smoke coming from the               \\ 
+               &              &  front and rear of the structure's attic.                        \\
+               &              &                                                                  \\
+17:16:00       &              &  Dispatch for a ``Still'' alarm - two engine companies,          \\
+               &              &  two truck companies, and a battalion chief.                     \\
+               &              &                                                                  \\
+               &  0           &  FDS simulation starts. Attic fire ignites. Initial              \\
+               &              &  ventilation through rear of structure. Front door open.         \\
+               &              &                                                                  \\
+17:20:00       &  40          &  Attic windows break - heavy smoke out of front attic            \\
+               &              &  window and heavy smoke and fire out of rear.                    \\
+               &              &  Rear porch ignites in model.                                    \\
+               &              &                                                                  \\
+               &  45          & Ventilation through wall penetration on rear of structure.       \\
+               &              &                                                                  \\
+               &  55          & Ventilation through wall penetration on left side of structure.  \\
+               &              &                                                                  \\
+17:21:00       &  100         & E123 captain and firefighter on second floor                     \\
+               &              & with 1\sfrac{3}{4}-inch hoseline.                                \\
+               &              &                                                                  \\
+17:21:30       &  130         & First floor exterior porch door opened.                          \\
+               &              & Porch fire ignites in FDS model.                                 \\
+               &              &                                                                  \\
+               &  135         & Ventilation through left side of structure.                      \\
+               &              &                                                                  \\
+               &  160         & Top of interior door fails in FDS model.                         \\
+               &              &                                                                  \\
+17:23:00       &  220         & Heavy fire report in rear stairwell and enclosed porch.          \\
+               &              & No response from E123 captain or firefighter.                    \\
+               &              &                                                                  \\
+17:24:00       &              & Water applied to attic from the rear exterior position.          \\
+               &              &                                                                  \\
+17:25:00       &              & SQ5 makes entry through front of structure.                      \\
+               &              &                                                                  \\
+17:27:00       &  300         & After hearing a Mayday call from SQ5, IC calls a Mayday.         \\
+               &              & Simulation ends.                                                 \\
+               &              &                                                                  \\
+17:29:00       &              & E123 captain carried out of structure.                           \\
+\bottomrule
+\end{tabular}
 \footnotesize
-For specific information regarding ventilation areas used in the FDS model, refer to Table~\ref{tab:vents}.
+\\ For specific information regarding ventilation areas used in the FDS model, refer to Table~\ref{tab:vents}.
 \normalsize
+\label{tab:firesim}
 \end{table}
 
 \section{Heat Release Rate}
-\label{HRR}
-The heat release rate output data from FDS quantifies the simulated rate of energy release in the simulation. Figure~\ref{fig:hrr} shows the prescribed HRR versus time values based on the prescribed fires along with the FDS results for the two ventilation scenarios that were described in Section~\ref{Vents}. The two vertical lines represent the time at which a firefighter opened the back door of the structure ($t$ = 130 s) and the time at which the second floor interior door was estimated to fail ($t$ = 160 s). Due to a lack of information about the time of fire ignition or how fast the fire grew, these parameters needed to be estimated.  The growth rate shown in Fig.~\ref{fig:hrr} (10~MW in approximately 20~s) is fast because the incipient stage of the fire growth was not considered in this study. The maximum size of the fire used in this study was selected such that the conditions would become ventilation limited quickly to minimize computational time while aligning with the timeline observations of video and picture evidence from the fire. Using this approach, the accuracy of heat transfer to the walls of the structure may be sacrificed; however, all of the window, door, and wall failures were driven by the event timeline rather than failure temperature criteria.
+\label{sec:HRR}
+
+The heat release rate output data from FDS quantifies the simulated rate of energy release in the simulation. Figure~\ref{fig:hrr} shows the prescribed HRR versus time values based on the prescribed fires along with the FDS results for the two ventilation scenarios that were described in Section~\ref{sec:ventilation}. The two vertical lines represent the time at which a firefighter opened the back door of the structure ($t$ = 130 s) and the time at which the second floor interior door was estimated to fail ($t$ = 160 s). Due to a lack of information about the time of fire ignition or how fast the fire grew, these parameters needed to be estimated.  The growth rate shown in Fig.~\ref{fig:hrr} (10~MW in approximately 20~s) is fast because the incipient stage of the fire growth was not considered in this study. The maximum size of the fire used in this study was selected such that the conditions would become ventilation limited quickly to minimize computational time while aligning with the timeline observations of video and picture evidence from the fire. Using this approach, the accuracy of heat transfer to the walls of the structure may be sacrificed; however, all of the window, door, and wall failures were driven by the event timeline rather than failure temperature criteria.
 
 % \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=.80\textwidth]{../Figures/Chicago_Fire_HRR}
-% \caption[HRR versus time from the FDS simulations.]{HRR versus time from the FDS simulations. The first vertical line indicates the time at which the back door failed (130~s), and the second vertical line indicates the time at which the interior hallway door failed (160~s).}
+% \includegraphics[width=.80in]{../Figures/Chicago_Fire_HRR}
+% \caption[HRR versus time from the FDS simulations.]
+% {HRR versus time from the FDS simulations. The first vertical line indicates the time at which the back door failed (130~s), and the second vertical line indicates the time at which the interior hallway door failed (160~s).}
 % \label{fig:hrr}
 % \end{figure}
 
@@ -530,8 +559,7 @@ In Fig.~\ref{fig:hrr}, the solid line represents the baseline FDS simulation (th
 Figure~\ref{fig:hrr} indicates that the HRRs for both of the ventilation scenarios in FDS are identical until 130~s (HRR $\approx$ 7~MW). At 130~s, the rear door is opened in the baseline simulation. At 135~s, there is an additional breach on the left side of the structure (Table~\ref{tab:vents}). The open door and breach act as additional pressure releases for the structure. Again, the abrupt change in ventilation causes the HRR to increase from approximately 7~MW to 9.7~MW at 139~s. At the time of the door failure (160~s), the HRR in both cases was approximately 9~MW because of the increased amount of ventilation. While there might be some locally different burning characteristics between the baseline simulation and the alternative simulation, the interior conditions in both cases presented a significant hazard to firefighters inside of the structure. Therefore, the analysis will focus on the results of the baseline simulation.
 
 % \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=.675\textwidth]{../Figures/smv_exterior_fire}
+% \includegraphics[width=.675in]{../Figures/smv_exterior_fire}
 % \caption{Smokeview rendering of exterior combustion occurring on the rear side of the structure.}
 % \label{fig:smv_ext_fire}
 % \end{figure}
@@ -545,7 +573,7 @@ Figure~\ref{fig:hrr} indicates that the HRRs for both of the ventilation scenari
 As the simulated fire grows in the attic and rear porch, the pressure rises. Figure~\ref{fig:pres_159s} shows the calculated pressure conditions in the structure just before the interior door failed in the simulation. On the rear porch, the pressure rise ranges from a 4~Pa ($5.8 \times 10^{-4}$~psi) over-pressure at a height of 1~m to greater than 10~Pa ($1.5 \times 10^{-3}$~psi) at the ceiling. Gases at an elevated pressure will always move towards a region of lower pressure. The door serves as a boundary between the high and low pressure regions. Once the door fails open, the high pressure gases flow towards the low pressure regions in the house, hallway, kitchen, and front stairwell. The velocity vectors shown in Fig.~\ref{fig:velo_175s} (15~s after the interior door fails) indicate the direction of flow within the structure.
 
 % \begin{figure}[!ht]
-% \includegraphics[width=.75\textwidth]{../Figures/west_50th_baseline_pres2}
+% \includegraphics[width=.75in]{../Figures/west_50th_baseline_pres2}
 % \input{../Scripts/colorbar_metric_pres}
 % \caption[FDS simulated pressure contours, 1~s prior to interior door failure.]{FDS simulated pressure contours, 1~s prior to interior door failure.}
 % \label{fig:pres_159s}
@@ -554,9 +582,8 @@ As the simulated fire grows in the attic and rear porch, the pressure rises. Fig
 % \clearpage
 
 % \begin{landscape}
-% \centering
 % \begin{figure}[!ht]
-% \includegraphics[width=1.1\textwidth]{../Figures/west_50th_baseline_velo_175}
+% \includegraphics[width=1.1in]{../Figures/west_50th_baseline_velo_175}
 % \input{../Scripts/colorbar_std_velo}
 % \input{../Scripts/colorbar_metric_velo}
 % \caption{FDS simulated velocity vectors, 15~s after interior door failure.}
@@ -566,11 +593,12 @@ As the simulated fire grows in the attic and rear porch, the pressure rises. Fig
 % \newpage
 
 \section{Temperature}
-\label{temp}
+\label{sec:temperature}
+
 Analysis of the temperatures from the FDS simulation focuses on the high hazard areas of the structure: the attic, the rear porch and stairwell, and the interior hallway which connects the rear porch to the front stairwell. The temperature profile at these high hazard areas is shown via several snapshots in time to illustrate the change in the interior conditions. The first snapshots are shown at a time of 129~s into the simulation, just before a firefighter opened the rear porch door (as shown in Fig.~\ref{fig:temp_129s}), and 159~s into the simulation, just before the interior door fails (as shown in Fig.~\ref{fig:temp_159s}).
 
 % \begin{figure}[!ht]
-% \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_129}
+% \includegraphics[width=.675in]{../Figures/west_50th_baseline_129}
 % \input{../Scripts/colorbar_std} 
 % \input{../Scripts/colorbar_metric}
 % \caption{FDS simulated temperature contours, 1~s prior to rear door opening.}
@@ -578,7 +606,7 @@ Analysis of the temperatures from the FDS simulation focuses on the high hazard 
 % \end{figure}
 
 % \begin{figure}[!ht]
-% \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_159}
+% \includegraphics[width=.675in]{../Figures/west_50th_baseline_159}
 % \input{../Scripts/colorbar_std} 
 % \input{../Scripts/colorbar_metric}
 % \caption{FDS simulated temperature contours, 1~s prior to interior door failure.}
@@ -588,7 +616,7 @@ Analysis of the temperatures from the FDS simulation focuses on the high hazard 
 Figure~\ref{fig:temp_129s} shows temperatures of at least 260~$^{\circ}$C (500~$^{\circ}$F) in the second floor rear porch and rear portion of the attic. High temperatures, between 80~$^{\circ}$C (185~$^{\circ}$F) and 200~$^{\circ}$C (390~$^{\circ}$F), also extend down to the rear entrance on the first floor. Before the interior door fails (Fig.~\ref{fig:temp_159s}), the inflow of ambient air from the open rear door reduces the temperatures near the interior doorway, but at the same time, the HRR increases because of the additional ventilation, as shown in Fig.~\ref{fig:hrr}. As shown in Fig.~\ref{fig:temp_161s}, after the second floor interior door fails, the high temperature gas that filled the rear porch flows in the direction of lower pressure (i.e., towards the front door). Note that the conditions in the attic do not appear to change.
 
 % \begin{figure}[!ht]
-% \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_161}
+% \includegraphics[width=.675in]{../Figures/west_50th_baseline_161}
 % \input{../Scripts/colorbar_std} 
 % \input{../Scripts/colorbar_metric}
 % \caption{FDS simulated temperature contours, 1~s after interior door failure.}
@@ -596,7 +624,7 @@ Figure~\ref{fig:temp_129s} shows temperatures of at least 260~$^{\circ}$C (500~$
 % \end{figure}
 
 % \begin{figure}[!ht]
-% \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_175}
+% \includegraphics[width=.675in]{../Figures/west_50th_baseline_175}
 % \input{../Scripts/colorbar_std} 
 % \input{../Scripts/colorbar_metric}
 % \caption{FDS simulated temperature contours, 15~s after the interior door failure.}
@@ -607,15 +635,15 @@ As shown in Fig.~\ref{fig:temp_175s}, 15~s after the door failed, high temperatu
 
 
 \chapter{Discussion of Simulation Results}
-\label{discussion}
+\label{sec:discussion}
+
 The results of the FDS simulations are discussed in the following two sections. The first section addresses the results of the computational modeling as they relate to the interior hallways conditions. The second section examines the model results and observed outcomes of the fire incident as they relate to tactics discussed in recent experimental research. 
 
 \section{Simulated Hallway Flow Path}
-From on-scene reports (Section~\ref{fire_sum}) and the FDS simulation results (Section~\ref{temp}), the interior conditions on the second floor of the structure were initially tenable. From the NIOSH report~\cite{NIOSH:Bowyer}, while the IC was inside the structure on the second floor, only light haze and a glow around the door between the hallway and enclosed porch was observed. This indicated the presence of fire in the area of the enclosed porch. The simulation results indicate a high hazard area (temperatures greater than 260~$^{\circ}$C or 500~$^{\circ}$F) in the attic and the enclosed porch at this time. By the time the E123 captain and firefighter arrived on the second floor (Table~\ref{tab:firesim}) and approached the rear of the structure, the rear porch was fully involved. Temperature conditions greater than 260~$^{\circ}$C (500~$^{\circ}$F) were present on the porch side of the steel-faced, wood-framed door at the rear of the structure. Exposure to these conditions likely weakened the structural integrity of the door, which may have led to a partial failure (Table~\ref{tab:firesim}). Figure~\ref{fig:chicago_doorfold} shows the state of the rear door after the fire. Note the large crease in the steel face of the door just above the knob.
+From on-scene reports (Section~\ref{sec:incident_summary}) and the FDS simulation results (Section~\ref{sec:temperature}), the interior conditions on the second floor of the structure were initially tenable. From the NIOSH report~\cite{NIOSH:Bowyer}, while the IC was inside the structure on the second floor, only light haze and a glow around the door between the hallway and enclosed porch was observed. This indicated the presence of fire in the area of the enclosed porch. The simulation results indicate a high hazard area (temperatures greater than 260~$^{\circ}$C or 500~$^{\circ}$F) in the attic and the enclosed porch at this time. By the time the E123 captain and firefighter arrived on the second floor (Table~\ref{tab:firesim}) and approached the rear of the structure, the rear porch was fully involved. Temperature conditions greater than 260~$^{\circ}$C (500~$^{\circ}$F) were present on the porch side of the steel-faced, wood-framed door at the rear of the structure. Exposure to these conditions likely weakened the structural integrity of the door, which may have led to a partial failure (Table~\ref{tab:firesim}). Figure~\ref{fig:chicago_doorfold} shows the state of the rear door after the fire. Note the large crease in the steel face of the door just above the knob.
 
 % \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=.4\textwidth]{../Figures/Porch_Door_1}
+% \includegraphics[width=.4in]{../Figures/Porch_Door_1}
 % \caption{Post-fire image of interior door.}
 % \label{fig:chicago_doorfold}
 % \end{figure}
@@ -623,11 +651,8 @@ From on-scene reports (Section~\ref{fire_sum}) and the FDS simulation results (S
 Recent experiments conducted by NIST revealed similar post-fire states after doors of similar construction were exposed to fires. Figure~\ref{fig:SC_doorfold} shows doors from two different residential fire experiments in different stages of degradation. In both cases, note that the door knob assembly served as a pivot point for the upper portion of the door to collapse around. This is similar to the location of the creases in the remains of the steel door that was located between the hallway and the enclosed porch in this fire incident.
 
 % \begin{figure}[!ht]
-% \centering
-% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-%    \scalebox{1.0}{ \includegraphics[width=3in]{../Figures/SC_Door_1} } &
-%    \scalebox{1.0}{ \includegraphics[width=2in]{../Figures/SC_Door_2} } \\
-% \end{tabular*}
+% \includegraphics[width=3in]{../Figures/SC_Door_1} \\
+% \includegraphics[width=2in]{../Figures/SC_Door_2}
 % \caption{Post-experiment images of door failures.}
 % \label{fig:SC_doorfold}
 % \end{figure}
@@ -635,8 +660,7 @@ Recent experiments conducted by NIST revealed similar post-fire states after doo
 After the interior door failed, an interior flow path was created from the enclosed porch area into the kitchen of the structure. This resulted in a rapid change in the conditions within the flow path. The combustion gases at elevated temperature and pressure in the enclosed porch were vented by the failure of the door and flowed towards lower pressure areas in the hallways and kitchen. The arrows shown in Fig.~\ref{fig:flowpath_1} summarize the simulated flow direction of gases on the second floor after the door failure. In this figure, the red arrows indicate elevated gas temperatures, and the blue arrows indicate relatively cooler gas temperatures. The arrow that transitions from red to blue indicates that the heated gases were cooling as they flowed away from the fire towards the front of the structure. The two arrows located at the door on the second floor (towards the front of the structure) indicate bi-directional flow. At that doorway, cool ambient air flowed towards the fire near the bottom of the door, and hot gases flowed away from the fire near the top of the door.
 
 % \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=.7\textwidth]{../Figures/ChicagoFlow}
+% \includegraphics[width=.7in]{../Figures/ChicagoFlow}
 % \caption{Summary of simulated flow path on the second floor after interior door failure.}
 % \label{fig:flowpath_1}
 % \end{figure}
@@ -652,8 +676,7 @@ A person is susceptible to second-degree burn injuries if exposed to temperature
 Prior to the interior door failure, the elevated temperatures on the second floor were limited to the rear porch, as shown in Fig.~\ref{fig:temp_top_159}. The temperatures were greatest at the back-left corner where there is sufficient oxygen due to the section of porch wall that had burned away and allowed additional oxygen to mix with the fuel-rich fire gases. Five seconds after the interior door failed, hot gases traveled the length of the interior hallway and approached the doorway into the kitchen, which was approximately 4.5~m (14.8~ft) away from the source fire, as shown in Fig.~\ref{fig:temp_top_165}. Within 60~s of the interior door failure, the hallway temperatures were approximately at or above 260~$^{\circ}$C (500~$^{\circ}$F) throughout the hallway, as shown in Fig.~\ref{fig:temp_top_220}. These results indicate that the high temperature gases seen 5~s after failure were not just a burst but rather the front of a sustained exhaust gas flow from the fire burning in the enclosed rear porch. The conditions in this hallway changed from tenable to high-hazard very rapidly following the door failure. Figure~\ref{fig:temp_top_220} also shows that the temperatures in the kitchen were at or below 90~$^{\circ}$C (194~$^{\circ}$F), and the temperatures at the top of the stairs were at or below 70~$^{\circ}$C (158~$^{\circ}$F). At these locations within the structure, the exhaust gases in the flow path were cooled and diluted by the inflowing ambient gas. These simulated temperatures are consistent with the post-incident conditions that were documented in the kitchen and second floor stairwell.
 
 % \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=.68\textwidth]{../Figures/west_50th_baseline_top_159_6ft}
+% \includegraphics[width=.68in]{../Figures/west_50th_baseline_top_159_6ft}
 % \input{../Scripts/colorbar_std} 
 % \input{../Scripts/colorbar_metric}
 % \caption[Temperature contours on the second floor, 1~s prior to interior door failure.]
@@ -662,8 +685,7 @@ Prior to the interior door failure, the elevated temperatures on the second floo
 % \end{figure}
 
 % \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=.68\textwidth]{../Figures/west_50th_baseline_top_165_6ft}
+% \includegraphics[width=.68in]{../Figures/west_50th_baseline_top_165_6ft}
 % \input{../Scripts/colorbar_std} 
 % \input{../Scripts/colorbar_metric}
 % \caption[Temperature contours on the second floor, 5~s after interior door failure.]
@@ -672,8 +694,7 @@ Prior to the interior door failure, the elevated temperatures on the second floo
 % \end{figure}
 
 % \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=.68\textwidth]{../Figures/west_50th_baseline_top_220_6ft}
+% \includegraphics[width=.68in]{../Figures/west_50th_baseline_top_220_6ft}
 % \input{../Scripts/colorbar_std} 
 % \input{../Scripts/colorbar_metric}
 % \caption[Temperature contours on the second floor, 60~s after interior door failure.]
@@ -692,11 +713,10 @@ Based on a review of these incidents, it is clear that fires with rapidly develo
 
 In this fire incident, the thermal degradation of the steel-faced, wood-framed door resulted in a rapid change in the thermal conditions in the hallway, which resulted in highly hazardous conditions. These conditions would be equivalent to or greater than a Class III exposure~\cite{Donnelly2006}. Prediction of the failure mode and failure time of the door is not a reasonable expectation given the large number of unknowns that the firefighters faced on the fire ground.  In this case, the timing of the interior attack appears to have coincided with the failure time of the door. Research has been conducted~\cite{madrzykowski2009fire, kerber2009fire} and continues to be conducted by NIST, Underwriters Laboratories (UL), and others that demonstrates that applying water from the exterior into the fire area of a structure (prior to the start of interior operations) can significantly improve the safety of firefighters by reducing the thermal hazard from the fire and reducing the potential for developing high velocity hot gas flows within the structure.
 
-\begin{table}
-\centering
-\captionof{table}{Flow path related LODD/LODI incidents}\label{tab:lodd}
+\begin{table}[!ht]
+\caption[Flow path related LODD/LODI incidents]{Flow path related LODD/LODI incidents}
 \begin{tabular}{lll}
-\toprule[1.5pt]
+\toprule
 NIOSH Report No. & No. of LODDs/LODIs & Flow Path Details  \\
 \midrule
 99-F01   \cite{NIOSH:Pettit}        &  3 LODDs            &  From apartment into hallway on 10th     \\
@@ -726,11 +746,15 @@ F2011-13 \cite{NIOSH:Bowyer2}       &  2 LODDs            &  Lower level up stai
 F2011-31 \cite{NIOSH:Loflin}        &  1 LODD             &  Fire extended from lower level apartme  \\
 F2012-28 \cite{NIOSH:Bowyer}        &  1 LODD             &  Attic fire extended into closed         \\
                                     &  1 LODI             &  porch and then into 2nd floor           \\
-\bottomrule[1.25pt]
-\end{tabular}\par
+\bottomrule
+\end{tabular}
+\label{tab:lodd}
 \end{table}
 
+
 \chapter{Summary}
+\label{sec:summary}
+
 NIST's Fire Dynamics Simulator was used to provide insight into the fire dynamics within a 2~\sfrac{1}{2}~story single family structure in Chicago, IL, that resulted in the death the captain of a fire department. The fuel, fire size, and fire growth rate that were used in the FDS simulations were estimated by taking into account all of the available information including the NIOSH post-incident report~\cite{NIOSH:Bowyer}, post-incident pictures, videos, and relevant literature. This resulted in a specified source fire of 12.3~MW in the attic and rear porch of the structure. However, based on the limited ventilation conditions in the attic and enclosed porch, the FDS simulation results indicated a maximum HRR of approximately 9~MW as a result of the limited supply of oxygen.
 
 The fire started in the attic and spread down into the enclosed porch on the rear of the structure. The spread of fire and hot gases into the second floor of the structure was limited by a closed steel-faced, wood-framed door that was located between the enclosed porch and the hallway. After exposure to the elevated temperatures and pressure from the fire in the porch area, the wood frame of the door decomposed and the steel faces of the door failed and collapsed inward. The door failure resulted in the establishment of a flow path between the higher pressure and higher temperature conditions in the enclosed porch and the lower pressure and lower temperature conditions in the hallway and kitchen areas of the second floor. The temperature of the gases that flowed into the hallway at face height was calculated to exceed 260~$^{\circ}$C (500~$^{\circ}$F). Unfortunately, a captain and firefighter were advancing a hose line in the hallway at the time of the door failure. The captain was overcome by the rapid change in conditions before he could exit to the safety of the kitchen area. After a Mayday call, the captain was rescued from the structure but later succumbed to his injuries.
@@ -744,18 +768,16 @@ The authors would like to thank XXXX. The authors would also like to thank John 
 \appendix
 
 \chapter{Dimensioned Drawings}
-\label{app_draw}
+\label{sec:drawings}
 
 % \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=1\textwidth]{../Figures/50th_Place_1st_Floor}
+% \includegraphics[width=1in]{../Figures/50th_Place_1st_Floor}
 % \caption[Dimensioned drawing of first floor.]{Dimensioned drawing of first floor. The measurements are accurate to within 15~cm (6~in).}
 % \label{fig:first_floor}
 % \end{figure}
 
 % \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=1\textwidth]{../Figures/50th_Place_2nd_Floor}
+% \includegraphics[width=1in]{../Figures/50th_Place_2nd_Floor}
 % \caption[Dimensioned drawing of second floor.]{Dimensioned drawing of second floor. The measurements are accurate to within 15~cm (6~in).}
 % \label{fig:second_floor}
 % \end{figure}
