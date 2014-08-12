@@ -172,10 +172,30 @@ CODEN: NTNOEF }
 
 \begin{tabbing}
 \hspace{1.5in} \= \\
+EMS \> Emergency Medical Services \\
 FDS \> Fire Dynamics Simulator \\
 HGL \> Hot Gas Layer \\
 HRR \> Heat Release Rate \\
+HRRPUA \> Heat Release Rate per Unit Area \\
+LODD \> Line of Duty Death \\
 NIST \> National Institute of Standards and Technology \\
+SFPE \> Society of Fire Protection Engineers \\
+\end{tabbing}
+
+\chapter{List of Symbols}
+
+\begin{tabbing}
+\hspace{1.5in} \= \\
+ft \> foot \\
+m \> meter \\
+min \> minute \\
+Pa \> Pascal \\
+psi \> pound per square inch \\
+s \> second \\
+W \> Watt \\
+$k$ \> thermal conductivity \\
+$\rho$ \> density \\
+$c_{p}$ \> specific heat \\
 \end{tabbing}
 
 \mainmatter
@@ -184,9 +204,50 @@ NIST \> National Institute of Standards and Technology \\
 \addcontentsline{toc}{chapter}{Abstract}
 
 \chapter{Introduction}
+Part of the function of the Fire Research Division at NIST is to develop and apply technology, measurements, and standards to improve the understanding of the behavior, prevention, and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) fire model to provide insight into the fire development and thermal conditions of fires that have resulted in line of duty deaths (LODDs)~\cite{Madrzykowski:1,Iowa,Texas,Bryner:Charleston,barowy:texas}. The objective of these studies has been to improve the safety and effectiveness of firefighters.
+
+On February 24, 2012, a fire in residential structure injured seven Prince George's County firefighters. NIST examined the fire dynamics of this incident at the request of the Prince George's Country Fire/Emergency Medical Services (EMS) Department. Computer simulations of the fire incident were conducted using the NIST Fire Dynamics Simulator~\cite{FDS_Users_Guide} and Smokeview~\cite{Smokeview_Users_Guide}  software to provide insight into the fire development and thermal conditions that likely existed in the residence during the fire. The specific objectives of the simulations detailed in this report are: 
+\begin{enumerate}
+\item To examine the effect of the flow path (including temperature, pressure, and fire conditions) in this multi-story residential structure using physics-based calculations.
+\item To provide visualizations of the fire behavior that are representative of the conditions that members of the Prince George's Fire Department likely experienced during the course of their interior operations.
+\end{enumerate}
+This document describes the input and the results of the FDS (version 6.0.0) simulations. The simulations were developed using a combination of knowledge of the fire scenario and appropriate engineering approximations and assumptions. Analysis of the simulation results focuses on the hazardous conditions that developed following the development of a flow path inside of the structure. This document is organized as follows: Section~\ref{fire_sum} provides a summary of the fire incident, Section~\ref{model} describes the relevant model input parameters and assumptions that were used to develop the simulations, Section~\ref{results} presents the simulation results, and Section~\ref{discuss} discusses the simulation results as they relate to firefighter safety and effectiveness. Appendix~\ref{app_draw} contains dimensioned drawings of the first and second floor of the structure.
+
 
 \chapter{Fire Incident Summary}
 \label{fire_sum}
+The account of events for this incident was documented by the Safety Investigation Team of the Prince George's County Fire/EMS Department~\cite{PGCounty2013}. At 21:11 hours on February 24, 2012 Prince George's Fire/EMS Department responded to a structure fire in Riverdale Heights, Maryland with a fire in the basement~\cite{PGCounty2013}. For the purpose of this analysis, the details regarding the timeline are considered to be approximate values. The following narrative of the incident, focused on the events which led to burn injuries to two emergency-personnel, was taken from the Prince George's County report~\cite{PGCounty2013}:
+\begin{quote}
+Truck 809 responded from quarters, as the first due truck company, and arrived on 57$^{th}$ Avenue right behind Engine 807B. When Truck 809 stopped to let Engine 807B layout, Truck 809 Can dismounted the truck and had to walk up the street as it pulled away. Truck 809 Officer observed a lot of smoke moving extremely fast through the front yard and across the street upon exiting the truck. Truck 809 Officer and Truck 809 Forcible Entry proceeded directly to the front door \ldots of the structure. Both of them entered the structure with full PPE, including SCBA, but without the protection of a hose line. Truck 809 Officer and Truck 809 Forcible Entry began primary searches on the first floor. At some point during the primary search, as conditions worsened, the front door closed, trapping Truck 809 Officer and Truck 809 Forcible Entry inside the structure. This situation could not have occurred if a charged hose line was operating inside the structure at the time the door slammed shut. They were the only firefighters operating on the first floor at that time. 
+
+Truck 809 Forcible Entry was too large in physical stature to fit through the small window opening that he found on [the front of the structure]. Truck 809 Forcible Entry was unable to self-evacuate, and remained trapped inside. Due to rapidly deteriorating conditions, Truck 809 Officer was forced to self-rescue through another small window on [the front of the structure]. 
+
+After exiting the structure, Truck 809 Officer screamed (to those on the exterior) that a firefighter was trapped inside. Truck 809 Officer then proceeded to the front door \ldots in an attempt to search for and rescue Truck 809 Forcible Entry, who was trapped inside. At this point multiple firefighters on the exterior assisted Truck 809 Officer in the search, rescue, and removal of Truck 809 Forcible Entry. Both Truck 809 Officer and Truck 809 Forcible Entry sustained serious injuries and were transported to MedStar/Washington Hospital Center. 
+
+While the interior operations were occurring, Truck 809 Driver and Truck 809 Hook/Ladders were on the exterior throwing ladders to the structure. Truck 809 Hook/Ladders threw two ladders [front and left side], while Truck 809 Driver threw one ladder ([front side]). 
+\end{quote}  
+
+\noindent Table~\ref{tab:fire_info} shows an overview of the timeline of events.
+\begin{table}[!h]
+\centering
+\captionof{table}[Abridged approximate fire event timeline]{Abridged Prince George's Fire/EMS approximate fire event timeline~\cite{PGCounty2013}}\label{tab:fire_info}
+\begin{tabular}{cl}
+\toprule[1.5pt]
+Incident Time              &  Fire Behavior / Fireground Operation  \\
+{[hh:mm:ss]}               &                                                               \\
+\midrule
+\multirow{3}{*}{21:11:03}  &   \multirow{3}{*}{\parbox{10cm} {Dispatch for a ``box'' alarm assignment- four engine companies, two truck companies, one rescue squad, and a commanding officer.}}    \\
+                           &         \\
+                           &         \\[.25cm]
+21:12:55  &  First unit (Engine 807B) arrived on-scene.      \\[.25cm]
+21:13:44  & Truck 809 arrived on-scene. \\[.25cm]
+21:13:44                   & Volunteer Chief 809A establishes incident command (IC).      \\[.25cm]
+
+\bottomrule[1.25pt]
+\end{tabular}\par
+\end{table}
+
+
 
 \chapter{Model Description}
 \label{model}
@@ -210,6 +271,21 @@ In reality, the quantities associated with these input parameters are not fixed 
 
 \section{Materials}
 \label{matl}
+While the fires were represented as fuel sources with a constant area (Section~\ref{fire}), from a heat transfer perspective, it is important to define the material properties (density, thermal conductivity, and specific heat) to account for heat transfer and energy storage in the ceiling, walls, and floor. In this study, the material properties of gypsum board~\cite{WAKILI2007} were specified on the finished walls and ceilings on the main two floors of the structure, and the material properties of wood~\cite{Incropera:1} were specified on the unfinished portions of the attic and rear porch. The following lines define these materials in the FDS input file:
+
+\begin{lstlisting}
+&MATL ID = 'GYPSUM BOARD'
+    FYI = 'Wakili - Journal of Fire Sciences 2007' 
+    CONDUCTIVITY = 0.28
+    SPECIFIC_HEAT = 1.0
+    DENSITY = 810. /
+
+&MATL ID = 'WOOD MAT'
+    FYI = 'Incropera and DeWitt, Fundamentals of Heat and Mass Transfer'
+    CONDUCTIVITY = 0.12
+    SPECIFIC_HEAT = 1.38
+    DENSITY = 510. / 
+\end{lstlisting}
 
 \section{Ventilation}
 \label{Vents}
@@ -229,6 +305,7 @@ In reality, the quantities associated with these input parameters are not fixed 
 \label{temp}
 
 \chapter{Discussion}
+\label{discuss}
 
 \chapter{Summary}
 
@@ -237,5 +314,23 @@ In reality, the quantities associated with these input parameters are not fixed 
 \bibliography{../../../Bibliography/FDS_refs,../../../Bibliography/FDS_general}
 
 \appendix
+
+\chapter{Dimensioned Drawings}
+\label{app_draw}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=1\textwidth]{../Figures/Basement_Metric}
+\caption[Dimensioned drawing of first floor.]{Dimensioned drawing of the basement. The measurements are accurate to within 15~cm (6~in).}
+\label{fig:first_floor}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=1\textwidth]{../Figures/First_Floor_Metric}
+\caption[Dimensioned drawing of second floor.]{Dimensioned drawing of the first floor. The measurements are accurate to within 15~cm (6~in).}
+\label{fig:second_floor}
+\end{figure}
+
 
 \end{document}
