@@ -82,14 +82,13 @@ RAMP ID='WIND RAMP', T=30,F=1.00 /
 &RAMP ID='cycle', T=  0, F=-1 /
 &RAMP ID='cycle', T=  99, F=-1 /
 &RAMP ID='cycle', T=  100, F= 1 /
-&RAMP ID='cycle', T=  159, F=1 /
-&RAMP ID='cycle', T=  160, F= -1 /
-&RAMP ID='cycle', T=  179, F=-1 /
-&RAMP ID='cycle', T=  180, F= 1 /
+&RAMP ID='cycle', T=  206, F=1 /
+&RAMP ID='cycle', T=  207, F= -1 /
+&RAMP ID='cycle', T=  263, F=-1 /
+&RAMP ID='cycle', T=  264, F= 1 /
 
-
-&HOLE XB = 4.57,5.37,6.86,7.16,0.0,2.03, COLOR='RED', TRANSPARENCY=0.75, DEVC_ID='timer rear door' / rear door
 &DEVC XYZ=0.1,0.1,0.1, ID='timer rear door', SETPOINT= 0.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+&HOLE XB = 4.57,5.37,6.86,7.16,0.0,2.03, COLOR='RED', TRANSPARENCY=0.75, DEVC_ID='timer rear door' / rear door
 
 #  ===========
 #  = Windows =
@@ -98,8 +97,10 @@ RAMP ID='WIND RAMP', T=30,F=1.00 /
 &DEVC XYZ=0.1,0.1,0.1, ID='timer 1', SETPOINT= 10000.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
 &DEVC XYZ=0.1,0.1,0.1, ID='timer bay2', SETPOINT= 10000.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
 
-&DEVC XYZ=0.1,0.1,0.1, ID='timer bay1', SETPOINT= 170.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
-&HOLE XB = 0.77,1.23,0.0,0.3,3.49,4.63, COLOR='RED', TRANSPARENCY=0.75, DEVC_ID='timer bay1' / b-side bay window
+&DEVC XYZ=0.1,0.1,0.1, ID='timer bay top', SETPOINT= 211.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+&DEVC XYZ=0.1,0.1,0.1, ID='timer bay bottom', SETPOINT= 221.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+&HOLE XB = 0.77,1.23,0.0,0.3,3.49,4.06, COLOR='RED', TRANSPARENCY=0.75, DEVC_ID='timer bay top' / b-side bay window
+&HOLE XB = 0.77,1.23,0.0,0.3,4.06,4.63, COLOR='RED', TRANSPARENCY=0.75, DEVC_ID='timer bay bottom' / b-side bay window
 
 #  =====================
 #  = Basement Geometry =
@@ -135,7 +136,7 @@ RAMP ID='WIND RAMP', T=30,F=1.00 /
 &HOLE XB = 8.84,9.14,0.95,1.71,1.48,1.98, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  / bedroom window
 
 !First Floor-------------------------------------
-&OBST XB = 0.0,9.14,0.0,7.16,2.28,2.58 / Floor
+&OBST XB = 0.0,9.14,0.0,7.77,2.28,2.58 / Floor
 &HOLE XB = 2.37,4.21,3.41,4.42,2.28,2.58 / Stairwell Hole
 &HOLE XB = 2.07,2.37,3.41,4.42,2.36,2.58 / Stairwell Hole
 
@@ -162,25 +163,26 @@ RAMP ID='WIND RAMP', T=30,F=1.00 /
 
 !First Floor Perimeter---------------------------
 &OBST XB = 0.0,9.14,0.0,0.3,2.58,5.06, COLOR='GRAY 75' / A-Side
-&OBST XB = 0.0,0.3,0.3,6.86,2.58,5.06, COLOR='GRAY 75' / B-Side
-&OBST XB = 0.0,9.14,6.86,7.16,2.58,5.06, COLOR='GRAY 75' / C-Side
-&OBST XB = 8.84,9.14,0.3,6.86,2.58,5.06,, COLOR='GRAY 75' / D-Side
+&OBST XB = 0.0,0.3,0.3,7.47,2.58,5.06, COLOR='GRAY 75' / B-Side
+&OBST XB = 0.0,9.14,7.47,7.77,2.58,5.06, COLOR='GRAY 75' / C-Side
+&OBST XB = 8.84,9.14,0.3,7.47,2.58,5.06,, COLOR='GRAY 75' / D-Side
 
 !First Floor Bathroom----------------------------
-&OBST XB = 4.21,4.51,3.41,6.86,2.58,5.06, COLOR='WARM GREY' / b-side wall
-&OBST XB = 5.73,6.03,4.72,6.86,2.58,5.06, COLOR='WARM GREY' / d-side wall
+&OBST XB = 4.21,4.51,3.41,7.47,2.58,5.06, COLOR='WARM GREY' / b-side wall
+&OBST XB = 5.73,6.03,4.72,7.47,2.58,5.06, COLOR='WARM GREY' / d-side wall
 &OBST XB = 4.51,6.03,4.42,4.72,2.58,5.06, COLOR='WARM GREY' / a-side wall
+OBST XB = 4.51,5.73,4.72,7.47,2.58,5.06, COLOR='GRAY 60' / fill bathoom
 
 !First Floor Kitchen-----------------------------
 &OBST XB = 1.97,4.21,4.42,4.72,2.58,5.06, COLOR='WARM GREY' / wall
 &OBST XB = 1.97,4.51,3.11,3.41,2.58,5.06, COLOR='WARM GREY' / wall
 &OBST XB = 1.97,2.27,3.41,4.42,4.63,5.06, COLOR='WARM GREY' / wall
-&HOLE XB = 0.69,1.48,6.86,7.16,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /b-side window
+&HOLE XB = 0.69,1.48,7.47,7.77,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /b-side window
 &HOLE XB = 0.0,0.3,4.32,5.11,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /a-side window
 
 !First Floor Bedroom 1---------------------------
 &OBST XB = 6.03,8.84,3.41,3.71,2.58,5.06, COLOR='WARM GREY' / Bedroom wall split
-&HOLE XB = 7.21,8,6.86,7.16,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /b-side window
+&HOLE XB = 7.21,8,7.47,7.77,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /b-side window
 &HOLE XB = 8.84,9.14,4.08,4.87,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /d-side window
 
 !First Floor Bedroom 2---------------------------
@@ -190,31 +192,31 @@ RAMP ID='WIND RAMP', T=30,F=1.00 /
 
 !First Floor Living Room-------------------------
 &HOLE XB = 0.0,0.3,1.1,1.89,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1'  /a-side window 2
-&HOLE XB = 1.33,2.47,0.0,0.3,3.49,4.63, COLOR='RED', TRANSPARENCY=0.75, DEVC_ID='timer bay2' / middle bay window
+&HOLE XB = 1.33,2.47,0.0,0.3,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer bay2' / middle bay window
 &HOLE XB = 2.57,3.05,0.0,0.3,3.49,4.63, COLOR='BLUE', TRANSPARENCY=0.75, DEVC_ID='timer 1' / d-side bay window
 &OBST XB = 3.86,4.97,-1.0,0.0,2.28,2.58 / front door stoop
 
 !First Floor Ceiling-----------------------------
-&OBST XB = 0.0,9.14,0.0,7.16,5.06,5.36 / Ceiling
+&OBST XB = 0.0,9.14,0.0,7.77,5.06,5.36 / Ceiling
 
 #  ====================
 #  = Roof Geometry =
 #  ====================
 
-&MULT ID='roof a' DY=0.3, DZ=0.15, N_LOWER=0, N_UPPER=11 /   
+&MULT ID='roof a' DY=0.3, DZ=0.15, N_LOWER=0, N_UPPER=12 /   
 &OBST XB = 0.0,9.14,0.0,0.3,5.36,5.51, MULT_ID='roof a', SURF_ID='ROOF' /
 &MULT ID='wall ab' DXB=0.0,0.0,-0.3,-0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
 &OBST XB = 0.0,0.3,3.3,3.6,5.36,7.16, MULT_ID='wall ab', SURF_ID='ROOF' / side wall b
-&MULT ID='wall bc' DXB=0.0,0.0,0.3,0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
-&OBST XB = 0.0,0.3,3.6,3.9,5.36,7.16, MULT_ID='wall bc', SURF_ID='ROOF' / side wall b
+&MULT ID='wall bc' DXB=0.0,0.0,0.3,0.3,0.0,-0.15 N_LOWER=0, N_UPPER=12 /
+&OBST XB = 0.0,0.3,3.6,3.9,5.36,7.31, MULT_ID='wall bc', SURF_ID='ROOF' / side wall b
 
 
-&MULT ID='roof c' DY=-0.3, DZ=0.15, N_LOWER=0, N_UPPER=11 /   
-&OBST XB = 0.0,9.14,6.86,7.16,5.36,5.51, MULT_ID='roof c', SURF_ID='ROOF' /
+&MULT ID='roof c' DY=-0.3, DZ=0.15, N_LOWER=0, N_UPPER=12 /   
+&OBST XB = 0.0,9.14,7.47,7.77,5.36,5.51, MULT_ID='roof c', SURF_ID='ROOF' /
 &MULT ID='wall cd' DXB=0.0,0.0,-0.3,-0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
-&OBST XB = 8.84,9.14,3.3,3.6,5.36,7.16, MULT_ID='wall cd', SURF_ID='ROOF' / side wall b
-&MULT ID='wall ad' DXB=0.0,0.0,0.3,0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
-&OBST XB = 8.84,9.14,3.6,3.9,5.36,7.16, MULT_ID='wall ad', SURF_ID='ROOF' / side wall b
+&OBST XB = 8.84,9.14,3.3,3.6,5.36,7.16, MULT_ID='wall cd', SURF_ID='ROOF' / side wall d
+&MULT ID='wall ad' DXB=0.0,0.0,0.3,0.3,0.0,-0.15 N_LOWER=0, N_UPPER=12 /
+&OBST XB = 8.84,9.14,3.6,3.9,5.36,7.31, MULT_ID='wall ad', SURF_ID='ROOF' / side wall d
 
 #  ====================
 #  = Outside Geometry =
@@ -235,7 +237,7 @@ RAMP ID='WIND RAMP', T=30,F=1.00 /
 #  =====================
 
 &DEVC XB = 0.0,9.14,0.0,7.16,0.0,2.28, QUANTITY='HRR', ID='Basement_HRR' /
-&DEVC XB = 0.0,9.14,0.0,7.16,2.28,5.06, QUANTITY='HRR', ID='First_Floor_HRR' /
+&DEVC XB = 0.0,9.14,0.0,7.77,2.28,5.06, QUANTITY='HRR', ID='First_Floor_HRR' /
 &DEVC XB = -7.0,17.0,-3.0,13.0,0.0,8.0, QUANTITY='HRR', ID='Domain' /
 
 &DEVC XYZ = 4.97,7.01,1.95, QUANTITY='V-VELOCITY', ID='0.08 m BS, V, Rear' /
