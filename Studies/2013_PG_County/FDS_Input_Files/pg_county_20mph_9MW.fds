@@ -238,7 +238,7 @@ OBST XB = 4.51,5.73,4.72,7.47,2.58,5.06, COLOR='GRAY 60' / fill bathoom
 #  =====================
 
 &DEVC XB = 0.0,9.14,0.0,7.16,0.0,2.28, QUANTITY='HRR', ID='Basement_HRR' /
-&DEVC XB = 0.0,9.14,0.0,7.16,2.28,5.06, QUANTITY='HRR', ID='First_Floor_HRR' /
+&DEVC XB = 0.0,9.14,0.0,7.77,2.28,5.06, QUANTITY='HRR', ID='First_Floor_HRR' /
 &DEVC XB = -7.0,17.0,-3.0,13.0,0.0,8.0, QUANTITY='HRR', ID='Domain' /
 
 &DEVC XYZ = 4.97,7.01,1.95, QUANTITY='V-VELOCITY', ID='0.08 m BS, V, Rear' /
