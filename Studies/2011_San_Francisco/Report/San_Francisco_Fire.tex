@@ -297,14 +297,16 @@ Input data from various sources must be collected and documented to simulate a f
 
 % The analysis of the simulation results is focused on the interior conditions on the second floor before and after the interior door failure. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, the fire exhibited signs of under-ventilated conditions when firefighters arrived~\cite{NIOSH:Bowyer2}; however, the exact ignition time, fire growth rate, and heat release rate (HRR) of the fire were not known. The ignition time and growth rate were estimated to reduce the amount of required calculation time while adhering to documented observations. The HRR of the fire was estimated using documentation of the potential fuel load within the structure.
 
-% In reality, the quantities associated with these input parameters are not fixed values; rather, a model input parameter can be thought of as a point estimate from a distribution of possible input parameters with some associated amount of uncertainty. Any change in an input parameter (such as the HRR) for a given scenario would result in a change in the output quantity (such as the hot gas layer (HGL) temperature). For example, according to the McCaffrey, Quintiere, and Harkleroad~\cite{SFPE:Walton} empirical correlation, the HGL temperature in a well-ventilated compartment fire is proportional to the HRR raised to the two-thirds power. Following this relationship, a 7.5~\% increase in the HRR would result in a 5~\% increase in the HGL temperature~\cite{NUREG_1824_Sup_1}. More detailed discussion on the propagation of parameter uncertainty in fire models is available in a validation study that was sponsored by the U.S. Nuclear Regulatory Commission~\cite{NUREG_1824_Sup_1}. The following subsections describe the inputs that were used to develop the simulation, including any approximations or assumptions that were made.
+In reality, the quantities associated with these input parameters are not fixed values; rather, a model input parameter can be thought of as a point estimate from a distribution of possible input parameters with some associated amount of uncertainty. Any change in an input parameter (such as the HRR) for a given scenario would result in a change in the output quantity (such as the hot gas layer (HGL) temperature). For example, according to the McCaffrey, Quintiere, and Harkleroad~\cite{SFPE:Walton} empirical correlation, the HGL temperature in a well-ventilated compartment fire is proportional to the HRR raised to the two-thirds power. Following this relationship, a 7.5~\% increase in the HRR would result in a 5~\% increase in the HGL temperature~\cite{NUREG_1824_Sup_1}. More detailed discussion on the propagation of parameter uncertainty in fire models is available in a validation study that was sponsored by the U.S. Nuclear Regulatory Commission~\cite{NUREG_1824_Sup_1}. The following subsections describe the inputs that were used to develop the simulation, including any approximations or assumptions that were made.
 
 \section{Geometry}
 \label{sec:geometry}
 
-% The structure involved in this fire incident was a 2~\sfrac{1}{2}~story residential building with balloon frame construction and a gable roof.\footnote{Balloon frame construction is a method of framing where a continuous stud runs from the bottom horizontal member to the top plate. Intermediate floors are built directly off of the studs. One potential issue with balloon frame construction is that without fire stops there is void space for fire to potentially travel between the floors within the wall cavity.} The structure had a 17.15~m (56~ft) by 6.15~m (20~ft) footprint, as shown in Fig.~\ref{fig:simp_geom}. This results in a floor area of approximately 105~m$^2$ (1100~ft$^2$) per floor and a main living area of approximately 110~m$^2$ (2200~ft$^2$). The interior walls were constructed from nominal lumber covered by 12.7~mm (0.5~in) gypsum board~\cite{NIOSH:Bowyer2}. Additionally, there was a half-story attic that contained the structure's hot water heater. Three sets of stairs were present in the structure: one front stairwell that connected the first and second levels (Stair 1 in Fig.~\ref{fig:simp_geom}), one rear stairwell that connected the first and second levels (Stair 2 in Fig.~\ref{fig:simp_geom}) and a second rear set of stairs which provided access to the attic (Stair 3 in Fig.~\ref{fig:simp_geom}). Entry to the first floor of the structure can be made either in the front or rear, as shown in Fig.~\ref{fig:simp_geom}.
+The structure involved in this fire incident was a four-story residential building with a flat roof that consisted of a bitumen membrane. The exterior was primarily stucco with large windows on the top three stories on the rear side of the structure. The right side of the structure shared a common fire wall with another residential structure. The structure was built on a sloped landscape such that, from the front side of the structure, two stories were located above the street level and two stories were located below the street level. The first and second floor (i.e., the two stories above street level) had a total interior floor area of 136~m$^2$ (1,468~ft$^2$). The interior walls were composed of gypsum board over insulated wood framing. The entrance stairs located on the front side of the structure led to the front door and an interior landing, which allowed access to the first floor (10 stairs down) or the second floor (5 stairs up).
 
-% The fire, which is described in Section~\ref{sec:fire}, started in the attic and spread to the rear porch. Discussion of the fire's impact on the interior conditions is provided in Section~\ref{sec:model_results}. Figure~\ref{fig:alpha_ex} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the damage occurred in the attic and rear porch on the second floor. Fully dimensioned drawings of the interior of the first and second floors are shown in Figs.~\ref{fig:first_floor} and \ref{fig:second_floor}, respectively.
+The basement (i.e., the first story below street level) had a total floor area of 121~m$^2$ (1301~ft$^2$) and consisted of a finished living area with a large utility area. A laundry area was located on a landing on the stairs between the first floor and basement. The basement was accessible via an exterior door on the left side of the structure and an interior set of stairs. The basement had a balcony on the exterior of the rear side of the structure. The sub-basement level (i.e., the second story below street level) was not connected to the other three levels of the house, contained no windows, and was only accessible via an exterior door of the left side of the structure. The exterior entrances to the basement and sub-basement levels were connected via exterior wooden stairs on the left side of the structure.
+
+The fire, which is described in Section~\ref{sec:fire}, originated in the finished living room on the basement level (near the rear side of the structure), which had a floor area of 72~m$^2$ (775~ft$^2$). More detailed discussion on the impact of the fire on the interior conditions is provided in Section~\ref{sec:model_results}. Figure~\ref{fig:post_exterior} shows the XX of the structure after the incident. Note that the majority of the damage occurred XX. Fully dimensioned drawings of the second floor, first floor, and basement are shown in Figs.~\ref{fig:drawing_second_floor}, \ref{fig:drawing_first_floor} and \ref{fig:drawing_basement}, respectively.
 
 % \begin{figure}[!ht]
 % \includegraphics[width=6.5in]{../Figures/1st_Floor_Metric} \\
@@ -313,12 +315,13 @@ Input data from various sources must be collected and documented to simulate a f
 % \label{fig:simp_geom}
 % \end{figure}
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/exterior_alpha} \\
-% \includegraphics[width=6.5in]{../Figures/exterior_charlie}
-% \caption{Photographs showing the front (left) and rear (right) exterior of the structure after the incident.}
-% \label{fig:alpha_ex}
-% \end{figure}
+\begin{figure}[!ht]
+\includegraphics[width=3.20in]{../Figures/post_exterior_front}
+\hfill
+\includegraphics[width=3.20in]{../Figures/post_exterior_rear}
+\caption{Front (left) and rear (right) exterior of the structure after the incident.}
+\label{fig:post_exterior}
+\end{figure}
 
 
 \clearpage
@@ -327,7 +330,7 @@ Input data from various sources must be collected and documented to simulate a f
 \section{Fire}
 \label{sec:fire}
 
-To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these sources of information, the FDS model includes two source fires: an initial couch fire in the basement near the rear side of the structure, and a secondary flashover fire that spanned the entire basement floor area. The basement consisted of a finished living area with a large utilities area and contained primarily upholstered polyurethane furniture fuel items.
+To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these sources of information, the FDS model includes two source fires: an initial couch fire in the basement near the rear side of the structure, and a secondary flashover fire that spanned the entire basement floor area. The basement primarily contained upholstered polyurethane furniture fuel items.
 
 Polyurethane fuel can be represented by the chemical formula, $\C\H_{1.8}\O_{0.30}\N_{0.05}$, with specified product yields of soot ($y_{\mathrm{s}}=0.131 \; \mathrm{kg}/\mathrm{kg}$) and carbon monoxide ($y_{\mathrm{CO}}=0.010 \; \mathrm{kg}/\mathrm{kg}$)~\cite{SFPE:Tewarson}. The product yields are expressed in terms of the amount soot or carbon monoxide emitted per unit mass of fuel consumed~(kg/kg) and can be found in the Society of Fire Protection Engineers (SFPE) Handbook~\cite{SFPE:Tewarson}. A balanced chemical reaction for polyurethane combustion can be written as:
 
@@ -771,13 +774,13 @@ The authors would like to thank XXXX. The authors would also like to thank John 
 \begin{figure}[!ht]
 \includegraphics[width=6.5in]{../Figures/Top_Floor_Metric}
 \caption[Dimensioned drawing of the second floor.]{Dimensioned drawing of the second floor. The measurements are accurate to within 15~cm (6~in).}
-\label{fig:drawing_first_floor}
+\label{fig:drawing_second_floor}
 \end{figure}
 
 \begin{figure}[!ht]
 \includegraphics[width=6.5in]{../Figures/Ground_Floor_Metric}
 \caption[Dimensioned drawing of the first floor.]{Dimensioned drawing of the first floor. The measurements are accurate to within 15~cm (6~in).}
-\label{fig:drawing_second_floor}
+\label{fig:drawing_first_floor}
 \end{figure}
 
 \begin{figure}[!ht]
