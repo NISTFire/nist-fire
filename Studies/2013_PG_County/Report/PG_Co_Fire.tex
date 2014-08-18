@@ -218,7 +218,7 @@ This document describes the input and the results of the FDS (version 6.1.1) sim
 
 \chapter{Fire Incident Summary}
 \label{fire_sum}
-The account of events for this incident was documented by the Safety Investigation Team of the Prince George's County Fire/EMS Department~\cite{PGCounty2013}. At 21:11 hours on February 24, 2012 Prince George's Fire/EMS Department responded to a structure fire in Riverdale Heights, Maryland with a fire in the basement~\cite{PGCounty2013}. For the purpose of this analysis, the details regarding the timeline are considered to be approximate values. The following narrative of the incident, focused on the events which led to burn injuries to two emergency-personnel, was taken from the Prince George's County report~\cite{PGCounty2013}:
+The account of events for this incident was documented by the Safety Investigation Team of the Prince George's County Fire/EMS Department~\cite{PGCounty2013}. At 21:11 hours on February 24, 2012 Prince George's Fire/EMS Department responded to a structure fire in Riverdale Heights, Maryland with a fire in the basement~\cite{PGCounty2013}. For the purpose of this analysis, the details regarding the timeline are considered to be approximate values. The Prince George's County report~\cite{PGCounty2013} includes narratives of actions of the response personnel. The following narrative of the incident, focused on the events which led to burn injuries to two emergency-personnel, was taken from the Prince George's County report~\cite{PGCounty2013}:
 \begin{quote}
 Truck 809 responded from quarters, as the first due truck company, and arrived on 57$^{th}$ Avenue right behind Engine 807B. When Truck 809 stopped to let Engine 807B layout, Truck 809 Can dismounted the truck and had to walk up the street as it pulled away. Truck 809 Officer observed a lot of smoke moving extremely fast through the front yard and across the street upon exiting the truck. Truck 809 Officer and Truck 809 Forcible Entry proceeded directly to the front door \ldots of the structure. Both of them entered the structure with full PPE, including SCBA, but without the protection of a hose line. Truck 809 Officer and Truck 809 Forcible Entry began primary searches on the first floor. At some point during the primary search, as conditions worsened, the front door closed, trapping Truck 809 Officer and Truck 809 Forcible Entry inside the structure. This situation could not have occurred if a charged hose line was operating inside the structure at the time the door slammed shut. They were the only firefighters operating on the first floor at that time. 
 
@@ -228,11 +228,10 @@ After exiting the structure, Truck 809 Officer screamed (to those on the exterio
 
 While the interior operations were occurring, Truck 809 Driver and Truck 809 Hook/Ladders were on the exterior throwing ladders to the structure. Truck 809 Hook/Ladders threw two ladders [front and left side], while Truck 809 Driver threw one ladder ([front side]). 
 \end{quote}  
-
-The Prince George's County report~\cite{PGCounty2013}  \noindent Table~\ref{tab:fire_info} shows an overview of the timeline of events.
+From a combination of on-scene video and the narrative accounts from the Prince George's County Fire/EMS Department report~\cite{PGCounty2013}, Table~\ref{tab:fire_info} shows an overview of the timeline of events.
 \begin{table}[!h]
 \centering
-\captionof{table}[Abridged approximate fire event timeline]{Abridged Prince George's Fire/EMS approximate fire event timeline~\cite{PGCounty2013}}\label{tab:fire_info}
+\captionof{table}[Abridged approximate fire event timeline]{Abridged Prince George's Fire/EMS approximate fire event timeline~\cite{PGCounty2013}.}\label{tab:fire_info}
 \begin{tabular}{cl}
 \toprule[1.5pt]
 Incident Time              &  Fire Behavior / Fireground Operation  \\
@@ -268,8 +267,7 @@ Smokeview is a software tool designed to visualize simulation results from FDS~\
 
 Input data from various sources must be collected and documented to simulate a fire using FDS or any other fire model. For the simulation results presented in this document, information was obtained from two primary sources. The following information was gathered from the fire scene: the geometry of the building and the compartments being modeled, the size and location of exterior and interior ventilation openings, and documentation of fire damage to the building. The following information was gathered from witnesses, first responders, reports, and recorded media such as fire ground radios or videos: information on the timing of the fire development, the sequence and approximate timing of ventilation openings to the outside, and weather conditions at the time of the fire. 
 
-The analysis of the simulation results is focused on the impact of ventilation, specifically opening and closing the front door, on the conditions on the first floor of the structure. 
-
+The analysis of the simulation results is focused on the impact of ventilation. Specifically on the  interior conditions of the first floor following the establishment of a flow path through door control and how wind impacted these conditions. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, heavy smoke conditions were reported at the front of the house at the time of arrival~\cite{PGCounty2013}; however, the exact ignition time, fire growth rate, and heat release rate (HRR) of the fire were not known. The ignition time and growth rate were estimated to reduce the amount of required calculation time while adhering to event timeline (Table~\ref{tab:fire_info}) and documented observations. The HRR of the fire was estimated using documentation of the potential fuel load within the structure.
 
 In reality, the quantities associated with these input parameters are not fixed values; rather, a model input parameter can be thought of as a point estimate from a distribution of possible input parameters with some associated amount of uncertainty. Any change in an input parameter (such as the HRR) for a given scenario would result in a change in the output quantity (such as the hot gas layer (HGL) temperature). For example, according to the McCaffrey, Quintiere, and Harkleroad~\cite{SFPE:Walton} empirical correlation, the HGL temperature in a well-ventilated compartment fire is proportional to the HRR raised to the two-thirds power. Following this relationship, a 7.5~\% increase in the HRR would result in a 5~\% increase in the HGL temperature~\cite{NUREG_1824_Sup_1}. More detailed discussion on the propagation of parameter uncertainty in fire models is available in a validation study that was sponsored by the U.S. Nuclear Regulatory Commission~\cite{NUREG_1824_Sup_1}. The following subsections describe the inputs that were used to develop the simulation, including any approximations or assumptions that were made.
 
@@ -300,6 +298,30 @@ While the fires were represented as fuel sources with a constant area (Section~\
 
 \section{Ventilation}
 \label{Vents}
+
+\begin{table}
+\centering
+\captionof{table}{Timeline of ventilation changes in the simulation}\label{tab:vents}
+\begin{tabular}{lllll}
+\toprule[1.5pt]
+Baseline     &   Ventilation   &  Type       & State of       &  Side of  \\
+Simulation  &  Area             &                 & Opening     &  Structure  \\
+{[s]}             &  {[m$^2$]}     &                 &                    &                  \\
+\midrule
+0                 &  1.84             &  Door        &  Opened     &  Rear  \\
+0                 &  1.40             &  Window   &  Opened     &  Rear  \\
+0                 &  0.39             &  Window   &  Opened     &  Left   \\
+100             &  1.84             &  Door        &  Opened     &  Front   \\
+207             &  1.84             &  Door        &  Closed      &  Front   \\
+211             &  0.26             &  Window   &  Opened     &  Front   \\
+221             &  0.26             &  Window   &  Opened     &  Front  \\
+264             &  1.84             &  Door        & Opened      & Front  \\
+\bottomrule[1.25pt]
+\end{tabular}\par
+\footnotesize
+\normalsize
+\end{table}
+
 
 \section{Numerical Mesh}
 \label{mesh}
