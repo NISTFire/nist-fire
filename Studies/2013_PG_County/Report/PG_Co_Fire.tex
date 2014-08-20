@@ -274,6 +274,17 @@ In reality, the quantities associated with these input parameters are not fixed 
 
 \section{Geometry}
 \label{geom}
+The structure involved in this fire incident was a one story, single-family structure with a basement. Due to the surrounding topography (the ground slopes from the front to rear of the structure), the basement on the rear side of the structure was above grade. The structure was wood-framed platform-framed with a gable roof. \footnote{Platform-framed construction means that floor joists are completely covered with a sub-floor. This forms a platform for which walls are built from.} The structure had a first floor footprint of 9.14~m (30~ft) by 7.77~m (25.5~ft) with the basement being slightly smaller, 9.14~m (30~ft) by 7.16~m (23.5~ft), as show in Fig.~\ref{fig:simp_geom}. This results in a first floor area of 71~m$^2$ (764~ft$^2$) and a basement floor area of 65~m$^2$ (700~ft$^2$). The interior walls and ceiling were constructed from nominal lumber covered by 12.7~mm (0.5~in) gypsum board~\cite{PGCounty2013}. There is a single flight of stairs in the center of the structure which connected the first floor to the basement. Access to the structure could be made on the front side of the first floor and the rear side of the basement.
+
+\begin{figure}[!ht]
+\centering
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+\includegraphics[width=.7\textwidth]{../Figures/Basement} \\
+\includegraphics[width=.7\textwidth]{../Figures/First_Floor}
+\end{tabular*}
+\caption[Plan view of basement (top) and first (bottom) floor of structure.]{Plan view of basement (top) and first (bottom) floor of structure. Stairs and key windows and doors are identified using measurements collected by NIST.}
+\label{fig:simp_geom}
+\end{figure}
 
 \section{Fire}
 \label{fire}
@@ -298,6 +309,10 @@ While the fires were represented as fuel sources with a constant area (Section~\
 
 \section{Ventilation}
 \label{Vents}
+The simulations in this study account for changes in the ventilation due to a combination of fire department operations (opening doors, breaking windows), fire acting on the structure (fire breaching windows/doors) and wind (restricting flow, closing doors). Three ventilation scenarios were considered in this study. Each scenario followed the timeline of events outlined in Table~\ref{tab:vents}. The difference in each scenario is the wind boundary condition. Simulations were run at 0~m/s (0~mph), 4.47~m/s (10~mph), and 8.94~m/s (20~mph) wind velocities with a flow direction from the rear toward the front of the structure. Based on local weather conditions, mean wind velocities ranged between 4.47~m/s (10~mph) and 8.94~m/s (20~mph). The case without wind was run to control for the impact of wind on the flow of hot gases within the structure.
+
+Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open rear basement door and two open windows at the start of the simulation are significantly larger than the total effective area of leakage of a structure of this type. Therefore, any leakage in the structure would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
+
 
 \begin{table}
 \centering
@@ -321,7 +336,6 @@ Simulation  &  Area             &                 & Opening     &  Structure  \\
 \footnotesize
 \normalsize
 \end{table}
-
 
 \section{Numerical Mesh}
 \label{mesh}
