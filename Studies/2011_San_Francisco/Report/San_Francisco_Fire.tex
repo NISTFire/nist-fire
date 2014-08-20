@@ -263,7 +263,7 @@ Incident Time  &  Fire Behavior / Fireground Operation                          
                &                                                                                      \\
 10:56:00       &  BC9 observes smoke but no fire at the left rear corner of the structure.            \\
                &                                                                                      \\
-10:58:00       &  Fire self-vents from the rear side of the structure when a glass door in the        \\
+10:58:42       &  Fire self-vents from the rear side of the structure when a glass door in the        \\
                &  basement fails.                                                                     \\
                &                                                                                      \\
 10:59:00       &  BC9 forces open the basement door on the left side of the structure,                \\
@@ -274,7 +274,8 @@ Incident Time  &  Fire Behavior / Fireground Operation                          
 11:01:00       &  Heavy fire and black smoke observed at rear of structure. Incident command          \\
                &  (IC) attempts to contact E26 several times via radio with no reply.                 \\
                &                                                                                      \\
-11:02:00       &  E32 crew makes entry into the basement with a second hoseline.                      \\
+11:02:00       &  E32 crew makes entry into the basement with a second hoseline and begins            \\
+               &  suppression operations.                                                             \\
                &                                                                                      \\
 11:08:00       &  Two downed E26 firefighters are found on the first floor.                           \\
                &                                                                                      \\
@@ -295,7 +296,7 @@ Smokeview is a software tool designed to visualize simulation results from FDS~\
 
 Input data from various sources must be collected and documented to simulate a fire using FDS or any other fire model. For the simulation results presented in this document, information was obtained from two primary sources. The following information was gathered from the fire scene: the geometry of the building and the compartments being modeled, the size and location of exterior and interior ventilation openings, and documentation of fire damage to the building. The following information was gathered from witnesses, first responders, reports, and recorded media such as fire ground radios or videos: information on the timing of the fire development, the sequence and approximate timing of ventilation openings to the outside, and weather conditions at the time of the fire. 
 
-The analysis of the simulation results is focused on the interior conditions on the first floor where the downed firefighters were located and the conditions in the interior stairwell leading to the basement. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, the fire was in the early growth stage when firefighters arrived~\cite{NIOSH:Bowyer2}; however, the exact ignition time, fire growth rate, and heat release rate (HRR) of the fire were not known. The ignition time, growth rate, and HRR were estimated were estimated using documentation of the potential fuel load within the structure.
+The analysis of the simulation results is focused on the interior conditions on the first floor where the downed firefighters were located and the conditions that resulted in the establishment of a flow path in the interior stairwell leading into the basement. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, the fire was in the early growth stage when firefighters arrived~\cite{NIOSH:Bowyer2}; however, the exact ignition time, fire growth rate, and heat release rate (HRR) of the fire were not known. The ignition time, growth rate, and HRR were estimated were estimated using documentation of the potential fuel load within the structure.
 
 In reality, the quantities associated with these input parameters are not fixed values; rather, a model input parameter can be thought of as a point estimate from a distribution of possible input parameters with some associated amount of uncertainty. Any change in an input parameter (such as the HRR) for a given scenario would result in a change in the output quantity (such as the hot gas layer (HGL) temperature). For example, according to the McCaffrey, Quintiere, and Harkleroad~\cite{SFPE:Walton} empirical correlation, the HGL temperature in a well-ventilated compartment fire is proportional to the HRR raised to the two-thirds power. Following this relationship, a 7.5~\% increase in the HRR would result in a 5~\% increase in the HGL temperature~\cite{NUREG_1824_Sup_1}. More detailed discussion on the propagation of parameter uncertainty in fire models is available in a validation study that was sponsored by the U.S. Nuclear Regulatory Commission~\cite{NUREG_1824_Sup_1}. The following subsections describe the inputs that were used to develop the simulation, including any approximations or assumptions that were made.
 
@@ -324,10 +325,6 @@ The fire, which is described in Section~\ref{sec:fire}, originated in the finish
 \caption{Front (left) and rear (right) exterior of the structure after the incident.}
 \label{fig:post_exterior}
 \end{figure}
-
-
-\clearpage
-
 
 \section{Fire}
 \label{sec:fire}
@@ -370,10 +367,6 @@ Note that using the input lines above will invoke the simple chemistry reaction 
 \end{lstlisting}
 Note that the coordinates here are unique for the vents are specific to the input files used for these simulations. The key point is that they are 2-D planes located at a specific area.
 
-
-\clearpage
-
-
 \section{Materials}
 \label{sec:materials}
 
@@ -390,46 +383,37 @@ While the fires were represented as fuel sources with a constant area (Section~\
 \section{Ventilation}
 \label{sec:ventilation}
 
-% The simulations in this study account for changes in the ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). Two different ventilation scenarios were considered in this study. The first scenario involves a baseline simulation in which the ventilation times and ventilation areas represent our best understanding of the incident. The second scenario, or alternative simulation, does not include the firefighter opening the rear door to make entry to the structure and the subsequent exterior left wall fire penetration. The times of the ventilation changes are provided in Table~\ref{tab:ventilation_timeline}. Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open front door at the start of the simulation and the vents (opening size and open time) created during the simulation are significantly larger than the total effective area of leakage of a structure of this type. Therefore, any leakage in the structure would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
+The simulations in this study account for changes in the ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). Two different ventilation scenarios were considered in this study. The first scenario involves a baseline simulation in which the ventilation times and ventilation areas represent our best understanding of the incident. The second scenario, or alternative simulation, involves the exterior basement door on the left side of the structure being open during the entire simulation. The times of the ventilation changes of exterior doors and windows are provided in Table~\ref{tab:ventilation_timeline}.
 
-% An unknown parameter in Table~\ref{tab:ventilation_timeline} that needed to be estimated was the time when the second floor interior/porch door failed (160~s into the simulation). The area of failure was also estimated based on the following observations. The bottom hinge from the door appeared to be closed throughout the fire due to the lack of fire damage and the lack of soot deposited on the interior faces of the hinge and remaining wood, as shown in Fig.~\ref{fig:door_frame}. It appears that the door collapsed and failed partially open. In the simulations, only the upper portion of the door was assumed to fail. While this time and area may not be exact, the takeaway from the analysis in the following sections should be impact of the door's failure on the interior conditions of the structure.
+During the time at which the downed firefighters were located, the state of the windows and doors in the structure was known, which resulted in the establishment of a flow path in the interior stairwell leading into the basement. However, the exact time of operation for some doors was not known. Therefore, these doors were assumed to be open at the start of the simulation, which included 1) the front door, 2) the interior door leading from the hallway on the first floor into the stairwell towards the basement, 3) the door leading from the first floor landing into the garage, and 4) the overhead garage door.
 
-
-\clearpage
-
+Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open front door at the start of the simulation and the vents created during the simulation are significantly larger than the total effective area of leakage of a structure of this type. Therefore, any leakage in the structure would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
 
 \begin{table}[!ht]
-\caption[Timeline of ventilation changes in the simulation]{Timeline of ventilation changes in the simulation}
+\caption[Timeline of ventilation events in the simulation]{Timeline of ventilation events in the simulation}
 \begin{tabular}{cccll}
 \toprule
-Baseline    &  Alternative  &  Ventilation  &  Type         &  Side of         \\
-Simulation  &  Simulation   &  Area         &               &  Structure       \\
-{(s)}       &  {(s)}        &  (m$^2$)      &               &                  \\
+Baseline    &  Alternative  &  Ventilation  &  Type                &  Location of Vent        \\
+Simulation  &  Simulation   &  Area         &                      &                          \\
+{(s)}       &  {(s)}        &  (m$^2$)      &                      &                          \\
 \midrule
-0           &  0            &  0.11         &  Window       &  Rear            \\
-40          &  40           &  0.08         &  Breach (x2)  &  Front and Rear  \\
-45          &  45           &  0.12         &  Breach       &  Left            \\
-55          &  55           &  0.12         &  Breach       &  Rear            \\
-130         &  N/A$^*$      &  1.41         &  Door         &  Rear            \\
-135         &  N/A$^*$      &  0.2          &  Breach       &  Left            \\
-160         &  160          &  0.80         &  Door         &  Interior        \\
+0           &  0            &  1.47         &  Door                &  Front Exterior          \\
+0           &  0            &  1.68         &  Door                &  Interior (Stairwell)    \\
+0           &  0            &  1.68         &  Door                &  Interior (Garage)       \\
+0           &  0            &  10.1         &  Overhead Door       &  Front Exterior          \\
+N/A$^*$     &  0            &  1.68         &  Door                &  Left Basement Exterior  \\
+342         &  342          &  1.89         &  Sliding Glass Door  &  Rear Basement Exterior  \\
+383         &  383          &  1.89         &  Sliding Glass Door  &  Rear Basement Exterior  \\
+418         &  418          &  2.52         &  Window              &  Rear Basement Exterior  \\
+440         &  440          &  2.31         &  Window              &  Rear Basement Exterior  \\
+450         &  450          &  3.78         &  Sliding Glass Door  &  Rear Basement Exterior  \\
 \bottomrule
 \end{tabular}
 \footnotesize
-\\$^*$These ventilation events were not included in the alternative simulation.
+\\$^*$This ventilation event was not included in the baseline simulation.
 \normalsize
 \label{tab:ventilation_timeline}
 \end{table}
-
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/door_frame_burn}
-% \caption[Post-incident image of rear porch door frame.]{Post-incident image of the second floor porch door frame that failed taken from inside the structure looking toward the porch. Note that the hinge is still intact and there is unburned, ``clean'' wood along the bottom portion of the frame.}
-% \label{fig:door_frame}
-% \end{figure}
-
-
-\clearpage
-
 
 \section{Numerical Mesh}
 \label{sec:numerical_mesh}
@@ -495,38 +479,44 @@ To examine the results of the simulations, it is important to link the timelines
 \caption[Fire incident and simulation event timeline]{Fire incident and simulation event timeline}
 \begin{tabular}{ccl}
 \toprule
-Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation                                                \\
-               &  Time        &                                                                                      \\
-{(hh:mm:ss)}   &  {(s)}       &                                                                                      \\
+Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation                             \\
+               &  Time        &                                                                   \\
+{(hh:mm:ss)}   &  {(s)}       &                                                                   \\
 \midrule
-10:45:00       &              &  Dispatch for a curtain fire due to an electrical short at a residential structure.  \\
-               &              &                                                                                      \\
-10:48:00       &              &  E26 arrives on scene, reports light smoke conditions, and makes entry into          \\
-               &              &  the front door with a 1 3/4'' hoseline.                                             \\
-               &              &                                                                                      \\
-10:52:00       &  0           &  FDS simulation begins.                                                              \\
-               &              &                                                                                      \\
-10:54:00       &              &  E26 crew states that the fire is located below the first floor.                     \\
-               &              &                                                                                      \\
-10:56:00       &              &  BC9 observes smoke but no fire at the left rear corner of the structure.            \\
-               &              &                                                                                      \\
-10:58:00       &              &  Fire self-vents from the rear side of the structure when a glass door in the        \\
-               &              &  basement fails.                                                                     \\
-               &              &                                                                                      \\
-10:59:00       &              &  BC9 forces open the basement door on the left side of the structure,                \\
-               &              &  reports heavy fire and smoke, and requests a second hoseline.                       \\
-               &              &                                                                                      \\
-11:00:00       &              &  BC6 notices a severe change in conditions (heavy black smoke from garage).          \\
-               &              &                                                                                      \\
-11:01:00       &              &  Heavy fire and black smoke observed at rear of structure. Incident command          \\
-               &              &  (IC) attempts to contact E26 several times via radio with no reply.                 \\
-               &              &                                                                                      \\
-11:02:00       &              &  E32 crew makes entry into the basement with a second hoseline.                      \\
-               &              &                                                                                      \\
-11:08:00       &              &  Two downed E26 firefighters are found on the first floor.                           \\
-               &              &                                                                                      \\
-11:09:00       &              &  The downed E26 firefighters are carried out of the structure.                       \\
-               &              &                                                                                      \\
+10:45:00       &              &  Dispatch for a curtain fire due to an electrical short at a      \\
+               &              &  residential structure.                                           \\
+               &              &                                                                   \\
+10:48:00       &              &  E26 arrives on scene, reports light smoke conditions, and        \\
+               &              &  makes entry into the front door with a 1 3/4'' hoseline.         \\
+               &              &                                                                   \\
+10:53:00       &  0           &  FDS simulation begins.                                           \\
+               &              &                                                                   \\
+10:54:00       &  60          &  E26 crew states that the fire is located below the first floor.  \\
+               &              &                                                                   \\
+10:56:00       &  180         &  BC9 observes smoke but no fire at the left rear corner           \\
+               &              &  of the structure.                                                \\
+               &              &                                                                   \\
+10:58:42       &  342         &  Fire self-vents from the rear side of the structure when a       \\
+               &              &  glass door in the basement fails.                                \\
+               &              &                                                                   \\
+10:59:00       &  360         &  BC9 forces open the basement door on the left side of            \\
+               &              &  the structure, reports heavy fire and smoke, and requests a      \\
+               &              &  second hoseline.                                                 \\
+               &              &                                                                   \\
+11:00:00       &  420         &  BC6 notices a severe change in conditions (heavy black smoke     \\
+               &              &  from garage).                                                    \\
+               &              &                                                                   \\
+11:01:00       &  480         &  Heavy fire and black smoke observed at rear of structure.        \\
+               &              &  Incident command (IC) attempts to contact E26 several times      \\
+               &              &  via radio with no reply.                                         \\
+               &              &                                                                   \\
+11:02:00       &  540         &  E32 crew makes entry into the basement with a second hoseline    \\
+               &              &  and begins suppression operations. FDS simulation ends.          \\
+               &              &                                                                   \\
+11:08:00       &              &  Two downed E26 firefighters are found on the first floor.        \\
+               &              &                                                                   \\
+11:09:00       &              &  The downed E26 firefighters are carried out of the structure.    \\
+               &              &                                                                   \\
 \bottomrule
 \end{tabular}
 \footnotesize
@@ -535,19 +525,25 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 \label{tab:combined_timeline}
 \end{table}
 
+
+\clearpage
+
+
 \section{Heat Release Rate}
 \label{sec:HRR}
 
-% The heat release rate output data from FDS quantifies the simulated rate of energy release in the simulation. Figure~\ref{fig:hrr} shows the prescribed HRR versus time values based on the prescribed fires along with the FDS results for the two ventilation scenarios that were described in Section~\ref{sec:ventilation}. The two vertical lines represent the time at which a firefighter opened the back door of the structure ($t$ = 130 s) and the time at which the second floor interior door was estimated to fail ($t$ = 160 s). Due to a lack of information about the time of fire ignition or how fast the fire grew, these parameters needed to be estimated. The growth rate shown in Fig.~\ref{fig:hrr} (10~MW in approximately 20~s) is fast because the incipient stage of the fire growth was not considered in this study. The maximum size of the fire used in this study was selected such that the conditions would become ventilation limited quickly to minimize computational time while aligning with the timeline observations of video and picture evidence from the fire. Using this approach, the accuracy of heat transfer to the walls of the structure may be sacrificed; however, all of the window, door, and wall failures were driven by the event timeline rather than failure temperature criteria.
+The HRR output quantity from FDS represents the predicted amount of combustion that would have occurred in the fire scenario, which depends on the amount of available fuel, oxygen, and ventilation. In the FDS simulations, the nominal HRR is specified, and FDS determines the amount of combustion that occurs throughout the simulation based on the amount of available fuel and oxygen at a given location. As a result, the actual HRR in FDS can be lower than the specified HRR based on the ventilation conditions.
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/Chicago_Fire_HRR}
-% \caption[HRR versus time from the FDS simulations.]
-% {HRR versus time from the FDS simulations. The first vertical line indicates the time at which the back door failed (130~s), and the second vertical line indicates the time at which the interior hallway door failed (160~s).}
-% \label{fig:hrr}
-% \end{figure}
+Figure~\ref{fig:hrr} shows the nominal HRR vs. time based on the specified fires along with the FDS results for the two ventilation scenarios that were described in Section~\ref{sec:ventilation}. The vertical line represents the time at which the first basement window on the rear side of the structure failed (342~s). The maximum size of the fire used in this study was selected such that the conditions would become ventilation limited to minimize computational time while aligning with the timeline observations from the fire scenario. Note that the rear window failures were driven by the event timeline rather than failure temperature criteria.
 
-% In Fig.~\ref{fig:hrr}, the solid line represents the baseline FDS simulation (this follows the noted door openings from the incident). The dashed line represents an alternative series of events in which the rear door does not get opened and the subsequent breach of the rear porch wall on the left side of the structure does not occur. The dash-dotted line represents the prescribed (or nominal) HRR that was input into FDS. As shown in Fig.~\ref{fig:hrr}, the HRR output from FDS is less than the prescribed HRR because the fire in the structure becomes ventilation limited. The maximum HRR value is slightly less than 9~MW before the fire becomes ventilation limited and begins to decay. The HRR is reduced to 5~MW as the oxygen inside the structure is consumed. There is an insufficient amount of oxygen in the structure to burn all of the fuel, therefore combustion occurs locally at the vents where fresh air is available. Figure~\ref{fig:smv_ext_fire} shows flaming combustion through the failed window on the rear side of the structure and attic breach just after the second fire ignites at 40~s. After additional wall breaches occur at 45~s and 55~s (see Table~\ref{tab:ventilation_timeline}), the abrupt change in ventilation causes the HRR to increase to 9~MW before it decreases to approximately 6~MW. The HRR then increases towards a sustainable steady-state value.
+\begin{figure}[!ht]
+\includegraphics[width=5.5in]{../Figures/Fire_HRR}
+\caption[HRR vs. time from the FDS simulations.]
+{HRR vs. time from the FDS simulations. The vertical line indicates the time at which the rear basement windows began to fail (342~s).}
+\label{fig:hrr}
+\end{figure}
+
+In Fig.~\ref{fig:hrr}, the XX line represents the baseline FDS simulation. The XX line represents an alternative simulation in which the basement door on the left side of the structure is open throughout the simulation. The XX line represents the nominal HRR that was input into FDS. As shown in Fig.~\ref{fig:hrr}, the HRR output from FDS is less than the prescribed HRR because the fire in the structure becomes ventilation limited. The maximum HRR value is approximately XX~MW before the fire becomes ventilation limited and begins to decay. The HRR is reduced to XX~MW as the amount of oxygen inside the structure becomes limited. There is an insufficient amount of oxygen in the structure to burn all of the fuel, therefore combustion occurs locally at the ventilation openings where fresh air is available. Figure~\ref{fig:smv_ext_fire} shows flaming combustion through the failed window on the rear side of the structure and attic breach just after the second fire ignites at XX~s. After additional window failures occur at XX~s and XX~s (see Table~\ref{tab:ventilation_timeline}), the abrupt change in ventilation causes the HRR to increase to XX~MW before it decreases to approximately XX~MW. The HRR then increases towards a steady-state value.
 
 % Figure~\ref{fig:hrr} indicates that the HRRs for both of the ventilation scenarios in FDS are identical until 130~s (HRR $\approx$ 7~MW). At 130~s, the rear door is opened in the baseline simulation. At 135~s, there is an additional breach on the left side of the structure (Table~\ref{tab:ventilation_timeline}). The open door and breach act as additional pressure releases for the structure. Again, the abrupt change in ventilation causes the HRR to increase from approximately 7~MW to 9.7~MW at 139~s. At the time of the door failure (160~s), the HRR in both cases was approximately 9~MW because of the increased amount of ventilation. While there might be some locally different burning characteristics between the baseline simulation and the alternative simulation, the interior conditions in both cases presented a significant hazard to firefighters inside of the structure. Therefore, the analysis will focus on the results of the baseline simulation.
 
@@ -556,10 +552,6 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 % \caption{Smokeview rendering of exterior combustion occurring on the rear side of the structure.}
 % \label{fig:smv_ext_fire}
 % \end{figure}
-
-
-\clearpage
-
 
 \section{Pressure}
 \label{sec:pressure}
@@ -572,8 +564,6 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 % \caption[FDS simulated pressure contours, 1~s prior to interior door failure.]{FDS simulated pressure contours, 1~s prior to interior door failure.}
 % \label{fig:pres_159s}
 % \end{figure}
-
-% \clearpage
 
 % \begin{landscape}
 % \begin{figure}[!ht]
@@ -652,10 +642,6 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 % \label{fig:flowpath_1}
 % \end{figure}
 
-
-\clearpage
-
-
 \section{Assessing the Hazard}
 \label{sec:assessing_the_hazard}
 
@@ -689,10 +675,6 @@ A person is susceptible to second-degree burn injuries if exposed to temperature
 % {Temperature contours on the second floor, 60~s after interior door failure, 1.83~m (6~ft) above the floor.}
 % \label{fig:temp_top_220}
 % \end{figure}
-
-
-\clearpage
-
 
 \section{Tactical Considerations}
 \label{sec:tactical_condsiderations}
