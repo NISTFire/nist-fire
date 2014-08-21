@@ -59,12 +59,13 @@
 #  = Burners =
 #  ===========
 
-&SURF ID='BURNER', HRRPUA=0.25, COLOR='RED', RAMP_Q='Fire_Ramp' / Couch (based on mattress fire, peak of 5.4 MW)
-&VENT XB=4.2, 6.2, 15.2, 17.2, -2.8, -2.8, SURF_ID='BURNER' /
+&SURF ID='BURNER', HRRPUA=0.25, COLOR='RED', RAMP_Q='Fire_Ramp' / Couch (based on mattress fire, peak of 5.4 MW at 385 s in ramp)
+&VENT XB=4.2, 6.2, 15.2, 17.2, -2.8, -2.8, SURF_ID='BURNER', DEVC_ID='TIMER_INITIAL_BURNER_OFF' /
+&DEVC ID='TIMER_INITIAL_BURNER_OFF', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.TRUE., SETPOINT=300 / Disable burner at 300 s
 
-&SURF ID='FLASHOVER_BURNER', HRRPUA=270.563, COLOR='RED' / Flashover fire, entire basement floor, 15 MW
-&VENT XB=0.0, 8.4, 8.5, 15.1, -2.8, -2.8, SURF_ID='FLASHOVER_BURNER', DEVC_ID='TIMER_FLASHOVER' /
-&DEVC ID='TIMER_FLASHOVER', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.FALSE., SETPOINT=300 /
+&SURF ID='FLASHOVER_BURNER', HRRPUA=365.097, COLOR='RED' / Flashover fire, entire basement floor, 20 MW
+&VENT XB=0.1, 8.4, 8.5, 15.1, -2.8, -2.8, SURF_ID='FLASHOVER_BURNER', DEVC_ID='TIMER_FLASHOVER' /
+&DEVC ID='TIMER_FLASHOVER', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.FALSE., SETPOINT=300 / Activate burner at 300 s
 
 #  ===========
 #  = Markers =
