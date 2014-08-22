@@ -385,7 +385,7 @@ While the fires were represented as fuel sources with a constant area (Section~\
 \section{Ventilation}
 \label{sec:ventilation}
 
-The simulations in this study account for changes in the ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). Two different ventilation scenarios were considered in this study. The first scenario involves a baseline simulation in which the ventilation times and ventilation areas represent our best understanding of the incident. The second scenario, or alternative simulation, involves the exterior basement door on the left side of the structure being open during the entire simulation. The times of the ventilation changes of exterior doors and windows are provided in Table~\ref{tab:ventilation_timeline}.
+The simulations in this study account for changes in the ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). The ventilation times and ventilation areas represent our best understanding of the incident. The times of the ventilation changes of exterior doors and windows are provided in Table~\ref{tab:ventilation_timeline}.
 
 During the time at which the downed firefighters were located, the state of the windows and doors in the structure was known, which resulted in the establishment of a flow path in the interior stairwell leading into the basement. However, the exact time of operation for some doors was not known. Therefore, these doors were assumed to be open at the start of the simulation, which included 1) the front door, 2) the interior door leading from the hallway on the first floor into the stairwell towards the basement, 3) the door leading from the first floor landing into the garage, and 4) the overhead garage door.
 
@@ -393,26 +393,26 @@ Structure leakage has been shown to be important when modeling enclosure fires~\
 
 \begin{table}[!ht]
 \caption[Timeline of ventilation events in the simulation]{Timeline of ventilation events in the simulation}
-\begin{tabular}{cccll}
+\begin{tabular}{ccll}
 \toprule
-Baseline    &  Alternative  &  Ventilation  &  Type                &  Location of Vent        \\
-Simulation  &  Simulation   &  Area         &                      &                          \\
-{(s)}       &  {(s)}        &  (m$^2$)      &                      &                          \\
+FDS Simulation  &  Ventilation  &  Type                &  Location of Vent        \\
+Time            &  Area         &                      &                          \\
+{(s)}           &  (m$^2$)      &                      &                          \\
 \midrule
-0           &  0            &  1.47         &  Door                &  Front Exterior          \\
-0           &  0            &  1.68         &  Door                &  Interior (Stairwell)    \\
-0           &  0            &  1.68         &  Door                &  Interior (Garage)       \\
-0           &  0            &  10.1         &  Overhead Door       &  Front Exterior          \\
-N/A$^*$     &  0            &  1.68         &  Door                &  Left Basement Exterior  \\
-342         &  342          &  1.89         &  Sliding Glass Door  &  Rear Basement Exterior  \\
-383         &  383          &  1.89         &  Sliding Glass Door  &  Rear Basement Exterior  \\
-418         &  418          &  2.52         &  Window              &  Rear Basement Exterior  \\
-440         &  440          &  2.31         &  Window              &  Rear Basement Exterior  \\
-450         &  450          &  3.78         &  Sliding Glass Door  &  Rear Basement Exterior  \\
+0               &  1.47         &  Door                &  Front Exterior          \\
+0               &  1.68         &  Door                &  Interior (Stairwell)    \\
+0               &  1.68         &  Door                &  Interior (Garage)       \\
+0               &  10.1         &  Overhead Door       &  Front Exterior          \\
+N/A$^*$         &  1.68         &  Door                &  Left Basement Exterior  \\
+342             &  1.89         &  Sliding Glass Door  &  Rear Basement Exterior  \\
+383             &  1.89         &  Sliding Glass Door  &  Rear Basement Exterior  \\
+418             &  2.52         &  Window              &  Rear Basement Exterior  \\
+440             &  2.31         &  Window              &  Rear Basement Exterior  \\
+450             &  3.78         &  Sliding Glass Door  &  Rear Basement Exterior  \\
 \bottomrule
 \end{tabular}
 \footnotesize
-\\$^*$This ventilation event was not included in the baseline simulation.
+\\$^*$This ventilation event was not included in the simulation.
 \normalsize
 \label{tab:ventilation_timeline}
 \end{table}
@@ -545,7 +545,7 @@ Figure~\ref{fig:hrr} shows the prescribed HRR vs. time based on the specified fi
 \label{fig:hrr}
 \end{figure}
 
-In Fig.~\ref{fig:hrr}, the XX line represents the baseline FDS simulation. The XX line represents an alternative simulation in which the basement door on the left side of the structure is open throughout the simulation. The XX line represents the prescribed HRR that was input into FDS. As shown in Fig.~\ref{fig:hrr}, the HRR output from FDS is less than the prescribed HRR because the fire in the structure becomes ventilation limited. The maximum HRR value is approximately XX~MW before the fire becomes ventilation limited and begins to decay. The HRR is reduced to XX~MW as the amount of oxygen inside the structure becomes limited. There is an insufficient amount of oxygen in the structure to burn all of the fuel, therefore combustion occurs locally at the ventilation openings where fresh air is available. Figure~\ref{fig:smv_ext_fire} shows flaming combustion through the failed window on the rear side of the structure and attic breach just after the second fire ignites at XX~s. After additional window failures occur at XX~s and XX~s (see Table~\ref{tab:ventilation_timeline}), the abrupt change in ventilation causes the HRR to increase to XX~MW before it decreases to approximately XX~MW. The HRR then increases towards a steady-state value.
+In Fig.~\ref{fig:hrr}, the XX line represents the FDS simulation. The XX line represents the prescribed HRR that was input into FDS. As shown in Fig.~\ref{fig:hrr}, the HRR output from FDS is less than the prescribed HRR because the fire in the structure becomes ventilation limited. The maximum HRR value is approximately XX~MW before the fire becomes ventilation limited and begins to decay. The HRR is reduced to XX~MW as the amount of oxygen inside the structure becomes limited. There is an insufficient amount of oxygen in the structure to burn all of the fuel, therefore combustion occurs locally at the ventilation openings where fresh air is available. Figure~\ref{fig:smv_ext_fire} shows flaming combustion through the failed window on the rear side of the structure and attic breach just after the second fire ignites at XX~s. After additional window failures occur at XX~s and XX~s (see Table~\ref{tab:ventilation_timeline}), the abrupt change in ventilation causes the HRR to increase to XX~MW before it decreases to approximately XX~MW. The HRR then increases towards a steady-state value.
 
 % Figure~\ref{fig:hrr} indicates that the HRRs for both of the ventilation scenarios in FDS are identical until 130~s (HRR $\approx$ 7~MW). At 130~s, the rear door is opened in the baseline simulation. At 135~s, there is an additional breach on the left side of the structure (Table~\ref{tab:ventilation_timeline}). The open door and breach act as additional pressure releases for the structure. Again, the abrupt change in ventilation causes the HRR to increase from approximately 7~MW to 9.7~MW at 139~s. At the time of the door failure (160~s), the HRR in both cases was approximately 9~MW because of the increased amount of ventilation. While there might be some locally different burning characteristics between the baseline simulation and the alternative simulation, the interior conditions in both cases presented a significant hazard to firefighters inside of the structure. Therefore, the analysis will focus on the results of the baseline simulation.
 
