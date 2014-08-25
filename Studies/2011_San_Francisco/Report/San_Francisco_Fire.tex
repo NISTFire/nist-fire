@@ -245,7 +245,7 @@ The crew from Engine~24, assigned to back up Engine~26, and a split crew from Re
 The Incident Commander was alerted of a downed fire fighter but, did not initially realize, until moments later that it was actually two downed fire fighters. Both [fire fighters] were removed from the structure and immediate medical treatment was provided. The [fire fighters] were transported to the local medical center where the lieutenant was pronounced dead and the fire fighter/paramedic died two days later.
 \end{quote}
 
-\noindent Table~\ref{tab:incident_timeline} shows an overview of the timeline of events. A plan view of the structure and the location where the captain collapsed are shown in Fig.~\ref{fig:simp_geom}, and more details of the fire development are provided in the following sections.
+\noindent Table~\ref{tab:incident_timeline} shows an overview of the timeline of events. A plan view of the structure, the location where the downed firefighters were located, and more details of the fire development are provided in the following section.
 
 \begin{table}[!ht]
 \caption[Abridged NIOSH approximate fire event timeline]{Abridged NIOSH approximate fire event timeline~\cite{NIOSH:Bowyer2}}
@@ -304,7 +304,7 @@ In reality, the quantities associated with these input parameters are not fixed 
 \section{Geometry}
 \label{sec:geometry}
 
-The structure involved in this fire incident was a four-story residential building with a flat roof that consisted of a bitumen membrane. The exterior was primarily stucco with large windows on the top three stories on the rear side of the structure. The right side of the structure shared a common fire wall with another residential structure. The structure had a 17.73~m (58~ft) by 6.38~m (21~ft) footprint and a height of 5.9~m (19~ft), as shown in Fig.~\ref{fig:simp_geom}.
+The structure involved in this fire incident was a four-story residential building with a flat roof that consisted of a bitumen membrane. The exterior was primarily stucco with large windows on the top three stories on the rear side of the structure. The right side of the structure shared a common fire wall with another residential structure. The structure had a 17.73~m (58~ft) by 8.53~m (28~ft) footprint and a height of 5.9~m (19~ft), as shown in Fig.~\ref{fig:floor_plan}.
 
 The structure was built on a sloped landscape such that, from the front side of the structure, two stories were located above the street level and two stories were located below the street level. The first and second floor (i.e., the two stories above street level) had a total interior floor area of 136~m$^2$ (1,468~ft$^2$). The interior walls were composed of gypsum board over insulated wood framing. The entrance stairs located on the front side of the structure led to the front door and an interior landing, which allowed access to the first floor (ten~stairs down) or the second floor (five~stairs up).
 
@@ -312,18 +312,19 @@ The basement (i.e., the first story below street level) had a total floor area o
 
 The fire, which is described in Section~\ref{sec:fire}, originated in the finished living room on the basement level (near the rear side of the structure), which had a floor area of 72~m$^2$ (775~ft$^2$). More detailed discussion on the impact of the fire on the interior conditions is provided in Section~\ref{sec:model_results}. Figure~\ref{fig:post_exterior} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the exterior damage occurred above the openings located on the basement floor (where the wooden balcony is located). Fully dimensioned drawings of the second floor, first floor, and basement are shown in Figs.~\ref{fig:drawing_second_floor}, \ref{fig:drawing_first_floor} and \ref{fig:drawing_basement}, respectively.
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/1st_Floor_Metric} \\
-% \includegraphics[width=6.5in]{../Figures/2nd_Floor_Metric}
-% \caption[Plan view of first (top) and second (bottom) floor of structure.]{Plan view of first (top) and second (bottom) floor of structure. Stairs and key rooms are identified using measurements collected by NIST.}
-% \label{fig:simp_geom}
-% \end{figure}
+\begin{figure}[!ht]
+\includegraphics[width=5.0in]{../Figures/Plan_Second_Floor_Metric}
+\includegraphics[width=5.0in]{../Figures/Plan_First_Floor_Metric}
+\includegraphics[width=5.0in]{../Figures/Plan_Basement_Metric}
+\caption[Plan view of second floor (top), first floor (middle), and basement floor (bottom) of structure.]{Plan view of second floor (top), first floor (middle), and basement floor (bottom) of structure. Stairs and rooms are identified using measurements collected by NIST.}
+\label{fig:floor_plan}
+\end{figure}
 
 \begin{figure}[!ht]
-\includegraphics[width=3.20in]{../Figures/Post_Exterior_Front}
-\hfill
-\includegraphics[width=3.20in]{../Figures/Post_Exterior_Rear}
-\caption{Front (left) and rear (right) exterior of the structure after the incident.}
+\includegraphics[width=5.50in]{../Figures/Post_Exterior_Front} \\
+\vspace{0.1in}
+\includegraphics[width=3.50in]{../Figures/Post_Exterior_Rear}
+\caption{Front (top) and rear (bottom) exterior of the structure after the incident.}
 \label{fig:post_exterior}
 \end{figure}
 
@@ -426,7 +427,7 @@ D^* = \left(
 \end{equation}
 From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm, the characteristic fire diameter to cell size ($D^*/\dx$) ratio is 18.8 for the initial couch fire (peak HRR of 5.4~MW) and 28.3 for the basement flashover fire (HRR of 15~MW). Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. The grid resolution used in this model is within or exceeds typical engineering $D^*/\dx$ values.
 
-As discussed in Section~\ref{sec:geometry}, the structure had exterior dimensions of 17.73~m (58~ft) by 6.38~m (21~ft) and a total height of 5.9~m (19~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 17~m (56~ft) by 22~m (72~ft) by 13.6~m (45~ft). A grid resolution of 10~cm (3.9~in) was used, which required approximately 5.1 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:geom_grid} shows the front of the structure rendered in Smokeview with the 10~cm mesh. The domain was divided into 16 meshes (each containing between 289,000 and 346,800 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 3~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:model_parameters} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
+As discussed in Section~\ref{sec:geometry}, the structure had exterior dimensions of 17.73~m (58~ft) by 8.53~m (28~ft) and a total height of 5.9~m (19~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 17~m (56~ft) by 22~m (72~ft) by 13.6~m (45~ft). A grid resolution of 10~cm (3.9~in) was used, which required approximately 5.1 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:geom_grid} shows the front of the structure rendered in Smokeview with the 10~cm mesh. The domain was divided into 16 meshes (each containing between 289,000 and 346,800 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 3~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:model_parameters} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
 
 % \begin{figure}[!ht]
 % \includegraphics[width=6.5in]{../Figures/smv_exterior_grid} \\
