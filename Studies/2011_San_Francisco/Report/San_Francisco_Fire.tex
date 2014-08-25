@@ -245,7 +245,7 @@ The crew from Engine~24, assigned to back up Engine~26, and a split crew from Re
 The Incident Commander was alerted of a downed fire fighter but, did not initially realize, until moments later that it was actually two downed fire fighters. Both [fire fighters] were removed from the structure and immediate medical treatment was provided. The [fire fighters] were transported to the local medical center where the lieutenant was pronounced dead and the fire fighter/paramedic died two days later.
 \end{quote}
 
-\noindent Table~\ref{tab:incident_timeline} shows an overview of the timeline of events. A plan view of the structure, the location where the downed firefighters were located, and more details of the fire development are provided in the following section.
+\noindent Table~\ref{tab:incident_timeline} shows an overview of the timeline of events. The following section includes a plan view of the structure, the location where the downed firefighters were located, and more details of the fire development.
 
 \begin{table}[!ht]
 \caption[Abridged NIOSH approximate fire event timeline]{Abridged NIOSH approximate fire event timeline~\cite{NIOSH:Bowyer2}}
@@ -427,21 +427,21 @@ D^* = \left(
 \end{equation}
 From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm, the characteristic fire diameter to cell size ($D^*/\dx$) ratio is 18.8 for the initial couch fire (peak HRR of 5.4~MW) and 28.3 for the basement flashover fire (HRR of 15~MW). Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. The grid resolution used in this model is within or exceeds typical engineering $D^*/\dx$ values.
 
-As discussed in Section~\ref{sec:geometry}, the structure had exterior dimensions of 17.73~m (58~ft) by 8.53~m (28~ft) and a total height of 5.9~m (19~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 17~m (56~ft) by 22~m (72~ft) by 13.6~m (45~ft). A grid resolution of 10~cm (3.9~in) was used, which required approximately 5.1 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:geom_grid} shows the front of the structure rendered in Smokeview with the 10~cm mesh. The domain was divided into 16 meshes (each containing between 289,000 and 346,800 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 3~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:model_parameters} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
+As discussed in Section~\ref{sec:geometry}, the structure had exterior dimensions of 17.73~m (58~ft) by 8.53~m (28~ft) and a total height of 5.9~m (19~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 17~m (56~ft) by 22~m (72~ft) by 13.6~m (45~ft). A grid resolution of 10~cm (3.9~in) was used, which required approximately 5.1 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:SMV_exterior_grid} shows the front of the structure rendered in Smokeview with the 10~cm mesh. The domain was divided into 16 meshes (each containing between 289,000 and 346,800 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 3~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:model_parameters} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/smv_exterior_grid} \\
-% \includegraphics[width=6.5in]{../Figures/smv_exterior_grid_rear}
-% \caption{Front (left) and rear (right) of the structure with 10~cm computational mesh.}
-% \label{fig:geom_grid}
-% \end{figure}
+\begin{figure}[!ht]
+\includegraphics[width=5.0in]{../Figures/SMV_Exterior_Grid_Front} \\
+\includegraphics[width=5.0in]{../Figures/SMV_Exterior_Grid_Rear}
+\caption{Front (left) and rear (right) of the structure with a 10~cm computational mesh.}
+\label{fig:SMV_exterior_grid}
+\end{figure}
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/smv_exterior_mesh}
-% \caption[Front-right side of the structure within the computational domain.]
-% {Front-right side of the structure within the computational domain (with multiple meshes). Each of the 16 meshes is 3~m (9.8~ft) by 10~m (33~ft) by 5~m (16.4~ft).}
-% \label{fig:mult_mesh}
-% \end{figure}
+\begin{figure}[!ht]
+\includegraphics[width=6.5in]{../Figures/SMV_Exterior_Meshes}
+\caption[Rear-left side of the structure within the computational domain.]
+{Rear-left side of the structure within the computational domain (with multiple meshes).}
+\label{fig:mult_mesh}
+\end{figure}
 
 \begin{table}[!ht]
 \caption[Relevant fire model input parameters]{Relevant fire model input parameters}
