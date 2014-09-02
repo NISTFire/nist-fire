@@ -14,16 +14,11 @@ def movingaverage(interval, window_size):
     window= np.ones(int(window_size))/float(window_size)
     return np.convolve(interval, window, 'same')
 
-FDS_baseline_file = '../FDS_Output_Files/133_berkeley_fire_baseline_hrr.csv'
-FDS_alternative_file = '../FDS_Output_Files/133_berkeley_fire_baseline_hrr.csv'
+FDS_file = '../FDS_Output_Files/133_berkeley_fire_hrr.csv'
 
-FDS_baseline = pd.read_csv(FDS_baseline_file, header=1)
-HRR_baseline = FDS_baseline['HRR'] / 1000
-HRR_baseline_avg = movingaverage(HRR_baseline, 2)
-
-FDS_alternative = pd.read_csv(FDS_alternative_file, header=1)
-HRR_alternative = FDS_alternative['HRR'] / 1000
-HRR_alternative_avg = movingaverage(HRR_alternative, 2)
+FDS = pd.read_csv(FDS_file, header=1)
+HRR = FDS['HRR'] / 1000
+HRR_avg = movingaverage(HRR, 2)
 
 prescribed_time = np.array([0, 17, 23, 25, 35, 46, 53, 65, 80, 98, 112, 125, 133, 142, 144, 147, 157, 161, 167, 177, 184, 188, 195, 197, 201, 204, 205, 208, 215, 222, 230, 235, 241, 244, 246, 247, 250, 251, 253, 257, 260, 269, 273, 279, 282, 285, 288, 292, 295, 296, 297, 299, 300, 540])
 
@@ -31,10 +26,13 @@ prescribed_HRR = np.array([0, 5, 5, 16, 12, 12, 16, 20, 49, 98, 147, 199, 225, 2
 
 figure()
 plot(prescribed_time, prescribed_HRR, 'k-', lw=2, label='Prescribed HRR')
-plot(FDS_baseline['Time'], HRR_baseline_avg, 'r--', lw=2, label='FDS Model HRR (Baseline Simulation)')
-plot(FDS_alternative['Time'], HRR_alternative_avg, 'g-.', lw=2, label='FDS Model HRR (Alternative Simulation)')
+plot(FDS['Time'], HRR_avg, 'r--', lw=2, label='FDS Model HRR')
 plt.text(342+20, 2, 'Rear Window Failures Begin')
 axvline(342, color='k', ls='--', lw=2)
+# axvline(383, color='k', ls='--', lw=2)
+# axvline(418, color='k', ls='--', lw=2)
+# axvline(440, color='k', ls='--', lw=2)
+# axvline(450, color='k', ls='--', lw=2)
 ylim([0, 30])
 xlabel('Time(s)', fontsize=20)
 ylabel('HRR (MW)', fontsize=20)

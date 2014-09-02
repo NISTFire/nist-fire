@@ -316,7 +316,7 @@ The fire, which is described in Section~\ref{sec:fire}, originated in the finish
 \includegraphics[width=5.0in]{../Figures/Plan_Second_Floor_Metric}
 \includegraphics[width=5.0in]{../Figures/Plan_First_Floor_Metric}
 \includegraphics[width=5.0in]{../Figures/Plan_Basement_Metric}
-\caption[Plan view of second floor (top), first floor (middle), and basement floor (bottom) of structure.]{Plan view of second floor (top), first floor (middle), and basement floor (bottom) of structure. Stairs and rooms are identified using measurements collected by NIST.}
+\caption[Plan view of second floor (top), first floor (middle), and basement floor (bottom) of structure.]{Plan view of second floor (top), first floor (middle), and basement floor (bottom) of structure. The fire originated in the living room on the basement floor. Stairs and rooms are identified using measurements collected by NIST.}
 \label{fig:floor_plan}
 \end{figure}
 
@@ -363,10 +363,11 @@ Note that using the input lines above will invoke the simple chemistry reaction 
 
 \begin{lstlisting}
 &SURF ID='BURNER', HRRPUA=0.25, COLOR='RED', RAMP_Q='Fire_Ramp' /
-&VENT XB=4.2, 6.2, 15.2, 17.2, -2.8, -2.8, SURF_ID='BURNER' /
+&VENT XB=4.2, 6.2, 15.2, 17.2, -2.8, -2.8, SURF_ID='BURNER', DEVC_ID='TIMER_INITIAL_BURNER_OFF' /
+&DEVC ID='TIMER_INITIAL_BURNER_OFF', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.TRUE., SETPOINT=300 /
 
-&SURF ID='FLASHOVER_BURNER', HRRPUA=270.563, COLOR='RED' /
-&VENT XB=0.0, 8.4, 8.5, 15.1, -2.8, -2.8, SURF_ID='FLASHOVER_BURNER', DEVC_ID='TIMER_FLASHOVER' /
+&SURF ID='FLASHOVER_BURNER', HRRPUA=365.097, COLOR='RED' /
+&VENT XB=0.1, 8.4, 8.5, 15.1, -2.8, -2.8, SURF_ID='FLASHOVER_BURNER', DEVC_ID='TIMER_FLASHOVER' /
 &DEVC ID='TIMER_FLASHOVER', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.FALSE., SETPOINT=300 /
 \end{lstlisting}
 Note that the coordinates here are unique for the vents are specific to the input files used for these simulations. The key point is that they are 2-D planes located at a specific area.
