@@ -63,7 +63,7 @@
 &VENT XB=4.2, 6.2, 15.2, 17.2, -2.8, -2.8, SURF_ID='BURNER', DEVC_ID='TIMER_INITIAL_BURNER_OFF' /
 &DEVC ID='TIMER_INITIAL_BURNER_OFF', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.TRUE., SETPOINT=300 / Disable burner at 300 s
 
-&SURF ID='FLASHOVER_BURNER', HRRPUA=365.097, COLOR='RED', RAMP_Q='Flashover_Ramp' / Flashover fire ramp, entire basement floor, peak of 20 MW
+&SURF ID='FLASHOVER_BURNER', HRRPUA=0.018255, COLOR='RED', RAMP_Q='Flashover_Ramp' / Flashover fire ramp, entire basement floor, peak of 20 MW
 &VENT XB=0.1, 8.4, 8.5, 15.1, -2.8, -2.8, SURF_ID='FLASHOVER_BURNER' /
 
 #  ===========
@@ -440,11 +440,11 @@ cOBST XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.
 #  ==============
 
 # Flashover ramp
-&RAMP ID='Flashover_Ramp', T=0,   F=0      /
-&RAMP ID='Flashover_Ramp', T=299, F=0      /
-&RAMP ID='Flashover_Ramp', T=300, F=0.1555 / Initial HRR of 3110 kW at 300 s to match mattress HRR at 300 s
-&RAMP ID='Flashover_Ramp', T=342, F=1      / Linear ramp to peak HRR at time of first window breakage
-&RAMP ID='Flashover_Ramp', T=540, F=1      /
+&RAMP ID='Flashover_Ramp', T=0,   F=0     /
+&RAMP ID='Flashover_Ramp', T=299, F=0     /
+&RAMP ID='Flashover_Ramp', T=300, F=3110  / Initial HRR of 3110 kW at 300 s to match mattress HRR at 300 s
+&RAMP ID='Flashover_Ramp', T=342, F=20000 / Linear ramp to peak HRR at time of first window breakage
+&RAMP ID='Flashover_Ramp', T=540, F=20000 /
 
 # Madrzykowski, D., & Kerber, S. (2009). Fire Fighting Tactics Under Wind Driven Conditions: Laboratory Experiments.
 # King-size mattress ignited by trash can
