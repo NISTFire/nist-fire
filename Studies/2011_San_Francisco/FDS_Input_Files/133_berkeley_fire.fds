@@ -23,7 +23,7 @@
 # Simulation start time corresponding to LODD report - 10:53:00, t_0
 # Simulation end time corresponding to LODD report   - 11:02:00, water on fire
 # Simulation duration - 00:09:00
-&TIME T_END=0 /
+&TIME T_END=540 /
 
 &DUMP NFRAMES=1080, DT_HRR=1, DT_DEVC=1 /
 
