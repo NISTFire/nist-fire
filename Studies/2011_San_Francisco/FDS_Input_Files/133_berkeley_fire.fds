@@ -23,7 +23,7 @@
 # Simulation start time corresponding to LODD report - 10:53:00, t_0
 # Simulation end time corresponding to LODD report   - 11:02:00, water on fire
 # Simulation duration - 00:09:00
-&TIME T_END=540 /
+&TIME T_END=0 /
 
 &DUMP NFRAMES=1080, DT_HRR=1, DT_DEVC=1 /
 
@@ -369,6 +369,10 @@ cOBST XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.
 
 &BNDF QUANTITY='GAUGE HEAT FLUX' /
 &BNDF QUANTITY='WALL TEMPERATURE' /
+
+&DEVC XB=0.10, 8.40, 8.50, 9.00, -2.80, -0.40, QUANTITY='HRR', ID='HRR_BASEMENT_1' /
+&DEVC XB=0.10, 8.40, 9.00, 14.5, -2.80, -0.40, QUANTITY='HRR', ID='HRR_BASEMENT_2' /
+&DEVC XB=0.10, 8.40, 14.5, 17.1, -2.80, -0.40, QUANTITY='HRR', ID='HRR_BASEMENT_3' /
 
 &SLCF PBX=2.60, QUANTITY='TEMPERATURE', VECTOR=.TRUE. /
 &SLCF PBX=2.60, QUANTITY='HRRPUV' /
