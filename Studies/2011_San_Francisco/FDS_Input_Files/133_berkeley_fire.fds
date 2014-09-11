@@ -20,24 +20,63 @@
 &MESH IJK=170, 55, 34, XB=-5, 12, 14.5, 20.0,  1.2,  4.6 /
 &MESH IJK=170, 55, 34, XB=-5, 12, 14.5, 20.0,  4.6,  8.0 /
 
-# Simulation start time corresponding to LODD report - 10:53:00, t_0
-# Simulation end time corresponding to LODD report   - 11:02:00, water on fire
-# Simulation duration - 00:09:00
+# Simulation start time corresponding to LODD report - 10:53:00, t_0 (HH:MM:SS)
+# Simulation end time corresponding to LODD report   - 11:02:00, water on fire (HH:MM:SS)
+# Simulation duration - 00:09:00 (HH:MM:SS)
 &TIME T_END=540 /
 
 &DUMP NFRAMES=1080, DT_HRR=1, DT_DEVC=1 /
+
+# Needed with more than one gas phase reaction
+&MISC SUPPRESSION=.FALSE./
 
 #  =============
 #  = Reactions =
 #  =============
 
-&SPEC ID='POLYURETHANE', FORMULA='CH1.8O0.30N0.05' /
+&SPEC ID = 'POLYURETHANE',    FORMULA = 'CH1.8O0.30N0.05' /
+&SPEC ID = 'WOOD',            FORMULA = 'CH1.7O0.74N0.002' /
+&SPEC ID = 'OXYGEN',          LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'NITROGEN',        LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'WATER VAPOR',     LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'CARBON MONOXIDE', LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'CARBON DIOXIDE',  LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'SOOT',            LUMPED_COMPONENT_ONLY = .TRUE. /
+
+&SPEC ID = 'AIR', SPEC_ID = 'OXYGEN','NITROGEN','WATER VAPOR','CARBON DIOXIDE',
+    VOLUME_FRACTION=0.208057, 0.783214, 0.008342, 0.000387, BACKGROUND=.TRUE. /
+&SPEC ID = 'PRODUCTS_POLYURETHANE', SPEC_ID ='NITROGEN','WATER VAPOR','CARBON DIOXIDE','CARBON MONOXIDE','SOOT',
+    VOLUME_FRACTION = 0.678838, 0.155754, 0.129475, 0.001139, 0.034794 /
+&SPEC ID = 'PRODUCTS_WOOD', SPEC_ID ='NITROGEN','WATER VAPOR','CARBON DIOXIDE','CARBON MONOXIDE','SOOT',
+    VOLUME_FRACTION = 0.670128, 0.155268, 0.168397, 0.000637, 0.005570 /
+
+# Polyurethane, soot yield of 0.131, CO yield of 0.010 (SFPE HB, GM21, 4th ed.)
+# Wood, soot yield of 0.015, CO yield of 0.004 (SFPE HB, 4th ed.)
 
 &REAC ID = 'POLYURETHANE' 
     FUEL = 'POLYURETHANE', 
     HEAT_OF_COMBUSTION = 26200,
-    SOOT_YIELD = 0.131,
-    CO_YIELD = 0.010 /
+    SPEC_ID_NU = 'POLYURETHANE','AIR','PRODUCTS_POLYURETHANE'
+    NU = -1, -5.218633, 6.057861 /
+
+&REAC ID = 'WOOD' 
+    FUEL = 'WOOD', 
+    HEAT_OF_COMBUSTION = 16400,
+    SPEC_ID_NU = 'WOOD','AIR','PRODUCTS_WOOD'
+    NU = -1, -4.908330, 5.738119 /
+
+#  =========
+#  = Fires =
+#  =========
+
+&SURF ID='COUCH_INITIAL',     SPEC_ID='POLYURETHANE', MASS_FLUX = 0.190840, RAMP_MF='COUCH_INITIAL_RAMP',     COLOR='RED' / Growth up to 5 MW, then constant 5 MW after 327 s
+&SURF ID='COUCH_FLASHOVER_1', SPEC_ID='POLYURETHANE', MASS_FLUX = 0.190840, RAMP_MF='COUCH_FLASHOVER_1_RAMP', COLOR='RED' / Constant 5 MW
+&SURF ID='COUCH_FLASHOVER_2', SPEC_ID='POLYURETHANE', MASS_FLUX = 0.190840, RAMP_MF='COUCH_FLASHOVER_2_RAMP', COLOR='RED' / Constant 5 MW
+&SURF ID='COUCH_FLASHOVER_3', SPEC_ID='POLYURETHANE', MASS_FLUX = 0.076336, RAMP_MF='COUCH_FLASHOVER_3_RAMP', COLOR='RED' / Constant 2 MW
+&SURF ID='CHAIR_FLASHOVER',   SPEC_ID='POLYURETHANE', MASS_FLUX = 0.076336, RAMP_MF='CHAIR_FLASHOVER_RAMP',   COLOR='RED' / Constant 2 MW after 300 s
+&SURF ID='WOOD_EXTERIOR',     SPEC_ID='WOOD',         MASS_FLUX = 0.000000,                                   COLOR='RED' / Exterior basement porch and siding
+
+&OBST XB=4.2, 6.2, 15.2, 17.1, -2.8, -2.0, SURF_ID='COUCH_INITIAL' /
 
 #  ====================================
 #  = Material and surface definitions =
@@ -54,17 +93,6 @@
       COLOR     = 'DARK SEA GREEN 4'
       MATL_ID   = 'GYPSUM'
       THICKNESS = 0.012 /
-
-#  ===========
-#  = Burners =
-#  ===========
-
-&SURF ID='BURNER', HRRPUA=0.25, COLOR='RED', RAMP_Q='Mattress_Ramp' / Couch, based on mattress fire, peak of 5.4 MW at 385 s in ramp
-&VENT XB=4.2, 6.2, 15.2, 17.2, -2.8, -2.8, SURF_ID='BURNER', DEVC_ID='TIMER_INITIAL_BURNER_OFF' /
-&DEVC ID='TIMER_INITIAL_BURNER_OFF', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.TRUE., SETPOINT=300 / Disable burner at 300 s
-
-&SURF ID='FLASHOVER_BURNER', HRRPUA=0.018255, COLOR='RED', RAMP_Q='Flashover_Ramp' / Flashover fire ramp, entire basement floor, peak of 20 MW
-&VENT XB=0.1, 8.4, 8.5, 15.1, -2.8, -2.8, SURF_ID='FLASHOVER_BURNER' /
 
 #  ===========
 #  = Markers =
@@ -439,272 +467,101 @@ cOBST XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.
 &DEVC XYZ=6.86, 4.80, 2.23, QUANTITY='W-VELOCITY', ID='FRONT_DOOR_W_8' /
 &DEVC XYZ=6.86, 4.80, 2.23, QUANTITY='TEMPERATURE', ID='FRONT_DOOR_TEMP_8' /
 
-#  ==============
-#  = Fire ramps =
-#  ==============
+#  ===================
+#  = Mass flux ramps =
+#  ===================
 
-# Flashover ramp
-&RAMP ID='Flashover_Ramp', T=0,   F=0     /
-&RAMP ID='Flashover_Ramp', T=299, F=0     /
-&RAMP ID='Flashover_Ramp', T=300, F=3110  / Initial HRR of 3110 kW at 300 s to match mattress HRR at 300 s
-&RAMP ID='Flashover_Ramp', T=342, F=20000 / Linear ramp to peak HRR at time of first window breakage
-&RAMP ID='Flashover_Ramp', T=540, F=20000 /
+# Flashover ramp, COUCH_FLASHOVER_1
+&RAMP ID='COUCH_FLASHOVER_1', T=0,   F=0    /
+&RAMP ID='COUCH_FLASHOVER_1', T=300, F=0    / Linear ramp from 300 s to peak HRR at time of first window breakage
+&RAMP ID='COUCH_FLASHOVER_1', T=342, F=5000 /
+&RAMP ID='COUCH_FLASHOVER_1', T=540, F=5000 /
 
+# Flashover ramp, COUCH_FLASHOVER_2
+&RAMP ID='COUCH_FLASHOVER_2', T=0,   F=0    /
+&RAMP ID='COUCH_FLASHOVER_2', T=300, F=0    / Linear ramp from 300 s to peak HRR at time of first window breakage
+&RAMP ID='COUCH_FLASHOVER_2', T=342, F=5000 /
+&RAMP ID='COUCH_FLASHOVER_2', T=540, F=5000 /
+
+# Flashover ramp, COUCH_FLASHOVER_3
+&RAMP ID='COUCH_FLASHOVER_3', T=0,   F=0    /
+&RAMP ID='COUCH_FLASHOVER_3', T=300, F=0    / Linear ramp from 300 s to peak HRR at time of first window breakage
+&RAMP ID='COUCH_FLASHOVER_3', T=342, F=2000 /
+&RAMP ID='COUCH_FLASHOVER_3', T=540, F=2000 /
+
+# Flashover ramp, CHAIR_FLASHOVER
+&RAMP ID='CHAIR_FLASHOVER', T=0,   F=0    /
+&RAMP ID='CHAIR_FLASHOVER', T=300, F=0    / Linear ramp from 300 s to peak HRR at time of first window breakage
+&RAMP ID='CHAIR_FLASHOVER', T=342, F=2000 /
+&RAMP ID='CHAIR_FLASHOVER', T=540, F=2000 /
+
+# Initial fire ramp, COUCH_INITIAL
 # Madrzykowski, D., & Kerber, S. (2009). Fire Fighting Tactics Under Wind Driven Conditions: Laboratory Experiments.
 # King-size mattress ignited by trash can
-
-&RAMP ID='Mattress_Ramp', T=0,   F=0    /
-&RAMP ID='Mattress_Ramp', T=17,  F=5    /
-&RAMP ID='Mattress_Ramp', T=23,  F=5    /
-&RAMP ID='Mattress_Ramp', T=25,  F=16   /
-&RAMP ID='Mattress_Ramp', T=35,  F=12   /
-&RAMP ID='Mattress_Ramp', T=46,  F=12   /
-&RAMP ID='Mattress_Ramp', T=53,  F=16   /
-&RAMP ID='Mattress_Ramp', T=65,  F=20   /
-&RAMP ID='Mattress_Ramp', T=80,  F=49   /
-&RAMP ID='Mattress_Ramp', T=98,  F=98   /
-&RAMP ID='Mattress_Ramp', T=112, F=147  /
-&RAMP ID='Mattress_Ramp', T=125, F=199  /
-&RAMP ID='Mattress_Ramp', T=133, F=225  /
-&RAMP ID='Mattress_Ramp', T=142, F=236  /
-&RAMP ID='Mattress_Ramp', T=144, F=259  /
-&RAMP ID='Mattress_Ramp', T=147, F=266  /
-&RAMP ID='Mattress_Ramp', T=157, F=334  /
-&RAMP ID='Mattress_Ramp', T=161, F=338  /
-&RAMP ID='Mattress_Ramp', T=167, F=367  /
-&RAMP ID='Mattress_Ramp', T=177, F=420  /
-&RAMP ID='Mattress_Ramp', T=184, F=431  /
-&RAMP ID='Mattress_Ramp', T=188, F=424  /
-&RAMP ID='Mattress_Ramp', T=195, F=487  /
-&RAMP ID='Mattress_Ramp', T=197, F=543  /
-&RAMP ID='Mattress_Ramp', T=201, F=622  /
-&RAMP ID='Mattress_Ramp', T=204, F=637  /
-&RAMP ID='Mattress_Ramp', T=205, F=685  /
-&RAMP ID='Mattress_Ramp', T=208, F=715  /
-&RAMP ID='Mattress_Ramp', T=215, F=749  /
-&RAMP ID='Mattress_Ramp', T=222, F=786  /
-&RAMP ID='Mattress_Ramp', T=230, F=839  /
-&RAMP ID='Mattress_Ramp', T=235, F=869  /
-&RAMP ID='Mattress_Ramp', T=241, F=914  /
-&RAMP ID='Mattress_Ramp', T=244, F=996  /
-&RAMP ID='Mattress_Ramp', T=246, F=1037 /
-&RAMP ID='Mattress_Ramp', T=247, F=1041 /
-&RAMP ID='Mattress_Ramp', T=250, F=1074 /
-&RAMP ID='Mattress_Ramp', T=251, F=1078 /
-&RAMP ID='Mattress_Ramp', T=253, F=1149 /
-&RAMP ID='Mattress_Ramp', T=257, F=1213 /
-&RAMP ID='Mattress_Ramp', T=260, F=1303 /
-&RAMP ID='Mattress_Ramp', T=269, F=1580 /
-&RAMP ID='Mattress_Ramp', T=273, F=1733 /
-&RAMP ID='Mattress_Ramp', T=279, F=1793 /
-&RAMP ID='Mattress_Ramp', T=282, F=1883 /
-&RAMP ID='Mattress_Ramp', T=285, F=2006 /
-&RAMP ID='Mattress_Ramp', T=288, F=2118 /
-&RAMP ID='Mattress_Ramp', T=292, F=2350 /
-&RAMP ID='Mattress_Ramp', T=295, F=2560 /
-&RAMP ID='Mattress_Ramp', T=296, F=2687 /
-&RAMP ID='Mattress_Ramp', T=297, F=2952 /
-&RAMP ID='Mattress_Ramp', T=299, F=3110 /
-&RAMP ID='Mattress_Ramp', T=302, F=3495 /
-&RAMP ID='Mattress_Ramp', T=304, F=3686 /
-&RAMP ID='Mattress_Ramp', T=306, F=3862 /
-&RAMP ID='Mattress_Ramp', T=308, F=3963 /
-&RAMP ID='Mattress_Ramp', T=310, F=4127 /
-&RAMP ID='Mattress_Ramp', T=312, F=4262 /
-&RAMP ID='Mattress_Ramp', T=314, F=4314 /
-&RAMP ID='Mattress_Ramp', T=317, F=4468 /
-&RAMP ID='Mattress_Ramp', T=319, F=4580 /
-&RAMP ID='Mattress_Ramp', T=321, F=4688 /
-&RAMP ID='Mattress_Ramp', T=322, F=4715 /
-&RAMP ID='Mattress_Ramp', T=323, F=4812 /
-&RAMP ID='Mattress_Ramp', T=326, F=4946 /
-&RAMP ID='Mattress_Ramp', T=327, F=5119 /
-&RAMP ID='Mattress_Ramp', T=332, F=5148 /
-&RAMP ID='Mattress_Ramp', T=334, F=4935 /
-&RAMP ID='Mattress_Ramp', T=336, F=5152 /
-&RAMP ID='Mattress_Ramp', T=338, F=5328 /
-&RAMP ID='Mattress_Ramp', T=339, F=5317 /
-&RAMP ID='Mattress_Ramp', T=341, F=5261 /
-&RAMP ID='Mattress_Ramp', T=342, F=5231 /
-&RAMP ID='Mattress_Ramp', T=343, F=5122 /
-&RAMP ID='Mattress_Ramp', T=345, F=5051 /
-&RAMP ID='Mattress_Ramp', T=346, F=4905 /
-&RAMP ID='Mattress_Ramp', T=347, F=4849 /
-&RAMP ID='Mattress_Ramp', T=349, F=4898 /
-&RAMP ID='Mattress_Ramp', T=352, F=4917 /
-&RAMP ID='Mattress_Ramp', T=353, F=5047 /
-&RAMP ID='Mattress_Ramp', T=355, F=4905 /
-&RAMP ID='Mattress_Ramp', T=356, F=5010 /
-&RAMP ID='Mattress_Ramp', T=358, F=5242 /
-&RAMP ID='Mattress_Ramp', T=359, F=5343 /
-&RAMP ID='Mattress_Ramp', T=360, F=5261 /
-&RAMP ID='Mattress_Ramp', T=362, F=5197 /
-&RAMP ID='Mattress_Ramp', T=363, F=5055 /
-&RAMP ID='Mattress_Ramp', T=365, F=5070 /
-&RAMP ID='Mattress_Ramp', T=366, F=4849 /
-&RAMP ID='Mattress_Ramp', T=367, F=4905 /
-&RAMP ID='Mattress_Ramp', T=369, F=4976 /
-&RAMP ID='Mattress_Ramp', T=371, F=5010 /
-&RAMP ID='Mattress_Ramp', T=372, F=5077 /
-&RAMP ID='Mattress_Ramp', T=373, F=5104 /
-&RAMP ID='Mattress_Ramp', T=375, F=5205 /
-&RAMP ID='Mattress_Ramp', T=377, F=4999 /
-&RAMP ID='Mattress_Ramp', T=378, F=5089 /
-&RAMP ID='Mattress_Ramp', T=379, F=5006 /
-&RAMP ID='Mattress_Ramp', T=380, F=5208 /
-&RAMP ID='Mattress_Ramp', T=381, F=5392 /
-&RAMP ID='Mattress_Ramp', T=382, F=5306 /
-&RAMP ID='Mattress_Ramp', T=384, F=5324 /
-&RAMP ID='Mattress_Ramp', T=385, F=5444 /
-&RAMP ID='Mattress_Ramp', T=387, F=5339 /
-&RAMP ID='Mattress_Ramp', T=388, F=5317 /
-&RAMP ID='Mattress_Ramp', T=389, F=5264 /
-&RAMP ID='Mattress_Ramp', T=390, F=4995 /
-&RAMP ID='Mattress_Ramp', T=391, F=4707 /
-&RAMP ID='Mattress_Ramp', T=392, F=4587 /
-&RAMP ID='Mattress_Ramp', T=393, F=4546 /
-&RAMP ID='Mattress_Ramp', T=394, F=4584 /
-&RAMP ID='Mattress_Ramp', T=395, F=4494 /
-&RAMP ID='Mattress_Ramp', T=396, F=4524 /
-&RAMP ID='Mattress_Ramp', T=397, F=4481 /
-&RAMP ID='Mattress_Ramp', T=398, F=4347 /
-&RAMP ID='Mattress_Ramp', T=399, F=4388 /
-&RAMP ID='Mattress_Ramp', T=400, F=4365 /
-&RAMP ID='Mattress_Ramp', T=401, F=4186 /
-&RAMP ID='Mattress_Ramp', T=402, F=4163 /
-&RAMP ID='Mattress_Ramp', T=404, F=4107 /
-&RAMP ID='Mattress_Ramp', T=405, F=4036 /
-&RAMP ID='Mattress_Ramp', T=406, F=3871 /
-&RAMP ID='Mattress_Ramp', T=407, F=3920 /
-&RAMP ID='Mattress_Ramp', T=409, F=3804 /
-&RAMP ID='Mattress_Ramp', T=410, F=3681 /
-&RAMP ID='Mattress_Ramp', T=411, F=3673 /
-&RAMP ID='Mattress_Ramp', T=414, F=3299 /
-&RAMP ID='Mattress_Ramp', T=416, F=3312 /
-&RAMP ID='Mattress_Ramp', T=418, F=3140 /
-&RAMP ID='Mattress_Ramp', T=419, F=3211 /
-&RAMP ID='Mattress_Ramp', T=420, F=3106 /
-&RAMP ID='Mattress_Ramp', T=421, F=3143 /
-&RAMP ID='Mattress_Ramp', T=422, F=3147 /
-&RAMP ID='Mattress_Ramp', T=423, F=3046 /
-&RAMP ID='Mattress_Ramp', T=425, F=3009 /
-&RAMP ID='Mattress_Ramp', T=426, F=2941 /
-&RAMP ID='Mattress_Ramp', T=427, F=2848 /
-&RAMP ID='Mattress_Ramp', T=428, F=2810 /
-&RAMP ID='Mattress_Ramp', T=429, F=2750 /
-&RAMP ID='Mattress_Ramp', T=431, F=2732 /
-&RAMP ID='Mattress_Ramp', T=432, F=2683 /
-&RAMP ID='Mattress_Ramp', T=433, F=2664 /
-&RAMP ID='Mattress_Ramp', T=434, F=2679 /
-&RAMP ID='Mattress_Ramp', T=436, F=2661 /
-&RAMP ID='Mattress_Ramp', T=437, F=2601 /
-&RAMP ID='Mattress_Ramp', T=438, F=2548 /
-&RAMP ID='Mattress_Ramp', T=439, F=2519 /
-&RAMP ID='Mattress_Ramp', T=440, F=2421 /
-&RAMP ID='Mattress_Ramp', T=442, F=2343 /
-&RAMP ID='Mattress_Ramp', T=443, F=2369 /
-&RAMP ID='Mattress_Ramp', T=444, F=2339 /
-&RAMP ID='Mattress_Ramp', T=445, F=2320 /
-&RAMP ID='Mattress_Ramp', T=446, F=2279 /
-&RAMP ID='Mattress_Ramp', T=447, F=2305 /
-&RAMP ID='Mattress_Ramp', T=448, F=2197 /
-&RAMP ID='Mattress_Ramp', T=450, F=2193 /
-&RAMP ID='Mattress_Ramp', T=451, F=2152 /
-&RAMP ID='Mattress_Ramp', T=452, F=2141 /
-&RAMP ID='Mattress_Ramp', T=453, F=2028 /
-&RAMP ID='Mattress_Ramp', T=454, F=2043 /
-&RAMP ID='Mattress_Ramp', T=455, F=2006 /
-&RAMP ID='Mattress_Ramp', T=456, F=1950 /
-&RAMP ID='Mattress_Ramp', T=457, F=1920 /
-&RAMP ID='Mattress_Ramp', T=458, F=1879 /
-&RAMP ID='Mattress_Ramp', T=459, F=1890 /
-&RAMP ID='Mattress_Ramp', T=460, F=1755 /
-&RAMP ID='Mattress_Ramp', T=462, F=1696 /
-&RAMP ID='Mattress_Ramp', T=463, F=1669 /
-&RAMP ID='Mattress_Ramp', T=464, F=1699 /
-&RAMP ID='Mattress_Ramp', T=465, F=1594 /
-&RAMP ID='Mattress_Ramp', T=466, F=1580 /
-&RAMP ID='Mattress_Ramp', T=467, F=1531 /
-&RAMP ID='Mattress_Ramp', T=469, F=1505 /
-&RAMP ID='Mattress_Ramp', T=470, F=1523 /
-&RAMP ID='Mattress_Ramp', T=471, F=1482 /
-&RAMP ID='Mattress_Ramp', T=472, F=1493 /
-&RAMP ID='Mattress_Ramp', T=473, F=1505 /
-&RAMP ID='Mattress_Ramp', T=476, F=1512 /
-&RAMP ID='Mattress_Ramp', T=478, F=1512 /
-&RAMP ID='Mattress_Ramp', T=479, F=1445 /
-&RAMP ID='Mattress_Ramp', T=480, F=1456 /
-&RAMP ID='Mattress_Ramp', T=482, F=1400 /
-&RAMP ID='Mattress_Ramp', T=485, F=1344 /
-&RAMP ID='Mattress_Ramp', T=488, F=1273 /
-&RAMP ID='Mattress_Ramp', T=490, F=1190 /
-&RAMP ID='Mattress_Ramp', T=494, F=1161 /
-&RAMP ID='Mattress_Ramp', T=497, F=1190 /
-&RAMP ID='Mattress_Ramp', T=499, F=1247 /
-&RAMP ID='Mattress_Ramp', T=500, F=1194 /
-&RAMP ID='Mattress_Ramp', T=503, F=1172 /
-&RAMP ID='Mattress_Ramp', T=504, F=1190 /
-&RAMP ID='Mattress_Ramp', T=506, F=1123 /
-&RAMP ID='Mattress_Ramp', T=507, F=1022 /
-&RAMP ID='Mattress_Ramp', T=509, F=959  /
-&RAMP ID='Mattress_Ramp', T=511, F=940  /
-&RAMP ID='Mattress_Ramp', T=513, F=880  /
-&RAMP ID='Mattress_Ramp', T=515, F=854  /
-&RAMP ID='Mattress_Ramp', T=517, F=887  /
-&RAMP ID='Mattress_Ramp', T=519, F=846  /
-&RAMP ID='Mattress_Ramp', T=525, F=854  /
-&RAMP ID='Mattress_Ramp', T=526, F=839  /
-&RAMP ID='Mattress_Ramp', T=528, F=839  /
-&RAMP ID='Mattress_Ramp', T=530, F=801  /
-&RAMP ID='Mattress_Ramp', T=532, F=775  /
-&RAMP ID='Mattress_Ramp', T=534, F=727  /
-&RAMP ID='Mattress_Ramp', T=537, F=712  /
-&RAMP ID='Mattress_Ramp', T=539, F=700  /
-&RAMP ID='Mattress_Ramp', T=546, F=719  /
-&RAMP ID='Mattress_Ramp', T=550, F=689  /
-&RAMP ID='Mattress_Ramp', T=554, F=655  /
-&RAMP ID='Mattress_Ramp', T=557, F=596  /
-&RAMP ID='Mattress_Ramp', T=561, F=536  /
-&RAMP ID='Mattress_Ramp', T=564, F=491  /
-&RAMP ID='Mattress_Ramp', T=569, F=468  /
-&RAMP ID='Mattress_Ramp', T=578, F=480  /
-&RAMP ID='Mattress_Ramp', T=584, F=480  /
-&RAMP ID='Mattress_Ramp', T=588, F=442  /
-&RAMP ID='Mattress_Ramp', T=592, F=424  /
-&RAMP ID='Mattress_Ramp', T=597, F=375  /
-&RAMP ID='Mattress_Ramp', T=604, F=356  /
-&RAMP ID='Mattress_Ramp', T=613, F=326  /
-&RAMP ID='Mattress_Ramp', T=621, F=319  /
-&RAMP ID='Mattress_Ramp', T=625, F=274  /
-&RAMP ID='Mattress_Ramp', T=631, F=259  /
-&RAMP ID='Mattress_Ramp', T=637, F=300  /
-&RAMP ID='Mattress_Ramp', T=642, F=308  /
-&RAMP ID='Mattress_Ramp', T=644, F=308  /
-&RAMP ID='Mattress_Ramp', T=649, F=259  /
-&RAMP ID='Mattress_Ramp', T=653, F=218  /
-&RAMP ID='Mattress_Ramp', T=663, F=222  /
-&RAMP ID='Mattress_Ramp', T=671, F=233  /
-&RAMP ID='Mattress_Ramp', T=677, F=233  /
-&RAMP ID='Mattress_Ramp', T=687, F=203  /
-&RAMP ID='Mattress_Ramp', T=700, F=184  /
-&RAMP ID='Mattress_Ramp', T=718, F=165  /
-&RAMP ID='Mattress_Ramp', T=737, F=150  /
-&RAMP ID='Mattress_Ramp', T=751, F=143  /
-&RAMP ID='Mattress_Ramp', T=765, F=121  /
-&RAMP ID='Mattress_Ramp', T=780, F=128  /
-&RAMP ID='Mattress_Ramp', T=792, F=117  /
-&RAMP ID='Mattress_Ramp', T=803, F=117  /
-&RAMP ID='Mattress_Ramp', T=813, F=106  /
-&RAMP ID='Mattress_Ramp', T=821, F=121  /
-&RAMP ID='Mattress_Ramp', T=829, F=113  /
-&RAMP ID='Mattress_Ramp', T=837, F=98   /
-&RAMP ID='Mattress_Ramp', T=846, F=106  /
-&RAMP ID='Mattress_Ramp', T=855, F=98   /
-&RAMP ID='Mattress_Ramp', T=868, F=98   /
-&RAMP ID='Mattress_Ramp', T=877, F=98   /
-&RAMP ID='Mattress_Ramp', T=887, F=91   /
-&RAMP ID='Mattress_Ramp', T=900, F=83   /
-&RAMP ID='Mattress_Ramp', T=920, F=83   /
-&RAMP ID='Mattress_Ramp', T=933, F=83   /
-&RAMP ID='Mattress_Ramp', T=950, F=83   /
-&RAMP ID='Mattress_Ramp', T=969, F=76   /
+&RAMP ID='COUCH_INITIAL', T=0,   F=0    /
+&RAMP ID='COUCH_INITIAL', T=17,  F=5    /
+&RAMP ID='COUCH_INITIAL', T=23,  F=5    /
+&RAMP ID='COUCH_INITIAL', T=25,  F=16   /
+&RAMP ID='COUCH_INITIAL', T=35,  F=12   /
+&RAMP ID='COUCH_INITIAL', T=46,  F=12   /
+&RAMP ID='COUCH_INITIAL', T=53,  F=16   /
+&RAMP ID='COUCH_INITIAL', T=65,  F=20   /
+&RAMP ID='COUCH_INITIAL', T=80,  F=49   /
+&RAMP ID='COUCH_INITIAL', T=98,  F=98   /
+&RAMP ID='COUCH_INITIAL', T=112, F=147  /
+&RAMP ID='COUCH_INITIAL', T=125, F=199  /
+&RAMP ID='COUCH_INITIAL', T=133, F=225  /
+&RAMP ID='COUCH_INITIAL', T=142, F=236  /
+&RAMP ID='COUCH_INITIAL', T=144, F=259  /
+&RAMP ID='COUCH_INITIAL', T=147, F=266  /
+&RAMP ID='COUCH_INITIAL', T=157, F=334  /
+&RAMP ID='COUCH_INITIAL', T=161, F=338  /
+&RAMP ID='COUCH_INITIAL', T=167, F=367  /
+&RAMP ID='COUCH_INITIAL', T=177, F=420  /
+&RAMP ID='COUCH_INITIAL', T=184, F=431  /
+&RAMP ID='COUCH_INITIAL', T=188, F=424  /
+&RAMP ID='COUCH_INITIAL', T=195, F=487  /
+&RAMP ID='COUCH_INITIAL', T=197, F=543  /
+&RAMP ID='COUCH_INITIAL', T=201, F=622  /
+&RAMP ID='COUCH_INITIAL', T=204, F=637  /
+&RAMP ID='COUCH_INITIAL', T=205, F=685  /
+&RAMP ID='COUCH_INITIAL', T=208, F=715  /
+&RAMP ID='COUCH_INITIAL', T=215, F=749  /
+&RAMP ID='COUCH_INITIAL', T=222, F=786  /
+&RAMP ID='COUCH_INITIAL', T=230, F=839  /
+&RAMP ID='COUCH_INITIAL', T=235, F=869  /
+&RAMP ID='COUCH_INITIAL', T=241, F=914  /
+&RAMP ID='COUCH_INITIAL', T=244, F=996  /
+&RAMP ID='COUCH_INITIAL', T=246, F=1037 /
+&RAMP ID='COUCH_INITIAL', T=247, F=1041 /
+&RAMP ID='COUCH_INITIAL', T=250, F=1074 /
+&RAMP ID='COUCH_INITIAL', T=251, F=1078 /
+&RAMP ID='COUCH_INITIAL', T=253, F=1149 /
+&RAMP ID='COUCH_INITIAL', T=257, F=1213 /
+&RAMP ID='COUCH_INITIAL', T=260, F=1303 /
+&RAMP ID='COUCH_INITIAL', T=269, F=1580 /
+&RAMP ID='COUCH_INITIAL', T=273, F=1733 /
+&RAMP ID='COUCH_INITIAL', T=279, F=1793 /
+&RAMP ID='COUCH_INITIAL', T=282, F=1883 /
+&RAMP ID='COUCH_INITIAL', T=285, F=2006 /
+&RAMP ID='COUCH_INITIAL', T=288, F=2118 /
+&RAMP ID='COUCH_INITIAL', T=292, F=2350 /
+&RAMP ID='COUCH_INITIAL', T=295, F=2560 /
+&RAMP ID='COUCH_INITIAL', T=296, F=2687 /
+&RAMP ID='COUCH_INITIAL', T=297, F=2952 /
+&RAMP ID='COUCH_INITIAL', T=299, F=3110 /
+&RAMP ID='COUCH_INITIAL', T=302, F=3495 /
+&RAMP ID='COUCH_INITIAL', T=304, F=3686 /
+&RAMP ID='COUCH_INITIAL', T=306, F=3862 /
+&RAMP ID='COUCH_INITIAL', T=308, F=3963 /
+&RAMP ID='COUCH_INITIAL', T=310, F=4127 /
+&RAMP ID='COUCH_INITIAL', T=312, F=4262 /
+&RAMP ID='COUCH_INITIAL', T=314, F=4314 /
+&RAMP ID='COUCH_INITIAL', T=317, F=4468 /
+&RAMP ID='COUCH_INITIAL', T=319, F=4580 /
+&RAMP ID='COUCH_INITIAL', T=321, F=4688 /
+&RAMP ID='COUCH_INITIAL', T=322, F=4715 /
+&RAMP ID='COUCH_INITIAL', T=323, F=4812 /
+&RAMP ID='COUCH_INITIAL', T=326, F=4946 /
+&RAMP ID='COUCH_INITIAL', T=327, F=5000 / The original HRR ramp was modified to remain constant at 5 MW for the remainder of the simulation
+&RAMP ID='COUCH_INITIAL', T=540, F=5000 /
