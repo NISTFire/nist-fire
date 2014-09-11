@@ -27,7 +27,7 @@
 
 &DUMP NFRAMES=1080, DT_HRR=1, DT_DEVC=1 /
 
-# Needed with more than one gas phase reaction
+# SUPPRESSION=.FALSE is needed with more than one gas phase reaction
 &MISC SUPPRESSION=.FALSE./
 
 #  =============
