@@ -471,6 +471,9 @@ cOBST XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.
 #  = Mass flux ramps =
 #  ===================
 
+# Note that the mass fluxes in the SURF lines are normalized by the burning area and heat of combustion.
+# Therefore, the F values of the following mass flux ramps are in units of kW.
+
 # Flashover ramp, COUCH_FLASHOVER_1
 &RAMP ID='COUCH_FLASHOVER_1', T=0,   F=0    /
 &RAMP ID='COUCH_FLASHOVER_1', T=300, F=0    / Linear ramp from 300 s to peak HRR at time of first window breakage
