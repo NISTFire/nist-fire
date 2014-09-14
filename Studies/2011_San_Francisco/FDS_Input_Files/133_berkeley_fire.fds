@@ -77,10 +77,10 @@
 #  =========
 
 &SURF ID='COUCH_INITIAL_RIGHT',    SPEC_ID='POLYURETHANE', MASS_FLUX = 5.271815E-6, RAMP_MF='COUCH_INITIAL_RIGHT_RAMP'    / Growth up to 5 MW, then constant 5 MW after 327 s
-&SURF ID='COUCH_FLASHOVER_MIDDLE', SPEC_ID='POLYURETHANE', MASS_FLUX = 1.037172E-5, RAMP_MF='COUCH_FLASHOVER_MIDDLE_RAMP' / Constant 5 MW
-&SURF ID='COUCH_FLASHOVER_LEFT',   SPEC_ID='POLYURETHANE', MASS_FLUX = 5.271815E-6, RAMP_MF='COUCH_FLASHOVER_LEFT_RAMP'   / Constant 5 MW
-&SURF ID='LOUNGE_FLASHOVER',       SPEC_ID='POLYURETHANE', MASS_FLUX = 7.853485E-6, RAMP_MF='LOUNGE_FLASHOVER_RAMP'       / Constant 2 MW
-&SURF ID='CHAIR_FLASHOVER',        SPEC_ID='POLYURETHANE', MASS_FLUX = 7.918660E-6, RAMP_MF='CHAIR_FLASHOVER_RAMP'        / Constant 2 MW after 300 s
+&SURF ID='COUCH_FLASHOVER_MIDDLE', SPEC_ID='POLYURETHANE', MASS_FLUX = 1.037172E-5, RAMP_MF='COUCH_FLASHOVER_MIDDLE_RAMP' / Peak HRR of 5 MW
+&SURF ID='COUCH_FLASHOVER_LEFT',   SPEC_ID='POLYURETHANE', MASS_FLUX = 5.271815E-6, RAMP_MF='COUCH_FLASHOVER_LEFT_RAMP'   / Peak HRR of 5 MW
+&SURF ID='LOUNGE_FLASHOVER',       SPEC_ID='POLYURETHANE', MASS_FLUX = 7.853485E-6, RAMP_MF='LOUNGE_FLASHOVER_RAMP'       / Peak HRR of 2 MW
+&SURF ID='CHAIR_FLASHOVER',        SPEC_ID='POLYURETHANE', MASS_FLUX = 7.918660E-6, RAMP_MF='CHAIR_FLASHOVER_RAMP'        / Peak HRR of 2 MW
 &SURF ID='WOOD_EXTERIOR',          SPEC_ID='WOOD',         MASS_FLUX = 0.000000                                           / Exterior basement porch and siding
 
 &OBST XB=5.3, 6.2, 15.6, 15.8, -2.8, -2.1, SURF_ID='COUCH_INITIAL_RIGHT', COLOR='BROWN 4' / Arm
@@ -501,33 +501,36 @@ cOBST XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.
 # The mass fluxes in the SURF lines are normalized by the exposed burning area and heat of combustion.
 # Therefore, the F values of the following mass flux ramps can be expressed in terms of kW.
 
+# The following four fuel packages follow a linear ramp from 0 kW at 300 s to their peak HRR at 342 s (time of first window breakage).
+
 # Flashover ramp, COUCH_FLASHOVER_MIDDLE
 &RAMP ID='COUCH_FLASHOVER_MIDDLE_RAMP', T=0,   F=0    /
-&RAMP ID='COUCH_FLASHOVER_MIDDLE_RAMP', T=300, F=0    / Linear ramp from 300 s to peak HRR at time of first window breakage
+&RAMP ID='COUCH_FLASHOVER_MIDDLE_RAMP', T=300, F=0    /
 &RAMP ID='COUCH_FLASHOVER_MIDDLE_RAMP', T=342, F=5000 /
 &RAMP ID='COUCH_FLASHOVER_MIDDLE_RAMP', T=540, F=5000 /
 
 # Flashover ramp, COUCH_FLASHOVER_LEFT
 &RAMP ID='COUCH_FLASHOVER_LEFT_RAMP', T=0,   F=0    /
-&RAMP ID='COUCH_FLASHOVER_LEFT_RAMP', T=300, F=0    / Linear ramp from 300 s to peak HRR at time of first window breakage
+&RAMP ID='COUCH_FLASHOVER_LEFT_RAMP', T=300, F=0    /
 &RAMP ID='COUCH_FLASHOVER_LEFT_RAMP', T=342, F=5000 /
 &RAMP ID='COUCH_FLASHOVER_LEFT_RAMP', T=540, F=5000 /
 
 # Flashover ramp, LOUNGE_FLASHOVER
 &RAMP ID='LOUNGE_FLASHOVER_RAMP', T=0,   F=0    /
-&RAMP ID='LOUNGE_FLASHOVER_RAMP', T=300, F=0    / Linear ramp from 300 s to peak HRR at time of first window breakage
+&RAMP ID='LOUNGE_FLASHOVER_RAMP', T=300, F=0    /
 &RAMP ID='LOUNGE_FLASHOVER_RAMP', T=342, F=2000 /
 &RAMP ID='LOUNGE_FLASHOVER_RAMP', T=540, F=2000 /
 
 # Flashover ramp, CHAIR_FLASHOVER
 &RAMP ID='CHAIR_FLASHOVER_RAMP', T=0,   F=0    /
-&RAMP ID='CHAIR_FLASHOVER_RAMP', T=300, F=0    / Linear ramp from 300 s to peak HRR at time of first window breakage
+&RAMP ID='CHAIR_FLASHOVER_RAMP', T=300, F=0    /
 &RAMP ID='CHAIR_FLASHOVER_RAMP', T=342, F=2000 /
 &RAMP ID='CHAIR_FLASHOVER_RAMP', T=540, F=2000 /
 
 # Initial fire ramp, COUCH_INITIAL_RIGHT
 # Madrzykowski, D., & Kerber, S. (2009). Fire Fighting Tactics Under Wind Driven Conditions: Laboratory Experiments.
 # King-size mattress ignited by trash can
+# The original HRR ramp was modified after 327 s to remain constant at 5 MW for the remainder of the simulation.
 &RAMP ID='COUCH_INITIAL_RIGHT_RAMP', T=0,   F=0    /
 &RAMP ID='COUCH_INITIAL_RIGHT_RAMP', T=17,  F=5    /
 &RAMP ID='COUCH_INITIAL_RIGHT_RAMP', T=23,  F=5    /
@@ -593,5 +596,5 @@ cOBST XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.
 &RAMP ID='COUCH_INITIAL_RIGHT_RAMP', T=322, F=4715 /
 &RAMP ID='COUCH_INITIAL_RIGHT_RAMP', T=323, F=4812 /
 &RAMP ID='COUCH_INITIAL_RIGHT_RAMP', T=326, F=4946 /
-&RAMP ID='COUCH_INITIAL_RIGHT_RAMP', T=327, F=5000 / The original HRR ramp was modified to remain constant at 5 MW for the remainder of the simulation
+&RAMP ID='COUCH_INITIAL_RIGHT_RAMP', T=327, F=5000 /
 &RAMP ID='COUCH_INITIAL_RIGHT_RAMP', T=540, F=5000 /
