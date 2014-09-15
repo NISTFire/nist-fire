@@ -81,7 +81,7 @@
 &SURF ID='COUCH_FLASHOVER_LEFT',   SPEC_ID='POLYURETHANE', MASS_FLUX = 5.271815E-6, RAMP_MF='COUCH_FLASHOVER_LEFT_RAMP'   / Peak HRR of 5 MW
 &SURF ID='LOUNGE_FLASHOVER',       SPEC_ID='POLYURETHANE', MASS_FLUX = 7.853485E-6, RAMP_MF='LOUNGE_FLASHOVER_RAMP'       / Peak HRR of 2 MW
 &SURF ID='CHAIR_FLASHOVER',        SPEC_ID='POLYURETHANE', MASS_FLUX = 7.918660E-6, RAMP_MF='CHAIR_FLASHOVER_RAMP'        / Peak HRR of 2 MW
-&SURF ID='WOOD_EXTERIOR',          SPEC_ID='WOOD',         MASS_FLUX = 0.000000                                           / Exterior basement porch and siding
+&SURF ID='WOOD_EXTERIOR',          SPEC_ID='WOOD',         MASS_FLUX = 0.003049   , RAMP_MF='WOOD_EXTERIOR_RAMP'          / Exterior basement porch and siding, based on HRRPUA of 50 kW/m^2 for wood
 
 &OBST XB=5.3, 6.2, 15.6, 15.8, -2.8, -2.1, SURF_ID='COUCH_INITIAL_RIGHT', COLOR='BROWN 4' / Arm
 &OBST XB=5.3, 6.0, 13.4, 15.6, -2.8, -2.4, SURF_ID='COUCH_INITIAL_RIGHT', COLOR='BROWN 4' / Cushion
@@ -104,6 +104,17 @@
 &OBST XB=7.9, 8.1, 15.8, 16.8, -2.8, -1.9, SURF_ID='CHAIR_FLASHOVER', COLOR='BROWN 4' / Back
 &OBST XB=7.0, 7.9, 15.8, 16.8, -2.8, -2.4, SURF_ID='CHAIR_FLASHOVER', COLOR='BROWN 4' / Cushion
 &OBST XB=7.2, 7.9, 15.8, 16.0, -2.8, -2.1, SURF_ID='CHAIR_FLASHOVER', COLOR='BROWN 4' / Arm
+
+&OBST XB=0.97, 7.58, 17.22, 18.30, -3.16, -2.80, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3' / Balcony floor
+&OBST XB=0.97, 7.58, 18.20, 18.30, -1.99, -1.89, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3' / Balcony rail
+&OBST XB=0.97, 1.07, 17.22, 18.30, -1.99, -1.89, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3' / Balcony rail
+&OBST XB=7.48, 7.58, 17.22, 18.30, -1.99, -1.89, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3' / Balcony rail
+
+&VENT XB=0.00, 8.50, 17.20, 17.70, -0.40, -0.40, SURF_ID='WOOD_EXTERIOR', COLOR='DARK SEA GREEN 4' / Exterior basement eave
+
+&OBST XB=2.90, 3.10, 17.11, 17.23, -2.80, -0.74, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3', PERMIT_HOLE=.FALSE. / Window column
+&OBST XB=4.00, 4.20, 17.11, 17.23, -2.80, -0.74, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3', PERMIT_HOLE=.FALSE. / Window column
+&OBST XB=5.20, 5.40, 17.11, 17.23, -2.80, -0.74, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3', PERMIT_HOLE=.FALSE. / Window column
 
 #  ====================================
 #  = Material and surface definitions =
@@ -339,13 +350,13 @@ cOBST XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.
 &OBST XB=6.38, 7.34, 3.21, 6.19, 1.80, 2.00 / Entry landing
 &OBST XB=7.34, 8.43, 3.51, 6.70, 1.80, 2.00 / Entry landing
 
-&OBST XB=0.00, 6.38,  0.00, 17.73, -0.40, 0.00 / Floor
-&OBST XB=6.38, 8.53,  8.30, 17.73, -0.40, 0.00 / Floor
-&OBST XB=6.38, 7.34,  6.80,  8.30, -0.40, 0.00 / Floor
-&OBST XB=0.00, 6.38,  0.00,  0.10,  0.00, 2.44 / Side A wall
-&OBST XB=0.00, 0.20,  0.00, 17.73,  0.00, 2.44 / Side B wall
-&OBST XB=0.00, 8.53, 17.63, 17.73,  0.00, 2.44 / Side C wall
-&OBST XB=8.43, 8.53,  3.61, 17.73,  0.00, 2.44 / Side D wall
+&OBST XB=0.001, 6.380,  0.00, 17.73, -0.40, 0.00 / Floor
+&OBST XB=6.380, 8.529,  8.30, 17.73, -0.40, 0.00 / Floor
+&OBST XB=6.380, 7.340,  6.80,  8.30, -0.40, 0.00 / Floor
+&OBST XB=0.000, 6.380,  0.00,  0.10,  0.00, 2.44 / Side A wall
+&OBST XB=0.000, 0.200,  0.00, 17.73,  0.00, 2.44 / Side B wall
+&OBST XB=0.000, 8.530, 17.63, 17.73,  0.00, 2.44 / Side C wall
+&OBST XB=8.430, 8.530,  3.61, 17.73,  0.00, 2.44 / Side D wall
 
 #  ========================
 #  = Sub-Level 1 geometry =
@@ -363,34 +374,29 @@ cOBST XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.
 &OBST XB=4.04, 6.38, 2.58, 2.68, -2.80, -0.36 / Interior wall
 
 &OBST XB=2.26, 2.36, 6.75, 8.48, -2.80, -0.36 / Interior wall
-&OBST XB=0.00, 6.38, 6.75, 6.85, -2.80, -0.36 / Interior wall
-&OBST XB=0.00, 7.44, 8.38, 8.48, -2.80, -0.36 / Interior wall
+&OBST XB=0.01, 6.38, 6.75, 6.85, -2.80, -0.36 / Interior wall
+&OBST XB=0.01, 7.44, 8.38, 8.48, -2.80, -0.36 / Interior wall
 
-&OBST XB=0.00, 6.38,  0.00, 17.22, -3.16, -2.80 / Floor
-&OBST XB=6.38, 8.53,  3.51, 17.22, -3.16, -2.80 / Floor
 &OBST XB=6.18, 6.38,  0.00,  3.71, -2.80, -0.36 / Wall near front door
 &OBST XB=6.28, 8.53,  3.51,  3.71, -2.80, -0.36 / Wall near front door
-&OBST XB=0.00, 6.38,  0.00,  0.20, -2.80, -0.36 / Side A wall
-&OBST XB=0.00, 0.20,  0.00,  3.71, -2.80, -0.36 / Side B wall
-&OBST XB=0.00, 0.10,  3.71, 17.22, -2.80, -0.36 / Side B wall
-&OBST XB=0.00, 8.53, 17.12, 17.22, -2.80, -0.36 / Side C wall
-&OBST XB=8.43, 8.53,  3.61, 17.22, -2.80,  0.00 / Side D wall
+&OBST XB=0.00, 6.38,  0.00, 17.22, -3.16, -2.80, COLOR='NAVAJO WHITE 1' / Floor
+&OBST XB=6.38, 8.53,  3.51, 17.22, -3.16, -2.80, COLOR='NAVAJO WHITE 1' / Floor
+&OBST XB=0.00, 6.38,  0.00,  0.20, -2.80, -0.36, COLOR='NAVAJO WHITE 1' / Side A wall
+&OBST XB=0.00, 0.20,  0.00,  3.71, -2.80, -0.36, COLOR='NAVAJO WHITE 1' / Side B wall
+&OBST XB=0.00, 0.10,  3.71, 17.22, -2.80, -0.36, COLOR='NAVAJO WHITE 1' / Side B wall
+&OBST XB=0.00, 8.53, 17.12, 17.22, -2.80, -0.36, COLOR='NAVAJO WHITE 1' / Side C wall
+&OBST XB=8.43, 8.53,  3.61, 17.22, -2.80,  0.00, COLOR='NAVAJO WHITE 1' / Side D wall
 
-&OBST XB=0.97, 7.58, 17.22, 18.30, -3.16, -2.80 / Balcony floor
-&OBST XB=0.97, 7.58, 18.20, 18.30, -1.99, -1.89 / Balcony rail
-&OBST XB=0.97, 1.07, 17.22, 18.30, -1.99, -1.89 / Balcony rail
-&OBST XB=7.48, 7.58, 17.22, 18.30, -1.99, -1.89 / Balcony rail
+&OBST XB=-1.0, 0.0, 9.0, 10.6, -3.10, -2.80, COLOR='WHEAT 3' / Side door platform
 
-&OBST XB=-1.0, 0.0, 9.0, 10.6, -3.10, -2.80, COLOR='BURNT UMBER' / Side door platform
-
-&OBST XB=-1.0, 0.0, 10.6, 10.8, -3.30, -3.10, MULT_ID='Side_Door_Stairs', COLOR='BURNT UMBER' / Side door stairs
+&OBST XB=-1.0, 0.0, 10.6, 10.8, -3.30, -3.10, MULT_ID='Side_Door_Stairs', COLOR='WHEAT 3' / Side door stairs
 &MULT ID='Side_Door_Stairs', DXB=0.0, 0.0, 0.2, 0.2, -0.2, -0.2, N_UPPER=30 /
 
 #  ========================
 #  = Sub-Level 2 geometry =
 #  ========================
 
-&OBST XB=0.00, 8.50, 3.50, 17.2, -5.60, -2.80 /
+&OBST XB=0.00, 8.53, 3.50, 17.2, -5.60, -2.80, COLOR='NAVAJO WHITE 1' /
 
 #  ==============================
 #  = Street and outside terrain =
@@ -401,10 +407,10 @@ cOBST XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.
 &OBST XB= 6.38, 12.0, -5.0, 3.5, -5.6,  0.0, COLOR='DARK GRAY' / Street
 &OBST XB=-5.0,   6.4,  0.0, 3.5, -5.6, -3.2, COLOR='DARK GRAY' / Street
 
-&OBST XB=-5.0, 0.0, 3.5, 3.8, -5.6, 0.0, MULT_ID='Terrain_Bravo', COLOR='TAN' / Terrain
+&OBST XB=-5.0, 0.0, 3.5, 3.8, -5.6, 0.0, MULT_ID='Terrain_Bravo', COLOR='DARK GRAY' / Terrain
 &MULT ID='Terrain_Bravo', DXB=0.0, 0.0, 0.3, 0.3, 0.0, -0.2, N_UPPER=30 /
 
-&OBST XB=8.53, 12.0, 3.5, 3.8, -5.6, 0.0, MULT_ID='Terrain_Delta', COLOR='TAN' / Terrain
+&OBST XB=8.53, 12.0, 3.5, 3.8, -5.6, 0.0, MULT_ID='Terrain_Delta', COLOR='DARK GRAY' / Terrain
 &MULT ID='Terrain_Delta', DXB=0.0, 0.0, 0.3, 0.3, 0.0, -0.2, N_UPPER=30 /
 
 #  =====================
@@ -498,8 +504,16 @@ cOBST XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.
 #  = Mass flux ramps =
 #  ===================
 
-# The mass fluxes in the SURF lines are normalized by the exposed burning area and heat of combustion.
-# Therefore, the F values of the following mass flux ramps can be expressed in terms of kW.
+# The mass flux of the wood components is based on small-scale HRRPUA measurements of wood.
+
+# Flashover ramp, WOOD_EXTERIOR
+&RAMP ID='WOOD_EXTERIOR_RAMP', T=0,   F=0 /
+&RAMP ID='WOOD_EXTERIOR_RAMP', T=440, F=0 /
+&RAMP ID='WOOD_EXTERIOR_RAMP', T=450, F=1 /
+&RAMP ID='WOOD_EXTERIOR_RAMP', T=540, F=1 /
+
+# The mass fluxes for the following components are normalized by the exposed burning area and heat of combustion.
+# Therefore, the F values of the following mass flux ramps are expressed in terms of kW.
 
 # The following four fuel packages follow a linear ramp from 0 kW at 300 s to their peak HRR at 342 s (time of first window breakage).
 
