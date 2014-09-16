@@ -202,8 +202,7 @@
 &HOLE XB=-0.01, 0.21,  9.49, 10.10, 4.45, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.5                      / Top floor Side B window
 &OBST XB=-0.01, 0.21, 15.99, 17.01, 3.92, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.5, PERMIT_HOLE=.FALSE. / Top floor Side B window
 &HOLE XB=-0.01, 0.21, 15.99, 17.01, 3.92, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.5                      / Top floor Side B window
-cOBST XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.5, PERMIT_HOLE=.FALSE. / Top floor interior window
-&HOLE XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.5                      / Top floor interior window
+&HOLE XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1'                                        / Top floor interior window
 &OBST XB= 1.22, 1.78, 17.62, 17.74, 3.40, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.5, PERMIT_HOLE=.FALSE. / Top floor Side C window 1
 &HOLE XB= 1.22, 1.78, 17.62, 17.74, 3.40, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.5                      / Top floor Side C window 1
 &OBST XB= 1.78, 2.90, 17.62, 17.74, 3.40, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.5, PERMIT_HOLE=.FALSE. / Top floor Side C window 1
