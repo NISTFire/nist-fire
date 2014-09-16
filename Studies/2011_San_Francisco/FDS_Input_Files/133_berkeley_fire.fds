@@ -20,9 +20,9 @@
 &MESH IJK=170, 55, 34, XB=-5, 12, 14.5, 20.0,  1.2,  4.6 /
 &MESH IJK=170, 55, 34, XB=-5, 12, 14.5, 20.0,  4.6,  8.0 /
 
-# Simulation start time corresponding to LODD report - 10:53:00, t_0 (HH:MM:SS)
-# Simulation end time corresponding to LODD report   - 11:02:00, water on fire (HH:MM:SS)
-# Simulation duration - 00:09:00 (HH:MM:SS)
+# Simulation start time corresponding to LODD report - 10:53:00, t_0 (hh:mm:ss)
+# Simulation end time corresponding to LODD report   - 11:02:00, water on fire (hh:mm:ss)
+# Simulation duration - 00:09:00 (hh:mm:ss)
 &TIME T_END=540 /
 
 &DUMP NFRAMES=1080, DT_HRR=1, DT_DEVC=1 /
@@ -105,16 +105,27 @@
 &OBST XB=7.0, 7.9, 15.8, 16.8, -2.8, -2.4, SURF_ID='CHAIR_FLASHOVER', COLOR='BROWN 4' / Cushion
 &OBST XB=7.2, 7.9, 15.8, 16.0, -2.8, -2.1, SURF_ID='CHAIR_FLASHOVER', COLOR='BROWN 4' / Arm
 
-&OBST XB=0.97, 7.58, 17.22, 18.30, -3.16, -2.80, SURF_IDS='WOOD_EXTERIOR','WALL','WALL', COLOR='WHEAT 3' / Balcony floor
-&OBST XB=0.97, 7.58, 18.20, 18.30, -1.99, -1.89, SURF_ID='WOOD_EXTERIOR',                COLOR='WHEAT 3' / Balcony rail
-&OBST XB=0.97, 1.07, 17.22, 18.30, -1.99, -1.89, SURF_ID='WOOD_EXTERIOR',                COLOR='WHEAT 3' / Balcony rail
-&OBST XB=7.48, 7.58, 17.22, 18.30, -1.99, -1.89, SURF_ID='WOOD_EXTERIOR',                COLOR='WHEAT 3' / Balcony rail
+&OBST XB=1.00, 7.60, 17.20, 18.30, -3.20, -2.80, SURF_IDS='WOOD_EXTERIOR','WALL','WALL', COLOR='WHEAT 3' / Balcony floor
+&OBST XB=1.00, 7.60, 18.20, 18.30, -2.00, -1.90, SURF_ID='WOOD_EXTERIOR',                COLOR='WHEAT 3' / Balcony rail
+&OBST XB=1.00, 1.10, 17.20, 18.30, -2.00, -1.90, SURF_ID='WOOD_EXTERIOR',                COLOR='WHEAT 3' / Balcony rail
+&OBST XB=7.50, 7.60, 17.20, 18.30, -2.00, -1.90, SURF_ID='WOOD_EXTERIOR',                COLOR='WHEAT 3' / Balcony rail
 
 &VENT XB=0.00, 8.50, 17.20, 17.70, -0.40, -0.40, SURF_ID='WOOD_EXTERIOR', COLOR='DARK SEA GREEN 4' / Exterior basement eave
 
-&OBST XB=2.90, 3.10, 17.11, 17.23, -2.80, -0.74, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3', PERMIT_HOLE=.FALSE. / Window column
-&OBST XB=4.00, 4.20, 17.11, 17.23, -2.80, -0.74, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3', PERMIT_HOLE=.FALSE. / Window column
-&OBST XB=5.20, 5.40, 17.11, 17.23, -2.80, -0.74, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3', PERMIT_HOLE=.FALSE. / Window column
+&VENT XB=2.90, 3.10, 17.10, 17.10, -2.80, -0.70, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3'         / Window column
+&VENT XB=2.90, 3.10, 17.20, 17.20, -2.80, -0.70, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3'         / Window column
+&VENT XB=2.90, 2.90, 17.10, 17.20, -2.80, -0.70, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3', IOR=-1 / Window column
+&VENT XB=3.10, 3.10, 17.10, 17.20, -2.80, -0.70, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3', IOR= 1 / Window column
+
+&VENT XB=4.00, 4.20, 17.10, 17.10, -2.80, -0.70, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3'         / Window column
+&VENT XB=4.00, 4.20, 17.20, 17.20, -2.80, -0.70, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3'         / Window column
+&VENT XB=4.00, 4.00, 17.10, 17.20, -2.80, -0.70, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3', IOR=-1 / Window column
+&VENT XB=4.20, 4.20, 17.10, 17.20, -2.80, -0.70, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3', IOR= 1 / Window column
+
+&VENT XB=5.20, 5.40, 17.10, 17.10, -2.80, -0.70, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3'         / Window column
+&VENT XB=5.20, 5.40, 17.20, 17.20, -2.80, -0.70, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3'         / Window column
+&VENT XB=5.20, 5.20, 17.10, 17.20, -2.80, -0.70, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3', IOR=-1 / Window column
+&VENT XB=5.40, 5.40, 17.10, 17.20, -2.80, -0.70, SURF_ID='WOOD_EXTERIOR', COLOR='WHEAT 3', IOR= 1 / Window column
 
 #  ====================================
 #  = Material and surface definitions =
@@ -235,17 +246,17 @@ cOBST XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.
 &OBST XB=7.92, 8.38,  3.50,  3.72,  0.42,  1.13, COLOR='IVORY 1', TRANSPARENCY=0.5, PERMIT_HOLE=.FALSE. / Sub-Level 1 Side A window
 &HOLE XB=7.92, 8.38,  3.50,  3.72,  0.42,  1.13, COLOR='IVORY 1', TRANSPARENCY=0.5                      / Sub-Level 1 Side A window
 
-&HOLE XB=1.22, 2.11, 17.11, 17.23, -2.80, -0.74, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='WINDOW_SUB_C_1' / Sub-Level 1 Side C sliding door 1 south
+&HOLE XB=1.20, 2.10, 17.10, 17.20, -2.80, -0.74, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='WINDOW_SUB_C_1' / Sub-Level 1 Side C sliding door 1 south
 &DEVC ID='WINDOW_SUB_C_1', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.FALSE., SETPOINT=450                   / Sub-Level 1 Side C sliding door 1
-&HOLE XB=2.11, 3.00, 17.11, 17.23, -2.80, -0.74, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='WINDOW_SUB_C_2' / Sub-Level 1 Side C sliding door 2
+&HOLE XB=2.10, 2.90, 17.10, 17.20, -2.80, -0.74, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='WINDOW_SUB_C_2' / Sub-Level 1 Side C sliding door 2
 &DEVC ID='WINDOW_SUB_C_2', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.FALSE., SETPOINT=450                   / Sub-Level 1 Side C sliding door 2
-&HOLE XB=3.00, 4.14, 17.11, 17.23, -2.80, -0.74, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='WINDOW_SUB_C_3' / Sub-Level 1 Side C window 3
+&HOLE XB=3.10, 4.00, 17.10, 17.20, -2.80, -0.74, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='WINDOW_SUB_C_3' / Sub-Level 1 Side C window 3
 &DEVC ID='WINDOW_SUB_C_3', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.FALSE., SETPOINT=440                   / Sub-Level 1 Side C window 3
-&HOLE XB=4.14, 5.28, 17.11, 17.23, -2.80, -0.74, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='WINDOW_SUB_C_4' / Sub-Level 1 Side C window 4
+&HOLE XB=4.20, 5.20, 17.10, 17.20, -2.80, -0.74, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='WINDOW_SUB_C_4' / Sub-Level 1 Side C window 4
 &DEVC ID='WINDOW_SUB_C_4', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.FALSE., SETPOINT=418                   / Sub-Level 1 Side C window 4
-&HOLE XB=5.28, 6.17, 17.11, 17.23, -2.80, -0.74, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='WINDOW_SUB_C_5' / Sub-Level 1 Side C sliding door 5
+&HOLE XB=5.40, 6.20, 17.10, 17.20, -2.80, -0.74, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='WINDOW_SUB_C_5' / Sub-Level 1 Side C sliding door 5
 &DEVC ID='WINDOW_SUB_C_5', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.FALSE., SETPOINT=383                   / Sub-Level 1 Side C sliding door 5
-&HOLE XB=6.17, 7.06, 17.11, 17.23, -2.80, -0.74, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='WINDOW_SUB_C_6' / Sub-Level 1 Side C sliding door 6 north
+&HOLE XB=6.20, 7.10, 17.10, 17.20, -2.80, -0.74, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='WINDOW_SUB_C_6' / Sub-Level 1 Side C sliding door 6 north
 &DEVC ID='WINDOW_SUB_C_6', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.FALSE., SETPOINT=342                   / Sub-Level 1 Side C sliding door 6 north
 
 #  ==========
@@ -504,7 +515,7 @@ cOBST XB= 2.01, 2.92, 12.37, 12.49, 4.15, 5.06, COLOR='IVORY 1', TRANSPARENCY=0.
 #  = Mass flux ramps =
 #  ===================
 
-# The mass flux of the wood components is based on small-scale HRRPUA measurements of wood.
+# The mass flux of the wood components is based on small-scale cone measurements of wood (HRRPUA of 50 kW/m^2).
 
 # Fire ramp, WOOD_EXTERIOR
 &RAMP ID='WOOD_EXTERIOR_RAMP', T=0,   F=0 /
