@@ -26,7 +26,7 @@
 
 % Extra packages
 \usepackage{xfrac}
-
+\pgfplotsset{compat=1.10}
 \begin{document}
 
 \bibliographystyle{unsrt}
@@ -213,6 +213,7 @@ On February 24, 2012, a fire in residential structure injured seven Prince Georg
 \item To examine the effect of the flow path (including temperature, pressure, and fire conditions) in this multi-story residential structure using physics-based calculations.
 \item To provide visualizations of the fire behavior that are representative of the conditions that members of the Prince George's Fire Department likely experienced during the course of their interior operations.
 \end{enumerate}
+
 This document describes the input and the results of the FDS (version 6.1.1) simulations. The simulations were developed using a combination of knowledge of the fire scenario and appropriate engineering approximations and assumptions. Analysis of the simulation results focuses on the hazardous conditions that developed following the development of a flow path inside of the structure. This document is organized as follows: Section~\ref{fire_sum} provides a summary of the fire incident, Section~\ref{model} describes the relevant model input parameters and assumptions that were used to develop the simulations, Section~\ref{results} presents the simulation results, and Section~\ref{discuss} discusses the simulation results as they relate to firefighter safety and effectiveness. Appendix~\ref{app_draw} contains dimensioned drawings of the basement and first floor of the structure.
 
 
@@ -228,14 +229,15 @@ After exiting the structure, Truck 809 Officer screamed (to those on the exterio
 
 While the interior operations were occurring, Truck 809 Driver and Truck 809 Hook/Ladders were on the exterior throwing ladders to the structure. Truck 809 Hook/Ladders threw two ladders [front and left side], while Truck 809 Driver threw one ladder ([front side]). 
 \end{quote}  
-From a combination of on-scene video and the narrative accounts from the Prince George's County Fire/EMS Department report~\cite{PGCounty2013}, Table~\ref{tab:fire_info} shows an overview of the timeline of events.
+From a combination of on-scene video and the narrative accounts from the Prince George's County Fire/EMS Department report~\cite{PGCounty2013}, Table~\ref{tab:fire_info} shows an overview of the timeline of events. Table~\ref{tab:fire_info} represents the best estimate of the events and therefore all times should be considered as approximate.
+
 \begin{table}[!h]
 \centering
 \captionof{table}[Abridged approximate fire event timeline]{Abridged Prince George's Fire/EMS approximate fire event timeline~\cite{PGCounty2013}.}\label{tab:fire_info}
 \begin{tabular}{cl}
 \toprule[1.5pt]
 Incident Time              &  Fire Behavior / Fireground Operation  \\
-{[hh:mm:ss]}               &                                                               \\
+{[hh:mm:ss]}               &                                        \\
 \midrule
 21:08:26   & First 911 call is made. \\[.25cm]
 \multirow{3}{*}{21:11:03}  &   \multirow{3}{*}{\parbox{10cm} {Dispatch for a ``box'' alarm assignment- four engine companies, two truck companies, one rescue squad, and a commanding officer.}}    \\
@@ -276,6 +278,8 @@ In reality, the quantities associated with these input parameters are not fixed 
 \label{geom}
 The structure involved in this fire incident was a one story, single-family structure with a basement. Due to the surrounding topography (the ground slopes from the front to rear of the structure), the basement on the rear side of the structure was above grade. The structure was wood-framed platform-framed with a gable roof. \footnote{Platform-framed construction means that floor joists are completely covered with a sub-floor. This forms a platform for which walls are built from.} The structure had a first floor footprint of 9.14~m (30~ft) by 7.77~m (25.5~ft) with the basement being slightly smaller, 9.14~m (30~ft) by 7.16~m (23.5~ft), as show in Fig.~\ref{fig:simp_geom}. This results in a first floor area of 71~m$^2$ (764~ft$^2$) and a basement floor area of 65~m$^2$ (700~ft$^2$). The interior walls and ceiling were constructed from nominal lumber covered by 12.7~mm (0.5~in) gypsum board~\cite{PGCounty2013}. There is a single flight of stairs in the center of the structure which connected the first floor to the basement. Access to the structure could be made on the front side of the first floor and the rear side of the basement.
 
+The fire, which is described in Section~\ref{fire}, started in the basement and spread to the stairs which connect to the first floor. Discussion of the fire’s impact on the interior conditions is provided in Section~\ref{results}. Figure~\ref{fig:exterior} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the damage occurred in the basement of the structure. Fully dimensioned drawings of the interior of the basement and first floor are shown in Figs.~\ref{fig:basement} and \ref{fig:first_floor}, respectively.
+
 \begin{figure}[!ht]
 \centering
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
@@ -285,6 +289,17 @@ The structure involved in this fire incident was a one story, single-family stru
 \caption[Plan view of basement (top) and first (bottom) floor of structure.]{Plan view of basement (top) and first (bottom) floor of structure. Stairs and key windows and doors are identified using measurements collected by NIST.}
 \label{fig:simp_geom}
 \end{figure}
+
+\begin{figure}[!ht]
+\centering
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+\includegraphics[width=5in]{../Figures/PGCo_Front} \\ 
+\includegraphics[width=5in]{../Figures/PGCo_Rear}
+\end{tabular*}
+\caption{Photographs showing the front (top) and rear (bottom) exterior of the structure after the incident.}
+\label{fig:exterior}
+\end{figure}
+
 
 \section{Fire}
 \label{fire}
@@ -323,14 +338,14 @@ Baseline     &   Ventilation   &  Type       & State of       &  Side of  \\
 Simulation  &  Area             &                 & Opening     &  Structure  \\
 {[s]}             &  {[m$^2$]}     &                 &                    &                  \\
 \midrule
-0                 &  1.84             &  Door        &  Opened     &  Rear  \\
-0                 &  1.40             &  Window   &  Opened     &  Rear  \\
-0                 &  0.39             &  Window   &  Opened     &  Left   \\
+0               &  1.84             &  Door        &  Opened     &  Rear  \\
+0               &  1.40             &  Window      &  Opened     &  Rear  \\
+0               &  0.39             &  Window      &  Opened     &  Left   \\
 100             &  1.84             &  Door        &  Opened     &  Front   \\
-207             &  1.84             &  Door        &  Closed      &  Front   \\
-211             &  0.26             &  Window   &  Opened     &  Front   \\
-221             &  0.26             &  Window   &  Opened     &  Front  \\
-264             &  1.84             &  Door        & Opened      & Front  \\
+207             &  1.84             &  Door        &  Closed     &  Front   \\
+211             &  0.26             &  Window      &  Opened     &  Front   \\
+221             &  0.26             &  Window      &  Opened     &  Front  \\
+264             &  1.84             &  Door        &  Opened     & Front  \\
 \bottomrule[1.25pt]
 \end{tabular}\par
 \footnotesize
@@ -369,14 +384,14 @@ Simulation  &  Area             &                 & Opening     &  Structure  \\
 \centering
 \includegraphics[width=1\textwidth]{../Figures/Basement_Metric}
 \caption[Dimensioned drawing of first floor.]{Dimensioned drawing of the basement. The measurements are accurate to within 15~cm (6~in).}
-\label{fig:first_floor}
+\label{fig:basement}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=1\textwidth]{../Figures/First_Floor_Metric}
 \caption[Dimensioned drawing of second floor.]{Dimensioned drawing of the first floor. The measurements are accurate to within 15~cm (6~in).}
-\label{fig:second_floor}
+\label{fig:first_floor}
 \end{figure}
 
 
