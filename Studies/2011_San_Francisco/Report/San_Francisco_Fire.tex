@@ -295,7 +295,7 @@ Fire Dynamics Simulator~\cite{FDS_Users_Guide} is a computational fluid dynamics
 
 Smokeview is a software tool designed to visualize simulation results from FDS~\cite{Smokeview_Users_Guide}. Smokeview visualizes smoke and other attributes of the fire simulation using traditional scientific methods such as displaying tracer particle flow, two dimensional (2D) or three dimensional (3D) shaded contours of gas flow data such as temperature and flow vectors showing flow direction and magnitude. Smokeview allows the fire and fire movement to be visualized. This is done by displaying a series of partially transparent planes where the transparencies in each plane (at each grid node) are determined from soot densities computed by FDS. Smokeview also visualizes static data at particular times using 2D or 3D contours of data such as temperature and flow vectors showing flow direction and magnitude.
 
-Input data from various sources must be collected and documented to simulate a fire using FDS or any other fire model. For the simulation results presented in this document, information was obtained from two primary sources. The following information was gathered from the fire scene: the geometry of the building and the compartments being modeled, the size and location of exterior and interior ventilation openings, and documentation of fire damage to the building. The following information was gathered from witnesses, first responders, reports, and recorded media such as fire ground radios or videos: information on the timing of the fire development, the sequence and approximate timing of ventilation openings to the outside, and weather conditions at the time of the fire. 
+Input data from various sources must be collected and documented to simulate a fire using FDS or any other fire model. For the simulation results presented in this document, information was obtained from two primary sources. The following information was gathered from the fire scene: the geometry of the building and the compartments being modeled, the size and location of exterior and interior ventilation openings, and documentation of fire damage to the building. The following information was gathered from witnesses, first responders, reports, and recorded media such as fire ground radios or photographs: information on the timing of the fire development, the sequence and approximate timing of ventilation openings to the outside, and weather conditions at the time of the fire. 
 
 The analysis of the simulation results is focused on the interior conditions on the first floor where the downed firefighters were located and the conditions that resulted in the establishment of a flow path in the interior stairwell leading into the basement. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, the fire was in the early growth stage when firefighters arrived~\cite{NIOSH:Bowyer2}; however, the exact ignition time, fire growth rate, and heat release rate (HRR) of the fire were not known. The ignition time, growth rate, and HRR were estimated were estimated using documentation of the potential fuel load within the structure.
 
@@ -331,7 +331,7 @@ The fire, which is described in Section~\ref{sec:fires}, originated in the finis
 \section{Fires}
 \label{sec:fires}
 
-To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these sources of information, the FDS model includes three source fires: an initial couch fire in the basement, a secondary flashover fire that involved additional furniture items in the basement, and a third fire that occurred on the exterior basement balcony. The basement primarily contained upholstered polyurethane furniture fuel items, and the balcony was constructed of wood. The HRR of the initial couch fire is based on an experimentally measured HRR for a mattress fire~\cite{madrzykowski2009fire} to represent the fire growth rate of a similar household furniture item. The primary fuel packages were located in the basement as shown in Fig.~\ref{fig:fuel_placement}. In this figure, the numbered labels indicate the order in which the fuel items were burning: 1) the initial couch fire, 2) the secondary furniture fuel items, and 3) the balcony fire.
+To estimate the type of fuel, fire size, and structure ventilation, on-scene photographs and post-incident reports were used. Based on these sources of information, the FDS model includes three source fires: an initial couch fire in the basement, a secondary flashover fire that involved additional furniture items in the basement, and a third fire that occurred on the exterior basement balcony. The basement primarily contained upholstered polyurethane furniture fuel items, and the balcony was constructed of wood. The HRR of the initial couch fire is based on an experimentally measured HRR for a mattress fire~\cite{madrzykowski2009fire} to represent the fire growth rate of a similar household furniture item. The primary fuel packages were located in the basement as shown in Fig.~\ref{fig:fuel_placement}. In this figure, the numbered labels indicate the order in which the fuel items were burning: 1) the initial couch fire, 2) the secondary furniture fuel items, and 3) the balcony fire.
 
 \begin{figure}[!ht]
 \includegraphics[width=6.5in]{../Figures/Plan_Basement_Fuels}
@@ -410,12 +410,12 @@ Note that using the input lines above will invoke the simple chemistry reaction 
 \item The third exterior fuel item included the wood on the basement balcony and siding. From 0~s to 440~s, these items were not burning. From 440~s to 450~s, the exterior basement balcony was ignited, and the total HRR increased linearly from 0~MW to 1~MW. To estimate the heat release rate per unit area (HRRPUA) of wood, Babrauskas and Grayson~\cite{babrauskas1990} conducted experiments in a cone calorimeter\footnote{The cone calorimeter is an experimental apparatus used to gather data about ignition time, mass loss, combustion products, and heat release rate among other properties associated with burning small samples of materials~\cite{ASTM:E1355}.} to determine the 5-min average of the HRRPUA for several different types of wood over a range of radiant heat fluxes. The results of that study indicate that the HRRPUA for different types of wood is approximately 50~kW/m$^2$.
 \end{enumerate}
 
-Figure~\ref{fig:hrr} shows the prescribed design fire for this scenario, which is the sum of the HRRs of the three source fires. In this figure, the vertical lines indicate the three stages of the fire based on the contribution of the fuel packages. Therefore, the estimated maximum specified fire size for this structure was approximately 20~MW. Note that the prescribed HRR can be different than the simulated HRR calculated by FDS based on the amount of available fuel, oxygen, and ventilation. A comparison of the prescribed HRR and the simulated HRR is discussed in Section~\ref{sec:HRR}.
+Figure~\ref{fig:hrr} shows the prescribed design fire for this scenario, which is the sum of the HRRs of the three source fires. In this figure, the text labels indicate the three stages of the fire based on the contribution of the fuel packages. Therefore, the estimated maximum specified fire size for this structure was approximately 20~MW. Note that the prescribed HRR can be different than the simulated HRR calculated by FDS based on the amount of available fuel, oxygen, and ventilation. A comparison of the prescribed HRR and the simulated HRR is discussed in Section~\ref{sec:HRR}.
 
 \begin{figure}[!ht]
 \includegraphics[width=5.5in]{../Figures/Fire_HRR}
 \caption[Prescribed HRR vs. time.]
-{Prescribed HRR vs. time. The vertical lines indicate the three stages of the fire based on the contribution of the fuel packages.}
+{Prescribed HRR vs. time. The text labels indicate the three stages of the fire based on the contribution of the fuel packages.}
 \label{fig:hrr}
 \end{figure}
 
@@ -469,24 +469,24 @@ While the fires were represented as fuel sources with a constant area (Section~\
 
 \begin{lstlisting}
 &MATL ID          = 'GYPSUM'
-    FYI = 'Wakili - Journal of Fire Sciences 2007' 
+    FYI           = 'Wakili - Journal of Fire Sciences 2007' 
     CONDUCTIVITY  = 0.28
     SPECIFIC_HEAT = 1.00
     DENSITY       = 810. /
 
-&SURF ID        = 'WALL'
-      DEFAULT   = .TRUE.
-      COLOR     = 'DARK SEA GREEN 4'
-      MATL_ID   = 'GYPSUM'
-      THICKNESS = 0.012 /
+&SURF ID      = 'WALL'
+    DEFAULT   = .TRUE.
+    COLOR     = 'DARK SEA GREEN 4'
+    MATL_ID   = 'GYPSUM'
+    THICKNESS = 0.012 /
 \end{lstlisting}
 
 \section{Ventilation}
 \label{sec:ventilation}
 
-The simulations in this study account for changes in the ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). The ventilation times and ventilation areas represent our best understanding of the incident. The times of the ventilation changes of exterior doors and windows are provided in Table~\ref{tab:ventilation_timeline}.
+The simulations in this study account for changes in the ventilation due to a combination of fire department operations (opening doors) and fire acting on the structure (fire breaching walls, breaking windows, etc). The ventilation times and ventilation areas represent our best understanding of the incident. The times of ventilation changes for doors and windows are provided in Table~\ref{tab:ventilation_timeline}.
 
-During the time at which the downed firefighters were located, the state of the windows and doors in the structure was known, which resulted in the establishment of a flow path in the interior stairwell leading into the basement. However, the exact time of operation for some doors was not known. Therefore, these doors were assumed to be open at the start of the simulation, which included 1) the front door, 2) the interior door leading from the hallway on the first floor into the stairwell towards the basement, 3) the door leading from the first floor landing into the garage, and 4) the overhead garage door.
+During the time at which the downed firefighters were located, the state of some windows and doors in the structure was known, which resulted in the establishment of a flow path in the interior stairwell leading into the basement. However, the exact time of operation for other doors was not known. Therefore, the following doors were assumed to be open at the start of the simulation: 1) the front door, 2) the interior door leading from the hallway on the first floor into the stairwell towards the basement, 3) the door leading from the garage into the first floor landing, and 4) the overhead garage door. The basement windows and exterior door were specified to open at certain times based on observations of failure (i.e., window breakage) or fire department operations (i.e., forcible entry) from on-scene photographs and post-incident reports.
 
 Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open front door at the start of the simulation and the vents created during the simulation are significantly larger than the total effective area of leakage of a structure of this type. Therefore, any leakage in the structure would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
 

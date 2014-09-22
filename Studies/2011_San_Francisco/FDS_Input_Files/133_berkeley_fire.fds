@@ -44,9 +44,9 @@
 &SPEC ID = 'SOOT',            LUMPED_COMPONENT_ONLY = .TRUE. /
 
 &SPEC ID = 'AIR',
-    SPEC_ID = 'OXYGEN','NITROGEN','WATER VAPOR','CARBON DIOXIDE',
-    VOLUME_FRACTION = 0.208057, 0.783214, 0.008342, 0.000387,
-    BACKGROUND = .TRUE. /
+      SPEC_ID = 'OXYGEN','NITROGEN','WATER VAPOR','CARBON DIOXIDE',
+      VOLUME_FRACTION = 0.208057, 0.783214, 0.008342, 0.000387,
+      BACKGROUND = .TRUE. /
 
 # Polyurethane reaction (GM21, SFPE HB, 4th ed.)
 # Soot yield of 0.131
@@ -137,16 +137,16 @@
 #  ====================================
 
 &MATL ID          = 'GYPSUM'
-    FYI = 'Wakili - Journal of Fire Sciences 2007' 
+    FYI           = 'Wakili - Journal of Fire Sciences 2007' 
     CONDUCTIVITY  = 0.28
     SPECIFIC_HEAT = 1.00
     DENSITY       = 810. /
 
-&SURF ID        = 'WALL'
-      DEFAULT   = .TRUE.
-      COLOR     = 'DARK SEA GREEN 4'
-      MATL_ID   = 'GYPSUM'
-      THICKNESS = 0.012 /
+&SURF ID      = 'WALL'
+    DEFAULT   = .TRUE.
+    COLOR     = 'DARK SEA GREEN 4'
+    MATL_ID   = 'GYPSUM'
+    THICKNESS = 0.012 /
 
 #  ===========
 #  = Markers =
