@@ -465,7 +465,7 @@ Note that the mass flux values here are unique for each fuel item and are specif
 \section{Materials}
 \label{sec:materials}
 
-While the fires were represented as fuel sources with a constant area (Section~\ref{sec:fires}), from a heat transfer perspective, it is important to define the material properties (density, thermal conductivity, and specific heat) to account for heat transfer and energy storage in the ceiling, walls, and floor. In this study, the material properties of gypsum board~\cite{WAKILI2007} were specified on the finished walls and ceilings of the structure. The following lines define the gypsum material in the FDS input file:
+While the fires were represented as fuel sources with a constant area (Section~\ref{sec:fires}), from a heat transfer perspective, it is important to define the material properties (density, thermal conductivity, and specific heat) to account for heat transfer and energy storage in the ceiling, walls, and floor. In this study, the material properties of gypsum board~\cite{WAKILI2007} were specified on the finished walls and ceilings of the structure. The following lines define the gypsum material and surface in the FDS input file:
 
 \begin{lstlisting}
 &MATL ID          = 'GYPSUM'
@@ -524,7 +524,7 @@ D^* = \left(
 \end{equation}
 From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm, the characteristic fire diameter to cell size ($D^*/\dx$) ratio is 18.8 for the initial couch fire (peak HRR of 5.4~MW) and 28.3 for the basement flashover fire (HRR of 15~MW). Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. The grid resolution used in this model is within or exceeds typical engineering $D^*/\dx$ values.
 
-As discussed in Section~\ref{sec:geometry}, the structure had exterior dimensions of 17.73~m (58~ft) by 8.53~m (28~ft) and a total height of 5.9~m (19~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 17~m (56~ft) by 22~m (72~ft) by 13.6~m (45~ft). A grid resolution of 10~cm (3.9~in) was used, which required approximately 5.1 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:SMV_exterior_grid} shows the front of the structure rendered in Smokeview with the 10~cm mesh. The domain was divided into 16 meshes (each containing between 289,000 and 346,800 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 3~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:model_parameters} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
+As discussed in Section~\ref{sec:geometry}, the structure had exterior dimensions of 17.73~m (58~ft) by 8.53~m (28~ft) and a total height of 5.9~m (19~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 17~m (56~ft) by 22~m (72~ft) by 13.6~m (45~ft). A grid resolution of 10~cm (3.9~in) was used, which required approximately 5.1 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:SMV_exterior_grid} shows the front of the structure rendered in Smokeview with the 10~cm mesh.
 
 \begin{figure}[!ht]
 \includegraphics[width=5.0in]{../Figures/SMV_Exterior_Grid_Front} \\
@@ -532,6 +532,8 @@ As discussed in Section~\ref{sec:geometry}, the structure had exterior dimension
 \caption{Front (left) and rear (right) of the structure with a 10~cm computational mesh.}
 \label{fig:SMV_exterior_grid}
 \end{figure}
+
+The domain was divided into 16 meshes (each containing between 272,000 and 367,200 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 3~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:model_parameters} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
 
 \begin{figure}[!ht]
 \includegraphics[width=6.5in]{../Figures/SMV_Exterior_Meshes}
@@ -544,24 +546,29 @@ As discussed in Section~\ref{sec:geometry}, the structure had exterior dimension
 \caption[Relevant fire model input parameters]{Relevant fire model input parameters}
 \begin{tabular}{lll}
 \toprule
-Parameter                                 &  Description                                  &  Discussion                        \\
+Parameter                                    &  Description                                  &  Discussion                        \\
 \midrule
-Simulation Time                           &  9~min                                        &  --                                \\
-Grid Cell Size                            &  10~cm                                        &  Section~\ref{sec:numerical_mesh}  \\
-Ambient Temperature$^*$                   &  20~$^{\circ}$C (68~$^{\circ}$F)              &  --                                \\
-Reaction: Wood~\cite{SFPE:Tewarson}       &  Formula: $\C\H_{1.8}\O_{0.30}\N_{0.05}$      &  Section~\ref{sec:fires}           \\
-                                          &  Soot Yield: 0.131~$\mathrm{kg}/\mathrm{kg}$  &                                    \\
-                                          &  CO Yield: 0.010~$\mathrm{kg}/\mathrm{kg}$    &                                    \\
-                                          &  Heat of combustion: 26,200~kJ/kg             &                                    \\
-Peak HRR                                  &  Initial couch fire: 5.4~MW                   &  Section~\ref{sec:fires}           \\
-                                          &  Basement flashover fire: 15~MW               &                                    \\
-Material: Gypsum Board~\cite{WAKILI2007}  &  $k$: 0.28~\si{W/(m.K)}                       &  Section~\ref{sec:materials}       \\
-                                          &  $\rho$: 810~kg/m$^3$                         &                                    \\
-                                          &  $c_{\rm p}$: 1.0~\si{kJ/(kg.K)}              &                                    \\
+Simulation Time                              &  9~min                                        &  --                                \\
+Grid Cell Size                               &  10~cm                                        &  Section~\ref{sec:numerical_mesh}  \\
+Ambient Temperature$^*$                      &  20~$^{\circ}$C (68~$^{\circ}$F)              &  --                                \\
+Reaction: Polyurethane~\cite{SFPE:Tewarson}  &  Formula: $\C\H_{1.8}\O_{0.30}\N_{0.05}$      &  Section~\ref{sec:fires}           \\
+                                             &  Soot Yield: 0.131~$\mathrm{kg}/\mathrm{kg}$  &                                    \\
+                                             &  CO Yield: 0.010~$\mathrm{kg}/\mathrm{kg}$    &                                    \\
+                                             &  Heat of combustion: 26,200~kJ/kg             &                                    \\
+Reaction: Wood~\cite{SFPE:Tewarson}          &  Formula: $\C\H_{1.7}\O_{0.74}\N_{0.002}$     &  Section~\ref{sec:fires}           \\
+                                             &  Soot Yield: 0.015~$\mathrm{kg}/\mathrm{kg}$  &                                    \\
+                                             &  CO Yield: 0.004~$\mathrm{kg}/\mathrm{kg}$    &                                    \\
+                                             &  Heat of combustion: 16,400~kJ/kg             &                                    \\
+Peak HRRs                                    &  Initial couch fire: 5~MW                     &  Section~\ref{sec:fires}           \\
+                                             &  Basement flashover fire: 14~MW               &                                    \\
+                                             &  Basement balcony fire: 1~MW                  &                                    \\
+Material: Gypsum Board~\cite{WAKILI2007}     &  $k$: 0.28~\si{W/(m.K)}                       &  Section~\ref{sec:materials}       \\
+                                             &  $\rho$: 810~kg/m$^3$                         &                                    \\
+                                             &  $c_{\rm p}$: 1.0~\si{kJ/(kg.K)}              &                                    \\
 \bottomrule
 \end{tabular}
 \footnotesize
-\\ $^{*}$Initial interior temperatures were assumed to be 20~$^{\circ}$C; exterior temperatures were 14~$^{\circ}$C~\cite{NIOSH:Bowyer2}.
+\\ $^{*}$Initial interior temperature was assumed to be 20~$^{\circ}$C; actual exterior temperature was 14~$^{\circ}$C~\cite{NIOSH:Bowyer2}.
 \normalsize
 \label{tab:model_parameters}
 \end{table}
