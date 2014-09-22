@@ -15,25 +15,20 @@ def movingaverage(interval, window_size):
     return np.convolve(interval, window, 'same')
 
 FDS_file = '../FDS_Output_Files/133_berkeley_fire_hrr.csv'
-
 FDS = pd.read_csv(FDS_file, header=1)
-HRR = FDS['HRR'] / 1000
-HRR_avg = movingaverage(HRR, 2)
+HRR_FDS = FDS['HRR'] / 1000
+HRR_FDS_avg = movingaverage(HRR_FDS, 10)
 
-prescribed_time = np.array([0, 17, 23, 25, 35, 46, 53, 65, 80, 98, 112, 125, 133, 142, 144, 147, 157, 161, 167, 177, 184, 188, 195, 197, 201, 204, 205, 208, 215, 222, 230, 235, 241, 244, 246, 247, 250, 251, 253, 257, 260, 269, 273, 279, 282, 285, 288, 292, 295, 296, 297, 299, 300, 540])
-
-prescribed_HRR = np.array([0, 5, 5, 16, 12, 12, 16, 20, 49, 98, 147, 199, 225, 236, 259, 266, 334, 338, 367, 420, 431, 424, 487, 543, 622, 637, 685, 715, 749, 786, 839, 869, 914, 996, 1037, 1041, 1074, 1078, 1149, 1213, 1303, 1580, 1733, 1793, 1883, 2006, 2118, 2350, 2560, 2687, 2952, 3110, 20000, 20000]) / 1000
+CALC_file = '../Supplemental_Calculations/FDS_HRR_ramps.csv'
+CALC = pd.read_csv(CALC_file)
+HRR_CALC = CALC['Total HRR (kW)'] / 1000
 
 figure()
-plot(prescribed_time, prescribed_HRR, 'k-', lw=2, label='Prescribed HRR')
-plot(FDS['Time'], HRR_avg, 'r--', lw=2, label='FDS Model HRR')
-plt.text(342+20, 2, 'Rear Window Failures Begin')
+plot(CALC['Time (s)'], HRR_CALC, 'k-', lw=2, label='Prescribed HRR')
+plot(FDS['Time'][:-4], HRR_FDS_avg[:-4], 'r--', lw=2, label='FDS Model HRR')
+plt.text(342+10, 2, 'Rear Window Failures Begin')
 axvline(342, color='k', ls='--', lw=2)
-# axvline(383, color='k', ls='--', lw=2)
-# axvline(418, color='k', ls='--', lw=2)
-# axvline(440, color='k', ls='--', lw=2)
-# axvline(450, color='k', ls='--', lw=2)
-ylim([0, 30])
+ylim([0, 35])
 xlabel('Time(s)', fontsize=20)
 ylabel('HRR (MW)', fontsize=20)
 grid(True)
