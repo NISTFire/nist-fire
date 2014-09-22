@@ -310,7 +310,7 @@ The structure was built on a sloped landscape such that, from the front side of 
 
 The basement (i.e., the first story below street level) had a total floor area of 121~m$^2$ (1301~ft$^2$) and consisted of a finished living area with a large utility area. A laundry area was located on a landing on the stairs between the first floor and basement. The basement was accessible via an exterior door on the left side of the structure and an interior set of stairs. The basement had a balcony on the exterior of the rear side of the structure. The sub-basement level (i.e., the second story below street level) was not connected to the other three levels of the house, contained no windows, and was only accessible via an exterior door of the left side of the structure. The exterior entrances to the basement and sub-basement levels were connected via exterior wooden stairs on the left side of the structure.
 
-The fire, which is described in Section~\ref{sec:fire}, originated in the finished living room on the basement level (near the rear side of the structure), which had a floor area of 72~m$^2$ (775~ft$^2$). More detailed discussion on the impact of the fire on the interior conditions is provided in Section~\ref{sec:model_results}. Figure~\ref{fig:post_exterior} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the exterior damage occurred above the openings located on the basement floor (where the wooden balcony is located). Fully dimensioned drawings of the second floor, first floor, and basement are shown in Figs.~\ref{fig:drawing_second_floor}, \ref{fig:drawing_first_floor} and \ref{fig:drawing_basement}, respectively.
+The fire, which is described in Section~\ref{sec:fires}, originated in the finished living room on the basement level (near the rear side of the structure), which had a floor area of 72~m$^2$ (775~ft$^2$). More detailed discussion on the impact of the fire on the interior conditions is provided in Section~\ref{sec:model_results}. Figure~\ref{fig:post_exterior} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the exterior damage occurred above the openings located on the basement floor (where the wooden balcony is located). Fully dimensioned drawings of the second floor, first floor, and basement are shown in Figs.~\ref{fig:drawing_second_floor}, \ref{fig:drawing_first_floor} and \ref{fig:drawing_basement}, respectively.
 
 \begin{figure}[!ht]
 \includegraphics[width=5.0in]{../Figures/Plan_Second_Floor_Metric}
@@ -328,60 +328,157 @@ The fire, which is described in Section~\ref{sec:fire}, originated in the finish
 \label{fig:post_exterior}
 \end{figure}
 
-\section{Fire}
-\label{sec:fire}
+\section{Fires}
+\label{sec:fires}
 
-To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these sources of information, the FDS model includes two source fires: an initial couch fire in the basement near the rear side of the structure, and a secondary flashover fire that involved the entire basement floor area. The basement primarily contained upholstered polyurethane furniture fuel items. The HRR of the initial couch fire is based on an experimentally measured HRR for a mattress fire~\cite{madrzykowski2009fire} to represent the fire growth rate of a similar household furniture item.
+To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these sources of information, the FDS model includes three source fires: an initial couch fire in the basement, a secondary flashover fire that involved additional furniture items in the basement, and a third fire that occurred on the exterior basement balcony. The basement primarily contained upholstered polyurethane furniture fuel items, and the balcony was constructed of wood. The HRR of the initial couch fire is based on an experimentally measured HRR for a mattress fire~\cite{madrzykowski2009fire} to represent the fire growth rate of a similar household furniture item. The primary fuel packages were located in the basement as shown in Fig.~\ref{fig:fuel_placement}. In this figure, the numbered labels indicate the order in which the fuel items were burning: 1) the initial couch fire, 2) the secondary furniture fuel items, and 3) the balcony fire.
 
-Polyurethane fuel can be represented by the chemical formula, $\C\H_{1.8}\O_{0.30}\N_{0.05}$, with specified product yields of soot ($y_{\mathrm{s}}=0.131 \; \mathrm{kg}/\mathrm{kg}$) and carbon monoxide ($y_{\mathrm{CO}}=0.010 \; \mathrm{kg}/\mathrm{kg}$)~\cite{SFPE:Tewarson}. The product yields are expressed in terms of the amount soot or carbon monoxide emitted per unit mass of fuel consumed~(kg/kg) and can be found in the Society of Fire Protection Engineers (SFPE) Handbook~\cite{SFPE:Tewarson}. A balanced chemical reaction for polyurethane combustion can be written as:
+\begin{figure}[!ht]
+\includegraphics[width=6.5in]{../Figures/Plan_Basement_Fuels}
+\caption[Location of fuel items in the basement.]
+{Location of fuel items in the basement. The numbered labels indicate the order in which the fuel items were burning.}
+\label{fig:fuel_placement}
+\end{figure}
+
+Polyurethane fuel was specified for the interior basement fuel items, which can be represented by the chemical formula, $\C\H_{1.8}\O_{0.30}\N_{0.05}$, with specified product yields of soot ($y_{\mathrm{s}}=0.131 \; \mathrm{kg}/\mathrm{kg}$) and carbon monoxide ($y_{\mathrm{CO}}=0.010 \; \mathrm{kg}/\mathrm{kg}$)~\cite{SFPE:Tewarson}. The product yields are expressed in terms of the amount soot or carbon monoxide emitted per unit mass of fuel consumed~(kg/kg) and can be found in the Society of Fire Protection Engineers (SFPE) Handbook~\cite{SFPE:Tewarson}. A balanced chemical reaction for polyurethane combustion can be written as:
 
 \begin{multline}
 \C\H_{1.8}\O_{0.30}\N_{0.05} + 5.22(0.208\,\O_{2} + 0.783\,\N_{2} + 8.34 \times 10^{-3}\,\H_{2}\O + 3.87 \times 10^{-4}\,\C\O_{2}) \\
 \rightarrow 6.06(0.129\,\C\O_{2} + 0.156\,\H_{2}\O + 0.001\,\C\O + 0.035\,\C + 0.679\,\N_{2})
-\label{eq:fuel_comb}
+\label{eq:fuel_polyurethane}
 \end{multline}
 
-The value for the heat of combustion of polyurethane used in this simulation was~26,200 kJ/kg, based on data provided in the SFPE Handbook~\cite{SFPE:Tewarson}. The heat of combustion quantifies the amount of energy per unit mass of the fuel. The following text defines Eq.~\ref{eq:fuel_comb} for an FDS input file with the desired fuel and reaction properties discussed above:
 
-\begin{lstlisting}
-&SPEC ID='POLYURETHANE', FORMULA='CH1.8O0.30N0.05' /
+\clearpage
 
-&REAC ID = 'POLYURETHANE' 
-    FUEL = 'POLYURETHANE', 
+
+Wood fuel was specified for the exterior basement balcony fuel items, which can be represented by the chemical formula, $\C\H_{1.7}\O_{0.74}\N_{0.002}$, with specified product yields of soot ($y_{\mathrm{s}}=0.015 \; \mathrm{kg}/\mathrm{kg}$) and carbon monoxide ($y_{\mathrm{CO}}=0.004 \; \mathrm{kg}/\mathrm{kg}$)~\cite{SFPE:Tewarson}. A balanced chemical reaction for wood combustion can be written as:
+
+\begin{multline}
+\C\H_{1.7}\O_{0.74}\N_{0.002} + 4.91(0.208\,\O_{2} + 0.783\,\N_{2} + 8.34 \times 10^{-3}\,\H_{2}\O + 3.87 \times 10^{-4}\,\C\O_{2}) \\
+\rightarrow 5.74(0.168\,\C\O_{2} + 0.155\,\H_{2}\O + 6.37 \times 10^{-4}\,\C\O + 5.57 \times 10^{-3}\,\C + 0.670\,\N_{2})
+\label{eq:fuel_wood}
+\end{multline}
+
+The heat of combustion of polyurethane and wood were specified as 26,200~kJ/kg and 16,400~kJ/kg, respectively, based on data provided in the SFPE Handbook~\cite{SFPE:Tewarson}. The heat of combustion quantifies the amount of energy released per unit mass of the fuel. The following text defines Eqs.~\ref{eq:fuel_polyurethane} and \ref{eq:fuel_wood} for an FDS input file with the desired fuel and reaction properties discussed above:
+
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
+&SPEC ID = 'POLYURETHANE',    FORMULA = 'CH1.8O0.30N0.05' /
+&SPEC ID = 'WOOD',            FORMULA = 'CH1.7O0.74N0.002' /
+&SPEC ID = 'OXYGEN',          LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'NITROGEN',        LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'WATER VAPOR',     LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'CARBON MONOXIDE', LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'CARBON DIOXIDE',  LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'SOOT',            LUMPED_COMPONENT_ONLY = .TRUE. /
+
+&SPEC ID = 'AIR',
+    SPEC_ID = 'OXYGEN','NITROGEN','WATER VAPOR','CARBON DIOXIDE',
+    VOLUME_FRACTION = 0.208057, 0.783214, 0.008342, 0.000387,
+    BACKGROUND = .TRUE. /
+
+&SPEC ID = 'PRODUCTS_POLYURETHANE',
+    SPEC_ID = 'NITROGEN','WATER VAPOR','CARBON DIOXIDE','CARBON MONOXIDE','SOOT',
+    VOLUME_FRACTION = 0.678838, 0.155754, 0.129475, 0.001139, 0.034794 /
+
+&REAC ID = 'POLYURETHANE'
+    FUEL = 'POLYURETHANE',
     HEAT_OF_COMBUSTION = 26200,
-    SOOT_YIELD = 0.131,
-    CO_YIELD = 0.010 /
+    SPEC_ID_NU = 'POLYURETHANE','AIR','PRODUCTS_POLYURETHANE'
+    NU = -1, -5.218633, 6.057861 /
+
+&SPEC ID = 'PRODUCTS_WOOD',
+    SPEC_ID = 'NITROGEN','WATER VAPOR','CARBON DIOXIDE','CARBON MONOXIDE','SOOT',
+    VOLUME_FRACTION = 0.670128, 0.155268, 0.168397, 0.000637, 0.005570 /
+
+&REAC ID = 'WOOD'
+    FUEL = 'WOOD',
+    HEAT_OF_COMBUSTION = 16400,
+    SPEC_ID_NU = 'WOOD','AIR','PRODUCTS_WOOD'
+    NU = -1, -4.908330, 5.738119 /
 \end{lstlisting}
 
-Note that using the input lines above will invoke the simple chemistry reaction mechanism in FDS in which fuel and air react to form only CO$_2$, CO, H$_2$O, soot, and N$_2$. If the inclusion for other combustion products is desired, then the user must explicitly define those species and the chemical reaction that produces them~\cite{FDS_Users_Guide}. Based on the above input lines, FDS uses the default, mixing-controlled fast chemistry combustion model. This mechanism states that the rate of fuel consumption is proportional to both the local limiting reactant concentration and the local rate of mixing and extinction is based on the critical flame temperature approach~\cite{FDS_Math_Guide}. While FDS provides users with the option to use a more complex finite-rate combustion mechanism, there is not sufficient evidence in this case to justify deviating from the default specifications.
+Note that using the input lines above will invoke the simple chemistry reaction mechanism in FDS in which fuel and air react to form only CO$_2$, CO, H$_2$O, soot, and N$_2$. If the inclusion of other combustion products is desired, then the user must explicitly define those species and the chemical reaction that produces them~\cite{FDS_Users_Guide}. Based on the above input lines, FDS uses the default, mixing-controlled fast chemistry combustion model. This mechanism states that the rate of fuel consumption is proportional to both the local limiting reactant concentration and the local rate of mixing and extinction is based on the critical flame temperature approach~\cite{FDS_Math_Guide}. While FDS provides users with the option to use a more complex finite-rate combustion mechanism, there is not sufficient evidence in this case to justify deviating from the default specifications.
 
-The HRR was prescribed in FDS as follows. From 0~s to 300~s, the HRR in the simulation followed the experimentally measured mattress HRR. At 300~s, the HRR was approximately 3~MW. From 300~s to 342~s (the time at which the first basement window failed), the HRR increased linearly from 3~MW to 20~MW. From 342~s to 540~s, the HRR was 15~MW. Note that the prescribed HRR can be different than the simulated HRR calculated by FDS based on the amount of available fuel, oxygen, and ventilation. A comparison of the prescribed HRR and the simulated HRR is discussed in Section~\ref{sec:HRR}.
+\noindent The HRR for the various fuel packages was prescribed in FDS as follows.
 
-% To estimate the heat release rate per unit area (HRRPUA) of wood, Babrauskas and Grayson~\cite{babrauskas1990} conducted experiments in a cone calorimeter\footnote{The cone calorimeter is an experimental apparatus used to gather data about ignition time, mass loss, combustion products, and heat release rate among other properties associated with burning small samples of materials~\cite{ASTM:E1355}.} to determine the 5-min average of the HRRPUA for several different types of wood over a range of radiant heat fluxes. The results of that study indicate that the HRRPUA for different types of wood is approximately 50~kW/m$^2$.
+\begin{enumerate}
+\item For the inital couch fire in the basement, the HRR from 0~s to 327~s followed the experimentally measured mattress HRR. At 300~s, the HRR was approximately 3~MW. From 327~s until 540~s (the end of the simulation), the HRR was a constant 5~MW.
 
-% To calculate the total fire size, the appropriate burning area (exposed wood area) of the attic and second floor porch enclosure needs to be determined. Based on the floor plan of the structure, the underside of the roof was approximately 134~m$^2$ (1453~ft$^2$) with 7~m$^2$ (75~ft$^2$) walls on the front and rear sides. Additionally, there was 105~m$^2$ (1130~ft$^2$) of floor area in the attic. Examination of post-incident images indicated that the floor immediately over the rear porch burned away. That area was considered to be part of the porch fire. Based on post-incident damage, approximately 50~\% of the remaining floor area and 90~\% of the roof was considered to be fuel for the attic fire. To estimate the total attic fire size, the underside roof area (120~m$^2$), two end walls (14~m$^2$), and the floor area (43~m$^2$ or 463~ft$^2$) were included. Applying an HRRPUA of wood of 50~kW/m$^2$ results in a potential peak fire size of 9~MW. To estimate the size of the porch fire, the four walls of the porch enclosure (42~m$^2$ or 452~ft$^2$) and the floor and ceiling of the porch (24~m$^2$ or 258 ft$^2$) were included, which results in a total porch area of 66~m$^2$ (689~ft$^2$). Using the same HRRPUA of wood of 50~kW/m$^2$, the potential peak fire size on the porch was approximately 3.3~MW. Therefore, the maximum fire size for this structure was estimated to be 12.3~MW. Since the time at which the fire started is not known relative to the notification of a fire or how fast the fire spread, several simplifications were made. The first assumption is that the attic fire was specified to start at the beginning of the simulation and increase to a value of 9~MW in 10~s. The porch fire was specified to start 40~s into the simulation and increase to a value of 3.3~MW in 10~s. The 10-s ramp up time was used to prevent abrupt changes in the velocity at the fire boundary condition in FDS. The second assumption is that the sources of the gas phase wood fuel have constant areas at fixed locations (2 sources for the attic, 1 source for the porch). The following lines define the source fires in the FDS input file:
+\item The secondary fuel packages in the basement were divided among four additional furniture items (two sofas, a lounge, and a chair). The two large sofas in the middle of the basement were specified with a peak HRR of 5~MW. The lounge and chair located at the perimeter of the basement were specified with a peak HRR of 2~MW. From 0~s to 300~s, these items were not burning. From 300~s to 342~s (the time at which the first basement window failed), the secondary fuel items were ignited, and the total HRR of the secondary fuel packages increased linearly from 0~MW to 14~MW. From 342~s to 540~s (the end of the simulation), the HRR was a constant 14~MW.
+
+\item The third exterior fuel item included the wood on the basement balcony and siding. From 0~s to 440~s, these items were not burning. From 440~s to 450~s, the exterior basement balcony was ignited, and the total HRR increased linearly from 0~MW to 1~MW. To estimate the heat release rate per unit area (HRRPUA) of wood, Babrauskas and Grayson~\cite{babrauskas1990} conducted experiments in a cone calorimeter\footnote{The cone calorimeter is an experimental apparatus used to gather data about ignition time, mass loss, combustion products, and heat release rate among other properties associated with burning small samples of materials~\cite{ASTM:E1355}.} to determine the 5-min average of the HRRPUA for several different types of wood over a range of radiant heat fluxes. The results of that study indicate that the HRRPUA for different types of wood is approximately 50~kW/m$^2$.
+\end{enumerate}
+
+Figure~\ref{fig:hrr} shows the prescribed design fire for this scenario, which is the sum of the HRRs of the three source fires. In this figure, the vertical lines indicate the three stages of the fire based on the contribution of the fuel packages. Therefore, the estimated maximum specified fire size for this structure was approximately 20~MW. Note that the prescribed HRR can be different than the simulated HRR calculated by FDS based on the amount of available fuel, oxygen, and ventilation. A comparison of the prescribed HRR and the simulated HRR is discussed in Section~\ref{sec:HRR}.
+
+\begin{figure}[!ht]
+\includegraphics[width=5.5in]{../Figures/Fire_HRR}
+\caption[Prescribed HRR vs. time.]
+{Prescribed HRR vs. time. The vertical lines indicate the three stages of the fire based on the contribution of the fuel packages.}
+\label{fig:hrr}
+\end{figure}
+
+
+\clearpage
+
+
+Since the time at which the fire started is not known relative to the notification of a fire or how fast the fire spread, several simplifying assumptions were made. The first assumption is that the initial couch fire in the basement was specified to start at the beginning of the simulation. The second assumption is that the sources of the gas phase polyurethane and wood fuel have constant areas at fixed locations (five furniture items in the basement interior for the polyurethane fuel, and the exterior basment balcony for the wood fuel). The following lines define the source fires in the FDS input file:
 
 \begin{lstlisting}
-&SURF ID='BURNER', HRRPUA=0.25, COLOR='RED', RAMP_Q='Mattress_Ramp' /
-&VENT XB=4.2, 6.2, 15.2, 17.2, -2.8, -2.8, SURF_ID='BURNER', DEVC_ID='TIMER_INITIAL_BURNER_OFF' /
-&DEVC ID='TIMER_INITIAL_BURNER_OFF', QUANTITY='TIME', XYZ=0,0,0, INITIAL_STATE=.TRUE., SETPOINT=300 /
+&SURF ID='COUCH_RIGHT_INITIAL',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 5.271815E-6,
+    RAMP_MF='COUCH_RIGHT_INITIAL_RAMP' /
 
-&SURF ID='FLASHOVER_BURNER', HRRPUA=0.018255, COLOR='RED', RAMP_Q='Flashover_Ramp' /
-&VENT XB=0.1, 8.4, 8.5, 15.1, -2.8, -2.8, SURF_ID='FLASHOVER_BURNER' /
+&SURF ID='COUCH_MIDDLE_FLASHOVER',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 1.037172E-5,
+    RAMP_MF='COUCH_MIDDLE_FLASHOVER_RAMP' /
+
+&SURF ID='COUCH_LEFT_FLASHOVER',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 5.271815E-6,
+    RAMP_MF='COUCH_LEFT_FLASHOVER_RAMP' /
+
+&SURF ID='LOUNGE_FLASHOVER',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 7.853485E-6,
+    RAMP_MF='LOUNGE_FLASHOVER_RAMP' /
+
+&SURF ID='CHAIR_FLASHOVER',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 7.918660E-6,
+    RAMP_MF='CHAIR_FLASHOVER_RAMP' /
+
+&SURF ID='WOOD_EXTERIOR',
+    SPEC_ID='WOOD',
+    MASS_FLUX = 0.003049,
+    RAMP_MF='WOOD_EXTERIOR_RAMP' /
 \end{lstlisting}
-Note that the coordinates here are unique for the vents are specific to the input files used for these simulations. The key point is that they are 2-D planes located at a specific area.
+Note that the mass flux values here are unique for each fuel item and are specific to the input files used for these simulations. The key point is that each fuel item was modeled as a 3D object with flat surfaces from which a specified amount of fuel flows, mixes with air, and burns.
+
+
+\clearpage
+
 
 \section{Materials}
 \label{sec:materials}
 
-While the fires were represented as fuel sources with a constant area (Section~\ref{sec:fire}), from a heat transfer perspective, it is important to define the material properties (density, thermal conductivity, and specific heat) to account for heat transfer and energy storage in the ceiling, walls, and floor. In this study, the material properties of gypsum board~\cite{WAKILI2007} were specified on the finished walls and ceilings on the main two floors of the structure. The following lines define the gypsum material in the FDS input file:
+While the fires were represented as fuel sources with a constant area (Section~\ref{sec:fires}), from a heat transfer perspective, it is important to define the material properties (density, thermal conductivity, and specific heat) to account for heat transfer and energy storage in the ceiling, walls, and floor. In this study, the material properties of gypsum board~\cite{WAKILI2007} were specified on the finished walls and ceilings of the structure. The following lines define the gypsum material in the FDS input file:
 
 \begin{lstlisting}
-&MATL ID = 'GYPSUM BOARD'
+&MATL ID          = 'GYPSUM'
     FYI = 'Wakili - Journal of Fire Sciences 2007' 
-    CONDUCTIVITY = 0.28
-    SPECIFIC_HEAT = 1.0
-    DENSITY = 810. /
+    CONDUCTIVITY  = 0.28
+    SPECIFIC_HEAT = 1.00
+    DENSITY       = 810. /
+
+&SURF ID        = 'WALL'
+      DEFAULT   = .TRUE.
+      COLOR     = 'DARK SEA GREEN 4'
+      MATL_ID   = 'GYPSUM'
+      THICKNESS = 0.012 /
 \end{lstlisting}
 
 \section{Ventilation}
@@ -452,15 +549,15 @@ Parameter                                 &  Description                        
 Simulation Time                           &  9~min                                        &  --                                \\
 Grid Cell Size                            &  10~cm                                        &  Section~\ref{sec:numerical_mesh}  \\
 Ambient Temperature$^*$                   &  20~$^{\circ}$C (68~$^{\circ}$F)              &  --                                \\
-Reaction: Wood~\cite{SFPE:Tewarson}       &  Formula: $\C\H_{1.8}\O_{0.30}\N_{0.05}$      &  Section~\ref{sec:fire}            \\
+Reaction: Wood~\cite{SFPE:Tewarson}       &  Formula: $\C\H_{1.8}\O_{0.30}\N_{0.05}$      &  Section~\ref{sec:fires}           \\
                                           &  Soot Yield: 0.131~$\mathrm{kg}/\mathrm{kg}$  &                                    \\
                                           &  CO Yield: 0.010~$\mathrm{kg}/\mathrm{kg}$    &                                    \\
                                           &  Heat of combustion: 26,200~kJ/kg             &                                    \\
-Peak HRR                                  &  Initial couch fire: 5.4~MW                   &  Section~\ref{sec:fire}            \\
+Peak HRR                                  &  Initial couch fire: 5.4~MW                   &  Section~\ref{sec:fires}           \\
                                           &  Basement flashover fire: 15~MW               &                                    \\
 Material: Gypsum Board~\cite{WAKILI2007}  &  $k$: 0.28~\si{W/(m.K)}                       &  Section~\ref{sec:materials}       \\
                                           &  $\rho$: 810~kg/m$^3$                         &                                    \\
-                                          &  $c_{\rm p}$: 1.0~\si{kJ/(kg.K)}                  &                                    \\
+                                          &  $c_{\rm p}$: 1.0~\si{kJ/(kg.K)}              &                                    \\
 \bottomrule
 \end{tabular}
 \footnotesize
@@ -535,13 +632,13 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 
 The HRR output quantity from FDS represents the predicted amount of combustion that would have occurred in the fire scenario, which depends on the amount of available fuel, oxygen, and ventilation. In the FDS simulations, a prescribed HRR is specified, and FDS determines the amount of combustion that occurs throughout the simulation based on the amount of available fuel and oxygen at a given location. As a result, the actual HRR in FDS can be lower than the specified HRR based on the ventilation conditions.
 
-Figure~\ref{fig:hrr} shows the prescribed HRR vs. time based on the specified fires along with the FDS results for the two ventilation scenarios that were described in Section~\ref{sec:ventilation}. The vertical line represents the time at which the first basement window on the rear side of the structure failed (342~s). The maximum size of the fire used in this study was selected such that the conditions would become ventilation limited to minimize computational time while aligning with the timeline observations from the fire scenario. Note that the rear window failures were driven by the event timeline rather than failure temperature criteria.
+Figure~\ref{fig:hrr_w_fds} shows the prescribed HRR vs. time based on the specified fires along with the FDS results for the two ventilation scenarios that were described in Section~\ref{sec:ventilation}. The vertical line represents the time at which the first basement window on the rear side of the structure failed (342~s). The maximum size of the fire used in this study was selected such that the conditions would become ventilation limited to minimize computational time while aligning with the timeline observations from the fire scenario. Note that the rear window failures were driven by the event timeline rather than failure temperature criteria.
 
 \begin{figure}[!ht]
-\includegraphics[width=5.5in]{../Figures/Fire_HRR}
+\includegraphics[width=5.5in]{../Figures/Fire_HRR_w_FDS}
 \caption[HRR vs. time from the FDS simulations.]
 {HRR vs. time from the FDS simulations. The vertical line indicates the time at which the rear basement windows began to fail (342~s).}
-\label{fig:hrr}
+\label{fig:hrr_w_fds}
 \end{figure}
 
 In Fig.~\ref{fig:hrr}, the XX line represents the FDS simulation. The XX line represents the prescribed HRR that was input into FDS. As shown in Fig.~\ref{fig:hrr}, the HRR output from FDS is less than the prescribed HRR because the fire in the structure becomes ventilation limited. The maximum HRR value is approximately XX~MW before the fire becomes ventilation limited and begins to decay. The HRR is reduced to XX~MW as the amount of oxygen inside the structure becomes limited. There is an insufficient amount of oxygen in the structure to burn all of the fuel, therefore combustion occurs locally at the ventilation openings where fresh air is available. Figure~\ref{fig:smv_ext_fire} shows flaming combustion through the failed window on the rear side of the structure and attic breach just after the second fire ignites at XX~s. After additional window failures occur at XX~s and XX~s (see Table~\ref{tab:ventilation_timeline}), the abrupt change in ventilation causes the HRR to increase to XX~MW before it decreases to approximately XX~MW. The HRR then increases towards a steady-state value.
