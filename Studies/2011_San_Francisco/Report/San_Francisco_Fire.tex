@@ -265,7 +265,7 @@ Incident Time  &  Fire Behavior / Fireground Operation                          
                &                                                                                      \\
 10:58:42       &  Fire self-vents from the rear side of the structure when a glass window in the      \\
                &  basement fails. Additional glass windows on the rear side of the structure fail     \\
-               &  over the next two minutes.                                                          \\
+               &  within the next two minutes.                                                        \\
                &                                                                                      \\
 10:59:23       &  BC9 forces open the basement door on the left side of the structure,                \\
                &  reports heavy fire and smoke, and requests a second hoseline.                       \\
@@ -606,7 +606,7 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
                &              &                                                                      \\
 10:58:42       &  342         &  Fire self-vents from the rear side of the structure when a glass    \\
                &              &  window in the basement fails. Additional glass windows on the       \\
-               &              &  rear side of the structure fail over the next two minutes.          \\
+               &              &  rear side of the structure fail within the next two minutes.        \\
                &              &                                                                      \\
 10:59:23       &  383         &  BC9 forces open the basement door on the left side of               \\
                &              &  the structure, reports heavy fire and smoke, and requests a         \\
@@ -641,9 +641,9 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 \section{Heat Release Rate}
 \label{sec:HRR}
 
-The HRR output quantity from FDS represents the predicted amount of combustion that would have occurred in the fire scenario, which depends on the amount of available fuel, oxygen, and ventilation. In the FDS simulations, a prescribed HRR is specified, and FDS determines the amount of combustion that occurs throughout the simulation based on the amount of available fuel and oxygen at a given location. As a result, the actual HRR in FDS can be lower than the specified HRR based on the ventilation conditions.
+In the FDS simulations, a prescribed HRR is specified, and FDS determines the amount of combustion that occurs throughout the simulation based on the amount of available fuel and oxygen at a given location. As a result, the actual HRR in FDS can be different than the prescribed HRR based on the ventilation conditions.
 
-Figure~\ref{fig:hrr_w_fds} shows the prescribed HRR vs. time based on the specified fires along with the FDS results for the two ventilation scenarios that were described in Section~\ref{sec:ventilation}. The vertical line represents the time at which the first basement window on the rear side of the structure failed (342~s). The maximum size of the fire used in this study was selected such that the conditions would become ventilation limited to minimize computational time while aligning with the timeline observations from the fire scenario. Note that the rear window failures were driven by the event timeline rather than failure temperature criteria.
+Figure~\ref{fig:hrr_w_fds} shows the HRR vs. time based on the fires that were described in Section~\ref{sec:fires}. The vertical dashed line represents the time at which the first basement window on the rear side of the structure failed (342~s). The maximum size of the fire used in this study was selected such that the conditions would become ventilation limited to minimize computational time while aligning with the timeline observations from the fire scenario. Note that the rear window failures were manually specified in accordance with the event timeline rather than failure temperature criteria.
 
 \begin{figure}[!ht]
 \includegraphics[width=5.5in]{../Figures/Fire_HRR_w_FDS}
@@ -652,15 +652,23 @@ Figure~\ref{fig:hrr_w_fds} shows the prescribed HRR vs. time based on the specif
 \label{fig:hrr_w_fds}
 \end{figure}
 
-In Fig.~\ref{fig:hrr}, the XX line represents the FDS simulation. The XX line represents the prescribed HRR that was input into FDS. As shown in Fig.~\ref{fig:hrr}, the HRR output from FDS is less than the prescribed HRR because the fire in the structure becomes ventilation limited. The maximum HRR value is approximately XX~MW before the fire becomes ventilation limited and begins to decay. The HRR is reduced to XX~MW as the amount of oxygen inside the structure becomes limited. There is an insufficient amount of oxygen in the structure to burn all of the fuel, therefore combustion occurs locally at the ventilation openings where fresh air is available. Figure~\ref{fig:smv_ext_fire} shows flaming combustion through the failed window on the rear side of the structure and attic breach just after the second fire ignites at XX~s. After additional window failures occur at XX~s and XX~s (see Table~\ref{tab:ventilation_timeline}), the abrupt change in ventilation causes the HRR to increase to XX~MW before it decreases to approximately XX~MW. The HRR then increases towards a steady-state value.
 
-% Figure~\ref{fig:hrr} indicates that the HRRs for both of the ventilation scenarios in FDS are identical until 130~s (HRR $\approx$ 7~MW). At 130~s, the rear door is opened in the baseline simulation. At 135~s, there is an additional breach on the left side of the structure (Table~\ref{tab:ventilation_timeline}). The open door and breach act as additional pressure releases for the structure. Again, the abrupt change in ventilation causes the HRR to increase from approximately 7~MW to 9.7~MW at 139~s. At the time of the door failure (160~s), the HRR in both cases was approximately 9~MW because of the increased amount of ventilation. While there might be some locally different burning characteristics between the baseline simulation and the alternative simulation, the interior conditions in both cases presented a significant hazard to firefighters inside of the structure. Therefore, the analysis will focus on the results of the baseline simulation.
+\clearpage
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/smv_exterior_fire}
-% \caption{Smokeview rendering of exterior combustion occurring on the rear side of the structure.}
-% \label{fig:smv_ext_fire}
-% \end{figure}
+
+In Fig.~\ref{fig:hrr_w_fds}, the solid line represents the HRR that was prescribed in the FDS simulation, and the dashed line represents the actual HRR that was predicted by FDS based on the ventilation conditions. From 0~s to 300~s, the predicted HRR is in agreement with the prescribed HRR because there is an adequate amount of oxygen for all of the fuel to combust. From 300~s to 342~s (the time at which the first basement window failed), the predicted HRR is lower than the prescribed HRR because the fire in the structure becomes ventilation limited. The maximum predicted HRR value is approximately 7~MW before the fire becomes ventilation limited and begins to decay. The HRR decreased to approximately 2~MW as the amount of oxygen inside the structure becomes limited. At this time, there is an insufficient amount of oxygen in the structure to burn all of the fuel; therefore, localized burning occurs near the ventilation openings where ambient air is available.
+
+At a time of 342~s, the first window on the rear side of the structure fails, and additional windows fail within the next two minutes. As additional window failures occur (see Table~\ref{tab:ventilation_timeline}), the abrupt change in ventilation causes the HRR to increase to approximately 32~MW before it reaches a steady-state value of approximately 20~MW. The predicted HRR increases above the prescribed HRR value because the unburned fuel and smoke that accumulated in the structure during ventilation-limited conditions is now mixing with ambient air from the failed window openings and burning. Figure~\ref{fig:timeline_comparison} shows a time series comparison of on-scene photographs and Smokeview snapshots of flaming combustion that occurs through the failed windows on the rear side of the structure.
+
+\begin{figure}[!ht]
+\includegraphics[height=8.25in]{../Figures/Timeline_Comparison}
+\caption{Comparison of on-scene photographs and Smokeview snapshots of exterior combustion occurring on the rear side of the structure.}
+\label{fig:timeline_comparison}
+\end{figure}
+
+
+\clearpage
+
 
 \section{Pressure}
 \label{sec:pressure}
