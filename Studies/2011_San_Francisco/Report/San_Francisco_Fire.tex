@@ -522,16 +522,20 @@ D^* = \left(
      \right)^\frac{2}{5} 
 \label{eq:mesh}
 \end{equation}
-From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm, the characteristic fire diameter to cell size ($D^*/\dx$) ratio is 18.8 for the initial couch fire (peak HRR of 5.4~MW) and 28.3 for the basement flashover fire (HRR of 15~MW). Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. The grid resolution used in this model is within or exceeds typical engineering $D^*/\dx$ values.
+From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm, the ratio of the characteristic fire diameter to cell size ($D^*/\dx$) was 18 for the initial couch fire (combined HRR of 5~MW), 31 for the secondary flashover fire in the basement (combined HRR of 19~MW), and 32 for the maximum prescribed fire size in the structure (combined HRR of 20~MW). Therefore, the grid resolution used in this model results in a $D^*/\dx$ ratio that exceeds typical engineering values.
 
 As discussed in Section~\ref{sec:geometry}, the structure had exterior dimensions of 17.73~m (58~ft) by 8.53~m (28~ft) and a total height of 5.9~m (19~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 17~m (56~ft) by 22~m (72~ft) by 13.6~m (45~ft). A grid resolution of 10~cm (3.9~in) was used, which required approximately 5.1 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:SMV_exterior_grid} shows the front of the structure rendered in Smokeview with the 10~cm mesh.
 
 \begin{figure}[!ht]
 \includegraphics[width=5.0in]{../Figures/SMV_Exterior_Grid_Front} \\
-\includegraphics[width=5.0in]{../Figures/SMV_Exterior_Grid_Rear}
+\includegraphics[width=4.5in]{../Figures/SMV_Exterior_Grid_Rear}
 \caption{Front (left) and rear (right) of the structure with a 10~cm computational mesh.}
 \label{fig:SMV_exterior_grid}
 \end{figure}
+
+
+\clearpage
+
 
 The domain was divided into 16 meshes (each containing between 272,000 and 367,200 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 3~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:model_parameters} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
 
