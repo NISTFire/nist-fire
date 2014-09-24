@@ -344,7 +344,7 @@ The primary fuel packages were located in the basement as shown in Fig.~\ref{fig
 \begin{figure}[!ht]
 \includegraphics[width=6.5in]{../Figures/Plan_Basement_Fuels}
 \caption[Location of fuel items in the basement.]
-{Location of fuel items in the basement. The numbered labels indicate the order in which the fuel items were burning.}
+{Location of fuel items in the basement. The numbered labels indicate the order in which the fuel items were burning: Item~1 is associated with the initial couch fire in the basement, Items~2 are associated with the flashover fire that involved additional furniture items in the basement, and Item~3 is associated with a fire that occurred on the exterior basement balcony.}
 \label{fig:fuel_placement}
 \end{figure}
 
@@ -355,14 +355,22 @@ The primary fuel packages were located in the basement as shown in Fig.~\ref{fig
 Since the time at which the fire started is not known relative to the notification of a fire or how fast the fire spread, several simplifying assumptions were made. One assumption is that the initial couch fire in the basement was specified to start at the beginning of the simulation. The beginning of the simulation ($t=0$) was selected to correspond to an on-scene time of 10:53:00 (see Table~\ref{tab:incident_timeline}). The HRRs for the three primary source fires was prescribed in FDS as follows.
 
 \begin{enumerate}
-\item For the initial couch fire in the basement, the HRR from 0~s to 327~s followed the experimentally measured mattress HRR. At 300~s, the HRR was approximately 3~MW. From 327~s until 540~s (the end of the simulation), the HRR was a constant 5~MW.
+\item For the initial couch fire in the basement, the HRR from 0~s to 327~s followed the experimentally measured mattress HRR. The HRR at 300~s was approximately 3~MW, and the HRR at 327~s was approximately 5~MW. From 327~s until 540~s (the end of the simulation), the HRR of the initial couch item was specified as a constant 5~MW.
 
-\item The secondary fuel packages in the basement were divided among four additional furniture items (two sofas, a lounge, and a chair). The two large sofas in the middle of the basement were specified with a peak HRR of 5~MW. The lounge and chair located at the perimeter of the basement were specified with a peak HRR of 2~MW. From 0~s to 300~s, these items were not burning. From 300~s to 342~s (the time at which the first basement window failed), the secondary fuel items were ignited, and the total HRR of the secondary fuel packages increased linearly from 0~MW to 14~MW. From 342~s to 540~s (the end of the simulation), the HRR was a constant 14~MW.
+\item The secondary fuel packages in the basement were divided among four additional furniture items (two couches, a lounge, and a chair). The two large couches in the middle of the basement were specified with a peak HRR of 5~MW for each item. The lounge and chair located at the perimeter of the basement were specified with a peak HRR of 2~MW for each item. Therefore, the peak HRR of all four furniture items was a total of 14~MW.
 
-\item The third exterior fuel item included the wood on the basement balcony and siding. From 0~s to 440~s, these items were not burning. From 440~s to 450~s, the exterior basement balcony was ignited, and the total HRR increased linearly from 0~MW to 1~MW. To estimate the heat release rate per unit area (HRRPUA) of wood, Babrauskas and Grayson~\cite{babrauskas1990} conducted experiments in a cone calorimeter\footnote{The cone calorimeter is an experimental apparatus used to gather data about ignition time, mass loss, combustion products, and heat release rate among other properties associated with burning small samples of materials~\cite{ASTM:E1355}.} to determine the 5-min average of the HRRPUA for several different types of wood over a range of radiant heat fluxes. The results of that study indicate that the HRRPUA for different types of wood is approximately 50~kW/m$^2$.
+Based on post-incident reports and photographs, the HRR of these fuels was specified as follows. From 0~s to 300~s, these items were not burning. From 300~s to 342~s (the time at which the first basement window failed), the secondary fuel items were ignited, and the total HRR of the four furniture items increased linearly from 0~MW to 14~MW. From 342~s to 540~s (the end of the simulation), the total HRR of the four furniture items was specified as a constant 14~MW.
+
+\item The third exterior fuel item included the wood on the basement balcony and siding. To estimate the heat release rate per unit area (HRRPUA) of wood, Babrauskas and Grayson~\cite{babrauskas1990} conducted experiments in a cone calorimeter\footnote{The cone calorimeter is an experimental apparatus used to gather data about ignition time, mass loss, combustion products, and heat release rate among other properties associated with burning small samples of materials~\cite{ASTM:E1355}.} to determine the 5-min average of the HRRPUA for several different types of wood over a range of radiant heat fluxes. The results of that study indicate that the HRRPUA for different types of wood is approximately 50~kW/m$^2$.
+
+Based on post-incident reports and photographs, the HRR of these fuels was specified as follows. From 0~s to 440~s, the wooden items were not burning. From 440~s to 450~s, the exterior basement balcony was ignited, and the total HRR increased linearly from 0~MW to 1~MW (based on the surface area of the burning wood). From 450~s until 540~s (the end of the simulation), the HRR of the wooden balcony and siding was specified as a constant 5~MW.
 \end{enumerate}
 
-Figure~\ref{fig:hrr} shows the prescribed design fire for this scenario, which is the sum of the HRRs of the three source fires. In this figure, the text labels indicate the three stages of the fire based on the contribution of the fuel packages. Therefore, the estimated maximum specified fire size for this structure was approximately 20~MW. Note that the prescribed HRR can be different than the simulated HRR calculated by FDS based on the amount of available fuel, oxygen, and ventilation. A comparison of the prescribed HRR and the simulated HRR is discussed in Section~\ref{sec:HRR}.
+
+\clearpage
+
+
+Figure~\ref{fig:hrr} shows the overall prescribed design fire for this scenario, which is the sum of the HRRs of the three source fires. In this figure, the text labels indicate the three stages of the fire based on the contribution of the fuel packages. Therefore, the estimated maximum specified fire size for this structure was approximately 20~MW. Note that the prescribed HRR can be different than the simulated HRR calculated by FDS based on the amount of available fuel, oxygen, and ventilation. A comparison of the prescribed HRR and the simulated HRR is discussed in Section~\ref{sec:HRR}.
 
 \begin{figure}[!ht]
 \includegraphics[width=5.5in]{../Figures/Fire_HRR}
