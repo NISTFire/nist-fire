@@ -29,10 +29,17 @@
 \g@addto@macro\@floatboxreset\centering
 \makeatother
 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\rhead{}
+\chead{}
+\renewcommand{\headrulewidth}{0pt}
+
 \begin{document}
+\pagenumbering{gobble}
 
 \bibliographystyle{unsrt}
-\pagestyle{empty}
 
 \begin{minipage}[t][9in][s]{6.25in}
 
@@ -81,9 +88,8 @@ Daniel Madrzykowski \\
 
 \frontmatter
 
-\pagenumbering{roman}
-
 \begin{minipage}[t][9in][s]{6.25in}
+\pagenumbering{gobble}
 
 \begin{flushright}
 \fontsize{20}{24}\selectfont
@@ -108,6 +114,7 @@ Engineering Laboratory} \\
 
 \begingroup
 \hypersetup{urlcolor=black}
+This publication is available free of charge from:
 \href{http://dx.doi.org/10.6028/NIST.TN.XXXX}{http://dx.doi.org/10.6028/NIST.TN.XXXX} \\
 \endgroup
 
@@ -126,6 +133,7 @@ August 2014}}
 \newpage
 
 \begin{minipage}[t][9in][s]{6.25in}
+\pagenumbering{gobble}
 
 \flushright{Certain commercial entities, equipment, or materials may be identified in this \\
 document in order to describe an experimental procedure or concept adequately. \\
@@ -152,8 +160,8 @@ CODEN: NTNOEF }
 
 \frontmatter
 
-\pagestyle{plain}
 \pagenumbering{roman}
+\setcounter{page}{3}
 
 \cleardoublepage
 \phantomsection
@@ -175,7 +183,6 @@ CODEN: NTNOEF }
 \begin{tabbing}
 \hspace{1.5in} \= \\
 BC \> Battalion Chief \\
-DC \> Division Chief \\
 E \> Engine \\
 FDS \> Fire Dynamics Simulator \\
 HGL \> Hot Gas Layer \\
@@ -183,13 +190,9 @@ HRR \> Heat Release Rate \\
 HRRPUA \> Heat Release Rate per Unit Area \\
 IC \> Incident Command \\
 LODD \> Line of Duty Death \\
-M \> Medic \\
 NIOSH \> National Institute for Occupational Safety and Health \\
 NIST \> National Institute of Standards and Technology \\
-RIC \> Rapid Intervention Crew \\
-RS \> Rescue Squad \\
 SFPE \> Society of Fire Protection Engineers \\
-T \> Tower \\
 \end{tabbing}
 
 \chapter{List of Symbols}
@@ -212,6 +215,7 @@ $c_{p}$ \> specific heat \\
 
 
 \chapter*{\centering Abstract}
+\pagenumbering{gobble}
 
 The Fire Dynamics Simulator (FDS) fire model, which is developed and maintained by the National Institute of Standards and Technology (NIST), was used to provide insight into the dynamics of a fire that occurred on June 2, 2011, within a multi-level, single-family residential structure in San Francisco, CA, that resulted in the death of two firefighters. The inputs for the FDS simulations are documented in this report and are based on the fire scenario, including the building geometry, interior furnishings, and ventilation conditions. The fire started in the basement and resulted in ventilation limited (fuel rich) fire conditions in the basement area.
 
@@ -220,6 +224,8 @@ The Fire Dynamics Simulator (FDS) fire model, which is developed and maintained 
 
 \chapter{Introduction}
 \label{sec:introduction}
+\pagenumbering{arabic}
+\setcounter{page}{1}
 
 Part of the function of the Fire Research Division at the National Institute of Standars and Technology (NIST) is to develop and apply technology, measurements, and standards to improve the understanding of the behavior, prevention, and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) fire model to provide insight into the fire development and thermal conditions of fires that have resulted in line of duty deaths (LODDs)~\cite{Madrzykowski:1,Iowa,Texas,Bryner:Charleston,barowy:texas,Weinschenk:Chicago}. The objective of these studies has been to improve the safety and effectiveness of firefighters.
 
@@ -465,7 +471,7 @@ Note that the mass flux values here are unique for each fuel item and are specif
 \section{Materials}
 \label{sec:materials}
 
-While the fires were represented as fuel sources with a constant area (Section~\ref{sec:fires}), from a heat transfer perspective, it is important to define the material properties (density, thermal conductivity, and specific heat) to account for heat transfer and energy storage in the ceiling, walls, and floor. In this study, the material properties of gypsum board~\cite{WAKILI2007} were specified on the finished walls and ceilings of the structure. The following lines define the gypsum material and surface in the FDS input file:
+While the fires were represented as fuel sources with a constant area (Section~\ref{sec:fires}), from a heat transfer perspective, it is important to define the material properties (density, thermal conductivity, specific heat, and thickness) to account for heat transfer and energy storage in the ceiling, walls, and floor. In this study, the material properties of gypsum board~\cite{WAKILI2007} were specified on the finished walls and ceilings of the structure. The following lines define the gypsum material and surface properties in the FDS input file:
 
 \begin{lstlisting}
 &MATL ID          = 'GYPSUM'
@@ -566,9 +572,10 @@ Reaction: Wood~\cite{SFPE:Tewarson}          &  Formula: $\C\H_{1.7}\O_{0.74}\N_
 Peak HRRs                                    &  Initial couch fire: 5~MW                     &  Section~\ref{sec:fires}           \\
                                              &  Basement flashover fire: 14~MW               &                                    \\
                                              &  Basement balcony fire: 1~MW                  &                                    \\
-Material: Gypsum Board~\cite{WAKILI2007}     &  $k$: 0.28~\si{W/(m.K)}                       &  Section~\ref{sec:materials}       \\
-                                             &  $\rho$: 810~kg/m$^3$                         &                                    \\
-                                             &  $c_{\rm p}$: 1.0~\si{kJ/(kg.K)}              &                                    \\
+Material: Gypsum Board~\cite{WAKILI2007}     &  Thermal conductivity: 0.28~\si{W/(m.K)}      &  Section~\ref{sec:materials}       \\
+                                             &  Density: 810~kg/m$^3$                        &                                    \\
+                                             &  Specific heat: 1.0~\si{kJ/(kg.K)}            &                                    \\
+                                             &  Thickness: 1.2~\si{cm}                       &                                    \\
 \bottomrule
 \end{tabular}
 \footnotesize
