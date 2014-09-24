@@ -24,13 +24,17 @@
 \renewcommand{\O}{\mbox{O}}
 \newcommand{\N}{\mbox{N}}
 
-% Extra packages
-\usepackage{xfrac}
-\pgfplotsset{compat=1.10}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\rhead{}
+\chead{}
+\renewcommand{\headrulewidth}{0pt}
+
 \begin{document}
+\pagenumbering{gobble}
 
 \bibliographystyle{unsrt}
-\pagestyle{empty}
 
 \begin{minipage}[t][9in][s]{6.25in}
 
@@ -79,9 +83,8 @@ Daniel Madrzykowski \\
 
 \frontmatter
 
-\pagenumbering{roman}
-
 \begin{minipage}[t][9in][s]{6.25in}
+\pagenumbering{gobble}
 
 \begin{flushright}
 \fontsize{20}{24}\selectfont
@@ -105,13 +108,14 @@ Engineering Laboratory} \\
 \vspace*{2\baselineskip}
 
 \begingroup
+This publication is available free of charge from:
 \hypersetup{urlcolor=black}
 \href{http://dx.doi.org/10.6028/NIST.TN.1838}{http://dx.doi.org/10.6028/NIST.TN.XXXX} \\
 \endgroup
 
 \vspace*{2\baselineskip}
 
-August 2014}}
+October 2014}}
 
 \vfill
 
@@ -124,6 +128,7 @@ August 2014}}
 \newpage
 
 \begin{minipage}[t][9in][s]{6.25in}
+\pagenumbering{gobble}
 
 \flushright{Certain commercial entities, equipment, or materials may be identified in this \\
 document in order to describe an experimental procedure or concept adequately. \\
@@ -150,8 +155,9 @@ CODEN: NTNOEF }
 
 \frontmatter
 
-\pagestyle{plain}
+%\pagestyle{plain}
 \pagenumbering{roman}
+\setcounter{page}{3}
 
 \cleardoublepage
 \phantomsection
@@ -203,9 +209,11 @@ $c_{p}$ \> specific heat \\
 \mainmatter
 
 \chapter*{\centering Abstract}
-\addcontentsline{toc}{chapter}{Abstract}
+\pagenumbering{gobble}
 
 \chapter{Introduction}
+\pagenumbering{arabic}
+\setcounter{page}{1}
 Part of the function of the Fire Research Division at NIST is to develop and apply technology, measurements, and standards to improve the understanding of the behavior, prevention, and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) fire model to provide insight into the fire development and thermal conditions of fires that have resulted in line of duty deaths (LODDs)~\cite{Madrzykowski:1,Iowa,Texas,Bryner:Charleston,barowy:texas}. The objective of these studies has been to improve the safety and effectiveness of firefighters.
 
 On February 24, 2012, a fire in residential structure injured seven Prince George's County firefighters. NIST examined the fire dynamics of this incident at the request of the Prince George's Country Fire/Emergency Medical Services (EMS) Department. Computer simulations of the fire incident were conducted using the NIST Fire Dynamics Simulator~\cite{FDS_Users_Guide} and Smokeview~\cite{Smokeview_Users_Guide}  software to provide insight into the fire development and thermal conditions that likely existed in the residence during the fire. The specific objectives of the simulations detailed in this report are: 
@@ -278,7 +286,7 @@ In reality, the quantities associated with these input parameters are not fixed 
 \label{geom}
 The structure involved in this fire incident was a one story, single-family structure with a basement. Due to the surrounding topography (the ground slopes from the front to rear of the structure), the basement on the rear side of the structure was above grade. The structure was wood-framed platform-framed with a gable roof. \footnote{Platform-framed construction means that floor joists are completely covered with a sub-floor. This forms a platform for which walls are built from.} The structure had a first floor footprint of 9.14~m (30~ft) by 7.77~m (25.5~ft) with the basement being slightly smaller, 9.14~m (30~ft) by 7.16~m (23.5~ft), as show in Fig.~\ref{fig:simp_geom}. This results in a first floor area of 71~m$^2$ (764~ft$^2$) and a basement floor area of 65~m$^2$ (700~ft$^2$). The interior walls and ceiling were constructed from nominal lumber covered by 12.7~mm (0.5~in) gypsum board~\cite{PGCounty2013}. There is a single flight of stairs in the center of the structure which connected the first floor to the basement. Access to the structure could be made on the front side of the first floor and the rear side of the basement.
 
-The fire, which is described in Section~\ref{fire}, started in the basement and spread to the stairs which connect to the first floor. Discussion of the fire’s impact on the interior conditions is provided in Section~\ref{results}. Figure~\ref{fig:exterior} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the damage occurred in the basement of the structure. Fully dimensioned drawings of the interior of the basement and first floor are shown in Figs.~\ref{fig:basement} and \ref{fig:first_floor}, respectively.
+The fire, which is described in Section~\ref{fire}, started in the basement and spread to the stairs which connect to the first floor. Discussion of the fire's impact on the interior conditions is provided in Section~\ref{results}. Figure~\ref{fig:exterior} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the damage occurred in the basement of the structure. Fully dimensioned drawings of the interior of the basement and first floor are shown in Figs.~\ref{fig:basement} and \ref{fig:first_floor}, respectively.
 
 \begin{figure}[!ht]
 \centering
@@ -354,6 +362,65 @@ Simulation  &  Area             &                 & Opening     &  Structure  \\
 
 \section{Numerical Mesh}
 \label{mesh}
+For the simulation, a measure of how well the flow field is resolved can be estimated by using the non-dimensional expression $D^*/\dx$. Here, $D^*$ is the characteristic fire diameter, $\dx$ is the nominal size of a mesh cell, and $\dQ$ is the total heat release rate of the fire:
+\begin{equation}
+D^* = \left(
+     \frac{\dQ}{\rho_\infty \, c_p \, T_\infty \, \sqrt{g}}
+     \right)^\frac{2}{5} 
+\label{eq:mesh}
+\end{equation}   
+From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the
+relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm, the characteristic fire diameter to cell size ($D^*/\dx$) ratio is 15.5 for the 3.3~MW porch fire and 23 for the 9~MW attic fire. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. The grid resolution used in this model is within or exceeds typical engineering $D^*/\dx$ values.
+
+As discussed in Section~\ref{geom}, the structure has dimensions of 17.15~m (56~ft) by 6.15~m (20~ft) and a total height of 8.56~m (28~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 24~m (79~ft) by 10~m (33~ft) by 10~m (33~ft). A grid resolution of 10~cm (3.9~in) was used, which required 2.4 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:geom_grid} shows the front of the structure rendered in Smokeview with the 10~cm mesh. The domain was divided into 16 equally sized meshes (each containing 150,000 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 1.5~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:mod_param} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
+
+\begin{figure}[!ht]
+\centering
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+   \scalebox{1.0}{\includegraphics[width=\textwidth]{../Figures/pg_county_meshfront}} \\
+   \scalebox{1.0}{\includegraphics[width=\textwidth]{../Figures/pg_county_meshrear}} 
+\end{tabular*}
+\caption{Front (left) and rear (right) of the structure with 10~cm computational mesh.}
+\label{fig:geom_grid}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{../Figures/pg_county_meshtotal}
+\caption[Front-right side of the structure within the computational domain.]{Front-right side of the structure within the computational domain (with multiple meshes). Each of the 16 meshes is 3~m (9.8~ft) by 10~m (33~ft) by 5~m (16.4~ft).}
+\label{fig:mult_mesh}
+\end{figure}
+
+\begin{table}
+\centering
+\captionof{table}{Relevant fire model input parameters}\label{tab:mod_param}
+\begin{tabular}{lll}
+\toprule[1.5pt]
+Parameter                                                  & Description                                   & Discussion                            \\
+\midrule
+Simulation Time                                            &  5~min                                        & --                                    \\ [.25cm]
+\multirow{2}{*}{Grid Cell Size}                            &  10~cm around house                           & \multirow{2}{*}Section~\ref{mesh}}    \\ 
+                                                           &  20~cm for wind                               &                                       \\ [.25cm]
+Ambient Temperature$^*$                                    &  20~$^{\circ}$C (68~$^{\circ}$F)              & --                                    \\ [.1cm]
+\multirow{4}{*}{Reaction: Wood~\cite{SFPE:Tewarson}}       &  Formula: $\C\H_{1.7}\O_{0.74}\N_{0.002}$     & \multirow{4}{*}{Section~\ref{fire}}   \\
+                                                           &  CO Yield: 0.004~$\mathrm{kg}/\mathrm{kg}$    &                                       \\
+                                                           &  Soot Yield: 0.015~$\mathrm{kg}/\mathrm{kg}$  &                                       \\
+                                                           &  Heat of Combustion: 16,400~kJ/kg             &                                       \\ [.25cm]
+\multirow{2}{*}{Peak HRR}                                  &  Basement Fire: 9~MW                          & \multirow{2}{*}{Section~\ref{fire}}   \\ 
+                                                           &  Bathroom Fire: 3.3~MW                        &                                       \\ [.25cm]                     
+\multirow{3}{*}{Material: Wood~\cite{Incropera:1} }        &  $k$: 0.12~\si{W/(m.K)})                      & \multirow{3}{*}{Section~\ref{matl}}   \\
+                                                           &  $\rho$: 510~kg/m$^3$                         &                                       \\
+                                                           &  $c_{p}$: 1.38~\si{kJ/(kg.K)}                 &                                       \\ [.25cm]
+\multirow{3}{*}{Material: Gypsum Board~\cite{WAKILI2007}}  &  $k$: 0.28~\si{W/(m.K)}                       &  \multirow{3}{*}{Section~\ref{matl}}  \\ 
+                                                           &  $\rho$: 810~kg/m$^3$                         &                                       \\ 
+                                                           &  $c_{p}$: 1.0~\si{kJ/(kg.K)}                  &                                       \\
+\bottomrule[1.25pt]
+\end{tabular}\par
+\footnotesize
+$^{*}$Initial interior temperatures were assumed to be 20~$^{\circ}$C; exterior temperatures were 7~$^{\circ}$C~\cite{NIOSH:Bowyer}.
+\normalsize
+\end{table}
+
 
 \chapter{Model Results}
 \label{results}
