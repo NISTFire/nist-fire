@@ -24,13 +24,18 @@
 \renewcommand{\O}{\mbox{O}}
 \newcommand{\N}{\mbox{N}}
 
-% Extra packages
-\usepackage{xfrac}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\rhead{}
+\chead{}
+\renewcommand{\headrulewidth}{0pt}
 
 \begin{document}
+\pagenumbering{gobble}
 
 \bibliographystyle{unsrt}
-\pagestyle{empty}
+%\pagestyle{empty}
 
 \begin{minipage}[t][9in][s]{6.25in}
 
@@ -75,9 +80,8 @@ Authors \\
 
 \frontmatter
 
-\pagenumbering{roman}
-
 \begin{minipage}[t][9in][s]{6.25in}
+\pagenumbering{gobble}
 
 \begin{flushright}
 \fontsize{20}{24}\selectfont
@@ -116,6 +120,7 @@ August 2014}}
 \newpage
 
 \begin{minipage}[t][9in][s]{6.25in}
+\pagenumbering{gobble}
 
 \flushright{Certain commercial entities, equipment, or materials may be identified in this \\
 document in order to describe an experimental procedure or concept adequately. \\
@@ -144,6 +149,7 @@ CODEN: NTNOEF }
 
 \pagestyle{plain}
 \pagenumbering{roman}
+\setcounter{page}{3}
 
 \cleardoublepage
 \phantomsection
@@ -174,8 +180,12 @@ NIST \> National Institute of Standards and Technology \\
 
 \chapter*{\centering Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
+\setcounter{gobble}
+
 
 \chapter{Introduction}
+\pagenumbering{arabic}
+\setcounter{page}{1}
 
 \chapter{Fire Incident Summary}
 \label{fire_sum}
