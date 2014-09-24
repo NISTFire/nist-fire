@@ -337,7 +337,9 @@ The fire, which is described in Section~\ref{sec:fires}, originated in the finis
 \section{Fires}
 \label{sec:fires}
 
-To estimate the type of fuel, fire size, and structure ventilation, on-scene photographs and post-incident reports were used. Based on these sources of information, the FDS model includes three source fires: an initial couch fire in the basement, a secondary flashover fire that involved additional furniture items in the basement, and a third fire that occurred on the exterior basement balcony. The basement primarily contained upholstered polyurethane furniture fuel items, and the balcony was constructed of wood. The HRR of the initial couch fire is based on an experimentally measured HRR for a mattress fire~\cite{madrzykowski2009fire} to represent the fire growth rate of a similar household furniture item. The primary fuel packages were located in the basement as shown in Fig.~\ref{fig:fuel_placement}. In this figure, the numbered labels indicate the order in which the fuel items were burning: 1) the initial couch fire, 2) the secondary furniture fuel items, and 3) the balcony fire.
+To estimate the type of fuel, fire size, and structure ventilation, on-scene photographs and post-incident reports were used. Based on these sources of information, the FDS model includes three source fires: 1) an initial couch fire in the basement, 2) a flashover fire that involved additional furniture items in the basement, and 3) a fire that occurred on the exterior basement balcony. The basement primarily contained upholstered polyurethane furniture fuel items, and the balcony was constructed of wood. The HRR of the initial couch fire is based on an experimentally measured HRR for a mattress fire~\cite{madrzykowski2009fire} to represent the fire growth rate of a similar household furniture item.
+
+The primary fuel packages were located in the basement as shown in Fig.~\ref{fig:fuel_placement}. In this figure, the numbered labels indicate the order in which the fuel items were burning: 1) the initial couch fire, 2) the secondary furniture fuel items, and 3) the balcony fire.
 
 \begin{figure}[!ht]
 \includegraphics[width=6.5in]{../Figures/Plan_Basement_Fuels}
@@ -345,6 +347,69 @@ To estimate the type of fuel, fire size, and structure ventilation, on-scene pho
 {Location of fuel items in the basement. The numbered labels indicate the order in which the fuel items were burning.}
 \label{fig:fuel_placement}
 \end{figure}
+
+
+\clearpage
+
+
+Since the time at which the fire started is not known relative to the notification of a fire or how fast the fire spread, several simplifying assumptions were made. One assumption is that the initial couch fire in the basement was specified to start at the beginning of the simulation. The beginning of the simulation ($t=0$) was selected to correspond to an on-scene time of 10:53:00 (see Table~\ref{tab:incident_timeline}). The HRRs for the three primary source fires was prescribed in FDS as follows.
+
+\begin{enumerate}
+\item For the initial couch fire in the basement, the HRR from 0~s to 327~s followed the experimentally measured mattress HRR. At 300~s, the HRR was approximately 3~MW. From 327~s until 540~s (the end of the simulation), the HRR was a constant 5~MW.
+
+\item The secondary fuel packages in the basement were divided among four additional furniture items (two sofas, a lounge, and a chair). The two large sofas in the middle of the basement were specified with a peak HRR of 5~MW. The lounge and chair located at the perimeter of the basement were specified with a peak HRR of 2~MW. From 0~s to 300~s, these items were not burning. From 300~s to 342~s (the time at which the first basement window failed), the secondary fuel items were ignited, and the total HRR of the secondary fuel packages increased linearly from 0~MW to 14~MW. From 342~s to 540~s (the end of the simulation), the HRR was a constant 14~MW.
+
+\item The third exterior fuel item included the wood on the basement balcony and siding. From 0~s to 440~s, these items were not burning. From 440~s to 450~s, the exterior basement balcony was ignited, and the total HRR increased linearly from 0~MW to 1~MW. To estimate the heat release rate per unit area (HRRPUA) of wood, Babrauskas and Grayson~\cite{babrauskas1990} conducted experiments in a cone calorimeter\footnote{The cone calorimeter is an experimental apparatus used to gather data about ignition time, mass loss, combustion products, and heat release rate among other properties associated with burning small samples of materials~\cite{ASTM:E1355}.} to determine the 5-min average of the HRRPUA for several different types of wood over a range of radiant heat fluxes. The results of that study indicate that the HRRPUA for different types of wood is approximately 50~kW/m$^2$.
+\end{enumerate}
+
+Figure~\ref{fig:hrr} shows the prescribed design fire for this scenario, which is the sum of the HRRs of the three source fires. In this figure, the text labels indicate the three stages of the fire based on the contribution of the fuel packages. Therefore, the estimated maximum specified fire size for this structure was approximately 20~MW. Note that the prescribed HRR can be different than the simulated HRR calculated by FDS based on the amount of available fuel, oxygen, and ventilation. A comparison of the prescribed HRR and the simulated HRR is discussed in Section~\ref{sec:HRR}.
+
+\begin{figure}[!ht]
+\includegraphics[width=5.5in]{../Figures/Fire_HRR}
+\caption[Prescribed HRR vs. time.]
+{Prescribed HRR vs. time. The text labels indicate the three stages of the fire based on the contribution of the fuel packages.}
+\label{fig:hrr}
+\end{figure}
+
+
+\clearpage
+
+
+Another simplification of the model is that the sources of the gas phase polyurethane and wood fuel have constant areas at fixed locations (five furniture items in the basement interior for the polyurethane fuel, and the exterior basement balcony for the wood fuel). The following lines define the source fires in the FDS input file:
+
+\begin{lstlisting}
+&SURF ID='COUCH_RIGHT_INITIAL',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 5.271815E-6,
+    RAMP_MF='COUCH_RIGHT_INITIAL_RAMP' /
+
+&SURF ID='COUCH_MIDDLE_FLASHOVER',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 1.037172E-5,
+    RAMP_MF='COUCH_MIDDLE_FLASHOVER_RAMP' /
+
+&SURF ID='COUCH_LEFT_FLASHOVER',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 5.271815E-6,
+    RAMP_MF='COUCH_LEFT_FLASHOVER_RAMP' /
+
+&SURF ID='LOUNGE_FLASHOVER',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 7.853485E-6,
+    RAMP_MF='LOUNGE_FLASHOVER_RAMP' /
+
+&SURF ID='CHAIR_FLASHOVER',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 7.918660E-6,
+    RAMP_MF='CHAIR_FLASHOVER_RAMP' /
+
+&SURF ID='WOOD_EXTERIOR',
+    SPEC_ID='WOOD',
+    MASS_FLUX = 0.003049,
+    RAMP_MF='WOOD_EXTERIOR_RAMP' /
+\end{lstlisting}
+
+Note that the mass flux values here are unique for each fuel item and are specific to the input files used for these simulations. The key point is that each fuel item was modeled as a 3D object with flat surfaces from which a specified amount of fuel flows, mixes with air, and burns.
 
 Polyurethane fuel was specified for the interior basement fuel items, which can be represented by the chemical formula, $\C\H_{1.8}\O_{0.30}\N_{0.05}$, with specified product yields of soot ($y_{\mathrm{s}}=0.131 \; \mathrm{kg}/\mathrm{kg}$) and carbon monoxide ($y_{\mathrm{CO}}=0.010 \; \mathrm{kg}/\mathrm{kg}$)~\cite{SFPE:Tewarson}. The product yields are expressed in terms of the amount soot or carbon monoxide emitted per unit mass of fuel consumed~(kg/kg) and can be found in the Society of Fire Protection Engineers (SFPE) Handbook~\cite{SFPE:Tewarson}. A balanced chemical reaction for polyurethane combustion can be written as:
 
@@ -405,64 +470,6 @@ The heat of combustion of polyurethane and wood were specified as 26,200~kJ/kg a
 \end{lstlisting}
 
 Note that using the input lines above will invoke the simple chemistry reaction mechanism in FDS in which fuel and air react to form only CO$_2$, CO, H$_2$O, soot, and N$_2$. If the inclusion of other combustion products is desired, then the user must explicitly define those species and the chemical reaction that produces them~\cite{FDS_Users_Guide}. Based on the above input lines, FDS uses the default, mixing-controlled fast chemistry combustion model. This mechanism states that the rate of fuel consumption is proportional to both the local limiting reactant concentration and the local rate of mixing and extinction is based on the critical flame temperature approach~\cite{FDS_Math_Guide}. While FDS provides users with the option to use a more complex finite-rate combustion mechanism, there is not sufficient evidence in this case to justify deviating from the default specifications.
-
-\noindent The HRR for the various fuel packages was prescribed in FDS as follows.
-
-\begin{enumerate}
-\item For the inital couch fire in the basement, the HRR from 0~s to 327~s followed the experimentally measured mattress HRR. At 300~s, the HRR was approximately 3~MW. From 327~s until 540~s (the end of the simulation), the HRR was a constant 5~MW.
-
-\item The secondary fuel packages in the basement were divided among four additional furniture items (two sofas, a lounge, and a chair). The two large sofas in the middle of the basement were specified with a peak HRR of 5~MW. The lounge and chair located at the perimeter of the basement were specified with a peak HRR of 2~MW. From 0~s to 300~s, these items were not burning. From 300~s to 342~s (the time at which the first basement window failed), the secondary fuel items were ignited, and the total HRR of the secondary fuel packages increased linearly from 0~MW to 14~MW. From 342~s to 540~s (the end of the simulation), the HRR was a constant 14~MW.
-
-\item The third exterior fuel item included the wood on the basement balcony and siding. From 0~s to 440~s, these items were not burning. From 440~s to 450~s, the exterior basement balcony was ignited, and the total HRR increased linearly from 0~MW to 1~MW. To estimate the heat release rate per unit area (HRRPUA) of wood, Babrauskas and Grayson~\cite{babrauskas1990} conducted experiments in a cone calorimeter\footnote{The cone calorimeter is an experimental apparatus used to gather data about ignition time, mass loss, combustion products, and heat release rate among other properties associated with burning small samples of materials~\cite{ASTM:E1355}.} to determine the 5-min average of the HRRPUA for several different types of wood over a range of radiant heat fluxes. The results of that study indicate that the HRRPUA for different types of wood is approximately 50~kW/m$^2$.
-\end{enumerate}
-
-Figure~\ref{fig:hrr} shows the prescribed design fire for this scenario, which is the sum of the HRRs of the three source fires. In this figure, the text labels indicate the three stages of the fire based on the contribution of the fuel packages. Therefore, the estimated maximum specified fire size for this structure was approximately 20~MW. Note that the prescribed HRR can be different than the simulated HRR calculated by FDS based on the amount of available fuel, oxygen, and ventilation. A comparison of the prescribed HRR and the simulated HRR is discussed in Section~\ref{sec:HRR}.
-
-\begin{figure}[!ht]
-\includegraphics[width=5.5in]{../Figures/Fire_HRR}
-\caption[Prescribed HRR vs. time.]
-{Prescribed HRR vs. time. The text labels indicate the three stages of the fire based on the contribution of the fuel packages.}
-\label{fig:hrr}
-\end{figure}
-
-
-\clearpage
-
-
-Since the time at which the fire started is not known relative to the notification of a fire or how fast the fire spread, several simplifying assumptions were made. The first assumption is that the initial couch fire in the basement was specified to start at the beginning of the simulation. The second assumption is that the sources of the gas phase polyurethane and wood fuel have constant areas at fixed locations (five furniture items in the basement interior for the polyurethane fuel, and the exterior basment balcony for the wood fuel). The following lines define the source fires in the FDS input file:
-
-\begin{lstlisting}
-&SURF ID='COUCH_RIGHT_INITIAL',
-    SPEC_ID='POLYURETHANE',
-    MASS_FLUX = 5.271815E-6,
-    RAMP_MF='COUCH_RIGHT_INITIAL_RAMP' /
-
-&SURF ID='COUCH_MIDDLE_FLASHOVER',
-    SPEC_ID='POLYURETHANE',
-    MASS_FLUX = 1.037172E-5,
-    RAMP_MF='COUCH_MIDDLE_FLASHOVER_RAMP' /
-
-&SURF ID='COUCH_LEFT_FLASHOVER',
-    SPEC_ID='POLYURETHANE',
-    MASS_FLUX = 5.271815E-6,
-    RAMP_MF='COUCH_LEFT_FLASHOVER_RAMP' /
-
-&SURF ID='LOUNGE_FLASHOVER',
-    SPEC_ID='POLYURETHANE',
-    MASS_FLUX = 7.853485E-6,
-    RAMP_MF='LOUNGE_FLASHOVER_RAMP' /
-
-&SURF ID='CHAIR_FLASHOVER',
-    SPEC_ID='POLYURETHANE',
-    MASS_FLUX = 7.918660E-6,
-    RAMP_MF='CHAIR_FLASHOVER_RAMP' /
-
-&SURF ID='WOOD_EXTERIOR',
-    SPEC_ID='WOOD',
-    MASS_FLUX = 0.003049,
-    RAMP_MF='WOOD_EXTERIOR_RAMP' /
-\end{lstlisting}
-Note that the mass flux values here are unique for each fuel item and are specific to the input files used for these simulations. The key point is that each fuel item was modeled as a 3D object with flat surfaces from which a specified amount of fuel flows, mixes with air, and burns.
 
 
 \clearpage
@@ -648,9 +655,9 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 \section{Heat Release Rate}
 \label{sec:HRR}
 
-In the FDS simulations, a prescribed HRR is specified, and FDS determines the amount of combustion that occurs throughout the simulation based on the amount of available fuel and oxygen at a given location. As a result, the actual HRR in FDS can be different than the prescribed HRR based on the ventilation conditions.
+In an FDS simulation, a prescribed HRR is specified, which results in a specified amount of fuel vapor (or pyrolyzate) being released from a fuel surface. FDS then determines the amount of combustion that occurs throughout the simulation based on the amount of available fuel and oxygen at a given location. As a result, the actual HRR in FDS can be different than the prescribed HRR based on the ventilation conditions.
 
-Figure~\ref{fig:hrr_w_fds} shows the HRR vs. time based on the fires that were described in Section~\ref{sec:fires}. The vertical dashed line represents the time at which the first basement window on the rear side of the structure failed (342~s). The maximum size of the fire used in this study was selected such that the conditions would become ventilation limited to minimize computational time while aligning with the timeline observations from the fire scenario. Note that the rear window failures were manually specified in accordance with the event timeline rather than failure temperature criteria.
+Figure~\ref{fig:hrr_w_fds} shows the HRR vs. time based on the fires that were described in Section~\ref{sec:fires}. The vertical dashed line represents the time at which the first basement window on the rear side of the structure failed (342~s). Additional windows on the rear side of the basement continued to fail within the next two minutes. The maximum size of the fire used in this study was selected such that the conditions would become ventilation limited to minimize computational time while aligning with observations from the actual fire scenario. Note that the rear window failures were manually specified in accordance with the event timeline rather than failure temperature criteria.
 
 \begin{figure}[!ht]
 \includegraphics[width=5.5in]{../Figures/Fire_HRR_w_FDS}
@@ -663,13 +670,15 @@ Figure~\ref{fig:hrr_w_fds} shows the HRR vs. time based on the fires that were d
 \clearpage
 
 
-In Fig.~\ref{fig:hrr_w_fds}, the solid line represents the HRR that was prescribed in the FDS simulation, and the dashed line represents the actual HRR that was predicted by FDS based on the ventilation conditions. From 0~s to 300~s, the predicted HRR is in agreement with the prescribed HRR because there is an adequate amount of oxygen for all of the fuel to combust. From 300~s to 342~s (the time at which the first basement window failed), the predicted HRR is lower than the prescribed HRR because the fire in the structure becomes ventilation limited. The maximum predicted HRR value is approximately 7~MW before the fire becomes ventilation limited and begins to decay. The HRR decreased to approximately 2~MW as the amount of oxygen inside the structure becomes limited. At this time, there is an insufficient amount of oxygen in the structure to burn all of the fuel; therefore, localized burning occurs near the ventilation openings where ambient air is available.
+In Fig.~\ref{fig:hrr_w_fds}, the solid line represents the HRR that was prescribed in the FDS simulation, and the dashed line represents the actual HRR that was predicted by FDS based on the ventilation conditions. From 0~s to 300~s, the predicted HRR was in agreement with the prescribed HRR because there was an adequate amount of oxygen for all of the fuel to combust. From 300~s to 342~s (the time at which the first basement window failed), the predicted HRR was lower than the prescribed HRR because the fire conditions in the structure became ventilation limited. The maximum predicted HRR was approximately 7~MW before the fire conditions became ventilation limited and started to decay. The HRR decreased to approximately 2~MW as the amount of oxygen inside the structure became limited. At this time, there was an insufficient amount of oxygen in the structure to burn all of the fuel; therefore, localized burning occured near the ventilation openings where ambient air was available.
 
-At a time of 342~s, the first window on the rear side of the structure fails, and additional windows fail within the next two minutes. As additional window failures occur (see Table~\ref{tab:ventilation_timeline}), the abrupt change in ventilation causes the HRR to increase to approximately 32~MW before it reaches a steady-state value of approximately 20~MW. The predicted HRR increases above the prescribed HRR value because the unburned fuel and smoke that accumulated in the structure during ventilation-limited conditions is now mixing with ambient air from the failed window openings and burning. Figure~\ref{fig:timeline_comparison} shows a time series comparison of on-scene photographs and Smokeview snapshots of flaming combustion that occurs through the failed windows on the rear side of the structure.
+At a time of 342~s, the first window on the rear side of the structure failed, and additional windows failed within the next two minutes. As additional window failures occurred (see Table~\ref{tab:ventilation_timeline}), the abrupt change in ventilation caused the HRR to increase to approximately 32~MW before it reached a steady-state value of approximately 20~MW. The predicted HRR increased above the prescribed HRR because the unburned fuel and smoke that accumulated in the structure during ventilation-limited conditions was mixing with ambient air from the failed window openings and burning.
+
+Figure~\ref{fig:timeline_comparison} shows a time series comparison of on-scene photographs and Smokeview snapshots of flaming combustion that occured through the failed windows on the rear side of the structure. In this figure, the first photograph is shown at a simulation time of 321~s (approximately 20~s before the first rear basement window failed), the second photograph is shown at a simulation time of 349~s (approximately 10~s after the first rear basement window failed), the third photograph is shown at a simulation time of 440~s (approximately when the third rear basement window failed), and the fourth photograph is shown at a simulation time of 450~s (approximately when all of the rear basement windows failed).
 
 \begin{figure}[!ht]
-\includegraphics[height=8.25in]{../Figures/Timeline_Comparison}
-\caption{Comparison of on-scene photographs and Smokeview snapshots of exterior combustion occurring on the rear side of the structure.}
+\includegraphics[height=8.0in]{../Figures/Timeline_Comparison}
+\caption{Comparison of on-scene photographs and Smokeview snapshots of exterior combustion occurring on the rear side of the structure. The on-scene time is indicated on the left photograph, and the corresponding simulation time is indicated on the right Smokeview snapshot. For more information on the fire incident and simulation timeline, refer to Table~\ref{tab:combined_timeline}.}
 \label{fig:timeline_comparison}
 \end{figure}
 
