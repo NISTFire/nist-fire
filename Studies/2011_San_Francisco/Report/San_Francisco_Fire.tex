@@ -310,7 +310,7 @@ In reality, the quantities associated with these input parameters are not fixed 
 \section{Geometry}
 \label{sec:geometry}
 
-The structure involved in this fire incident was a four-story residential building with a flat roof that consisted of a bitumen membrane. The exterior was primarily stucco with large windows on the top three stories on the rear side of the structure. The right side of the structure shared a common fire wall with another residential structure. The structure had a 17.73~m (58~ft) by 8.53~m (28~ft) footprint and a height of 5.9~m (19~ft), as shown in Fig.~\ref{fig:floor_plan}.
+The structure involved in this fire incident was a four-story residential building with a flat roof that consisted of a bitumen membrane. The exterior was primarily stucco with large windows on the top three stories on the rear side of the structure. The right side of the structure shared a common fire wall with another residential structure. The structure had exterior dimensions of 8.53~m (28~ft) by 17.73~m (58~ft) and a height of 5.9~m (19~ft), as shown in Fig.~\ref{fig:floor_plan}.
 
 The structure was built on a sloped landscape such that, from the front side of the structure, two stories were located above the street level and two stories were located below the street level. The first and second floor (i.e., the two stories above street level) had a total interior floor area of 136~m$^2$ (1,468~ft$^2$). The interior walls were composed of gypsum board over insulated wood framing. The entrance stairs located on the front side of the structure led to the front door and an interior landing, which allowed access to the first floor (ten~stairs down) or the second floor (five~stairs up).
 
@@ -545,7 +545,7 @@ D^* = \left(
 \end{equation}
 From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm, the ratio of the characteristic fire diameter to cell size ($D^*/\dx$) was 18 for the initial couch fire (combined HRR of 5~MW), 31 for the secondary flashover fire in the basement (combined HRR of 19~MW), and 32 for the maximum prescribed fire size in the structure (combined HRR of 20~MW). Therefore, the grid resolution used in this model results in a $D^*/\dx$ ratio that exceeds typical engineering values.
 
-As discussed in Section~\ref{sec:geometry}, the structure had exterior dimensions of 17.73~m (58~ft) by 8.53~m (28~ft) and a total height of 5.9~m (19~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 17~m (56~ft) by 22~m (72~ft) by 13.6~m (45~ft). A grid resolution of 10~cm (3.9~in) was used, which resulted in a total of approximately 5.1 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:SMV_exterior_grid} shows the front and rear sides of the structure rendered in Smokeview with the 10~cm mesh.
+As discussed in Section~\ref{sec:geometry}, the structure had exterior dimensions of 8.53~m (28~ft) by 17.73~m (58~ft) and a total height of 5.9~m (19~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The dimensions of the computational domain were 11.5~m (38~ft) by 22~m (72~ft) by 13.6~m (45~ft). A grid resolution of 10~cm (3.9~in) was used, which resulted in a total of approximately 3.4 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:SMV_exterior_grid} shows the front and rear sides of the structure rendered in Smokeview with the 10~cm mesh.
 
 \begin{figure}[!ht]
 \includegraphics[width=5.0in]{../Figures/SMV_Exterior_Grid_Front} \\
@@ -558,10 +558,10 @@ As discussed in Section~\ref{sec:geometry}, the structure had exterior dimension
 \clearpage
 
 
-The domain was divided into 16 meshes (each containing between 272,000 and 367,200 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 3~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:model_parameters} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
+The domain was divided into 16 meshes (each containing between 184,000 and 248,200 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 3~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:model_parameters} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
 
 \begin{figure}[!ht]
-\includegraphics[width=6.5in]{../Figures/SMV_Exterior_Meshes}
+\includegraphics[width=4.5in]{../Figures/SMV_Exterior_Meshes}
 \caption[Rear-left side of the structure within the computational domain.]
 {Rear-left side of the structure within the computational domain with multiple meshes.}
 \label{fig:mult_mesh}
