@@ -389,46 +389,6 @@ Figure~\ref{fig:hrr} shows the overall prescribed design fire for this scenario,
 \label{fig:hrr}
 \end{figure}
 
-
-\clearpage
-
-
-Another simplification of the model is that the sources of the gas phase polyurethane and wood fuel have constant areas at fixed locations (five furniture items in the basement interior for the polyurethane fuel, and the exterior basement balcony for the wood fuel). The following lines define the source fires in the FDS input file:
-
-\begin{lstlisting}
-&SURF ID='COUCH_RIGHT_INITIAL',
-    SPEC_ID='POLYURETHANE',
-    MASS_FLUX = 5.271815E-6,
-    RAMP_MF='COUCH_RIGHT_INITIAL_RAMP' /
-
-&SURF ID='COUCH_MIDDLE_FLASHOVER',
-    SPEC_ID='POLYURETHANE',
-    MASS_FLUX = 1.037172E-5,
-    RAMP_MF='COUCH_MIDDLE_FLASHOVER_RAMP' /
-
-&SURF ID='COUCH_LEFT_FLASHOVER',
-    SPEC_ID='POLYURETHANE',
-    MASS_FLUX = 5.271815E-6,
-    RAMP_MF='COUCH_LEFT_FLASHOVER_RAMP' /
-
-&SURF ID='LOUNGE_FLASHOVER',
-    SPEC_ID='POLYURETHANE',
-    MASS_FLUX = 7.853485E-6,
-    RAMP_MF='LOUNGE_FLASHOVER_RAMP' /
-
-&SURF ID='CHAIR_FLASHOVER',
-    SPEC_ID='POLYURETHANE',
-    MASS_FLUX = 7.918660E-6,
-    RAMP_MF='CHAIR_FLASHOVER_RAMP' /
-
-&SURF ID='WOOD_EXTERIOR',
-    SPEC_ID='WOOD',
-    MASS_FLUX = 0.003049,
-    RAMP_MF='WOOD_EXTERIOR_RAMP' /
-\end{lstlisting}
-
-Note that the mass flux values here are unique for each fuel item and are specific to the input files used for these simulations. The key point is that each fuel item was modeled as a 3D object with flat surfaces from which a specified amount of fuel flows, mixes with air, and burns.
-
 Polyurethane fuel was specified for the interior basement fuel items, which can be represented by the chemical formula, $\C\H_{1.8}\O_{0.30}\N_{0.05}$, with specified product yields of soot ($y_{\mathrm{s}}=0.131 \; \mathrm{kg}/\mathrm{kg}$) and carbon monoxide ($y_{\mathrm{CO}}=0.010 \; \mathrm{kg}/\mathrm{kg}$)~\cite{SFPE:Tewarson}. The product yields are expressed in terms of the amount soot or carbon monoxide emitted per unit mass of fuel consumed~(kg/kg) and can be found in the Society of Fire Protection Engineers (SFPE) Handbook~\cite{SFPE:Tewarson}. A balanced chemical reaction for polyurethane combustion can be written as:
 
 \begin{multline}
@@ -449,7 +409,7 @@ Wood fuel was specified for the exterior basement balcony fuel items, which can 
 \label{eq:fuel_wood}
 \end{multline}
 
-The heat of combustion of polyurethane and wood were specified as 26,200~kJ/kg and 16,400~kJ/kg, respectively, based on data provided in the SFPE Handbook~\cite{SFPE:Tewarson}. The heat of combustion quantifies the amount of energy released per unit mass of the fuel. The following text defines Eqs.~\ref{eq:fuel_polyurethane} and \ref{eq:fuel_wood} for an FDS input file with the desired fuel and reaction properties discussed above:
+The heat of combustion of polyurethane and wood were specified as 26,200~kJ/kg and 16,400~kJ/kg, respectively, based on data provided in the SFPE Handbook~\cite{SFPE:Tewarson}. The heat of combustion quantifies the amount of energy released per unit mass of the fuel. The following text defines Eqs.~\ref{eq:fuel_polyurethane} and \ref{eq:fuel_wood} for an FDS input file with the two fuels and reaction properties discussed above:
 
 \begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
 &SPEC ID = 'POLYURETHANE',    FORMULA = 'CH1.8O0.30N0.05' /
@@ -488,6 +448,44 @@ The heat of combustion of polyurethane and wood were specified as 26,200~kJ/kg a
 \end{lstlisting}
 
 Note that using the input lines above will invoke the simple chemistry reaction mechanism in FDS in which fuel and air react to form only CO$_2$, CO, H$_2$O, soot, and N$_2$. If the inclusion of other combustion products is desired, then the user must explicitly define those species and the chemical reaction that produces them~\cite{FDS_Users_Guide}. Based on the above input lines, FDS uses the default, mixing-controlled fast chemistry combustion model. This mechanism states that the rate of fuel consumption is proportional to both the local limiting reactant concentration and the local rate of mixing and extinction is based on the critical flame temperature approach~\cite{FDS_Math_Guide}. While FDS provides users with the option to use a more complex finite-rate combustion mechanism, there is not sufficient evidence in this case to justify deviating from the default specifications.
+
+Another simplification of the model is that the sources of the gas phase polyurethane and wood fuel have constant areas at fixed locations (five furniture items in the basement interior for the polyurethane fuel, and the exterior basement balcony for the wood fuel).
+
+A time-dependent burning rate was specified for each of the fuel packages in terms of a fuel mass flux. The fuel mass flux is the amount of fuel vapor per unit area that is released from the surface of each fuel package shown in Fig.~\ref{fig:fuel_placement}. The specified time-dependent fuel mass flux for each fuel package corresponds to the HRRs that were described earlier. The HRR from each individual fuel package contributes to the total HRR shown in Fig.~\ref{fig:hrr}. FDS then determines the amount of combustion that occurs throughout the simulation based on the amount of available fuel and oxygen at a given location. The following lines define the fire surfaces for each fuel package in the FDS input file:
+
+\begin{lstlisting}
+&SURF ID='COUCH_RIGHT_INITIAL',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 5.271815E-6,
+    RAMP_MF='COUCH_RIGHT_INITIAL_RAMP' /
+
+&SURF ID='COUCH_MIDDLE_FLASHOVER',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 1.037172E-5,
+    RAMP_MF='COUCH_MIDDLE_FLASHOVER_RAMP' /
+
+&SURF ID='COUCH_LEFT_FLASHOVER',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 5.271815E-6,
+    RAMP_MF='COUCH_LEFT_FLASHOVER_RAMP' /
+
+&SURF ID='LOUNGE_FLASHOVER',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 7.853485E-6,
+    RAMP_MF='LOUNGE_FLASHOVER_RAMP' /
+
+&SURF ID='CHAIR_FLASHOVER',
+    SPEC_ID='POLYURETHANE',
+    MASS_FLUX = 7.918660E-6,
+    RAMP_MF='CHAIR_FLASHOVER_RAMP' /
+
+&SURF ID='WOOD_EXTERIOR',
+    SPEC_ID='WOOD',
+    MASS_FLUX = 0.003049,
+    RAMP_MF='WOOD_EXTERIOR_RAMP' /
+\end{lstlisting}
+
+Note that the mass flux values here are unique for each fuel item and are specific to the input files used for these simulations. The key point is that each fuel item was modeled as a 3D object with flat surfaces from which a specified amount of fuel flows, mixes with air, and burns.
 
 
 \clearpage
