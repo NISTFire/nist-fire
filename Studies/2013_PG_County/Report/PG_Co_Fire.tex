@@ -31,6 +31,14 @@
 \chead{}
 \renewcommand{\headrulewidth}{0pt}
 
+% PDF metadata
+\hypersetup{
+  pdftitle={Simulation of a Wind Driven Basement Fire - Riverdale Heights, MD},
+  pdfauthor={Weinschenk, Craig G., Overholt, Kristopher J., and Madrzykowski, Daniel},
+  pdfsubject={Insert abstract here.},
+  pdfkeywords={insert; keywords; here}
+}
+
 \begin{document}
 \pagenumbering{gobble}
 
@@ -284,7 +292,7 @@ In reality, the quantities associated with these input parameters are not fixed 
 
 \section{Geometry}
 \label{geom}
-The structure involved in this fire incident was a one story, single-family structure with a basement. Due to the surrounding topography (the ground slopes from the front to rear of the structure), the basement on the rear side of the structure was above grade. The structure was wood-framed platform-framed with a gable roof. \footnote{Platform-framed construction means that floor joists are completely covered with a sub-floor. This forms a platform for which walls are built from.} The structure had a first floor footprint of 9.14~m (30~ft) by 7.77~m (25.5~ft) with the basement being slightly smaller, 9.14~m (30~ft) by 7.16~m (23.5~ft), as show in Fig.~\ref{fig:simp_geom}. This results in a first floor area of 71~m$^2$ (764~ft$^2$) and a basement floor area of 65~m$^2$ (700~ft$^2$). The interior walls and ceiling were constructed from nominal lumber covered by 12.7~mm (0.5~in) gypsum board~\cite{PGCounty2013}. There is a single flight of stairs in the center of the structure which connected the first floor to the basement. Access to the structure could be made on the front side of the first floor and the rear side of the basement.
+The structure involved in this fire incident was a one story, single-family structure with a basement. Due to the surrounding topography (the ground slopes from the front to rear of the structure), the basement on the rear side of the structure was above grade. The structure was wood-framed platform-framed with a gable roof. \footnote{Platform-framed construction means that floor joists are completely covered with a sub-floor. This forms a platform for which walls are built from.} The structure had a first floor footprint of 9.14~m (30~ft) by 7.77~m (25.5~ft) with the basement being slightly smaller, 9.14~m (30~ft) by 7.16~m (23.5~ft), as show in Fig.~\ref{fig:simp_geom}. This results in a first floor area of 71~m$^2$ (764~ft$^2$) and a basement floor area of 65~m$^2$ (700~ft$^2$). The interior walls and ceiling were constructed from nominal lumber covered by 12.7~mm (0.5~in) gypsum board~\cite{PGCounty2013}. There was a single flight of stairs in the center of the structure which connected the first floor to the basement. Access to the structure could be made on the front side of the first floor and the rear side of the basement.
 
 The fire, which is described in Section~\ref{fire}, started in the basement and spread to the stairs which connect to the first floor. Discussion of the fire's impact on the interior conditions is provided in Section~\ref{results}. Figure~\ref{fig:exterior} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the damage occurred in the basement of the structure. Fully dimensioned drawings of the interior of the basement and first floor are shown in Figs.~\ref{fig:basement} and \ref{fig:first_floor}, respectively.
 
@@ -382,7 +390,7 @@ Figure~\ref{fig:geom_grid} shows the front of the structure rendered in Smokevie
    \scalebox{1.0}{\includegraphics[width=\textwidth]{../Figures/pg_county_meshfront}} \\
    \scalebox{1.0}{\includegraphics[width=\textwidth]{../Figures/pg_county_meshrear}} 
 \end{tabular*}
-\caption{Front (left) and rear (right) of the structure with 10~cm computational mesh.}
+\caption{Front (top) and rear (bottom) of the structure with 10~cm computational mesh surrounding the structure and 20~cm mesh to the left and right of the structure.}
 \label{fig:geom_grid}
 \end{figure}
 
