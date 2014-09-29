@@ -719,7 +719,7 @@ As the simulated fire grows in the basement, the pressure in the basement rises 
 \input{../Figures/colorbar_metric_pres}
 \includegraphics[width=5.5in]{../Figures/SMV_Pres_343_s}
 \input{../Figures/colorbar_metric_pres}
-\caption{FDS simulated pressure contours, 2~s prior (top) and 1~s after (bottom) first rear basement window failure. The fire originated in the living room in the basement.}
+\caption{FDS simulated pressure contours, 2~s before (top) and 1~s after (bottom) first rear basement window failure (342~s). The fire originated in the living room in the basement.}
 \label{fig:smv_pressure}
 \end{figure}
 
@@ -739,7 +739,7 @@ The velocity vectors shown in Fig.~\ref{fig:smv_velocity_vector} (15~s after the
 \includegraphics[width=4.5in]{../Figures/SMV_Vel_402_s}
 \input{../Figures/colorbar_metric_velo}
 \input{../Figures/colorbar_std_velo}
-\caption{FDS simulated velocity contours, 2~s prior (top) and 60~s after (bottom) first rear basement window failure.}
+\caption{FDS simulated velocity contours, 2~s before (top) and 60~s after (bottom) first rear basement window failure (342~s).}
 \label{fig:smv_velocity}
 \end{figure}
 
@@ -754,7 +754,7 @@ The velocity vectors shown in Fig.~\ref{fig:smv_velocity_vector} (15~s after the
 \includegraphics[width=4.5in]{../Figures/SMV_Vel_Vec_402_s}
 \input{../Figures/colorbar_metric_velo}
 \input{../Figures/colorbar_std_velo}
-\caption{FDS simulated velocity vectors, 2~s prior (top) and 60~s after (bottom) first rear basement window failure.}
+\caption{FDS simulated velocity vectors, 2~s before (top) and 60~s after (bottom) first rear basement window failure (342~s).}
 \label{fig:smv_velocity_vector}
 \end{figure}
 
@@ -774,7 +774,7 @@ The velocity vectors shown in Fig.~\ref{fig:smv_velocity_vector} (15~s after the
 \includegraphics[width=4.3in]{../Figures/SMV_Temp_402_s}
 \input{../Figures/colorbar_metric_temp}
 \input{../Figures/colorbar_std_temp}
-\caption{FDS simulated temperature contours, 2~s prior (top) and 60~s after (bottom) first rear basement window failure.}
+\caption{FDS simulated temperature contours, 2~s before (top) and 60~s after (bottom) first rear basement window failure (342~s).}
 \label{fig:smv_temperature}
 \end{figure}
 
@@ -789,7 +789,7 @@ The velocity vectors shown in Fig.~\ref{fig:smv_velocity_vector} (15~s after the
 \includegraphics[width=4.3in]{../Figures/SMV_Temp_Vec_402_s}
 \input{../Figures/colorbar_metric_temp}
 \input{../Figures/colorbar_std_temp}
-\caption{FDS simulated temperature vectors, 2~s prior (top) and 60~s after (bottom) first rear basement window failure.}
+\caption{FDS simulated temperature vectors, 2~s before (top) and 60~s after (bottom) first rear basement window failure (342~s).}
 \label{fig:smv_temperature_vector}
 \end{figure}
 
@@ -841,7 +841,7 @@ The velocity vectors shown in Fig.~\ref{fig:smv_velocity_vector} (15~s after the
 \section{Assessing the Hazard}
 \label{sec:assessing_the_hazard}
 
-A person is susceptible to second-degree burn injuries if exposed to temperatures greater than 55~$^{\circ}$C (130~$^{\circ}$F)~\cite{contactburn}. Although firefighters wear protective gear, gear only offers a finite amount of protection. The polycarbonate in a self contained breathing apparatus begins to soften when the material temperature reaches approximately 140~$^{\circ}$C (284~$^{\circ}$F)~\cite{mensch2011emergency}. Structural fire fighting coats and pants are tested to withstand temperatures of 260~$^{\circ}$C (500~$^{\circ}$F)~\cite{nfpa2013standard}. Prolonged exposure to elevated temperatures can result in a significant amount of heat transferred to the firefighter, putting him/her at risk. Exposure of equipment to temperatures of 260~$^{\circ}$C (500~$^{\circ}$F) represents a Class III exposure~\cite{Donnelly2006}. Firefighters are at increased risk levels when encountering Class III exposure conditions for more than 5~minutes~\cite{Donnelly2006}. Therefore, for the analysis of the simulated exposure temperatures, the maximum visualized temperature is set to indicate all values that are greater than or equal to 260~$^{\circ}$C (500~$^{\circ}$F). This means that temperatures visualized at the maximum range in the displayed model output are at a minimum of 260~$^{\circ}$C (500~$^{\circ}$F); the actual simulated temperatures could in fact be greater. 
+A person is susceptible to second-degree burn injuries if exposed to temperatures greater than 55~$^{\circ}$C (130~$^{\circ}$F)~\cite{contactburn}. Although firefighters wear protective gear, gear only offers a finite amount of protection. The polycarbonate in a self contained breathing apparatus begins to soften when the material temperature reaches approximately 140~$^{\circ}$C (284~$^{\circ}$F)~\cite{mensch2011emergency}. Structural fire fighting coats and pants are tested to withstand temperatures of 260~$^{\circ}$C (500~$^{\circ}$F)~\cite{nfpa2013standard}. Prolonged exposure to elevated temperatures can result in a significant amount of heat transferred to the firefighter, putting him/her at risk. Exposure of equipment to temperatures of 260~$^{\circ}$C (500~$^{\circ}$F) represents a Class~III exposure~\cite{Donnelly2006}. Firefighters are at increased risk levels when encountering Class~III exposure conditions for more than 5~minutes~\cite{Donnelly2006}. Therefore, for the analysis of the simulated exposure temperatures, the maximum visualized temperature is set to indicate all values that are greater than or equal to 260~$^{\circ}$C (500~$^{\circ}$F). This means that temperatures visualized at the maximum range in the displayed model output are at a minimum of 260~$^{\circ}$C (500~$^{\circ}$F); the actual simulated temperatures could in fact be greater. 
 
 % Prior to the interior door failure, the elevated temperatures on the second floor were limited to the rear porch, as shown in Fig.~\ref{fig:temp_top_159}. The temperatures were greatest at the back-left corner where there is sufficient oxygen due to the section of porch wall that had burned away and allowed additional oxygen to mix with the fuel-rich fire gases. Five seconds after the interior door failed, hot gases traveled the length of the interior hallway and approached the doorway into the kitchen, which was approximately 4.5~m (14.8~ft) away from the source fire, as shown in Fig.~\ref{fig:temp_top_165}. Within 60~s of the interior door failure, the hallway temperatures were approximately at or above 260~$^{\circ}$C (500~$^{\circ}$F) throughout the hallway, as shown in Fig.~\ref{fig:temp_top_220}. These results indicate that the high temperature gases seen 5~s after failure were not just a burst but rather the front of a sustained exhaust gas flow from the fire burning in the enclosed rear porch. The conditions in this hallway changed from tenable to high-hazard very rapidly following the door failure. Figure~\ref{fig:temp_top_220} also shows that the temperatures in the kitchen were at or below 90~$^{\circ}$C (194~$^{\circ}$F), and the temperatures at the top of the stairs were at or below 70~$^{\circ}$C (158~$^{\circ}$F). At these locations within the structure, the exhaust gases in the flow path were cooled and diluted by the inflowing ambient gas. These simulated temperatures are consistent with the post-incident conditions that were documented in the kitchen and second floor stairwell.
 
@@ -879,7 +879,7 @@ There have been many previous fire incidents~\cite{NIOSH:Pettit,NIOSH:Washenitz,
 
 Based on a review of these incidents, it is clear that fires with rapidly developing or changing flow paths are a significant hazard to the fire service. The development of (or changes to) a flow path could be caused by the failure of a component of the structure, such as a door, window, or portion of a ceiling, wall or floor. Environmental conditions such as wind can generate hazardous thermal conditions within a flow path. Uncoordinated ventilation can also be the cause of increased thermal hazards within a flow path. 
 
-% In this fire incident, the thermal degradation of the steel-faced, wood-framed door resulted in a rapid change in the thermal conditions in the hallway, which resulted in highly hazardous conditions. These conditions would be equivalent to or greater than a Class III exposure~\cite{Donnelly2006}. Prediction of the failure mode and failure time of the door is not a reasonable expectation given the large number of unknowns that the firefighters faced on the fire ground. In this case, the timing of the interior attack appears to have coincided with the failure time of the door. Research has been conducted~\cite{madrzykowski2009fire, kerber2009fire} and continues to be conducted by NIST, Underwriters Laboratories (UL), and others that demonstrates that applying water from the exterior into the fire area of a structure (prior to the start of interior operations) can significantly improve the safety of firefighters by reducing the thermal hazard from the fire and reducing the potential for developing high velocity hot gas flows within the structure.
+% In this fire incident, the thermal degradation of the steel-faced, wood-framed door resulted in a rapid change in the thermal conditions in the hallway, which resulted in highly hazardous conditions. These conditions would be equivalent to or greater than a Class~III exposure~\cite{Donnelly2006}. Prediction of the failure mode and failure time of the door is not a reasonable expectation given the large number of unknowns that the firefighters faced on the fire ground. In this case, the timing of the interior attack appears to have coincided with the failure time of the door. Research has been conducted~\cite{madrzykowski2009fire, kerber2009fire} and continues to be conducted by NIST, Underwriters Laboratories (UL), and others that demonstrates that applying water from the exterior into the fire area of a structure (prior to the start of interior operations) can significantly improve the safety of firefighters by reducing the thermal hazard from the fire and reducing the potential for developing high velocity hot gas flows within the structure.
 
 \begin{table}[!ht]
 \caption[Flow path related LODD/LODI incidents]{Flow path related LODD/LODI incidents}
