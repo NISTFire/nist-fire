@@ -350,7 +350,7 @@ To estimate the type of fuel, fire size, and structure ventilation, on-scene pho
 The primary fuel packages were located in the basement as shown in Fig.~\ref{fig:fuel_placement}. In this figure, the numbered labels indicate the order in which the fuel items were burning: 1) the initial couch fire, 2) the secondary furniture fuel items, and 3) the balcony fire.
 
 \begin{figure}[!ht]
-\includegraphics[width=6.5in]{../Figures/Plan_Basement_Fuels}
+\includegraphics[width=5.5in]{../Figures/Plan_Basement_Fuels}
 \caption[Location of fuel items in the basement.]
 {Location of fuel items in the basement. The numbered labels indicate the order in which the fuel items were burning: Item~1 is associated with the initial couch fire in the basement, Items~2 are associated with the flashover fire that involved additional furniture items in the basement, and Item~3 is associated with a fire that occurred on the exterior basement balcony.}
 \label{fig:fuel_placement}
@@ -566,7 +566,7 @@ As discussed in Section~\ref{sec:geometry}, the structure had exterior dimension
 \clearpage
 
 
-The domain was divided into 16 meshes (each containing between 184,000 and 248,200 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 3~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:model_parameters} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
+The domain was divided into 16 meshes (each containing between 184,000 and 248,200 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 2~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:model_parameters} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
 
 \begin{figure}[!ht]
 \includegraphics[width=4.5in]{../Figures/SMV_Exterior_Meshes}
@@ -690,12 +690,19 @@ In Fig.~\ref{fig:hrr_w_fds}, the solid line represents the HRR that was prescrib
 
 At a time of 342~s, the first window on the rear side of the structure failed, and additional windows failed within the next two minutes. As additional window failures occurred (see Table~\ref{tab:ventilation_timeline}), the abrupt change in ventilation caused the HRR to increase to approximately 32~MW before it reached a steady-state value of approximately 20~MW. The predicted HRR increased above the prescribed HRR because the unburned fuel and smoke that accumulated in the structure during ventilation-limited conditions was mixing with ambient air from the failed window openings and burning.
 
-Figure~\ref{fig:timeline_comparison} shows a time series comparison of on-scene photographs and Smokeview snapshots of flaming combustion that occured through the failed windows on the rear side of the structure. In this figure, the first photograph is shown at a simulation time of 321~s (approximately 20~s before the first rear basement window failed), the second photograph is shown at a simulation time of 349~s (approximately 10~s after the first rear basement window failed), the third photograph is shown at a simulation time of 440~s (approximately when the third rear basement window failed), and the fourth photograph is shown at a simulation time of 450~s (approximately when all of the rear basement windows failed).
+Figure~\ref{fig:timeline_comparison_rear} shows a time series comparison of on-scene photographs and Smokeview snapshots of flaming combustion that occured through the failed windows on the rear side of the structure. In this figure, the first photograph is shown at a simulation time of 321~s (approximately 20~s before the first rear basement window failed), the second photograph is shown at a simulation time of 349~s (approximately 10~s after the first rear basement window failed), the third photograph is shown at a simulation time of 440~s (approximately when the third rear basement window failed), and the fourth photograph is shown at a simulation time of 450~s (approximately when all of the rear basement windows failed). Figure~\ref{fig:timeline_comparison_front} shows a comparison of an on-scene photograph and Smokeview snapshot of smoke coming out of the front side of the structure at approximately the time when the rear windows began to fail.
 
 \begin{figure}[!ht]
 \includegraphics[height=8.0in]{../Figures/Timeline_Comparison}
 \caption{Comparison of on-scene photographs and Smokeview snapshots of exterior combustion occurring on the rear side of the structure. The on-scene time is indicated on the left photograph, and the corresponding simulation time is indicated on the right Smokeview snapshot. For more information on the fire incident and simulation timeline, refer to Table~\ref{tab:combined_timeline}.}
-\label{fig:timeline_comparison}
+\label{fig:timeline_comparison_rear}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width=5.0in]{../Figures/Photo_Front_350_s}
+\includegraphics[width=5.0in]{../Figures/SMV_Front_350_s}
+\caption{Comparison of an on-scene photograph and Smokeview snapshot of smoke coming out of the front side of the structure. The on-scene time is indicated on the photograph (top), and the corresponding simulation time is indicated on the Smokeview snapshot (bottom). For more information on the fire incident and simulation timeline, refer to Table~\ref{tab:combined_timeline}.}
+\label{fig:timeline_comparison_front}
 \end{figure}
 
 
@@ -705,46 +712,86 @@ Figure~\ref{fig:timeline_comparison} shows a time series comparison of on-scene 
 \section{Pressure}
 \label{sec:pressure}
 
-% As the simulated fire grows in the attic and rear porch, the pressure rises. Figure~\ref{fig:pres_159s} shows the calculated pressure conditions in the structure just before the interior door failed in the simulation. On the rear porch, the pressure rise ranges from a 4~Pa ($5.8 \times 10^{-4}$~psi) over-pressure at a height of 1~m to greater than 10~Pa ($1.5 \times 10^{-3}$~psi) at the ceiling. Gases at an elevated pressure will always move towards a region of lower pressure. The door serves as a boundary between the high and low pressure regions. Once the door fails open, the high pressure gases flow towards the low pressure regions in the house, hallway, kitchen, and front stairwell. The velocity vectors shown in Fig.~\ref{fig:velo_175s} (15~s after the interior door fails) indicate the direction of flow within the structure.
+As the simulated fire grows in the basement, the pressure in the basement rises and casues the hot gases to flow upwards from a region of high pressure (basement) to low pressure. Figure~\ref{fig:smv_pressure} shows the calculated pressure conditions in the structure just before and after the rear basement window failed in the simulation (342~s). The pressure rise in the basement ranges from a 5~Pa ($7.3 \times 10^{-4}$~psi) over-pressure at mid-level height to greater than 10~Pa ($1.5 \times 10^{-3}$~psi) at the ceiling. Gases at an elevated pressure will flow towards a region of lower pressure. Once the rear basement window fails, the high pressure gases flow towards the low pressure regions in the house towards the garage and front door via the stairwell.
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/west_50th_baseline_pres2}
-% \input{../Scripts/colorbar_metric_pres}
-% \caption[FDS simulated pressure contours, 1~s prior to interior door failure.]{FDS simulated pressure contours, 1~s prior to interior door failure.}
-% \label{fig:pres_159s}
-% \end{figure}
+\begin{figure}[!ht]
+\includegraphics[width=5.5in]{../Figures/SMV_Pres_340_s}
+\input{../Figures/colorbar_metric_pres}
+\includegraphics[width=5.5in]{../Figures/SMV_Pres_343_s}
+\input{../Figures/colorbar_metric_pres}
+\caption{FDS simulated pressure contours, 2~s prior (top) and 1~s after (bottom) first rear basement window failure. The fire originated in the living room in the basement.}
+\label{fig:smv_pressure}
+\end{figure}
 
-% \begin{landscape}
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/west_50th_baseline_velo_175}
-% \input{../Scripts/colorbar_std_velo}
-% \input{../Scripts/colorbar_metric_velo}
-% \caption{FDS simulated velocity vectors, 15~s after interior door failure.}
-% \label{fig:velo_175s}
-% \end{figure}
-% \end{landscape}
-% \newpage
+
+\clearpage
+
+
+\section{Velocity}
+\label{sec:velocity}
+
+The velocity vectors shown in Fig.~\ref{fig:smv_velocity_vector} (15~s after the interior door fails) indicate the direction of flow within the structure.
+
+\begin{figure}[!ht]
+\includegraphics[width=4.5in]{../Figures/SMV_Vel_340_s}
+\input{../Figures/colorbar_metric_velo}
+\input{../Figures/colorbar_std_velo}
+\includegraphics[width=4.5in]{../Figures/SMV_Vel_402_s}
+\input{../Figures/colorbar_metric_velo}
+\input{../Figures/colorbar_std_velo}
+\caption{FDS simulated velocity contours, 2~s prior (top) and 60~s after (bottom) first rear basement window failure.}
+\label{fig:smv_velocity}
+\end{figure}
+
+
+\clearpage
+
+
+\begin{figure}[!ht]
+\includegraphics[width=4.5in]{../Figures/SMV_Vel_Vec_340_s}
+\input{../Figures/colorbar_metric_velo}
+\input{../Figures/colorbar_std_velo}
+\includegraphics[width=4.5in]{../Figures/SMV_Vel_Vec_402_s}
+\input{../Figures/colorbar_metric_velo}
+\input{../Figures/colorbar_std_velo}
+\caption{FDS simulated velocity vectors, 2~s prior (top) and 60~s after (bottom) first rear basement window failure.}
+\label{fig:smv_velocity_vector}
+\end{figure}
+
+
+\clearpage
+
 
 \section{Temperature}
 \label{sec:temperature}
 
 % Analysis of the temperatures from the FDS simulation focuses on the high hazard areas of the structure: the attic, the rear porch and stairwell, and the interior hallway which connects the rear porch to the front stairwell. The temperature profile at these high hazard areas is shown via several snapshots in time to illustrate the change in the interior conditions. The first snapshots are shown at a time of 129~s into the simulation, just before a firefighter opened the rear porch door (as shown in Fig.~\ref{fig:temp_129s}), and 159~s into the simulation, just before the interior door fails (as shown in Fig.~\ref{fig:temp_159s}).
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/west_50th_baseline_129}
-% \input{../Scripts/colorbar_std} 
-% \input{../Scripts/colorbar_metric}
-% \caption{FDS simulated temperature contours, 1~s prior to rear door opening.}
-% \label{fig:temp_129s}
-% \end{figure}
+\begin{figure}[!ht]
+\includegraphics[width=4.3in]{../Figures/SMV_Temp_340_s}
+\input{../Figures/colorbar_metric_temp}
+\input{../Figures/colorbar_std_temp}
+\includegraphics[width=4.3in]{../Figures/SMV_Temp_402_s}
+\input{../Figures/colorbar_metric_temp}
+\input{../Figures/colorbar_std_temp}
+\caption{FDS simulated temperature contours, 2~s prior (top) and 60~s after (bottom) first rear basement window failure.}
+\label{fig:smv_temperature}
+\end{figure}
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/west_50th_baseline_159}
-% \input{../Scripts/colorbar_std} 
-% \input{../Scripts/colorbar_metric}
-% \caption{FDS simulated temperature contours, 1~s prior to interior door failure.}
-% \label{fig:temp_159s}
-% \end{figure}
+
+\clearpage
+
+
+\begin{figure}[!ht]
+\includegraphics[width=4.3in]{../Figures/SMV_Temp_Vec_340_s}
+\input{../Figures/colorbar_metric_temp}
+\input{../Figures/colorbar_std_temp}
+\includegraphics[width=4.3in]{../Figures/SMV_Temp_Vec_402_s}
+\input{../Figures/colorbar_metric_temp}
+\input{../Figures/colorbar_std_temp}
+\caption{FDS simulated temperature vectors, 2~s prior (top) and 60~s after (bottom) first rear basement window failure.}
+\label{fig:smv_temperature_vector}
+\end{figure}
 
 % Figure~\ref{fig:temp_129s} shows temperatures of at least 260~$^{\circ}$C (500~$^{\circ}$F) in the second floor rear porch and rear portion of the attic. High temperatures, between 80~$^{\circ}$C (185~$^{\circ}$F) and 200~$^{\circ}$C (390~$^{\circ}$F), also extend down to the rear entrance on the first floor. Before the interior door fails (Fig.~\ref{fig:temp_159s}), the inflow of ambient air from the open rear door reduces the temperatures near the interior doorway, but at the same time, the HRR increases because of the additional ventilation, as shown in Fig.~\ref{fig:hrr}. As shown in Fig.~\ref{fig:temp_161s}, after the second floor interior door fails, the high temperature gas that filled the rear porch flows in the direction of lower pressure (i.e., towards the front door). Note that the conditions in the attic do not appear to change.
 
