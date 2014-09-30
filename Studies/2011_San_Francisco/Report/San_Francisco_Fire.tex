@@ -327,10 +327,10 @@ The basement (i.e., the first story below street level) had a total floor area o
 The fire, which is described in Section~\ref{sec:fires}, originated in the finished living room on the basement level (near the rear side of the structure), which had a floor area of 72~m$^2$ (775~ft$^2$). More detailed discussion on the impact of the fire on the interior conditions is provided in Section~\ref{sec:model_results}. Figure~\ref{fig:post_exterior} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the exterior damage occurred above the openings located on the basement floor (where the wooden balcony is located). Fully dimensioned drawings of the second floor, first floor, and basement are shown in Figs.~\ref{fig:drawing_second_floor}, \ref{fig:drawing_first_floor} and \ref{fig:drawing_basement}, respectively.
 
 \begin{figure}[!ht]
-\includegraphics[width=5.0in]{../Figures/Plan_Second_Floor_Metric}
-\includegraphics[width=5.0in]{../Figures/Plan_First_Floor_Metric}
-\includegraphics[width=5.0in]{../Figures/Plan_Basement_Metric}
-\caption[Plan view of second floor (top), first floor (middle), and basement floor (bottom) of structure.]{Plan view of second floor (top), first floor (middle), and basement floor (bottom) of structure. The fire originated in the living room on the basement floor. Stairs and rooms are identified using measurements collected by NIST.}
+\includegraphics[width=5.0in]{../Figures/Plan_Second_Floor}
+\includegraphics[width=5.0in]{../Figures/Plan_First_Floor}
+\includegraphics[width=5.0in]{../Figures/Plan_Basement_Floor}
+\caption[Plan view of second floor (top), first floor (middle), and basement floor (bottom) of structure.]{Plan view of second floor (top), first floor (middle), and basement floor (bottom) of structure. The fire originated in the living room on the basement floor. Stairs and rooms are identified using information collected by NIST.}
 \label{fig:floor_plan}
 \end{figure}
 
@@ -795,48 +795,26 @@ The velocity vectors shown in Fig.~\ref{fig:smv_velocity_vector} (15~s after the
 
 % Figure~\ref{fig:temp_129s} shows temperatures of at least 260~$^{\circ}$C (500~$^{\circ}$F) in the second floor rear porch and rear portion of the attic. High temperatures, between 80~$^{\circ}$C (185~$^{\circ}$F) and 200~$^{\circ}$C (390~$^{\circ}$F), also extend down to the rear entrance on the first floor. Before the interior door fails (Fig.~\ref{fig:temp_159s}), the inflow of ambient air from the open rear door reduces the temperatures near the interior doorway, but at the same time, the HRR increases because of the additional ventilation, as shown in Fig.~\ref{fig:hrr}. As shown in Fig.~\ref{fig:temp_161s}, after the second floor interior door fails, the high temperature gas that filled the rear porch flows in the direction of lower pressure (i.e., towards the front door). Note that the conditions in the attic do not appear to change.
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/west_50th_baseline_161}
-% \input{../Scripts/colorbar_std} 
-% \input{../Scripts/colorbar_metric}
-% \caption{FDS simulated temperature contours, 1~s after interior door failure.}
-% \label{fig:temp_161s}
-% \end{figure}
-
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/west_50th_baseline_175}
-% \input{../Scripts/colorbar_std} 
-% \input{../Scripts/colorbar_metric}
-% \caption{FDS simulated temperature contours, 15~s after the interior door failure.}
-% \label{fig:temp_175s}
-% \end{figure}
-
 % As shown in Fig.~\ref{fig:temp_175s}, 15~s after the door failed, high temperature gases descended to approximately 1~m (3.28~ft) above the floor through the interior hallway and are flowing into the kitchen.
 
 
 \chapter{Discussion of Simulation Results}
 \label{sec:discussion}
 
-% The results of the FDS simulations are discussed in the following two sections. The first section addresses the results of the computational modeling as they relate to the interior hallways conditions. The second section examines the model results and observed outcomes of the fire incident as they relate to tactics discussed in recent experimental research. 
+The results of the FDS simulations are discussed in the following two sections. The first section addresses the results of the simulation as they relate to the flow path and the conditions in the interior stairwell. The second section examines the model results and observed outcomes of the fire incident as they relate to tactics discussed in recent experimental research. 
 
-\section{Simulated Hallway Flow Path}
+\section{Simulated Stairwell Flow Path}
 \label{sec:simulated_flow_path}
 
-% From on-scene reports (Section~\ref{sec:incident_summary}) and the FDS simulation results (Section~\ref{sec:temperature}), the interior conditions on the second floor of the structure were initially tenable. From the NIOSH report~\cite{NIOSH:Bowyer2}, while the IC was inside the structure on the second floor, only light haze and a glow around the door between the hallway and enclosed porch was observed. This indicated the presence of fire in the area of the enclosed porch. The simulation results indicate a high hazard area (temperatures greater than 260~$^{\circ}$C or 500~$^{\circ}$F) in the attic and the enclosed porch at this time. By the time the E123 captain and firefighter arrived on the second floor (Table~\ref{tab:combined_timeline}) and approached the rear of the structure, the rear porch was fully involved. Temperature conditions greater than 260~$^{\circ}$C (500~$^{\circ}$F) were present on the porch side of the steel-faced, wood-framed door at the rear of the structure. Exposure to these conditions likely weakened the structural integrity of the door, which may have led to a partial failure (Table~\ref{tab:combined_timeline}). Figure~\ref{fig:chicago_doorfold} shows the state of the rear door after the fire. Note the large crease in the steel face of the door just above the knob.
+From on-scene reports (Section~\ref{sec:incident_summary}) and the FDS simulation results (Section~\ref{sec:temperature}), the interior conditions in the stairwell on the front side of the structure were initially tenable. The NIOSH report~\cite{NIOSH:Bowyer2} indicated that the fire was located in the basement. After the rear basement windows failed, the simulation results indicate a high-hazard area (temperatures greater than 260~$^{\circ}$C or 500~$^{\circ}$F) in the stairwell below the laundry room landing area. The two E26 firefighters were located within the flow path between the basement and the vent outlets on the front side of the structure.
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/Porch_Door_1}
-% \caption{Post-fire image of interior door.}
-% \label{fig:chicago_doorfold}
-% \end{figure}
+After the rear basement windows failed, an interior flow path was created from the basement living room area and the vent outlets on the front side of the structure (the front door and the overhead garage door). The rear basement window failures resulted in a rapid change in the conditions within the flow path. After the rear basement windows began to fail, the combustion gases at elevated temperature and pressure in the basement flowed towards lower pressure areas via the stairwell. The arrows shown in Fig.~\ref{fig:flow_path_top} indicate the simulated flow direction of gases from the basement after the window failures. In this figure, the red arrows indicate elevated gas temperatures, and the blue arrows indicate relatively cooler gas temperatures. The arrow that transitions from red to blue indicates that the heated gases were cooling as they flowed away from the fire towards the front of the structure. The two arrows located at the door on the second floor (towards the front of the structure) indicate bi-directional flow. At that doorway, cool ambient air flowed towards the fire near the bottom of the door, and hot gases flowed away from the fire near the top of the door.
 
-% After the interior door failed, an interior flow path was created from the enclosed porch area into the kitchen of the structure. This resulted in a rapid change in the conditions within the flow path. The combustion gases at elevated temperature and pressure in the enclosed porch were vented by the failure of the door and flowed towards lower pressure areas in the hallways and kitchen. The arrows shown in Fig.~\ref{fig:flowpath_1} summarize the simulated flow direction of gases on the second floor after the door failure. In this figure, the red arrows indicate elevated gas temperatures, and the blue arrows indicate relatively cooler gas temperatures. The arrow that transitions from red to blue indicates that the heated gases were cooling as they flowed away from the fire towards the front of the structure. The two arrows located at the door on the second floor (towards the front of the structure) indicate bi-directional flow. At that doorway, cool ambient air flowed towards the fire near the bottom of the door, and hot gases flowed away from the fire near the top of the door.
-
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/ChicagoFlow}
-% \caption{Summary of simulated flow path on the second floor after interior door failure.}
-% \label{fig:flowpath_1}
-% \end{figure}
+\begin{figure}[!ht]
+\includegraphics[width=5.0in]{../Figures/Flow_Path_Top}
+\caption{Summary of simulated flow path in the stairwell on the basement and first floors after rear basement window failures.}
+\label{fig:flow_path_top}
+\end{figure}
 
 \section{Assessing the Hazard}
 \label{sec:assessing_the_hazard}
@@ -878,6 +856,11 @@ A person is susceptible to second-degree burn injuries if exposed to temperature
 There have been many previous fire incidents~\cite{NIOSH:Pettit,NIOSH:Washenitz,NIOSH:Mezzanotte,NIOSH:McFall,NIOSH:McFall2,NIOSH:McFall3,NIOSH:Berardinelli,NIOSH:Koedam,NIOSH:McFall4,NIOSH:Tarley,NIOSH:Braddee,NIOSH:Merinar,NIOSH:Bowyer2,NIOSH:Loflin,NIOSH:Bowyer} in which changes in the flow paths are thought to have had an adverse impact on firefighter and occupant safety. Table~\ref{tab:LODD} lists the NIOSH investigation reports from the past 15 years in which it could be determined that a flow path played a role in the related incident. This table lists the NIOSH investigation number, the outcome, and a brief description of the flow path details.
 
 Based on a review of these incidents, it is clear that fires with rapidly developing or changing flow paths are a significant hazard to the fire service. The development of (or changes to) a flow path could be caused by the failure of a component of the structure, such as a door, window, or portion of a ceiling, wall or floor. Environmental conditions such as wind can generate hazardous thermal conditions within a flow path. Uncoordinated ventilation can also be the cause of increased thermal hazards within a flow path. 
+
+% Door control - search then close doors
+% 360 of building
+% Stay out of the flow path
+% Exterior attack from rear deck gun
 
 % In this fire incident, the thermal degradation of the steel-faced, wood-framed door resulted in a rapid change in the thermal conditions in the hallway, which resulted in highly hazardous conditions. These conditions would be equivalent to or greater than a Class~III exposure~\cite{Donnelly2006}. Prediction of the failure mode and failure time of the door is not a reasonable expectation given the large number of unknowns that the firefighters faced on the fire ground. In this case, the timing of the interior attack appears to have coincided with the failure time of the door. Research has been conducted~\cite{madrzykowski2009fire, kerber2009fire} and continues to be conducted by NIST, Underwriters Laboratories (UL), and others that demonstrates that applying water from the exterior into the fire area of a structure (prior to the start of interior operations) can significantly improve the safety of firefighters by reducing the thermal hazard from the fire and reducing the potential for developing high velocity hot gas flows within the structure.
 
