@@ -227,7 +227,7 @@ $c_{p}$ \> specific heat \\
 
 The Fire Dynamics Simulator (FDS) fire model, which is developed and maintained by the National Institute of Standards and Technology (NIST), was used to provide insight into the dynamics of a fire that occurred on June 2, 2011, within a multi-level, single-family residential structure in San Francisco, CA, that resulted in the death of two firefighters. The inputs for the FDS simulations are documented in this report and are based on the fire scenario, including the building geometry, interior furnishings, and ventilation conditions. The fire started in the basement and resulted in ventilation limited (fuel rich) fire conditions in the basement area.
 
-The fire originated in the basement, and the interior stairwell acted as a chimney for hot gases in the basement to flow towards areas of lower pressure via the interior stairwell towards the front of the structure. After the rear basement windows began to fail, the combustion gases at elevated temperature and pressure in the basement flowed upwards towards lower pressure areas via the stairwell. The temperature of the gases in the interior stairwell was estimated to be in excess of 600~$^{\circ}$C (1100~$^{\circ}$F), which exceeds the Class~III exposure temperature of 260~$^{\circ}$C (500~$^{\circ}$F). Unfortunately, two E26 firefighters were located in the flow path between the basement and the doors on the front side of the structure. After a Mayday call, both firefighters were removed from the structure and immediate medical treatment was provided. The two firefighters were transported to the local medical center where the lieutenant was pronounced dead and the fire fighter/paramedic died two days later.
+The fire originated in the basement, and the interior stairwell acted as a chimney for hot gases in the basement to flow towards areas of lower pressure via the interior stairwell towards the front of the structure. After the rear basement windows began to fail, the combustion gases at elevated temperature and pressure in the basement flowed upwards towards lower pressure areas via the stairwell. The temperature of the gases in the interior stairwell was estimated to be in excess of 760~$^{\circ}$C (1400~$^{\circ}$F), which exceeds the Class~III exposure temperature of 260~$^{\circ}$C (500~$^{\circ}$F). Unfortunately, two E26 firefighters were located in the flow path between the basement and the doors on the front side of the structure. After a Mayday call, both firefighters were removed from the structure and immediate medical treatment was provided. The two firefighters were transported to the local medical center where the lieutenant was pronounced dead and the fire fighter/paramedic died two days later.
 
 
 \chapter{Introduction}
@@ -718,7 +718,7 @@ Figure~\ref{fig:timeline_comparison_rear} shows a time series comparison of on-s
 
 As the simulated fire grew in the basement, the pressure in the basement increased and caused the hot gases to flow upwards from a region of high pressure in the basement to a region low pressure via the interior stairwell. Figure~\ref{fig:smv_pressure} shows the calculated pressure conditions in the structure just before and after the rear basement window failed in the simulation.
 
-In this figure, the pressure profile within the high hazard areas is shown via two snapshots in time to illustrate the change in the interior conditions. The first snapshot is shown at a time of 340~s into the simulation, which is 2~s before the first rear basement window failed, and the second snapshot is shown at a time of 402~s into the simulation, which is 60~s after the first rear basement window failed. The pressure rise in the basement ranges from a 5~Pa ($7.3 \times 10^{-4}$~psi) over-pressure at mid-level height to greater than 10~Pa ($1.5 \times 10^{-3}$~psi) at the ceiling.
+In this figure, the pressure profile within the high hazard areas is shown via two snapshots in time to illustrate the change in the interior conditions. The first snapshot is shown at a time of 340~s into the simulation, which is 2~s before the first rear basement window failed, and the second snapshot is shown at a time of 402~s into the simulation, which is 60~s after the first rear basement window failed. After the rear basement windows failed, the pressure rise in the basement ranged from a 5~Pa ($7.3 \times 10^{-4}$~psi) over-pressure at mid-level height to greater than 10~Pa ($1.5 \times 10^{-3}$~psi) at the ceiling.
 
 \begin{figure}[!ht]
 \includegraphics[width=5.5in]{../Figures/SMV_Pres_340_s}
@@ -740,7 +740,7 @@ Gases at an elevated pressure will flow towards a region of lower pressure. Once
 
 In this figure, the velocity profile within the high hazard areas is shown via two snapshots in time to illustrate the change in the interior conditions. The first snapshot is shown at a time of 340~s into the simulation, which is 2~s before the first rear basement window failed, and the second snapshot is shown at a time of 402~s into the simulation, which is 60~s after the first rear basement window failed.
 
-The velocity vectors shown in Fig.~\ref{fig:smv_velocity_vectors} indicate the direction and magnitude of flow velocities within the structure before and after the rear basement window failures. Based on Figs.~\ref{fig:smv_velocity} and \ref{fig:smv_velocity_vectors}, the maximum velocity in the interior stairwell was approximately 9~m/s (20 mph).
+The velocity vectors shown in Fig.~\ref{fig:smv_velocity_vectors} indicate the direction and magnitude of flow velocities within the structure before and after the rear basement window failures. Based on Figs.~\ref{fig:smv_velocity} and \ref{fig:smv_velocity_vectors}, the velocity in the interior stairwell was approximately 4~m/s (9~mph) before the rear basement windows failed and approximately 9~m/s (20~mph) after the rear basement windows failed.
 
 \begin{figure}[!ht]
 \includegraphics[width=4.5in]{../Figures/SMV_Vel_340_s}
@@ -779,7 +779,7 @@ Analysis of the temperatures from the simulation focuses on the high hazard area
 
 In this figure, The temperature profile at these high hazard areas is shown via two snapshots in time to illustrate the change in the interior conditions. The first snapshot is shown at a time of 340~s into the simulation, which is 2~s before the first rear basement window failed, and the second snapshot is shown at a time of 402~s into the simulation, which is 60~s after the first rear basement window failed.
 
-The temperature vectors shown in Fig.~\ref{fig:smv_temperature_vectors} indicate the gas temperatures and direction of flow within the structure before and after the rear basement window failures. Based on the results shown in Figs.~\ref{fig:smv_temperature} and \ref{fig:smv_temperature_vectors} after the rear basement windows began to fail, the maximum temperature in the basement was in excess of 800~$^{\circ}$C (1500~$^{\circ}$F), and the maximum temperature in the interior stairwell was in excess of 600~$^{\circ}$C (1100~$^{\circ}$F).
+The temperature vectors shown in Fig.~\ref{fig:smv_temperature_vectors} indicate the gas temperatures and direction of flow within the structure before and after the rear basement window failures. Based on the results shown in Figs.~\ref{fig:smv_temperature} and \ref{fig:smv_temperature_vectors}, 60~s after the rear basement windows began to fail, the temperature in the basement was in excess of 800~$^{\circ}$C (1500~$^{\circ}$F), and the temperature in the interior stairwell was in excess of 540~$^{\circ}$C (1000~$^{\circ}$F).
 
 \begin{figure}[!ht]
 \includegraphics[width=4.3in]{../Figures/SMV_Temp_340_s}
@@ -816,55 +816,60 @@ The results of the FDS simulations are discussed in the following two sections. 
 \section{Simulated Interior Stairwell Flow Path}
 \label{sec:simulated_flow_path}
 
-The NIOSH report~\cite{NIOSH:Bowyer2} indicated that the interior stairwell on the front side of the structure was used to determine that the fire was located in the basement. From the simulation results (Section~\ref{sec:temperature}), the conditions in the interior stairwell were initially tenable. After the rear basement windows failed, the simulation results indicate a high-hazard area (temperatures greater than 260~$^{\circ}$C or 500~$^{\circ}$F) in the stairwell near the laundry room landing area.
+The NIOSH report~\cite{NIOSH:Bowyer2} indicated that the interior stairwell on the front side of the structure was used to determine that the fire was located in the basement. From the simulation results (Section~\ref{sec:temperature}), the conditions in the interior stairwell were initially tenable. After the rear basement windows failed, the simulation results indicate a high-hazard area that exceeded the conditions of a Class~III exposure (temperatures greater than 260~$^{\circ}$C or 500~$^{\circ}$F) in the stairwell near the laundry room landing area.
 
 After the rear basement windows failed, a flow path was established between the basement living room area and the doors located on the front side of the structure (the front door and the garage door). The rear basement window failures resulted in a rapid change in the conditions within the flow path. After the rear basement windows began to fail, the combustion gases at elevated temperature and pressure in the basement flowed upwards towards lower pressure areas via the stairwell. The two E26 firefighters were located in the flow path between the basement and the doors on the front side of the structure.
 
 The arrows shown in Fig.~\ref{fig:flow_path_top} indicate the simulated flow direction of gases from the basement after the window failures. In this figure, the red arrows indicate elevated gas temperatures, and the blue arrows indicate relatively cooler gas temperatures. The arrow that transitions from red to blue indicates that the heated gases were cooling as they flowed away from the fire towards the front of the structure. The two arrows located at the door on the second floor (towards the front of the structure) indicate bi-directional flow. At that doorway, cool ambient air flowed towards the fire near the bottom of the door, and hot gases flowed away from the fire near the top of the door.
 
 \begin{figure}[!ht]
-\includegraphics[width=5.0in]{../Figures/Flow_Path_Top}
-\caption{Summary of simulated flow path in the stairwell on the basement floor and first floor after the rear basement window failures.}
+\includegraphics[width=6.5in]{../Figures/Flow_Path_Top_Vel_462_s_First_Floor}
+\includegraphics[width=6.5in]{../Figures/Flow_Path_Top_Vel_462_s_Basement_Floor}
+\caption{Summary of simulated flow path in the stairwell on the first floor and basement floor 120~s after the first rear basement window failure. The arrows indicate the direction of flow. Two arrows located at a door or window indicate bi-directional flow at a vent opening. The maximum velocity (red) corresponds to 9~m/s (20~mph).}
 \label{fig:flow_path_top}
 \end{figure}
+
+
+\clearpage
+
 
 \section{Assessing the Hazard}
 \label{sec:assessing_the_hazard}
 
-A person is susceptible to second-degree burn injuries if exposed to temperatures greater than 55~$^{\circ}$C (130~$^{\circ}$F)~\cite{contactburn}. Although firefighters wear protective gear, gear only offers a finite amount of protection. The polycarbonate in a self contained breathing apparatus begins to soften when the material temperature reaches approximately 140~$^{\circ}$C (284~$^{\circ}$F)~\cite{mensch2011emergency}. Structural fire fighting coats and pants are tested to withstand temperatures of 260~$^{\circ}$C (500~$^{\circ}$F)~\cite{nfpa2013standard}. Prolonged exposure to elevated temperatures can result in a significant amount of heat transferred to the firefighter, putting him/her at risk. Exposure of equipment to temperatures of 260~$^{\circ}$C (500~$^{\circ}$F) represents a Class~III exposure~\cite{Donnelly2006}. Firefighters are at increased risk levels when encountering Class~III exposure conditions for more than 5~minutes~\cite{Donnelly2006}. Based on the simulation results shown in Section~\ref{sec:temperature}, the simulated flow path temperatures in the interior stairwell were in excess of 600~$^{\circ}$C (1100~$^{\circ}$F) and the flow velocities were approximately 9~m/s (20 mph).
+A person is susceptible to second-degree burn injuries if exposed to temperatures greater than 55~$^{\circ}$C (130~$^{\circ}$F)~\cite{contactburn}. Although firefighters wear protective gear, gear only offers a finite amount of protection. The polycarbonate in a self contained breathing apparatus begins to soften when the material temperature reaches approximately 140~$^{\circ}$C (284~$^{\circ}$F)~\cite{mensch2011emergency}. Structural fire fighting coats and pants are tested to withstand temperatures of 260~$^{\circ}$C (500~$^{\circ}$F)~\cite{nfpa2013standard}. Prolonged exposure to elevated temperatures can result in a significant amount of heat transferred to the firefighter, putting him/her at risk. Exposure of equipment to temperatures of 260~$^{\circ}$C (500~$^{\circ}$F) represents a Class~III exposure~\cite{Donnelly2006}. Firefighters are at increased risk levels when encountering Class~III exposure conditions for more than 5~minutes~\cite{Donnelly2006}.
 
-% The temperature of the gases that flowed into the interior stairwell was estimated to be approximately XXX~$^{\circ}$C (XXX~$^{\circ}$F), which exceeds the Class~III exposure temperature of 260~$^{\circ}$C (500~$^{\circ}$F).
+Figure~\ref{fig:smv_flow_path_top_1} shows a top view of the temperature contours (at a height of 1.2~m from the floor) on the first floor at a time of 2~s before the first rear basement window failed. At this time, the temperature of the gases in the interior stairwell exceeded 200~$^{\circ}$C (400~$^{\circ}$F).
 
-% Prior to the interior door failure, the elevated temperatures on the second floor were limited to the rear porch, as shown in Fig.~\ref{fig:temp_top_159}. The temperatures were greatest at the back-left corner where there is sufficient oxygen due to the section of porch wall that had burned away and allowed additional oxygen to mix with the fuel-rich fire gases. Five seconds after the interior door failed, hot gases traveled the length of the interior hallway and approached the doorway into the kitchen, which was approximately 4.5~m (14.8~ft) away from the source fire, as shown in Fig.~\ref{fig:temp_top_165}. Within 60~s of the interior door failure, the hallway temperatures were approximately at or above 260~$^{\circ}$C (500~$^{\circ}$F) throughout the hallway, as shown in Fig.~\ref{fig:temp_top_220}. These results indicate that the high temperature gases seen 5~s after failure were not just a burst but rather the front of a sustained exhaust gas flow from the fire burning in the enclosed rear porch. The conditions in this hallway changed from tenable to high-hazard very rapidly following the door failure. Figure~\ref{fig:temp_top_220} also shows that the temperatures in the kitchen were at or below 90~$^{\circ}$C (194~$^{\circ}$F), and the temperatures at the top of the stairs were at or below 70~$^{\circ}$C (158~$^{\circ}$F). At these locations within the structure, the exhaust gases in the flow path were cooled and diluted by the inflowing ambient gas. These simulated temperatures are consistent with the post-incident conditions that were documented in the kitchen and second floor stairwell.
+\begin{figure}[!ht]
+\includegraphics[width=4.3in]{../Figures/SMV_Top_Temp_340_s}
+\input{../Figures/colorbar_metric_temp}
+\input{../Figures/colorbar_std_temp}
+\caption{Top view of simulated temperature contours on the first floor, 1.2~m from the floor (mid-level height), 2~s before the first rear basement window failure (342~s).}
+\label{fig:smv_flow_path_top_1}
+\end{figure}
 
-% Insert top-down figures from SMV showing laundry room landing area temperatures.
+Figure~\ref{fig:smv_flow_path_top_2} shows a top view of the temperature contours (at a height of 1.2~m from the floor) on the first floor at a time of 60~s and 120~s after the first rear basement window failed. At a time of 60~s after the first rear basement window failed, the temperature of the gases in the interior stairwell exceeded 540~$^{\circ}$C (1000~$^{\circ}$F), which exceeds the Class~III exposure temperature of 260~$^{\circ}$C (500~$^{\circ}$F). As more rear basement windows failed and provided ambient air to the growing basement fire, the temperatures in the interior stairwell continued to rise. At a time of 120~s after the first rear basement window failed, the temperature of the gases in the interior stairwell exceeded 760~$^{\circ}$C (1400~$^{\circ}$F), which exceeds the Class~III exposure temperature of 260~$^{\circ}$C (500~$^{\circ}$F).
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/west_50th_baseline_top_159_6ft}
-% \input{../Scripts/colorbar_std} 
-% \input{../Scripts/colorbar_metric}
-% \caption[Temperature contours on the second floor, 1~s prior to interior door failure.]
-% {Temperature contours on the second floor, 1~s prior to interior door failure, 1.83~m (6~ft) above the floor.}
-% \label{fig:temp_top_159}
-% \end{figure}
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/west_50th_baseline_top_165_6ft}
-% \input{../Scripts/colorbar_std} 
-% \input{../Scripts/colorbar_metric}
-% \caption[Temperature contours on the second floor, 5~s after interior door failure.]
-% {Temperature contours on the second floor, 5~s after interior door failure, 1.83~m (6~ft) above the floor.}
-% \label{fig:temp_top_165}
-% \end{figure}
+\clearpage
 
-% \begin{figure}[!ht]
-% \includegraphics[width=6.5in]{../Figures/west_50th_baseline_top_220_6ft}
-% \input{../Scripts/colorbar_std} 
-% \input{../Scripts/colorbar_metric}
-% \caption[Temperature contours on the second floor, 60~s after interior door failure.]
-% {Temperature contours on the second floor, 60~s after interior door failure, 1.83~m (6~ft) above the floor.}
-% \label{fig:temp_top_220}
-% \end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width=4.3in]{../Figures/SMV_Top_Temp_402_s}
+\input{../Figures/colorbar_metric_temp}
+\input{../Figures/colorbar_std_temp}
+\includegraphics[width=4.3in]{../Figures/SMV_Top_Temp_462_s}
+\input{../Figures/colorbar_metric_temp}
+\input{../Figures/colorbar_std_temp}
+\caption{Top view of simulated temperature contours on the first floor, 1.2~m from the floor (mid-level height), 60~s (top) and 120~s (bottom) after the first rear basement window failure (342~s).}
+\label{fig:smv_flow_path_top_2}
+\end{figure}
+
+Based on these results and the simulation results shown in Sections~\ref{sec:velocity} and \ref{sec:temperature}, after the rear basement windows failed, the simulated flow path temperatures in the interior stairwell were in excess of 760~$^{\circ}$C (1400~$^{\circ}$F) and the flow velocities were approximately 9~m/s (20 mph). The conditions in the interior stairwell changed from tenable to high-hazard very rapidly following the rear basement window failure. Within the structure, the exhaust gases in the flow path were moving towards the doors located on the front side of the structure via the interior stairwell. These simulated temperatures are consistent with the post-incident conditions that were documented in the interior stairwell.
+
+
+\clearpage
+
 
 \section{Tactical Considerations}
 \label{sec:tactical_condsiderations}
@@ -923,7 +928,7 @@ F2012-28 \cite{NIOSH:Bowyer}        &  1 LODD             &  Attic fire extended
 
 NIST's Fire Dynamics Simulator was used to provide insight into the fire dynamics of a fire that occurred within a multi-level, single-family residential structure in San Francisco, CA, that resulted in the death of two firefighters. The fuel, fire size, and fire growth rate that were used in the FDS simulations were estimated by taking into account all of the available information including the NIOSH post-incident report~\cite{NIOSH:Bowyer2}, post-incident pictures, and relevant literature. This resulted in a maximum specified source fire of approximately 20~MW in the basement and rear balcony of the structure. Based on the limited ventilation conditions in the basement, the FDS simulation results indicated a HRR of approximately 2~MW as a result of the limited supply of oxygen. After the rear basement windows failed, the HRR increased to approximately 32~MW before it reached a steady-state value of approximately 20~MW.
 
-The fire originated in the basement, and the interior stairwell acted as a chimney for hot gases in the basement to flow towards areas of lower pressure via the interior stairwell towards the front of the structure. After the rear basement windows failed, a flow path was established between the basement living room area and the doors located on the front side of the structure (the front door and the garage door). The rear basement window failures resulted in a rapid change in the conditions within the flow path. After the rear basement windows began to fail, the combustion gases at elevated temperature and pressure in the basement flowed upwards towards lower pressure areas via the stairwell. The temperature of the gases in the interior stairwell was estimated to be in excess of 600~$^{\circ}$C (1100~$^{\circ}$F), which exceeds the Class~III exposure temperature of 260~$^{\circ}$C (500~$^{\circ}$F).
+The fire originated in the basement, and the interior stairwell acted as a chimney for hot gases in the basement to flow towards areas of lower pressure via the interior stairwell towards the front of the structure. After the rear basement windows failed, a flow path was established between the basement living room area and the doors located on the front side of the structure (the front door and the garage door). The rear basement window failures resulted in a rapid change in the conditions within the flow path. After the rear basement windows began to fail, the combustion gases at elevated temperature and pressure in the basement flowed upwards towards lower pressure areas via the stairwell. The temperature of the gases in the interior stairwell was estimated to be in excess of 760~$^{\circ}$C (1400~$^{\circ}$F), which exceeds the Class~III exposure temperature of 260~$^{\circ}$C (500~$^{\circ}$F).
 
 Unfortunately, two E26 firefighters were located in the flow path between the basement and the doors on the front side of the structure. After a Mayday call, both firefighters were removed from the structure and immediate medical treatment was provided. The two firefighters were transported to the local medical center where the lieutenant was pronounced dead and the fire fighter/paramedic died two days later.
 
