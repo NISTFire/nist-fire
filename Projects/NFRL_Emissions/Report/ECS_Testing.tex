@@ -35,7 +35,7 @@
 
 \hypersetup{
   pdftitle={Design Fires for Emission Control System Commissioning},
-  pdfauthor={Weinschenk, Craig G and Bundy, Matt}, 
+  pdfauthor={Weinschenk, Craig G and Bundy, Matthew}, 
   pdfsubject={} 
   } 
 
@@ -106,7 +106,7 @@ Control System Commissioning\\
 \headerC{
 \flushright{
 Craig G. Weinschenk \\
-Matt Bundy \\
+Matthew Bundy \\
 {\em Fire Research Division \\
 Engineering Laboratory} \\
 
@@ -214,18 +214,17 @@ Based on the general experimental configuration shown in Fig.~(\ref{fig:NFRL_fir
 \centering
 \caption{Design fires for ECS commissioning tests}
 \label{tab:fires}
-\vskip.5\baselineskip
 \begin{tabular}{ccccc}
-\hline \hline
+\toprule[1.5pt]
 Test ID & Fuel & Peak HRR (MW) & Burn Time (min) & Test Goal  \\
-\hline \hline
+\midrule
 1-3  & Natural Gas  & 2-8   & 60  & Temperature  \\
 4  & Wood w/ PVC  & $\approx$ 1.5-2 & $\approx$ 50  & Acid, Train 3 \\
 5  & Group A Comm. & $\approx$ 3 & $\approx$ 20  & Soot, Train 3 \\
 6  & Wood w/ PVC  & $\approx$ 1.5-2 & $\approx$ 50  & Acid, Train 4 \\
 7  & Group A Comm. & $\approx$ 3 & $\approx$ 20  & Soot, Train 4 \\
-\hline
-\end{tabular}
+\bottomrule[1.25pt]
+\end{tabular}\par
 \end{table}
 
 
@@ -250,17 +249,16 @@ where $h_{c_{NG}}$ is the heat of combustion of natural gas. For complete combus
 \centering
 \caption{Mass flow rate of natural gas for experimental range of HRRs}
 \label{tab:ng_flow}
-\vskip.5\baselineskip
 \begin{tabular}{cc}
-\hline \hline
+\toprule[1.5pt]
 Fire Size (MW) & Flow Rate (kg/s)  \\
-\hline \hline
+\midrule
 2  &  0.04 \\
 4  &  0.08 \\
 6  &  0.12 \\
 8  &  0.16 \\
-\hline
-\end{tabular}
+\bottomrule[1.25pt]
+\end{tabular}\par
 \end{table}
 
 \section{Test 2}
@@ -281,7 +279,7 @@ To determine the HCL yield of PVC, we need to determine a balanced chemical reac
 \rightarrow 9.76(0.102\HCl \,+\, 0.103\H_2\O \,+\, 0.014 \C\O \,+\, 0.098 \C\O_2 \,+\, 0.092 \C \,+\, 0.59 \N_2)
 \label{eq:hcl_reac}
 \end{multline}
-Based on Eq.~(\ref{eq:hcl_reac}), there is a 58 \% mass basis theoretical yield of HCl (\ref{app:crib}).  Experimental data based on burning PVC over a wide range of test conditions and using a wide range of measurement techniques puts the HCl yield between 10 and 56 \% \cite{Leeds:PVC}. Using data for a similarly scaled and ventilated test, the estimated HCl yield is 32 \% \cite{Persson1998}. Since each crib contains 3.63 kg of PVC and the test calls for 4 cribs, the expected yield of HCl at the source fire is 4.65 kg (10.2 lb). Based on an estimated {\bf 60-70} \% loss of HCl to gas phase conversion and reaction through the duct work, the estimated mass of HCL upstream of the scrubber is {\bf 1.4-1.9} kg ({\bf 3-4} lb).
+Based on Eq.~(\ref{eq:hcl_reac}), there is a 58 \% mass basis theoretical yield of HCl (\ref{app:crib}).  Experimental data based on burning PVC over a wide range of test conditions and using a wide range of measurement techniques puts the HCl yield between 10 and 56 \% \cite{Leeds:PVC}. Using data for a similarly scaled and ventilated test, the estimated HCl yield is 32 \% \cite{Persson1998}. Since each crib contains 3.63 kg of PVC and the test calls for 4 cribs, the expected yield of HCl at the source fire is 4.65 kg (10.2 lb). Based on an estimated 60-70 \% loss of HCl to gas phase conversion and reaction through the duct work, the estimated mass of HCL upstream of the scrubber is 1.4-1.9 kg (3-4 lb).
 
 The 4 cribs will be setup in two tiers. The first tier will be three cribs arranged in a triangle. The second tier will use the forth crib centered over the void created by the triangle. Each of the lower tier cribs will be raised 0.08 m off the ground to allow for a pan of heptane to slide underneath. The test configuration is shown in Fig.~(\ref{fig:test_crib}).The cribs are ignited using 500 mL of heptane poured into a round steel pan. The heptane represents about 1.5 \% of the initial mass of the crib, and burns out after about 2.5 to 3 minutes. The forth crib will ignite as a result of flame spread from the other three cribs.
 
@@ -320,7 +318,7 @@ In these tests, the columns of boxes are spaced 0.15 m apart (cf. Fig.~(\ref{fig
 
 The two columns of boxes will be ignited using shredded paper placed in the gap between the two columns of boxes. The paper will be ignited by a 1.83 m (6 ft) propane wand. As the cardboard burns away, the columns will lose structural integrity and the fire will transition into a polystyrene pool fire. The ignition point is set at the center line so that as the columns begin to collapse, they will collapse toward the center as that cardboard burned away first. The experiment will take place on top of sheets of cement board (such as USG Durock). This is done to contain the polystyrene melt in the later portion of the fire test. Fig.~(\ref{fig:comm_burn}) shows two columns of Group A commodity shortly after ignition and when the boxes are fully involved.
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
 \includegraphics[width=0.45\textwidth]{../Figures/comm_ignite} &
 \includegraphics[width=0.45\textwidth]{../Figures/comm_burn} \\
@@ -354,7 +352,7 @@ For the ECS commissioning tests at the NFRL, the building will be transitioning 
 
 \chapter{Experimental Test Procedures}
 \label{test_procedure}
-\subsection{Test 1 Procedure}
+\section{Test 1 Procedure}
 \label{procedure1}
 
 \begin{enumerate}
@@ -373,7 +371,7 @@ For the ECS commissioning tests at the NFRL, the building will be transitioning 
   \item Close the manual shutoff valve. Wait 20 min before handling the burner.
 \end{enumerate}
 
-\subsection{Test 2 Procedure}
+\section{Test 2 Procedure}
 \label{procedure2}
 \begin{enumerate}
   \item All flammable liquid stored are in outdoor containment building with a fuel spill containment floor. 
@@ -387,7 +385,7 @@ For the ECS commissioning tests at the NFRL, the building will be transitioning 
 
 \end{enumerate}
 
-\subsection{Test 3 Procedure}
+\section{Test 3 Procedure}
 \label{procedure3}
 \begin{enumerate}
   \item Position commodity boxes on cement board.
@@ -410,17 +408,16 @@ Seven tests were conducted to commission the NFRL ECS:
 \item Wood crib burn, ECS train 4
 \item Commodity burn, ECS train 4
 \end{enumerate}
-Emission measurements were not made for tests 1, 2, and 3 since they were natural gas tests. Measurements were made during tests 4, 5, 6 and 7. The measurements were taken at the exhaust stack; the farthest downstream sensor port in the ECS.  Data was recorded throughout the duration of the experiments and then time averaged. The  Table~\ref{tab:hcl_data} shows the results including the mean mass flow rate of HCl for tests 4 and 6 as well as from a similar test conducted in 2001.
+Emission measurements were not made for tests 1, 2, and 3 since they were natural gas tests. Measurements were made during tests 4, 5, 6 and 7. The measurements were taken at the exhaust stack; the farthest downstream sensor port in the ECS.  Data was recorded throughout the duration of the experiments and then time averaged. Table~\ref{tab:hcl_data} shows the results including the mean mass flow rate of HCl for tests 4 and 6 as well as from a similar test conducted in 2001.
 
-\begin{table}[h]
+\begin{table}[!ht]
 \centering
 \caption{Exhaust measurements for wood crib experiments}
 \label{tab:hcl_data}
-\vskip.5\baselineskip
 \begin{tabular}{cccc}
-\hline \hline
+\toprule[1.25pt]
 Measurement Quantity & Test 4 & Test 6 & 2001 Test  \\
-\hline \hline
+\midrule
 Metered Volume (dcf)           &  47.39  &  59.22  &  36.52  \\
 Total Test Time (min)          &  56.1   &  68.3   &  60     \\
 Gas Temperature ($^{\circ}$F)  &  285    &  296    &  268    \\
@@ -429,21 +426,20 @@ Carbon Dioxide (\%)            &  0.81   &  1.00   &  1.1    \\
 Velocity (ft/s)                &  54.37  &  54.36  &  45.09  \\
 HCl Concentration (ppmdv)      &  8.60   &  10.55  &  2.98   \\
 Mass Rate (lb/hr)              &  2.96   &  3.57   &  0.86   \\
-\hline
-\end{tabular}
+\bottomrule[1.25pt]
+\end{tabular}\par
 \end{table}
 
-Table~\ref{tab:hcl_data} shows the results including particulate emissions for tests 5 and 7.
+Table~\ref{tab:part_data} shows the results including particulate emissions for tests 5 and 7.
 
-\begin{table}[h]
+\begin{table}[!ht]
 \centering
 \caption{Exhaust measurements for commodity experiments}
-\label{tab:hcl_data}
-\vskip.5\baselineskip
+\label{tab:part_data}
 \begin{tabular}{ccc}
-\hline \hline
+\toprule[1.25pt]
 Measurement Quantity & Test 5 & Test 7  \\
-\hline \hline
+\midrule
 Metered Volume (dcf)                &  40.97  &  38.28  \\
 Total Test Time (min)               &  48.1   &  43     \\
 Gas Temperature ($^{\circ}$F)       &  288    &  300    \\
@@ -452,7 +448,7 @@ Carbon Dioxide (\%)                 &  0.99   &  0.91   \\
 Velocity (ft/s)                     &  53.75  &  55.18  \\
 Particulate Concentration (g/dscf)  &  $< 4.67\text{\sc{e}-}5$   &  $< 5.08 \text{\sc{e}-}5$  \\
 Mass Rate (lb/hr)                   &  $<$ 0.37   &  $<$ 0.40   \\
-\hline
+\bottomrule[1.25pt]
 \end{tabular}
 \end{table}
 
@@ -466,17 +462,15 @@ Mass Rate (lb/hr)                   &  $<$ 0.37   &  $<$ 0.40   \\
 \newpage
 
 \appendix
-\section{Schematics of the National Fire Research Lab}
+\chapter{Schematics of the National Fire Research Lab}
 \label{app:nfrl_images}
-Images to describe the layout of the existing and additional lab space.
-
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \includegraphics[width=\textwidth]{../Figures/plan_view2}
 \caption {Plan view of the NFRL indicating location of ECS test fires.}
 \label{fig:NFRL_plan}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \includegraphics[width=\textwidth]{../Figures/section_2}
 \caption {Rendering of the NFRL showing the original lab space (left) and the new lab space (right).}
 \label{fig:NFRL_render}
