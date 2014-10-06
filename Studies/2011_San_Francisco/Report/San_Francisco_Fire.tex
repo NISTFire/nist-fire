@@ -345,7 +345,7 @@ The fire, which is described in Section~\ref{sec:fires}, originated in the finis
 \section{Fires}
 \label{sec:fires}
 
-On-scene photographs and post-incident reports were used to estimate the type of fuel, fire size, and ventilation openings on the structure. Based on these sources of information, the FDS model included three source fires: 1)~an initial couch fire in the basement, 2)~a flashover fire that involved additional furniture items in the basement, and 3) a fire that occurred on the balcony located on the rear exterior side of the basement.
+On-scene photographs and post-incident reports were used to estimate the type of fuel, fire size, and ventilation openings on the structure. Based on these sources of information, the simulation included three source fires: 1)~an initial couch fire in the basement, 2)~a flashover fire that involved additional furniture items in the basement, and 3) a fire that occurred on the balcony located on the rear exterior side of the basement.
 
 The basement primarily contained upholstered polyurethane furniture fuel items, and the balcony was constructed of wood. The HRR of the initial couch fire was based on an experimentally measured HRR for a mattress fire~\cite{madrzykowski2009fire} to represent the fire growth rate of a similar household furniture item. The HRRs of the additional furniture items were estimated based on previous experimental work that characterized the HRR of similar upholstered furniture fuel items~\cite{madrzykowski2009fire,Madrzykowski:2,Babrauskas:1}. Other combustible items and furnishings such as tables, stools, bookshelves, and carpet were present in the basement living room. However, to simplify the analysis and specification of the design fire, only the large upholstered furniture fuel items and balcony were included in the simulation because they were considered to have contributed the largest amount of energy in this fire scenario.
 
@@ -364,7 +364,7 @@ The primary fuel packages were located in the basement as shown in Fig.~\ref{fig
 
 Since the exact time at which the fire started is not known relative to the notification of a fire or how quickly the fire spread, several simplifying assumptions were made. One assumption is that the initial couch fire in the basement was specified to start at the beginning of the simulation. The duration of the fire simulation was 9~min (540~s). The beginning of the simulation (0~s) was selected to correspond to an on-scene time of 10:53:00, which was approximately five minutes after the fire department arrived on scene and approximately one minute before the E26 firefighting crew stated that the fire was located below the first floor. The end of the simulation (540~s) was selected to correspond to an on-scene time of 11:02:00, which was the time at which substantial fire suppression operations were initiated (see Table~\ref{tab:incident_timeline}).
 
-The HRRs for the three primary source fires were prescribed in FDS as follows.
+The HRRs for the three primary source fires were prescribed in the simulation as follows.
 
 \begin{enumerate}
 \item For the initial couch fire in the basement, the HRR from 0~s to 327~s followed the experimentally measured mattress HRR~\cite{madrzykowski2009fire}. The HRR at 300~s was approximately 3~MW, and the HRR at 327~s was approximately 5~MW. From 327~s until 540~s (the end of the simulation), the HRR of the initial couch fire was specified as a constant 5~MW.
@@ -665,7 +665,7 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 \bottomrule
 \end{tabular}
 \footnotesize
-\\ For specific information regarding ventilation areas used in the FDS model, refer to Table~\ref{tab:ventilation_timeline}.
+\\ For specific information regarding ventilation areas used in the simulation, refer to Table~\ref{tab:ventilation_timeline}.
 \normalsize
 \label{tab:combined_timeline}
 \end{table}
