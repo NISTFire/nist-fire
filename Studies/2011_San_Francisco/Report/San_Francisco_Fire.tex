@@ -677,14 +677,16 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 \section{Heat Release Rate}
 \label{sec:HRR}
 
-In an FDS simulation, a prescribed HRR is specified, which results in a specified amount of fuel vapor (or pyrolyzate) being released from a fuel surface. FDS then determines the amount of combustion that occurs throughout the simulation based on the amount of available fuel and oxygen at a given location. As a result, the actual HRR in FDS can be different than the prescribed HRR based on the ventilation conditions.
+In an FDS simulation, a prescribed HRR is specified, which results in a specified amount of fuel vapor (or pyrolyzate) being released from a fuel surface. FDS then determines the amount of combustion that occurs throughout the simulation based on the amount of available fuel and oxygen at a given location. As a result, the prescribed HRR that was input into the simulation can be different than the HRR predicted by the simulation based on the ventilation conditions.
 
-Figure~\ref{fig:hrr_w_fds} shows the HRR vs. time based on the fires that were described in Section~\ref{sec:fires}. The vertical dashed line represents the time at which the first basement window on the rear side of the structure failed (342~s). Additional windows on the rear side of the basement continued to fail within the next two minutes. The maximum size of the fire used in this study was selected such that the conditions would become ventilation limited to minimize computational time while aligning with observations from the actual fire scenario. Note that the rear window failures were manually specified in accordance with the event timeline rather than failure temperature criteria.
+Figure~\ref{fig:hrr_w_fds} shows the HRR vs. time based on the fires that were described in Section~\ref{sec:fires}. In this figure, the solid line represents the specified (or prescribed) HRR that was input into the simulation, and the dashed line represents the actual (or predicted) HRR that was output from the simulation based on the ventilation conditions. The vertical dashed line represents the time at which the first basement window on the rear side of the structure failed (342~s). Additional windows on the rear side of the basement continued to fail within the next two minutes.
+
+The maximum size of the fire used in this study was selected such that the conditions would become ventilation limited to minimize computational time while aligning with observations from the actual fire scenario. Note that the rear window failures were manually specified in accordance with the event timeline rather than specifying failure temperature criteria.
 
 \begin{figure}[!ht]
 \includegraphics[width=5.5in]{../Figures/Fire_HRR_w_FDS}
 \caption[Predicted HRR vs. time from the FDS simulation.]
-{Predicted HRR vs. time from the FDS simulation. The vertical line indicates the time at which the rear basement windows began to fail (342~s).}
+{Comparison of prescribed and predicted HRRs from the FDS simulation. The vertical line indicates the time at which the rear basement windows began to fail (342~s).}
 \label{fig:hrr_w_fds}
 \end{figure}
 
@@ -692,18 +694,18 @@ Figure~\ref{fig:hrr_w_fds} shows the HRR vs. time based on the fires that were d
 \clearpage
 
 
-In Fig.~\ref{fig:hrr_w_fds}, the solid line represents the HRR that was prescribed in the FDS simulation, and the dashed line represents the actual HRR that was predicted by FDS based on the ventilation conditions. From 0~s to 300~s, the predicted HRR was in agreement with the prescribed HRR because there was an adequate amount of oxygen for all of the fuel to combust. From 300~s to 342~s (the time at which the first basement window failed), the predicted HRR was lower than the prescribed HRR because the fire conditions in the structure became ventilation limited. The maximum predicted HRR was approximately 7~MW before the fire conditions became ventilation limited and started to decay. The HRR decreased to approximately 2~MW as the amount of oxygen inside the structure became limited. At this time, there was an insufficient amount of oxygen in the structure to burn all of the fuel; therefore, localized burning occurred near the ventilation openings where ambient air was available.
+In Fig.~\ref{fig:hrr_w_fds}, the prescribed HRR that was input into the simulation is different than the HRR predicted by the simulation based on the ventilation conditions. From 0~s to 300~s, the predicted HRR was in agreement with the prescribed HRR because there was an adequate amount of oxygen for all of the fuel to combust. From 300~s to 342~s (the time at which the first basement window failed), the predicted HRR was lower than the prescribed HRR because the fire conditions in the structure became ventilation limited. At 315~s, the maximum predicted HRR was approximately 7~MW before the fire conditions became ventilation limited and started to decay. At 335~s, the HRR decreased to approximately 2~MW. At this time, there was an insufficient amount of oxygen in the structure to burn all of the fuel; therefore, localized burning occurred near the ventilation openings where ambient air was available.
 
-At 342~s, the first window on the rear side of the structure failed, and additional windows failed within the next two minutes. As additional window failures occurred (see Table~\ref{tab:ventilation_timeline}), the abrupt change in ventilation caused the HRR to increase to approximately 32~MW before it reached a steady-state value of approximately 20~MW. The predicted HRR increased above the prescribed HRR because the unburned fuel and smoke that accumulated in the structure during ventilation-limited conditions was mixing with ambient air from the failed window openings and burning.
+At 342~s, the first window on the rear side of the structure failed, and additional windows failed within the next two minutes. As additional window failures occurred (see Table~\ref{tab:ventilation_timeline}), the abrupt change in ventilation caused the HRR to increase to approximately 32~MW at 385~s before it reached a steady-state value of approximately 20~MW at 465~s. The predicted HRR increased above the prescribed HRR because the unburned fuel and smoke that accumulated in the structure during ventilation-limited conditions was mixing with ambient air from the failed window openings and burning.
 
-Note that the HRR in the simulation might be overpredicted due to limitations in the combustion model related to the reignition of fuel-rich gases. In other words, there is some combustion occurring in the simulation near the front door and second floor as the fuel-rich gases mix with fresh air and reignite, which is not consistent with on-scene and post-incident photographs. However, for the high-hazard areas that are the focus of this study (the basement and interior stairwell), the pressures, temperatures, and velocities are representative of the hazardous flow path conditions that would have occurred in this fire incident.
+Note that the HRR in the simulation might be overpredicted due to limitations in the combustion model in FDS that are related to the reignition of fuel-rich gases. In other words, some combustion occurred in the simulation near the front door and second floor that was not consistent with on-scene and post-incident photographs because the fuel-rich gases mixed with fresh air and reignited. In the actual fire incident, the fuel vapors and smoke that were exiting the front of the structure were not at a high enough temperature and did not encounter an ignition source that would have resulted in reignition. However, for the high-hazard areas that are the focus of this study (the basement and interior stairwell), the pressures, temperatures, and velocities are representative of the hazardous flow path conditions that would have occurred in this fire incident.
 
-Figure~\ref{fig:timeline_comparison_rear} shows a time series comparison of on-scene photographs and Smokeview snapshots of flaming combustion that occurred through the failed windows on the rear side of the structure. In this figure, the first photograph is shown at a simulation time of 321~s (approximately 20~s before the first rear basement window failed), the second photograph is shown at a simulation time of 349~s (approximately 10~s after the first rear basement window failed), the third photograph is shown at a simulation time of 440~s (approximately when the third rear basement window failed), and the fourth photograph is shown at a simulation time of 450~s (approximately when all of the rear basement windows failed). Figure~\ref{fig:timeline_comparison_front} shows a comparison of an on-scene photograph and Smokeview snapshot of smoke coming out of the front side of the structure at approximately the time when the rear windows began to fail.
+Figure~\ref{fig:timeline_comparison_rear} shows a time series comparison of on-scene photographs and Smokeview snapshots of flaming combustion that occurred through the failed windows on the rear side of the structure. In this figure, the first photograph is shown at a simulation time of 321~s (approximately 20~s before the first rear basement window failed), the second photograph is shown at a simulation time of 349~s (approximately 10~s after the first rear basement window failed), the third photograph is shown at a simulation time of 440~s (approximately when the third rear basement window failed), and the fourth photograph is shown at a simulation time of 450~s (approximately when all of the rear basement windows had failed). Figure~\ref{fig:timeline_comparison_front} shows a comparison of an on-scene photograph and Smokeview snapshot of smoke coming out of the front side of the structure at approximately the time when the rear windows began to fail.
 
 \begin{figure}[!ht]
 \includegraphics[height=8.0in]{../Figures/Timeline_Comparison}
 \caption[Snapshots of exterior combustion occurring on the rear side of the structure.]
-{Comparison of on-scene photographs and Smokeview snapshots of exterior combustion occurring on the rear side of the structure. The on-scene time is indicated on the left photograph, and the corresponding simulation time is indicated on the right Smokeview snapshot. For more information on the fire incident and simulation timeline, refer to Table~\ref{tab:combined_timeline}.}
+{Comparison of on-scene photographs and Smokeview snapshots of exterior combustion occurring on the rear side of the structure. The on-scene time is indicated on the photograph (left side), and the corresponding simulation time is indicated on the Smokeview snapshot (right side). For more information on the fire incident and simulation timeline, refer to Table~\ref{tab:combined_timeline}.}
 \label{fig:timeline_comparison_rear}
 \end{figure}
 
@@ -722,9 +724,9 @@ Figure~\ref{fig:timeline_comparison_rear} shows a time series comparison of on-s
 \section{Pressure}
 \label{sec:pressure}
 
-As the simulated fire grew in the basement, the pressure in the basement increased and caused the hot gases to flow upwards from a region of high pressure in the basement to a region low pressure via the interior stairwell. Figure~\ref{fig:smv_pressure} shows the calculated pressure conditions in the structure just before and after the rear basement window failed in the simulation.
+As the simulated fire grew in the basement, the pressure in the basement increased and caused the hot gases to flow from a region of high pressure in the basement upwards to a region of low pressure via the interior stairwell. Figure~\ref{fig:smv_pressure} shows the calculated pressure conditions in the structure just before and after the rear basement window failed in the simulation.
 
-In this figure, the pressure profile within the high-hazard areas is shown via two snapshots in time to illustrate the change in the interior conditions. The first snapshot is shown at a time of 340~s into the simulation, which is 2~s before the first rear basement window failed, and the second snapshot is shown at a time of 402~s into the simulation, which is 60~s after the first rear basement window failed. After the rear basement windows failed, the pressure rise in the basement ranged from a 5~Pa ($7.3 \times 10^{-4}$~psi) over-pressure at mid-level height to greater than 10~Pa ($1.5 \times 10^{-3}$~psi) at the ceiling.
+In Fig.~\ref{fig:smv_pressure}, the pressure profile within the high-hazard areas is shown via two snapshots in time to illustrate the change in the interior conditions. The first snapshot is shown at a simulation time of 340~s, which is 2~s before the first rear basement window failed, and the second snapshot is shown at a simulation time of 343~s, which is 1~s after the first rear basement window failed. After the rear basement windows failed, the pressure rise in the basement ranged from a 5~Pa ($7.3 \times 10^{-4}$~psi) over-pressure at mid-level height to greater than 10~Pa ($1.5 \times 10^{-3}$~psi) at the ceiling.
 
 \begin{figure}[!ht]
 \includegraphics[width=5.5in]{../Figures/SMV_Pres_340_s}
@@ -732,7 +734,7 @@ In this figure, the pressure profile within the high-hazard areas is shown via t
 \includegraphics[width=5.5in]{../Figures/SMV_Pres_343_s}
 \input{../Figures/colorbar_metric_pres}
 \caption[Simulated pressure contours on the right interior side of the structure.]
-{Simulated pressure contours on the right interior side of the structure, 2~s before (top) and 1~s after (bottom) first rear basement window failure. The fire originated in the living room in the basement.}
+{Simulated pressure contours on the right interior side of the structure, 2~s before (top) and 1~s after (bottom) the first rear basement window failed. The fire originated in the living room in the basement.}
 \label{fig:smv_pressure}
 \end{figure}
 
@@ -743,9 +745,9 @@ In this figure, the pressure profile within the high-hazard areas is shown via t
 \section{Velocity}
 \label{sec:velocity}
 
-Gases at an elevated pressure will flow towards a region of lower pressure. Once the rear basement windows failed, the gases in the basement at an elevated temperature and pressure flowed into the interior stairwell towards the low pressure regions in the house and exhausted via the garage door and front door. The velocity contours shown in Fig.~\ref{fig:smv_velocity} indicate the magnitude of flow velocities within the structure before and after the rear basement window failures.
+Gases will always flow from a region of high pressure towards a region of lower pressure. Once the rear basement windows failed, the gases in the basement at an elevated temperature and pressure flowed into the interior stairwell towards the lower pressure regions in the house and exited the structure via the garage door and front door. The velocity contours shown in Fig.~\ref{fig:smv_velocity} indicate the magnitude of flow velocities within the structure before and after the rear basement window failures.
 
-In this figure, the velocity profile within the high-hazard areas is shown via two snapshots in time to illustrate the change in the interior conditions. The first snapshot is shown at a time of 340~s into the simulation, which is 2~s before the first rear basement window failed, and the second snapshot is shown at a time of 402~s into the simulation, which is 60~s after the first rear basement window failed.
+In Fig.~\ref{fig:smv_velocity}, the velocity profile within the high-hazard areas is shown via two snapshots in time to illustrate the change in the interior conditions. The first snapshot is shown at a simulation time of 340~s, which is 2~s before the first rear basement window failed, and the second snapshot is shown at a simulation time of 402~s, which is 60~s after the first rear basement window failed.
 
 The velocity vectors shown in Fig.~\ref{fig:smv_velocity_vectors} indicate the direction and magnitude of flow velocities within the structure before and after the rear basement window failures. Based on Figs.~\ref{fig:smv_velocity} and \ref{fig:smv_velocity_vectors}, the velocity in the interior stairwell was approximately 4~m/s (9~mph) before the rear basement windows failed and approximately 9~m/s (20~mph) after the rear basement windows failed.
 
@@ -757,7 +759,7 @@ The velocity vectors shown in Fig.~\ref{fig:smv_velocity_vectors} indicate the d
 \input{../Figures/colorbar_metric_velo}
 \input{../Figures/colorbar_std_velo}
 \caption[Simulated velocity contours on the right interior side of the structure.]
-{Simulated velocity contours on the right interior side of the structure, 2~s before (top) and 60~s after (bottom) first rear basement window failure.}
+{Simulated velocity contours on the right interior side of the structure, 2~s before (top) and 60~s after (bottom) the first rear basement window failure.}
 \label{fig:smv_velocity}
 \end{figure}
 
@@ -773,7 +775,7 @@ The velocity vectors shown in Fig.~\ref{fig:smv_velocity_vectors} indicate the d
 \input{../Figures/colorbar_metric_velo}
 \input{../Figures/colorbar_std_velo}
 \caption[Simulated velocity vectors on the right interior side of the structure.]
-{Simulated velocity vectors on the right interior side of the structure, 2~s before (top) and 60~s after (bottom) first rear basement window failure.}
+{Simulated velocity vectors on the right interior side of the structure, 2~s before (top) and 60~s after (bottom) the first rear basement window failure.}
 \label{fig:smv_velocity_vectors}
 \end{figure}
 
@@ -784,9 +786,9 @@ The velocity vectors shown in Fig.~\ref{fig:smv_velocity_vectors} indicate the d
 \section{Temperature}
 \label{sec:temperature}
 
-Analysis of the temperatures from the simulation focuses on the high-hazard areas of the structure: the basement and the interior stairwell which connects the basement to the exhaust vents/doors on the front side of the structure (the front door and the garage door). The temperature contours shown in Fig.~\ref{fig:smv_temperature} indicate the gas temperatures within the structure before and after the rear basement window failures.
+Analysis of the temperatures from the simulation focuses on the high-hazard areas of the structure: the basement, and the interior stairwell that connects the basement to the front door and garage door on the front side of the structure. The temperature contours shown in Fig.~\ref{fig:smv_temperature} indicate the gas temperatures within the structure before and after the rear basement window failures.
 
-In this figure, The temperature profile at these high-hazard areas is shown via two snapshots in time to illustrate the change in the interior conditions. The first snapshot is shown at a time of 340~s into the simulation, which is 2~s before the first rear basement window failed, and the second snapshot is shown at a time of 402~s into the simulation, which is 60~s after the first rear basement window failed.
+In Fig.~\ref{fig:smv_temperature}, the temperature profile at these high-hazard areas is shown via two snapshots in time to illustrate the change in the interior conditions. The first snapshot is shown at a simulation time of 340~s, which is 2~s before the first rear basement window failed, and the second snapshot is shown at a simulation time of 402~s, which is 60~s after the first rear basement window failed.
 
 The temperature vectors shown in Fig.~\ref{fig:smv_temperature_vectors} indicate the gas temperatures and direction of flow within the structure before and after the rear basement window failures. Based on the results shown in Figs.~\ref{fig:smv_temperature} and \ref{fig:smv_temperature_vectors}, 60~s after the rear basement windows began to fail, the temperature in the basement was in excess of 800~$^{\circ}$C (1500~$^{\circ}$F), and the temperature in the interior stairwell was in excess of 540~$^{\circ}$C (1000~$^{\circ}$F).
 
@@ -798,7 +800,7 @@ The temperature vectors shown in Fig.~\ref{fig:smv_temperature_vectors} indicate
 \input{../Figures/colorbar_metric_temp}
 \input{../Figures/colorbar_std_temp}
 \caption[Simulated temperature contours on the right interior side of the structure.]
-{Simulated temperature contours on the right interior side of the structure, 2~s before (top) and 60~s after (bottom) first rear basement window failure.}
+{Simulated temperature contours on the right interior side of the structure, 2~s before (top) and 60~s after (bottom) the first rear basement window failure.}
 \label{fig:smv_temperature}
 \end{figure}
 
@@ -814,7 +816,7 @@ The temperature vectors shown in Fig.~\ref{fig:smv_temperature_vectors} indicate
 \input{../Figures/colorbar_metric_temp}
 \input{../Figures/colorbar_std_temp}
 \caption[Simulated temperature vectors on the right interior side of the structure.]
-{Simulated temperature vectors on the right interior side of the structure, 2~s before (top) and 60~s after (bottom) first rear basement window failure.}
+{Simulated temperature vectors on the right interior side of the structure, 2~s before (top) and 60~s after (bottom) the first rear basement window failure.}
 \label{fig:smv_temperature_vectors}
 \end{figure}
 
