@@ -287,31 +287,33 @@ Input data from various sources must be collected and documented to simulate a f
 
 The analysis of the simulation results is focused on the impact of ventilation. Specifically on the  interior conditions of the first floor following the establishment of a flow path through door control and how wind impacted these conditions. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, heavy smoke conditions were reported at the front of the house at the time of arrival~\cite{PGCounty2013}; however, the exact ignition time, fire growth rate, and heat release rate (HRR) of the fire were not known. The ignition time and growth rate were estimated to reduce the amount of required calculation time while adhering to event timeline (Table~\ref{tab:fire_info}) and documented observations. The HRR of the fire was estimated using documentation of the potential fuel load within the structure.
 
-In reality, the quantities associated with these input parameters are not fixed values; rather, a model input parameter can be thought of as a point estimate from a distribution of possible input parameters with some associated amount of uncertainty. Any change in an input parameter (such as the HRR) for a given scenario would result in a change in the output quantity (such as the hot gas layer (HGL) temperature). For example, according to the McCaffrey, Quintiere, and Harkleroad~\cite{SFPE:Walton} empirical correlation, the HGL temperature in a well-ventilated compartment fire is proportional to the HRR raised to the two-thirds power. Following this relationship, a 7.5~\% increase in the HRR would result in a 5~\% increase in the HGL temperature~\cite{NUREG_1824_Sup_1}. More detailed discussion on the propagation of parameter uncertainty in fire models is available in a validation study that was sponsored by the U.S. Nuclear Regulatory Commission~\cite{NUREG_1824_Sup_1}. The following subsections describe the inputs that were used to develop the simulation, including any approximations or assumptions that were made.
-
-
 \section{Geometry}
 \label{geom}
-The structure involved in this fire incident was a one story, single-family structure with a basement. Due to the surrounding topography (the ground slopes from the front to rear of the structure), the basement on the rear side of the structure was above grade. The structure was wood-framed platform-framed with a gable roof. \footnote{Platform-framed construction means that floor joists are completely covered with a sub-floor. This forms a platform for which walls are built from.} The structure had a first floor footprint of 9.14~m (30~ft) by 7.77~m (25.5~ft) with the basement being slightly smaller, 9.14~m (30~ft) by 7.16~m (23.5~ft), as show in Fig.~\ref{fig:simp_geom}. This results in a first floor area of 71~m$^2$ (764~ft$^2$) and a basement floor area of 65~m$^2$ (700~ft$^2$). The interior walls and ceiling were constructed from nominal lumber covered by 12.7~mm (0.5~in) gypsum board~\cite{PGCounty2013}. There was a single flight of stairs in the center of the structure which connected the first floor to the basement. Access to the structure could be made on the front side of the first floor and the rear side of the basement.
+The structure involved in this fire incident was a one story, single-family structure with a basement. The structure was platform-framed wood construction with a gable roof. \footnote{Platform-framed construction means that floor joists are completely covered with a sub-floor. This forms a platform for which walls are built from.} The structure had a first floor footprint of 9.14~m (30~ft) by 7.77~m (25.5~ft) with the basement being slightly smaller, 9.14~m (30~ft) by 7.16~m (23.5~ft), as show in Fig.~\ref{fig:simp_geom}. This resulted in a first floor area of 71~m$^2$ (764~ft$^2$) and a basement floor area of 65~m$^2$ (700~ft$^2$). The interior walls were composed of gypsum board over insulated wood framing.~\cite{PGCounty2013}. There was a single flight of stairs in the center of the structure which connected the first floor to the basement. 
+
+The structure was built on a sloped landscape such that on the front side of the structure the first floor was located above street level but the basement was below street level (Fig.~\ref{fig:slope}). On the rear side of the structure, the slope allowed the basement to be a walkout. Therefore, access to the structure could be made on the front side of the first floor and the rear side of the basement.
+
+\begin{figure}[!ht]
+\includegraphics[width=.7\textwidth]{../Figures/PGCo_Slope} \\
+\caption[Photograph of terrain.]{Photograph taken from front side street level showing the slope down to basement on the rear side of the structure.}
+\label{fig:slope}
+\end{figure}
+
 
 The fire, which is described in Section~\ref{fire}, started in the basement and spread to the stairs which connect to the first floor. Discussion of the fire's impact on the interior conditions is provided in Section~\ref{results}. Figure~\ref{fig:exterior} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the damage occurred in the basement of the structure. Fully dimensioned drawings of the interior of the basement and first floor are shown in Figs.~\ref{fig:basement} and \ref{fig:first_floor}, respectively.
 
 \begin{figure}[!ht]
-\centering
-\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
 \includegraphics[width=.7\textwidth]{../Figures/Basement} \\
+\vspace{0.2in}
 \includegraphics[width=.7\textwidth]{../Figures/First_Floor}
-\end{tabular*}
 \caption[Plan view of basement (top) and first (bottom) floor of structure.]{Plan view of basement (top) and first (bottom) floor of structure. Stairs and key windows and doors are identified using measurements collected by NIST.}
 \label{fig:simp_geom}
 \end{figure}
 
 \begin{figure}[!ht]
-\centering
-\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
 \includegraphics[width=5in]{../Figures/PGCo_Front} \\ 
+\vspace{0.1in}
 \includegraphics[width=5in]{../Figures/PGCo_Rear}
-\end{tabular*}
 \caption{Photographs showing the front (top) and rear (bottom) exterior of the structure after the incident.}
 \label{fig:exterior}
 \end{figure}
@@ -319,6 +321,10 @@ The fire, which is described in Section~\ref{fire}, started in the basement and 
 
 \section{Fire}
 \label{fire}
+
+On-scene photographs and post-incident reports were used to estimate the type of fuel, fire size, and ventilation openings on the structure.
+
+In reality, the quantities associated with these input parameters are not fixed values; rather, a model input parameter can be thought of as a point estimate from a distribution of possible input parameters with some associated amount of uncertainty. Any change in an input parameter (such as the HRR) for a given scenario would result in a change in the output quantity (such as the hot gas layer (HGL) temperature). For example, according to the McCaffrey, Quintiere, and Harkleroad~\cite{SFPE:Walton} empirical correlation, the HGL temperature in a well-ventilated compartment fire is proportional to the HRR raised to the two-thirds power. Following this relationship, a 7.5~\% increase in the HRR would result in a 5~\% increase in the HGL temperature~\cite{NUREG_1824_Sup_1}. More detailed discussion on the propagation of parameter uncertainty in fire models is available in a validation study that was sponsored by the U.S. Nuclear Regulatory Commission~\cite{NUREG_1824_Sup_1}. The following subsections describe the inputs that were used to develop the simulation, including any approximations or assumptions that were made.
 
 \section{Materials}
 \label{matl}
@@ -340,10 +346,13 @@ While the fires were represented as fuel sources with a constant area (Section~\
 
 \section{Ventilation}
 \label{Vents}
-The simulations in this study account for changes in the ventilation due to a combination of fire department operations (opening doors, breaking windows), fire acting on the structure (fire breaching windows/doors) and wind (restricting flow, closing doors). Three ventilation scenarios were considered in this study. Each scenario followed the timeline of events outlined in Table~\ref{tab:vents}. The difference in each scenario is the wind boundary condition. Simulations were run at 0~m/s (0~mph), 4.47~m/s (10~mph), and 8.94~m/s (20~mph) wind velocities with a flow direction from the rear toward the front of the structure. Based on local weather conditions, mean wind velocities ranged between 4.47~m/s (10~mph) and 8.94~m/s (20~mph). The case without wind was run to control for the impact of wind on the flow of hot gases within the structure.
+The simulations in this study account for changes in the ventilation due to a combination of fire department operations (opening doors, breaking windows), fire acting on the structure (fire breaching windows/doors) and wind (restricting flow, closing doors). The ventilation times and ventilation areas represent our best understanding of the incident. The times of ventilation changes for doors and windows are provided in Table~\ref{tab:vents}.
+
+During the time at which the firefighters exited the structure or were rescued from the structure, the state of some windows and doors in the structure was known. The state of the vents (opened versus closed) resulted in the establishment of a flow path in the interior stairwell leading from the basement to the first floor. However, the exact time of operation for other doors/windows was not known. Therefore, the following doors were assumed to be open at the start of the simulation: 1) the basement door, and 2) the basement windows on the left rear corner of the structure. The states of the front door and front window were specified at certain times based on observations (i.e. forcible entry, wind effects, forced window breakage) from post-incident reports.
 
 Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open rear basement door and two open windows at the start of the simulation are significantly larger than the total effective area of leakage of a structure of this type. Therefore, any leakage in the structure would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
 
+In addition to the state of openings within the structure, three wind scenarios were considered in this study. Each scenario followed the timeline of events outlined in Table~\ref{tab:vents}. The difference in each scenario is the wind boundary condition. Simulations were run with 0~m/s (0~mph), 4.5~m/s (10~mph), and 8.9~m/s (20~mph) wind velocities, all with a flow direction from the rear toward the front of the structure. Based on local weather conditions, mean wind velocities ranged between 4.5~m/s (10~mph) and 8.9~m/s (20~mph) with gusts up to 13.4~m/s (30~mph)~\cite{PGCounty2013}. The case without wind was run to control for the impact of wind on the flow of hot gases within the structure.
 
 \begin{table}
 \centering
@@ -378,11 +387,11 @@ D^* = \left(
 \label{eq:mesh}
 \end{equation}   
 From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the
-relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm, the characteristic fire diameter to cell size ($D^*/\dx$) ratio is 12 for the 1.5~MW bathroom fire and 20 for the 6.75~MW basement fire. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. The grid resolution used in this model is within or exceeds typical engineering $D^*/\dx$ values.
+relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm (3.9~in), the characteristic fire diameter to cell size ($D^*/\dx$) ratio is 12 for the 1.5~MW bathroom fire and 20 for the 6.75~MW basement fire. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. The grid resolution used in this model is within or exceeds typical engineering $D^*/\dx$ values.
 
-As discussed in Section~\ref{geom}, the structure has dimensions of 9.14~m (30~ft) by 7.62~m (25~ft) and a total height of 7.31~m (24~ft). To sufficiently resolve the wind boundary condtion, the computational domain was extended beyond the volume of the structure. The large domain led to the use of two separate grid resolutions, a 10~cm resolution and a 20~cm resolution. The 10~cm resolution encompasses the structure with a total volume 14~m (46~ft) by 12~m (40ft) by 8~m (26~ft) that required 1.8 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. 
+As discussed in Section~\ref{geom}, the structure has dimensions of 9.14~m (30~ft) by 7.62~m (25~ft) and a total height of 7.31~m (24~ft). To sufficiently resolve the wind boundary condtion, the computational domain was extended beyond the volume of the structure. The large domain led to the use of two separate grid resolutions, a 10~cm (3.9~in) resolution and a 20~cm (7.8~in) resolution. The 10~cm resolution encompasses the structure with a total volume 14~m (46~ft) by 12~m (40ft) by 8~m (26~ft) that required a total of 1.8 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm.
 
-Figure~\ref{fig:geom_grid} shows the front of the structure rendered in Smokeview with the 10~cm mesh. The domain was divided into 16 equally sized meshes (each containing 150,000 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 1.5~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:mod_param} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
+Figure~\ref{fig:geom_grid} shows the front of the structure and surrounding domain rendered in Smokeview with the 10~cm  and 20~cm meshes. The domain was divided into 16 equally sized meshes (each containing 150,000 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 1.5~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:mod_param} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
 
 \begin{figure}[!ht]
 \centering
