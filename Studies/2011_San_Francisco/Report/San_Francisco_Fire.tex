@@ -40,7 +40,7 @@
 \hypersetup{
   pdftitle={Simulation of a Fire in a Hillside Residential Structure - San Francisco, CA},
   pdfauthor={Overholt, Kristopher J., Weinschenk, Craig G., and Madrzykowski, Daniel},
-  pdfsubject={The Fire Dynamics Simulator (FDS) fire model, which is developed and maintained by the National Institute of Standards and Technology (NIST), was used to provide insight into the dynamics of a fire that occurred on June 2, 2011, within a multi-level, single-family residential structure in San Francisco, CA, that resulted in the death of two firefighters. The inputs for the FDS simulations are documented in this report and are based on the fire scenario, including the building geometry, interior furnishings, and ventilation conditions. The fire started in the basement and resulted in ventilation limited (fuel rich) fire conditions in the basement area. The fire originated in the basement, and the interior stairwell acted as a chimney for hot gases in the basement to flow towards areas of lower pressure via the interior stairwell towards the front of the structure. After the rear basement windows began to fail, the combustion gases at elevated temperature and pressure in the basement flowed upwards towards lower pressure areas via the stairwell. The temperature of the gases in the interior stairwell was estimated to be in excess of 700~$^{\circ}$C (1300~$^{\circ}$F). Two firefighters were located in the flow path between the basement and the doors on the front side of the structure, were exposed to these elevated temperatures, and later died as a result of their injuries.},
+  pdfsubject={The Fire Dynamics Simulator (FDS) fire model, which is developed and maintained by the National Institute of Standards and Technology (NIST), was used to provide insight into the dynamics of a fire that occurred on June 2, 2011, within a multi-level, single-family residential structure in San Francisco, CA, that resulted in the death of two firefighters. The inputs for the FDS simulation are documented in this report and are based on the fire scenario, including the building geometry, interior furnishings, and ventilation conditions. The fire started in the basement and resulted in ventilation limited (fuel rich) fire conditions in the basement area. The fire originated in the basement, and the interior stairwell acted as a chimney for hot gases in the basement to flow towards areas of lower pressure via the interior stairwell towards the front of the structure. After the rear basement windows began to fail, the combustion gases at elevated temperature and pressure in the basement flowed upwards towards lower pressure areas via the stairwell. The temperature of the gases in the interior stairwell was estimated to be in excess of 700~$^{\circ}$C (1300~$^{\circ}$F). Two firefighters were located in the flow path between the basement and the doors on the front side of the structure, were exposed to these elevated temperatures, and later died as a result of their injuries.},
   pdfkeywords={flow path; fire dynamics; LODD; fire modeling; FDS simulation}
 }
 
@@ -222,7 +222,7 @@ W \> Watt \\
 \chapter*{\centering Abstract}
 \pagenumbering{gobble}
 
-The Fire Dynamics Simulator (FDS) fire model, which is developed and maintained by the National Institute of Standards and Technology (NIST), was used to provide insight into the dynamics of a fire that occurred on June 2, 2011, within a multi-level, single-family residential structure in San Francisco, CA, that resulted in the death of two firefighters. The inputs for the FDS simulations are documented in this report and are based on the fire scenario, including the building geometry, interior furnishings, and ventilation conditions. The fire started in the basement and resulted in ventilation limited (fuel rich) fire conditions in the basement area.
+The Fire Dynamics Simulator (FDS) fire model, which is developed and maintained by the National Institute of Standards and Technology (NIST), was used to provide insight into the dynamics of a fire that occurred on June 2, 2011, within a multi-level, single-family residential structure in San Francisco, CA, that resulted in the death of two firefighters. The inputs for the FDS simulation are documented in this report and are based on the fire scenario, including the building geometry, interior furnishings, and ventilation conditions. The fire started in the basement and resulted in ventilation limited (fuel rich) fire conditions in the basement area.
 
 The fire originated in the basement, and the interior stairwell acted as a chimney for hot gases in the basement to flow towards areas of lower pressure via the interior stairwell towards the front of the structure. After the rear basement windows began to fail, the combustion gases at elevated temperature and pressure in the basement flowed upwards towards lower pressure areas via the stairwell. The temperature of the gases in the interior stairwell was estimated to be in excess of 700~$^{\circ}$C (1300~$^{\circ}$F). Two firefighters were located in the flow path between the basement and the doors on the front side of the structure, were exposed to these elevated temperatures, and later died as a result of their injuries.
 
@@ -234,12 +234,12 @@ The fire originated in the basement, and the interior stairwell acted as a chimn
 
 Part of the function of the Fire Research Division at the National Institute of Standards and Technology (NIST) is to develop and apply technology, measurements, and standards to improve the understanding of the behavior, prevention, and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) fire model to provide insight into the fire development and thermal conditions of fires that have resulted in line of duty deaths (LODDs)~\cite{Madrzykowski:1,Iowa,Texas,Bryner:Charleston,barowy:texas,Weinschenk:Chicago}. The objective of these studies has been to improve the safety and effectiveness of firefighters.
 
-On June 2, 2011, a fire in a multi-level, wood-frame residential structure claimed the life of two firefighters of the San Francisco Fire Department. NIST examined the fire dynamics of this incident at the request of the National Institute for Occupational Safety and Health (NIOSH) and the San Francisco Fire Department. Computer simulations of the fire incident were conducted using the NIST Fire Dynamics Simulator~\cite{FDS_Users_Guide} and Smokeview~\cite{Smokeview_Users_Guide} software to provide insight into the fire development and thermal conditions that likely existed in the residence during the fire. The specific objectives of the simulations detailed in this report are: 
+On June 2, 2011, a fire in a multi-level, wood-frame residential structure claimed the life of two firefighters of the San Francisco Fire Department. NIST examined the fire dynamics of this incident at the request of the National Institute for Occupational Safety and Health (NIOSH) and the San Francisco Fire Department. A computer simulation of the fire incident was conducted using the NIST Fire Dynamics Simulator~\cite{FDS_Users_Guide} and Smokeview~\cite{Smokeview_Users_Guide} software to provide insight into the fire development and thermal conditions that likely existed in the residence during the fire. The specific objectives of the simulation detailed in this report are:
 \begin{enumerate}
 \item To examine the effect of fire-induced flow paths (including temperature, pressure, and fire conditions) in this multi-level residential structure using physics-based calculations.
 \item To provide visualizations of the fire behavior that are representative of the conditions that members of the San Francisco Fire Department likely experienced during the course of their interior operations.
 \end{enumerate}
-This document describes the input and the results of the FDS (version 6.1.2) simulations. The simulations were developed using a combination of knowledge of the fire scenario and appropriate engineering approximations and assumptions. Analysis of the simulation results focuses on the hazardous conditions that developed following the development of a flow path inside of the structure. This document is organized as follows: Section~\ref{sec:incident_summary} provides a summary of the fire incident, Section~\ref{sec:model_description} describes the relevant model input parameters and assumptions that were used to develop the simulations, Section~\ref{sec:model_results} presents the simulation results, and Section~\ref{sec:discussion} discusses the simulation results as they relate to firefighter safety and effectiveness. Appendix~\ref{sec:drawings} contains dimensioned drawings of the basement, first, and second floors of the structure.
+This document describes the input and the results of the FDS (version 6.1.2) simulation. The simulation was developed using a combination of knowledge of the fire scenario and appropriate engineering approximations and assumptions. Analysis of the simulation results focuses on the hazardous conditions that developed following the development of a flow path inside of the structure. This document is organized as follows: Section~\ref{sec:incident_summary} provides a summary of the fire incident, Section~\ref{sec:model_description} describes the relevant model input parameters and assumptions that were used to develop the simulation, Section~\ref{sec:model_results} presents the simulation results, and Section~\ref{sec:discussion} discusses the simulation results as they relate to firefighter safety and effectiveness. Appendix~\ref{sec:drawings} contains dimensioned drawings of the basement, first, and second floors of the structure.
 
 
 \chapter{Summary of the Fire Incident}
@@ -298,7 +298,7 @@ Incident Time  &  Fire Behavior / Fireground Operation                          
 \end{tabular}
 \label{tab:incident_timeline}
 \end{table}
- 
+
 
 \chapter{Model Description}
 \label{sec:model_description}
@@ -307,7 +307,7 @@ Fire Dynamics Simulator~\cite{FDS_Users_Guide} is a computational fluid dynamics
 
 Smokeview is a software tool designed to visualize simulation results from FDS~\cite{Smokeview_Users_Guide}. Smokeview visualizes smoke and other attributes of the fire simulation using traditional scientific methods such as displaying tracer particle flow, two dimensional (2D) or three dimensional (3D) shaded contours of gas flow data such as temperature and flow vectors showing flow direction and magnitude. Smokeview has the ability to visualize fire and smoke by displaying a series of partially transparent planes where the transparencies in each plane (at each grid node) are determined from soot densities computed by FDS. Smokeview can also visualize data at particular snapshots in time using 2D or 3D contours of data that show temperature, flow direction, and flow magnitude.
 
-Input data from various sources must be collected and documented to simulate a fire using FDS or any other fire model. For the simulation results presented in this document, information was obtained from two primary sources. The following information was gathered from the fire scene: the geometry of the building and the compartments being modeled, the size and location of exterior and interior ventilation openings, and documentation of fire damage to the building. The following information was gathered from witnesses, first responders, reports, and recorded media such as fire ground radios or photographs: information on the fire development timeline, the sequence and approximate timing of ventilation openings to the outside, and weather conditions. 
+Input data from various sources must be collected and documented to simulate a fire using FDS or any other fire model. For the simulation results presented in this document, information was obtained from two primary sources. The following information was gathered from the fire scene: the geometry of the building and the compartments being modeled, the size and location of exterior and interior ventilation openings, and documentation of fire damage to the building. The following information was gathered from witnesses, first responders, reports, and recorded media such as fire ground radios or photographs: information on the fire development timeline, the sequence and approximate timing of ventilation openings to the outside, and weather conditions.
 
 
 \clearpage
@@ -353,7 +353,7 @@ The fire, which is described in Section~\ref{sec:fires}, originated in the finis
 
 On-scene photographs and post-incident reports were used to estimate the type of fuel, fire size, and ventilation openings on the structure. Based on these sources of information, the simulation included three source fires: 1)~an initial couch fire in the basement, 2)~a flashover fire that involved additional furniture items in the basement, and 3) a fire that occurred on the balcony located on the rear exterior side of the basement.
 
-The basement primarily contained large upholstered polyurethane furniture items, and the balcony was constructed of wood. The HRR of the initial couch fire was based on an experimentally measured HRR for a mattress fire~\cite{madrzykowski2009fire} to represent the fire growth rate of a similar household furniture item. The HRRs of the additional furniture items were estimated based on previous experimental work that characterized the HRR of similar upholstered furniture fuel items~\cite{madrzykowski2009fire,Madrzykowski:2,Babrauskas:1}. Other combustible items and furnishings such as tables, stools, bookshelves, and carpet were present in the basement living room. However, to simplify the analysis and specification of the design fire, only the large upholstered furniture fuel items and balcony were included in the simulation because they were considered to have contributed the largest amount of energy in this fire scenario.
+The basement primarily contained upholstered polyurethane furniture, and the balcony was constructed of wood. The upholstered furniture items located in the middle of the basement living room were very large and flat, similar to the size and geometry of a mattress. Therefore, the HRR of the initial couch fire was based on an experimentally measured HRR for a mattress fire~\cite{madrzykowski2009fire} to represent the fire growth rate of a similar household furniture item. The HRRs of the additional furniture items were estimated based on previous experimental work that characterized the HRR of similar upholstered furniture fuel items~\cite{madrzykowski2009fire,Madrzykowski:2,Babrauskas:1}. Other combustible items and furnishings such as tables, stools, bookshelves, and carpet were present in the basement living room. However, to simplify the analysis and specification of the design fire, only the large upholstered furniture fuel items and balcony were included in the simulation because they were considered to have contributed the largest amount of energy in this fire scenario.
 
 The primary fuel packages were located in the basement as shown in Fig.~\ref{fig:fuel_placement}. In this figure, the numbered labels indicate the order in which the fuel items were burning: 1)~the initial couch fire, 2)~the secondary furniture fires, and 3)~the balcony fire.
 
@@ -458,16 +458,10 @@ Another simplification of the model is that the sources of the gas phase polyure
 
 A time-dependent burning rate was specified for each of the fuel packages in terms of a fuel mass flux. The fuel mass flux is the amount of fuel vapor per unit area that is released from the surface of each fuel package shown in Fig.~\ref{fig:fuel_placement}. The specified time-dependent fuel mass flux for each fuel package corresponds to the HRRs that were described earlier. The HRR from each individual fuel package contributes to the total HRR shown in Fig.~\ref{fig:hrr}. FDS then determines the amount of combustion that occurs throughout the simulation based on the amount of available fuel and oxygen at a given location. Each fuel item was modeled as a 3D object with surfaces from which a specified amount of fuel flows into the domain, mixes with air, and burns.
 
-In reality, the quantities associated with model input parameters are not fixed values; rather, a model input parameter can be thought of as a point estimate from a distribution of possible input parameters with some associated amount of uncertainty. Any change in an input parameter (such as the HRR) for a given scenario would result in a change in the output quantity (such as the hot gas layer (HGL) temperature). For example, according to the McCaffrey, Quintiere, and Harkleroad~\cite{SFPE:Walton} empirical correlation, the HGL temperature in a well-ventilated compartment fire is proportional to the HRR raised to the two-thirds power. Following this relationship, a 7.5~\% increase in the HRR would result in a 5~\% increase in the HGL temperature~\cite{NUREG_1824_Sup_1}. More detailed discussion on the propagation of parameter uncertainty in fire models is available in a validation study that was sponsored by the U.S. Nuclear Regulatory Commission~\cite{NUREG_1824_Sup_1}. The following subsections describe the inputs that were used to develop the simulation, including any approximations or assumptions that were made.
-
 \section{Materials}
 \label{sec:materials}
 
 While the fires were represented as fuel sources with a constant area (Section~\ref{sec:fires}), from a heat transfer perspective, it is important to define the material properties of the ceiling, walls, and floors (density, thermal conductivity, specific heat, and thickness) to account for heat transfer and energy storage. In this study, the material properties of gypsum board~\cite{WAKILI2007} were specified on the finished walls and ceilings of the structure. Table~\ref{tab:model_parameters} shows the material properties of the gypsum board that were used in the simulation.
-
-
-\clearpage
-
 
 \section{Ventilation}
 \label{sec:ventilation}
@@ -501,10 +495,6 @@ Simulation Time      &  Ventilation Area  &  Ventilation Type    &  Ventilation 
 \label{tab:ventilation_timeline}
 \end{table}
 
-
-\clearpage
-
-
 \section{Numerical Mesh}
 \label{sec:numerical_mesh}
 
@@ -512,12 +502,12 @@ For the simulation, a measure of how well the flow field is resolved can be esti
 \begin{equation}
 D^* = \left(
      \frac{\dQ}{\rho_\infty \, c_p \, T_\infty \, \sqrt{g}}
-     \right)^\frac{2}{5} 
+     \right)^\frac{2}{5}
 \label{eq:mesh}
 \end{equation}
 From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values that ranged between 4 and 16 produced results that were adequate for engineering calculations~\cite{NUREG_1824}. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm, the ratio of the characteristic fire diameter to cell size ($D^*/\dx$) was 18 for the initial couch fire (combined HRR of 5~MW), 31 for the secondary flashover fire in the basement (combined HRR of 19~MW), and 32 for the maximum prescribed fire size in the structure (combined HRR of 20~MW). Therefore, the grid resolution used in this model results in a $D^*/\dx$ ratio that exceeds typical engineering values. Note that Eq.~\ref{eq:mesh} relates to gas-phase phenomena, which is the primary concern of this study because the fires were explicitly specified instead of attempting to predict the amount of pyrolysis or flame spread in the scenario.
 
-As discussed in Section~\ref{sec:geometry}, the structure had exterior dimensions of 8.5~m (28~ft) by 17.7~m (58~ft) and a height of 5.9~m (19~ft) above street level. To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The dimensions of the computational domain were 11.5~m (38~ft) by 22~m (72~ft) and a height of 13.6~m (45~ft). A grid resolution of 10~cm (3.9~in) was used, which resulted in a total of approximately 3.4 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas snapped to the nearest 10~cm. Figure~\ref{fig:SMV_exterior_grid} shows the front and rear sides of the structure rendered in Smokeview with the 10~cm mesh.
+As discussed in Section~\ref{sec:geometry}, the structure had exterior dimensions of 8.5~m (28~ft) by 17.7~m (58~ft) and a height of 5.9~m (19~ft) above street level. To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The dimensions of the computational domain were 11.5~m (38~ft) by 22~m (72~ft) and a height of 13.6~m (45~ft). A grid resolution of 10~cm (3.9~in) was used, which resulted in a total of approximately 3.4 million computational cells. As a result, all of the obstructions, ventilation openings (holes, doors, and windows), and fire areas snapped to the nearest 10~cm. Figure~\ref{fig:SMV_exterior_grid} shows the front and rear sides of the structure rendered in Smokeview with the 10~cm grid cells.
 
 \begin{figure}[!ht]
 \includegraphics[width=5.0in]{../Figures/SMV_Exterior_Grid_Front} \\
@@ -531,7 +521,7 @@ As discussed in Section~\ref{sec:geometry}, the structure had exterior dimension
 \clearpage
 
 
-The domain was divided into 16 meshes (each containing between 184,000 and 248,200 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 2~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:model_parameters} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
+The domain was divided into 16 meshes (each containing between 184,000 and 248,200 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 2~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes.
 
 \begin{figure}[!ht]
 \includegraphics[width=4.5in]{../Figures/SMV_Exterior_Meshes}
@@ -539,6 +529,17 @@ The domain was divided into 16 meshes (each containing between 184,000 and 248,2
 {Rear-left side of the structure within the computational domain with multiple meshes.}
 \label{fig:mult_mesh}
 \end{figure}
+
+
+\clearpage
+
+
+\section{Summary of Model Input Parameters}
+\label{sec:summary_of_model_inputs}
+
+Table~\ref{tab:model_parameters} shows a summary of the model input parameters for the simulation that was conducted as part of this study. In reality, the quantities associated with model input parameters are not fixed values; rather, a model input parameter can be thought of as a point estimate from a distribution of possible input parameters with some associated amount of uncertainty. Any change in an input parameter (such as the HRR) for a given scenario results in a change in the output quantity (such as the hot gas layer (HGL) temperature).
+
+For example, according to the McCaffrey, Quintiere, and Harkleroad~\cite{SFPE:Walton} empirical correlation, the HGL temperature in a well-ventilated compartment fire is proportional to the HRR raised to the two-thirds power. Following this relationship, a 7.5~\% increase in the HRR would result in a 5~\% increase in the HGL temperature~\cite{NUREG_1824_Sup_1}. More detailed discussion on the propagation of parameter uncertainty in fire models is available in a validation study that was sponsored by the U.S. Nuclear Regulatory Commission~\cite{NUREG_1824_Sup_1}.
 
 \begin{table}[!ht]
 \caption[Relevant fire model input parameters]
@@ -577,7 +578,7 @@ Material: Gypsum Board~\cite{WAKILI2007}     &  Thermal conductivity: 0.28~\si{W
 \chapter{Model Results}
 \label{sec:model_results}
 
-To examine the results of the simulations, it is important to link the timelines from the fire scene to the simulation times. Table~\ref{tab:combined_timeline} shows the fireground timeline~\cite{NIOSH:Bowyer2} along with the corresponding simulation times.
+To examine the results of the simulation, it is important to link the timelines from the fire scene to the simulation times. Table~\ref{tab:combined_timeline} shows the fireground timeline~\cite{NIOSH:Bowyer2} along with the corresponding simulation times.
 
 \begin{table}[!ht]
 \caption[Fire incident and simulation event timeline]
@@ -785,7 +786,7 @@ The temperature vectors shown in Fig.~\ref{fig:smv_temperature_vectors} indicate
 \chapter{Discussion of Simulation Results}
 \label{sec:discussion}
 
-The results of the simulations are discussed in the following sections. Section~\ref{sec:simulated_flow_path} addresses the results of the simulation as they relate to the flow path that was established in the interior stairwell. Section~\ref{sec:assessing_the_hazard} examines the model results as they relate to the hazardous conditions and exposure temperatures in the interior stairwell. Section~\ref{sec:tactical_condsiderations} discusses tactical considerations and outcomes of the fire incident as they relate to the fire dynamics and flow path conditions that have been observed in recent experimental research.
+The results of the simulation are discussed in the following sections. Section~\ref{sec:simulated_flow_path} addresses the results of the simulation as they relate to the flow path that was established in the interior stairwell. Section~\ref{sec:assessing_the_hazard} examines the model results as they relate to the hazardous conditions and exposure temperatures in the interior stairwell. Section~\ref{sec:tactical_condsiderations} discusses tactical considerations and outcomes of the fire incident as they relate to the fire dynamics and flow path conditions that have been observed in recent experimental research.
 
 \section{Simulated Interior Stairwell Flow Path}
 \label{sec:simulated_flow_path}
@@ -857,7 +858,7 @@ The timing of the interior attack in the basement occurred after delays in the f
 
 There have been many previous fire incidents~\cite{NIOSH:Pettit,NIOSH:Washenitz,NIOSH:Mezzanotte,NIOSH:McFall,NIOSH:McFall2,NIOSH:McFall3,NIOSH:Berardinelli,NIOSH:Koedam,NIOSH:McFall4,NIOSH:Tarley,NIOSH:Braddee,NIOSH:Merinar,NIOSH:Bowyer2,NIOSH:Loflin,NIOSH:Bowyer} in which changes in the flow paths are thought to have had an adverse impact on firefighter and occupant safety. Table~\ref{tab:LODD} lists the NIOSH investigation reports from the past 15 years in which it could be determined that a flow path played a role in the related incident. This table lists the NIOSH investigation number, the outcome, and a brief description of the flow path details.
 
-Based on a review of these incidents, it is clear that fires with rapidly developing or changing flow paths are a significant hazard to the fire service. The development of (or changes to) a flow path could be caused by the failure of a component of the structure, such as a door, window, or portion of a ceiling, wall or floor. Environmental conditions such as wind can generate hazardous thermal conditions within a flow path. Uncoordinated ventilation procedures can also be the cause of increased thermal hazards within a flow path. 
+Based on a review of these incidents, it is clear that fires with rapidly developing or changing flow paths are a significant hazard to the fire service. The development of (or changes to) a flow path could be caused by the failure of a component of the structure, such as a door, window, or portion of a ceiling, wall or floor. Environmental conditions such as wind can generate hazardous thermal conditions within a flow path. Uncoordinated ventilation procedures can also be the cause of increased thermal hazards within a flow path.
 
 \begin{table}[!ht]
 \caption[Flow path related LODD/LODI incidents]
@@ -902,7 +903,7 @@ F2012-28 \cite{NIOSH:Bowyer}        &  1 LODD             &  Attic fire extended
 \chapter{Summary}
 \label{sec:summary}
 
-NIST's Fire Dynamics Simulator was used to provide insight into the fire dynamics of a fire that occurred within a multi-level, single-family residential structure in San Francisco, CA, that resulted in the death of two firefighters. The fuel, fire size, and fire growth rate that were used in the FDS simulations were estimated by taking into account all of the available information including the NIOSH post-incident report~\cite{NIOSH:Bowyer2}, post-incident pictures, and relevant literature. This resulted in a maximum specified source fire of approximately 20~MW in the basement and rear balcony of the structure. Based on the limited ventilation conditions in the basement, the FDS simulation results indicated a HRR of approximately 2~MW as a result of the limited supply of oxygen. After the rear basement windows failed, the HRR increased to approximately 32~MW before it reached a steady-state value of approximately 20~MW.
+NIST's Fire Dynamics Simulator was used to provide insight into the fire dynamics of a fire that occurred within a multi-level, single-family residential structure in San Francisco, CA, that resulted in the death of two firefighters. The fuel, fire size, and fire growth rate that were used in the FDS simulation were estimated by taking into account all of the available information including the NIOSH post-incident report~\cite{NIOSH:Bowyer2}, post-incident pictures, and relevant literature. This resulted in a maximum specified source fire of approximately 20~MW in the basement and rear balcony of the structure. Based on the limited ventilation conditions in the basement, the FDS simulation results indicated a HRR of approximately 2~MW as a result of the limited supply of oxygen. After the rear basement windows failed, the HRR increased to approximately 32~MW before it reached a steady-state value of approximately 20~MW.
 
 The fire originated in the basement, and the interior stairwell acted as a chimney for hot gases in the basement to flow towards areas of lower pressure via the interior stairwell towards the front of the structure. After the rear basement windows failed, a flow path was established between the basement living room area and the doors located on the front side of the structure (the front door and the garage door). The rear basement window failures resulted in a rapid change in the conditions within the flow path. After the rear basement windows began to fail, the combustion gases at elevated temperature and pressure in the basement flowed upwards towards lower pressure areas via the stairwell. In the interior stairwell, the flow velocities were approximately 9~m/s (20~mph) and the temperature of the gases was estimated to be in excess of 700~$^{\circ}$C (1300~$^{\circ}$F), which exceeds the Class~III exposure temperature of 260~$^{\circ}$C (500~$^{\circ}$F).
 
