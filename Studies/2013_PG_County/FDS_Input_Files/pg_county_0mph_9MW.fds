@@ -1,8 +1,9 @@
 &HEAD CHID='pg_county_0mph_9MW', TITLE='6404 57th Ave Riverdale MD'  /
 
-&MULT ID='m1', DX=7,DY=4,DZ=4, I_UPPER=1,J_UPPER=3,K_UPPER=1/
+&MULT ID='m1', DX=7,DY=4,DZ=4, I_UPPER=1,J_UPPER=2,K_UPPER=1/
 &MESH IJK=70,40,40, XB=-2,5,-3,1,0,4, MULT_ID='m1'/
 
+&MESH IJK=70,20,40, XB=-2,12,9,13,0,8 /
 &MESH IJK=25,40,40, XB=12,17,-3,5,0,8 /
 &MESH IJK=25,40,40, XB=12,17,5,13,0,8 /
 &MESH IJK=25,40,40, XB=-7,-2,-3,5,0,8 /
@@ -87,7 +88,7 @@ RAMP ID='WIND RAMP', T=30,F=1.00 /
 &RAMP ID='cycle', T=  263, F=-1 /
 &RAMP ID='cycle', T=  264, F= 1 /
 
-&DEVC XYZ=0.1,0.1,0.1, ID='timer rear door', SETPOINT= 0.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+&DEVC XYZ=0.1,0.1,0.1, ID='timer rear door', SETPOINT= 280.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
 &HOLE XB = 4.57,5.48,6.86,7.16,0.0,2.03, COLOR='RED', TRANSPARENCY=0.75, DEVC_ID='timer rear door' / rear door
 
 #  ===========
@@ -237,23 +238,23 @@ OBST XB = 4.51,5.73,4.72,7.47,2.58,5.06, COLOR='GRAY 60' / fill bathoom
 
 &DEVC XB = 0.0,5,0.0,1,0.0,2.28, QUANTITY='HRR',   ID='Basement_HRR_1' /
 &DEVC XB = 0.0,5,1,5,0.0,2.28, QUANTITY='HRR',     ID='Basement_HRR_2' /
-&DEVC XB = 0.0,5,5,9.14,0.0,2.28, QUANTITY='HRR',  ID='Basement_HRR_3' /
+&DEVC XB = 0.0,5,5,7.16,0.0,2.28, QUANTITY='HRR',  ID='Basement_HRR_3' /
 &DEVC XB = 5,9.14,0.0,1,0.0,2.28, QUANTITY='HRR',  ID='Basement_HRR_4' /
 &DEVC XB = 5,9.14,1,5,0.0,2.28, QUANTITY='HRR',    ID='Basement_HRR_5' /
-&DEVC XB = 5,9.14,5,9.14,0.0,2.28, QUANTITY='HRR', ID='Basement_HRR_6' /
+&DEVC XB = 5,9.14,5,7.16,0.0,2.28, QUANTITY='HRR', ID='Basement_HRR_6' /
 
 &DEVC XB = 0.0,5,0.0,1,2.28,4, QUANTITY='HRR',   ID='FirstFloor_HRR_1' /
 &DEVC XB = 0.0,5,1,5,2.28,4, QUANTITY='HRR',     ID='FirstFloor_HRR_2' /
-&DEVC XB = 0.0,5,5,9.14,2.28,4, QUANTITY='HRR',  ID='FirstFloor_HRR_3' /
+&DEVC XB = 0.0,5,5,7.77,2.28,4, QUANTITY='HRR',  ID='FirstFloor_HRR_3' /
 &DEVC XB = 5,9.14,0.0,1,2.28,4, QUANTITY='HRR',  ID='FirstFloor_HRR_4' /
 &DEVC XB = 5,9.14,1,5,2.28,4, QUANTITY='HRR',    ID='FirstFloor_HRR_5' /
-&DEVC XB = 5,9.14,5,9.14,2.28,4, QUANTITY='HRR', ID='FirstFloor_HRR_6' /
+&DEVC XB = 5,9.14,5,7.77,2.28,4, QUANTITY='HRR', ID='FirstFloor_HRR_6' /
 &DEVC XB = 0.0,5,0.0,1,4,5.06, QUANTITY='HRR',   ID='FirstFloor_HRR_7' /
 &DEVC XB = 0.0,5,1,5,4,5.06, QUANTITY='HRR',     ID='FirstFloor_HRR_8' /
-&DEVC XB = 0.0,5,5,9.14,4,5.06, QUANTITY='HRR',  ID='FirstFloor_HRR_9' /
+&DEVC XB = 0.0,5,5,7.77,4,5.06, QUANTITY='HRR',  ID='FirstFloor_HRR_9' /
 &DEVC XB = 5,9.14,0.0,1,4,5.06, QUANTITY='HRR',  ID='FirstFloor_HRR_10' /
 &DEVC XB = 5,9.14,1,5,4,5.06, QUANTITY='HRR',    ID='FirstFloor_HRR_11' /
-&DEVC XB = 5,9.14,5,9.14,4,5.06, QUANTITY='HRR', ID='FirstFloor_HRR_12' /
+&DEVC XB = 5,9.14,5,7.77,4,5.06, QUANTITY='HRR', ID='FirstFloor_HRR_12' /
 
 
 &DEVC XYZ = 4.97,7.01,1.95, QUANTITY='V-VELOCITY', ID='0.08 m BS, V, Rear' /

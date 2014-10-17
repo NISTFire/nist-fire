@@ -161,6 +161,13 @@ CODEN: NTNOEF}
 \href{http://dx.doi.org/10.6028/NIST.TN.XXXX}{\bf http://dx.doi.org/10.6028/NIST.TN.XXXX} \\
 \endgroup
 
+\vspace{0.1in}
+
+\begingroup
+{\bf This publication is available free of charge from:}
+\hypersetup{urlcolor=black}
+\href{http://dx.doi.org/10.6028/NIST.TN.XXXX}{\bf http://dx.doi.org/10.6028/NIST.TN.XXXX} \\
+\endgroup
 \vfill
 
 \hspace{1in}
@@ -230,7 +237,7 @@ $c_{p}$ \> specific heat \\
 \chapter{Introduction}
 \pagenumbering{arabic}
 \setcounter{page}{1}
-Part of the function of the Fire Research Division at NIST is to develop and apply technology, measurements, and standards to improve the understanding of the behavior, prevention, and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) fire model to provide insight into the fire development and thermal conditions of fires that have resulted in line of duty deaths (LODDs)~\cite{Madrzykowski:1,Iowa,Texas,Bryner:Charleston,barowy:texas}. The objective of these studies has been to improve the safety and effectiveness of firefighters.
+Part of the function of the Fire Research Division at NIST is to develop and apply technology, measurements, and standards to improve the understanding of the behavior, prevention, and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) fire model to provide insight into the fire development and thermal conditions of fires that have resulted in line of duty deaths (LODDs)~\cite{Madrzykowski:1,Iowa,Texas,Bryner:Charleston,barowy:texas,Weinschenk:Chicago}. The objective of these studies has been to improve the safety and effectiveness of firefighters.
 
 On February 24, 2012, a fire in residential structure injured seven Prince George's County firefighters. NIST examined the fire dynamics of this incident at the request of the Prince George's Country Fire/Emergency Medical Services (EMS) Department. Computer simulations of the fire incident were conducted using the NIST Fire Dynamics Simulator~\cite{FDS_Users_Guide} and Smokeview~\cite{Smokeview_Users_Guide}  software to provide insight into the fire development and thermal conditions that likely existed in the residence during the fire. The specific objectives of the simulations detailed in this report are: 
 \begin{enumerate}
@@ -245,7 +252,7 @@ This document describes the input and the results of the FDS (version 6.1.1) sim
 \label{fire_sum}
 The account of events for this incident was documented by the Safety Investigation Team of the Prince George's County Fire/EMS Department~\cite{PGCounty2013}. At 21:11 hours on February 24, 2012 Prince George's Fire/EMS Department responded to a structure fire in Riverdale Heights, Maryland with a fire in the basement~\cite{PGCounty2013}. For the purpose of this analysis, the details regarding the timeline are considered to be approximate values. The Prince George's County report~\cite{PGCounty2013} includes narratives of actions of the response personnel. The following narrative of the incident, focused on the events which led to burn injuries to two emergency-personnel, was taken from the Prince George's County report~\cite{PGCounty2013}:
 \begin{quote}
-Truck 809 responded from quarters, as the first due truck company, and arrived on 57$^{th}$ Avenue right behind Engine 807B. When Truck 809 stopped to let Engine 807B layout, Truck 809 Can dismounted the truck and had to walk up the street as it pulled away. Truck 809 Officer observed a lot of smoke moving extremely fast through the front yard and across the street upon exiting the truck. Truck 809 Officer and Truck 809 Forcible Entry proceeded directly to the front door \ldots of the structure. Both of them entered the structure with full PPE, including SCBA, but without the protection of a hose line. Truck 809 Officer and Truck 809 Forcible Entry began primary searches on the first floor. At some point during the primary search, as conditions worsened, the front door closed, trapping Truck 809 Officer and Truck 809 Forcible Entry inside the structure. This situation could not have occurred if a charged hose line was operating inside the structure at the time the door slammed shut. They were the only firefighters operating on the first floor at that time. 
+Truck 809 responded from quarters, as the first due truck company, and arrived on 57th Avenue right behind Engine 807B. When Truck 809 stopped to let Engine 807B layout, Truck 809 Can dismounted the truck and had to walk up the street as it pulled away. Truck 809 Officer observed a lot of smoke moving extremely fast through the front yard and across the street upon exiting the truck. Truck 809 Officer and Truck 809 Forcible Entry proceeded directly to the front door \ldots of the structure. Both of them entered the structure with full PPE, including SCBA, but without the protection of a hose line. Truck 809 Officer and Truck 809 Forcible Entry began primary searches on the first floor. At some point during the primary search, as conditions worsened, the front door closed, trapping Truck 809 Officer and Truck 809 Forcible Entry inside the structure. This situation could not have occurred if a charged hose line was operating inside the structure at the time the door slammed shut. They were the only firefighters operating on the first floor at that time. 
 
 Truck 809 Forcible Entry was too large in physical stature to fit through the small window opening that he found on [the front of the structure]. Truck 809 Forcible Entry was unable to self-evacuate, and remained trapped inside. Due to rapidly deteriorating conditions, Truck 809 Officer was forced to self-rescue through another small window on [the front of the structure]. 
 
@@ -274,10 +281,10 @@ Incident Time              &  Fire Behavior / Fireground Operation  \\
 21:14:42  & Truck 809 enters structure. \\[.25cm]
 21:15:47  & Front door closed over. \\[.25cm]
 21:15:51  & Lower pane of front egress window broke. \\[.25cm]
-21:15:57  & Water applied to fire at basement. \\[.25cm]
 21:16:01  & Top pane of front egress window broke. \\[.25cm]
 21:16:16  & Truck 809 officer bailout through window. \\[.25cm]
 21:16:44  & Front door opened. \\[.25cm]
+21:17:00  & Basement door opened and water applied to fire. \\[.25cm]
 21:17:15  & Truck 809 forcible entry firefighter rescued. \\[.25cm]
 \bottomrule[1.25pt]
 \end{tabular}\par
@@ -302,11 +309,11 @@ The structure involved in this fire incident was a one story, single-family stru
 The structure was built on a sloped landscape such that on the front side of the structure the first floor was located above street level but the basement was below street level (Fig.~\ref{fig:slope}). On the rear side of the structure, the slope allowed the basement to be a walkout. Therefore, access to the structure could be made on the front side of the first floor and the rear side of the basement.
 
 \begin{figure}[!ht]
-\includegraphics[width=.7\textwidth]{../Figures/PGCo_Slope} \\
-\caption[Photograph of terrain.]{Photograph taken from front side street level showing the slope down to basement on the rear side of the structure.}
+\includegraphics[width=.5\textwidth]{../Figures/PGCo_Slope}
+\includegraphics[width=.5\textwidth]{../Figures/pg_county_slope} \\
+\caption[Photograph of terrain.]{Photograph taken from front side street level showing the slope down to basement on the rear side of the structure (left) and Smokeview rendering of model representation of sloped landscape (right).}
 \label{fig:slope}
 \end{figure}
-
 
 The fire, which is described in Section~\ref{fire}, started in the basement and spread to the stairs which connect to the first floor. Discussion of the fire's impact on the interior conditions is provided in Section~\ref{results}. Figure~\ref{fig:exterior} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the damage occurred in the basement of the structure. Fully dimensioned drawings of the interior of the basement and first floor are shown in Figs.~\ref{fig:basement} and \ref{fig:first_floor}, respectively.
 
@@ -325,7 +332,6 @@ The fire, which is described in Section~\ref{fire}, started in the basement and 
 \caption{Photographs showing the front (top) and rear (bottom) exterior of the structure after the incident.}
 \label{fig:exterior}
 \end{figure}
-
 
 \section{Fire}
 \label{fire}
@@ -356,7 +362,7 @@ While the fires were represented as fuel sources with a constant area (Section~\
 \label{Vents}
 The simulations in this study account for changes in the ventilation due to a combination of fire department operations (opening doors, breaking windows), fire acting on the structure (fire breaching windows/doors) and wind (restricting flow, closing doors). The ventilation times and ventilation areas represent our best understanding of the incident. The times of ventilation changes for doors and windows are provided in Table~\ref{tab:vents}.
 
-During the time at which the firefighters exited the structure or were rescued from the structure, the state of some windows and doors in the structure was known. The state of the vents (opened versus closed) resulted in the establishment of a flow path in the interior stairwell leading from the basement to the first floor. However, the exact time of operation for other doors/windows was not known. Therefore, the following doors were assumed to be open at the start of the simulation: 1) the basement door, and 2) the basement windows on the left rear corner of the structure. The states of the front door and front window were specified at certain times based on observations (i.e. forcible entry, wind effects, forced window breakage) from post-incident reports.
+During the time at which the firefighters exited the structure or were rescued from the structure, the state of some windows and doors in the structure was known. The state of the vents (opened versus closed) resulted in the establishment of a flow path in the interior stairwell leading from the basement to the first floor. The exact time of operation for other doors/windows was not known. Therefore, the following the two basement windows on the left rear corner of the structure were assumed to be open at the start of the simulation. The states of the front door and front window were specified at certain times based on observations (i.e. forcible entry, wind effects, forced window breakage) from post-incident reports.
 
 Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open rear basement door and two open windows at the start of the simulation are significantly larger than the total effective area of leakage of a structure of this type. Therefore, any leakage in the structure would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
 
@@ -371,14 +377,15 @@ Baseline     &   Ventilation   &  Type       & State of       &  Side of  \\
 Simulation  &  Area             &                 & Opening     &  Structure  \\
 {[s]}             &  {[m$^2$]}     &                 &                    &                  \\
 \midrule
-0               &  1.84             &  Door        &  Opened     &  Rear  \\
 0               &  1.40             &  Window      &  Opened     &  Rear  \\
 0               &  0.39             &  Window      &  Opened     &  Left   \\
 100             &  1.84             &  Door        &  Opened     &  Front   \\
 207             &  1.84             &  Door        &  Closed     &  Front   \\
 211             &  0.26             &  Window      &  Opened     &  Front   \\
 221             &  0.26             &  Window      &  Opened     &  Front  \\
-264             &  1.84             &  Door        &  Opened     & Front  \\
+264             &  1.84             &  Door        &  Opened     &  Front  \\
+280             &  1.84             &  Door        &  Opened     &  Rear  \\
+
 \bottomrule[1.25pt]
 \end{tabular}\par
 \footnotesize
@@ -397,9 +404,9 @@ D^* = \left(
 From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the
 relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm (3.9~in), the characteristic fire diameter to cell size ($D^*/\dx$) ratio is 12 for the 1.5~MW bathroom fire and 20 for the 6.75~MW basement fire. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. The grid resolution used in this model is within or exceeds typical engineering $D^*/\dx$ values.
 
-As discussed in Section~\ref{geom}, the structure has dimensions of 9.14~m (30~ft) by 7.62~m (25~ft) and a total height of 7.31~m (24~ft). To sufficiently resolve the wind boundary condtion, the computational domain was extended beyond the volume of the structure. The large domain led to the use of two separate grid resolutions, a 10~cm (3.9~in) resolution and a 20~cm (7.8~in) resolution. The 10~cm resolution encompasses the structure with a total volume 14~m (46~ft) by 12~m (40ft) by 8~m (26~ft) that required a total of 1.8 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm.
+As discussed in Section~\ref{geom}, the structure has dimensions of 9.14~m (30~ft) by 7.62~m (25~ft) and a total height of 7.31~m (24~ft). To sufficiently resolve the wind boundary condtion, the computational domain was extended beyond the volume of the structure. The large domain led to the use of two separate grid resolutions, a 10~cm (3.9~in) resolution and a 20~cm (7.8~in) resolution. The 10~cm resolution encompasses the structure with a total volume 14~m (46~ft) by 12~m (39ft) by 8~m (26~ft) that required a total of 1.3 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. The 20~cm grid resolution extends the computational domain 5~m to the left and right sides and 4~m behind the 10~cm mesh to provide sufficient computational domain for the wind profile to develop around the structure. The mesh is coarser to cut down on computational time and because high accuracy in the fluid mechanics of the air flow far from the structure is not important in the analysis of this simulation. The 20~cm resolution resulted in an additional 216,000 computational cells.
 
-Figure~\ref{fig:geom_grid} shows the front of the structure and surrounding domain rendered in Smokeview with the 10~cm  and 20~cm meshes. The domain was divided into 16 equally sized meshes (each containing 150,000 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 1.5~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:mod_param} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
+Figure~\ref{fig:geom_grid} shows the front and rear of the structure and surrounding domain rendered in Smokeview with the 10~cm and 20~cm meshes. Note the finer mesh (smaller cells) surrounding the structure and the coarser mesh on each side. The domain was divided into 12 equally sized 10~cm meshes that surround the structure (each containing 150,000 grid cells) plus 4 equally sized 20~cm meshes to the left and right of the stucture (each containing 32,000 grid cells) and one 20~cm mesh in the rear of the structure (containing 56,000 grid cells). Multiple meshes allowed the simulation to be processed in parallel, which reduced the amount of required calculation time to approximately 18~hours for the no wind case to 2~days for the 20~mph wind case. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:mod_param} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
 
 \begin{figure}[!ht]
 \centering
@@ -414,7 +421,7 @@ Figure~\ref{fig:geom_grid} shows the front of the structure and surrounding doma
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\textwidth]{../Figures/pg_county_meshtotal}
-\caption[Front-right side of the structure within the computational domain.]{Front-right side of the structure within the computational domain (with multiple meshes). Each of the 16 meshes is 3~m (9.8~ft) by 10~m (33~ft) by 5~m (16.4~ft).}
+\caption[Overhead front-left side of the structure within the computational domain.]{Overhead front-left view of the structure within the computational domain (with multiple meshes). Each of the 16 meshes is 3~m (9.8~ft) by 10~m (33~ft) by 5~m (16.4~ft).}
 \label{fig:mult_mesh}
 \end{figure}
 
@@ -444,7 +451,7 @@ Ambient Temperature$^*$                                    &  20~$^{\circ}$C (68
 \bottomrule[1.25pt]
 \end{tabular}\par
 \footnotesize
-$^{*}$Initial interior temperatures were assumed to be 20~$^{\circ}$C; exterior temperatures were 7~$^{\circ}$C~\cite{NIOSH:Bowyer}.
+$^{*}$Initial interior temperatures were assumed to be 20~$^{\circ}$C; exterior temperatures were 10~$^{\circ}$C~\cite{NIOSH:Bowyer}.
 \normalsize
 \end{table}
 
