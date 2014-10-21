@@ -124,7 +124,7 @@ for f in os.listdir(data_dir):
                     # Scale channel and set plot options depending on quantity
                     # Plot temperatures
                     if 'TC_' in channel:
-                        plt.rc('axes', color_cycle = ['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+                        plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         quantity = data[channel] * calibration_slope + calibration_intercept
                         ylabel('Temperature ($^\circ$C)', fontsize=20)
                         line_style = '-'
@@ -132,32 +132,31 @@ for f in os.listdir(data_dir):
                             axis_scale = 'Y Scale TC_Helmet'
                         else:
                             axis_scale = 'Y Scale TC'
-                    
+
                     # Plot velocities
                     if 'BDP_' in channel:
-                        plt.rc('axes', color_cycle = ['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-                        conv_inch_h2o = 0.4;
-                        conv_pascal = 248.8;
-                        
+                        plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+                        conv_inch_h2o = 0.4
+                        conv_pascal = 248.8
+
                         # Convert voltage to pascals
                         # Get zero voltage from pre-test data
                         zero_voltage = np.mean(data[channel][0:pre_test_time])
                         pressure = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)
-                        
+
                         # Calculate velocity
-                        quantity = 0.0698 * np.sqrt(np.abs(pressure) * \
-                                   (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
+                        quantity = 0.0698 * np.sqrt(np.abs(pressure) * (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
                         ylabel('Velocity (m/s)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale BDP'
-                    
+
                     # Plot heat fluxes
                     if any([substring in channel for substring in heat_flux_quantities]):
-                        plt.rc('axes', color_cycle = ['k', 'k',
-                                                      'r', 'r',
-                                                      'g', 'g',
-                                                      'b', 'b',
-                                                      'c', 'c'])
+                        plt.rc('axes', color_cycle=['k', 'k',
+                                                    'r', 'r',
+                                                    'g', 'g',
+                                                    'b', 'b',
+                                                    'c', 'c'])
 
                         # Get zero voltage from pre-test data
                         zero_voltage = np.mean(data[channel][0:pre_test_time])
@@ -168,18 +167,18 @@ for f in os.listdir(data_dir):
                         elif 'RAD' in channel:
                             line_style = '--'
                         axis_scale = 'Y Scale HF'
-                    
+
                     # Plot gas measurements
                     if any([substring in channel for substring in gas_quantities]):
-                        plt.rc('axes', color_cycle = ['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+                        plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         quantity = data[channel] * calibration_slope + calibration_intercept
                         ylabel('Concentration (%)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale GAS'
-                    
+
                     # Plot hose pressure
                     if 'HOSE_' in channel:
-                        plt.rc('axes', color_cycle = ['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+                        plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         # Skip data other than sensors on 2.5 inch hoseline
                         if '2p5' not in channel:
                             continue
@@ -244,4 +243,3 @@ for f in os.listdir(data_dir):
 
         # Write offset times and converted quantities back to reduced exp. data file
         data.to_csv(data_dir + test_name + '_Reduced.csv')
-
