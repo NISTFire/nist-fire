@@ -13,7 +13,7 @@ Cases/Boxes/Bags,Quantity inside case,Device/Label,Manufacturer,Model Number,Des
 2,6,BDP/Pressure Box,Setra,Model # 264 Part # 2641001WB2DT1C,"Tackle box with 6 pressure sensors, power, and TC passthrough",
 ,,,,,,
 Pelican Cases,,,,,,
-1,10,Arduino Data Loggers,Arduino,Yun,,"Batteries, 8 GB microSD cards, power adaptors"
+1,10,Arduino Data Loggers,Arduino,Yun,,"Batteries, 8 GB Class 4 microSD cards, power adapters"
 1,,Electronic Components and Accessories,,,,
 1,3,Wireless Routers,"Asus, Linksys","RT-AC68U, E1200","Primary router and repeater, extra router",
 1,6,Data External Hard Drives,Western Digital,Passport,2 TB external drives,
@@ -27,7 +27,7 @@ Pelican Cases,,,,,,
 1,1,Canon Rebel T3,Canon,EOS Rebel T3,Still camera,
 1,1,Olympus SP-560UZ,Olympus,SP-560UZ,Still camera,
 1,9,GoPro Cameras,GoPro,HERO3+ Black Edition,,"64 GB Class 10 microSD cards, mounts, batteries, accessories"
-1,7,Extra GoPro Cameras and Accessories,GoPro,HERO3+ Black Edition,,Accessories
+1,7,Extra GoPro Cameras and Accessories,GoPro,HERO3+ Black Edition,,"Extra 64 GB Class 10 microSD cards, mounts, batteries, accessories"
 2,1,Samsung Digital Video Recorders,Samsung,SRD-1680D(2T),2 TB HD,
 4,,12 V batteries,,,,Chargers
 1,,UPS Power Supplies,,,,
