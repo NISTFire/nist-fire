@@ -197,9 +197,41 @@ Calibration is performed in compliance with ISO/IEC 17025, ANSI/NCSL Z540-1, and
 
 The CAI 602P Gas Analyzer can detect gas concentrations for CO$_2$, CO, and O$_2$ and output a voltage from 0~V to 5~V, which corresponds to 0~\% gas concentration to a programmable full-scale concentration.
 
+\section{Usage}
+
+\begin{itemize}
+\item Turn on the gas analyzers. The gas analyzers should warm up for about one hour before usage. Keep them powered on as long as possible during testing.
+\item Plug the voltage output wires into the DAQ.
+\item Perform zero and span calibration on all analyzers. Use the left and right arrows to switch gas channels. Use shortcut keys to jump from the home measurement screen to the zero screen (F5) and span screen (F6).
+    \begin{itemize}
+    \item Flow N$_2$ and zero the CO$_2$, CO, and O$_2$ channels.
+    \item Flow CO$_2$/CO calibration gas and span the CO$_2$ and CO channels.
+    \item Use ambient air to span the O$_2$ channel.
+    \end{itemize}
+\item Use the arrow keys to set the upper ranges to the appropriate setting, which corresponds to 5~V on the output to the DAQ.
+\item Measure the delay time for the sample gas to travel through all of the plumbing (from the sample port to the analyzer). You can do this by holding a gas source near the sample port and measuring the time from exposing the sample port until the gas analyzer reads an increased value. Record this time so that the gas concentration data can be offset during data post-processing.
+\item You are ready to record gas concentration data to the DAQ.
+\end{itemize}
+
+\section{External Plumbing}
+
+{\bf Important note:} The optimal pressure at the sample inlets or calibration gas inlets is 0~psi! The internal pump will pull the gas sample as needed. The internal gas analyzer components should never be exposed to a pressure in excess of 2~psi at the sample inlet. Pressures to the gas analyzer in excess of 2~psi may damage or dislodge the internal plumbing or pump diaphragm. For the gas sample inlets, be sure to use in-line pressure regulators (max. 2~psi) combined with bypass valves to stop and relieve any incoming excess pressure. For the calibration gas inlets, be sure to use bypass tees to relieve any incoming excess pressure.
+
+\subsection{Calibration Gas Plumbing}
+
+Calibration (span) gas (CO$_2$ and CO) $\rightarrow$ Bypass tee $\rightarrow$ Span gas inlet.
+
+\subsection{Sample Gas Plumbing}
+
+Sample tubes $\rightarrow$ Filter in dry ice (for scrubbing and cooling) $\rightarrow$ Sample pump (bypass value is on) $\rightarrow$ Sample inlet on gas analyzer $\rightarrow$ Outlet tube directed away from operator.
+
+\section{Uncertainty}
+
+The uncertainty of the gas concentrations is XX.
+
 \section{Internals}
 
-An overview of the internal components of the gas analyzer is shown in Fig.~\ref{fig:gas_analyzer_5}. The internal pump is located in the center of the chassis, as shown in Fig.~\ref{fig:gas_analyzer_3}. The O$_2$ sensor is located under the foam cover. The CO sensor is located towards the front panel of the gas analyzer, and the CO$_2$ sensor is located towards the rear panel.
+An overview of the internal components of the gas analyzer is shown in Fig.~\ref{fig:gas_analyzer_5}. The internal pump is located in the center of the chassis towards the front of the analyzer, as shown in Fig.~\ref{fig:gas_analyzer_3}. The O$_2$ sensor is located on the right side of the analyzer under the foam cover. The CO sensor is located on the left side of the analyzer towards the front panel, and the CO$_2$ sensor is located on the left side of the analyzer towards the rear panel.
 
 \begin{figure}[h!]
 \includegraphics[width=5in]{../Equipment/Gas_Analyzer/Figures/gas_analyzer_5}
@@ -212,33 +244,6 @@ An overview of the internal components of the gas analyzer is shown in Fig.~\ref
 \caption{Internal pump within the gas analyzer.}
 \label{fig:gas_analyzer_3}
 \end{figure}
-
-\section{Usage}
-
-Important note: The optimal pressure from the upstream sample and calibration gas is 0~psi! The internal gas analyzer components should never have an upstream pressure in excess of 2~psi. Pressures to the gas analyzer in excess of 2~psi may damage or dislodge the internal plumbing or pump diaphragm.
-
-\begin{itemize}
-\item Turn on the gas analyzers. The gas analyzers should warm up for about one hour before usage. Keep them powered on as long as possible during testing.
-\item Perform zero and span calibration on all analyzers. The F5 and F6 keys can be used as a shortcut to go from the home measurement screen to the zero and span screens.
-    \begin{itemize}
-    \item Flow N$_2$ and zero the CO$_2$, CO, and O$_2$ channels.
-    \item Flow CO$_2$/CO calibration gas and span the CO$_2$ and CO channels.
-    \item Use ambient air to span the O$_2$ channel.
-    \end{itemize}
-\item Set the upper ranges to the appropriate setting, which corresponds to 5~V on the output to the DAQ.
-\item Measure the delay time for the sample gas to travel through all of the plumbing (from the sample port to the analyzer). You can do this by holding a CO$_2$ source near the sample port and measuring the time from exposing the sample port until the gas analyzer reads an increased value. Record this time so that the gas concentration data can be offset at a later time.
-\item You are ready to record data to the DAQ.
-\end{itemize}
-
-\section{External Plumbing}
-
-Calibration (span) gas (CO$_2$ and CO) $\rightarrow$ Bypass tee $\rightarrow$ Span gas inlet.
-
-Sample tubes $\rightarrow$ Filter in dry ice (for scrubbing and cooling) $\rightarrow$ Sample pump (bypass value is on) $\rightarrow$ Sample inlet on gas analyzer $\rightarrow$ Outlet tube directed away from operator.
-
-\section{Uncertainty}
-
-Uncertainty
 
 \section{Diagnostics}
 
@@ -273,6 +278,15 @@ Samsung Customer Service: 877-213-1222
 
 When running the ``Backup'' operation (to export the DVR movies to an external HDD), the DVR splits up files into 2.08 GB .avi movie files. See the video editing workflow section for information on joining multiple split videos into a single video file.
 
+\subsection{Usage}
+
+\begin{itemize}
+\item{Run 12~V power and BNC cables to each camera. Thermal imaging cameras (TICs) need only a BNC cable. Some TICs require powered PAL to NTSC converters.}
+\item{Press the record button on the DVR to record all channels.}
+\item{Press the record button and confirm to stop recording.}
+\item{When finished, use the backup option to retrieve the data to an external USB hard drive. Select the time range, format (.avi), and channels that you want to export, then click the backup button.}
+\end{itemize}
+
 \subsection*{FAQ}
 
 \begin{itemize}
@@ -280,9 +294,9 @@ When running the ``Backup'' operation (to export the DVR movies to an external H
     \begin{itemize}
     \item Can dump directly to AVI for a given date/time range, retains 1080 HD quality
     \end{itemize}
-\item How are hard disks formatted in DVR (FAT32, exFAT, proprietary)?
+\item How are the internal and external hard disks formatted?
     \begin{itemize}
-    \item NTFS formatted
+    \item Internal: NTFS format. External: FAT32 format. Use the menu to format hard drives.
     \end{itemize}
 \item How are files stored internally (.avi, proprietary)?
     \begin{itemize}
