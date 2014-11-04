@@ -132,7 +132,7 @@ for f in os.listdir(data_dir):
                 if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
                     continue
 
-                # If video plot mode is enabled, then plot only one group
+                # If video plot mode is enabled, then plot only one channel
                 if plot_mode == 'video':
                     if video_channel not in channel:
                         continue
