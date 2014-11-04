@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import division
+
 import os
 import numpy as np
 import pandas as pd
@@ -11,6 +13,9 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 #  = User Settings =
 #  =================
+
+# Plot mode: figure or video
+plot_mode = 'figure'
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
@@ -46,6 +51,25 @@ info = pd.read_csv(info_file, index_col=1)
 # Files to skip
 skip_files = ['_times', '_reduced', 'description_']
 
+# Location to save/output figures
+if plot_mode == 'figure':
+    save_dir = '../Figures/Script_Figures/'
+elif plot_mode == 'video':
+    save_dir = '../Figures/Video_Figures/'
+
+#  ===================
+#  = Video Plot Mode =
+#  ===================
+
+video_test_name = '286_College_Test_1'
+video_group = 'TC_A3_'
+video_channel = 'TC_A3_1'
+xlim_lower, xlim_upper, ylim_lower, ylim_upper = [0, 150, 0, 300]
+
+video_ylabel = 'Temperature ($^\circ$F)'
+video_rescale_factor = 9/5
+video_rescale_offset = 32
+
 #  ===============================
 #  = Loop through all data files =
 #  ===============================
@@ -61,6 +85,11 @@ for f in os.listdir(data_dir):
         group_name = f.split('_Test_', 1)[0]
         test_name = f[:-4]
         print 'Test ' + test_name
+
+        # If video plot mode is enabled, then plot from only one test
+        if plot_mode == 'video':
+            if video_test_name not in test_name:
+                continue
 
         # Location of scaling conversion file
         scaling_file = '../DAQ_Files/' + group_name + '_DAQ_Channel_List.csv'
@@ -90,6 +119,11 @@ for f in os.listdir(data_dir):
             if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
                 continue
 
+            # If video plot mode is enabled, then plot only one group
+            if plot_mode == 'video':
+                if video_group not in group:
+                    continue
+
             fig = figure()
 
             for channel in data.columns[1:]:
@@ -98,8 +132,12 @@ for f in os.listdir(data_dir):
                 if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
                     continue
 
-                if any([substring in channel for substring in group]):
+                # If video plot mode is enabled, then plot only one group
+                if plot_mode == 'video':
+                    if video_channel not in channel:
+                        continue
 
+                if any([substring in channel for substring in group]):
                     calibration_slope = float(scaling['Calibration Slope'][channel])
                     calibration_intercept = float(scaling['Calibration Intercept'][channel])
 
@@ -182,56 +220,91 @@ for f in os.listdir(data_dir):
                         line_style = '-'
                         axis_scale = 'Y Scale HOSE'
 
-                    # Save converted quantity back to exp. dataframe
-                    data[channel] = quantity
-
-                    plot(t, quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
+                    if plot_mode == 'figure':
+                        plot(t, quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
+                        
+                        # Save converted quantity back to exp. dataframe
+                        data[channel] = quantity
 
             # Skip plot quantity if disabled
             if info[axis_scale][test_name] == 'None':
                 continue
 
-            # Scale y-axis limit based on specified range in test description file
-            if axis_scale == 'Y Scale BDP':
-                ylim([-np.float(info[axis_scale][test_name]), np.float(info[axis_scale][test_name])])
-            else:
-                ylim([0, np.float(info[axis_scale][test_name])])
+            # Plot options for figure plotting
+            if plot_mode == 'figure':
+                # Scale y-axis limit based on specified range in test description file
+                if axis_scale == 'Y Scale BDP':
+                    ylim([-np.float(info[axis_scale][test_name]), np.float(info[axis_scale][test_name])])
+                else:
+                    ylim([0, np.float(info[axis_scale][test_name])])
 
-            # Set axis options, legend, tickmarks, etc.
-            ax1 = gca()
-            xlim([0, end_of_test - start_of_test])
-            ax1.xaxis.set_major_locator(MaxNLocator(8))
-            ax1_xlims = ax1.axis()[0:2]
-            grid(True)
-            xlabel('Time (s)', fontsize=20)
-            xticks(fontsize=16)
-            yticks(fontsize=16)
-            legend(loc='upper right', fontsize=8)
-
-            try:
-                # Add vertical lines and labels for timing information (if available)
-                for index, row in timings.iterrows():
-                    if pd.isnull(row[test_name]):
-                        continue
-                    axvline(index - start_of_test, color='0.50', lw=1)
-
-                # Add secondary x-axis labels for timing information
-                ax2 = ax1.twiny()
-                ax2.set_xlim(ax1_xlims)
-                ax2.set_xticks(timings[test_name].dropna().index.values - start_of_test)
-                setp(xticks()[1], rotation=60)
-                ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
+                # Set axis options, legend, tickmarks, etc.
+                ax1 = gca()
                 xlim([0, end_of_test - start_of_test])
+                ax1.xaxis.set_major_locator(MaxNLocator(8))
+                ax1_xlims = ax1.axis()[0:2]
+                grid(True)
+                xlabel('Time (s)', fontsize=20)
+                xticks(fontsize=16)
+                yticks(fontsize=16)
+                legend(loc='upper right', fontsize=8)
+                try:
+                    # Add vertical lines and labels for timing information (if available)
+                    for index, row in timings.iterrows():
+                        if pd.isnull(row[test_name]):
+                            continue
+                        axvline(index - start_of_test, color='0.50', lw=1)
 
-                # Increase figure size for plot labels at top
-                fig.set_size_inches(8, 8)
-            except:
-                pass
+                    # Add secondary x-axis labels for timing information
+                    ax2 = ax1.twiny()
+                    ax2.set_xlim(ax1_xlims)
+                    ax2.set_xticks(timings[test_name].dropna().index.values - start_of_test)
+                    setp(xticks()[1], rotation=60)
+                    ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
+                    xlim([0, end_of_test - start_of_test])
 
-            # Save plot to file
-            print 'Plotting ', group
-            savefig('../Figures/Script_Figures/' + test_name + '_' + group[0].rstrip('_') + '.pdf')
-            close('all')
+                    # Increase figure size for plot labels at top
+                    fig.set_size_inches(8, 8)
+                except:
+                    pass
+
+            if plot_mode == 'figure':
+                # Save plot to file
+                print 'Plotting ', group
+                savefig(save_dir + test_name + '_' + group[0].rstrip('_') + '.pdf')
+                close('all')
+            elif plot_mode == 'video':
+                rcParams.update({'figure.autolayout': True,
+                                 'axes.facecolor': 'black',
+                                 'figure.facecolor': 'black',
+                                 'figure.edgecolor': 'black',
+                                 'savefig.facecolor': 'black',
+                                 'savefig.edgecolor': 'black',
+                                 'axes.edgecolor': 'white',
+                                 'axes.labelcolor': 'white',
+                                 'lines.color': 'white',
+                                 'grid.color': 'white',
+                                 'patch.edgecolor': 'white',
+                                 'text.color': 'white',
+                                 'xtick.color': 'white',
+                                 'ytick.color': 'white'})
+
+                # Save plot to file
+                fig = figure()
+                plot(t, quantity * video_rescale_factor + video_rescale_offset, lw=3, color='yellow')
+                ax1 = gca()
+                ax1.spines['top'].set_visible(False)
+                ax1.spines['right'].set_visible(False)
+                ax1.xaxis.set_ticks_position('none')
+                ax1.yaxis.set_ticks_position('none')
+                xlim([xlim_lower, xlim_upper])
+                ylim([ylim_lower, ylim_upper])
+                xlabel('Time (s)', fontsize=20)
+                ylabel(video_ylabel, fontsize=20)
+                xticks(fontsize=16)
+                yticks(fontsize=16)
+                savefig(save_dir + test_name + '_' + group[0].rstrip('_') + '.pdf')
+                close('all')
 
         close('all')
         print
