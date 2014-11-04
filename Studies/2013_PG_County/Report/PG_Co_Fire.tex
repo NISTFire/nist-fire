@@ -329,7 +329,14 @@ The fire, which is described in Section~\ref{fire}, started in the basement and 
 
 \section{Fire}
 \label{fire}
-To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these sources of information, the FDS model includes two source fire locations in the basement: one fire in the kitchen area and one in the adjecent bathoom. At the time of the fire, the structure was vacant so the the dominant fuel was wood: exposed ceiling joists, subfloor, cabinets, and stairs.
+To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these sources of information, the FDS model includes two source fire locations in the basement: one fire in the kitchen area and one in the adjecent bathoom (Fig.~\ref{fig:basement_fire}). At the time of the fire, the structure was vacant so the the dominant fuel was wood: exposed ceiling joists, subfloor, cabinets, and stairs.
+
+\begin{figure}[!ht]
+\includegraphics[width=\textwidth]{../Figures/Basement_Fire}
+\caption[Plan view of basement indicating fire location.]{Plan view of the basement indicating the location of the two fires in the FDS model.}
+\label{fig:basement_fire}
+\end{figure}
+
 
 Wood fuel can be represented by the chemical formula, $\C\H_{1.7}\O_{0.74}\N_{0.002}$, with specified yields of carbon monoxide ($y_{\mathrm{CO}}=0.004 \; \mathrm{kg}/\mathrm{kg}$) and soot ($y_{\mathrm{C}}=0.015 \; \mathrm{kg}/\mathrm{kg}$)~\cite{SFPE:Tewarson}. The product yields are expressed in terms of the amount of carbon monoxide or soot emitted per unit mass of fuel consumed (kg/kg) and can be found in the Society of Fire Protection Engineers (SFPE) Handbook~\cite{SFPE:Tewarson}. A balanced chemical reaction for wood combustion can be written as:
 
@@ -355,16 +362,20 @@ Note that using the input lines above will invoke the simple chemistry reaction 
 
 To estimate the heat release rate per unit area (HRRPUA) of wood, Babrauskas and Grayson~\cite{babrauskas1990} conducted experiments in a cone calorimeter\footnote{The cone calorimeter is an experimental apparatus used to gather data about ignition time, mass loss, combustion products, and heat release rate among other properties associated with burning small samples of materials~\cite{ASTM:E1355}.} to determine the 5-min average of the HRRPUA for several different types of wood over a range of radiant heat fluxes. The results of that study indicate that the HRRPUA for different types of wood is approximately 50~kW/m$^2$.
 
-To calculate the total fire size, the appropriate burning area (exposed wood area) of the basement needed to be determined. Based on the floor plan of the structure, the underside of the roof was approximately 134~m$^2$ (1453~ft$^2$) with 7~m$^2$ (75~ft$^2$) walls on the front and rear sides. Additionally, there was 105~m$^2$ (1130~ft$^2$) of floor area in the attic. Examination of post-incident images indicated that the floor immediately over the rear porch burned away. That area was considered to be part of the porch fire. Based on post-incident damage, approximately 50~\% of the remaining floor area and 90~\% of the roof was considered to be fuel for the attic fire. To estimate the total attic fire size, the underside roof area (120~m$^2$), two end walls (14~m$^2$), and the floor area (43~m$^2$ or 463~ft$^2$) were included. Applying an HRRPUA of wood of 50~kW/m$^2$ results in a potential peak fire size of 9~MW. To estimate the size of the porch fire, the four walls of the porch enclosure (42~m$^2$ or 452~ft$^2$) and the floor and ceiling of the porch (24~m$^2$ or 258 ft$^2$) were included, which results in a total porch area of 66~m$^2$ (689~ft$^2$). Using the same HRRPUA of wood of 50~kW/m$^2$, the potential peak fire size on the porch was approximately 3.3~MW. Therefore, the maximum fire size for this structure was estimated to be 12.3~MW. Since the time at which the fire started is not known relative to the notification of a fire or how fast the fire spread, several simplifications were made. The first assumption is that the attic fire was specified to start at the beginning of the simulation and increase to a value of 9~MW in 10~s. The porch fire was specified to start 40~s into the simulation and increase to a value of 3.3~MW in 10~s. The 10-s ramp up time was used to prevent abrupt changes in the velocity at the fire boundary condition in FDS. The second assumption is that the sources of the gas phase wood fuel have constant areas at fixed locations (2 sources for the attic, 1 source for the porch). The following lines define the source fires in the FDS input file:
+To calculate the total fire size, the appropriate burning area (exposed wood area) of the basement needed to be determined. Based on the floor plan of the structure, 
+
+Since the time at which the fire started is not known relative to the notification of a fire or how fast the fire spread, several simplifications were made. The first assumption is that the fires start at the beginning of the simulation and increase to a value of 8.5~MW in 10~s. The 10-s ramp up time was used to prevent abrupt changes in the velocity at the fire boundary condition in FDS. The second assumption is that the sources of the gas phase wood fuel have constant areas at fixed locations (1 source for the kitchen, 1 source for the bathroom). The following lines define the source fires in the FDS input file:
 
 \begin{lstlisting}
-&SURF ID='FIRE', HRRPUA=2250., COLOR='ORANGE', TAU_Q=10 /
-&VENT XB=-13.5,-13,1,5,6.16,6.16, SURF_ID='FIRE' / 
-&VENT XB=-14.5,-14,1,5,6.16,6.16, SURF_ID='FIRE' / 
-&VENT XB=-16.5,-15.5,1,2.5,3.14,3.14, SURF_ID='FIRE', DEVC_ID='SECOND FIRE'/ 
-&DEVC XYZ = -17.2,2,0, ID='SECOND FIRE', QUANTITY='TIME', SETPOINT=40, INITIAL_STATE=.FALSE. /
+&SURF ID='burner1', HRRPUA = 2000, COLOR='BURNT ORANGE', RAMP_Q='BURN' /
+&SURF ID='burner2', HRRPUA = 4500, COLOR='BURNT ORANGE', RAMP_Q='BURN' /
+&RAMP ID='BURN', T = 0,   F = 0.  /
+&RAMP ID='BURN', T = 10,  F = 1.0 /
+&RAMP ID='BURN', T = 300, F = 1.0 /
+&OBST XB=0.6,1.2,5,6.5,0.0,0.4, SURF_IDS='burner1','INERT','INERT' /  Burner1
+&OBST XB=2.5,4,5.0,6.0,0.0,0.4, SURF_IDS='burner2','INERT','INERT' /  Burner2
 \end{lstlisting}
-Note that the coordinates here are unique for the vents are specific to the input files used for these simulations. The key point is that they are 2-D planes located at a specific area.
+Note that the coordinates here are unique for the vents are specific to the input files used for these simulations. The key point is the 2-D planar area.
 
 In reality, the quantities associated with these input parameters are not fixed values; rather, a model input parameter can be thought of as a point estimate from a distribution of possible input parameters with some associated amount of uncertainty. Any change in an input parameter (such as the HRR) for a given scenario would result in a change in the output quantity (such as the hot gas layer (HGL) temperature). For example, according to the McCaffrey, Quintiere, and Harkleroad~\cite{SFPE:Walton} empirical correlation, the HGL temperature in a well-ventilated compartment fire is proportional to the HRR raised to the two-thirds power. Following this relationship, a 7.5~\% increase in the HRR would result in a 5~\% increase in the HGL temperature~\cite{NUREG_1824_Sup_1}. More detailed discussion on the propagation of parameter uncertainty in fire models is available in a validation study that was sponsored by the U.S. Nuclear Regulatory Commission~\cite{NUREG_1824_Sup_1}. The following subsections describe the inputs that were used to develop the simulation, including any approximations or assumptions that were made.
 
@@ -434,7 +445,7 @@ relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base o
 
 As discussed in Section~\ref{geom}, the structure has dimensions of 9.14~m (30~ft) by 7.62~m (25~ft) and a total height of 7.31~m (24~ft). To sufficiently resolve the wind boundary condtion, the computational domain was extended beyond the volume of the structure. The large domain led to the use of two separate grid resolutions, a 10~cm (3.9~in) resolution and a 20~cm (7.8~in) resolution. The 10~cm resolution encompasses the structure with a total volume 14~m (46~ft) by 12~m (39ft) by 8~m (26~ft) that required a total of 1.3 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. The 20~cm grid resolution extends the computational domain 5~m to the left and right sides and 4~m behind the 10~cm mesh to provide sufficient computational domain for the wind profile to develop around the structure. The mesh is coarser to cut down on computational time and because high accuracy in the fluid mechanics of the air flow far from the structure is not important in the analysis of this simulation. The 20~cm resolution resulted in an additional 216,000 computational cells.
 
-Figure~\ref{fig:geom_grid} shows the front and rear of the structure and surrounding domain rendered in Smokeview with the 10~cm and 20~cm meshes. Note the finer mesh (smaller cells) surrounding the structure and the coarser mesh on each side. The domain was divided into 12 equally sized 10~cm meshes that surround the structure (each containing 150,000 grid cells) plus 4 equally sized 20~cm meshes to the left and right of the stucture (each containing 32,000 grid cells) and one 20~cm mesh in the rear of the structure (containing 56,000 grid cells). Multiple meshes allowed the simulation to be processed in parallel, which reduced the amount of required calculation time to approximately 18~hours for the no wind case to 3~days for the 20~mph wind case. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. Table~\ref{tab:mod_param} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
+Figure~\ref{fig:geom_grid} shows the front and rear of the structure and surrounding domain rendered in Smokeview with the 10~cm and 20~cm meshes. Note the finer mesh (smaller cells) surrounding the structure and the coarser mesh on each side. The domain was divided into 12 equally sized 10~cm meshes that surround the structure (each containing 150,000 grid cells) plus 4 equally sized 20~cm meshes to the left and right of the stucture (each containing 32,000 grid cells) and one 20~cm mesh in the rear of the structure (containing 56,000 grid cells) for a total of 17 meshes. Multiple meshes allowed the simulation to be processed in parallel, which reduced the amount of required calculation time to approximately 18~hours for the no wind case and 3~days for the 20~mph wind case. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. The boundary between the 12 10~cm meshes and 5 20~cm meshes is indicated by the {\bf bold} lines. Table~\ref{tab:mod_param} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
 
 \begin{figure}[!ht]
 \centering
@@ -448,10 +459,12 @@ Figure~\ref{fig:geom_grid} shows the front and rear of the structure and surroun
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\textwidth]{../Figures/pg_county_meshtotal}
-\caption[Overhead front-left side of the structure within the computational domain.]{Overhead front-left view of the structure within the computational domain (with multiple meshes). Each of the 16 meshes is 3~m (9.8~ft) by 10~m (33~ft) by 5~m (16.4~ft).}
+\includegraphics[width=\textwidth]{../Figures/pg_county_meshtotal2}
+\caption[Overhead front-left side of the structure within the computational domain.]{Overhead front-left view of the structure within the computational domain (with 17 meshes). The entire computational domain is 24~m (79~ft) by 16~m (53~ft) by 8~m (26~ft).}
 \label{fig:mult_mesh}
 \end{figure}
+
+\clearpage
 
 \begin{table}
 \centering
@@ -468,8 +481,8 @@ Ambient Temperature$^*$                                    &  20~$^{\circ}$C (68
                                                            &  CO Yield: 0.004~$\mathrm{kg}/\mathrm{kg}$    &                                       \\
                                                            &  Soot Yield: 0.015~$\mathrm{kg}/\mathrm{kg}$  &                                       \\
                                                            &  Heat of Combustion: 16,400~kJ/kg             &                                       \\ [.25cm]
-\multirow{2}{*}{Peak HRR}                                  &  Basement Fire: 9~MW                          & \multirow{2}{*}{Section~\ref{fire}}   \\ 
-                                                           &  Bathroom Fire: 3.3~MW                        &                                       \\ [.25cm]                     
+\multirow{2}{*}{Peak HRR}                                  &  Basement Fire: 6.75~MW                       & \multirow{2}{*}{Section~\ref{fire}}   \\ 
+                                                           &  Bathroom Fire: 1.8~MW                        &                                       \\ [.25cm]                     
 \multirow{3}{*}{Material: Wood~\cite{Incropera:1} }        &  $k$: 0.12~\si{W/(m.K)})                      & \multirow{3}{*}{Section~\ref{matl}}   \\
                                                            &  $\rho$: 510~kg/m$^3$                         &                                       \\
                                                            &  $c_{p}$: 1.38~\si{kJ/(kg.K)}                 &                                       \\ [.25cm]
