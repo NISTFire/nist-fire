@@ -15,7 +15,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Plot mode: figure or video
-plot_mode = 'video'
+plot_mode = 'figure'
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
