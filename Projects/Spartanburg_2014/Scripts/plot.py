@@ -44,7 +44,7 @@ sensor_groups = [['TC_A1_'], ['TC_A2_'], ['TC_A3_'], ['TC_A4_'],
 # Common quantities for y-axis labelling
 gas_quantities = ['CO_', 'CO2_', 'O2_']
 
-# Load exp. scaling, timings, and description file
+# Load exp. timing and description files
 timings = pd.read_csv(timings_file, index_col=0)
 info = pd.read_csv(info_file, index_col=1)
 
@@ -62,13 +62,14 @@ elif plot_mode == 'video':
 #  ===================
 
 video_test_name = '286_College_Test_1'
-video_group = 'TC_A3_'
-video_channel = 'TC_A3_1'
-xlim_lower, xlim_upper, ylim_lower, ylim_upper = [0, 150, 0, 300]
-
+video_groups = ['TC_A3_']
+video_channels = ['TC_A3_1', 'TC_A3_5']
+video_line_colors = ['yellow', 'cyan']
 video_ylabel = 'Temperature ($^\circ$F)'
 video_rescale_factor = 9/5
 video_rescale_offset = 32
+xlim_lower, xlim_upper, ylim_lower, ylim_upper = [0, 150, 0, 300]
+video_plots = {}
 
 #  ===============================
 #  = Loop through all data files =
@@ -91,9 +92,9 @@ for f in os.listdir(data_dir):
             if video_test_name not in test_name:
                 continue
 
-        # Location of scaling conversion file
-        scaling_file = '../DAQ_Files/' + group_name + '_DAQ_Channel_List.csv'
-        scaling = pd.read_csv(scaling_file, index_col=2)
+        # Location of channel list file w/ scaling and channel name information
+        channel_list_file = '../DAQ_Files/' + group_name + '_DAQ_Channel_List.csv'
+        channel_list = pd.read_csv(channel_list_file, index_col=2)
 
         # Load exp. data file
         data = pd.read_csv(data_dir + f, index_col=0)
@@ -119,9 +120,11 @@ for f in os.listdir(data_dir):
             if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
                 continue
 
-            # If video plot mode is enabled, then plot only one group
+            # If video plot mode is enabled, then plot only specified groups
             if plot_mode == 'video':
-                if video_group not in group:
+                if any([substring in group for substring in video_groups]):
+                    pass
+                else:
                     continue
 
             fig = figure()
@@ -132,14 +135,20 @@ for f in os.listdir(data_dir):
                 if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
                     continue
 
-                # If video plot mode is enabled, then plot only one channel
+                # Skip plot quantity if channel name is blank
+                if pd.isnull(channel_list['Test Specific Name'][channel]):
+                    continue
+
+                # If video plot mode is enabled, then plot only specified channels
                 if plot_mode == 'video':
-                    if video_channel not in channel:
+                    if any([substring in channel for substring in video_channels]):
+                        pass
+                    else:
                         continue
 
                 if any([substring in channel for substring in group]):
-                    calibration_slope = float(scaling['Calibration Slope'][channel])
-                    calibration_intercept = float(scaling['Calibration Intercept'][channel])
+                    calibration_slope = float(channel_list['Calibration Slope'][channel])
+                    calibration_intercept = float(channel_list['Calibration Intercept'][channel])
 
                     # Scale channel and set plot options depending on quantity
                     # Plot temperatures
@@ -220,13 +229,17 @@ for f in os.listdir(data_dir):
                         line_style = '-'
                         axis_scale = 'Y Scale HOSE'
 
+                    # Plot quantity or save quantity for later usage, depending on plot mode
                     if plot_mode == 'figure':
-                        plot(t, quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
-
+                        plot(t, quantity, lw=1.5, ls=line_style, label=channel_list['Test Specific Name'][channel])
                         # Save converted quantity back to exp. dataframe
                         data[channel] = quantity
+                    elif plot_mode == 'video':
+                        # Save quantities for later video plotting
+                        video_time = t
+                        video_plots[channel] = quantity
 
-            # Skip plot quantity if disabled
+            # Skip plot quantity if disabled in test description file
             if info[axis_scale][test_name] == 'None':
                 continue
 
@@ -273,48 +286,54 @@ for f in os.listdir(data_dir):
                 print 'Plotting ', group
                 savefig(save_dir + test_name + '_' + group[0].rstrip('_') + '.pdf')
                 close('all')
-            elif plot_mode == 'video':
-                rcParams.update({'figure.autolayout': True,
-                                 'axes.facecolor': 'black',
-                                 'figure.facecolor': 'black',
-                                 'figure.edgecolor': 'black',
-                                 'savefig.facecolor': 'black',
-                                 'savefig.edgecolor': 'black',
-                                 'axes.edgecolor': 'white',
-                                 'axes.labelcolor': 'white',
-                                 'lines.color': 'white',
-                                 'grid.color': 'white',
-                                 'patch.edgecolor': 'white',
-                                 'text.color': 'white',
-                                 'xtick.color': 'white',
-                                 'ytick.color': 'white'})
-
-                # Save plot to file
-                for frame_number, frame_time in enumerate(t):
-                    # Constrain plots to positive times less than the upper y-axis limit
-                    if (frame_time >= 0) and (frame_time <= xlim_upper):
-                        print 'Plotting Frame:', frame_time
-                        fig = figure()
-                        plot(t[:frame_number],
-                             quantity[:frame_number] * video_rescale_factor + video_rescale_offset,
-                             lw=4,
-                             color='yellow')
-                        ax1 = gca()
-                        ax1.spines['top'].set_visible(False)
-                        ax1.spines['right'].set_visible(False)
-                        ax1.xaxis.set_ticks_position('none')
-                        ax1.yaxis.set_ticks_position('none')
-                        xlim([xlim_lower, xlim_upper])
-                        ylim([ylim_lower, ylim_upper])
-                        xlabel('Time (s)', fontsize=24, fontweight='bold')
-                        ylabel(video_ylabel, fontsize=24, fontweight='bold')
-                        xticks(fontsize=20, fontweight='bold')
-                        yticks(fontsize=20, fontweight='bold')
-                        savefig(save_dir + test_name + '_' + group[0] + str(frame_time) + '.png')
-                        close('all')
-
+        
         close('all')
         print
 
         # Write offset times and converted quantities back to reduced exp. data file
         data.to_csv(data_dir + test_name + '_Reduced.csv')
+
+        if plot_mode == 'video':
+            rcParams.update({'figure.autolayout': True,
+                             'axes.facecolor': 'black',
+                             'figure.facecolor': 'black',
+                             'figure.edgecolor': 'black',
+                             'savefig.facecolor': 'black',
+                             'savefig.edgecolor': 'black',
+                             'axes.edgecolor': 'white',
+                             'axes.labelcolor': 'white',
+                             'lines.color': 'white',
+                             'grid.color': 'white',
+                             'patch.edgecolor': 'white',
+                             'text.color': 'white',
+                             'xtick.color': 'white',
+                             'ytick.color': 'white'})
+
+            # Save plot to file
+            for frame_number, frame_time in enumerate(video_time):
+                # Constrain plots to positive times less than the upper y-axis limit
+                if (frame_time >= 0) and (frame_time <= xlim_upper):
+                    print 'Plotting Frame:', frame_time
+                    fig = figure()
+                    for channel_number, channel_name in enumerate(video_plots):
+                        plot(video_time[:frame_number],
+                             video_plots[channel_name][:frame_number] * video_rescale_factor + video_rescale_offset,
+                             lw=4,
+                             color=video_line_colors[channel_number])
+                    ax1 = gca()
+                    ax1.spines['top'].set_visible(False)
+                    ax1.spines['right'].set_visible(False)
+                    ax1.xaxis.set_ticks_position('none')
+                    ax1.yaxis.set_ticks_position('none')
+                    xlim([xlim_lower, xlim_upper])
+                    ylim([ylim_lower, ylim_upper])
+                    xlabel('Time (s)', fontsize=24, fontweight='bold')
+                    ylabel(video_ylabel, fontsize=24, fontweight='bold')
+                    xticks(fontsize=20, fontweight='bold')
+                    yticks(fontsize=20, fontweight='bold')
+                    # Begin custom plot code
+                    text(35, 120, 'Temperature\nnear ceiling', color='yellow', fontsize=16, fontweight='bold', ha='center')
+                    text(35, 30, 'Temperature\n5 feet above floor', color='cyan', fontsize=16, fontweight='bold', ha='center')
+                    # End custom plot code
+                    savefig(save_dir + test_name + '_' + group[0] + str(frame_time) + '.png')
+                    close('all')
