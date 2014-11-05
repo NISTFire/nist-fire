@@ -334,6 +334,8 @@ for f in os.listdir(data_dir):
                     # Begin custom plot code
                     text(35, 120, 'Temperature\nnear ceiling', color='yellow', fontsize=16, fontweight='bold', ha='center')
                     text(35, 30, 'Temperature\n5 feet above floor', color='cyan', fontsize=16, fontweight='bold', ha='center')
+                    if frame_time >= 102:
+                        text(128, 230, 'Sprinkler\nactivates at\n102 seconds', color='white', fontsize=16, fontweight='bold', ha='center')
                     # End custom plot code
                     savefig(save_dir + video_test_name + '_' + str(frame_time) + '.png')
                     close('all')
