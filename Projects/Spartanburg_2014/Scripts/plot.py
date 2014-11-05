@@ -222,7 +222,7 @@ for f in os.listdir(data_dir):
 
                     if plot_mode == 'figure':
                         plot(t, quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
-                        
+
                         # Save converted quantity back to exp. dataframe
                         data[channel] = quantity
 
@@ -290,21 +290,28 @@ for f in os.listdir(data_dir):
                                  'ytick.color': 'white'})
 
                 # Save plot to file
-                fig = figure()
-                plot(t, quantity * video_rescale_factor + video_rescale_offset, lw=3, color='yellow')
-                ax1 = gca()
-                ax1.spines['top'].set_visible(False)
-                ax1.spines['right'].set_visible(False)
-                ax1.xaxis.set_ticks_position('none')
-                ax1.yaxis.set_ticks_position('none')
-                xlim([xlim_lower, xlim_upper])
-                ylim([ylim_lower, ylim_upper])
-                xlabel('Time (s)', fontsize=20)
-                ylabel(video_ylabel, fontsize=20)
-                xticks(fontsize=16)
-                yticks(fontsize=16)
-                savefig(save_dir + test_name + '_' + group[0].rstrip('_') + '.pdf')
-                close('all')
+                for frame_number, frame_time in enumerate(t):
+                    # Constrain plots to positive times less than the upper y-axis limit
+                    if (frame_time >= 0) and (frame_time <= xlim_upper):
+                        print 'Plotting Frame:', frame_time
+                        fig = figure()
+                        plot(t[:frame_number],
+                             quantity[:frame_number] * video_rescale_factor + video_rescale_offset,
+                             lw=4,
+                             color='yellow')
+                        ax1 = gca()
+                        ax1.spines['top'].set_visible(False)
+                        ax1.spines['right'].set_visible(False)
+                        ax1.xaxis.set_ticks_position('none')
+                        ax1.yaxis.set_ticks_position('none')
+                        xlim([xlim_lower, xlim_upper])
+                        ylim([ylim_lower, ylim_upper])
+                        xlabel('Time (s)', fontsize=24, fontweight='bold')
+                        ylabel(video_ylabel, fontsize=24, fontweight='bold')
+                        xticks(fontsize=20, fontweight='bold')
+                        yticks(fontsize=20, fontweight='bold')
+                        savefig(save_dir + test_name + '_' + group[0] + str(frame_time) + '.png')
+                        close('all')
 
         close('all')
         print
