@@ -15,7 +15,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Plot mode: figure or video
-plot_mode = 'figure'
+plot_mode = 'video'
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
@@ -335,5 +335,5 @@ for f in os.listdir(data_dir):
                     text(35, 120, 'Temperature\nnear ceiling', color='yellow', fontsize=16, fontweight='bold', ha='center')
                     text(35, 30, 'Temperature\n5 feet above floor', color='cyan', fontsize=16, fontweight='bold', ha='center')
                     # End custom plot code
-                    savefig(save_dir + test_name + '_' + group[0] + str(frame_time) + '.png')
+                    savefig(save_dir + video_test_name + '_' + str(frame_time) + '.png')
                     close('all')
