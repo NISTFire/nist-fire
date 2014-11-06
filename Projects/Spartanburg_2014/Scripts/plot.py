@@ -162,6 +162,8 @@ for f in os.listdir(data_dir):
                         ylabel('Temperature ($^\circ$C)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale TC'
+                        secondary_axis_label = 'Temperature ($^\circ$F)'
+                        secondary_axis_scale = np.float(info[axis_scale][test_name]) * 9/5 + 32
 
                     # Plot velocities
                     if 'BDP_' in channel:
@@ -180,6 +182,8 @@ for f in os.listdir(data_dir):
                         ylabel('Velocity (m/s)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale BDP'
+                        secondary_axis_label = 'Velocity (mph)'
+                        secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
 
                     # Plot heat fluxes
                     if 'HF_' in channel:
@@ -236,7 +240,7 @@ for f in os.listdir(data_dir):
                     # Plot quantity or save quantity for later usage, depending on plot mode
                     if plot_mode == 'figure':
                         quantity = pd.rolling_mean(quantity, data_time_averaging_window)  # Smooth data
-                        plot(t, quantity, lw=1.5, ls=line_style, label=channel_list['Test Specific Name'][channel])
+                        plot(t, quantity, lw=2, ls=line_style, label=channel_list['Test Specific Name'][channel])
                         # Save converted quantity back to exp. dataframe
                         data[channel] = quantity
                     elif plot_mode == 'video':
@@ -267,16 +271,25 @@ for f in os.listdir(data_dir):
                 xticks(fontsize=16)
                 yticks(fontsize=16)
 
+                # Secondary y-axis parameters
+                if secondary_axis_label:
+                    ax2 = ax1.twinx()
+                    ax2.set_ylabel(secondary_axis_label, fontsize=20)
+                    ax2.set_ylim([0, secondary_axis_scale])
+                    xticks(fontsize=16)
+                    yticks(fontsize=16)
+                    secondary_axis_label = None  # Unset secondary axis variable
+
                 try:  # Add vertical lines and labels for timing information (if available)
                     # Add secondary x-axis labels for timing information
-                    ax2 = ax1.twiny()
-                    ax2.set_xlim(ax1_xlims)
+                    ax3 = ax1.twiny()
+                    ax3.set_xlim(ax1_xlims)
                     events = timings[test_name].dropna()  # Remove nan items from timeline
                     events = events[~events.str.startswith('#')]  # Ignore events that are commented starting with a pound sign
                     [axvline(_x - start_of_test, color='0.50', lw=1) for _x in events.index.values]
-                    ax2.set_xticks(events.index.values - start_of_test)
+                    ax3.set_xticks(events.index.values - start_of_test)
                     setp(xticks()[1], rotation=60)
-                    ax2.set_xticklabels(events.values, fontsize=8, ha='left')
+                    ax3.set_xticklabels(events.values, fontsize=8, ha='left')
                     xlim([0, end_of_test - start_of_test])
 
                     # Increase figure size for plot labels at top
@@ -284,7 +297,7 @@ for f in os.listdir(data_dir):
                 except:
                     pass
 
-                legend(handles1, labels1, loc='upper right', fontsize=8)
+                legend(handles1, labels1, loc='upper left', fontsize=8)
 
             if plot_mode == 'figure':
                 # Save plot to file
