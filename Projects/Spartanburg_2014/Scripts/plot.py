@@ -10,6 +10,11 @@ from pylab import *
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
 
+
+def movingaverage(interval, window_size):
+    window = np.ones(int(window_size))/float(window_size)
+    return np.convolve(interval, window, 'same')
+
 #  =================
 #  = User Settings =
 #  =================
@@ -68,6 +73,7 @@ video_line_colors = ['yellow', 'cyan']
 video_ylabel = 'Temperature ($^\circ$F)'
 video_rescale_factor = 9/5
 video_rescale_offset = 32
+video_moving_average_window = 10
 xlim_lower, xlim_upper, ylim_lower, ylim_upper = [0, 150, 0, 300]
 video_plots = {}
 
@@ -316,8 +322,11 @@ for f in os.listdir(data_dir):
                     print 'Plotting Frame:', frame_time
                     fig = figure()
                     for channel_number, channel_name in enumerate(video_plots):
-                        plot(video_time[:frame_number],
-                             video_plots[channel_name][:frame_number] * video_rescale_factor + video_rescale_offset,
+                        t = video_time
+                        data = video_plots[channel_name] * video_rescale_factor + video_rescale_offset
+                        data = movingaverage(data, video_moving_average_window)
+                        plot(t[:frame_number],
+                             data[:frame_number],
                              lw=4,
                              color=video_line_colors[channel_number])
                     ax1 = gca()
