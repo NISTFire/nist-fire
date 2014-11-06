@@ -194,9 +194,9 @@ for f in os.listdir(data_dir):
                         zero_voltage = np.mean(data[channel][0:pre_test_time])  # Get zero voltage from pre-test data
                         quantity = (data[channel] - zero_voltage) * calibration_slope + calibration_intercept
                         ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
-                        if 'HF' in channel:
+                        if '_H' in channel:
                             line_style = '-'
-                        elif 'RAD' in channel:
+                        elif '_V' in channel:
                             line_style = '--'
                         axis_scale = 'Y Scale HF'
 
