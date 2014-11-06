@@ -258,6 +258,7 @@ for f in os.listdir(data_dir):
 
                 # Set axis options, legend, tickmarks, etc.
                 ax1 = gca()
+                handles1, labels1 = ax1.get_legend_handles_labels()
                 xlim([0, end_of_test - start_of_test])
                 ax1.xaxis.set_major_locator(MaxNLocator(8))
                 ax1_xlims = ax1.axis()[0:2]
@@ -265,8 +266,7 @@ for f in os.listdir(data_dir):
                 xlabel('Time (s)', fontsize=20)
                 xticks(fontsize=16)
                 yticks(fontsize=16)
-                legend(loc='upper right', fontsize=8)
-                
+
                 try:  # Add vertical lines and labels for timing information (if available)
                     # Add secondary x-axis labels for timing information
                     ax2 = ax1.twiny()
@@ -283,6 +283,8 @@ for f in os.listdir(data_dir):
                     fig.set_size_inches(10, 6)
                 except:
                     pass
+
+                legend(handles1, labels1, loc='upper right', fontsize=8)
 
             if plot_mode == 'figure':
                 # Save plot to file
