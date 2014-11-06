@@ -51,7 +51,7 @@ gas_quantities = ['CO_', 'CO2_', 'O2_']
 timings = pd.read_csv(timings_file, index_col=0)
 info = pd.read_csv(info_file, index_col=1)
 
-# Files to skip
+# Skip file names that contain the following strings
 skip_files = ['_times', '_reduced', 'description_']
 
 # Location to save/output figures
@@ -168,13 +168,11 @@ for f in os.listdir(data_dir):
                     # Plot velocities
                     if 'BDP_' in channel:
                         plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+
                         conv_inch_h2o = 0.4
                         conv_pascal = 248.8
-
-                        # Convert voltage to pascals
-                        # Get zero voltage from pre-test data
-                        zero_voltage = np.mean(data[channel][0:pre_test_time])
-                        pressure = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)
+                        zero_voltage = np.mean(data[channel][0:pre_test_time])  # Get zero voltage from pre-test data
+                        pressure = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)  # Convert voltage to pascals
 
                         # Calculate velocity
                         quantity = 0.0698 * np.sqrt(np.abs(pressure) *
@@ -193,8 +191,7 @@ for f in os.listdir(data_dir):
                                                     'b', 'b',
                                                     'c', 'c'])
 
-                        # Get zero voltage from pre-test data
-                        zero_voltage = np.mean(data[channel][0:pre_test_time])
+                        zero_voltage = np.mean(data[channel][0:pre_test_time])  # Get zero voltage from pre-test data
                         quantity = (data[channel] - zero_voltage) * calibration_slope + calibration_intercept
                         ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
                         if 'HF' in channel:
@@ -206,13 +203,11 @@ for f in os.listdir(data_dir):
                     # Plot pressures
                     if 'P_' in channel:
                         plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+
                         conv_inch_h2o = 0.4
                         conv_pascal = 248.8
-
-                        # Convert voltage to pascals
-                        # Get zero voltage from pre-test data
-                        zero_voltage = np.mean(data[channel][0:pre_test_time])
-                        quantity = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)
+                        zero_voltage = np.mean(data[channel][0:pre_test_time])  # Convert voltage to pascals
+                        quantity = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)  # Get zero voltage from pre-test data
 
                         ylabel('Pressure (Pa)', fontsize=20)
                         line_style = '-'
@@ -281,8 +276,7 @@ for f in os.listdir(data_dir):
                     secondary_axis_label = None  # Unset secondary axis variable
 
                 try:  # Add vertical lines and labels for timing information (if available)
-                    # Add secondary x-axis labels for timing information
-                    ax3 = ax1.twiny()
+                    ax3 = ax1.twiny()  # Add secondary x-axis labels for timing information
                     ax3.set_xlim(ax1_xlims)
                     events = timings[test_name].dropna()  # Remove nan items from timeline
                     events = events[~events.str.startswith('#')]  # Ignore events that are commented starting with a pound sign
@@ -291,20 +285,18 @@ for f in os.listdir(data_dir):
                     setp(xticks()[1], rotation=60)
                     ax3.set_xticklabels(events.values, fontsize=8, ha='left')
                     xlim([0, end_of_test - start_of_test])
-
-                    # Increase figure size for plot labels at top
-                    fig.set_size_inches(10, 6)
+                    fig.set_size_inches(10, 6)  # Increase figure size for plot labels at top
                 except:
                     pass
 
                 legend(handles1, labels1, loc='upper left', fontsize=8)
 
             if plot_mode == 'figure':
-                # Save plot to file
                 print 'Plotting ', group
+                # Save plot to file
                 savefig(save_dir + test_name + '_' + group[0].rstrip('_') + '.pdf')
                 close('all')
-        
+
         close('all')
         print
 
@@ -327,7 +319,7 @@ for f in os.listdir(data_dir):
                              'xtick.color': 'white',
                              'ytick.color': 'white'})
 
-            # Save plot to file
+            # Save plot frames to file
             for frame_number, frame_time in enumerate(video_time):
                 # Constrain plots to positive times less than the upper y-axis limit
                 if (frame_time >= 0) and (frame_time <= xlim_upper):
@@ -352,11 +344,11 @@ for f in os.listdir(data_dir):
                     ylabel(video_ylabel, fontsize=24, fontweight='bold')
                     xticks(fontsize=20, fontweight='bold')
                     yticks(fontsize=20, fontweight='bold')
-                    # Begin custom plot code
+                    ### Begin custom plot code
                     text(35, 120, 'Temperature\nnear ceiling', color='yellow', fontsize=16, fontweight='bold', ha='center')
                     text(35, 30, 'Temperature\n5 feet above floor', color='cyan', fontsize=16, fontweight='bold', ha='center')
                     if frame_time >= 102:
                         text(128, 230, 'Sprinkler\nactivates at\n102 seconds', color='white', fontsize=16, fontweight='bold', ha='center')
-                    # End custom plot code
+                    #### End custom plot code
                     savefig(save_dir + video_test_name + '_' + str(frame_time) + '.png')
                     close('all')
