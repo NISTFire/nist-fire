@@ -272,7 +272,6 @@ for f in os.listdir(data_dir):
                     ax2 = ax1.twiny()
                     ax2.set_xlim(ax1_xlims)
                     events = timings[test_name].dropna()  # Remove nan items from timeline
-                    events = events[events.values != 'Ignition']  # Do not plot 'Ignition' event; remove it from timeline
                     events = events[~events.str.startswith('#')]  # Ignore events that are commented starting with a pound sign
                     [axvline(_x - start_of_test, color='0.50', lw=1) for _x in events.index.values]
                     ax2.set_xticks(events.index.values - start_of_test)
