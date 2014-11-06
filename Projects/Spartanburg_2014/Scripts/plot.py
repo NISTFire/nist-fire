@@ -269,6 +269,8 @@ for f in os.listdir(data_dir):
                             continue
                         axvline(index - start_of_test, color='0.50', lw=1)
 
+                
+                try:
                     # Add secondary x-axis labels for timing information
                     ax2 = ax1.twiny()
                     ax2.set_xlim(ax1_xlims)
@@ -280,7 +282,7 @@ for f in os.listdir(data_dir):
                     xlim([0, end_of_test - start_of_test])
 
                     # Increase figure size for plot labels at top
-                    fig.set_size_inches(8, 8)
+                    fig.set_size_inches(10, 6)
                 except:
                     pass
 
@@ -321,7 +323,7 @@ for f in os.listdir(data_dir):
                     for channel_number, channel_name in enumerate(video_plots):
                         t = video_time
                         data = video_plots[channel_name] * video_rescale_factor + video_rescale_offset
-                        data = pd.rolling_mean(data, video_time_averaging_window)
+                        data = pd.rolling_mean(data, video_time_averaging_window)  # Smooth data
                         plot(t[:frame_number],
                              data[:frame_number],
                              lw=4,

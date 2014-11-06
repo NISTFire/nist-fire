@@ -2,8 +2,8 @@ Test Number,Test Key,Start of Test,End of Test,Test Description,Excluded Groups,
 1,286_College_Test_1,316,996,Test with sprinkler,None,None,None,200,140,50,None,None
 2,286_College_Test_2,513,926,Garage fire,None,None,None,200,2000,50,None,None
 3,286_College_Test_3,513,1131,Living room fire,None,None,None,200,2000,50,None,None
-4,489_N_Forest_Test_1,492,890,Living room fire,None,None,20,200,2000,50,25,None
-5,489_N_Forest_Test_2,241,1069,Second floor bedroom fire,None,TC_S_8,20,200,2000,50,25,None
+4,489_N_Forest_Test_1,492,890,Living room fire,None,None,5,200,2000,50,25,None
+5,489_N_Forest_Test_2,241,641,Second floor bedroom fire,None,TC_S_8|P_S_6,5,200,1000,50,25,None
 6,302_College_Test_1,127,1311,Bedroom fire,None,None,None,200,2000,50,25,None
 7,302_College_Test_2,292,1760,Living room fire,None,None,None,200,2000,50,25,None
 8,302_College_Test_3,909,2156,Bathroom/attic fire,None,None,None,200,2000,50,25,None
