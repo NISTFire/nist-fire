@@ -17,6 +17,9 @@ rcParams.update({'figure.autolayout': True})
 # Plot mode: figure or video
 plot_mode = 'figure'
 
+# Time averaging window for data smoothing
+data_time_averaging_window = 10
+
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
 
@@ -232,6 +235,7 @@ for f in os.listdir(data_dir):
 
                     # Plot quantity or save quantity for later usage, depending on plot mode
                     if plot_mode == 'figure':
+                        quantity = pd.rolling_mean(quantity, data_time_averaging_window)  # Smooth data
                         plot(t, quantity, lw=1.5, ls=line_style, label=channel_list['Test Specific Name'][channel])
                         # Save converted quantity back to exp. dataframe
                         data[channel] = quantity
