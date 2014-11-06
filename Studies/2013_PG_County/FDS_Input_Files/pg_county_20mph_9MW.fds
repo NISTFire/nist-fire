@@ -67,8 +67,12 @@ VENT MB = 'YMAX', SURF_ID = 'OPEN' /
 #  = Burners =
 #  ===========
 
-&SURF ID='burner1', HRRPUA = 2000, COLOR='BURNT ORANGE', TAU_Q=50 /
-&SURF ID='burner2', HRRPUA = 4500, COLOR='BURNT ORANGE', TAU_Q=50 /
+&SURF ID='burner1', HRRPUA = 2000, COLOR='BURNT ORANGE', RAMP_Q='BURN' /
+&SURF ID='burner2', HRRPUA = 4500, COLOR='BURNT ORANGE', RAMP_Q='BURN' /
+
+&RAMP ID='BURN', T = 0,   F = 0.  /
+&RAMP ID='BURN', T = 10,  F = 1.0 /
+&RAMP ID='BURN', T = 300, F = 1.0 /
 
 &OBST XB=0.6,1.2,5,6.5,0.0,0.4, SURF_IDS='burner1','INERT','INERT' /  Burner1
 &OBST XB=2.5,4,5.0,6.0,0.0,0.4, SURF_IDS='burner2','INERT','INERT' /  Burner2
