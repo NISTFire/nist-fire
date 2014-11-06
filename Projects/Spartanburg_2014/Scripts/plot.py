@@ -166,17 +166,17 @@ for f in os.listdir(data_dir):
                         secondary_axis_scale = np.float(info[axis_scale][test_name]) * 9/5 + 32
 
                     # Plot velocities
-                    if 'P_' in channel:
+                    if 'BDP_' in channel:
                         plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
 
                         conv_inch_h2o = 0.4
                         conv_pascal = 248.8
-                        zero_voltage = np.mean(data[channel][0:pre_test_time]) - 0.01  # Get zero voltage from pre-test data
+                        zero_voltage = np.mean(data[channel][0:pre_test_time])  # Get zero voltage from pre-test data
                         pressure = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)  # Convert voltage to pascals
 
                         # Calculate velocity
                         quantity = 0.0698 * np.sqrt(np.abs(pressure) *
-                                                    (data['TC_' + channel[2:]] + 273.15)) * np.sign(pressure)
+                                                    (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
                         ylabel('Velocity (m/s)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale BDP'
@@ -201,17 +201,17 @@ for f in os.listdir(data_dir):
                         axis_scale = 'Y Scale HF'
 
                     # Plot pressures
-                    # if 'P_' in channel:
-                    #     plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+                    if 'P_' in channel:
+                        plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
 
-                    #     conv_inch_h2o = 0.4
-                    #     conv_pascal = 248.8
-                    #     zero_voltage = np.mean(data[channel][0:pre_test_time])  # Convert voltage to pascals
-                    #     quantity = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)  # Get zero voltage from pre-test data
+                        conv_inch_h2o = 0.4
+                        conv_pascal = 248.8
+                        zero_voltage = np.mean(data[channel][0:pre_test_time])  # Convert voltage to pascals
+                        quantity = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)  # Get zero voltage from pre-test data
 
-                    #     ylabel('Pressure (Pa)', fontsize=20)
-                    #     line_style = '-'
-                    #     axis_scale = 'Y Scale PRESSURE'
+                        ylabel('Pressure (Pa)', fontsize=20)
+                        line_style = '-'
+                        axis_scale = 'Y Scale PRESSURE'
 
                     # Plot gas measurements
                     if any([substring in channel for substring in gas_quantities]):
