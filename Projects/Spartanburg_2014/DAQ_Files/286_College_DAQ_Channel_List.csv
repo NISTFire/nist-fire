@@ -74,8 +74,8 @@ SC1Mod4,7,TC_S_8,TC,,,,,1,0,TC Ignition 2
 SC1Mod4,8,TC_Ignition,TC,,,,,1,0,TC Ignition 3
 SC1Mod4,9,HF_1_V,Voltage,,,0.30 m AF,150253,4821.6,0,HF A2 V
 SC1Mod4,10,HF_1_H,Voltage,,,0.30 m AF,150323,5197.5,0,HF A2 H
-SC1Mod4,11,HF_2_V,Voltage,,,,,1,0,HF 2 V
-SC1Mod4,12,HF_2_H,Voltage,,,,,1,0,HF 2 H
+SC1Mod4,11,HF_2_V,Voltage,,,,,1,0,
+SC1Mod4,12,HF_2_H,Voltage,,,,,1,0,
 SC1Mod4,13,HF_3_V,Voltage,,,,,1,0,
 SC1Mod4,14,HF_3_H,Voltage,,,,,99.52,-248.8,P A5 1
 SC1Mod4,15,Voltage_1,Voltage,,,,,99.52,-248.8,P A5 2
