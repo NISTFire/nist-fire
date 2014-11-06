@@ -262,20 +262,15 @@ for f in os.listdir(data_dir):
                 xticks(fontsize=16)
                 yticks(fontsize=16)
                 legend(loc='upper right', fontsize=8)
-                try:
-                    # Add vertical lines and labels for timing information (if available)
-                    for index, row in timings.iterrows():
-                        if pd.isnull(row[test_name]):
-                            continue
-                        axvline(index - start_of_test, color='0.50', lw=1)
-
                 
-                try:
+                try:  # Add vertical lines and labels for timing information (if available)
                     # Add secondary x-axis labels for timing information
                     ax2 = ax1.twiny()
                     ax2.set_xlim(ax1_xlims)
                     events = timings[test_name].dropna()  # Remove nan items from timeline
                     events = events[events.values != 'Ignition']  # Do not plot 'Ignition' event; remove it from timeline
+                    events = events[~events.str.startswith('#')]  # Ignore events that are commented starting with a pound sign
+                    [axvline(_x - start_of_test, color='0.50', lw=1) for _x in events.index.values]
                     ax2.set_xticks(events.index.values - start_of_test)
                     setp(xticks()[1], rotation=60)
                     ax2.set_xticklabels(events.values, fontsize=8, ha='left')
