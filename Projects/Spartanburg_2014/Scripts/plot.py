@@ -272,9 +272,11 @@ for f in os.listdir(data_dir):
                     # Add secondary x-axis labels for timing information
                     ax2 = ax1.twiny()
                     ax2.set_xlim(ax1_xlims)
-                    ax2.set_xticks(timings[test_name].dropna().index.values - start_of_test)
+                    events = timings[test_name].dropna()  # Remove nan items from timeline
+                    events = events[events.values != 'Ignition']  # Do not plot 'Ignition' event; remove it from timeline
+                    ax2.set_xticks(events.index.values - start_of_test)
                     setp(xticks()[1], rotation=60)
-                    ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
+                    ax2.set_xticklabels(events.values, fontsize=8, ha='left')
                     xlim([0, end_of_test - start_of_test])
 
                     # Increase figure size for plot labels at top
