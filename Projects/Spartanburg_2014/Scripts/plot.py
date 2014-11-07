@@ -95,9 +95,6 @@ for f in os.listdir(data_dir):
         test_name = f[:-4]
         print 'Test ' + test_name
 
-        if 'Forest' not in test_name:
-            continue
-
         # If video plot mode is enabled, then plot from only one test
         if plot_mode == 'video':
             if video_test_name not in test_name:
