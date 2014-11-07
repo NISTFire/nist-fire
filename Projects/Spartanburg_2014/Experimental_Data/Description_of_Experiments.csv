@@ -7,8 +7,8 @@ Test Number,Test Key,Start of Test,End of Test,Test Description,Excluded Groups,
 6,302_College_Test_1,127,1311,Bedroom fire,Voltage_,None,None,200,2000,50,25,None
 7,302_College_Test_2,292,1760,Living room fire,Voltage_,None,None,200,2000,50,25,None
 8,302_College_Test_3,909,2156,Bathroom/attic fire,Voltage_,None,None,200,2000,50,25,None
-9,305_Manning_Test_1,75,1836,Garage fire,Voltage_,None,None,200,2000,50,25,None
-10,305_Manning_Test_2,270,1787,Bedroom fire,Voltage_,None,None,200,2000,50,25,None
+9,305_Manning_Test_1,75,1836,Garage fire,Voltage_,HF Tree V|HF Tree H,None,200,2000,50,25,None
+10,305_Manning_Test_2,270,1787,Bedroom fire,Voltage_,HF Tree V|HF Tree H,None,200,2000,50,25,None
 11,305_Manning_Test_3,0,3000,Complete burndown,Voltage_,None,None,200,2000,50,25,None
 12,289_Manning_Test_1,533,2128,Basement fire,Voltage_,None,10,200,2000,50,25,None
 13,289_Manning_Test_2,290,1823,Deck/attic fire,Voltage_,None,10,200,2000,50,25,None
