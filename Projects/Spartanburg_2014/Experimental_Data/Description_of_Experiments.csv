@@ -10,5 +10,5 @@ Test Number,Test Key,Start of Test,End of Test,Test Description,Excluded Groups,
 9,305_Manning_Test_1,75,1836,Garage fire,None,None,None,200,2000,50,25,None
 10,305_Manning_Test_2,270,1787,Bedroom fire,None,None,None,200,2000,50,25,None
 11,305_Manning_Test_3,0,3000,Complete burndown,None,None,None,200,2000,50,25,None
-12,289_Manning_Test_1,533,2128,Basement fire,None,None,None,200,2000,50,25,None
+12,289_Manning_Test_1,533,2128,Basement fire,None,None,10,200,2000,50,25,None
 13,289_Manning_Test_2,290,1823,Deck/attic fire,None,None,None,200,2000,50,25,None
