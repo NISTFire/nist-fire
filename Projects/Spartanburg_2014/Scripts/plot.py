@@ -179,7 +179,7 @@ for f in os.listdir(data_dir):
 
                         conv_inch_h2o = 0.4
                         conv_pascal = 248.8
-                        zero_voltage = np.mean(current_channel_data[0:pre_test_time]) - 0.01  # Get zero voltage from pre-test data
+                        zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
                         pressure = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Convert voltage to pascals
 
                         # Calculate velocity

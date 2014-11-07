@@ -3,7 +3,7 @@ Test Number,Test Key,Start of Test,End of Test,Test Description,Excluded Groups,
 2,286_College_Test_2,513,926,Garage fire,None,None,None,200,2000,50,None,None
 3,286_College_Test_3,513,1131,Living room fire,None,None,None,200,2000,50,None,None
 4,489_N_Forest_Test_1,492,890,Living room fire,Voltage_,None,5,200,2000,50,25,None
-5,489_N_Forest_Test_2,241,641,Second floor bedroom fire,Voltage_,TC BDP 6|BDP 6|HF A2 V|HF A2 H,5,60,1000,50,25,None
+5,489_N_Forest_Test_2,241,641,Second floor bedroom fire,Voltage_,BDP 6|HF A2 V|HF A2 H,5,60,1000,50,25,None
 6,302_College_Test_1,127,1311,Bedroom fire,Voltage_,None,None,200,2000,50,25,None
 7,302_College_Test_2,292,1760,Living room fire,Voltage_,None,None,200,2000,50,25,None
 8,302_College_Test_3,909,2156,Bathroom/attic fire,Voltage_,None,None,200,2000,50,25,None
