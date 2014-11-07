@@ -1,0 +1,6 @@
+Building,Analyzer A Location,Analyzer A Lag Time (s),Analyzer B Location,Analyzer B Lag Time (s),Notes
+286 College,-,-,-,-,"The gas analyzers were not plumbed correctly, so there are no gas data for these tests"
+489 N. Forest,Closed Bedroom (A3),10,Rear Living Room (A2),12,
+302 College,Closed Bedroom (A4),9,Front Living Room (A1),11,
+305 Manning,Front Living Room (A1),13,Closed Bedroom (A4),12,
+289 Manning,Room Above Basement (A1),12,Closed Bedroom (A5),11,Lost pressure and pumps twice during Test 1
