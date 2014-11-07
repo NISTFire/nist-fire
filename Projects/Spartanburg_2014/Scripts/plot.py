@@ -153,6 +153,7 @@ for f in os.listdir(data_dir):
                 if any([substring in channel for substring in group]):
                     calibration_slope = float(channel_list['Calibration Slope'][channel])
                     calibration_intercept = float(channel_list['Calibration Intercept'][channel])
+                    secondary_axis_label = None  # Reset secondary axis variable
 
                     # Scale channel and set plot options depending on quantity
                     # Plot temperatures
@@ -273,7 +274,6 @@ for f in os.listdir(data_dir):
                     ax2.set_ylim([0, secondary_axis_scale])
                     xticks(fontsize=16)
                     yticks(fontsize=16)
-                    secondary_axis_label = None  # Unset secondary axis variable
 
                 try:  # Add vertical lines and labels for timing information (if available)
                     ax3 = ax1.twiny()  # Add secondary x-axis labels for timing information
@@ -289,7 +289,7 @@ for f in os.listdir(data_dir):
                 except:
                     pass
 
-                legend(handles1, labels1, loc='upper left', fontsize=8)
+                legend(handles1, labels1, loc='upper left', fontsize=8, handlelength=3)
 
             if plot_mode == 'figure':
                 print 'Plotting ', group
