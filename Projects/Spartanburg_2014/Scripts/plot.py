@@ -271,9 +271,12 @@ for f in os.listdir(data_dir):
                 if secondary_axis_label:
                     ax2 = ax1.twinx()
                     ax2.set_ylabel(secondary_axis_label, fontsize=20)
-                    ax2.set_ylim([0, secondary_axis_scale])
                     xticks(fontsize=16)
                     yticks(fontsize=16)
+                    if axis_scale == 'Y Scale BDP':
+                        ax2.set_ylim([-secondary_axis_scale, secondary_axis_scale])
+                    else:
+                        ax2.set_ylim([0, secondary_axis_scale])
 
                 try:  # Add vertical lines and labels for timing information (if available)
                     ax3 = ax1.twiny()  # Add secondary x-axis labels for timing information
