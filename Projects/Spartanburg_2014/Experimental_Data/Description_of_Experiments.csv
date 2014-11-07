@@ -1,14 +1,14 @@
 Test Number,Test Key,Start of Test,End of Test,Test Description,Excluded Groups,Excluded Channels,Y Scale BDP,Y Scale HF,Y Scale TC,Y Scale PRESSURE,Y Scale GAS,Y Scale HOSE
-1,286_College_Test_1,316,996,Test with sprinkler,None,None,None,200,140,50,None,None
-2,286_College_Test_2,513,926,Garage fire,None,None,None,200,2000,50,None,None
-3,286_College_Test_3,513,1131,Living room fire,None,None,None,200,2000,50,None,None
-4,489_N_Forest_Test_1,492,890,Living room fire,None,None,5,200,2000,50,25,None
-5,489_N_Forest_Test_2,241,641,Second floor bedroom fire,None,TC_S_8|P_S_6|HF_1_V|HF_1_H,5,60,1000,50,25,None
-6,302_College_Test_1,127,1311,Bedroom fire,None,None,None,200,2000,50,25,None
-7,302_College_Test_2,292,1760,Living room fire,None,None,None,200,2000,50,25,None
-8,302_College_Test_3,909,2156,Bathroom/attic fire,None,None,None,200,2000,50,25,None
-9,305_Manning_Test_1,75,1836,Garage fire,None,None,None,200,2000,50,25,None
-10,305_Manning_Test_2,270,1787,Bedroom fire,None,None,None,200,2000,50,25,None
-11,305_Manning_Test_3,0,3000,Complete burndown,None,None,None,200,2000,50,25,None
-12,289_Manning_Test_1,533,2128,Basement fire,None,None,10,200,2000,50,25,None
-13,289_Manning_Test_2,290,1823,Deck/attic fire,None,None,None,200,2000,50,25,None
+1,286_College_Test_1,316,996,Test with sprinkler,None,HF_3_H,None,200,140,50,None,None
+2,286_College_Test_2,513,926,Garage fire,None,HF_3_H,None,200,2000,50,None,None
+3,286_College_Test_3,513,1131,Living room fire,None,HF_3_H,None,200,2000,50,None,None
+4,489_N_Forest_Test_1,492,890,Living room fire,Voltage_,None,5,200,2000,50,25,None
+5,489_N_Forest_Test_2,241,641,Second floor bedroom fire,Voltage_,TC_S_8|P_S_6|HF_1_V|HF_1_H,5,60,1000,50,25,None
+6,302_College_Test_1,127,1311,Bedroom fire,Voltage_,None,None,200,2000,50,25,None
+7,302_College_Test_2,292,1760,Living room fire,Voltage_,None,None,200,2000,50,25,None
+8,302_College_Test_3,909,2156,Bathroom/attic fire,Voltage_,None,None,200,2000,50,25,None
+9,305_Manning_Test_1,75,1836,Garage fire,Voltage_,None,None,200,2000,50,25,None
+10,305_Manning_Test_2,270,1787,Bedroom fire,Voltage_,None,None,200,2000,50,25,None
+11,305_Manning_Test_3,0,3000,Complete burndown,Voltage_,None,None,200,2000,50,25,None
+12,289_Manning_Test_1,533,2128,Basement fire,Voltage_,None,10,200,2000,50,25,None
+13,289_Manning_Test_2,290,1823,Deck/attic fire,Voltage_,None,None,200,2000,50,25,None
