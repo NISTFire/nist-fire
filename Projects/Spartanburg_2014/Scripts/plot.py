@@ -33,19 +33,23 @@ info_file = '../Experimental_Data/Description_of_Experiments.csv'
 pre_test_time = 60
 
 # List of sensor groups for each plot
-sensor_groups = [['TC_A1_'], ['TC_A2_'], ['TC_A3_'], ['TC_A4_'],
-                 ['TC_A5_'], ['TC_A6_'], ['TC_A7_'], ['TC_A8_'],
-                 ['TC_S_1', 'TC_S_2', 'TC_S_3', 'TC_S_4',
-                  'TC_S_5', 'TC_S_6', 'TC_S_7', 'TC_S_8'],
-                 ['TC_Ignition'],
-                 ['HF_'],
-                 ['Voltage_'],
-                 ['P_S_1', 'P_S_2', 'P_S_3', 'P_S_4', 'P_S_5',
-                  'P_S_6', 'P_S_7', 'P_S_8', 'P_S_9'],
-                 ['GAS_', 'CO_', 'CO2_', 'O2_']]
+sensor_groups = [['TC A1'],
+                 ['TC A2'],
+                 ['TC A3'],
+                 ['TC A4'],
+                 ['TC A5'],
+                 ['TC A6'],
+                 ['TC A7'],
+                 ['TC A8'],
+                 ['TC BDP'],
+                 ['TC Other', 'TC Ignition', 'TC Sprinkler', 'TC Tree'],
+                 ['HF'],
+                 ['BDP'],
+                 ['P'],
+                 ['GAS', 'O2', 'CO', 'CO2']]
 
 # Common quantities for y-axis labelling
-gas_quantities = ['CO_', 'CO2_', 'O2_']
+gas_quantities = ['O2', 'CO', 'CO2']
 
 # Load exp. timing and description files
 timings = pd.read_csv(timings_file, index_col=0)
@@ -65,8 +69,8 @@ elif plot_mode == 'video':
 #  ===================
 
 video_test_name = '286_College_Test_1'
-video_groups = ['TC_A3_']
-video_channels = ['TC_A3_1', 'TC_A3_5']
+video_groups = ['TC A3']
+video_channels = ['TC A3 0.03 m BC', 'TC A3 1.22 m BC']
 video_line_colors = ['yellow', 'cyan']
 video_ylabel = 'Temperature ($^\circ$F)'
 video_rescale_factor = 9/5
@@ -91,6 +95,9 @@ for f in os.listdir(data_dir):
         test_name = f[:-4]
         print 'Test ' + test_name
 
+        if 'Forest' not in test_name:
+            continue
+
         # If video plot mode is enabled, then plot from only one test
         if plot_mode == 'video':
             if video_test_name not in test_name:
@@ -98,7 +105,8 @@ for f in os.listdir(data_dir):
 
         # Location of channel list file w/ scaling and channel name information
         channel_list_file = '../DAQ_Files/' + group_name + '_DAQ_Channel_List.csv'
-        channel_list = pd.read_csv(channel_list_file, index_col=2)
+        channel_list = pd.read_csv(channel_list_file, index_col=10)
+        channel_list.sort_index(inplace=True)
 
         # Load exp. data file
         data = pd.read_csv(data_dir + f, index_col=0)
@@ -131,16 +139,17 @@ for f in os.listdir(data_dir):
                 else:
                     continue
 
+            # Initialize figure
             fig = figure()
 
-            for channel in data.columns[1:]:
+            for channel in channel_list.index:
+
+                # Skip plot quantity if channel name is blank
+                if pd.isnull(channel):
+                    continue
 
                 # Skip excluded channels listed in test description file
                 if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
-                    continue
-
-                # Skip plot quantity if channel name is blank
-                if pd.isnull(channel_list['Test Specific Name'][channel]):
                     continue
 
                 # If video plot mode is enabled, then plot only specified channels
@@ -150,16 +159,17 @@ for f in os.listdir(data_dir):
                     else:
                         continue
 
-                if any([substring in channel for substring in group]):
+                # Scale channel and set plot options depending on quantity
+                if any([channel.startswith(substring) for substring in group]):
+                    current_channel_data = data[channel_list['Device Name'][channel]]
                     calibration_slope = float(channel_list['Calibration Slope'][channel])
                     calibration_intercept = float(channel_list['Calibration Intercept'][channel])
                     secondary_axis_label = None  # Reset secondary axis variable
 
-                    # Scale channel and set plot options depending on quantity
                     # Plot temperatures
-                    if 'TC_' in channel:
+                    if channel.startswith('TC'):
                         plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-                        quantity = data[channel] * calibration_slope + calibration_intercept
+                        quantity = current_channel_data * calibration_slope + calibration_intercept
                         ylabel('Temperature ($^\circ$C)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale TC'
@@ -167,17 +177,17 @@ for f in os.listdir(data_dir):
                         secondary_axis_scale = np.float(info[axis_scale][test_name]) * 9/5 + 32
 
                     # Plot velocities
-                    if 'BDP_' in channel:
+                    if channel.startswith('BDP'):
                         plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
 
                         conv_inch_h2o = 0.4
                         conv_pascal = 248.8
-                        zero_voltage = np.mean(data[channel][0:pre_test_time])  # Get zero voltage from pre-test data
-                        pressure = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)  # Convert voltage to pascals
+                        zero_voltage = np.mean(current_channel_data[0:pre_test_time]) - 0.01  # Get zero voltage from pre-test data
+                        pressure = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Convert voltage to pascals
 
                         # Calculate velocity
                         quantity = 0.0698 * np.sqrt(np.abs(pressure) *
-                                                    (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
+                                                    (data[channel_list['Device Name']['TC ' + channel]] + 273.15)) * np.sign(pressure)
                         ylabel('Velocity (m/s)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale BDP'
@@ -185,15 +195,15 @@ for f in os.listdir(data_dir):
                         secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
 
                     # Plot heat fluxes
-                    if 'HF_' in channel:
+                    if channel.startswith('HF'):
                         plt.rc('axes', color_cycle=['k', 'k',
                                                     'r', 'r',
                                                     'g', 'g',
                                                     'b', 'b',
                                                     'c', 'c'])
 
-                        zero_voltage = np.mean(data[channel][0:pre_test_time])  # Get zero voltage from pre-test data
-                        quantity = (data[channel] - zero_voltage) * calibration_slope + calibration_intercept
+                        zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
+                        quantity = (current_channel_data - zero_voltage) * calibration_slope + calibration_intercept
                         ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
                         if '_H' in channel:
                             line_style = '-'
@@ -202,13 +212,13 @@ for f in os.listdir(data_dir):
                         axis_scale = 'Y Scale HF'
 
                     # Plot pressures
-                    if 'P_' in channel:
+                    if channel.startswith('P'):
                         plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
 
                         conv_inch_h2o = 0.4
                         conv_pascal = 248.8
-                        zero_voltage = np.mean(data[channel][0:pre_test_time])  # Convert voltage to pascals
-                        quantity = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)  # Get zero voltage from pre-test data
+                        zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Convert voltage to pascals
+                        quantity = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Get zero voltage from pre-test data
 
                         ylabel('Pressure (Pa)', fontsize=20)
                         line_style = '-'
@@ -217,18 +227,18 @@ for f in os.listdir(data_dir):
                     # Plot gas measurements
                     if any([substring in channel for substring in gas_quantities]):
                         plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-                        quantity = data[channel] * calibration_slope + calibration_intercept
+                        quantity = current_channel_data * calibration_slope + calibration_intercept
                         ylabel('Concentration (%)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale GAS'
 
                     # Plot hose pressure
-                    if 'HOSE_' in channel:
+                    if channel.startswith('HOSE'):
                         plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         # Skip data other than sensors on 2.5 inch hoseline
                         if '2p5' not in channel:
                             continue
-                        quantity = data[channel] * calibration_slope + calibration_intercept
+                        quantity = current_channel_data * calibration_slope + calibration_intercept
                         ylabel('Pressure (psi)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale HOSE'
@@ -236,13 +246,22 @@ for f in os.listdir(data_dir):
                     # Plot quantity or save quantity for later usage, depending on plot mode
                     if plot_mode == 'figure':
                         quantity = pd.rolling_mean(quantity, data_time_averaging_window)  # Smooth data
-                        plot(t, quantity, lw=2, ls=line_style, label=channel_list['Test Specific Name'][channel])
+                        plot(t, quantity, lw=2, ls=line_style, label=channel)
                         # Save converted quantity back to exp. dataframe
-                        data[channel] = quantity
+                        current_channel_data = quantity
+                        plots_exist = True
                     elif plot_mode == 'video':
                         # Save quantities for later video plotting
                         video_time = t
                         video_plots[channel] = quantity
+                        plots_exist = True
+
+            # Skip plot quantity if there are no plots to show
+            if plots_exist:
+                pass
+                plots_exist = False
+            else:
+                continue
 
             # Skip plot quantity if disabled in test description file
             if info[axis_scale][test_name] == 'None':
@@ -295,9 +314,9 @@ for f in os.listdir(data_dir):
                 legend(handles1, labels1, loc='upper left', fontsize=8, handlelength=3)
 
             if plot_mode == 'figure':
-                print 'Plotting ', group
+                print 'Plotting', group
                 # Save plot to file
-                savefig(save_dir + test_name + '_' + group[0].rstrip('_') + '.pdf')
+                savefig(save_dir + test_name + '_' + group[0].replace(' ', '_') + '.pdf')
                 close('all')
 
         close('all')
