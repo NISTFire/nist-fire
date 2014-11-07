@@ -364,16 +364,21 @@ To estimate the heat release rate per unit area (HRRPUA) of wood, Babrauskas and
 
 To calculate the total fire size, the appropriate burning area (exposed wood area) of the basement needed to be determined. Based on the floor plan of the structure, 
 
-Since the time at which the fire started is not known relative to the notification of a fire or how fast the fire spread, several simplifications were made. The first assumption is that the fires start at the beginning of the simulation and increase to a value of 8.5~MW in 10~s. The 10-s ramp up time was used to prevent abrupt changes in the velocity at the fire boundary condition in FDS. The second assumption is that the sources of the gas phase wood fuel have constant areas at fixed locations (1 source for the kitchen, 1 source for the bathroom). The following lines define the source fires in the FDS input file:
+ the underside of the roof was approximately 134~m$^2$ (1453~ft$^2$) with 7~m$^2$ (75~ft$^2$) walls on the front and rear sides. Additionally, there was 105~m$^2$ (1130~ft$^2$) of floor area in the attic. Examination of post-incident images indicated that the floor immediately over the rear porch burned away. That area was considered to be part of the porch fire. Based on post-incident damage, approximately 50~\% of the remaining floor area and 90~\% of the roof was considered to be fuel for the attic fire. To estimate the total attic fire size, the underside roof area (120~m$^2$), two end walls (14~m$^2$), and the floor area (43~m$^2$ or 463~ft$^2$) were included. Applying an HRRPUA of wood of 50~kW/m$^2$ results in a potential peak fire size of 9~MW. To estimate the size of the porch fire, the four walls of the porch enclosure (42~m$^2$ or 452~ft$^2$) and the floor and ceiling of the porch (24~m$^2$ or 258 ft$^2$) were included, which results in a total porch area of 66~m$^2$ (689~ft$^2$). Using the same HRRPUA of wood of 50~kW/m$^2$, the potential peak fire size on the porch was approximately 3.3~MW. Therefore, the maximum fire size for this structure was estimated to be 12.3~MW. Since the time at which the fire started is not known relative to the notification of a fire or how fast the fire spread, several simplifications were made. The first assumption is that the attic fire was specified to start at the beginning of the simulation and increase to a value of 9~MW in 10~s. The porch fire was specified to start 40~s into the simulation and increase to a value of 3.3~MW in 10~s. The 10-s ramp up time was used to prevent abrupt changes in the velocity at the fire boundary condition in FDS. The second assumption is that the sources of the gas phase wood fuel have constant areas at fixed locations (2 sources for the attic, 1 source for the porch).
+
+
+Since the time at which the fire started is not known relative to the notification of a fire or how fast the fire spread, several simplifications were made. The first assumption is that the fires start at the beginning of the simulation and increase to a value of 4.5~MW in 10~s. The 10-s ramp up time was used to prevent abrupt changes in the velocity at the fire boundary condition in FDS. The second assumption is that the sources of the gas phase wood fuel have constant areas at fixed locations (1 source for the kitchen, 1 source for the bathroom). The following lines define the source fires in the FDS input file:
 
 \begin{lstlisting}
-&SURF ID='burner1', HRRPUA = 2000, COLOR='BURNT ORANGE', RAMP_Q='BURN' /
-&SURF ID='burner2', HRRPUA = 4500, COLOR='BURNT ORANGE', RAMP_Q='BURN' /
+&SURF ID='burner1', HRRPUA = 1000, COLOR='BURNT ORANGE', RAMP_Q='BURN' /
+&SURF ID='burner2', HRRPUA = 2000, COLOR='BURNT ORANGE', RAMP_Q='BURN' /
+
 &RAMP ID='BURN', T = 0,   F = 0.  /
 &RAMP ID='BURN', T = 10,  F = 1.0 /
 &RAMP ID='BURN', T = 300, F = 1.0 /
-&OBST XB=0.6,1.2,5,6.5,0.0,0.4, SURF_IDS='burner1','INERT','INERT' /  Burner1
-&OBST XB=2.5,4,5.0,6.0,0.0,0.4, SURF_IDS='burner2','INERT','INERT' /  Burner2
+
+&OBST XB=0.5,1.0,5.5,6.5,0.0,0.4, SURF_IDS='burner1','INERT','INERT' /  Burner1
+&OBST XB=2.3,4.3,5.5,6.5,0.0,0.4, SURF_IDS='burner2','INERT','INERT' /  Burner2
 \end{lstlisting}
 Note that the coordinates here are unique for the vents are specific to the input files used for these simulations. The key point is the 2-D planar area.
 
@@ -441,7 +446,7 @@ D^* = \left(
 \label{eq:mesh}
 \end{equation}   
 From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the
-relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm (3.9~in), the characteristic fire diameter to cell size ($D^*/\dx$) ratio is 12 for the 1.5~MW bathroom fire and 20 for the 6.75~MW basement fire. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. The grid resolution used in this model is within or exceeds typical engineering $D^*/\dx$ values.
+relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm (3.9~in), the characteristic fire diameter to cell size ($D^*/\dx$) ratio is 7 for the 0.5~MW bathroom fire and 17 for the 4.0~MW basement fire. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. The grid resolution used in this model is within or exceeds typical engineering $D^*/\dx$ values.
 
 As discussed in Section~\ref{geom}, the structure has dimensions of 9.14~m (30~ft) by 7.62~m (25~ft) and a total height of 7.31~m (24~ft). To sufficiently resolve the wind boundary condtion, the computational domain was extended beyond the volume of the structure. The large domain led to the use of two separate grid resolutions, a 10~cm (3.9~in) resolution and a 20~cm (7.8~in) resolution. The 10~cm resolution encompasses the structure with a total volume 14~m (46~ft) by 12~m (39ft) by 8~m (26~ft) that required a total of 1.3 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. The 20~cm grid resolution extends the computational domain 5~m to the left and right sides and 4~m behind the 10~cm mesh to provide sufficient computational domain for the wind profile to develop around the structure. The mesh is coarser to cut down on computational time and because high accuracy in the fluid mechanics of the air flow far from the structure is not important in the analysis of this simulation. The 20~cm resolution resulted in an additional 216,000 computational cells.
 
@@ -492,13 +497,65 @@ Ambient Temperature$^*$                                    &  20~$^{\circ}$C (68
 \bottomrule[1.25pt]
 \end{tabular}\par
 \footnotesize
-$^{*}$Initial interior temperatures were assumed to be 20~$^{\circ}$C; exterior temperatures were 10~$^{\circ}$C~\cite{NIOSH:Bowyer}.
+$^{*}$Initial interior temperatures were assumed to be 20~$^{\circ}$C; exterior temperatures were 10~$^{\circ}$C~\cite{PGCounty2013}.
 \normalsize
 \end{table}
 
 
 \chapter{Model Results}
 \label{results}
+
+To examine the results of the simulation, it is important to link the timelines from the fire scene to the simulation times. Table~\ref{tab:combined_timeline} shows the fireground timeline~\cite{PGCounty2013} along with the corresponding simulation times.
+
+\begin{table}[!ht]
+\caption[Fire incident and simulation event timeline]
+{Fire incident and simulation event timeline}
+\begin{tabular}{ccl}
+\toprule
+Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation                                \\
+               &  Time        &                                                                      \\
+{(hh:mm:ss)}   &  {(s)}       &                                                                      \\
+\midrule
+21:08:26       &              &  First 911 call is made.                                             \\
+               &              &                                                                      \\
+21:11:03       &              &  Dispatch for a``box'' alarm assignment- four engine companies       \\
+               &              &  two truck companies, one rescue squad, and a com- manding officer.  \\
+               &              &                                                                      \\
+21:21:20       &  0           &  FDS simulation begins.                                              \\
+               &              &                                                                      \\
+21:12:55       &              &  FDFirst unit (Engine 807B) arrived on-scene.                        \\
+               &              &                                                                      \\
+21:13:44       &              &  Volunteer Chief 809A establishes incident command (IC).             \\
+               &              &                                                                      \\
+21:13:56       &              &  Truck 809 arrived on-scene.                                         \\
+               &              &                                                                      \\
+21:14:00       &  100         &  Front door opened.                                                  \\
+               &              &                                                                      \\
+21:14:42       &              &  Truck 809 enters structure.                                         \\
+               &              &                                                                      \\
+21:15:47       &  207         &  Front door closed over.                                             \\
+               &              &                                                                      \\
+21:15:51       &  211         &  Lower pane of front egress window broke.                            \\
+               &              &                                                                      \\
+21:16:01       &  221         &  Top pane of front egress window broke.                              \\
+               &              &                                                                      \\
+21:16:16       &              &  Truck 809 officer bailout through window.                           \\
+               &              &                                                                      \\
+21:16:44       &  280         &  Front door opened.                                                  \\
+               &              &                                                                      \\
+21:17:00       &              &  Basement door opened and water applied to fire.                     \\
+               &              &                                                                      \\
+21:17:15       &              &  Truck 809 forcible entry firefighter rescued.                       \\
+               &              &                                                                      \\
+\bottomrule
+\end{tabular}
+\footnotesize
+\\ For specific information regarding ventilation areas used in the simulation, refer to Table~\ref{tab:vents}.
+\normalsize
+\label{tab:combined_timeline}
+\end{table}
+
+\cleapage
 
 \section{Heat Release Rate}
 \label{HRR}

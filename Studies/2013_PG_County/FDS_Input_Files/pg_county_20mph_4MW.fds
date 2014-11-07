@@ -1,0 +1,383 @@
+&HEAD CHID='pg_county_20mph_4p5MW', TITLE='6404 57th Ave Riverdale MD'  /
+
+&MULT ID='m1', DX=7,DY=4,DZ=4, I_UPPER=1,J_UPPER=2,K_UPPER=1/
+&MESH IJK=70,40,40, XB=-2,5,-3,1,0,4, MULT_ID='m1'/
+
+&MESH IJK=70,20,40, XB=-2,12,9,13,0,8 /
+&MESH IJK=25,40,40, XB=12,17,-3,5,0,8 /
+&MESH IJK=25,40,40, XB=12,17,5,13,0,8 /
+&MESH IJK=25,40,40, XB=-7,-2,-3,5,0,8 /
+&MESH IJK=25,40,40, XB=-7,-2,5,13,0,8 /
+
+MESH IJK=140,160,80, XB=-2,12,-3,13,0,8 /
+
+&TIME T_END=300/
+
+&VENT MB = 'XMIN', SURF_ID = 'OPEN' /
+&VENT MB = 'XMAX', SURF_ID = 'OPEN' /
+&VENT MB = 'YMIN', SURF_ID = 'OPEN' /
+VENT MB = 'YMAX', SURF_ID = 'OPEN' /
+&VENT MB = 'ZMAX', SURF_ID = 'OPEN' /
+
+&SURF ID='wind', VEL=-8.94, RAMP_V='WIND RAMP',COLOR='INVISIBLE' /
+&VENT MB = 'YMAX', SURF_ID ='wind' /
+&RAMP ID='WIND RAMP', T=0,F=0.25 /
+&RAMP ID='WIND RAMP', T=10,F=0.50 /
+&RAMP ID='WIND RAMP', T=20,F=0.75 /
+&RAMP ID='WIND RAMP', T=30,F=1.00 /
+
+#  =============
+#  = Reactions =
+#  =============
+
+&SPEC ID = 'WOOD', FORMULA = 'CH1.7O0.74N0.002' /
+
+&REAC ID = 'wood' 
+    FUEL = 'WOOD', 
+    HEAT_OF_COMBUSTION=16400,
+    SOOT_YIELD = 0.015,
+    CO_YIELD = 0.004/
+
+#  ====================================
+#  = Material and surface definitions =
+#  ====================================
+
+&MATL ID          = 'GYPSUM' 
+    CONDUCTIVITY  = 0.28
+    SPECIFIC_HEAT = 1.00
+    DENSITY       = 810./
+
+&MATL ID          = 'WOOD_MAT'
+    CONDUCTIVITY  = 0.12
+    SPECIFIC_HEAT = 1.38
+    DENSITY       = 510./ 
+
+&SURF ID        = 'SLAB',
+      COLOR     = 'GRAY 70'
+      MATL_ID   = 'GYPSUM'
+      THICKNESS = 0.016 
+      DEFAULT   =.TRUE. /
+
+&SURF ID        = 'ROOF' 
+      MATL_ID   = 'WOOD_MAT'
+      COLOR     = 'BURLY WOOD 4'
+      THICKNESS = 0.016/
+
+#  ===========
+#  = Burners =
+#  ===========
+
+SURF ID='burner1', HRRPUA = 1000, COLOR='BURNT ORANGE', RAMP_Q='BURN' /
+&SURF ID='burner2', HRRPUA = 2000, COLOR='BURNT ORANGE', RAMP_Q='BURN' /
+
+&RAMP ID='BURN', T = 0,   F = 0.  /
+&RAMP ID='BURN', T = 10,  F = 1.0 /
+&RAMP ID='BURN', T = 300, F = 1.0 /
+
+OBST XB=0.5,1.0,5.5,6.5,0.0,0.4, SURF_IDS='burner1','INERT','INERT' /  Burner1
+&OBST XB=2.3,4.3,5.5,6.5,0.0,0.4, SURF_IDS='burner2','INERT','INERT' /  Burner2
+
+#  ==========
+#  = Doors =
+#  ==========
+
+&HOLE XB = 3.81,4.72,0.0,0.3,2.58,4.63, COLOR='BURLY WOOD 4', CTRL_ID='cycling timer' / front door
+&DEVC ID='TIMER', XYZ=0.0,0.0,0.0, QUANTITY='TIME' /
+&CTRL ID='cycling timer', FUNCTION_TYPE='CUSTOM', INPUT_ID='TIMER', RAMP_ID='cycle' /
+&RAMP ID='cycle', T=  0, F=-1 /
+&RAMP ID='cycle', T=  99, F=-1 /
+&RAMP ID='cycle', T=  100, F= 1 /
+&RAMP ID='cycle', T=  206, F=1 /
+&RAMP ID='cycle', T=  207, F= -1 /
+&RAMP ID='cycle', T=  263, F=-1 /
+&RAMP ID='cycle', T=  264, F= 1 /
+
+&DEVC XYZ=0.1,0.1,0.1, ID='timer rear door', SETPOINT= 280.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+&HOLE XB = 4.57,5.48,6.86,7.16,0.0,2.03, COLOR='BURLY WOOD 4', DEVC_ID='timer rear door' / rear door
+
+#  ===========
+#  = Windows =
+#  ===========
+
+&DEVC XYZ=0.1,0.1,0.1, ID='timer 1', SETPOINT= 10000.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+&DEVC XYZ=0.1,0.1,0.1, ID='timer bay2', SETPOINT= 10000.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+
+&DEVC XYZ=0.1,0.1,0.1, ID='timer bay top', SETPOINT= 211.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+&DEVC XYZ=0.1,0.1,0.1, ID='timer bay bottom', SETPOINT= 221.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+&HOLE XB = 0.77,1.23,0.0,0.3,3.49,4.06, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer bay top' / b-side bay window
+&HOLE XB = 0.77,1.23,0.0,0.3,4.06,4.63, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer bay bottom' / b-side bay window
+
+#  =====================
+#  = Basement Geometry =
+#  =====================
+
+!Basement Perimeter------------------------------
+&OBST XB = 0.0,9.14,0.0,0.3,0.0,2.28, COLOR='GRAY 60' / A-Side
+&OBST XB = 0.0,0.3,0.3,6.86,0.0,2.28, COLOR='GRAY 60' / B-Side
+&OBST XB = 0.0,9.14,6.86,7.16,0.0,2.28, COLOR='GRAY 60' / C-Side
+&OBST XB = 8.84,9.14,0.3,6.86,0.0,2.28, COLOR='GRAY 60' / D-Side
+
+!Basement Bathroom-------------------------------
+&OBST XB = 0.3,1.67,4.48,4.78,0.0,2.28,COLOR='GRAY 40' / a-side wall
+&OBST XB = 1.37,1.67,4.48,6.86,0.0,2.28, COLOR='GRAY 40' / d-side wall
+&HOLE XB = 1.37,1.67,5.68,6.38,0.0,2.03 / bathroom door
+&HOLE XB = 0.0,0.3,5.11,5.87,1.48,1.98 / bathroom window
+
+!Basement General Room---------------------------
+&OBST XB = 5.79,6.09,0.3,6.86,0.0,2.28, COLOR='GRAY 40' / bedroom general wall
+&OBST XB = 0.3,1.67,3.2,4.48,0.0,2.28, COLOR='GRAY 40' / utility
+&HOLE XB = 0.0,0.3,0.95,1.71,1.48,1.98, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer 1' / general window
+
+!Basement Kitchen--------------------------------
+&HOLE XB = 1.87,2.84,6.86,7.16,0.533,1.98 / kitchen window
+
+!Basement Bedroom 1------------------------------
+&OBST XB = 6.09,8.84,3.75,4.05,0.0,2.28, COLOR='GRAY 40' / bedroom dividing wall
+&HOLE XB = 8.84,9.14,4.65,5.41,1.48,1.98, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer 1'  / bedroom d window
+&HOLE XB = 7.02,7.88,6.86,7.16,0.533,1.98, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer 1'  / bedroom c window
+
+!Basement Bedroom 2------------------------------
+&HOLE XB = 8.84,9.14,0.95,1.71,1.48,1.98, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer 1'  / bedroom window
+
+!First Floor-------------------------------------
+&OBST XB = 0.0,9.14,0.0,7.77,2.28,2.58 / Floor
+&HOLE XB = 2.37,4.21,3.41,4.42,2.28,2.58 / Stairwell Hole
+&HOLE XB = 2.07,2.37,3.41,4.42,2.36,2.58 / Stairwell Hole
+
+!Stairs------------------------------------------
+&OBST XB = 1.97,2.07,3.41,4.42,2.26,2.58, COLOR = 'GRAY 10' / riser1
+&OBST XB = 2.07,2.27,3.41,4.42,2.26,2.36, COLOR = 'GRAY 10' / runner1
+&OBST XB = 2.27,2.37,3.41,4.42,1.94,2.36, COLOR = 'GRAY 10' / riser2
+&OBST XB = 2.37,2.57,3.41,4.42,1.94,2.04, COLOR = 'GRAY 10' / runner2
+&OBST XB = 2.57,2.67,3.41,4.42,1.61,2.04, COLOR = 'GRAY 10' / riser3
+&OBST XB = 2.67,2.87,3.41,4.42,1.61,1.71, COLOR = 'GRAY 10' / runner3
+&OBST XB = 2.87,2.97,3.41,4.42,1.29,1.71, COLOR = 'GRAY 10' / riser4
+&OBST XB = 2.97,3.17,3.41,4.42,1.29,1.39, COLOR = 'GRAY 10' / runner4
+&OBST XB = 3.17,3.27,3.41,4.42,0.97,1.39, COLOR = 'GRAY 10' / riser5
+&OBST XB = 3.27,3.47,3.41,4.42,0.97,1.07, COLOR = 'GRAY 10' / runner5
+&OBST XB = 3.47,3.57,3.41,4.42,0.65,1.07, COLOR = 'GRAY 10' / riser6
+&OBST XB = 3.57,3.77,3.41,4.42,0.65,0.75, COLOR = 'GRAY 10' / runner6
+&OBST XB = 3.77,3.87,3.41,4.42,0.32,0.75, COLOR = 'GRAY 10' / riser7
+&OBST XB = 3.87,4.07,3.41,4.42,0.32,0.42, COLOR = 'GRAY 10' / runner7
+&OBST XB = 4.07,4.17,3.41,4.42,0.00,0.42, COLOR = 'GRAY 10' / riser8
+
+#  ======================
+#  = 1st Floor Geometry =
+#  ======================
+
+!First Floor Perimeter---------------------------
+&OBST XB = 0.0,9.14,0.0,0.3,2.58,5.06, COLOR='GRAY 75' / A-Side
+&OBST XB = 0.0,0.3,0.3,7.47,2.58,5.06, COLOR='GRAY 75' / B-Side
+&OBST XB = 0.0,9.14,7.47,7.77,2.58,5.06, COLOR='GRAY 75' / C-Side
+&OBST XB = 8.84,9.14,0.3,7.47,2.58,5.06,, COLOR='GRAY 75' / D-Side
+
+!First Floor Bathroom----------------------------
+&OBST XB = 4.21,4.51,3.41,7.47,2.58,5.06, COLOR='WARM GREY' / b-side wall
+&OBST XB = 5.73,6.03,4.72,7.47,2.58,5.06, COLOR='WARM GREY' / d-side wall
+&OBST XB = 4.51,6.03,4.42,4.72,2.58,5.06, COLOR='WARM GREY' / a-side wall
+OBST XB = 4.51,5.73,4.72,7.47,2.58,5.06, COLOR='GRAY 60' / fill bathoom
+
+!First Floor Kitchen-----------------------------
+&OBST XB = 1.97,4.21,4.42,4.72,2.58,5.06, COLOR='WARM GREY' / wall
+&OBST XB = 1.97,4.51,3.11,3.41,2.58,5.06, COLOR='WARM GREY' / wall
+&OBST XB = 1.97,2.27,3.41,4.42,4.63,5.06, COLOR='WARM GREY' / wall
+&HOLE XB = 0.69,1.48,7.47,7.77,3.49,4.63, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer 1'  /b-side window
+&HOLE XB = 0.0,0.3,4.32,5.11,3.49,4.63, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer 1'  /a-side window
+
+!First Floor Bedroom 1---------------------------
+&OBST XB = 6.03,8.84,3.41,3.71,2.58,5.06, COLOR='WARM GREY' / Bedroom wall split
+&HOLE XB = 7.21,8,7.47,7.77,3.49,4.63, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer 1'  /b-side window
+&HOLE XB = 8.84,9.14,4.08,4.87,3.49,4.63, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer 1'  /d-side window
+
+!First Floor Bedroom 2---------------------------
+&OBST XB = 5.73,6.03,0.3,4.72,2.58,5.06, COLOR='WARM GREY' / b-side wall
+&HOLE XB = 8.84,9.14,1.22,2.01,3.49,4.63, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer 1'  /d-side window
+&HOLE XB = 6.78,7.57,0.0,0.3,3.49,4.63, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer 1'  / a-side window
+
+!First Floor Living Room-------------------------
+&HOLE XB = 0.0,0.3,1.1,1.89,3.49,4.63, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer 1'  /a-side window 2
+&HOLE XB = 1.33,2.47,0.0,0.3,3.49,4.63, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer bay2' / middle bay window
+&HOLE XB = 2.57,3.05,0.0,0.3,3.49,4.63, COLOR='IVORY 1', TRANSPARENCY=0.5, DEVC_ID='timer 1' / d-side bay window
+&OBST XB = 3.71,4.82,-1.0,0.0,2.28,2.58 / front door stoop
+
+!First Floor Ceiling-----------------------------
+&OBST XB = 0.0,9.14,0.0,7.77,5.06,5.36 / Ceiling
+
+#  ====================
+#  = Roof Geometry =
+#  ====================
+
+&MULT ID='roof a' DY=0.3, DZ=0.15, N_LOWER=0, N_UPPER=12 /   
+&OBST XB = 0.0,9.14,0.0,0.3,5.36,5.51, MULT_ID='roof a', SURF_ID='ROOF' /
+&MULT ID='wall ab' DXB=0.0,0.0,-0.3,-0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
+&OBST XB = 0.0,0.3,3.3,3.6,5.36,7.16, MULT_ID='wall ab', SURF_ID='ROOF' / side wall b
+&MULT ID='wall bc' DXB=0.0,0.0,0.3,0.3,0.0,-0.15 N_LOWER=0, N_UPPER=12 /
+&OBST XB = 0.0,0.3,3.6,3.9,5.36,7.31, MULT_ID='wall bc', SURF_ID='ROOF' / side wall b
+
+
+&MULT ID='roof c' DY=-0.3, DZ=0.15, N_LOWER=0, N_UPPER=12 /   
+&OBST XB = 0.0,9.14,7.47,7.77,5.36,5.51, MULT_ID='roof c', SURF_ID='ROOF' /
+&MULT ID='wall cd' DXB=0.0,0.0,-0.3,-0.3,0.0,-0.15 N_LOWER=0, N_UPPER=11 /
+&OBST XB = 8.84,9.14,3.3,3.6,5.36,7.16, MULT_ID='wall cd', SURF_ID='ROOF' / side wall d
+&MULT ID='wall ad' DXB=0.0,0.0,0.3,0.3,0.0,-0.15 N_LOWER=0, N_UPPER=12 /
+&OBST XB = 8.84,9.14,3.6,3.9,5.36,7.31, MULT_ID='wall ad', SURF_ID='ROOF' / side wall d
+
+#  ====================
+#  = Outside Geometry =
+#  ====================
+
+!Front Yard---------------------------------------
+&OBST XB = -7,17,-3,0,0,2.28, COLOR='BURNT SIENNA' / ground
+
+&OBST XB=-7,0,0,2,0,2.28, MULT_ID='Terrain_B', COLOR='BURNT SIENNA' / Terrain
+&MULT ID='Terrain_B', DXB=0.0, 0.0, 0.3, 0.3, 0.0, -0.2, N_UPPER=22 /
+
+&OBST XB=9.14,17,0,2,0,2.28, MULT_ID='Terrain_D', COLOR='BURNT SIENNA' / Terrain
+&MULT ID='Terrain_D', DXB=0.0, 0.0, 0.3, 0.3, 0.0, -0.2, N_UPPER=22 /
+
+
+#  =====================
+#  = Output quantities =
+#  =====================
+
+&DEVC XB = 0.0,5,0.0,1,0.0,2.28, QUANTITY='HRR',   ID='Basement_HRR_1' /
+&DEVC XB = 0.0,5,1,5,0.0,2.28, QUANTITY='HRR',     ID='Basement_HRR_2' /
+&DEVC XB = 0.0,5,5,7.16,0.0,2.28, QUANTITY='HRR',  ID='Basement_HRR_3' /
+&DEVC XB = 5,9.14,0.0,1,0.0,2.28, QUANTITY='HRR',  ID='Basement_HRR_4' /
+&DEVC XB = 5,9.14,1,5,0.0,2.28, QUANTITY='HRR',    ID='Basement_HRR_5' /
+&DEVC XB = 5,9.14,5,7.16,0.0,2.28, QUANTITY='HRR', ID='Basement_HRR_6' /
+
+&DEVC XB = 0.0,5,0.0,1,2.28,4, QUANTITY='HRR',   ID='FirstFloor_HRR_1' /
+&DEVC XB = 0.0,5,1,5,2.28,4, QUANTITY='HRR',     ID='FirstFloor_HRR_2' /
+&DEVC XB = 0.0,5,5,7.77,2.28,4, QUANTITY='HRR',  ID='FirstFloor_HRR_3' /
+&DEVC XB = 5,9.14,0.0,1,2.28,4, QUANTITY='HRR',  ID='FirstFloor_HRR_4' /
+&DEVC XB = 5,9.14,1,5,2.28,4, QUANTITY='HRR',    ID='FirstFloor_HRR_5' /
+&DEVC XB = 5,9.14,5,7.77,2.28,4, QUANTITY='HRR', ID='FirstFloor_HRR_6' /
+&DEVC XB = 0.0,5,0.0,1,4,5.06, QUANTITY='HRR',   ID='FirstFloor_HRR_7' /
+&DEVC XB = 0.0,5,1,5,4,5.06, QUANTITY='HRR',     ID='FirstFloor_HRR_8' /
+&DEVC XB = 0.0,5,5,7.77,4,5.06, QUANTITY='HRR',  ID='FirstFloor_HRR_9' /
+&DEVC XB = 5,9.14,0.0,1,4,5.06, QUANTITY='HRR',  ID='FirstFloor_HRR_10' /
+&DEVC XB = 5,9.14,1,5,4,5.06, QUANTITY='HRR',    ID='FirstFloor_HRR_11' /
+&DEVC XB = 5,9.14,5,7.77,4,5.06, QUANTITY='HRR', ID='FirstFloor_HRR_12' /
+
+
+&DEVC XYZ = 5.03,7.01,1.95, QUANTITY='V-VELOCITY', ID='0.08 m BS, V, Rear' /
+&DEVC XYZ = 5.03,7.01,1.69, QUANTITY='V-VELOCITY', ID='0.34 m BS, V, Rear' /
+&DEVC XYZ = 5.03,7.01,1.42, QUANTITY='V-VELOCITY', ID='0.61 m BS, V, Rear' /
+&DEVC XYZ = 5.03,7.01,1.15, QUANTITY='V-VELOCITY', ID='0.88 m BS, V, Rear' /
+&DEVC XYZ = 5.03,7.01,0.88, QUANTITY='V-VELOCITY', ID='1.15 m BS, V, Rear' /
+&DEVC XYZ = 5.03,7.01,0.61, QUANTITY='V-VELOCITY', ID='1.42 m BS, V, Rear' /
+&DEVC XYZ = 5.03,7.01,0.34, QUANTITY='V-VELOCITY', ID='1.68 m BS, V, Rear' /
+&DEVC XYZ = 5.03,7.01,0.08, QUANTITY='V-VELOCITY', ID='1.95 m BS, V, Rear' /
+&DEVC XYZ = 5.03,7.01,1.95, QUANTITY='W-VELOCITY', ID='0.08 m BS, W, Rear' /
+&DEVC XYZ = 5.03,7.01,1.69, QUANTITY='W-VELOCITY', ID='0.34 m BS, W, Rear' /
+&DEVC XYZ = 5.03,7.01,1.42, QUANTITY='W-VELOCITY', ID='0.61 m BS, W, Rear' /
+&DEVC XYZ = 5.03,7.01,1.15, QUANTITY='W-VELOCITY', ID='0.88 m BS, W, Rear' /
+&DEVC XYZ = 5.03,7.01,0.88, QUANTITY='W-VELOCITY', ID='1.15 m BS, W, Rear' /
+&DEVC XYZ = 5.03,7.01,0.61, QUANTITY='W-VELOCITY', ID='1.42 m BS, W, Rear' /
+&DEVC XYZ = 5.03,7.01,0.34, QUANTITY='W-VELOCITY', ID='1.68 m BS, W, Rear' /
+&DEVC XYZ = 5.03,7.01,0.08, QUANTITY='W-VELOCITY', ID='1.95 m BS, W, Rear' /
+&DEVC XYZ = 5.03,7.01,1.95, QUANTITY='TEMPERATURE', ID='0.08 m BS, T, Rear' /
+&DEVC XYZ = 5.03,7.01,1.69, QUANTITY='TEMPERATURE', ID='0.34 m BS, T, Rear' /
+&DEVC XYZ = 5.03,7.01,1.42, QUANTITY='TEMPERATURE', ID='0.61 m BS, T, Rear' /
+&DEVC XYZ = 5.03,7.01,1.15, QUANTITY='TEMPERATURE', ID='0.88 m BS, T, Rear' /
+&DEVC XYZ = 5.03,7.01,0.88, QUANTITY='TEMPERATURE', ID='1.15 m BS, T, Rear' /
+&DEVC XYZ = 5.03,7.01,0.61, QUANTITY='TEMPERATURE', ID='1.42 m BS, T, Rear' /
+&DEVC XYZ = 5.03,7.01,0.34, QUANTITY='TEMPERATURE', ID='1.68 m BS, T, Rear' /
+&DEVC XYZ = 5.03,7.01,0.08, QUANTITY='TEMPERATURE', ID='1.95 m BS, T, Rear' /
+
+&DEVC XYZ = 4.27,0.15,4.55, QUANTITY='V-VELOCITY', ID='0.08 m BS, V, Front' /
+&DEVC XYZ = 4.27,0.15,4.29, QUANTITY='V-VELOCITY', ID='0.34 m BS, V, Front' /
+&DEVC XYZ = 4.27,0.15,4.02, QUANTITY='V-VELOCITY', ID='0.61 m BS, V, Front' /
+&DEVC XYZ = 4.27,0.15,3.75, QUANTITY='V-VELOCITY', ID='0.88 m BS, V, Front' /
+&DEVC XYZ = 4.27,0.15,3.48, QUANTITY='V-VELOCITY', ID='1.15 m BS, V, Front' /
+&DEVC XYZ = 4.27,0.15,3.21, QUANTITY='V-VELOCITY', ID='1.42 m BS, V, Front' /
+&DEVC XYZ = 4.27,0.15,2.95, QUANTITY='V-VELOCITY', ID='1.68 m BS, V, Front' /
+&DEVC XYZ = 4.27,0.15,2.68, QUANTITY='V-VELOCITY', ID='1.95 m BS, V, Front' /
+&DEVC XYZ = 4.27,0.15,4.55, QUANTITY='W-VELOCITY', ID='0.08 m BS, W, Front' /
+&DEVC XYZ = 4.27,0.15,4.29, QUANTITY='W-VELOCITY', ID='0.34 m BS, W, Front' /
+&DEVC XYZ = 4.27,0.15,4.02, QUANTITY='W-VELOCITY', ID='0.61 m BS, W, Front' /
+&DEVC XYZ = 4.27,0.15,3.75, QUANTITY='W-VELOCITY', ID='0.88 m BS, W, Front' /
+&DEVC XYZ = 4.27,0.15,3.48, QUANTITY='W-VELOCITY', ID='1.15 m BS, W, Front' /
+&DEVC XYZ = 4.27,0.15,3.21, QUANTITY='W-VELOCITY', ID='1.42 m BS, W, Front' /
+&DEVC XYZ = 4.27,0.15,2.95, QUANTITY='W-VELOCITY', ID='1.68 m BS, W, Front' /
+&DEVC XYZ = 4.27,0.15,2.68, QUANTITY='W-VELOCITY', ID='1.95 m BS, W, Front' /
+&DEVC XYZ = 4.27,0.15,4.55, QUANTITY='TEMPERATURE', ID='0.08 m BS, T, Front' /
+&DEVC XYZ = 4.27,0.15,4.29, QUANTITY='TEMPERATURE', ID='0.34 m BS, T, Front' /
+&DEVC XYZ = 4.27,0.15,4.02, QUANTITY='TEMPERATURE', ID='0.61 m BS, T, Front' /
+&DEVC XYZ = 4.27,0.15,3.75, QUANTITY='TEMPERATURE', ID='0.88 m BS, T, Front' /
+&DEVC XYZ = 4.27,0.15,3.48, QUANTITY='TEMPERATURE', ID='1.15 m BS, T, Front' /
+&DEVC XYZ = 4.27,0.15,3.21, QUANTITY='TEMPERATURE', ID='1.42 m BS, T, Front' /
+&DEVC XYZ = 4.27,0.15,2.95, QUANTITY='TEMPERATURE', ID='1.68 m BS, T, Front' /
+&DEVC XYZ = 4.27,0.15,2.68, QUANTITY='TEMPERATURE', ID='1.95 m BS, T, Front' /
+
+&DEVC XYZ = 2.02,3.91,4.55, QUANTITY='U-VELOCITY', ID='0.08 m BS, U, Stair' /
+&DEVC XYZ = 2.02,3.91,4.29, QUANTITY='U-VELOCITY', ID='0.34 m BS, U, Stair' /
+&DEVC XYZ = 2.02,3.91,4.02, QUANTITY='U-VELOCITY', ID='0.61 m BS, U, Stair' /
+&DEVC XYZ = 2.02,3.91,3.75, QUANTITY='U-VELOCITY', ID='0.88 m BS, U, Stair' /
+&DEVC XYZ = 2.02,3.91,3.48, QUANTITY='U-VELOCITY', ID='1.15 m BS, U, Stair' /
+&DEVC XYZ = 2.02,3.91,3.21, QUANTITY='U-VELOCITY', ID='1.42 m BS, U, Stair' /
+&DEVC XYZ = 2.02,3.91,2.95, QUANTITY='U-VELOCITY', ID='1.68 m BS, U, Stair' /
+&DEVC XYZ = 2.02,3.91,2.68, QUANTITY='U-VELOCITY', ID='1.95 m BS, U, Stair' /
+&DEVC XYZ = 2.02,3.91,4.55, QUANTITY='W-VELOCITY', ID='0.08 m BS, W, Stair' /
+&DEVC XYZ = 2.02,3.91,4.29, QUANTITY='W-VELOCITY', ID='0.34 m BS, W, Stair' /
+&DEVC XYZ = 2.02,3.91,4.02, QUANTITY='W-VELOCITY', ID='0.61 m BS, W, Stair' /
+&DEVC XYZ = 2.02,3.91,3.75, QUANTITY='W-VELOCITY', ID='0.88 m BS, W, Stair' /
+&DEVC XYZ = 2.02,3.91,3.48, QUANTITY='W-VELOCITY', ID='1.15 m BS, W, Stair' /
+&DEVC XYZ = 2.02,3.91,3.21, QUANTITY='W-VELOCITY', ID='1.42 m BS, W, Stair' /
+&DEVC XYZ = 2.02,3.91,2.95, QUANTITY='W-VELOCITY', ID='1.68 m BS, W, Stair' /
+&DEVC XYZ = 2.02,3.91,2.68, QUANTITY='W-VELOCITY', ID='1.95 m BS, W, Stair' /
+&DEVC XYZ = 2.02,3.91,4.55, QUANTITY='TEMPERATURE', ID='0.08 m BS, T, Stair' /
+&DEVC XYZ = 2.02,3.91,4.29, QUANTITY='TEMPERATURE', ID='0.34 m BS, T, Stair' /
+&DEVC XYZ = 2.02,3.91,4.02, QUANTITY='TEMPERATURE', ID='0.61 m BS, T, Stair' /
+&DEVC XYZ = 2.02,3.91,3.75, QUANTITY='TEMPERATURE', ID='0.88 m BS, T, Stair' /
+&DEVC XYZ = 2.02,3.91,3.48, QUANTITY='TEMPERATURE', ID='1.15 m BS, T, Stair' /
+&DEVC XYZ = 2.02,3.91,3.21, QUANTITY='TEMPERATURE', ID='1.42 m BS, T, Stair' /
+&DEVC XYZ = 2.02,3.91,2.95, QUANTITY='TEMPERATURE', ID='1.68 m BS, T, Stair' /
+&DEVC XYZ = 2.02,3.91,2.68, QUANTITY='TEMPERATURE', ID='1.95 m BS, T, Stair' /
+
+&SLCF PBZ = 0.9, QUANTITY='TEMPERATURE', VECTOR=.TRUE. /
+&SLCF PBZ = 1.9, QUANTITY='TEMPERATURE', VECTOR=.TRUE.  /
+&SLCF PBZ = 3.75, QUANTITY='TEMPERATURE', VECTOR=.TRUE.  /
+&SLCF PBZ = 4.5, QUANTITY='TEMPERATURE', VECTOR=.TRUE.  /
+
+&SLCF PBZ = 0.9, QUANTITY='PRESSURE' /
+&SLCF PBZ = 1.9, QUANTITY='PRESSURE'  /
+&SLCF PBZ = 3.75, QUANTITY='PRESSURE'  /
+&SLCF PBZ = 4.5, QUANTITY='PRESSURE'  /
+
+&SLCF PBZ = 0.9, QUANTITY='VELOCITY' /
+&SLCF PBZ = 1.9, QUANTITY='VELOCITY' /
+&SLCF PBZ = 3.75, QUANTITY='VELOCITY' /
+&SLCF PBZ = 4.5, QUANTITY='VELOCITY' /
+
+&SLCF PBY = 0.15, QUANTITY='TEMPERATURE', VECTOR=.TRUE.  / Front
+&SLCF PBY = 3.9, QUANTITY='TEMPERATURE', VECTOR=.TRUE.  / Stairs
+&SLCF PBY = 7.01, QUANTITY='TEMPERATURE', VECTOR=.TRUE.  / Back
+
+&SLCF PBY = 0.15, QUANTITY='PRESSURE'  / Front
+&SLCF PBY = 3.9, QUANTITY='PRESSURE'  / Stairs
+&SLCF PBY = 7.01, QUANTITY='PRESSURE'  / Back
+
+&SLCF PBX = 0.15, QUANTITY='TEMPERATURE', VECTOR=.TRUE.  / Left
+&SLCF PBX = 4.27, QUANTITY='TEMPERATURE', VECTOR=.TRUE.  / Front
+&SLCF PBX = 5.03, QUANTITY='TEMPERATURE', VECTOR=.TRUE.  / Back
+&SLCF PBX = 8.99, QUANTITY='TEMPERATURE', VECTOR=.TRUE.  / Right
+
+&SLCF PBX = 0.15, QUANTITY='PRESSURE' / Left
+&SLCF PBX = 4.27, QUANTITY='PRESSURE' / Front
+&SLCF PBX = 5.03, QUANTITY='PRESSURE' / Back
+&SLCF PBX = 8.99, QUANTITY='PRESSURE' / Right
+
+&SLCF PBX = 0.15, QUANTITY='HRRPUV' / Left
+&SLCF PBX = 4.27, QUANTITY='HRRPUV' / Front
+&SLCF PBX = 5.03, QUANTITY='HRRPUV' / Back
+&SLCF PBX = 8.99, QUANTITY='HRRPUV' / Right
+
+&SLCF PBX = 4.27, QUANTITY='VELOCITY', VECTOR=.TRUE.  / Front
+&SLCF PBX = 4.27, QUANTITY='HRRPUV'  / Front
+&SLCF PBX = 4.27, QUANTITY='V-VELOCITY'  / Front
+&SLCF PBX = 4.27, QUANTITY='U-VELOCITY'  / Front
+&SLCF PBX = 4.27, QUANTITY='W-VELOCITY'  / Front
+
+&TAIL /
