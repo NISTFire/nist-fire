@@ -103,7 +103,6 @@ for f in os.listdir(data_dir):
         # Location of channel list file w/ scaling and channel name information
         channel_list_file = '../DAQ_Files/' + group_name + '_DAQ_Channel_List.csv'
         channel_list = pd.read_csv(channel_list_file, index_col=10)
-        channel_list.sort_index(inplace=True)
 
         # Load exp. data file
         data = pd.read_csv(data_dir + f, index_col=0)
