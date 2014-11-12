@@ -364,7 +364,7 @@ To estimate the heat release rate per unit area (HRRPUA) of wood, Babrauskas and
 
 To calculate the total fire size, the appropriate burning area (exposed wood area) of the basement needed to be determined. Based on the floor plan of the structure, 
 
- the underside of the roof was approximately 134~m$^2$ (1453~ft$^2$) with 7~m$^2$ (75~ft$^2$) walls on the front and rear sides. Additionally, there was 105~m$^2$ (1130~ft$^2$) of floor area in the attic. Examination of post-incident images indicated that the floor immediately over the rear porch burned away. That area was considered to be part of the porch fire. Based on post-incident damage, approximately 50~\% of the remaining floor area and 90~\% of the roof was considered to be fuel for the attic fire. To estimate the total attic fire size, the underside roof area (120~m$^2$), two end walls (14~m$^2$), and the floor area (43~m$^2$ or 463~ft$^2$) were included. Applying an HRRPUA of wood of 50~kW/m$^2$ results in a potential peak fire size of 9~MW. To estimate the size of the porch fire, the four walls of the porch enclosure (42~m$^2$ or 452~ft$^2$) and the floor and ceiling of the porch (24~m$^2$ or 258 ft$^2$) were included, which results in a total porch area of 66~m$^2$ (689~ft$^2$). Using the same HRRPUA of wood of 50~kW/m$^2$, the potential peak fire size on the porch was approximately 3.3~MW. Therefore, the maximum fire size for this structure was estimated to be 12.3~MW. Since the time at which the fire started is not known relative to the notification of a fire or how fast the fire spread, several simplifications were made. The first assumption is that the attic fire was specified to start at the beginning of the simulation and increase to a value of 9~MW in 10~s. The porch fire was specified to start 40~s into the simulation and increase to a value of 3.3~MW in 10~s. The 10-s ramp up time was used to prevent abrupt changes in the velocity at the fire boundary condition in FDS. The second assumption is that the sources of the gas phase wood fuel have constant areas at fixed locations (2 sources for the attic, 1 source for the porch).
+The 10-s ramp up time was used to prevent abrupt changes in the velocity at the fire boundary condition in FDS. The second assumption is that the sources of the gas phase wood fuel have constant areas at fixed locations (2 sources for the attic, 1 source for the porch).
 
 
 Since the time at which the fire started is not known relative to the notification of a fire or how fast the fire spread, several simplifications were made. The first assumption is that the fires start at the beginning of the simulation and increase to a value of 4.5~MW in 10~s. The 10-s ramp up time was used to prevent abrupt changes in the velocity at the fire boundary condition in FDS. The second assumption is that the sources of the gas phase wood fuel have constant areas at fixed locations (1 source for the kitchen, 1 source for the bathroom). The following lines define the source fires in the FDS input file:
@@ -555,7 +555,7 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 \label{tab:combined_timeline}
 \end{table}
 
-\cleapage
+\clearpage
 
 \section{Heat Release Rate}
 \label{HRR}
