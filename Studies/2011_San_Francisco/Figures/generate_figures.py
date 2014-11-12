@@ -44,7 +44,7 @@ savefig('Fire_HRR.pdf')
 
 figure()
 plot(CALC['Time (s)'], HRR_CALC, 'k-', lw=2, label='Prescribed HRR')
-plot(FDS['Time'][:-4], HRR_FDS_avg[:-4], 'r--', lw=2, label='Predicted HRR')
+plot(FDS['Time'][:-4], HRR_FDS_avg[:-4], 'r--', lw=2, label='Calculated HRR')
 plt.text(342+10, 2, 'Rear Window Failures Begin')
 axvline(342, color='k', ls='--', lw=2)
 xlim([0, 540])
