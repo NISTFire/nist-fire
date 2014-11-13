@@ -17,7 +17,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Plot mode: figure or video
-plot_mode = 'video'
+plot_mode = 'figure'
 
 # Time averaging window for data smoothing
 data_time_averaging_window = 10
@@ -80,7 +80,7 @@ video_ylabel = 'Temperature ($^\circ$F)'
 video_rescale_factor = 9/5
 video_rescale_offset = 32
 video_time_averaging_window = 10
-xlim_lower, xlim_upper, ylim_lower, ylim_upper = [0, 150, 0, 300]
+video_xlim_lower, video_xlim_upper, video_ylim_lower, video_ylim_upper = [0, 150, 0, 300]
 video_plots = collections.OrderedDict()
 
 #  ===============================
@@ -109,18 +109,17 @@ for f in os.listdir(data_dir):
         channel_list = pd.read_csv(channel_list_file)
         channel_list = channel_list.set_index('Test Specific Name')
 
-        # Load exp. data file
-        data = pd.read_csv(data_dir + f)
-        data = data.set_index('Time')
-
         # Read in test times to offset plots
         start_of_test = info['Start of Test'][test_name]
         end_of_test = info['End of Test'][test_name]
 
+        # Load exp. data file
+        data = pd.read_csv(data_dir + f)
+        data = data.set_index('TimeStamp(s)')
+
         # Offset data time to start of test
-        data.index = data.index.values - start_of_test
-        t = data.index.values
-        data.index.name = 'Time'
+        t = data['Time'].values - start_of_test
+        data['Time'] = t
 
         #  ============
         #  = Plotting =
@@ -255,7 +254,6 @@ for f in os.listdir(data_dir):
                         # Save quantities for later video plotting
                         video_time = t
                         video_plots[channel] = quantity
-                        print len(video_time), len(video_plots[channel])
                         plots_exist = True
 
             # Skip plot quantity if there are no plots to show
@@ -350,15 +348,12 @@ for f in os.listdir(data_dir):
             # Save plot frames to file
             for frame_number, frame_time in enumerate(video_time):
                 # Constrain plots to positive times less than the upper y-axis limit
-                if (frame_time >= 0) and (frame_time <= xlim_upper):
+                if (frame_time >= 0) and (frame_time <= video_xlim_upper):
                     print 'Plotting Frame:', frame_time
                     fig = plt.figure()
                     for channel_number, channel_name in enumerate(video_plots):
                         video_data = video_plots[channel_name] * video_rescale_factor + video_rescale_offset
                         video_data = pd.rolling_mean(video_data, video_time_averaging_window)  # Smooth data
-                        print video_time
-                        print frame_number, frame_time
-                        print len(video_time[:frame_number]), len(video_data[:frame_number]), frame_number
                         plt.plot(video_time[:frame_number],
                                  video_data[:frame_number],
                                  lw=4,
@@ -368,8 +363,8 @@ for f in os.listdir(data_dir):
                     ax1.spines['right'].set_visible(False)
                     ax1.xaxis.set_ticks_position('none')
                     ax1.yaxis.set_ticks_position('none')
-                    plt.xlim([xlim_lower, xlim_upper])
-                    plt.ylim([ylim_lower, ylim_upper])
+                    plt.xlim([video_xlim_lower, video_xlim_upper])
+                    plt.ylim([video_ylim_lower, video_ylim_upper])
                     plt.xlabel('Time (s)', fontsize=24, fontweight='bold')
                     plt.ylabel(video_ylabel, fontsize=24, fontweight='bold')
                     plt.xticks(fontsize=20, fontweight='bold')
