@@ -7,6 +7,7 @@ import collections
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from itertools import cycle
 
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
@@ -16,7 +17,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Plot mode: figure or video
-plot_mode = 'video'
+plot_mode = 'figure'
 
 # Time averaging window for data smoothing
 data_time_averaging_window = 10
@@ -96,6 +97,9 @@ for f in os.listdir(data_dir):
         test_name = f[:-4]
         print 'Test ' + test_name
 
+        if '286_College_Test_2' not in test_name:
+            continue
+
         # If video plot mode is enabled, then plot from only one test
         if plot_mode == 'video':
             if video_test_name not in test_name:
@@ -139,6 +143,10 @@ for f in os.listdir(data_dir):
             # Initialize figure
             fig = plt.figure()
 
+            # Plot style - colors and markers
+            plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+            plot_markers = cycle(['s', 'o', '^', 'd', 'h', 's', 'p', 'v'])
+
             for channel in channel_list.index:
 
                 # Skip plot quantity if channel name is blank
@@ -165,7 +173,6 @@ for f in os.listdir(data_dir):
 
                     # Plot temperatures
                     if channel.startswith('TC'):
-                        plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         quantity = current_channel_data * calibration_slope + calibration_intercept
                         plt.ylabel('Temperature ($^\circ$C)', fontsize=20)
                         line_style = '-'
@@ -175,8 +182,6 @@ for f in os.listdir(data_dir):
 
                     # Plot velocities
                     if channel.startswith('BDP'):
-                        plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-
                         conv_inch_h2o = 0.4
                         conv_pascal = 248.8
                         zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
@@ -193,12 +198,6 @@ for f in os.listdir(data_dir):
 
                     # Plot heat fluxes
                     if channel.startswith('HF'):
-                        plt.rc('axes', color_cycle=['k', 'k',
-                                                    'r', 'r',
-                                                    'g', 'g',
-                                                    'b', 'b',
-                                                    'c', 'c'])
-
                         zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
                         quantity = (current_channel_data - zero_voltage) * calibration_slope + calibration_intercept
                         plt.ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
@@ -210,8 +209,6 @@ for f in os.listdir(data_dir):
 
                     # Plot pressures
                     if channel.startswith('P'):
-                        plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-
                         conv_inch_h2o = 0.4
                         conv_pascal = 248.8
                         zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Convert voltage to pascals
@@ -223,7 +220,6 @@ for f in os.listdir(data_dir):
 
                     # Plot gas measurements
                     if any([substring in channel for substring in gas_quantities]):
-                        plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         quantity = current_channel_data * calibration_slope + calibration_intercept
                         plt.ylabel('Concentration (%)', fontsize=20)
                         line_style = '-'
@@ -231,7 +227,6 @@ for f in os.listdir(data_dir):
 
                     # Plot hose pressure
                     if channel.startswith('HOSE'):
-                        plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         # Skip data other than sensors on 2.5 inch hoseline
                         if '2p5' not in channel:
                             continue
@@ -243,7 +238,16 @@ for f in os.listdir(data_dir):
                     # Plot quantity or save quantity for later usage, depending on plot mode
                     if plot_mode == 'figure':
                         quantity = pd.rolling_mean(quantity, data_time_averaging_window)  # Smooth data
-                        plt.plot(t, quantity, lw=2, ls=line_style, label=channel)
+                        plt.plot(t,
+                                 quantity,
+                                 lw=2,
+                                 marker=next(plot_markers),
+                                 markevery=int((end_of_test - start_of_test)/10),
+                                 mew=1.5,
+                                 mec='none',
+                                 ms=7,
+                                 ls=line_style,
+                                 label=channel)
                         # Save converted quantity back to exp. dataframe
                         current_channel_data = quantity
                         plots_exist = True
