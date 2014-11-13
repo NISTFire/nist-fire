@@ -118,8 +118,7 @@ for f in os.listdir(data_dir):
         data = data.set_index('TimeStamp(s)')
 
         # Offset data time to start of test
-        t = data['Time'].values - start_of_test
-        data['Time'] = t
+        data['Time'] = data['Time'].values - start_of_test
 
         #  ============
         #  = Plotting =
@@ -172,7 +171,7 @@ for f in os.listdir(data_dir):
 
                     # Plot temperatures
                     if channel.startswith('TC'):
-                        quantity = current_channel_data * calibration_slope + calibration_intercept
+                        current_channel_data = current_channel_data * calibration_slope + calibration_intercept
                         plt.ylabel('Temperature ($^\circ$C)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale TC'
@@ -187,7 +186,7 @@ for f in os.listdir(data_dir):
                         pressure = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Convert voltage to pascals
 
                         # Calculate velocity
-                        quantity = 0.0698 * np.sqrt(np.abs(pressure) *
+                        current_channel_data = 0.0698 * np.sqrt(np.abs(pressure) *
                                                     (data[channel_list['Device Name']['TC ' + channel]] + 273.15)) * np.sign(pressure)
                         plt.ylabel('Velocity (m/s)', fontsize=20)
                         line_style = '-'
@@ -198,7 +197,7 @@ for f in os.listdir(data_dir):
                     # Plot heat fluxes
                     if channel.startswith('HF'):
                         zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
-                        quantity = (current_channel_data - zero_voltage) * calibration_slope + calibration_intercept
+                        current_channel_data = (current_channel_data - zero_voltage) * calibration_slope + calibration_intercept
                         plt.ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
                         if ' H' in channel:
                             line_style = '-'
@@ -211,7 +210,7 @@ for f in os.listdir(data_dir):
                         conv_inch_h2o = 0.4
                         conv_pascal = 248.8
                         zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Convert voltage to pascals
-                        quantity = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Get zero voltage from pre-test data
+                        current_channel_data = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Get zero voltage from pre-test data
 
                         plt.ylabel('Pressure (Pa)', fontsize=20)
                         line_style = '-'
@@ -219,7 +218,7 @@ for f in os.listdir(data_dir):
 
                     # Plot gas measurements
                     if any([substring in channel for substring in gas_quantities]):
-                        quantity = current_channel_data * calibration_slope + calibration_intercept
+                        current_channel_data = current_channel_data * calibration_slope + calibration_intercept
                         plt.ylabel('Concentration (%)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale GAS'
@@ -229,16 +228,16 @@ for f in os.listdir(data_dir):
                         # Skip data other than sensors on 2.5 inch hoseline
                         if '2p5' not in channel:
                             continue
-                        quantity = current_channel_data * calibration_slope + calibration_intercept
+                        current_channel_data = current_channel_data * calibration_slope + calibration_intercept
                         plt.ylabel('Pressure (psi)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale HOSE'
 
-                    # Plot quantity or save quantity for later usage, depending on plot mode
+                    # Plot channel data or save channel data for later usage, depending on plot mode
                     if plot_mode == 'figure':
-                        quantity = pd.rolling_mean(quantity, data_time_averaging_window)  # Smooth data
-                        plt.plot(t,
-                                 quantity,
+                        current_channel_data = pd.rolling_mean(current_channel_data, data_time_averaging_window)  # Smooth data
+                        plt.plot(data['Time'],
+                                 current_channel_data,
                                  lw=2,
                                  marker=next(plot_markers),
                                  markevery=int((end_of_test - start_of_test)/10),
@@ -247,13 +246,14 @@ for f in os.listdir(data_dir):
                                  ms=7,
                                  ls=line_style,
                                  label=channel)
-                        # Save converted quantity back to exp. dataframe
-                        current_channel_data = quantity
+                        # Save converted channel data back to exp. dataframe
+                        data[channel_list['Device Name'][channel]] = current_channel_data
                         plots_exist = True
+
                     elif plot_mode == 'video':
                         # Save quantities for later video plotting
-                        video_time = t
-                        video_plots[channel] = quantity
+                        video_time = data['Time']
+                        video_plots[channel] = current_channel_data
                         plots_exist = True
 
             # Skip plot quantity if there are no plots to show
@@ -327,7 +327,7 @@ for f in os.listdir(data_dir):
         print
 
         # Write offset times and converted quantities back to reduced exp. data file
-        data.to_csv(data_dir + test_name + '_Reduced.csv')
+        data.dropna().to_csv(data_dir + test_name + '_Reduced.csv')
 
         if plot_mode == 'video':
             rcParams.update({'figure.autolayout': True,
