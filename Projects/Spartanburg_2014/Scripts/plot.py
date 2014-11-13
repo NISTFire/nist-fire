@@ -3,9 +3,10 @@
 from __future__ import division
 
 import os
+import collections
 import numpy as np
 import pandas as pd
-from pylab import *
+import matplotlib.pyplot as plt
 
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
@@ -15,7 +16,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Plot mode: figure or video
-plot_mode = 'figure'
+plot_mode = 'video'
 
 # Time averaging window for data smoothing
 data_time_averaging_window = 10
@@ -77,7 +78,7 @@ video_rescale_factor = 9/5
 video_rescale_offset = 32
 video_time_averaging_window = 10
 xlim_lower, xlim_upper, ylim_lower, ylim_upper = [0, 150, 0, 300]
-video_plots = {}
+video_plots = collections.OrderedDict()
 
 #  ===============================
 #  = Loop through all data files =
@@ -136,7 +137,7 @@ for f in os.listdir(data_dir):
                     continue
 
             # Initialize figure
-            fig = figure()
+            fig = plt.figure()
 
             for channel in channel_list.index:
 
@@ -166,7 +167,7 @@ for f in os.listdir(data_dir):
                     if channel.startswith('TC'):
                         plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         quantity = current_channel_data * calibration_slope + calibration_intercept
-                        ylabel('Temperature ($^\circ$C)', fontsize=20)
+                        plt.ylabel('Temperature ($^\circ$C)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale TC'
                         secondary_axis_label = 'Temperature ($^\circ$F)'
@@ -184,7 +185,7 @@ for f in os.listdir(data_dir):
                         # Calculate velocity
                         quantity = 0.0698 * np.sqrt(np.abs(pressure) *
                                                     (data[channel_list['Device Name']['TC ' + channel]] + 273.15)) * np.sign(pressure)
-                        ylabel('Velocity (m/s)', fontsize=20)
+                        plt.ylabel('Velocity (m/s)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale BDP'
                         secondary_axis_label = 'Velocity (mph)'
@@ -200,7 +201,7 @@ for f in os.listdir(data_dir):
 
                         zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
                         quantity = (current_channel_data - zero_voltage) * calibration_slope + calibration_intercept
-                        ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
+                        plt.ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
                         if ' H' in channel:
                             line_style = '-'
                         elif ' V' in channel:
@@ -216,7 +217,7 @@ for f in os.listdir(data_dir):
                         zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Convert voltage to pascals
                         quantity = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Get zero voltage from pre-test data
 
-                        ylabel('Pressure (Pa)', fontsize=20)
+                        plt.ylabel('Pressure (Pa)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale PRESSURE'
 
@@ -224,7 +225,7 @@ for f in os.listdir(data_dir):
                     if any([substring in channel for substring in gas_quantities]):
                         plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
                         quantity = current_channel_data * calibration_slope + calibration_intercept
-                        ylabel('Concentration (%)', fontsize=20)
+                        plt.ylabel('Concentration (%)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale GAS'
 
@@ -235,14 +236,14 @@ for f in os.listdir(data_dir):
                         if '2p5' not in channel:
                             continue
                         quantity = current_channel_data * calibration_slope + calibration_intercept
-                        ylabel('Pressure (psi)', fontsize=20)
+                        plt.ylabel('Pressure (psi)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale HOSE'
 
                     # Plot quantity or save quantity for later usage, depending on plot mode
                     if plot_mode == 'figure':
                         quantity = pd.rolling_mean(quantity, data_time_averaging_window)  # Smooth data
-                        plot(t, quantity, lw=2, ls=line_style, label=channel)
+                        plt.plot(t, quantity, lw=2, ls=line_style, label=channel)
                         # Save converted quantity back to exp. dataframe
                         current_channel_data = quantity
                         plots_exist = True
@@ -267,27 +268,27 @@ for f in os.listdir(data_dir):
             if plot_mode == 'figure':
                 # Scale y-axis limit based on specified range in test description file
                 if axis_scale == 'Y Scale BDP':
-                    ylim([-np.float(info[axis_scale][test_name]), np.float(info[axis_scale][test_name])])
+                    plt.ylim([-np.float(info[axis_scale][test_name]), np.float(info[axis_scale][test_name])])
                 else:
-                    ylim([0, np.float(info[axis_scale][test_name])])
+                    plt.ylim([0, np.float(info[axis_scale][test_name])])
 
                 # Set axis options, legend, tickmarks, etc.
-                ax1 = gca()
+                ax1 = plt.gca()
                 handles1, labels1 = ax1.get_legend_handles_labels()
-                xlim([0, end_of_test - start_of_test])
-                ax1.xaxis.set_major_locator(MaxNLocator(8))
+                plt.xlim([0, end_of_test - start_of_test])
+                ax1.xaxis.set_major_locator(plt.MaxNLocator(8))
                 ax1_xlims = ax1.axis()[0:2]
-                grid(True)
-                xlabel('Time (s)', fontsize=20)
-                xticks(fontsize=16)
-                yticks(fontsize=16)
+                plt.grid(True)
+                plt.xlabel('Time (s)', fontsize=20)
+                plt.xticks(fontsize=16)
+                plt.yticks(fontsize=16)
 
                 # Secondary y-axis parameters
                 if secondary_axis_label:
                     ax2 = ax1.twinx()
                     ax2.set_ylabel(secondary_axis_label, fontsize=20)
-                    xticks(fontsize=16)
-                    yticks(fontsize=16)
+                    plt.xticks(fontsize=16)
+                    plt.yticks(fontsize=16)
                     if axis_scale == 'Y Scale BDP':
                         ax2.set_ylim([-secondary_axis_scale, secondary_axis_scale])
                     else:
@@ -298,24 +299,24 @@ for f in os.listdir(data_dir):
                     ax3.set_xlim(ax1_xlims)
                     events = timings[test_name].dropna()  # Remove nan items from timeline
                     events = events[~events.str.startswith('#')]  # Ignore events that are commented starting with a pound sign
-                    [axvline(_x - start_of_test, color='0.50', lw=1) for _x in events.index.values]
+                    [plt.axvline(_x - start_of_test, color='0.50', lw=1) for _x in events.index.values]
                     ax3.set_xticks(events.index.values - start_of_test)
-                    setp(xticks()[1], rotation=60)
+                    plt.setp(plt.xticks()[1], rotation=60)
                     ax3.set_xticklabels(events.values, fontsize=8, ha='left')
-                    xlim([0, end_of_test - start_of_test])
+                    plt.xlim([0, end_of_test - start_of_test])
                     fig.set_size_inches(10, 6)  # Increase figure size for plot labels at top
                 except:
                     pass
 
-                legend(handles1, labels1, loc='upper left', fontsize=8, handlelength=3)
+                plt.legend(handles1, labels1, loc='upper left', fontsize=8, handlelength=3)
 
             if plot_mode == 'figure':
                 print 'Plotting', group
                 # Save plot to file
-                savefig(save_dir + test_name + '_' + group[0].replace(' ', '_') + '.pdf')
-                close('all')
+                plt.savefig(save_dir + test_name + '_' + group[0].replace(' ', '_') + '.pdf')
+                plt.close('all')
 
-        close('all')
+        plt.close('all')
         print
 
         # Write offset times and converted quantities back to reduced exp. data file
@@ -342,31 +343,30 @@ for f in os.listdir(data_dir):
                 # Constrain plots to positive times less than the upper y-axis limit
                 if (frame_time >= 0) and (frame_time <= xlim_upper):
                     print 'Plotting Frame:', frame_time
-                    fig = figure()
+                    fig = plt.figure()
                     for channel_number, channel_name in enumerate(video_plots):
-                        t = video_time
-                        data = video_plots[channel_name] * video_rescale_factor + video_rescale_offset
-                        data = pd.rolling_mean(data, video_time_averaging_window)  # Smooth data
-                        plot(t[:frame_number],
-                             data[:frame_number],
-                             lw=4,
-                             color=video_line_colors[channel_number])
-                    ax1 = gca()
+                        video_data = video_plots[channel_name] * video_rescale_factor + video_rescale_offset
+                        video_data = pd.rolling_mean(video_data, video_time_averaging_window)  # Smooth data
+                        plt.plot(video_time[:frame_number],
+                                 video_data[:frame_number],
+                                 lw=4,
+                                 color=video_line_colors[channel_number])
+                    ax1 = plt.gca()
                     ax1.spines['top'].set_visible(False)
                     ax1.spines['right'].set_visible(False)
                     ax1.xaxis.set_ticks_position('none')
                     ax1.yaxis.set_ticks_position('none')
-                    xlim([xlim_lower, xlim_upper])
-                    ylim([ylim_lower, ylim_upper])
-                    xlabel('Time (s)', fontsize=24, fontweight='bold')
-                    ylabel(video_ylabel, fontsize=24, fontweight='bold')
-                    xticks(fontsize=20, fontweight='bold')
-                    yticks(fontsize=20, fontweight='bold')
+                    plt.xlim([xlim_lower, xlim_upper])
+                    plt.ylim([ylim_lower, ylim_upper])
+                    plt.xlabel('Time (s)', fontsize=24, fontweight='bold')
+                    plt.ylabel(video_ylabel, fontsize=24, fontweight='bold')
+                    plt.xticks(fontsize=20, fontweight='bold')
+                    plt.yticks(fontsize=20, fontweight='bold')
                     ### Begin custom plot code
-                    text(35, 120, 'Temperature\nnear ceiling', color='yellow', fontsize=16, fontweight='bold', ha='center')
-                    text(35, 30, 'Temperature\n5 feet above floor', color='cyan', fontsize=16, fontweight='bold', ha='center')
+                    plt.text(35, 120, 'Temperature\nnear ceiling', color='yellow', fontsize=16, fontweight='bold', ha='center')
+                    plt.text(35, 30, 'Temperature\n5 feet above floor', color='cyan', fontsize=16, fontweight='bold', ha='center')
                     if frame_time >= 102:
-                        text(128, 230, 'Sprinkler\nactivates at\n102 seconds', color='white', fontsize=16, fontweight='bold', ha='center')
+                        plt.text(128, 230, 'Sprinkler\nactivates at\n102 seconds', color='white', fontsize=16, fontweight='bold', ha='center')
                     #### End custom plot code
-                    savefig(save_dir + video_test_name + '_' + str(frame_time) + '.png')
-                    close('all')
+                    plt.savefig(save_dir + video_test_name + '_' + str(frame_time) + '.png')
+                    plt.close('all')
