@@ -17,7 +17,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Plot mode: figure or video
-plot_mode = 'figure'
+plot_mode = 'video'
 
 # Time averaging window for data smoothing
 data_time_averaging_window = 10
@@ -26,7 +26,7 @@ data_time_averaging_window = 10
 data_dir = '../Experimental_Data/'
 
 # Location of file with timing information
-timings_file = '../Experimental_Data/All_Times.csv'
+all_times_file = '../Experimental_Data/All_Times.csv'
 
 # Location of test description file
 info_file = '../Experimental_Data/Description_of_Experiments.csv'
@@ -54,8 +54,10 @@ sensor_groups = [['TC A1'],
 gas_quantities = ['O2', 'CO', 'CO2']
 
 # Load exp. timing and description files
-timings = pd.read_csv(timings_file, index_col=0)
-info = pd.read_csv(info_file, index_col=1)
+all_times = pd.read_csv(all_times_file)
+all_times = all_times.set_index('Time')
+info = pd.read_csv(info_file)
+info = info.set_index('Test Key')
 
 # Skip file names that contain the following strings
 skip_files = ['_times', '_reduced', 'description_']
@@ -104,20 +106,21 @@ for f in os.listdir(data_dir):
 
         # Location of channel list file w/ scaling and channel name information
         channel_list_file = '../DAQ_Files/' + group_name + '_DAQ_Channel_List.csv'
-        channel_list = pd.read_csv(channel_list_file, index_col=10)
+        channel_list = pd.read_csv(channel_list_file)
+        channel_list = channel_list.set_index('Test Specific Name')
 
         # Load exp. data file
-        data = pd.read_csv(data_dir + f, index_col=0)
+        data = pd.read_csv(data_dir + f)
+        data = data.set_index('Time')
 
         # Read in test times to offset plots
         start_of_test = info['Start of Test'][test_name]
         end_of_test = info['End of Test'][test_name]
 
         # Offset data time to start of test
-        t = data['Time'].values - start_of_test
-
-        # Save converted time back to dataframe
-        data['Time'] = t
+        data.index = data.index.values - start_of_test
+        t = data.index.values
+        data.index.name = 'Time'
 
         #  ============
         #  = Plotting =
@@ -252,6 +255,7 @@ for f in os.listdir(data_dir):
                         # Save quantities for later video plotting
                         video_time = t
                         video_plots[channel] = quantity
+                        print len(video_time), len(video_plots[channel])
                         plots_exist = True
 
             # Skip plot quantity if there are no plots to show
@@ -296,16 +300,20 @@ for f in os.listdir(data_dir):
                         ax2.set_ylim([0, secondary_axis_scale])
 
                 try:  # Add vertical lines and labels for timing information (if available)
-                    ax3 = ax1.twiny()  # Add secondary x-axis labels for timing information
+                    # Add secondary x-axis labels for timing information
+                    ax3 = ax1.twiny()
                     ax3.set_xlim(ax1_xlims)
-                    events = timings[test_name].dropna()  # Remove nan items from timeline
-                    events = events[~events.str.startswith('#')]  # Ignore events that are commented starting with a pound sign
+                    # Remove NaN items from event timeline
+                    events = all_times[test_name].dropna()
+                    # Ignore events that are commented starting with a pound sign
+                    events = events[~events.str.startswith('#')]
                     [plt.axvline(_x - start_of_test, color='0.50', lw=1) for _x in events.index.values]
                     ax3.set_xticks(events.index.values - start_of_test)
                     plt.setp(plt.xticks()[1], rotation=60)
                     ax3.set_xticklabels(events.values, fontsize=8, ha='left')
                     plt.xlim([0, end_of_test - start_of_test])
-                    fig.set_size_inches(10, 6)  # Increase figure size for plot labels at top
+                    # Increase figure size for plot labels at top
+                    fig.set_size_inches(10, 6)
                 except:
                     pass
 
@@ -348,6 +356,9 @@ for f in os.listdir(data_dir):
                     for channel_number, channel_name in enumerate(video_plots):
                         video_data = video_plots[channel_name] * video_rescale_factor + video_rescale_offset
                         video_data = pd.rolling_mean(video_data, video_time_averaging_window)  # Smooth data
+                        print video_time
+                        print frame_number, frame_time
+                        print len(video_time[:frame_number]), len(video_data[:frame_number]), frame_number
                         plt.plot(video_time[:frame_number],
                                  video_data[:frame_number],
                                  lw=4,
