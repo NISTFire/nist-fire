@@ -216,7 +216,7 @@ for f in os.listdir(data_dir):
 
                 # Plot channel data or save channel data for later usage, depending on plot mode
                 if plot_mode == 'figure':
-                    current_channel_data = pd.rolling_mean(current_channel_data, data_time_averaging_window)  # Smooth data
+                    current_channel_data = pd.rolling_mean(current_channel_data, data_time_averaging_window, center=True)  # Smooth data
                     plt.plot(data['Time'],
                              current_channel_data,
                              lw=2,
@@ -332,7 +332,7 @@ for f in os.listdir(data_dir):
                     fig = plt.figure()
                     for channel_number, channel_name in enumerate(video_plots):
                         video_data = video_plots[channel_name] * video_rescale_factor + video_rescale_offset
-                        video_data = pd.rolling_mean(video_data, video_time_averaging_window)  # Smooth data
+                        video_data = pd.rolling_mean(video_data, video_time_averaging_window, center=True)  # Smooth data
                         plt.plot(video_time[:frame_number],
                                  video_data[:frame_number],
                                  lw=4,
