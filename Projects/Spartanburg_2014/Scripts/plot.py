@@ -60,7 +60,6 @@ video_line_colors = ['yellow', 'cyan']
 video_ylabel = 'Temperature ($^\circ$F)'
 video_rescale_factor = 9/5
 video_rescale_offset = 32
-video_time_averaging_window = 10
 video_xlim_lower, video_xlim_upper, video_ylim_lower, video_ylim_upper = [0, 150, 0, 300]
 video_plots = collections.OrderedDict()
 
@@ -101,6 +100,13 @@ for f in os.listdir(data_dir):
 
         # Offset data time to start of test
         data['Time'] = data['Time'].values - start_of_test
+
+        # Smooth all data channels with specified data_time_averaging_window
+        data_copy = data.drop('Time', axis=1)
+        data_copy = pd.rolling_mean(data_copy, data_time_averaging_window, center=True)
+        data_copy.insert(0, 'Time', data['Time'])
+        data_copy = data_copy.dropna()
+        data = data_copy
 
         #  ============
         #  = Plotting =
@@ -216,7 +222,6 @@ for f in os.listdir(data_dir):
 
                 # Plot channel data or save channel data for later usage, depending on plot mode
                 if plot_mode == 'figure':
-                    current_channel_data = pd.rolling_mean(current_channel_data, data_time_averaging_window, center=True)  # Smooth data
                     plt.plot(data['Time'],
                              current_channel_data,
                              lw=2,
@@ -306,7 +311,7 @@ for f in os.listdir(data_dir):
         print
 
         # Write offset times and converted quantities back to reduced exp. data file
-        data.dropna().to_csv(data_dir + test_name + '_Reduced.csv')
+        data.to_csv(data_dir + test_name + '_Reduced.csv')
 
         if plot_mode == 'video':
             rcParams.update({'figure.autolayout': True,
@@ -332,7 +337,6 @@ for f in os.listdir(data_dir):
                     fig = plt.figure()
                     for channel_number, channel_name in enumerate(video_plots):
                         video_data = video_plots[channel_name] * video_rescale_factor + video_rescale_offset
-                        video_data = pd.rolling_mean(video_data, video_time_averaging_window, center=True)  # Smooth data
                         plt.plot(video_time[:frame_number],
                                  video_data[:frame_number],
                                  lw=4,
