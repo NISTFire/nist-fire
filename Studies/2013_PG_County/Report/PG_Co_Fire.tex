@@ -271,12 +271,11 @@ Incident Time              &  Fire Behavior / Fireground Operation  \\
 21:13:56  & Truck 809 arrived on-scene. \\[.25cm]
 21:14:00  & Front door opened. \\[.25cm]
 21:14:42  & Truck 809 enters structure. \\[.25cm]
-21:15:47  & Front door closed over. \\[.25cm]
+21:15:47  & Basement door opened and water applied to fire. Front door closed over. \\[.25cm]
 21:15:51  & Lower pane of front egress window broke. \\[.25cm]
 21:16:01  & Top pane of front egress window broke. \\[.25cm]
 21:16:16  & Truck 809 officer bailout through window. \\[.25cm]
 21:16:44  & Front door opened. \\[.25cm]
-21:17:00  & Basement door opened and water applied to fire. \\[.25cm]
 21:17:15  & Truck 809 forcible entry firefighter rescued. \\[.25cm]
 \bottomrule[1.25pt]
 \end{tabular}\par
@@ -419,16 +418,16 @@ In addition to the state of openings within the structure, three wind scenarios 
 \toprule[1.5pt]
 Baseline     &   Ventilation   &  Type       & State of       &  Side of  \\
 Simulation  &  Area             &                 & Opening     &  Structure  \\
-{[s]}             &  {[m$^2$]}     &                 &                    &                  \\
+{[s]}             &  {[m$^2$]}     &                 &           &               \\
 \midrule
-0               &  1.40             &  Window      &  Opened     &  Rear  \\
-0               &  0.39             &  Window      &  Opened     &  Left   \\
-100             &  1.84             &  Door        &  Opened     &  Front   \\
-207             &  1.84             &  Door        &  Closed     &  Front   \\
-211             &  0.26             &  Window      &  Opened     &  Front   \\
-221             &  0.26             &  Window      &  Opened     &  Front  \\
-264             &  1.84             &  Door        &  Opened     &  Front  \\
-280             &  1.84             &  Door        &  Opened     &  Rear  \\
+0               &  1.40             &  Window      &  Opened     &  Rear  \\[.25cm]
+0               &  0.39             &  Window      &  Opened     &  Left  \\[.25cm]
+100             &  1.84             &  Door        &  Opened     &  Front \\[.25cm]
+207             &  1.84             &  Door        &  Closed     &  Front \\[.25cm]
+207             &  1.84             &  Door        &  Opened     &  Rear  \\[.25cm]
+211             &  0.26             &  Window      &  Opened     &  Front \\[.25cm]
+221             &  0.26             &  Window      &  Opened     &  Front \\[.25cm]
+267             &  1.84             &  Door        &  Opened     &  Front \\[.25cm]
 
 \bottomrule[1.25pt]
 \end{tabular}\par
@@ -534,6 +533,7 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 21:14:42       &              &  Truck 809 enters structure.                                         \\
                &              &                                                                      \\
 21:15:47       &  207         &  Front door closed over.                                             \\
+               &              &  Basement door opened and water applied to fire.                     \\
                &              &                                                                      \\
 21:15:51       &  211         &  Lower pane of front egress window broke.                            \\
                &              &                                                                      \\
@@ -541,9 +541,7 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
                &              &                                                                      \\
 21:16:16       &              &  Truck 809 officer bailout through window.                           \\
                &              &                                                                      \\
-21:16:44       &  280         &  Front door opened.                                                  \\
-               &              &                                                                      \\
-21:17:00       &              &  Basement door opened and water applied to fire.                     \\
+21:16:47       &  267         &  Front door opened.                                                  \\
                &              &                                                                      \\
 21:17:15       &              &  Truck 809 forcible entry firefighter rescued.                       \\
                &              &                                                                      \\
