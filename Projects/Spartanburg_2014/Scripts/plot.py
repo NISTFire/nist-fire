@@ -310,7 +310,13 @@ for f in os.listdir(data_dir):
         plt.close('all')
         print
 
-        # Write offset times and converted quantities back to reduced exp. data file
+        # Rename data column headers from device names to descriptive channel names for reduced data file
+        old_name = channel_list['Device Name']
+        new_name = channel_list.index
+        channel_name_mapping = dict(zip(old_name, new_name))
+        data.rename(columns=channel_name_mapping, inplace=True)
+
+        # Write offset times and converted quantities back to reduced data file
         data.to_csv(data_dir + test_name + '_Reduced.csv')
 
         if plot_mode == 'video':
