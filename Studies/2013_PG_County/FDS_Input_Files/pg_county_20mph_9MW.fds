@@ -72,7 +72,9 @@ VENT MB = 'YMAX', SURF_ID = 'OPEN' /
 
 &RAMP ID='BURN', T = 0,   F = 0.  /
 &RAMP ID='BURN', T = 10,  F = 1.0 /
-&RAMP ID='BURN', T = 300, F = 1.0 /
+&RAMP ID='BURN', T = 207, F = 1.0 /
+&RAMP ID='BURN', T = 267, F = 0.25 /
+&RAMP ID='BURN', T = 300, F = 0.25 /
 
 &OBST XB=0.6,1.2,5,6.5,0.0,0.4, SURF_IDS='burner1','INERT','INERT' /  Burner1
 &OBST XB=2.5,4,5.0,6.0,0.0,0.4, SURF_IDS='burner2','INERT','INERT' /  Burner2
@@ -89,10 +91,21 @@ VENT MB = 'YMAX', SURF_ID = 'OPEN' /
 &RAMP ID='cycle', T=  100, F= 1 /
 &RAMP ID='cycle', T=  206, F=1 /
 &RAMP ID='cycle', T=  207, F= -1 /
-&RAMP ID='cycle', T=  263, F=-1 /
-&RAMP ID='cycle', T=  264, F= 1 /
+&RAMP ID='cycle', T=  266, F=-1 /
+&RAMP ID='cycle', T=  267, F= 1 /
 
-&DEVC XYZ=0.1,0.1,0.1, ID='timer rear door', SETPOINT= 280.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
+&OBST XB = 3.71,3.81,0.3,1.21,2.58,4.63, COLOR='BURLY WOOD 4', CTRL_ID='cycling timer2' / front door
+&DEVC ID='TIMER2', XYZ=0.0,0.0,0.0, QUANTITY='TIME' /
+&CTRL ID='cycling timer2', FUNCTION_TYPE='CUSTOM', INPUT_ID='TIMER2', RAMP_ID='cycle2' /
+&RAMP ID='cycle2', T=  0, F=-1 /
+&RAMP ID='cycle2', T=  99, F=-1 /
+&RAMP ID='cycle2', T=  100, F= 1 /
+&RAMP ID='cycle2', T=  206, F=1 /
+&RAMP ID='cycle2', T=  207, F= -1 /
+&RAMP ID='cycle2', T=  266, F=-1 /
+&RAMP ID='cycle2', T=  267, F= 1 /
+
+&DEVC XYZ=0.1,0.1,0.1, ID='timer rear door', SETPOINT= 207.0, QUANTITY='TIME', INITIAL_STATE=.FALSE./
 &HOLE XB = 4.57,5.48,6.86,7.16,0.0,2.03, COLOR='BURLY WOOD 4', DEVC_ID='timer rear door' / rear door
 
 #  ===========
@@ -379,5 +392,9 @@ OBST XB = 4.51,5.73,4.72,7.47,2.58,5.06, COLOR='GRAY 60' / fill bathoom
 &SLCF PBX = 4.27, QUANTITY='V-VELOCITY'  / Front
 &SLCF PBX = 4.27, QUANTITY='U-VELOCITY'  / Front
 &SLCF PBX = 4.27, QUANTITY='W-VELOCITY'  / Front
+
+&SLCF XB = 3.71,3.71,0.3,1.21,2.58,4.63, QUANTITY='PRESSURE' /
+&SLCF XB = 3.71,3.71,0.3,1.21,2.58,4.63, QUANTITY='VELOCITY' /
+
 
 &TAIL /

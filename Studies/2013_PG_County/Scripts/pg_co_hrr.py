@@ -23,8 +23,8 @@ for i in FDS_9MW_20.columns:
 for i in FDS_9MW_20.columns:
     if 'FirstFloor_HRR_' in i:
         first_hrr_20mph_raw += FDS_9MW_20[i]/1000
-base_hrr_20mph = movingaverage(base_hrr_20mph_raw,10)
-first_hrr_20mph = movingaverage(first_hrr_20mph_raw,10)
+base_hrr_20mph = pd.rolling_mean(base_hrr_20mph_raw,15)
+first_hrr_20mph = pd.rolling_mean(first_hrr_20mph_raw,15)
 
 FDS_9MW_10 = pd.read_csv('../FDS_Output_Files/pg_county_10mph_9MW_devc.csv', header=1)
 base_hrr_10mph_raw = np.zeros(len(FDS_9MW_10['Time']))
@@ -50,18 +50,29 @@ for i in FDS_9MW_00.columns:
 base_hrr_00mph = movingaverage(base_hrr_00mph_raw,10)
 first_hrr_00mph = movingaverage(first_hrr_00mph_raw,10)
 
+HRR_theo = [None]*1000
+HRR_time = list(xrange(1000))
+
+for i in range (0, 999):
+    if i <= 10:
+        HRR_theo[i] = (8.55/10)*i
+    elif i > 10 and i <= 207:
+        HRR_theo[i] = 8.55
+    elif i > 207 and i <= 267:
+        HRR_theo[i] = 8.55 - (0.75*8.55/60)*(i-207)
+    else:
+        HRR_theo[i] = 0.25*8.55
+
 
 fig = figure()
-plot(FDS_9MW_00['Time'],base_hrr_00mph,'b-',mfc='none',label='FDS Model HRR (0 mph)',linewidth=2)
-plot(FDS_9MW_10['Time'],base_hrr_10mph,'r:',mfc='none',label='FDS Model HRR (10 mph)',linewidth=2)
-plot(FDS_9MW_20['Time'],base_hrr_20mph,'g--',mfc='none',label='FDS Model HRR (20 mph)',linewidth=2)
+plot(FDS_9MW_20['Time'],base_hrr_20mph,'b--',mfc='none',label='Calculated Basement HRR',linewidth=2)
 axvline(x=100,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=207,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=211,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=221,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=264,linestyle='-',linewidth=2,color = '#000000')
+axvline(x=267,linestyle='-',linewidth=2,color = '#000000')
 ax1 = gca()
-xlim([0, 275])
+xlim([0, 300])
 ax1.xaxis.set_major_locator(MaxNLocator(8))
 ax1_xlims = ax1.axis()[0:2]
 xlabel('Time (s)')
@@ -69,25 +80,23 @@ ylabel('HRR (MW)')
 legend(numpoints=1,loc=4 )
 ax2 = ax1.twiny()
 ax2.set_xlim(ax1_xlims)
-ax2.set_xticks([100,207,211,221,264])
+ax2.set_xticks([100,207,211,221,267])
 setp(xticks()[1], rotation=60)
 labels = ['Front Door Open', 'Front Door Closed','Bottom Bay Window Open', 'Top Bay Window Open','Front Door Open']
 ax2.set_xticklabels(labels, fontsize=8, ha='left')
-axis([0, 275, 0, 10])
+axis([0, 300, 0, 10])
 savefig('../Figures/PG_Basement_9MW_HRR.pdf',format='pdf')
 close()
 
 fig = figure()
-plot(FDS_9MW_00['Time'],first_hrr_00mph,'b-',mfc='none',label='FDS Model HRR (0 mph)',linewidth=2)
-plot(FDS_9MW_10['Time'],first_hrr_10mph,'r:',mfc='none',label='FDS Model HRR (10 mph)',linewidth=2)
-plot(FDS_9MW_20['Time'],first_hrr_20mph,'g--',mfc='none',label='FDS Model HRR (20 mph)',linewidth=2)
+plot(FDS_9MW_20['Time'],first_hrr_20mph,'b--',mfc='none',label='Calculated First Floor HRR',linewidth=2)
 axvline(x=100,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=207,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=211,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=221,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=264,linestyle='-',linewidth=2,color = '#000000')
+axvline(x=267,linestyle='-',linewidth=2,color = '#000000')
 ax1 = gca()
-xlim([0, 275])
+xlim([0, 300])
 ax1.xaxis.set_major_locator(MaxNLocator(8))
 ax1_xlims = ax1.axis()[0:2]
 xlabel('Time (s)')
@@ -95,25 +104,24 @@ ylabel('HRR (MW)')
 legend(numpoints=1,loc=2)
 ax2 = ax1.twiny()
 ax2.set_xlim(ax1_xlims)
-ax2.set_xticks([100,207,211,221,264])
+ax2.set_xticks([100,207,211,221,267])
 setp(xticks()[1], rotation=60)
 labels = ['Front Door Open', 'Front Door Closed','Bottom Bay Window Open', 'Top Bay Window Open','Front Door Open']
 ax2.set_xticklabels(labels, fontsize=8, ha='left')
-axis([0, 275, 0, 10])
+axis([0, 300, 0, 1])
 savefig('../Figures/PG_First_9MW_HRR.pdf',format='pdf')
 close()
 
 fig = figure()
-plot(FDS_9MW_00['Time'],base_hrr_00mph+first_hrr_00mph,'b-',mfc='none',label='FDS Model HRR (0 mph)',linewidth=2)
-plot(FDS_9MW_10['Time'],base_hrr_10mph+first_hrr_10mph,'r:',mfc='none',label='FDS Model HRR (10 mph)',linewidth=2)
-plot(FDS_9MW_20['Time'],base_hrr_20mph+first_hrr_20mph,'g--',mfc='none',label='FDS Model HRR (20 mph)',linewidth=2)
+plt.plot(HRR_time,HRR_theo,'k-',mfc='none',label='Prescribed HRR',linewidth=2)
+plot(FDS_9MW_20['Time'],base_hrr_20mph+first_hrr_20mph,'b--',mfc='none',label='Calculated HRR)',linewidth=2)
 axvline(x=100,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=207,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=211,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=221,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=264,linestyle='-',linewidth=2,color = '#000000')
+axvline(x=267 ,linestyle='-',linewidth=2,color = '#000000')
 ax1 = gca()
-xlim([0, 275])
+xlim([0, 300])
 ax1.xaxis.set_major_locator(MaxNLocator(8))
 ax1_xlims = ax1.axis()[0:2]
 xlabel('Time (s)')
@@ -121,10 +129,30 @@ ylabel('HRR (MW)')
 legend(numpoints=1,loc=4)
 ax2 = ax1.twiny()
 ax2.set_xlim(ax1_xlims)
-ax2.set_xticks([100,207,211,221,264])
+ax2.set_xticks([100,207,211,221,267])
 setp(xticks()[1], rotation=60)
 labels = ['Front Door Open', 'Front Door Closed','Bottom Bay Window Open', 'Top Bay Window Open','Front Door Open']
 ax2.set_xticklabels(labels, fontsize=8, ha='left')
-axis([0, 275, 0, 10])
+axis([0, 300, 0, 10])
 savefig('../Figures/PG_Total_9MW_HRR.pdf',format='pdf')
 close()
+
+
+fig = figure()
+plt.plot(HRR_time,HRR_theo,'k-',linewidth=2)
+ax1 = gca()
+plt.text(88, 8.625, 'Steady Burning')
+plt.text(237, 5.35, 'Water on Fire')
+xlabel('Time (s)')
+ylabel('HRR (MW)')
+grid(True)
+ax = gca()
+for xlabel_i in ax.get_xticklabels():
+    xlabel_i.set_fontsize(16)
+for ylabel_i in ax.get_yticklabels():
+    ylabel_i.set_fontsize(16)
+axis([0, 300, 0, 10])
+savefig('../Figures/Fire_HRR.pdf',format='pdf')
+close()
+
+
