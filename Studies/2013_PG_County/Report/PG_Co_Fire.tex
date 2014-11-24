@@ -390,7 +390,7 @@ Figure~\ref{fig:hrr} shows the overall prescribed design fire for this scenario,
 \label{fig:hrr}
 \end{figure}
 
-\clearapge
+\clearpage
 
 \section{Materials}
 \label{matl}
@@ -573,6 +573,18 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 
 \section{Heat Release Rate}
 \label{HRR}
+In FDS, a HRR is specified, which results in a specified amount of fuel vapor (or pyrolyzate) being released from a fuel surface. FDS then determines the amount of combustion that occurs throughout the simulation based on the amount of available fuel and oxygen at a given location. As a result, the prescribed HRR that was input into the simulation can be different than the HRR calculated by FDS based on the ventilation conditions.
+
+Figure~\ref{fig:PG_Total_HRR} shows the HRR vs. time based on the fires described in Section~\ref{fire}. In this figure, the solid line represents the prescribed HRR that was input into the simulation (based on a prescribed mass flux), and the dashed line represents the HRR that was calculated by FDS based on the ventilation conditions. The vertical dashed lines represent the times at which ventilation occured: front door opening and closing as well as breaking of a front window for emergency escape. See Table~\ref{tab:vents} for a detailed list of the ventilation that occuring during the indcident. The maximum size of the fire specified in this study was selected such that the conditions aligned with observations and fuel loads from the actual fire incident. 
+
+\begin{figure}[!ht]
+\includegraphics[width=5.5in]{../Figures/PG_Total_9MW_HRR}
+\caption[Prescribed and calculated HRR vs. time from the simulation.]
+{Comparison of prescribed and calculated HRRs from the simulation. The vertical lines indicate the times at ventilation occurred.}
+\label{fig:PG_Total_HRR}
+\end{figure}
+
+In Fig.~\ref{fig:PG_Total_HRR}, the prescribed HRR that was input into the simulation is different than the HRR calculated by FDS based on the ventilation conditions. From 0~s to approximately 9~s, the calculated HRR was in agreement with the prescribed HRR because there was an adequate amount of oxygen for all of the fuel to combust.
 
 \section{Pressure}
 

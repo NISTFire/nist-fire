@@ -23,8 +23,8 @@ for i in FDS_9MW_20.columns:
 for i in FDS_9MW_20.columns:
     if 'FirstFloor_HRR_' in i:
         first_hrr_20mph_raw += FDS_9MW_20[i]/1000
-base_hrr_20mph = pd.rolling_mean(base_hrr_20mph_raw,15)
-first_hrr_20mph = pd.rolling_mean(first_hrr_20mph_raw,15)
+base_hrr_20mph = pd.rolling_mean(base_hrr_20mph_raw,10,center=True)
+first_hrr_20mph = pd.rolling_mean(first_hrr_20mph_raw,10,center=True)
 
 FDS_9MW_10 = pd.read_csv('../FDS_Output_Files/pg_county_10mph_9MW_devc.csv', header=1)
 base_hrr_10mph_raw = np.zeros(len(FDS_9MW_10['Time']))
@@ -49,6 +49,9 @@ for i in FDS_9MW_00.columns:
         first_hrr_00mph_raw += FDS_9MW_00[i]/1000
 base_hrr_00mph = movingaverage(base_hrr_00mph_raw,10)
 first_hrr_00mph = movingaverage(first_hrr_00mph_raw,10)
+
+print base_hrr_20mph
+
 
 HRR_theo = [None]*1000
 HRR_time = list(xrange(1000))
@@ -114,7 +117,7 @@ close()
 
 fig = figure()
 plt.plot(HRR_time,HRR_theo,'k-',mfc='none',label='Prescribed HRR',linewidth=2)
-plot(FDS_9MW_20['Time'],base_hrr_20mph+first_hrr_20mph,'b--',mfc='none',label='Calculated HRR)',linewidth=2)
+plot(FDS_9MW_20['Time'],base_hrr_20mph+first_hrr_20mph,'b--',mfc='none',label='Calculated HRR',linewidth=2)
 axvline(x=100,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=207,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=211,linestyle='-',linewidth=2,color = '#000000')
