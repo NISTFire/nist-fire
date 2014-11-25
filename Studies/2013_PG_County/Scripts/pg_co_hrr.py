@@ -26,32 +26,7 @@ for i in FDS_9MW_20.columns:
 base_hrr_20mph = pd.rolling_mean(base_hrr_20mph_raw,10,center=True)
 first_hrr_20mph = pd.rolling_mean(first_hrr_20mph_raw,10,center=True)
 
-FDS_9MW_10 = pd.read_csv('../FDS_Output_Files/pg_county_10mph_9MW_devc.csv', header=1)
-base_hrr_10mph_raw = np.zeros(len(FDS_9MW_10['Time']))
-first_hrr_10mph_raw = np.zeros(len(FDS_9MW_10['Time']))
-for i in FDS_9MW_10.columns:
-    if 'Basement_HRR_' in i:
-        base_hrr_10mph_raw += FDS_9MW_10[i]/1000
-for i in FDS_9MW_10.columns:
-    if 'FirstFloor_HRR_' in i:
-        first_hrr_10mph_raw += FDS_9MW_10[i]/1000
-base_hrr_10mph = movingaverage(base_hrr_10mph_raw,10)
-first_hrr_10mph = movingaverage(first_hrr_10mph_raw,10)
-
-FDS_9MW_00 = pd.read_csv('../FDS_Output_Files/pg_county_0mph_9MW_devc.csv', header=1)
-base_hrr_00mph_raw = np.zeros(len(FDS_9MW_00['Time']))
-first_hrr_00mph_raw = np.zeros(len(FDS_9MW_00['Time']))
-for i in FDS_9MW_00.columns:
-    if 'Basement_HRR_' in i:
-        base_hrr_00mph_raw += FDS_9MW_00[i]/1000
-for i in FDS_9MW_00.columns:
-    if 'FirstFloor_HRR_' in i:
-        first_hrr_00mph_raw += FDS_9MW_00[i]/1000
-base_hrr_00mph = movingaverage(base_hrr_00mph_raw,10)
-first_hrr_00mph = movingaverage(first_hrr_00mph_raw,10)
-
-print base_hrr_20mph
-
+FDS_HRR_20 = pd.rolling_mean(pd.read_csv('../FDS_Output_Files/pg_county_20mph_9MW_hrr.csv', header=1),10,center=True)
 
 HRR_theo = [None]*1000
 HRR_time = list(xrange(1000))
@@ -122,7 +97,7 @@ axvline(x=100,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=207,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=211,linestyle='-',linewidth=2,color = '#000000')
 axvline(x=221,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=267 ,linestyle='-',linewidth=2,color = '#000000')
+axvline(x=267,linestyle='-',linewidth=2,color = '#000000')
 ax1 = gca()
 xlim([0, 300])
 ax1.xaxis.set_major_locator(MaxNLocator(8))
@@ -140,6 +115,30 @@ axis([0, 300, 0, 10])
 savefig('../Figures/PG_Total_9MW_HRR.pdf',format='pdf')
 close()
 
+fig = figure()
+plt.plot(HRR_time,HRR_theo,'k-',mfc='none',label='Prescribed HRR',linewidth=2)
+plot(FDS_HRR_20['Time'],FDS_HRR_20['HRR']/1000.,'b--',mfc='none',label='Calculated HRR',linewidth=2)
+axvline(x=100,linestyle='-',linewidth=2,color = '#000000')
+axvline(x=207,linestyle='-',linewidth=2,color = '#000000')
+axvline(x=211,linestyle='-',linewidth=2,color = '#000000')
+axvline(x=221,linestyle='-',linewidth=2,color = '#000000')
+axvline(x=267 ,linestyle='-',linewidth=2,color = '#000000')
+ax1 = gca()
+xlim([0, 300])
+ax1.xaxis.set_major_locator(MaxNLocator(8))
+ax1_xlims = ax1.axis()[0:2]
+xlabel('Time (s)')
+ylabel('HRR (MW)')
+legend(numpoints=1,loc=4)
+ax2 = ax1.twiny()
+ax2.set_xlim(ax1_xlims)
+ax2.set_xticks([100,207,211,221,267])
+setp(xticks()[1], rotation=60)
+labels = ['Front Door Open', 'Front Door Closed','Bottom Bay Window Open', 'Top Bay Window Open','Front Door Open']
+ax2.set_xticklabels(labels, fontsize=8, ha='left')
+axis([0, 300, 0, 10])
+savefig('../Figures/PG_9MW_HRR.pdf',format='pdf')
+close()
 
 fig = figure()
 plt.plot(HRR_time,HRR_theo,'k-',linewidth=2)
