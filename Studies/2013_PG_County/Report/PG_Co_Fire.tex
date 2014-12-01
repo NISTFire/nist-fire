@@ -242,7 +242,7 @@ This document describes the input and the results of the FDS (version 6.1.1) sim
 
 \chapter{Fire Incident Summary}
 \label{fire_sum}
-The account of events for this incident was documented by the Safety Investigation Team of the Prince George's County Fire/EMS Department~\cite{PGCounty2013}. At 21:11 hours on February 24, 2012 Prince George's Fire/EMS Department responded to a structure fire in Riverdale Heights, Maryland with a fire in the basement~\cite{PGCounty2013}. For the purpose of this analysis, the details regarding the timeline are considered to be approximate values. The Prince George's County report~\cite{PGCounty2013} includes narratives of actions of the response personnel. The following narrative of the incident, focused on the events which led to burn injuries to two emergency-personnel, was taken from the Prince George's County report~\cite{PGCounty2013}:
+The account of events for this incident was documented by the Safety Investigation Team of the Prince George's County Fire/EMS Department~\cite{PGCounty2013}. At 21:11 hours on February 24, 2012 Prince George's Fire/EMS Department responded to a structure fire in Riverdale Heights, Maryland with a fire in the basement~\cite{PGCounty2013}. For the purpose of this analysis, the details regarding the time line are considered to be approximate values. The Prince George's County report~\cite{PGCounty2013} includes narratives of actions of the response personnel. The following narrative of the incident, focused on the events which led to burn injuries to two emergency-personnel, was taken from the Prince George's County report~\cite{PGCounty2013}:
 \begin{quote}
 Truck 809 responded from quarters, as the first due truck company, and arrived on 57th Avenue right behind Engine 807B. When Truck 809 stopped to let Engine 807B layout, Truck 809 Can dismounted the truck and had to walk up the street as it pulled away. Truck 809 Officer observed a lot of smoke moving extremely fast through the front yard and across the street upon exiting the truck. Truck 809 Officer and Truck 809 Forcible Entry proceeded directly to the front door \ldots of the structure. Both of them entered the structure with full PPE, including SCBA, but without the protection of a hose line. Truck 809 Officer and Truck 809 Forcible Entry began primary searches on the first floor. At some point during the primary search, as conditions worsened, the front door closed, trapping Truck 809 Officer and Truck 809 Forcible Entry inside the structure. This situation could not have occurred if a charged hose line was operating inside the structure at the time the door slammed shut. They were the only firefighters operating on the first floor at that time. 
 
@@ -252,7 +252,7 @@ After exiting the structure, Truck 809 Officer screamed (to those on the exterio
 
 While the interior operations were occurring, Truck 809 Driver and Truck 809 Hook/Ladders were on the exterior throwing ladders to the structure. Truck 809 Hook/Ladders threw two ladders [front and left side], while Truck 809 Driver threw one ladder ([front side]). 
 \end{quote}  
-From a combination of on-scene video and the narrative accounts from the Prince George's County Fire/EMS Department report~\cite{PGCounty2013}, Table~\ref{tab:fire_info} shows an overview of the timeline of events. Table~\ref{tab:fire_info} represents the best estimate of the events and therefore all times should be considered as approximate.
+From a combination of on-scene video and the narrative accounts from the Prince George's County Fire/EMS Department report~\cite{PGCounty2013}, Table~\ref{tab:fire_info} shows an overview of the time line of events. Table~\ref{tab:fire_info} represents the best estimate of the events and therefore all times should be considered as approximate.
 
 \begin{table}[!h]
 \centering
@@ -284,13 +284,13 @@ Incident Time              &  Fire Behavior / Fireground Operation  \\
 
 \chapter{Model Description}
 \label{model}
-Fire Dynamics Simulator~\cite{FDS_Users_Guide} is a computational fluid dynamics (CFD) model that solves a form of the Navier-Stokes equations appropriate for low-speed, thermally driven flow with an emphasis on smoke and heat transport from fires.  Within a CFD model, the room or building is divided into small three-dimensional rectangular control volumes or computational cells.  The cells are contained together within one larger volume known as a computational domain.  The CFD model computes the density, velocity, temperature, pressure, and species concentration of the gas in each cell.  Based on the laws of conservation of mass, momentum,  and energy, the model tracks the generation and movement of fire gasses. One of the most important advantages of FDS is that it is  mathematically verified~\cite{FDS_Verification_Guide} and validated against fire test data to ensure that it provides the expected results, given sufficient input data~\cite{FDS_Validation_Guide}. A complete description of the FDS model is provided in the FDS Technical Reference Guide~\cite{FDS_Math_Guide}.
+Fire Dynamics Simulator~\cite{FDS_Users_Guide} is a computational fluid dynamics (CFD) model that solves a form of the Navier-Stokes equations appropriate for low-speed, thermally driven flow with an emphasis on smoke and heat transport from fires.  Within a CFD model, the room or building is divided into small three-dimensional rectangular control volumes or computational cells.  The cells are contained together within one larger volume known as a computational domain.  The CFD model computes the density, velocity, temperature, pressure, and species concentration of the gas in each cell.  Based on the laws of conservation of mass, momentum,  and energy, the model tracks the generation and movement of fire gases. One of the most important advantages of FDS is that it is  mathematically verified~\cite{FDS_Verification_Guide} and validated against fire test data to ensure that it provides the expected results, given sufficient input data~\cite{FDS_Validation_Guide}. A complete description of the FDS model is provided in the FDS Technical Reference Guide~\cite{FDS_Math_Guide}.
 
 Smokeview is a software tool designed to visualize simulation results from FDS~\cite{Smokeview_Users_Guide}. Smokeview visualizes smoke and other attributes of the fire simulation using traditional scientific methods such as displaying tracer particle flow, two dimensional (2D) or three dimensional (3D) shaded contours of gas flow data such as temperature and flow vectors showing flow direction and magnitude. Smokeview allows the fire and fire movement to be visualized. This is done by displaying a series of partially transparent planes where the transparencies in each plane (at each grid node) are determined from soot densities computed by FDS. Smokeview also visualizes static data at particular times using 2D or 3D contours of data such as temperature and flow vectors showing flow direction and magnitude.
 
 Input data from various sources must be collected and documented to simulate a fire using FDS or any other fire model. For the simulation results presented in this document, information was obtained from two primary sources. The following information was gathered from the fire scene: the geometry of the building and the compartments being modeled, the size and location of exterior and interior ventilation openings, and documentation of fire damage to the building. The following information was gathered from witnesses, first responders, reports, and recorded media such as fire ground radios or videos: information on the timing of the fire development, the sequence and approximate timing of ventilation openings to the outside, and weather conditions at the time of the fire. 
 
-The analysis of the simulation results is focused on the impact of ventilation. Specifically on the  interior conditions of the first floor following the establishment of a flow path through door control and how wind impacted these conditions. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, heavy smoke conditions were reported at the front of the house at the time of arrival~\cite{PGCounty2013}; however, the exact ignition time, fire growth rate, and heat release rate (HRR) of the fire were not known. The ignition time and growth rate were estimated to reduce the amount of required calculation time while adhering to event timeline (Table~\ref{tab:fire_info}) and documented observations. The HRR of the fire was estimated using documentation of the potential fuel load within the structure.
+The analysis of the simulation results is focused on the impact of ventilation. Specifically on the  interior conditions of the first floor following the establishment of a flow path through door control and how wind impacted these conditions. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, heavy smoke conditions were reported at the front of the house at the time of arrival~\cite{PGCounty2013}; however, the exact ignition time, fire growth rate, and heat release rate (HRR) of the fire were not known. The ignition time and growth rate were estimated to reduce the amount of required calculation time while adhering to event time line (Table~\ref{tab:fire_info}) and documented observations. The HRR of the fire was estimated using documentation of the potential fuel load within the structure.
 
 \section{Geometry}
 \label{geom}
@@ -327,7 +327,7 @@ The fire, which is described in Section~\ref{fire}, started in the basement and 
 
 \section{Fire}
 \label{fire}
-To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these sources of information, the FDS model includes two source fire locations in the basement: one fire in the kitchen area and one in the adjecent bathoom (Fig.~\ref{fig:basement_fire}). At the time of the fire, the structure was vacant so the the dominant fuel was wood: wood paneling on walls, exposed ceiling joists, subfloor, cabinets, and stairs.
+To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these sources of information, the FDS model includes two source fire locations in the basement: one fire in the kitchen area and one in the adjacent bathroom (Fig.~\ref{fig:basement_fire}). At the time of the fire, the structure was vacant so the the dominant fuel was wood: wood paneling on walls, exposed ceiling joists, sub-floor, cabinets, and stairs.
 
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{../Figures/Basement_Fire}
@@ -418,11 +418,11 @@ During the time at which the firefighters exited the structure or were rescued f
 
 Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open rear basement door and two open windows at the start of the simulation are significantly larger than the total effective area of leakage of a structure of this type. Therefore, any leakage in the structure would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
 
-In addition to the state of openings within the structure, three wind scenarios were considered in this study. Each scenario followed the timeline of events outlined in Table~\ref{tab:vents}. The difference in each scenario is the wind boundary condition. Simulations were run with 0~m/s (0~mph), 4.5~m/s (10~mph), and 8.9~m/s (20~mph) wind velocities, all with a flow direction from the rear toward the front of the structure. Based on local weather conditions, mean wind velocities ranged between 4.5~m/s (10~mph) and 8.9~m/s (20~mph) with gusts up to 13.4~m/s (30~mph)~\cite{PGCounty2013}. The case without wind was run to control for the impact of wind on the flow of hot gases within the structure.
+In addition to the state of openings within the structure, outlined in Table~\ref{tab:vents}, an 8.9~m/s (20~mph) wind velocity boundary condition was included. The flow direction of the wind was from the rear toward the front of the structure. Based on local weather conditions, mean wind velocities ranged between 4.5~m/s (10~mph) and 8.9~m/s (20~mph) with gusts up to 13.4~m/s (30~mph)~\cite{PGCounty2013}.
 
 \begin{table}
 \centering
-\captionof{table}{Timeline of ventilation changes in the simulation}\label{tab:vents}
+\captionof{table}{Time line of ventilation changes in the simulation}\label{tab:vents}
 \begin{tabular}{lllll}
 \toprule[1.5pt]
 Baseline     &   Ventilation   &  Type       & State of       &  Side of  \\
@@ -457,7 +457,7 @@ From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diamet
 
 As discussed in Section~\ref{geom}, the structure has dimensions of 9.14~m (30~ft) by 7.62~m (25~ft) and a total height of 7.31~m (24~ft). To sufficiently resolve the wind boundary condtion, the computational domain was extended beyond the volume of the structure. The large domain led to the use of two separate grid resolutions, a 10~cm (3.9~in) resolution and a 20~cm (7.8~in) resolution. The 10~cm resolution encompasses the structure with a total volume 14~m (46~ft) by 12~m (39ft) by 8~m (26~ft) that required a total of 1.3 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. The 20~cm grid resolution extends the computational domain 5~m to the left and right sides and 4~m behind the 10~cm mesh to provide sufficient computational domain for the wind profile to develop around the structure. The mesh is coarser to cut down on computational time and because high accuracy in the fluid mechanics of the air flow far from the structure is not important in the analysis of this simulation. The 20~cm resolution resulted in an additional 216,000 computational cells.
 
-Figure~\ref{fig:geom_grid} shows the front and rear of the structure and surrounding domain rendered in Smokeview with the 10~cm and 20~cm meshes. Note the finer mesh (smaller cells) surrounding the structure and the coarser mesh on each side. The domain was divided into 12 equally sized 10~cm meshes that surround the structure (each containing 150,000 grid cells) plus 4 equally sized 20~cm meshes to the left and right of the stucture (each containing 32,000 grid cells) and one 20~cm mesh in the rear of the structure (containing 56,000 grid cells) for a total of 17 meshes. Multiple meshes allowed the simulation to be processed in parallel, which reduced the amount of required calculation time to approximately 18~hours for the no wind case and 3~days for the 20~mph wind case. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. The boundary between the twelve 10~cm meshes and five 20~cm meshes is indicated by the {\bf bold} lines. Table~\ref{tab:mod_param} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
+Figure~\ref{fig:geom_grid} shows the front and rear of the structure and surrounding domain rendered in Smokeview with the 10~cm and 20~cm meshes. Note the finer mesh (smaller cells) surrounding the structure and the coarser mesh on each side. The domain was divided into 12 equally sized 10~cm meshes that surround the structure (each containing 150,000 grid cells) plus 4 equally sized 20~cm meshes to the left and right of the structure (each containing 32,000 grid cells) and one 20~cm mesh in the rear of the structure (containing 56,000 grid cells) for a total of 17 meshes. Multiple meshes allowed the simulation to be processed in parallel, which reduced the amount of required calculation time to approximately 3~days for the 20~mph wind case. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. The boundary between the twelve 10~cm meshes and five 20~cm meshes is indicated by the {\bf bold} lines. Table~\ref{tab:mod_param} shows a summary of the model input parameters for the simulations that were conducted as part of this study.
 
 \begin{figure}[!ht]
 \centering
@@ -520,11 +520,11 @@ $^{*}$Initial interior temperatures were assumed to be 20~$^{\circ}$C; exterior 
 \chapter{Model Results}
 \label{results}
 
-To examine the results of the simulation, it is important to link the timelines from the fire scene to the simulation times. Table~\ref{tab:combined_timeline} shows the fireground timeline~\cite{PGCounty2013} along with the corresponding simulation times.
+To examine the results of the simulation, it is important to link the time lines from the fire scene to the simulation times. Table~\ref{tab:combined_timeline} shows the fireground time line~\cite{PGCounty2013} along with the corresponding simulation times.
 
 \begin{table}[!ht]
-\caption[Fire incident and simulation event timeline]
-{Fire incident and simulation event timeline}
+\caption[Fire incident and simulation event time line]
+{Fire incident and simulation event time line}
 \begin{tabular}{ccl}
 \toprule
 Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation                                \\
@@ -534,7 +534,7 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 21:08:26       &              &  First 911 call is made.                                             \\
                &              &                                                                      \\
 21:11:03       &              &  Dispatch for a``box'' alarm assignment- four engine companies       \\
-               &              &  two truck companies, one rescue squad, and a com- manding officer.  \\
+               &              &  two truck companies, one rescue squad, and a commanding officer.  \\
                &              &                                                                      \\
 21:21:20       &  0           &  FDS simulation begins.                                              \\
                &              &                                                                      \\
@@ -575,28 +575,75 @@ Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation           
 \label{HRR}
 In FDS, a HRR is specified, which results in a specified amount of fuel vapor (or pyrolyzate) being released from a fuel surface. FDS then determines the amount of combustion that occurs throughout the simulation based on the amount of available fuel and oxygen at a given location. As a result, the prescribed HRR that was input into the simulation can be different than the HRR calculated by FDS based on the ventilation conditions.
 
-Figure~\ref{fig:PG_Total_HRR} shows the HRR in the structure vs. time based on the fires described in Section~\ref{fire}. In this figure, the solid line represents the prescribed HRR that was input into the simulation (based on a prescribed mass flux), and the dashed line represents the HRR inside the structure that was calculated by FDS based on the ventilation conditions. The vertical dashed lines represent the times at which ventilation occured: front door opening and closing as well as the breaking of a front window for emergency escape. See Table~\ref{tab:vents} for a detailed list of the ventilation that occuring during the indcident. The maximum size of the fire specified in this study was selected such that the conditions aligned with observations and fuel loads from the actual fire incident. 
+Figure~\ref{fig:PG_Total_HRR} shows the HRR in the structure vs. time based on the fires described in Section~\ref{fire}. In this figure, the solid line represents the prescribed HRR that was input into the simulation (based on a prescribed mass flux), and the dashed line represents the HRR inside the structure that was calculated by FDS based on the ventilation conditions. The vertical dashed lines represent the times at which ventilation occurred: front door opening and closing as well as the breaking of a front window for emergency escape. See Table~\ref{tab:vents} for a detailed list of the ventilation that occurring during the incident. The maximum size of the fire specified in this study was selected such that the conditions aligned with observations and fuel loads from the actual fire incident. 
 
 \begin{figure}[!ht]
-\includegraphics[width=5.5in]{../Figures/PG_Total_9MW_HRR}
-\caption[Interior prescribed and calculated HRR vs. time from the simulation.]
-{Comparison of prescribed and calculated interior HRRs from the simulation. The vertical lines indicate the times at ventilation occurred.}
+\includegraphics[width=5in]{../Figures/PG_Total_9MW_HRR}
+\caption[Interior prescribed and calculated interior HRRs vs. time from the simulation.]
+{Comparison of prescribed and calculated interior HRRs from the FDS simulation. The vertical lines indicate the times at which ventilation occurred.}
 \label{fig:PG_Total_HRR}
 \end{figure}
 
-In Fig.~\ref{fig:PG_Total_HRR}, the prescribed HRR that was input into the simulation is different than the HRR calculated by FDS based on the ventilation conditions. From 0~s to approximately 9~s, the calculated HRR was in agreement with the prescribed HRR because there was an adequate amount of oxygen for all of the fuel to combust. The differences in presribed versus predicted HRR is a result of either fuel within the structure accumulating because of a lack of oxygen or combustion occurring exterior to the structure where fuel and oxygen can mix and react. Fig.~\ref{fig:PG_9MW_HRR} shows the total calculated HRR within the computational domain (includes combustion occuring exterior to the structure) compared to the presribed HRR curve.
+In Fig.~\ref{fig:PG_Total_HRR}, the prescribed HRR that was input into the simulation is different than the HRR calculated by FDS based on the ventilation conditions. From 0~s to approximately 9~s, the calculated HRR was in agreement with the prescribed HRR because there was an adequate amount of oxygen for all of the fuel to combust. The differences in prescribed versus predicted HRR is a result of either fuel within the structure accumulating and not combusting because of a lack of oxygen or combustion occurring exterior to the structure where fuel and oxygen can mix and react. Fig.~\ref{fig:PG_9MW_HRR} shows the total calculated HRR within the computational domain (includes combustion occurring exterior to the structure) compared to the prescribed HRR curve.
 
 \begin{figure}[!ht]
-\includegraphics[width=5.5in]{../Figures/PG_9MW_HRR}
-\caption[Prescribed and calculated HRR vs. time from the simulation.]
-{Comparison of total prescribed and calculated HRRs from the simulation. The vertical lines indicate the times at ventilation occurred.}
+\includegraphics[width=5in]{../Figures/PG_9MW_HRR}
+\caption[Prescribed and total calculated HRRs vs. time from the simulation.]
+{Comparison of total prescribed and calculated HRRs within the entire computational domain from the FDS simulation. The vertical lines indicate the times at which ventilation occurred.}
 \label{fig:PG_9MW_HRR}
 \end{figure}
 
-0.675 MW
+A comparison of the differences between the HRR inside the structure (Fig.~\ref{fig:PG_Total_HRR}) and the total HRR (Fig.~\ref{fig:PG_9MW_HRR}) over the first 100 seconds of the simulation indicates that on average there was the equivalent of an approximate 0.675 MW fire(s) occurring through open external vents. This aligns with observed post-fire damage and post-incident report~\cite{PGCounty2013}. Fig.~\ref{fig:ext_fire_dam} shows a post-fire image of the back left corner of the structure as well as a Smokeview rendering of the fire from the FDS simulation prior to the front door being opening by firefighters.
 
+\begin{figure}[!ht]
+\centering
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+   \scalebox{1.0}{\includegraphics[width=.8\textwidth]{../Figures/Basement_External_Damage}} \\
+   \scalebox{1.0}{\includegraphics[width=.8\textwidth]{../Figures/Basement_FDS_Fire}} 
+\end{tabular*}
+\caption{External post-fire image of damage to the basement (top) and FDS model showing external fire prior to the front door of the structure being opened (bottom).}
+\label{fig:ext_fire_dam}
+\end{figure}
+
+After 100 seconds of simulation time, 5~\sfrac{1}{2}~minutes after the first 911 call, firefighters open the front door to make entry to the first floor of the structure. The change in ventilation to the structure impacted the HRR. After the door was opened, combustion no longer tool place outside of the structure, however as shown in Fig.~\ref{fig:PG_Basement_9MW_HRR}, the basement HRR was lower than the total HRR within the domain.
+
+\begin{figure}[!ht]
+\includegraphics[width=5in]{../Figures/PG_Basement_9MW_HRR}
+\caption[Prescribed, calculated domain, and calculated basement HRRs vs. time from the simulation.]
+{Comparison of prescribed, total calculated domain HRR and basement calculated HRRs from the simulation. The vertical lines indicate the times at which ventilation occurred.}
+\label{fig:PG_Basement_9MW_HRR}
+\end{figure}
+
+The differences in HRR between the total HRR and the basement HRR can be accounted for in combustion occuring on the first floor of the structure. Fuel that was combusting outside of the structure due to a lack of oxygen combusts on the first floor of the structure as the open front door allows flow to occur within the structure and fuel to mix with available oxygen and react (Fig.~\ref{fig:PG_First_9MW_HRR}).
+
+\begin{figure}[!ht]
+\includegraphics[width=5in]{../Figures/PG_First_9MW_HRR}
+\caption[Prescribed and first floor calculated HRR vs. time from the simulation.]
+{Comparison of total prescribed and first floor calculated HRRs from the simulation. The vertical lines indicate the times at which ventilation occurred.}
+\label{fig:PG_First_9MW_HRR}
+\end{figure}
+
+\clearpage
 
 \section{Pressure}
+\label{pressure}
+
+\begin{figure}[!ht]
+\includegraphics[trim = 4in 2in 5in 2in, clip=true, width=.55\textwidth]{../Figures/pressure_slice_99s}
+\input{../Scripts/colorbar_metric_pres}
+\caption[Calculated pressure on first floor 1 second before door opens]
+{Calculated pressure slice on first floor of the structure 1 second prior to firefighter entry through front door.}
+\label{fig:pressure_slice_99s}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[trim = 4in 2in 5in 2in, clip=true, width=.55\textwidth]{../Figures/pressure_slice_101s}
+\input{../Scripts/colorbar_metric_pres}
+\caption[Calculated pressure on first floor 1 second after door opens]
+{Calculated pressure slice on first floor of the structure 1 second after firefighter entry through front door.}
+\label{fig:pressure_slice_101s}
+\end{figure}
+
 
 \section{Temperature}
 \label{temp}
