@@ -242,7 +242,7 @@ This document describes the input and the results of the FDS (version 6.1.1) sim
 
 \chapter{Fire Incident Summary}
 \label{fire_sum}
-The account of events for this incident was documented by the Safety Investigation Team of the Prince George's County Fire/EMS Department~\cite{PGCounty2013}. At 21:11 hours on February 24, 2012 Prince George's Fire/EMS Department responded to a structure fire in Riverdale Heights, Maryland with a fire in the basement~\cite{PGCounty2013}. For the purpose of this analysis, the details regarding the time line are considered to be approximate values. The Prince George's County report~\cite{PGCounty2013} includes narratives of actions of the response personnel. The following narrative of the incident, focused on the events which led to burn injuries to two emergency-personnel, was taken from the Prince George's County report~\cite{PGCounty2013}:
+The account of events for this incident was documented by the Safety Investigation Team of the Prince George's County Fire/EMS Department~\cite{PGCounty2013}. At 21:11 hours on February 24, 2012 Prince George's Fire/EMS Department responded to a structure fire in Riverdale Heights, Maryland with a fire in the basement~\cite{PGCounty2013}. For the purpose of this analysis, the details regarding the timeline are considered to be approximate values. The Prince George's County report~\cite{PGCounty2013} includes narratives of actions of the response personnel. The following narrative of the incident, focused on the events which led to burn injuries to two emergency-personnel, was taken from the Prince George's County report~\cite{PGCounty2013}:
 \begin{quote}
 Truck 809 responded from quarters, as the first due truck company, and arrived on 57th Avenue right behind Engine 807B. When Truck 809 stopped to let Engine 807B layout, Truck 809 Can dismounted the truck and had to walk up the street as it pulled away. Truck 809 Officer observed a lot of smoke moving extremely fast through the front yard and across the street upon exiting the truck. Truck 809 Officer and Truck 809 Forcible Entry proceeded directly to the front door \ldots of the structure. Both of them entered the structure with full PPE, including SCBA, but without the protection of a hose line. Truck 809 Officer and Truck 809 Forcible Entry began primary searches on the first floor. At some point during the primary search, as conditions worsened, the front door closed, trapping Truck 809 Officer and Truck 809 Forcible Entry inside the structure. This situation could not have occurred if a charged hose line was operating inside the structure at the time the door slammed shut. They were the only firefighters operating on the first floor at that time. 
 
@@ -252,7 +252,7 @@ After exiting the structure, Truck 809 Officer screamed (to those on the exterio
 
 While the interior operations were occurring, Truck 809 Driver and Truck 809 Hook/Ladders were on the exterior throwing ladders to the structure. Truck 809 Hook/Ladders threw two ladders [front and left side], while Truck 809 Driver threw one ladder ([front side]). 
 \end{quote}  
-From a combination of on-scene video and the narrative accounts from the Prince George's County Fire/EMS Department report~\cite{PGCounty2013}, Table~\ref{tab:fire_info} shows an overview of the time line of events. Table~\ref{tab:fire_info} represents the best estimate of the events and therefore all times should be considered as approximate.
+From a combination of on-scene video and the narrative accounts from the Prince George's County Fire/EMS Department report~\cite{PGCounty2013}, Table~\ref{tab:fire_info} shows an overview of the timeline of events. Table~\ref{tab:fire_info} represents the best estimate of the events and therefore all times should be considered as approximate.
 
 \begin{table}[!h]
 \centering
@@ -290,7 +290,7 @@ Smokeview is a software tool designed to visualize simulation results from FDS~\
 
 Input data from various sources must be collected and documented to simulate a fire using FDS or any other fire model. For the simulation results presented in this document, information was obtained from two primary sources. The following information was gathered from the fire scene: the geometry of the building and the compartments being modeled, the size and location of exterior and interior ventilation openings, and documentation of fire damage to the building. The following information was gathered from witnesses, first responders, reports, and recorded media such as fire ground radios or videos: information on the timing of the fire development, the sequence and approximate timing of ventilation openings to the outside, and weather conditions at the time of the fire. 
 
-The analysis of the simulation results is focused on the impact of ventilation. Specifically on the  interior conditions of the first floor following the establishment of a flow path through door control and how wind impacted these conditions. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, heavy smoke conditions were reported at the front of the house at the time of arrival~\cite{PGCounty2013}; however, the exact ignition time, fire growth rate, and heat release rate (HRR) of the fire were not known. The ignition time and growth rate were estimated to reduce the amount of required calculation time while adhering to event time line (Table~\ref{tab:fire_info}) and documented observations. The HRR of the fire was estimated using documentation of the potential fuel load within the structure.
+The analysis of the simulation results is focused on the impact of ventilation. Specifically on the  interior conditions of the first floor following the establishment of a flow path through door control and how wind impacted these conditions. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, heavy smoke conditions were reported at the front of the house at the time of arrival~\cite{PGCounty2013}; however, the exact ignition time, fire growth rate, and heat release rate (HRR) of the fire were not known. The ignition time and growth rate were estimated to reduce the amount of required calculation time while adhering to event timeline (Table~\ref{tab:fire_info}) and documented observations. The HRR of the fire was estimated using documentation of the potential fuel load within the structure.
 
 \section{Geometry}
 \label{geom}
@@ -418,11 +418,11 @@ During the time at which the firefighters exited the structure or were rescued f
 
 Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open rear basement door and two open windows at the start of the simulation are significantly larger than the total effective area of leakage of a structure of this type. Therefore, any leakage in the structure would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
 
-In addition to the state of openings within the structure, outlined in Table~\ref{tab:vents}, an 8.9~m/s (20~mph) wind velocity boundary condition was included. The flow direction of the wind was from the rear toward the front of the structure. Based on local weather conditions, mean wind velocities ranged between 4.5~m/s (10~mph) and 8.9~m/s (20~mph) with gusts up to 13.4~m/s (30~mph)~\cite{PGCounty2013}.
+In addition to the state of openings within the structure, outlined in Table~\ref{tab:vents}, an 8.9~m/s (20~mph) wind velocity boundary condition was included. The flow direction of the wind was from the rear toward the front of the structure, perpendicular to the rear of the structure.  Based on local weather conditions, mean wind velocities ranged between 4.5~m/s (10~mph) and 8.9~m/s (20~mph) with gusts up to 13.4~m/s (30~mph) with a direction that angled toward the back left of the structure~\cite{PGCounty2013}.
 
 \begin{table}
 \centering
-\captionof{table}{Time line of ventilation changes in the simulation}\label{tab:vents}
+\captionof{table}{Timeline of ventilation changes in the simulation}\label{tab:vents}
 \begin{tabular}{lllll}
 \toprule[1.5pt]
 Baseline     &   Ventilation   &  Type       & State of       &  Side of  \\
@@ -520,11 +520,11 @@ $^{*}$Initial interior temperatures were assumed to be 20~$^{\circ}$C; exterior 
 \chapter{Model Results}
 \label{results}
 
-To examine the results of the simulation, it is important to link the time lines from the fire scene to the simulation times. Table~\ref{tab:combined_timeline} shows the fireground time line~\cite{PGCounty2013} along with the corresponding simulation times.
+To examine the results of the simulation, it is important to link the timelines from the fire scene to the simulation times. Table~\ref{tab:combined_timeline} shows the fireground timeline~\cite{PGCounty2013} along with the corresponding simulation times.
 
 \begin{table}[!ht]
-\caption[Fire incident and simulation event time line]
-{Fire incident and simulation event time line}
+\caption[Fire incident and simulation event timeline]
+{Fire incident and simulation event timeline}
 \begin{tabular}{ccl}
 \toprule
 Incident Time  &  Simulation  &  Fire Behavior / Fireground Operation                                \\
@@ -614,7 +614,7 @@ After 100 seconds of simulation time, 5~\sfrac{1}{2}~minutes after the first 911
 \label{fig:PG_Basement_9MW_HRR}
 \end{figure}
 
-The differences in HRR between the total HRR and the basement HRR can be accounted for in combustion occuring on the first floor of the structure. Fuel that was combusting outside of the structure due to a lack of oxygen combusts on the first floor of the structure as the open front door allows flow to occur within the structure and fuel to mix with available oxygen and react (Fig.~\ref{fig:PG_First_9MW_HRR}).
+The differences in HRR between the total HRR and the basement HRR can be accounted for in combustion occurring on the first floor of the structure. Fuel that was combusting outside of the structure due to a lack of oxygen combusts on the first floor of the structure as the open front door allows flow to occur within the structure and fuel to mix with available oxygen and react (Fig.~\ref{fig:PG_First_9MW_HRR}).
 
 \begin{figure}[!ht]
 \includegraphics[width=5in]{../Figures/PG_First_9MW_HRR}
@@ -628,25 +628,63 @@ The differences in HRR between the total HRR and the basement HRR can be account
 \section{Pressure}
 \label{pressure}
 
+The growth of the fire combined with a 8.9~m/s (20~mph) wind flowing normal to the rear of the structure caused the pressure to rise within the structure. Hot gases which may have built up within the structure will flow from high pressure to low pressure. Based on the event timeline, the front door was opened 100 seconds into the simulation, which would create a low pressure relief on the first floor. Due to firefighters entering the structure through the front door, the simulated pressure in the first floor prior to and just after opening the door is important. Figure~\ref{fig:pressure_slices} shows the calculated pressure conditions in the structure just before and after the front door was opened (100~s) in the simulation.
+
+In the top snapshot in Fig.~\ref{fig:pressure_slices}, the pressure profile shows an overpressure of approximately 200~Pa (2.9 $\times$ 10$^{-2}$~psi) prior to the door being opened. This pressure may be on the conservative side (over-prediction) because of wind speed fluctuations, wind direction, and small amounts of structure leakage. One second after the door was opened (bottom snapshot in Fig.~\ref{fig:pressure_slices}), the pressure on the first floor drops to between 75~Pa (1.1 $\times$ 10$^{-2}$~psi) and 85~Pa (1.2 $\times$ 10$^{-2}$~psi). Without the presence of wind, the pressure in the first floor prior to the door opening is is approximately 18~Pa (2.6 $\times$ 10$^{-3}$~psi) and after the door is opened the pressure drops to between 5~Pa (7.3 $\times$ 10$^{-4}$~psi) and 10~Pa (1.4 $\times$ 10$^{-3}$~psi).
+
+\clearpage
+
 \begin{figure}[!ht]
 \includegraphics[trim = 4in 2in 5in 2in, clip=true, width=.55\textwidth]{../Figures/pressure_slice_99s}
-\input{../Scripts/colorbar_metric_pres}
-\caption[Calculated pressure on first floor 1 second before door opens]
-{Calculated pressure slice on first floor of the structure 1 second prior to firefighter entry through front door.}
-\label{fig:pressure_slice_99s}
-\end{figure}
-
-\begin{figure}[!ht]
+\input{../Scripts/colorbar_metric_pres} \\
 \includegraphics[trim = 4in 2in 5in 2in, clip=true, width=.55\textwidth]{../Figures/pressure_slice_101s}
 \input{../Scripts/colorbar_metric_pres}
-\caption[Calculated pressure on first floor 1 second after door opens]
-{Calculated pressure slice on first floor of the structure 1 second after firefighter entry through front door.}
-\label{fig:pressure_slice_101s}
+\caption[Calculated pressure on first floor 1~s before and after front door opens]
+{Calculated pressure contours on first floor of the structure 1~s prior to (top) and 1~s after (bottom) firefighter entry through front door.}
+\label{fig:pressure_slices}
 \end{figure}
 
+\clearpage
+
+\section{Velocity}
+\label{velocity}
+
+Gases flow from a region of high pressure towards a region of lower pressure. Once the front door opened, the gases in the basement at an elevated temperature and pressure flowed upward into the interior stairwell and exited the structure via the front door. The velocity contours shown in Fig.~\ref{fig:velocity_slices} indicate the magnitude of flow velocities within the structure before and after the front door is opened.
+
+In Fig.~\ref{fig:velocity_slices}, the velocity profile within the high-hazard area (first floor) is shown via two snapshots in time to illustrate the change in the interior conditions. The first snapshot is shown at a simulation time of 99~s, which is 1~s before the front door is opened, and the second snapshot is shown at a simulation time of 101~s, which is 1~s after the front door is opened. The velocity contours shown indicate that prior to the front door being opened, there is minimal flow on the first floor. However, after the front door is opened a flow path is established allowing the combustion products from the basement fire to flow to the first floor through the interior stairwell. The simulation calculated the flow to exit the structure at approximately 11~m/s (25~mph).
+
+\begin{figure}[!ht]
+\includegraphics[trim = 1in 1in 1in 4in, clip=true, width=.65\textwidth]{../Figures/velocity_slice_99s}
+\input{../Scripts/colorbar_metric_velo}
+\input{../Scripts/colorbar_std_velo} \\
+\includegraphics[trim = 1in 1in 1in 4in, clip=true, width=.65\textwidth]{../Figures/velocity_slice_101s}
+\input{../Scripts/colorbar_metric_velo}
+\input{../Scripts/colorbar_std_velo}
+\caption[Calculated velocity on first floor 1~s before and after front door opens]
+{Calculated velocity contours on first floor of the structure 1~s prior to (top) and 1~s after (bottom) firefighter entry through front door.}
+\label{fig:velocity_slices}
+\end{figure}
+
+\clearpage
 
 \section{Temperature}
 \label{temp}
+
+Analysis of the temperatures from the simulation focuses on the high-hazard area of the structure: the first floor area between the front door and the top of the interior stairwell. The temperature contours shown in Fig.~\ref{fig:temperature_slices} indicate the gas temperatures within the structure before and after the front door was opened.
+
+\begin{figure}[!ht]
+\includegraphics[trim = 1in 1in 1in 4in, clip=true, width=.65\textwidth]{../Figures/velocity_slice_99s}
+\input{../Scripts/colorbar_metric_temp}
+\input{../Scripts/colorbar_std_temp} \\
+\includegraphics[trim = 1in 1in 1in 4in, clip=true, width=.65\textwidth]{../Figures/velocity_slice_101s}
+\input{../Scripts/colorbar_metric_temp}
+\input{../Scripts/colorbar_std_temp}
+\caption[Calculated temperature on first floor 1~s before and after front door opens]
+{Calculated velocity contours on first floor of the structure 1~s prior to (top) and 1~s after (bottom) firefighter entry through front door.}
+\label{fig:temperature_slices}
+\end{figure}
+
+
 
 \chapter{Discussion}
 \label{discuss}
