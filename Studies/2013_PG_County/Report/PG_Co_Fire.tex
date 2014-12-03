@@ -330,7 +330,7 @@ The fire, which is described in Section~\ref{fire}, started in the basement and 
 To estimate the type of fuel, fire size, and structure ventilation, on-scene videos and post-incident reports were used. Based on these sources of information, the FDS model includes two source fire locations in the basement: one fire in the kitchen area and one in the adjacent bathroom (Fig.~\ref{fig:basement_fire}). At the time of the fire, the structure was vacant so the the dominant fuel was wood: wood paneling on walls, exposed ceiling joists, sub-floor, cabinets, and stairs.
 
 \begin{figure}[!ht]
-\includegraphics[width=\textwidth]{../Figures/Basement_Fire}
+\includegraphics[width=0.8\textwidth]{../Figures/Basement_Fire}
 \caption[Plan view of basement indicating fire location.]{Plan view of the basement indicating the location of the two fires in the FDS model.}
 \label{fig:basement_fire}
 \end{figure}
@@ -635,12 +635,12 @@ In the top snapshot in Fig.~\ref{fig:pressure_slices}, the pressure profile show
 \clearpage
 
 \begin{figure}[!ht]
-\includegraphics[trim = 4in 2in 5in 2in, clip=true, width=.55\textwidth]{../Figures/pressure_slice_99s}
+\includegraphics[trim = 1in 1in 1in 1in, clip=true, width=.55\textwidth]{../Figures/pressure_slice_99s}
 \input{../Scripts/colorbar_metric_pres} \\
-\includegraphics[trim = 4in 2in 5in 2in, clip=true, width=.55\textwidth]{../Figures/pressure_slice_101s}
+\includegraphics[trim = 1in 1in 1in 1in, clip=true, width=.55\textwidth]{../Figures/pressure_slice_101s}
 \input{../Scripts/colorbar_metric_pres}
 \caption[Calculated pressure on first floor 1~s before and after front door opens]
-{Calculated pressure contours on first floor of the structure 1~s prior to (top) and 1~s after (bottom) firefighter entry through front door.}
+{Calculated pressure contours on first floor of the structure 1~s prior to (top) and 1~s after (bottom) firefighter entry through front door 0.91~m (3~ft) above the floor.}
 \label{fig:pressure_slices}
 \end{figure}
 
@@ -651,17 +651,17 @@ In the top snapshot in Fig.~\ref{fig:pressure_slices}, the pressure profile show
 
 Gases flow from a region of high pressure towards a region of lower pressure. Once the front door opened, the gases in the basement at an elevated temperature and pressure flowed upward into the interior stairwell and exited the structure via the front door. The velocity contours shown in Fig.~\ref{fig:velocity_slices} indicate the magnitude of flow velocities within the structure before and after the front door is opened.
 
-In Fig.~\ref{fig:velocity_slices}, the velocity profile within the high-hazard area (first floor) is shown via two snapshots in time to illustrate the change in the interior conditions. The first snapshot is shown at a simulation time of 99~s, which is 1~s before the front door is opened, and the second snapshot is shown at a simulation time of 101~s, which is 1~s after the front door is opened. The velocity contours shown indicate that prior to the front door being opened, there is minimal flow on the first floor. However, after the front door is opened a flow path is established allowing the combustion products from the basement fire to flow to the first floor through the interior stairwell. The simulation calculated the flow to exit the structure at approximately 11~m/s (25~mph).
+In Fig.~\ref{fig:velocity_slices}, the velocity profile within the high-hazard area (first floor) is shown via two snapshots in time to illustrate the change in the interior conditions 0.91~m (3~ft) above the floor. The first snapshot is shown at a simulation time of 99~s, which is 1~s before the front door is opened, and the second snapshot is shown at a simulation time of 101~s, which is 1~s after the front door is opened. The velocity contours shown indicate that prior to the front door being opened, there is minimal flow on the first floor. However, after the front door is opened a flow path is established allowing the combustion products from the basement fire to flow to the first floor through the interior stairwell. The simulation calculated the flow to exit the structure at approximately 11~m/s (25~mph).
 
 \begin{figure}[!ht]
-\includegraphics[trim = 1in 1in 1in 4in, clip=true, width=.65\textwidth]{../Figures/velocity_slice_99s}
+\includegraphics[trim = 0in 1in 0in 1in, clip=true, width=.65\textwidth]{../Figures/velocity_slice_99s}
 \input{../Scripts/colorbar_metric_velo}
 \input{../Scripts/colorbar_std_velo} \\
-\includegraphics[trim = 1in 1in 1in 4in, clip=true, width=.65\textwidth]{../Figures/velocity_slice_101s}
+\includegraphics[trim = 0in 1in 0in 1in, clip=true, width=.65\textwidth]{../Figures/velocity_slice_101s}
 \input{../Scripts/colorbar_metric_velo}
 \input{../Scripts/colorbar_std_velo}
 \caption[Calculated velocity on first floor 1~s before and after front door opens]
-{Calculated velocity contours on first floor of the structure 1~s prior to (top) and 1~s after (bottom) firefighter entry through front door.}
+{Calculated velocity contours on first floor of the structure 1~s prior to (top) and 1~s after (bottom) firefighter entry through front door 0.91~m (3~ft) above the floor.}
 \label{fig:velocity_slices}
 \end{figure}
 
@@ -670,24 +670,115 @@ In Fig.~\ref{fig:velocity_slices}, the velocity profile within the high-hazard a
 \section{Temperature}
 \label{temp}
 
-Analysis of the temperatures from the simulation focuses on the high-hazard area of the structure: the first floor area between the front door and the top of the interior stairwell. The temperature contours shown in Fig.~\ref{fig:temperature_slices} indicate the gas temperatures within the structure before and after the front door was opened.
+Analysis of the temperatures from the simulation focuses on the high-hazard area of the structure: the first floor area between the front door and the top of the interior stairwell. The temperature contours shown in Fig.~\ref{fig:temperature_slice_99s} indicate the gas temperatures within the structure 1~s before the front door was opened 0.91~m (3~ft) above the floor. The overlayed arrows represrent the gas flow: the length of the lines represents speeds and the direction of the arrow represents the flow direction. Prior to the door opening, the open living area and kitchen on the first floor were approximately 60~$^{\circ}$C (140~$^{\circ}$F) while the peak temperatures were concentrated near the interior stairwell, 105~$^{\circ}$C (220~$^{\circ}$F). Note that there is very minimal flow throughout the first floor. Figures~\ref{fig:temperature_slice_101s} and \ref{fig:temperature_slice_105s} show gas temperature contours at 0.91~m (3~ft) above the floor, 1~s and 5~s after the front door was opened.
 
 \begin{figure}[!ht]
-\includegraphics[trim = 1in 1in 1in 4in, clip=true, width=.65\textwidth]{../Figures/velocity_slice_99s}
-\input{../Scripts/colorbar_metric_temp}
-\input{../Scripts/colorbar_std_temp} \\
-\includegraphics[trim = 1in 1in 1in 4in, clip=true, width=.65\textwidth]{../Figures/velocity_slice_101s}
+\includegraphics[trim = 1in 1in 1in 1in, clip=true, width=.65\textwidth]{../Figures/temperature_slice_99s}
 \input{../Scripts/colorbar_metric_temp}
 \input{../Scripts/colorbar_std_temp}
-\caption[Calculated temperature on first floor 1~s before and after front door opens]
-{Calculated velocity contours on first floor of the structure 1~s prior to (top) and 1~s after (bottom) firefighter entry through front door.}
-\label{fig:temperature_slices}
+\caption[Calculated temperature on first floor 1~s before front door opened]
+{Calculated temperature contours on first floor of the structure 1~s prior to firefighter entry through front door 0.91~m (3~ft) above the floor.}
+\label{fig:temperature_slice_99s}
+\end{figure}
+
+After the front door is opened, hot fire gases from the basement begin to flow through the interior stairwall into the first floor. Figure~\ref{fig:temperature_slice_101s}, 1~s after the front door was opened, shows that the temperature contours at the top of the stairwell have increased to approximately 200~$^{\circ}$C (400~$^{\circ}$F) with a hot spot that approaches 425~$^{\circ}$C (800~$^{\circ}$F). Figure~\ref{fig:temperature_slice_105s}, 5~s after the front door was opened, shows more significant increases in temperature. The area of at the top of the stairs is most between 375~$^{\circ}$C (700~$^{\circ}$F) and 425~$^{\circ}$C (800~$^{\circ}$F). The gas temperatures 0.91~m (3~ft) above the floor at the front door have also increased to approximately 230~$^{\circ}$C (450~$^{\circ}$F) and show increased flow velocities.
+
+\begin{figure}[!ht]
+\includegraphics[trim = 1in 1in 1in 1in, clip=true, width=.65\textwidth]{../Figures/temperature_slice_101s}
+\input{../Scripts/colorbar_metric_temp}
+\input{../Scripts/colorbar_std_temp}
+\caption[Calculated temperature on first floor 1~s after front door opens]
+{Calculated temperature contours on first floor of the structure 1~s after firefighter entry through front door 0.91~m (3~ft) above the floor.}
+\label{fig:temperature_slice_101s}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[trim = 1in 1in 1in 1in, clip=true, width=.65\textwidth]{../Figures/temperature_slice_105s}
+\input{../Scripts/colorbar_metric_temp}
+\input{../Scripts/colorbar_std_temp}
+\caption[Calculated temperature on first floor 5~s after front door opens]
+{Calculated temperature contours on first floor of the structure 5~s after firefighter entry through front door 0.91~m (3~ft) above the floor.}
+\label{fig:temperature_slice_105s}
+\end{figure}
+
+\clearpage
+
+\chapter{Discussion}
+\label{discuss}
+The results of the simulation are discussed in the following sections. Section~\ref{simulated_flow_path} addresses the results of the simulation as they relate to the flow path that was established in the interior stairwell through the front door. Section~\ref{assessing_hazard} examines the model results as they relate to the hazardous conditions and exposure temperatures on the first floor. Section~\ref{tactical_considerations} discusses tactical considerations and outcomes of the fire incident as they relate to the fire dynamics and flow path conditions that have been observed in recent experimental research.
+
+\section{Simulated Flow Path}
+\label{simulated_flow_path}
+
+\begin{figure}[!ht]
+\includegraphics[trim = 3in 3in 3in 2in, clip=true, width=.65\textwidth]{../Figures/flow_path_99s}
+\input{../Scripts/colorbar_metric_temp}
+\input{../Scripts/colorbar_std_temp}
+\caption[Flow path vectors at front door and top of stairwell 1~s before front door is opened]
+{Flow path vectors at front door and top of stairwell 1~s before front door is opened.}
+\label{fig:flow_path_99s}
 \end{figure}
 
 
 
-\chapter{Discussion}
-\label{discuss}
+\section{Assessing the Hazard}
+\label{assessing_hazard}
+
+\clearpage
+
+\section{Tactical Considerations}
+\label{tactical_considerations}
+
+In this fire incident, the initial failure of the basement windows with strong incident winds on the rear side of the structure coincided with a rapid change in the thermal conditions in the interior stairwell and first floor after the front door to the structure was opened. The open front door resulted in the establishment of a flow path within the interior stairwell with highly hazardous conditions. These conditions would be equivalent to or greater than a Class~III exposure~\cite{Donnelly2006}.
+
+The interior stairwell acted as a chimney for hot gases in the basement to flow towards regions of lower pressure and vent openings located on the front side of the structure. Firefighters should avoid placing themselves within a flow path where elevated temperatures and flow velocities can present hazardous conditions and increase the rate of heat transfer to firefighting gear via convection. A 360$^\circ$ scene size-up by arriving firefighters can help determine the location of the fire and identify potential flow paths within a structure. Door control can also be used to avoid creating inlet and outlet vents that could result in the establishment of a flow path.
+
+Fire suppression efforts should be coordinated with interior operations and ventilation procedures to reduce thermal hazards related to flow paths within a structure. Ongoing research by NIST, Underwriters Laboratories (UL), and others has demonstrated that applying water from the exterior into the fire area of a structure (prior to the start of interior operations) can significantly improve the safety of firefighters by reducing the thermal hazard from the fire and reducing the potential for developing high velocity hot gas flows within the structure~\cite{madrzykowski2009fire, kerber2009fire}.
+
+There have been many previous fire incidents~\cite{NIOSH:Pettit,NIOSH:Washenitz,NIOSH:Mezzanotte,NIOSH:McFall,NIOSH:McFall2,NIOSH:McFall3,NIOSH:Berardinelli,NIOSH:Koedam,NIOSH:McFall4,NIOSH:Tarley,NIOSH:Braddee,NIOSH:Merinar,NIOSH:Bowyer2,NIOSH:Loflin,NIOSH:Bowyer} in which changes in the flow paths are thought to have had an adverse impact on firefighter and occupant safety. Table~\ref{tab:LODD} lists the NIOSH investigation reports from the past 15 years in which it could be determined that a flow path played a role in the related incident. This table lists the NIOSH report number, the outcome, and a brief description of the flow path details.
+
+Based on a review of these incidents, it is clear that fires with rapidly developing or changing flow paths are a significant hazard to the fire service. The development of (or changes to) a flow path could be caused by the failure of a component of the structure, such as a door, window, or portion of a ceiling, wall or floor. Environmental conditions such as wind can generate hazardous thermal conditions within a flow path. Uncoordinated ventilation procedures can also be the cause of increased thermal hazards within a flow path.
+
+\begin{table}[!ht]
+\caption[Flow path related LODD/LODI incidents]
+{Flow path related LODD/LODI incidents}
+\begin{tabular}{lll}
+\toprule
+NIOSH Report No. & No. of LODDs/LODIs & Flow Path Details                                            \\
+\midrule
+99-F01   \cite{NIOSH:Pettit}        &  3 LODDs            &  From apartment into hallway on 10th     \\
+                                    &                     &  floor of high-rise apartment building   \\
+99-F21   \cite{NIOSH:Washenitz}     &  2 LODDs            &  Basement to 1st floor                   \\
+                                    &  2 LODIs            &                                          \\
+F2000-04 \cite{NIOSH:Mezzanotte}    &  3 LODDs            &  1st floor to 2nd floor                  \\
+                                    &  3 civilian deaths  &                                          \\
+F2000-16 \cite{NIOSH:McFall}        &  1 LODD             &  2nd floor hallway through               \\
+                                    &  1 LODI             &  2nd floor apartment                     \\
+                                    &  1 civilian death   &                                          \\
+F2000-23 \cite{NIOSH:McFall2}       &  1 LODD             &  From ground level to 1st floor then to  \\
+                                    &  2 LODIs            &  2nd floor, flow exited through ceiling  \\
+F2000-43 \cite{NIOSH:McFall3}       &  1 serious LODI     &  1st floor to 2nd floor                  \\
+                                    &  2 other LODIs      &                                          \\
+F2004-02 \cite{NIOSH:Berardinelli}  &  1 LODD             &  1st floor to basement                   \\
+F2005-02 \cite{NIOSH:Koedam}        &  1 LODD             &  Rear to front of the building           \\
+                                    &  4 LODIs            &                                          \\
+F2005-04 \cite{NIOSH:McFall4}       &  1 LODD             &  Basement to 1st floor                   \\
+                                    &  9 LODIs            &                                          \\
+F2007-09 \cite{NIOSH:Tarley}        &  1 LODD             &  3 story training burn - flow through    \\
+                                    &  2 LODIs            &  all levels                              \\
+F2007-35 \cite{NIOSH:Braddee}       &  4 LODIs            &  1st floor to 2nd floor                  \\
+F2009-11 \cite{NIOSH:Merinar}       &  2 LODDs            &  Rear to front of the building           \\
+F2011-13 \cite{NIOSH:Bowyer2}       &  2 LODDs            &  Lower level up stairs and through       \\
+                                    &                     &  entry door and garage                   \\
+F2011-31 \cite{NIOSH:Loflin}        &  1 LODD             &  Fire extended from lower level apartme  \\
+F2012-28 \cite{NIOSH:Bowyer}        &  1 LODD             &  Attic fire extended into closed         \\
+                                    &  1 LODI             &  porch and then into 2nd floor           \\
+\bottomrule
+\end{tabular}
+\label{tab:LODD}
+\end{table}
+
+\clearpage
 
 \chapter{Summary}
 
