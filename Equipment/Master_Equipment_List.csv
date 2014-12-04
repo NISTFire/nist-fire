@@ -5,7 +5,7 @@ Cases/Boxes/Bags,Quantity inside case,Device/Label,Manufacturer,Model Number,Des
 1,1,Toughbook Laptop,Panasonic,,For FLIR IR camera,"SCSI drive, dongle, backpack"
 1,1,Infrared Camera,FLIR,,"High speed, lab-use IR camera",
 6,1,"Gas Analyzer (CO2, CO, O2)",California Analytical Instruments,602P,"NDIR Gas Analyzer (CO2, CO, O2)","2 pumps, traps, dryers"
-2,1,Gas Analyzer (CH4),California Analytical Instruments,601,NDIR Gas Analyzer (CH4),
+2,1,Gas Analyzer (CH4),California Analytical Instruments,601,NDIR Gas Analyzer (CH4); Note: we are swapping these for 600 FID analyzers,
 1,1,Gas Sample Dryer,Universal Analyzers,540,Dryer for gas analyzers,
 1,1,Large Data Acquisition System,National Instruments,SXCI-1001/SCXI-1600/SCXI-1102 (x10)/TC-2095(x10),320 channel data system,Note: This only works with 32-bit operating systems
 1,1,Small Data Acquisition System,National Instruments,SXCI-1000/SCXI-1600/SCXI-1102 (x3)/TC-2095(x3),96 channel data system,Note: This only works with 32-bit operating systems
