@@ -230,7 +230,7 @@ Fire Dynamics Simulator (FDS), which is a fire model that is developed and maint
 \chapter{Introduction}
 \pagenumbering{arabic}
 \setcounter{page}{1}
-Part of the function of the Fire Research Division at NIST is to develop and apply technology, measurements, and standards to improve the understanding of the behavior, prevention, and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) fire model to provide insight into the fire development and thermal conditions of fires that have resulted in line of duty deaths (LODDs)~\cite{Madrzykowski:1,Iowa,Texas,Bryner:Charleston,barowy:texas,Weinschenk:Chicago}. The objective of these studies has been to improve the safety and effectiveness of firefighters.
+Part of the function of the Fire Research Division at NIST is to develop and apply technology, measurements, and standards to improve the understanding of the behavior, prevention, and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) fire model to provide insight into the fire development and thermal conditions of fires that have resulted in line of duty deaths (LODDs)~\cite{Madrzykowski:1,Iowa,Texas,Bryner:Charleston,barowy:texas,Weinschenk:Chicago,Overholt:San_Francisco}. The objective of these studies has been to improve the safety and effectiveness of firefighters.
 
 On February 24, 2012, a fire in residential structure injured seven Prince George's County firefighters. NIST examined the fire dynamics of this incident at the request of the Prince George's Country Fire/Emergency Medical Services (EMS) Department. Computer simulations of the fire incident were conducted using the NIST Fire Dynamics Simulator~\cite{FDS_Users_Guide} and Smokeview~\cite{Smokeview_Users_Guide}  software to provide insight into the fire development and thermal conditions that likely existed in the residence during the fire. The specific objectives of the simulations detailed in this report are: 
 \begin{enumerate}
@@ -737,7 +737,7 @@ To examine the impact of opening the front door on the establishment of a flow p
 
 \clearpage
 
-At the estimated time of firefighter entry to the first floor (142~s into the simulation; 21:14:42 according to Table~\ref{tab:combined_timeline}), the simulated flow magnitudes through the first floor (stairwell and front doors) remained similar to the conditions just after opening the front door. The modeln temperatures increased through the stairwell doorway to between 400~$^{\circ}$C and 425~$^{\circ}$C (750-800~$^{\circ}$F) and through the front door to approximately 375~$^{\circ}$C (700~$^{\circ}$F). From the approximate timeline (Table~\ref{tab:combined_timeline}), the front door was forced closed due to airflow pushing against the front door 207~s into the simulation. Figures~\ref{fig:flow_path_206s} and \ref{fig:flow_path_207s} show the conditions 1~s prior to and after the front door closed. The figures show that while the closed door stopped significant flow through the stairwell door and onto the first floor, temperature hazard for the firefighters (temperatures at or above 400~$^{\circ}$C or 750~$^{\circ}$F) remained.
+At the estimated time of firefighter entry to the first floor (142~s into the simulation; 21:14:42 according to Table~\ref{tab:combined_timeline}), the simulated flow magnitudes through the first floor (stairwell and front doors) remained similar to the conditions just after opening the front door. Velocities through both the doorway at the top of the stairs and the front door were approximately 13~m/s (29~mph), faster than the incident wind  speed (9~m/s or 20~mph) because of the addition of the bouyancy of the fire plume. The model temperatures increased through the stairwell doorway to between 400~$^{\circ}$C and 425~$^{\circ}$C (750-800~$^{\circ}$F) and through the front door to approximately 375~$^{\circ}$C (700~$^{\circ}$F). From the approximate timeline (Table~\ref{tab:combined_timeline}), the front door was forced closed due to airflow pushing against the front door 207~s into the simulation. Figures~\ref{fig:flow_path_206s} and \ref{fig:flow_path_207s} show the conditions 1~s prior to and after the front door closed. The figures show that while the closed door stopped significant flow through the stairwell door and onto the first floor, temperature hazard for the firefighters (temperatures at or above 400~$^{\circ}$C or 750~$^{\circ}$F) remained.
 
 \begin{figure}[!ht]
 \includegraphics[trim = 2.5in 0in 4in 0in, clip=true, width=.65\textwidth]{../Figures/flow_vector_142s}
@@ -770,6 +770,51 @@ At the estimated time of firefighter entry to the first floor (142~s into the si
 
 \section{Assessing the Hazard}
 \label{assessing_hazard}
+A person is susceptible to second-degree burn injuries if exposed to temperatures greater than 55~$^{\circ}$C (130~$^{\circ}$F)~\cite{contactburn}. Although firefighters wear protective gear, gear only offers a finite amount of protection. The polycarbonate material in the facepiece of a self-contained breathing apparatus begins to soften when the material temperature reaches approximately 140~$^{\circ}$C (284~$^{\circ}$F)~\cite{mensch2011emergency}. Structural fire fighting coats and pants are tested to withstand temperatures of 260~$^{\circ}$C (500~$^{\circ}$F)~\cite{nfpa2013standard}. Prolonged exposure to elevated temperatures can result in a significant amount of heat transferred to the firefighter, putting him or her at risk. Exposure of equipment to temperatures of 260~$^{\circ}$C (500~$^{\circ}$F) represents a Class~III exposure~\cite{Donnelly2006}. Firefighters are at increased risk levels when encountering Class~III exposure conditions for more than 5~minutes~\cite{Donnelly2006}.
+
+
+\begin{figure}[!ht]
+\begin{subfigure}{0.65\textwidth}
+\includegraphics[trim = 0in 0in 0in 0in, clip=true, width=\textwidth]{../Figures/side_view_99s} \\
+\includegraphics[trim = 0in 0in 0in 0in, clip=true, width=\textwidth]{../Figures/stair_view_99s} 
+\end{subfigure}
+\begin{subfigure}{0.35\textwidth}
+\input{../Scripts/colorbar_metric_temp}
+\input{../Scripts/colorbar_std_temp} \\
+\end{subfigure}
+\caption[Interior temperature contours 1~s before front door was opened]
+{Interior temperature contours 1~s before front door was opened. The top snapshot shows temperatures on the first floor and basement on a plane that runs through the center front door. The bottom snapshot shows temperatures on the first floor and basement on a plane that runs through the center of the interior stairwell doorway.}
+\label{fig:int_temp_99s}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{subfigure}{0.65\textwidth}
+\includegraphics[trim = 0in 0in 0in 0in, clip=true, width=\textwidth]{../Figures/side_view_101s} \\
+\includegraphics[trim = 0in 0in 0in 0in, clip=true, width=\textwidth]{../Figures/stair_view_101s} 
+\end{subfigure}
+\begin{subfigure}{0.35\textwidth}
+\input{../Scripts/colorbar_metric_temp}
+\input{../Scripts/colorbar_std_temp} \\
+\end{subfigure}
+\caption[Interior temperature contours 1~s after front door was opened]
+{Interior temperature contours 1~s after front door was opened. The top snapshot shows temperatures on the first floor and basement on a plane that runs through the center front door. The bottom snapshot shows temperatures on the first floor and basement on a plane that runs through the center of the interior stairwell doorway.}
+\label{fig:int_temp_101s}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{subfigure}{0.65\textwidth}
+\includegraphics[trim = 0in 0in 0in 0in, clip=true, width=\textwidth]{../Figures/side_view_142s} \\
+\includegraphics[trim = 0in 0in 0in 0in, clip=true, width=\textwidth]{../Figures/stair_view_142s} 
+\end{subfigure}
+\begin{subfigure}{0.35\textwidth}
+\input{../Scripts/colorbar_metric_temp}
+\input{../Scripts/colorbar_std_temp} \\
+\end{subfigure}
+\caption[Interior temperature contours as firefighters made entry to the structure]
+{Interior temperature contours as firefighters made entry to the structure. The top snapshot shows temperatures on the first floor and basement on a plane that runs through the center front door. The bottom snapshot shows temperatures on the first floor and basement on a plane that runs through the center of the interior stairwell doorway.}
+\label{fig:int_temp_142s}
+\end{figure}
+
 
 \clearpage
 
