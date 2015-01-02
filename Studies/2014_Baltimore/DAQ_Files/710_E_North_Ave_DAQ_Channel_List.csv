@@ -1,0 +1,13 @@
+Panel,Channel,Device Name,Type,X,Y,Z,Serial Number,Calibration Slope,Calibration Intercept,Channel Name,Group Name,Test Specific Name,Measurement Type
+SC1Mod2,0,Pressure_1,Voltage,,,,,99.52,-248.8,Expose_FirstFloor_TopStairs_Rear,First_Floor,Expose_FirstFloor_TopStairs_Rear,Pressure
+SC1Mod2,1,Pressure_2,Voltage,,,,,99.52,-248.8,Expose_FirstFloor_Mid,First_Floor,Expose_FirstFloor_Mid,Pressure
+SC1Mod2,2,Pressure_3,Voltage,,,,,99.52,-248.8,Pressure_3,,,Pressure
+SC1Mod2,3,Pressure_4,Voltage,,,,,99.52,-248.8,Pressure_4,,,Pressure
+SC1Mod2,4,Pressure_5,Voltage,,,,,99.52,-248.8,Expose_Basement_VicitimLocation,Basement,Expose_Basement_VicitimLocation,Pressure
+SC1Mod2,5,Pressure_6,Voltage,,,,,99.52,-248.8,Expose_Basement_FrontThird,Basement,Expose_Basement_FrontThird,Pressure
+SC1Mod2,6,Pressure_7,Voltage,,,,,99.52,-248.8,Pressure_7,,,Pressure
+SC1Mod2,7,Pressure_8,Voltage,,,,,99.52,-248.8,Pressure_8,,,Pressure
+SC1Mod2,8,Pressure_9,Voltage,,,,,99.52,-248.8,Fire_FirstFloor_Mid,First_Floor_Fire,Fire_FirstFloor_Mid,Pressure
+SC1Mod2,9,Pressure_10,Voltage,,,,,99.52,-248.8,Pressure_10,,,Pressure
+SC1Mod2,10,Pressure_11,Voltage,,,,,99.52,-248.8,Pressure_11,,,Pressure
+SC1Mod2,11,Pressure_12,Voltage,,,,,99.52,-248.8,Pressure_12,,,Pressure
