@@ -1,4 +1,25 @@
-Time,710_E_North_Ave
-587,Ejector On
-880,Fan On
-1600,Fan Off
+Time,710_E_North_Ave_Test_1,710_E_North_Ave_Test_2,710_E_North_Ave_Test_3,710_E_North_Ave_Test_4,710_E_North_Ave_Test_5
+587,Ejector On,,,,
+880,Fan On,,,,
+1600,Fan Off,,,,
+1700,,Fan On,,,
+2240,,Fan Off,,,
+2298,,,Fan On,,
+2650,,,Basement Window Open,,
+2884,,,2nd Floor Window Above Door Open,,
+2892,,,2nd Floor Window Left of Door Open,,
+2903,,,3rd Floor Window Above Door Open,,
+2919,,,3rd Floor Window Left of Door Open,,
+3238,,,Fan Off,,
+3302,,,Ejector Off,,
+3648,,,,Rear Door Open,
+3983,,,,Fan On,
+4282,,,,Ejector On,
+4318,,,,2nd Floor Window Left of Door Closed,
+4325,,,,2nd Floor Window Above Door Closed,
+4430,,,,3rd Floor Window Above Door Closed,
+4455,,,,3rd Floor Window Left of Door Closed,
+4773,,,,Fan Off,
+4851,,,,Door Closed,
+5365,,,,,Fan On and Reversed
+5885,,,,,Fan Off
