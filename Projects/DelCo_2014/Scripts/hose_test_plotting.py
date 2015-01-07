@@ -313,6 +313,7 @@ for f in os.listdir(data_dir):
         xlim(0, len(SS_data))
         ax1.xaxis.set_major_locator(MaxNLocator(8))
         ax1_xlims = ax1.axis()[0:2]
+        ax1.axhspan(0, 0, color='0.50', lw=1)
         # grid(True)
         xlabel('Time', fontsize=20)
         ylabel('Velocity (m/s)', fontsize=20)
