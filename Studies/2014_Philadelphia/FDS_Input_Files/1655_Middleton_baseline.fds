@@ -1,0 +1,124 @@
+&HEAD CHID='1655_Middleton_baseline', TITLE='1655 Middleton St Philadelphia'  /
+
+&MULT ID = 'mesh array', DX = 3, I_UPPER=7, DZ = 5, K_UPPER = 1 / 16 proc
+&MESH IJK=30,100,50, XB=-22.5,-19.5,-2,8.0,-0.1,4.9, MULT_ID='mesh array' / 10 cm
+
+&DUMP NFRAMES = 1000, DT_DEVC = 1, DT_HRR = 1 / 
+&TIME T_END=0 /
+
+# SUPPRESSION=.FALSE is needed with more than one gas phase reaction
+&MISC SUPPRESSION=.FALSE./
+
+#  =============
+#  = Reactions =
+#  =============
+
+&SPEC ID = 'POLYURETHANE',    FORMULA = 'CH1.8O0.30N0.05' /
+&SPEC ID = 'WOOD',            FORMULA = 'CH1.7O0.74N0.002' /
+&SPEC ID = 'OXYGEN',          LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'NITROGEN',        LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'WATER VAPOR',     LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'CARBON MONOXIDE', LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'CARBON DIOXIDE',  LUMPED_COMPONENT_ONLY = .TRUE. /
+&SPEC ID = 'SOOT',            LUMPED_COMPONENT_ONLY = .TRUE. /
+
+&SPEC ID = 'AIR',
+      SPEC_ID = 'OXYGEN','NITROGEN','WATER VAPOR','CARBON DIOXIDE',
+      VOLUME_FRACTION = 0.208057, 0.783214, 0.008342, 0.000387,
+      BACKGROUND = .TRUE. /
+
+# Polyurethane reaction (GM21, SFPE HB, 4th ed.)
+# Soot yield of 0.131
+# CO yield of 0.010
+
+&SPEC ID = 'PRODUCTS_POLYURETHANE',
+    SPEC_ID = 'NITROGEN','WATER VAPOR','CARBON DIOXIDE','CARBON MONOXIDE','SOOT',
+    VOLUME_FRACTION = 0.678838, 0.155754, 0.129475, 0.001139, 0.034794 /
+
+&REAC ID = 'POLYURETHANE'
+    FUEL = 'POLYURETHANE',
+    HEAT_OF_COMBUSTION = 26200,
+    SPEC_ID_NU = 'POLYURETHANE','AIR','PRODUCTS_POLYURETHANE'
+    NU = -1, -5.218633, 6.057861 /
+
+# Wood reaction (SFPE HB, 4th ed.)
+# Soot yield of 0.015
+# CO yield of 0.004
+
+&SPEC ID = 'PRODUCTS_WOOD',
+    SPEC_ID = 'NITROGEN','WATER VAPOR','CARBON DIOXIDE','CARBON MONOXIDE','SOOT',
+    VOLUME_FRACTION = 0.670128, 0.155268, 0.168397, 0.000637, 0.005570 /
+
+&REAC ID = 'WOOD'
+    FUEL = 'WOOD',
+    HEAT_OF_COMBUSTION = 16400,
+    SPEC_ID_NU = 'WOOD','AIR','PRODUCTS_WOOD'
+    NU = -1, -4.908330, 5.738119 /
+
+#  ===========
+#  = Burners =
+#  ===========
+
+
+#  ====================================
+#  = Material and surface definitions =
+#  ====================================
+
+&MATL ID          = 'GYPSUM'
+    FYI           = 'Wakili - Journal of Fire Sciences 2007'  
+    CONDUCTIVITY  = 0.28
+    SPECIFIC_HEAT = 1.00
+    DENSITY       = 810./
+
+&MATL ID          = 'WOOD_MAT'
+    CONDUCTIVITY  = 0.12
+    SPECIFIC_HEAT = 1.38
+    DENSITY       = 510./      
+
+
+#  ==========
+#  = Doors =
+#  ==========
+
+
+#  ===========
+#  = Windows =
+#  ===========
+
+
+#  ============
+#  = Breaches =
+#  ============
+
+
+#  =====================
+#  = Bounding Geometry =
+#  =====================
+
+
+#  ======================
+#  = Basement Geometry =
+#  ======================
+
+
+#  ======================
+#  = 1st Floor Geometry =
+#  ======================
+
+
+#  ======================
+#  = 2nd Floor Geometry =
+#  ======================
+ 
+
+#  ==================
+#  = Attic Geometry =
+#  ==================
+
+
+#  =====================
+#  = Output quantities =
+#  =====================
+
+ 
+&TAIL /
