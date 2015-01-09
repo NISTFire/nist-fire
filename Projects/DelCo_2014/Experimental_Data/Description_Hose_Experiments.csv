@@ -1,3 +1,3 @@
-Test Name,Included Groups,SS,NF,WF,SS_start,SS_end,NF_start,NF_end,WF_start,WF_end,SS_CW_start,NF_CW_start,WF_CW_start,SS_Fixed_start,NF_fixed_start,WF_fixed_start
-Test_18_West_063014,BDP_A10_|BDP_A13_,,,,2040,2940,1020,1920,60,960,2520,1500,540,,,
-Test_19_West_063014,BDP_A10_|BDP_A13_,,,,60,960,1080,1980,2040,2940,540,1560,2520,,,
+Test Name,Included Groups,Excluded Channels,SS,NF,WF,SS_start,SS_end,NF_start,NF_end,WF_start,WF_end,SS_CW_start,NF_CW_start,WF_CW_start,Y Scale BDP Low,Y Scale BDP High
+Test_18_West_063014,BDP_A4_|BDP_A5_|BDP_A6_|BDP_A10_|BDP_A13_,BDP_A4_1p15_BS|BDP_A4_1p42_BS|BDP_A4_1p68_BS|BDP_A4_1p95_BS|BDP_A5_0p88_BS|BDP_A5_1p15_BS|BDP_A5_1p95_BS|BDP_A5_0p88_BS,,,,2040,2940,1020,1920,60,960,2520,1500,540,2,5
+Test_19_West_063014,BDP_A5_|BDP_A6_|BDP_A10_|BDP_A13_,BDP_A5_0p88_BS|BDP_A5_1p15_BS|BDP_A5_1p95_BS|BDP_A6_1p95_BS,,,,60,960,1080,1980,2040,2940,540,1560,2520,2,5

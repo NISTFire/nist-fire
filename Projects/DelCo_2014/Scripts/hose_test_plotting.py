@@ -121,7 +121,7 @@ for f in os.listdir(data_dir):
                 continue
 
             # Defines start and end times for different stream patterns
-            for stream in hose_info.columns[1:4]:
+            for stream in hose_info.columns[2:5]:
                 start_name = stream + '_start'
                 start = hose_info[start_name][test_name]
                 end_name = stream + '_end'
@@ -136,7 +136,7 @@ for f in os.listdir(data_dir):
                 for channel in stream_data.columns[1:]:
 
                     # Skip excluded channels listed in test description file
-                    if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
+                    if any([substring in channel for substring in hose_info['Excluded Channels'][test_name].split('|')]):
                         continue
 
                     if any([substring in channel for substring in group]):
@@ -214,106 +214,37 @@ for f in os.listdir(data_dir):
                         stream_data[channel] = quantity
                         stream_sensor_group[channel] = quantity
                     
-                        # # Saves data from top BDP A10 for comparison of each hose stream
-                        # if 'BDP_A10_8' in channel:
-                        #     if stream == 'SS':
-                        #         SS_data = quantity
-                        #     if stream == 'NF':
-                        #         NF_data = quantity
-                        #     if stream == 'WF':
-                        #         WF_data = quantity
-
-                        # # Calculates average for specific channel while both doors are opened
-                        # if 'BDP_A10_' in channel:
-
-                        #     avg_fix = np.mean(quantity[120:180])
-                        #     avg_sweep = np.mean(quantity[360:420])
-                        #     avg_CW = np.mean(quantity[600:660])
-                        #     avg_CCW = np.mean(quantity[840:900])
-
-                        #     fix_avg.append(round(avg_fix, 2))
-                        #     sweep_avg.append(round(avg_sweep, 2))
-                        #     CW_avg.append(round(avg_CW, 2))
-                        #     CCW_avg.append(round(avg_CCW, 2))
-                        #     stream_id.append(stream + '_' + test_name)
-                        #     channel_id.append(channel)
-
-                        #     print ' Calculated Avgs for ' + channel
-
-        # # UNCOMMENT FOR INDIVIDUAL SENSOR PLOTS
-        #               plot(t_stream, quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
-        #         # Skip plot quantity if disabled
-        #         if info[axis_scale][test_name] == 'None':
-        #             continue
-
-        #         # Scale y-axis limit based on specified range in test description file
-        #         if axis_scale == 'Y Scale BDP':
-        #             ylim([-np.float(info[axis_scale][test_name]), np.float(info[axis_scale][test_name])])
-        #         else:
-        #             ylim([0, np.float(info[axis_scale][test_name])])
-
-        #         # Set axis options, legend, tickmarks, etc.
-        #         ax1 = gca()
-        #         xlim(start, end)
-        #         ax1.xaxis.set_major_locator(MaxNLocator(8))
-        #         ax1_xlims = ax1.axis()[0:2]
-        #         # grid(True)
-        #         xlabel('Time', fontsize=20)
-        #         xticks(fontsize=16)
-        #         yticks(fontsize=16)
-        #         legend(loc='lower right', fontsize=8)
-
-        #         try:
-        #             # Add vertical lines for timing information (if available)
-        #             for index, row in timings.iterrows():
-        #                 if pd.isnull(row[test_name]):
-        #                     continue
-        #                 axvline(index - start_of_test, color='0.50', lw=1)
-
-        #             # Add secondary x-axis labels for timing information
-        #             ax2 = ax1.twiny()
-        #             ax2.set_xlim(ax1_xlims)
-        #             ax2.set_xticks(timings[test_name].dropna().index.values - start_of_test)
-        #             setp(xticks()[1], rotation=60)
-        #             ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
-        #             xlim([start, end])
-
-        #             # Increase figure size for plot labels at top
-        #             fig.set_size_inches(8, 8)
-        #         except:
-        #             pass
-
-        #         # Save plot to file
-        #         print 'Plotting ', group
-        #         savefig('../Figures/' + test_name + '_' + stream + '_' + group[0].rstrip('_') + '.pdf')
-        #         close('all')
-
                 # Defines the average of all channels in sensor group 
                 channel_avg = []
                 for index, row in stream_sensor_group.iterrows():
                     avg = np.mean(row[1:])
                     channel_avg.append(avg)
 
-                # Creates list of sensor group's avg for type of stream and type of pattern when both doors are open
-                if stream == 'SS':
-                    SS_data = channel_avg
-                    SS_fix = channel_avg[120:180]
-                    SS_sweep = channel_avg[360:420]
-                    SS_CW = channel_avg[600:660]
-                    SS_CCW = channel_avg[840:900]
-                if stream == 'NF':
-                    NF_data = channel_avg
-                    NF_fix = channel_avg[120:180]
-                    NF_sweep = channel_avg[360:420]
-                    NF_CW = channel_avg[600:660]
-                    NF_CCW = channel_avg[840:900]
-                if stream == 'WF':
-                    WF_data = channel_avg
-                    WF_fix = channel_avg[120:180]
-                    WF_sweep = channel_avg[360:420]
-                    WF_CW = channel_avg[600:660]
-                    WF_CCW = channel_avg[840:900]
+                # Adds a column of the average of all channels to the dataframe 
+                stream_sensor_group['Sensor Average'] = channel_avg
 
+                # Creates dataframe for each type of stream and type of pattern when both doors are open
+                if stream == 'SS':
+                    SS_df = stream_sensor_group
+                    SS_fix = SS_df.iloc[120:180]
+                    SS_sweep = SS_df.iloc[360:420]
+                    SS_CW = SS_df.iloc[600:660]
+                    SS_CCW = SS_df.iloc[840:900]
+                    SS_avg = stream_sensor_group['Sensor Average']
+                if stream == 'NF':
+                    NF_df = stream_sensor_group
+                    NF_fix = NF_df.iloc[120:180]
+                    NF_sweep = NF_df.iloc[360:420]
+                    NF_CW = NF_df.iloc[600:660]
+                    NF_CCW = NF_df.iloc[840:900]
+                    NF_avg = stream_sensor_group['Sensor Average']
+                if stream == 'WF':
+                    WF_df = stream_sensor_group
+                    WF_fix = WF_df.iloc[120:180]
+                    WF_sweep = WF_df.iloc[360:420]
+                    WF_CW = WF_df.iloc[600:660]
+                    WF_CCW = WF_df.iloc[840:900]
+                    WF_avg = stream_sensor_group['Sensor Average']
         # #Saves result file with averages
         # results = {'Stream':stream_id, 'Channel':channel_id, 'Fixed':fix_avg, 'Sweeping':sweep_avg, 
         #     'CW':CW_avg, 'CCW':CCW_avg}
@@ -328,16 +259,21 @@ for f in os.listdir(data_dir):
             fig = figure()
             t = arange(len(quantity.index))
 
-            plot(t, SS_data, lw=1.5, ls='-', label= str(group)[2:-2] + 'SS_avg')
-            plot(t, NF_data, lw=1.5, ls='-', label= str(group)[2:-2] + 'NF_avg')
-            plot(t, WF_data, lw=1.5, ls='-', label= str(group)[2:-2] + 'WF_avg')
+            plot(t, SS_avg, lw=1.5, ls='-', label= str(group)[2:-2] + 'SS_avg')
+            plot(t, NF_avg, lw=1.5, ls='-', label= str(group)[2:-2] + 'NF_avg')
+            plot(t, WF_avg, lw=1.5, ls='-', label= str(group)[2:-2] + 'WF_avg')
 
             # Scale y-axis limit based on specified range in test description file
-            ylim(-2, 5)
+            if axis_scale == 'Y Scale BDP':
+                low = axis_scale + ' Low'
+                high = axis_scale + ' High'
+                ylim([-np.float(hose_info[low][test_name]), np.float(hose_info[high][test_name])])
+            else:
+                ylim([0, np.float(hose_info[axis_scale][test_name])])
 
             # Set axis options, legend, tickmarks, etc.
             ax1 = gca()
-            xlim(0, len(SS_data))
+            xlim(0, len(SS_avg))
             ax1.xaxis.set_major_locator(MaxNLocator(8))
             ax1_xlims = ax1.axis()[0:2]
             ax1.axhspan(0, 0, color='0.50', lw=1)
@@ -361,7 +297,7 @@ for f in os.listdir(data_dir):
                 ax2.set_xticks(timings[test_name].dropna().index.values - (start_of_test+60))
                 setp(xticks()[1], rotation=60)
                 ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
-                xlim(0, len(SS_data))
+                xlim(0, len(SS_avg))
 
                 # Increase figure size for plot labels at top
                 fig.set_size_inches(8, 8)
@@ -370,7 +306,186 @@ for f in os.listdir(data_dir):
 
             # Save plot to file
             print 'Plotting ' + str(group)[1:-1] + ' Channel Average'
-            savefig('../Figures/Hose_Test_Figures/' + test_name + '_' + str(group)[2:-2] + 'Channel_Avg.pdf')
+            savefig('../Figures/Hose_Test_Figures/' + test_name + '_' + str(group)[2:-2] + 'Avg.pdf')
+            close('all')
+
+
+            # Plots each individual channel of sensor group for each hose stream
+############ Straight Stream ############
+            fig = figure()
+            t = arange(len(quantity.index))
+            plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+
+            for channel in SS_df.columns[:]:
+                
+                # Skips nonsensor data columns
+                if any([substring in group for substring in channel]) == False:
+                    continue
+
+                plot(t, channel, lw=1.5, ls='-', label=scaling['Test Specific Name'][channel])
+
+            # Scale y-axis limit based on specified range in test description file
+            if axis_scale == 'Y Scale BDP':
+                low = axis_scale + ' Low'
+                high = axis_scale + ' High'
+                ylim([-np.float(hose_info[low][test_name]), np.float(hose_info[high][test_name])])
+            else:
+                ylim([0, np.float(hose_info[axis_scale][test_name])])
+
+            # Set axis options, legend, tickmarks, etc.
+            ax1 = gca()
+            xlim(0, len(SS_avg))
+            ax1.xaxis.set_major_locator(MaxNLocator(8))
+            ax1_xlims = ax1.axis()[0:2]
+            ax1.axhspan(0, 0, color='0.50', lw=1)
+            #grid(True)
+            xlabel('Time', fontsize=20)
+            ylabel('Velocity (m/s)', fontsize=20)
+            xticks(fontsize=16)
+            yticks(fontsize=16)
+            legend(loc='lower right', fontsize=8)
+
+            try:
+                # Add vertical lines for timing information (if available)
+                for index, row in timings.iterrows():
+                    if pd.isnull(row[test_name]):
+                        continue
+                    axvline(index - start_of_test, color='0.50', lw=1)
+
+                # Add secondary x-axis labels for timing information
+                ax2 = ax1.twiny()
+                ax2.set_xlim(ax1_xlims)
+                ax2.set_xticks(timings[test_name].dropna().index.values - (start_of_test+60))
+                setp(xticks()[1], rotation=60)
+                ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
+                xlim(0, len(SS_avg))
+
+                # Increase figure size for plot labels at top
+                fig.set_size_inches(8, 8)
+            except:
+                pass
+
+            # Save plot to file
+            print 'Plotting ' + str(group)[1:-1] + ' for SS'
+            savefig('../Figures/Hose_Test_Figures/' + test_name + '_' + str(group)[2:-2] + 'SS.pdf')
+            close('all')
+
+############ Narrow Fog ############
+            fig = figure()
+            t = arange(len(quantity.index))
+            plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+            
+            for channel in NF_df.columns[:]:
+                
+                # Skips nonsensor data columns
+                if any([substring in group for substring in channel]) == False:
+                    continue
+
+                plot(t, channel, lw=1.5, ls='-', label=scaling['Test Specific Name'][channel])
+
+            # Scale y-axis limit based on specified range in test description file
+            if axis_scale == 'Y Scale BDP':
+                low = axis_scale + ' Low'
+                high = axis_scale + ' High'
+                ylim([-np.float(hose_info[low][test_name]), np.float(hose_info[high][test_name])])
+            else:
+                ylim([0, np.float(hose_info[axis_scale][test_name])])
+
+            # Set axis options, legend, tickmarks, etc.
+            ax1 = gca()
+            xlim(0, len(SS_avg))
+            ax1.xaxis.set_major_locator(MaxNLocator(8))
+            ax1_xlims = ax1.axis()[0:2]
+            ax1.axhspan(0, 0, color='0.50', lw=1)
+            #grid(True)
+            xlabel('Time', fontsize=20)
+            ylabel('Velocity (m/s)', fontsize=20)
+            xticks(fontsize=16)
+            yticks(fontsize=16)
+            legend(loc='lower right', fontsize=8)
+
+            try:
+                # Add vertical lines for timing information (if available)
+                for index, row in timings.iterrows():
+                    if pd.isnull(row[test_name]):
+                        continue
+                    axvline(index - start_of_test, color='0.50', lw=1)
+
+                # Add secondary x-axis labels for timing information
+                ax2 = ax1.twiny()
+                ax2.set_xlim(ax1_xlims)
+                ax2.set_xticks(timings[test_name].dropna().index.values - (start_of_test+60))
+                setp(xticks()[1], rotation=60)
+                ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
+                xlim(0, len(NF_avg))
+
+                # Increase figure size for plot labels at top
+                fig.set_size_inches(8, 8)
+            except:
+                pass
+
+            # Save plot to file
+            print 'Plotting ' + str(group)[1:-1] + ' for NF'
+            savefig('../Figures/Hose_Test_Figures/' + test_name + '_' + str(group)[2:-2] + 'NF.pdf')
+            close('all')
+
+############ Wide Fog ############
+            fig = figure()
+            t = arange(len(quantity.index))
+            plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+            
+            for channel in WF_df.columns[:]:
+                
+                # Skips nonsensor data columns
+                if any([substring in group for substring in channel]) == False:
+                    continue
+
+                plot(t, channel, lw=1.5, ls='-', label=scaling['Test Specific Name'][channel])
+
+            # Scale y-axis limit based on specified range in test description file
+            if axis_scale == 'Y Scale BDP':
+                low = axis_scale + ' Low'
+                high = axis_scale + ' High'
+                ylim([-np.float(hose_info[low][test_name]), np.float(hose_info[high][test_name])])
+            else:
+                ylim([0, np.float(hose_info[axis_scale][test_name])])
+
+            # Set axis options, legend, tickmarks, etc.
+            ax1 = gca()
+            xlim(0, len(SS_avg))
+            ax1.xaxis.set_major_locator(MaxNLocator(8))
+            ax1_xlims = ax1.axis()[0:2]
+            ax1.axhspan(0, 0, color='0.50', lw=1)
+            #grid(True)
+            xlabel('Time', fontsize=20)
+            ylabel('Velocity (m/s)', fontsize=20)
+            xticks(fontsize=16)
+            yticks(fontsize=16)
+            legend(loc='lower right', fontsize=8)
+
+            try:
+                # Add vertical lines for timing information (if available)
+                for index, row in timings.iterrows():
+                    if pd.isnull(row[test_name]):
+                        continue
+                    axvline(index - start_of_test, color='0.50', lw=1)
+
+                # Add secondary x-axis labels for timing information
+                ax2 = ax1.twiny()
+                ax2.set_xlim(ax1_xlims)
+                ax2.set_xticks(timings[test_name].dropna().index.values - (start_of_test+60))
+                setp(xticks()[1], rotation=60)
+                ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
+                xlim(0, len(NF_avg))
+
+                # Increase figure size for plot labels at top
+                fig.set_size_inches(8, 8)
+            except:
+                pass
+
+            # Save plot to file
+            print 'Plotting ' + str(group)[1:-1] + ' for WF'
+            savefig('../Figures/Hose_Test_Figures/' + test_name + '_' + str(group)[2:-2] + 'WF.pdf')
             close('all')
 
 
