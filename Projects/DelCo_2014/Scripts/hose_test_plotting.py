@@ -134,7 +134,6 @@ for f in os.listdir(data_dir):
                 stream_sensor_group = pd.DataFrame(t_stream)
 
                 for channel in stream_data.columns[1:]:
-
                     # Skip excluded channels listed in test description file
                     if any([substring in channel for substring in hose_info['Excluded Channels'][test_name].split('|')]):
                         continue
@@ -318,12 +317,10 @@ for f in os.listdir(data_dir):
 
             for channel in SS_df.columns[:]:
                 
-                # Skips nonsensor data columns
-                if any([substring in group for substring in channel]) == False:
-                    continue
-
-                plot(t, channel, lw=1.5, ls='-', label=scaling['Test Specific Name'][channel])
-
+                # Plots sensor data columns
+                if any([substring in channel for substring in group]):
+                    plot(t, SS_df[channel], lw=1.5, ls='-', label=scaling['Test Specific Name'][channel])
+            
             # Scale y-axis limit based on specified range in test description file
             if axis_scale == 'Y Scale BDP':
                 low = axis_scale + ' Low'
@@ -377,11 +374,9 @@ for f in os.listdir(data_dir):
             
             for channel in NF_df.columns[:]:
                 
-                # Skips nonsensor data columns
-                if any([substring in group for substring in channel]) == False:
-                    continue
-
-                plot(t, channel, lw=1.5, ls='-', label=scaling['Test Specific Name'][channel])
+                # Plots sensor data columns
+                if any([substring in channel for substring in group]):
+                    plot(t, NF_df[channel], lw=1.5, ls='-', label=scaling['Test Specific Name'][channel])
 
             # Scale y-axis limit based on specified range in test description file
             if axis_scale == 'Y Scale BDP':
@@ -436,11 +431,9 @@ for f in os.listdir(data_dir):
             
             for channel in WF_df.columns[:]:
                 
-                # Skips nonsensor data columns
-                if any([substring in group for substring in channel]) == False:
-                    continue
-
-                plot(t, channel, lw=1.5, ls='-', label=scaling['Test Specific Name'][channel])
+                # Plots sensor data columns
+                if any([substring in channel for substring in group]):
+                    plot(t, WF_df[channel], lw=1.5, ls='-', label=scaling['Test Specific Name'][channel])
 
             # Scale y-axis limit based on specified range in test description file
             if axis_scale == 'Y Scale BDP':
