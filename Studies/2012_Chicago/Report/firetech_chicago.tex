@@ -39,14 +39,13 @@ grestore
 \RequirePackage{fix-cm}
 %
 %\documentclass{svjour3}                     % onecolumn (standard format)
-%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
-\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+%\documentclass[smallextended]{svjour3}       % onecolumn (second format)
 %\documentclass[twocolumn]{svjour3}          % twocolumn
 %
 \smartqed  % flush right qed marks, e.g. at end of proof
 
 \input{../../../Bibliography/commoncommands}
-\usepackage{graphicx}
 \renewcommand{\sb}[1]{_\mathrm{#1}}
 \renewcommand{\C}{\mbox{C}}
 \renewcommand{\H}{\mbox{H}}
@@ -65,7 +64,7 @@ grestore
 %
 \begin{document}
 
-\title{Simulation of an Attic Firein a Wood Frame Residential Structure - Chicago, IL}
+\title{Simulation of an Attic Fire in a Wood Frame Residential Structure - Chicago, IL}
 
 %\titlerunning{Short form of title}        % if too long for running head
 
@@ -168,7 +167,7 @@ The fire, which is described in Section~\ref{fire}, started in the attic and spr
 \includegraphics[width=\textwidth]{../Figures/1st_Floor_Metric} \\
 \includegraphics[width=\textwidth]{../Figures/2nd_Floor_Metric}
 \end{tabular*}
-\caption[Plan view of first (top) and second (bottom) floor of structure.]{Plan view of first (top) and second (bottom) floor of structure. Stairs and key rooms are identified using measurements collected by NIST.}
+\caption[Plan view of first (top) and second (bottom) floor of structure.]{Plan view of first (top) and second (bottom) floor of structure. Stairs and key rooms are identified using measurements collected by NIST}
 \label{fig:simp_geom}
 \end{figure}
 
@@ -178,7 +177,7 @@ The fire, which is described in Section~\ref{fire}, started in the attic and spr
    \scalebox{1.0}{ \includegraphics[width=3in]{../Figures/exterior_alpha} } &
    \scalebox{1.0}{ \includegraphics[width=2.67in]{../Figures/exterior_charlie} } \\
 \end{tabular*}
-\caption{Photographs showing the front (left) and rear (right) exterior of the structure after the incident.}
+\caption{Photographs showing the front (left) and rear (right) exterior of the structure after the incident}
 \label{fig:alpha_ex}
 \end{figure}
 
@@ -225,6 +224,8 @@ Note that the coordinates here are unique for the vents are specific to the inpu
 \label{matl}
 While the fires were represented as fuel sources with a constant area (Section~\ref{fire}), from a heat transfer perspective, it is important to define the material properties (density, thermal conductivity, and specific heat) to account for heat transfer and energy storage in the ceiling, walls, and floor. In this study, the material properties of gypsum board~\cite{WAKILI2007} were specified on the finished walls and ceilings on the main two floors of the structure, and the material properties of wood~\cite{Incropera:1} were specified on the unfinished portions of the attic and rear porch. The following lines define these materials in the FDS input file:
 
+\clearpage
+
 \begin{lstlisting}
 &MATL ID = 'GYPSUM BOARD'
     FYI = 'Wakili - Journal of Fire Sciences 2007' 
@@ -245,7 +246,7 @@ The simulations in this study account for changes in the ventilation due to a co
 
 An unknown parameter in Table~\ref{tab:vents} that needed to be estimated was the time when the second floor interior/porch door failed (160~s into the simulation). The area of failure was also estimated based on the following observations. The bottom hinge from the door appeared to be closed throughout the fire due to the lack of fire damage and the lack of soot deposited on the interior faces of the hinge and remaining wood, as shown in Fig.~\ref{fig:door_frame}. It appears that the door collapsed and failed partially open. In the simulations, only the upper portion of the door was assumed to fail. While this time and area may not be exact, the takeaway from the analysis in the following sections should be impact of the door's failure on the interior conditions of the structure.
 
-\begin{table}
+\begin{table}[h!]
 \centering
 \captionof{table}{Timeline of ventilation changes in the simulation}\label{tab:vents}
 \begin{tabular}{cccll}
@@ -275,8 +276,6 @@ $^*$These ventilation events were not included in the alternative simulation.
 \label{fig:door_frame}
 \end{figure}
 
-\clearpage
-
 \subsection{Numerical Mesh}
 \label{mesh}
 
@@ -298,14 +297,14 @@ As discussed in Section~\ref{geom}, the structure has dimensions of 17.15~m (56~
    \scalebox{1.0}{\includegraphics[width=.49\textwidth]{../Figures/smv_exterior_grid}} &
    \scalebox{1.0}{\includegraphics[width=.488\textwidth]{../Figures/smv_exterior_grid_rear}} \\
 \end{tabular*}
-\caption{Front (left) and rear (right) of the structure with 10~cm computational mesh.}
+\caption{Front (left) and rear (right) of the structure with 10~cm computational mesh}
 \label{fig:geom_grid}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=.60\textwidth]{../Figures/smv_exterior_mesh}
-\caption[Front-right side of the structure within the computational domain.]{Front-right side of the structure within the computational domain (with multiple meshes). Each of the 16 meshes is 3~m (9.8~ft) by 10~m (33~ft) by 5~m (16.4~ft).}
+\caption[Front-right side of the structure within the computational domain]{Front-right side of the structure within the computational domain (with multiple meshes). Each of the 16 meshes is 3~m (9.8~ft) by 10~m (33~ft) by 5~m (16.4~ft)}
 \label{fig:mult_mesh}
 \end{figure}
 
@@ -401,7 +400,7 @@ The heat release rate output data from FDS quantifies the simulated rate of ener
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=.80\textwidth]{../Figures/Chicago_Fire_HRR}
-\caption[HRR versus time from the FDS simulations.]{HRR versus time from the FDS simulations. The first vertical line indicates the time at which the back door failed (130~s), and the second vertical line indicates the time at which the interior hallway door failed (160~s).}
+\caption[HRR versus time from the FDS simulations.]{HRR versus time from the FDS simulations. The first vertical line indicates the time at which the back door failed (130~s), and the second vertical line indicates the time at which the interior hallway door failed (160~s)}
 \label{fig:hrr}
 \end{figure}
 
@@ -423,7 +422,7 @@ As the simulated fire grows in the attic and rear porch, the pressure rises. Fig
 \begin{figure}[!ht]
 \includegraphics[width=.75\textwidth]{../Figures/west_50th_baseline_pres2}
 \input{../Scripts/colorbar_metric_pres}
-\caption[FDS simulated pressure contours, 1~s prior to interior door failure.]{FDS simulated pressure contours, 1~s prior to interior door failure.}
+\caption[FDS simulated pressure contours, 1~s prior to interior door failure.]{FDS simulated pressure contours, 1~s prior to interior door failure}
 \label{fig:pres_159s}
 \end{figure}
 
@@ -448,7 +447,7 @@ Analysis of the temperatures from the FDS simulation focuses on the high hazard 
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_129}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{FDS simulated temperature contours, 1~s prior to rear door opening.}
+\caption{FDS simulated temperature contours, 1~s prior to rear door opening}
 \label{fig:temp_129s}
 \end{figure}
 
@@ -456,7 +455,7 @@ Analysis of the temperatures from the FDS simulation focuses on the high hazard 
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_159}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{FDS simulated temperature contours, 1~s prior to interior door failure.}
+\caption{FDS simulated temperature contours, 1~s prior to interior door failure}
 \label{fig:temp_159s}
 \end{figure}
 
@@ -465,7 +464,7 @@ Figure~\ref{fig:temp_129s} shows temperatures of at least 260~$^{\circ}$C (500~$
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_161}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{FDS simulated temperature contours, 1~s after interior door failure.}
+\caption{FDS simulated temperature contours, 1~s after interior door failure}
 \label{fig:temp_161s}
 \end{figure}
 
@@ -473,7 +472,7 @@ Figure~\ref{fig:temp_129s} shows temperatures of at least 260~$^{\circ}$C (500~$
 \includegraphics[width=.675\textwidth]{../Figures/west_50th_baseline_175}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption{FDS simulated temperature contours, 15~s after the interior door failure.}
+\caption{FDS simulated temperature contours, 15~s after the interior door failure}
 \label{fig:temp_175s}
 \end{figure}
 
@@ -490,7 +489,7 @@ From on-scene reports (Section~\ref{fire_sum}) and the FDS simulation results (S
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=.4\textwidth]{../Figures/Porch_Door_1}
-\caption{Post-fire image of interior door.}
+\caption{Post-fire image of interior door}
 \label{fig:chicago_doorfold}
 \end{figure}
 
@@ -502,7 +501,7 @@ Recent experiments conducted by NIST revealed similar post-fire states after doo
    \scalebox{1.0}{ \includegraphics[width=3in]{../Figures/SC_Door_1} } &
    \scalebox{1.0}{ \includegraphics[width=2in]{../Figures/SC_Door_2} } \\
 \end{tabular*}
-\caption{Post-experiment images of door failures.}
+\caption{Post-experiment images of door failures}
 \label{fig:SC_doorfold}
 \end{figure}
 
@@ -511,7 +510,7 @@ After the interior door failed, an interior flow path was created from the enclo
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=.7\textwidth]{../Figures/ChicagoFlow}
-\caption{Summary of simulated flow path on the second floor after interior door failure.}
+\caption{Summary of simulated flow path on the second floor after interior door failure}
 \label{fig:flowpath_1}
 \end{figure}
 
@@ -528,8 +527,8 @@ Prior to the interior door failure, the elevated temperatures on the second floo
 \includegraphics[width=.68\textwidth]{../Figures/west_50th_baseline_top_159_6ft}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption[Temperature contours on the second floor, 1~s prior to interior door failure.]
-{Temperature contours on the second floor, 1~s prior to interior door failure, 1.83~m (6~ft) above the floor.}
+\caption[Temperature contours on the second floor, 1~s prior to interior door failure]
+{Temperature contours on the second floor, 1~s prior to interior door failure, 1.83~m (6~ft) above the floor}
 \label{fig:temp_top_159}
 \end{figure}
 
@@ -538,8 +537,8 @@ Prior to the interior door failure, the elevated temperatures on the second floo
 \includegraphics[width=.68\textwidth]{../Figures/west_50th_baseline_top_165_6ft}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption[Temperature contours on the second floor, 5~s after interior door failure.]
-{Temperature contours on the second floor, 5~s after interior door failure, 1.83~m (6~ft) above the floor.}
+\caption[Temperature contours on the second floor, 5~s after interior door failure]
+{Temperature contours on the second floor, 5~s after interior door failure, 1.83~m (6~ft) above the floor}
 \label{fig:temp_top_165}
 \end{figure}
 
@@ -548,8 +547,8 @@ Prior to the interior door failure, the elevated temperatures on the second floo
 \includegraphics[width=.68\textwidth]{../Figures/west_50th_baseline_top_220_6ft}
 \input{../Scripts/colorbar_std} 
 \input{../Scripts/colorbar_metric}
-\caption[Temperature contours on the second floor, 60~s after interior door failure.]
-{Temperature contours on the second floor, 60~s after interior door failure, 1.83~m (6~ft) above the floor.}
+\caption[Temperature contours on the second floor, 60~s after interior door failure]
+{Temperature contours on the second floor, 60~s after interior door failure, 1.83~m (6~ft) above the floor}
 \label{fig:temp_top_220}
 \end{figure}
 
@@ -638,7 +637,5 @@ The authors would like to thank the Chicago Fire Department, especially Commissi
 \label{fig:second_floor}
 \end{figure}
 
-
 \end{document}
-% end of file template.tex
 
