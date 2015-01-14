@@ -1,0 +1,24 @@
+Process for generating floor plans to be presented in LaTeX file:
+
+	Scale drawing to 1/48
+
+	Align East edge of 2ft wall with edge of the tail of the bottom arrow from border design.
+
+	Align South edge of 2ft wall with left border line.
+
+	If desired, add units. Both unit numbers should be centered, the East-West dimension should be dragged out to left edge of page, and the North-South unit should be dragged up until it auto-snaps into place.
+
+	If desired, generate a leader text arrow with letter 'N' (0.240pt font, bolded) to indicate North direction. To align leader text, align the bottom of the 'N' with the top of the 'B' from the border design, the left side of the 'N' with the North edge of the 2ft wall, and drag the tip of the arrow to the right border line.
+
+	If drawing is of second level of West Structure, remove the visibility of the 2ft wall outline around the drawing.
+
+	Delete "Default Border" from drawing.
+
+	Export drawing as PDF, save, and then select undo twice so border outline reappears and save .idw file
+
+
+######################### LaTeX cropping #########################
+
+For floor plan with 'N' leader text: trim=0cm 0cm 0.75cm 4.5cm
+
+For floor plan without 'N' leader text: trim=0cm 0cm 0.75cm 5cm
