@@ -43,8 +43,8 @@ plot_style
 
 Num_TC_arrays = 4;
 TC_per_array = 8;
-TC_array_names = {'FSW6 Eastside Array' 'FSW6 Westside Array' 'FSW6 Hallway Array' 'FSW6 Doorway Array'};
-TC_array_names_suppression = {'Suppression FSW6 Eastside Array' 'Suppression FSW6 Westside Array' 'Suppression FSW6 Hallway Array' 'Suppression FSW6 Doorway Array'};
+TC_array_names = {'FSW6_Eastside_Array' 'FSW6_Westside_Array' 'FSW6_Hallway_Array' 'FSW6_Doorway_Array'};
+TC_array_names_suppression = {'Suppression_FSW6_Eastside_Array' 'Suppression_FSW6_Westside_Array' 'Suppression_FSW6_Hallway_Array' 'Suppression_FSW6_Doorway_Array'};
 % for j=1:Num_TC_arrays
 %     TC_array_suppression = strcat('Suppression ',TC_array_names{j});
 % end
@@ -297,7 +297,7 @@ xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
 axis([200 350 0 60])
 legend('Eastside Heat Flux 0.15m','Eastside Rad 0.15m','Location','NorthEastOutside')
-print(gcf,'-dpdf',[plotdirheatflux,'FSW Test 6 Heat Flux Eastside'])
+print(gcf,'-dpdf',[plotdirheatflux,'FSW_Test_6_Heat_Flux_Eastside'])
 hold off
 
 plot1 = figure;
@@ -319,7 +319,7 @@ xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
 axis([200 350 0 60])
 legend('Westside Heat Flux 0.15m','Westside Rad 0.15m','Location','NorthEastOutside')
-print(gcf,'-dpdf',[plotdirheatflux,'FSW Test 6 Heat Flux Westside'])
+print(gcf,'-dpdf',[plotdirheatflux,'FSW_Test_6_Heat_Flux_Westside'])
 hold off
 
 plot1 = figure;
@@ -341,7 +341,7 @@ xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
 axis([200 350 0 60])
 legend('Hallway Heat Flux 1.52m','Hallway Heat Flux 1.52m','Location','NorthEastOutside')
-print(gcf,'-dpdf',[plotdirheatflux,'FSW Test 6 Heat Flux Hallway'])
+print(gcf,'-dpdf',[plotdirheatflux,'FSW_Test_6_Heat_Flux_Hallway'])
 hold off
 
 plot1 = figure;
@@ -363,7 +363,7 @@ xlabel('Time (s)')
 ylabel('Heat Flux (kW/m^2)')
 axis([200 350 0 60])
 legend('Near Fire Room Heat Flux 0.15m','Near Fire Room Heat Flux 1.52m','Location','NorthEastOutside')
-print(gcf,'-dpdf',[plotdirheatflux,'FSW Test 6 Heat Flux Near Fire Room'])
+print(gcf,'-dpdf',[plotdirheatflux,'FSW_Test_6_Heat_Flux_Near_Fire_Room'])
 hold off
 
 %------------------
@@ -430,7 +430,7 @@ xlabel('Time (s)')
 ylabel('Velocity (m/s)')
 axis([200 350 -5 5])
 legend(BDP_array,'Location','NorthEastOutside')
-print(gcf,'-dpdf',[plotdirvelocity,'FSW Test 6 Hallway Velocity'])
+print(gcf,'-dpdf',[plotdirvelocity,'FSW_Test_6_Hallway_Velocity'])
 hold off
 
 plot2 = figure;
@@ -457,5 +457,5 @@ xlabel('Time (s)')
 ylabel('Velocity (m/s)')
 axis([200 350 -5 10])
 legend(BDP_array2,'Location','NorthEastOutside')
-print(gcf,'-dpdf',[plotdirvelocity,'FSW Test 6 Doorway Velocity'])
+print(gcf,'-dpdf',[plotdirvelocity,'FSW_Test_6_Doorway_Velocity'])
 hold off

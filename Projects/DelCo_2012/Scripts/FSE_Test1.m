@@ -43,8 +43,8 @@ plot_style
 
 Num_TC_arrays = 4;
 TC_per_array = 8;
-TC_array_names = {'FSE1 Eastside Array' 'FSE1 Westside Array' 'FSE1 Hallway Array' 'FSE1 Doorway Array'};
-TC_array_names_suppression = {'Suppression FSE1 Eastside Array' 'Suppression FSE1 Westside Array' 'Suppression FSE1 Hallway Array' 'Suppression FSE1 Doorway Array'};
+TC_array_names = {'FSE1_Eastside_Array' 'FSE1_Westside_Array' 'FSE1_Hallway_Array' 'FSE1_Doorway_Array'};
+TC_array_names_suppression = {'Suppression_FSE1_Eastside_Array' 'Suppression_FSE1_Westside_Array' 'Suppression_FSE1_Hallway_Array' 'Suppression_FSE1_Doorway_Array'};
 % for j=1:Num_TC_arrays
 %     TC_array_suppression = strcat('Suppression ',TC_array_names{j});
 % end
@@ -296,7 +296,7 @@ pos = get(legend_handle,'position');
 set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 4.5 pos(4)])
 set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
 set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
-print(gcf,'-dpdf',[plotdirheatflux,'FSE Test 1 Heat Flux Eastside'])
+print(gcf,'-dpdf',[plotdirheatflux,'FSE_Test_1_Heat_Flux_Eastside'])
 hold off
 
 plot1 = figure;
@@ -320,7 +320,7 @@ pos = get(legend_handle,'position');
 set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 4.5 pos(4)])
 set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
 set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
-print(gcf,'-dpdf',[plotdirheatflux,'FSE Test 1 Heat Flux Westside'])
+print(gcf,'-dpdf',[plotdirheatflux,'FSE_Test_1_Heat_Flux_Westside'])
 hold off
 
 plot1 = figure;
@@ -344,7 +344,7 @@ pos = get(legend_handle,'position');
 set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 4.5 pos(4)])
 set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
 set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
-print(gcf,'-dpdf',[plotdirheatflux,'FSE Test 1 Heat Flux Hallway'])
+print(gcf,'-dpdf',[plotdirheatflux,'FSE_Test_1_Heat_Flux_Hallway'])
 hold off
 
 plot1 = figure;
@@ -368,7 +368,7 @@ pos = get(legend_handle,'position');
 set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 5 pos(4)])
 set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
 set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
-print(gcf,'-dpdf',[plotdirheatflux,'FSE Test 1 Heat Flux Near Fire Room'])
+print(gcf,'-dpdf',[plotdirheatflux,'FSE_Test_1_Heat_Flux_Near_Fire_Room'])
 hold off
 
 %------------------
@@ -437,7 +437,7 @@ pos = get(legend_handle,'position');
 set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 3.5 pos(4)])
 set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
 set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
-print(gcf,'-dpdf',[plotdirvelocity,'FSE Test 1 Hallway Velocity'])
+print(gcf,'-dpdf',[plotdirvelocity,'FSE_Test_1_Hallway_Velocity'])
 hold off
 
 plot2 = figure;
@@ -466,5 +466,5 @@ pos = get(legend_handle,'position');
 set(legend_handle,'position',[Legend_Width_Factor (Plot_Y+(Plot_Height-pos(4))/2) 3.5 pos(4)])
 set(gcf,'PaperSize',[Paper_Width_Factor Paper_Height]);
 set(gcf,'PaperPosition',[0 0 Paper_Width*1.5 Paper_Height]);
-print(gcf,'-dpdf',[plotdirvelocity,'FSE Test 1 Doorway Velocity'])
+print(gcf,'-dpdf',[plotdirvelocity,'FSE_Test_1_Doorway_Velocity'])
 hold off
