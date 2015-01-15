@@ -13,6 +13,9 @@
 
 \input{../../../../Bibliography/commoncommands}
 
+% Load packages
+\usepackage{graphicx}
+
 % Rename chapter headings
 \renewcommand{\chaptername}{Section}
 \renewcommand{\bibname}{References}
@@ -131,23 +134,47 @@ Two structures, shown in Fig.~\ref{fig:struct_pics}, were constructed for the ex
 \clearpage
 
 \begin{figure}[!ht]
-\includegraphics[width=6in]{../../Drawings/PDFs/Without_Intrumentation/West_Structure_1st_Floor_Metric_Simple}
+\includegraphics[trim=0cm 0cm 0.75cm 4.5cm, clip=true, width=6in]{../../Drawings/PDFs/Without_Instrumentation/West_Structure_1st_Floor_Metric_Simple}
 \\
-\includegraphics[width=6in]{../../Drawings/PDFs/Without_Intrumentation/West_Structure_2nd_Floor_Metric_Simple}
-\caption[West Structure first and second floor layouts]{West Structure first floor (top) and second floor (bottom) layouts.}
+\includegraphics[trim=0cm 0cm 0.75cm 5.0cm, clip=true, width=6in]{../../Drawings/PDFs/Without_Instrumentation/West_Structure_2nd_Floor_Metric_Simple}
+\caption[West Structure first and second floor layouts]{West Structure first floor (top) and second floor (bottom) layouts. All dimensions are in meters.}
 \label{fig:west_general_plan}
 \end{figure}
 
 \clearpage
 
-\section{Fuel Load}
-\label{sec:Fuel_Load}
-
 \section{Instrumentation}
 \label{sec:Instrumentation}
+A schematic plan overview of the instrumentation in the West Structure referenced in this report is shown in Fig.~\ref{fig:west_instrumentation}. There is a discussion of uncertainties for each measurement below in Section~\ref{sec:Uncertainty}. Differential pressure transducers connected to bi-directional velocity probes (BDPs) were used to measure gas velocity at specific points throughout the structure ~\cite{McCaffrey:Combustion_and_Flame}. Each set of BDPs contained 8 probes located at distances of 0.08 m, 0.34 m, 0.61 m, 0.88 m, 1.15 m, 1.42 m, 1.68 m, and 1.95 m below the soffit of the corresponding doorway. Fig.~\ref{fig:BDPs} shows two sets of BDPs, A5 and A6, which are located at each double door on the first floor of the West Structure.
+
+\begin{figure}[!ht]
+\includegraphics[trim=0cm 0cm 0.75cm 4.5cm, clip=true, width=6in]{../../Drawings/PDFs/With_Instrumentation/West_Test_Structure_Devices_Hose_Test_1st_Floor}
+\\
+\includegraphics[trim=0cm 0cm 0.75cm 5.0cm, clip=true, width=6in]{../../Drawings/PDFs/With_Instrumentation/West_Test_Structure_Devices_Hose_Test_2nd_Floor}
+\caption[Location of Instrumentation in West Structure]{Location of Instrumentation in West Structure}
+\label{fig:west_instrumentation}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width=6in]{../../Figures/BDPs}
+\caption[Two sets of BDPs in Doorway]{Two sets of BDPs, A5 and A6, in each doorway of the double doors on the first floor of the West Structure}
+\label{fig:BDPs}
+\end{figure}
 
 \section{Uncertainty}
 \label{sec:Uncertainty}
+There are different components of uncertainty in the length, differential pressure, and gas velocity reported in this report. Uncertainties are grouped into two categories according to the method used to estimate them. Type A uncertainties are those which are evaluated by statistical methods, and Type B are those which are evaluated by other means [46]. Type B analysis of systematic uncertainties involves estimating the upper (+a) and lower (-a) limits for the quantity in question such that the probability that the value would be in the interval ($\pm$a) is essentially 100\%. After estimating uncertainties by either Type A or B analysis, the uncertainties are combined in quadrature to yield the combined standard uncertainty. Multiplying the combined standard uncertainty by a coverage factor of two results in the expanded uncertainty which correspond to a 95\% confidence interval (2$\sigma$). For some of these components, such as the zero and calibration elements, uncertainties are derived from instrument specifications. For other components, such as differential pressure, past experience with the instruments provided input in the uncertainty determination. 
+
+Each length measurement was taken carefully. Length measurements such as the room dimensions,
+instrumentation array locations, and fan placement were made with a hand held laser measurement
+device which has an accuracy of $\pm$6.0 mm over a range of 0.61 m to 15.3 m [47]. However, conditions affecting the measurement, such as levelness of the device, yield an
+estimated uncertainty of $\pm$0.5\% for measurements in the 2.0 m to 10.0 m range. Steel measuring tapes with a resolution of $\pm$0.5 mm were used to locate individual sensors within a measurement array and to measure and position the furniture. Some issues, such as "soft" edges on the upholstered furniture, result in an estimated total expanded uncertainty of $\pm$1.0\%. 
+
+Differential pressure reading uncertainty components were derived from pressure transducer instrument specifications and previous experience with pressure transducers. The transducers were factory calibrated and the zero and span of each was checked in the laboratory prior to the experiments yielding an accuracy of $\pm$1\% [52]. The total expanded uncertainty was estimated at 10\%. Bi-directional probes and single thermocouples were used to measure the velocity. The bi-directional probes used similar pressure transducers as those used for the differential pressure measurements discussed above. Bare-bead Type K thermocouple are co-located with the probe. The estimated total expanded uncertainty for velocity in these experiments is $\pm$18\%. 
+
+%46. Taylor, B.N., and Kuyatt, C.E., “Guidelines for Evaluating and Expressing the Uncertainty of NIST Measurement Results”, National Institute of Standards and Technology, Gaithersburg. MD., NIST TN 1297, January 1993. 
+%47. Stanley Hand Tools, User Manual TLM 100, 1000 Stanley Drive, New Britain, CT 06053. 
+%52. Setra Model 264 Very Low Pressure Transducer Data Sheet Rev E. Setra Systems, Boxborough, MA., December 2002. 
 
 \section{Experimental Procedure}
 \label{sec:Experimental_Procedure}
@@ -158,28 +185,32 @@ Two structures, shown in Fig.~\ref{fig:struct_pics}, were constructed for the ex
 \subsection{Application Pattern Experiments}
 \label{Application_Pattern_Experiments}
 
-Two sets of experiments involving application patterns, Tests 18 and 19, were conducted. The two sets varied in that the first floor south side door was open for Test 18 (Fig. \ref{fig:test_18_plan}) and closed for Test 19 (Fig. \ref{fig:test_19_plan}).
+Two sets of experiments involving application patterns, Tests 18 and 19, were conducted. The two sets varied in that the first floor south side door was open for Test 18 (Fig~\ref{fig:test_18_plan}) and closed for Test 19 (Fig.~\ref{fig:test_19_plan}).
 
 Tests 18 and 19 followed identical procedures that involved flowing water into the West Structure through the first floor, south side double doors using a 1.75 in. hose with a combination nozzle. The nozzle was used to produce three types of hose streams: a straight stream, a narrow fog stream, and a wide fog stream. Tests 18 and 19 involved three sets of experiments, one for each type of hose stream. For each set of experiments, four different application patterns were tested. First, water was applied while the hose was in a fixed position. Next, the hoseline was moved from side-to-side across the open room, creating a sweeping application pattern. Finally, the hoseline was rotated in both the clockwise and counterclockwise directions, creating clockwise and counterclockwise application patterns. 
 
 To begin each set of experiments, the combination nozzle was adjusted to produce the desired hose stream pattern. Once the nozzle was adjusted, water was applied while the hoseline was in the fixed position. After 60 seconds of water flow, the stairwell door was opened. 60 seconds after the stairwell door was opened, the north side, west double door on the second floor was opened, and water continued to flow for 60 more seconds. Then, the hoseline and two doors were closed, and the procedure was repeated for the sweeping, clockwise, and counterclockwise application patterns.
 
 \begin{figure}[!ht]
-\includegraphics[width=6in]{../../Drawings/PDFs/Without_Intrumentation/West_Structure_Hose_Test_18_1st_Floor}
+\includegraphics[trim=0cm 0cm 0.75cm 4.5cm, clip=true, width=6in]{../../Drawings/PDFs/Without_Instrumentation/West_Structure_Hose_Test_18_1st_Floor}
 \\
-\includegraphics[width=6in]{../../Drawings/PDFs/Without_Intrumentation/West_Structure_Hose_Test_18_2nd_Floor}
+\includegraphics[trim=0cm 0cm 0.75cm 5cm, clip=true, width=6in]{../../Drawings/PDFs/Without_Instrumentation/West_Structure_Hose_Test_18_2nd_Floor}
 \caption[West Structure first and second floor layouts for Test 18]{West Structure first floor (top) and second floor (bottom) layouts for Test 18. Both double doors and the south side door were open on the first floor for the duration of the test. On the second floor, the stairwell door and north side, west double door were opened and closed during the experiments, while the north side, east double door and south side door were in the closed position throughout the entire test.}
 \label{fig:test_18_plan}
 \end{figure}
 
-\clearpage
-
 \begin{figure}[!ht]
-\includegraphics[width=6in]{../../Drawings/PDFs/Without_Intrumentation/West_Structure_Hose_Test_19_1st_Floor}
+\includegraphics[trim=0cm 0cm 0.75cm 4.5cm, clip=true, width=6in]{../../Drawings/PDFs/Without_Instrumentation/West_Structure_Hose_Test_19_1st_Floor}
 \\
-\includegraphics[width=6in]{../../Drawings/PDFs/Without_Intrumentation/West_Structure_Hose_Test_19_2nd_Floor}
+\includegraphics[trim=0cm 0cm 0.75cm 5cm, clip=true, width=6in]{../../Drawings/PDFs/Without_Instrumentation/West_Structure_Hose_Test_19_2nd_Floor}
 \caption[West Structure first and second floor layouts for Test 19]{West Structure first floor (top) and second floor (bottom) layouts for Test 19. Both double doors were open and the south side door was closed on the first floor for the duration of the test. On the second floor, the stairwell door and north side, west double door were opened and closed during the experiments, while the north side, east double door and south side door were in the closed position throughout the entire test.}
 \label{fig:test_19_plan}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width=6in]{../../Figures/Test_18}
+\caption[North Side of West Structure during Test 18]{North side of West Structure during Test 18. Straight stream pattern is being applied, and flow path is fully established with the stairway door and the north side, west double door opened.}
+\label{fig:test_19_pic}
 \end{figure}
 
 \clearpage

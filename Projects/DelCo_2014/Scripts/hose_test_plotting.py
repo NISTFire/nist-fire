@@ -144,16 +144,16 @@ for f in os.listdir(data_dir):
                         calibration_intercept = float(scaling['Calibration Intercept'][channel])
 
                         # Scale channel and set plot options depending on quantity
-                        # Plot temperatures
-                        if 'TC_' in channel:
-                            plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-                            quantity = data[channel] * calibration_slope + calibration_intercept
-                            ylabel('Temperature ($^\circ$C)', fontsize=20)
-                            line_style = '-'
-                            if 'TC_Helmet_' in channel:
-                                axis_scale = 'Y Scale TC_Helmet'
-                            else:
-                                axis_scale = 'Y Scale TC'
+                        # # Plot temperatures
+                        # if 'TC_' in channel:
+                        #     plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+                        #     quantity = data[channel] * calibration_slope + calibration_intercept
+                        #     ylabel('Temperature ($^\circ$C)', fontsize=20)
+                        #     line_style = '-'
+                        #     if 'TC_Helmet_' in channel:
+                        #         axis_scale = 'Y Scale TC_Helmet'
+                        #     else:
+                        #         axis_scale = 'Y Scale TC'
 
                         # Plot velocities
                         if 'BDP_' in channel:
@@ -173,41 +173,41 @@ for f in os.listdir(data_dir):
                             axis_scale = 'Y Scale BDP'
 
                         # # Plot heat fluxes
-                        if any([substring in channel for substring in heat_flux_quantities]):
-                            plt.rc('axes', color_cycle=['k', 'k',
-                                                        'r', 'r',
-                                                        'g', 'g',
-                                                        'b', 'b',
-                                                        'c', 'c'])
+                        # if any([substring in channel for substring in heat_flux_quantities]):
+                        #     plt.rc('axes', color_cycle=['k', 'k',
+                        #                                 'r', 'r',
+                        #                                 'g', 'g',
+                        #                                 'b', 'b',
+                        #                                 'c', 'c'])
 
-                            # Get zero voltage from pre-test data
-                            zero_voltage = np.mean(data[channel][0:pre_test_time])
-                            quantity = (data[channel] - zero_voltage) * calibration_slope + calibration_intercept
-                            ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
-                            if 'HF' in channel:
-                                line_style = '-'
-                            elif 'RAD' in channel:
-                                line_style = '--'
-                            axis_scale = 'Y Scale HF'
+                        #     # Get zero voltage from pre-test data
+                        #     zero_voltage = np.mean(data[channel][0:pre_test_time])
+                        #     quantity = (data[channel] - zero_voltage) * calibration_slope + calibration_intercept
+                        #     ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
+                        #     if 'HF' in channel:
+                        #         line_style = '-'
+                        #     elif 'RAD' in channel:
+                        #         line_style = '--'
+                        #     axis_scale = 'Y Scale HF'
 
-                        # # Plot gas measurements
-                        if any([substring in channel for substring in gas_quantities]):
-                            plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-                            quantity = data[channel] * calibration_slope + calibration_intercept
-                            ylabel('Concentration (%)', fontsize=20)
-                            line_style = '-'
-                            axis_scale = 'Y Scale GAS'
+                        # # # Plot gas measurements
+                        # if any([substring in channel for substring in gas_quantities]):
+                        #     plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+                        #     quantity = data[channel] * calibration_slope + calibration_intercept
+                        #     ylabel('Concentration (%)', fontsize=20)
+                        #     line_style = '-'
+                        #     axis_scale = 'Y Scale GAS'
 
-                        # Plot hose pressure
-                        if 'HOSE_' in channel:
-                            plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-                            # Skip data other than sensors on 2.5 inch hoseline
-                            if '2p5' not in channel:
-                                continue
-                            quantity = stream_data[channel] * calibration_slope + calibration_intercept
-                            ylabel('Pressure (psi)', fontsize=20)
-                            line_style = '-'
-                            axis_scale = 'Y Scale HOSE'
+                        # # Plot hose pressure
+                        # if 'HOSE_' in channel:
+                        #     plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+                        #     # Skip data other than sensors on 2.5 inch hoseline
+                        #     if '2p5' not in channel:
+                        #         continue
+                        #     quantity = stream_data[channel] * calibration_slope + calibration_intercept
+                        #     ylabel('Pressure (psi)', fontsize=20)
+                        #     line_style = '-'
+                        #     axis_scale = 'Y Scale HOSE'
 
                         # Save converted quantity back to exp. dataframe and sensor group dataframe
                         stream_data[channel] = quantity
@@ -222,27 +222,30 @@ for f in os.listdir(data_dir):
                 # Adds a column of the average of all channels to the dataframe 
                 stream_sensor_group['Sensor Average'] = channel_avg
 
-                # Creates dataframe for each type of stream and type of pattern when both doors are open
+                # Creates dataframe for each type of stream and type of pattern 
                 if stream == 'SS':
                     SS_df = stream_sensor_group
-                    SS_fix = SS_df.iloc[120:180]
-                    SS_sweep = SS_df.iloc[360:420]
-                    SS_CW = SS_df.iloc[600:660]
-                    SS_CCW = SS_df.iloc[840:900]
+                    SS_fix = SS_df.iloc[0:180]
+                    SS_sweep = SS_df.iloc[240:420]
+                    SS_CW = SS_df.iloc[480:660]
+                    SS_CCW = SS_df.iloc[720:900]
+                    SS_CW_CCW = SS_df.iloc[480:900]
                     SS_avg = stream_sensor_group['Sensor Average']
                 if stream == 'NF':
                     NF_df = stream_sensor_group
-                    NF_fix = NF_df.iloc[120:180]
-                    NF_sweep = NF_df.iloc[360:420]
-                    NF_CW = NF_df.iloc[600:660]
-                    NF_CCW = NF_df.iloc[840:900]
+                    NF_fix = NF_df.iloc[0:180]
+                    NF_sweep = NF_df.iloc[240:420]
+                    NF_CW = NF_df.iloc[480:660]
+                    NF_CCW = NF_df.iloc[720:900]
+                    NF_CW_CCW = NF_df.iloc[480:900]
                     NF_avg = stream_sensor_group['Sensor Average']
                 if stream == 'WF':
                     WF_df = stream_sensor_group
-                    WF_fix = WF_df.iloc[120:180]
-                    WF_sweep = WF_df.iloc[360:420]
-                    WF_CW = WF_df.iloc[600:660]
-                    WF_CCW = WF_df.iloc[840:900]
+                    WF_fix = WF_df.iloc[0:180]
+                    WF_sweep = WF_df.iloc[240:420]
+                    WF_CW = WF_df.iloc[480:660]
+                    WF_CCW = WF_df.iloc[720:900]
+                    WF_CW_CCW = WF_df.iloc[480:900]
                     WF_avg = stream_sensor_group['Sensor Average']
         # #Saves result file with averages
         # results = {'Stream':stream_id, 'Channel':channel_id, 'Fixed':fix_avg, 'Sweeping':sweep_avg, 
@@ -481,6 +484,49 @@ for f in os.listdir(data_dir):
             savefig('../Figures/Hose_Test_Figures/' + test_name + '_' + str(group)[2:-2] + 'WF.pdf')
             close('all')
 
+######### Plot of CW to CCW for average of each sensor group for each stream #########
+            fig = figure()
+            t = arange(len(SS_CW_CCW.index))
+            plt.rc('axes', color_cycle=['k', 'b', 'r'])
+            
+            plot(t, SS_CW_CCW['Sensor Average'], lw=1.5, ls='-', label= 'SS_avg')
+            plot(t, NF_CW_CCW['Sensor Average'], lw=1.5, ls='-', label= 'NF_avg')
+            plot(t, WF_CW_CCW['Sensor Average'], lw=1.5, ls='-', label= 'WF_avg')
 
-        # Write offset times and converted quantities back to reduced exp. data file
-        # data.to_csv(data_dir + test_name + '_Reduced.csv')
+            # Set axis options, legend, tickmarks, etc.
+            ax1 = gca()
+            xlim(0, len(SS_CW_CCW))
+            ax1.xaxis.set_major_locator(MaxNLocator(8))
+            ax1_xlims = ax1.axis()[0:2]
+            ax1.axhspan(0, 0, color='0.50', lw=1)
+            grid(True)
+            xlabel('Time', fontsize=20)
+            ylabel('Velocity (m/s)', fontsize=20)
+            xticks(fontsize=16)
+            yticks(fontsize=16)
+            legend(loc='lower right', fontsize=8)
+
+            try:
+                # Add vertical lines for timing information (if available)
+                for index, row in timings.iterrows():
+                    if pd.isnull(row[test_name]):
+                        continue
+                    axvline(index - start_of_test, color='0.50', lw=1)
+
+                # Add secondary x-axis labels for timing information
+                ax2 = ax1.twiny()
+                ax2.set_xlim(ax1_xlims)
+                ax2.set_xticks(timings[test_name].dropna().index.values - (start_of_test+60))
+                setp(xticks()[1], rotation=60)
+                ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
+                xlim(0, len(SS_CW_CCW))
+
+                # Increase figure size for plot labels at top
+                fig.set_size_inches(8, 8)
+            except:
+                pass
+
+            # Save plot to file
+            print 'Plotting CW vs CCW for ' + str(group)[1:-1]
+            savefig('../Figures/Hose_Test_Figures/' + test_name + '_' + str(group)[2:-2] + 'Avg_CW_vs_CCW.pdf')
+            close('all')
