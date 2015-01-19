@@ -92,7 +92,8 @@
 
 
 #  =====================
-#  = Bounding Geometry =
+#  X0, Y0 = AB Corner ==
+#  X+ -> D Y+ -> C =====
 #  =====================
 
 
@@ -100,6 +101,17 @@
 #  = Basement Geometry =
 #  ======================
 
+&OBST XB = 0.0, 5.24,  0.0,  10.66,  0.0, 0.2 // Basement Floor Outline
+&OBST XB = 0.0, 1.49, 10.66, 11.96, 0.0, 0.2 // Basement Bump Out
+
+&OBST XB = 0.0, 5.24,  0.0,  0.08, 0.2. 2.4 // Basement A Wall
+&OBST XB = 0.0, 0.08,  0.0, 10.66, 0.2, 2.4 // Basement B Wall
+&OBST XB = 0.0, 5.24, 10.58, 10.66, 0.2. 2.4 // Basement C Wall
+&OBST XB = 5.16, 5.24, 0.0, 10.96, 0.2, 2.4 // Basement D Wall
+
+&OBST XB = 0.0, 0.08, 10.66, 11.96, 0.2, 2.4 // Basement Bump Out B Wall 
+&OBST XB = 0.0, 1.49, 11.88, 11.96, 0.2. 2.4 // Basement Bump Out C Wall
+&OBST XB = 1.41, 1.49, 10.66, 11.96, 0.2, 2.4 // Basement Bump Out D Wall
 
 #  ======================
 #  = 1st Floor Geometry =
