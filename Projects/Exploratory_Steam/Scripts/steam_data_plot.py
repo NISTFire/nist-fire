@@ -1,10 +1,13 @@
 #Weinschenk
-#9-14
+#1-15
 
 from __future__ import division
 import numpy as np
 import pandas as pd
 from pylab import *
+import datetime
+
+from bokeh.plotting import *
 
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
@@ -37,21 +40,29 @@ for i in range(len(T80_RH97_FS)):
 		j = T80_RH97_FS_Time[i]
 		k = -1
 
-fig = figure()
-plt.plot(T80_RH97_FC_Time,TDP_T80_RH97_FC,'rs',linewidth=2, label='Test Chamber Conditions')
-plt.plot(T80_RH97_FS_Time,TDP_T80_RH97_FS,'bo',linewidth=2, label='Sample Penetration Conditions')
-axvline(x=j,linestyle='-',linewidth=2,color = '#000000')
-plt.text(j+5., 22, 'Temperature for skin burn reached at '+str(j)+' s', 
-	 horizontalalignment='left',
-     verticalalignment='center')
-ax1 = gca()
-xlabel('Time (s)')
-ylabel('Dew Point Temperature ($^{\circ}$C)')
-grid(True)
-ax = gca()
-legend(numpoints=1,loc=4)
-axis([0, 1200, 0, 90])
-savefig('../Figures/DewTemp_T80_RH97.pdf',format='pdf')
-close()
+output_file("steam.html", title="Steam Through Turnout Gear")
+p1 = figure()
+p1.line(T80_RH97_FC_Time, TDP_T80_RH97_FC, color='#1F78B4', legend='Test Chamber Conditions')
+p1.line(T80_RH97_FS_Time, TDP_T80_RH97_FS, color='#FB9A99', legend='Sample Penetration Conditions')
+p1.title = "Steam Penetration"
+p1.grid.grid_line_alpha=0.3
+p1.xaxis.axis_label = 'Time (s)'
+p1.yaxis.axis_label = 'Dew Point Temperature (C)'
+show(VBox(p1))
 
-
+# fig = figure()
+# plt.plot(T80_RH97_FC_Time,TDP_T80_RH97_FC,'rs',linewidth=2, label='Test Chamber Conditions')
+# plt.plot(T80_RH97_FS_Time,TDP_T80_RH97_FS,'bo',linewidth=2, label='Sample Penetration Conditions')
+# axvline(x=j,linestyle='-',linewidth=2,color = '#000000')
+# plt.text(j+5., 22, 'Temperature for skin burn reached at '+str(j)+' s', 
+# 	 horizontalalignment='left',
+#      verticalalignment='center')
+# ax1 = gca()
+# xlabel('Time (s)')
+# ylabel('Dew Point Temperature ($^{\circ}$C)')
+# grid(True)
+# ax = gca()
+# legend(numpoints=1,loc=4)
+# axis([0, 400, 0, 90])
+# savefig('../Figures/DewTemp_T80_RH97.pdf',format='pdf')
+# close()
