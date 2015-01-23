@@ -33,35 +33,35 @@ B355     & 100  & Pool Fire            & \ref{proc_poolfire} \\
 \end{tabular}\par
 \end{table}
 
-Based on the laboratory heat release rate (HRR) hood ratings, test equipment, and fuel sources as described in Table~\ref{tab:sources}, a test plan outlining at minimum 19 tests was established. Table~\ref{tab:fires} describes the tests, fire/heat load, and estimated duration. The first test is designed to capture background data of the system running at ambient conditions so that the Fire Research Division has a baseline to compare degrading filters and replacement filters against to assess performance. The remaining tests all stress the system by introducing hot gases and/or soot into the EGFS. As the test numbers increase, more labs will be operating in parallel to ensure the EGFS will function when Fire Research Division is testing at capacity. During testing, the Fire Research Division needs to know the temperature of the gas upstream of the filter system and the pressure drop across the filter system. Ideally, we would like to know the pressure drop across each stage of the filter system.
+Based on the laboratory heat release rate (HRR) hood ratings, test equipment, and fuel sources as described in Table~\ref{tab:sources}, a test plan outlining at minimum 19 tests was established. Table~\ref{tab:fires} describes the tests, fire/heat load, and locations. The first test is designed to capture background data of the system running at ambient conditions so that the Fire Research Division has a baseline to compare degrading filters and replacement filters against to assess performance. The remaining tests all stress the system by introducing hot gases and/or soot into the EGFS. As the test numbers increase, more labs will be operating in parallel to ensure the EGFS will function when Fire Research Division is testing at capacity. During testing, the Fire Research Division needs to know the temperature of the gas upstream of the filter system and the pressure drop across the filter system. Ideally, we would like to know the pressure drop across each stage of the filter system.
 
 \begin{table}[!h]
 \centering
 \caption{Test Fire Scenarios}
 \label{tab:fires}
-\begin{tabular}{cccccc}
+\begin{tabular}{ccccc}
 \toprule[1.5pt]
-Test \# & Room \# & Fire HRR (kW) & Source & Purpose & Duration  \\
+Test \# & Room \# & Peak Fire HRR (kW) & Source & Purpose \\
 \midrule
-1  &  All             & 0    & N/A                 & Baseline      & 48~hrs \\
-2  &  B345            & 0    & Flow Loop           & Temp          & Indefinite \\
-3  &  A350            & 20   & Cone                & Temp + Soot   & Indefinite \\
-4  &  B351/53 $^*$    & 20   & Pool - Heptane      & Temp + Soot   & 270~s  \\
-5  &  B351/53 $^*$    & 50   & Pool - Heptane      & Temp + Soot   & 140~s \\
-6  &  B355 $^+$       & 20   & Pool - Heptane      & Temp + Soot   & 270~s \\
-7  &  B355 $^+$       & 50   & Pool - Heptane      & Temp + Soot   & 140~s \\
-8  &  B355 $^+$       & 90   & Pool - Heptane      & Temp + Soot   & 140~s \\
-9  &  B351/53 $^*$    & 20   & Pool - Toluene      & Temp + Soot   & 270~s  \\
-10 &  B351/53 $^*$    & 50   & Pool - Toluene      & Temp + Soot   & 140~s \\
-11 &  B355 $^+$       & 20   & Pool - Toluene      & Temp + Soot   & 270~s \\
-12 &  B355 $^+$       & 50   & Pool - Toluene      & Temp + Soot   & 140~s \\
-13 &  B355 $^+$       & 90   & Pool - Toluene      & Temp + Soot   & 140~s \\
-14 &  B347/49         & 50   & Lift                & Temp + Soot   & Indefinite \\
-15 &  B347/49         & 50   & Lift - Polystyrene  & Temp + Soot   & Sample Dependent \\
-16 &  B347/49         & 50   & Lift - Polyurethane & Temp + Soot   & Sample Dependent \\
-17 &  B347/49$^\#$    & 50   & Lift                & Temp + Soot   & Indefinite \\
-18 &  B347/49$^\#$    & 50   & Lift - Polystyrene  & Temp + Soot   & Sample Dependent \\
-19 &  B347/49$^\#$    & 50   & Lift - Polyurethane & Temp + Soot   & Sample Dependent \\
+1  &  All             & 0    & N/A                 & Baseline      \\
+2  &  B345            & 0    & Flow Loop           & Temp          \\
+3  &  A350            & 20   & Cone                & Temp + Soot   \\
+4  &  B351/53 $^*$    & 20   & Pool - Heptane      & Temp + Soot   \\
+5  &  B351/53 $^*$    & 50   & Pool - Heptane      & Temp + Soot   \\
+6  &  B355 $^+$       & 20   & Pool - Heptane      & Temp + Soot   \\
+7  &  B355 $^+$       & 50   & Pool - Heptane      & Temp + Soot   \\
+8  &  B355 $^+$       & 90   & Pool - Heptane      & Temp + Soot   \\
+9  &  B351/53 $^*$    & 20   & Pool - Toluene      & Temp + Soot   \\
+10 &  B351/53 $^*$    & 50   & Pool - Toluene      & Temp + Soot   \\
+11 &  B355 $^+$       & 20   & Pool - Toluene      & Temp + Soot   \\
+12 &  B355 $^+$       & 50   & Pool - Toluene      & Temp + Soot   \\
+13 &  B355 $^+$       & 90   & Pool - Toluene      & Temp + Soot   \\
+14 &  B347/49         & 50   & Lift                & Temp + Soot   \\
+15 &  B347/49         & 50   & Lift - Polystyrene  & Temp + Soot   \\
+16 &  B347/49         & 50   & Lift - Polyurethane & Temp + Soot   \\
+17 &  B347/49$^\#$    & 50   & Lift                & Temp + Soot   \\
+18 &  B347/49$^\#$    & 50   & Lift - Polystyrene  & Temp + Soot   \\
+19 &  B347/49$^\#$    & 50   & Lift - Polyurethane & Temp + Soot   \\
 \bottomrule[1.25pt]
 \end{tabular}\par
 \raggedright
@@ -80,7 +80,7 @@ At least two members of the Fire Research Division will be present to perform a 
 
 \section{Potential Lab Hazards}
 \label{lab_hazards}
-For the ECS commissioning tests at the NFRL, the building will be transitioning from a construction site to an active laboratory. This combination space presents safety hazards to occupants. A partial lists of hazards to consider follows:
+This space presents safety hazards to occupants. A list of hazards that have been considered include:
 \begin{itemize}
 \item {\bf Electrical Hazards}
 %Minimum personal protective equipment (PPE) is safety glasses with side shields and steel toed safety shoes. Equipment, power cords and general housekeeping are inspected on a regular basis by Workspace Manager. Users of equipment in this workspace must have completed electrical safety training. All wall outlets are appropriately marked with voltage and breaker box number/breaker number.
@@ -88,12 +88,10 @@ For the ECS commissioning tests at the NFRL, the building will be transitioning 
 %All workers in this lab must complete MSDS training. CO detectors are installed near the CO cylinder and throughout work areas.  All NFRL staff members and guest workers are equipped with personal CO monitors that alarm at 10 ppm. Post fire test specimens (such as mattresses, furniture and demolished burn room structures that must be removed from building 205 are doused with water and stored in the rented construction dumpster). A thermal imaging camera will be used to insure samples have been fully extinguished before placing in this dumpster. Appropriate protective clothing and breathing apparatus will be determined according to the hazards associated with disposal of post-project debris.
 \item {\bf Flammable/Reactive Materials}
 %Minimum PPE is safety glasses with side shields and steel toed safety shoes. Two permanent flammable gas alarms are located above the natural gas fuel delivery line in the ceiling area. Protective barrier posts are installed at the base of the natural gas line to prevent vehicle collision. The gas line is equipped with three quarter turn shutoff valves and an automatic safety shutoff valve (secured with a key to prevent unintended use). A quarter turn valve located on the south side of building 205 can be used to shut off the gas supply to the entire building.  The natural gas flow rate and pressure are monitored when the burner is in use.
-\item {\bf High Pressure Fluid Flow}
-%Minimum PPE is safety glasses with side shields and steel toed safety shoes. Fire hose stream operators must complete MFRI fire suppression training and NFRL WSM led training.  Fire hose lines are routinely inspected and checked for leaks and taken out of service when leaks are found. Standpipe valves are closed and secured when not in use. A minimum of two qualified operators are required to handle a hose stream suppression line. 
 \item {\bf Moving Heavy Objects}
 %A forklift, hand truck, pallet jack, hoist crane and/or skid loader will be utilized to lift and move heavy objects that cannot be moved by hand. All operators will be adequately trained to use these devices. Training records must be documented in an approved project FLHR document before the start of any activity with this equipment.
 \end{itemize}
-
+Staff have been trained and will use appropriate PP including safety glasses, appropriate footwear, and gloves.
 
 \section{Experimental Test Procedures}
 \label{test_procedure}
@@ -166,13 +164,15 @@ For the ECS commissioning tests at the NFRL, the building will be transitioning 
   \item All flammable liquid stored are in safe container. 
   \item A secondary containment device (graduate cylinder) will be used when transferring fuels and conducting fire tests.
   \item Position test pan in appropriate position under test hood.
+  \item The pan will be placed within a spill barrier during testing.
   \item Fill ignition pans with desired level of liquid fuel.
   \item Ignite fuel pans with a 1.22~m - 1.83~m (4-6~ft) propane wand igniter.
+  \item To extinguish, the pool fires will be snuffed out.
   \item Workers are required to use PPE when performing post-fire cleanup.
 \end{enumerate}
 
-
-
+\subsection{Emergency Procedures}
+If an emergency shutdown is required, each lab will follow the shutdown procedures dictacted by the ongoing test and standard operating laboratory specfic guidelines.
 
 
 \end{document}
