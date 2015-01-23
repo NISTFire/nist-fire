@@ -6,9 +6,7 @@ import numpy as np
 import pandas as pd
 from pylab import *
 import datetime
-
 from bokeh.plotting import *
-
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
 
@@ -17,7 +15,6 @@ def DP_sub (b,c,temp,RH):
 	return DP_func;
 b = 17.67
 c = 243.5
-
 sample_rate = 6.
 
 T80_RH97_FC = pd.read_csv('../Experimental_Data/80degC_97RH_Full_Chamber.csv', header=5)
@@ -46,7 +43,7 @@ p1.line(T80_RH97_FC_Time, TDP_T80_RH97_FC, color='#1F78B4', legend='Test Chamber
 p1.line(T80_RH97_FS_Time, TDP_T80_RH97_FS, color='#FB9A99', legend='Sample Penetration Conditions')
 p1.title = "Steam Penetration"
 p1.grid.grid_line_alpha=0.3
-p1.xaxis.axis_label = 'Time (s)'
+p1.xaxis.axis_label = 'Time (sec)'
 p1.yaxis.axis_label = 'Dew Point Temperature (C)'
 show(VBox(p1))
 
