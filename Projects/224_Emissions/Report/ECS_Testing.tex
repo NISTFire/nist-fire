@@ -1,0 +1,178 @@
+\documentclass[12pt,oneside]{book}
+\input{../../../Bibliography/commoncommands}
+
+\renewcommand{\chaptername}{Section}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\rhead{}
+\chead{}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+\chapter{Test Fires}
+\label{test_fires}
+To accept the Exhaust Gas Filter System (EGFS) in building 224, commissioning tests need to be performed.  During normal operation of laboratories in building 224, there are a wide range of instrumentation and fuel sources that can produce heat and/or combustion gases (soot). Elevated temperatures and large quantities of soot will challenge the integrity of the EGFS. Therefore, the commissioning tests will utilize several laboratories along with a range of fuel and experimental apparatuses in building 224 to ensure that EGFS meets the needs of NIST's Fire Research Division. Table~\ref{tab:sources} describes the sources that will be used in each of the participating laboratories.
+
+\begin{table}[!h]
+\centering
+\caption{Fire Locations and Sources}
+\label{tab:sources}
+\begin{tabular}{cccc}
+\toprule[1.5pt]
+Room \# & Peak Rated HRR (kW) & Source & Test Procedure  \\
+\midrule
+A350     & 20   & Cone Calorimeter     & \ref{proc_cone}  \\
+B345     & 10   & Flow Loop            & \ref{proc_flowloop}  \\
+B347/49  & 115  & Lift (Radiant Panel) & \ref{proc_radpanel} \\
+B351/53  & 50   & Pool Fire            & \ref{proc_poolfire} \\
+B355     & 100  & Pool Fire            & \ref{proc_poolfire} \\
+\bottomrule[1.25pt]
+\end{tabular}\par
+\end{table}
+
+Based on the laboratory heat release rate (HRR) hood ratings, test equipment, and fuel sources as described in Table~\ref{tab:sources}, a test plan outlining at minimum 19 tests was established. Table~\ref{tab:fires} describes the tests, fire/heat load, and estimated duration. The first test is designed to capture background data of the system running at ambient conditions so that the Fire Research Division has a baseline to compare degrading filters and replacement filters against to assess performance. The remaining tests all stress the system by introducing hot gases and/or soot into the EGFS. As the test numbers increase, more labs will be operating in parallel to ensure the EGFS will function when Fire Research Division is testing at capacity. During testing, the Fire Research Division needs to know the temperature of the gas upstream of the filter system and the pressure drop across the filter system. Ideally, we would like to know the pressure drop across each stage of the filter system.
+
+\begin{table}[!h]
+\centering
+\caption{Test Fire Scenarios}
+\label{tab:fires}
+\begin{tabular}{cccccc}
+\toprule[1.5pt]
+Test \# & Room \# & Fire HRR (kW) & Source & Purpose & Duration  \\
+\midrule
+1  &  All             & 0    & N/A                 & Baseline      & 48~hrs \\
+2  &  B345            & 0    & Flow Loop           & Temp          & Indefinite \\
+3  &  A350            & 20   & Cone                & Temp + Soot   & Indefinite \\
+4  &  B351/53 $^*$    & 20   & Pool - Heptane      & Temp + Soot   & 270~s  \\
+5  &  B351/53 $^*$    & 50   & Pool - Heptane      & Temp + Soot   & 140~s \\
+6  &  B355 $^+$       & 20   & Pool - Heptane      & Temp + Soot   & 270~s \\
+7  &  B355 $^+$       & 50   & Pool - Heptane      & Temp + Soot   & 140~s \\
+8  &  B355 $^+$       & 90   & Pool - Heptane      & Temp + Soot   & 140~s \\
+9  &  B351/53 $^*$    & 20   & Pool - Toluene      & Temp + Soot   & 270~s  \\
+10 &  B351/53 $^*$    & 50   & Pool - Toluene      & Temp + Soot   & 140~s \\
+11 &  B355 $^+$       & 20   & Pool - Toluene      & Temp + Soot   & 270~s \\
+12 &  B355 $^+$       & 50   & Pool - Toluene      & Temp + Soot   & 140~s \\
+13 &  B355 $^+$       & 90   & Pool - Toluene      & Temp + Soot   & 140~s \\
+14 &  B347/49         & 50   & Lift                & Temp + Soot   & Indefinite \\
+15 &  B347/49         & 50   & Lift - Polystyrene  & Temp + Soot   & Sample Dependent \\
+16 &  B347/49         & 50   & Lift - Polyurethane & Temp + Soot   & Sample Dependent \\
+17 &  B347/49$^\#$    & 50   & Lift                & Temp + Soot   & Indefinite \\
+18 &  B347/49$^\#$    & 50   & Lift - Polystyrene  & Temp + Soot   & Sample Dependent \\
+19 &  B347/49$^\#$    & 50   & Lift - Polyurethane & Temp + Soot   & Sample Dependent \\
+\bottomrule[1.25pt]
+\end{tabular}\par
+\raggedright
+$^*$ plus tests 2 and 3 \\
+$^+$ plus tests 2, 3, and 5 \\
+$^\#$ plus tests 2, 3, 5, and 13 \\
+\end{table}
+\justify
+
+
+\chapter{Safety}
+\label{safety}
+\section{Lab Safety Controls}
+\label{controls}
+At least two members of the Fire Research Division will be present to perform a pre-test inspection. A safety briefing will be connected prior to each test. All test participants and observers must attend the safety briefing. Test specific emergency procedures must be reviewed at each safety briefing.
+
+\section{Potential Lab Hazards}
+\label{lab_hazards}
+For the ECS commissioning tests at the NFRL, the building will be transitioning from a construction site to an active laboratory. This combination space presents safety hazards to occupants. A partial lists of hazards to consider follows:
+\begin{itemize}
+\item {\bf Electrical Hazards}
+%Minimum personal protective equipment (PPE) is safety glasses with side shields and steel toed safety shoes. Equipment, power cords and general housekeeping are inspected on a regular basis by Workspace Manager. Users of equipment in this workspace must have completed electrical safety training. All wall outlets are appropriately marked with voltage and breaker box number/breaker number.
+\item {\bf Toxic/Corrosive Chemicals}
+%All workers in this lab must complete MSDS training. CO detectors are installed near the CO cylinder and throughout work areas.  All NFRL staff members and guest workers are equipped with personal CO monitors that alarm at 10 ppm. Post fire test specimens (such as mattresses, furniture and demolished burn room structures that must be removed from building 205 are doused with water and stored in the rented construction dumpster). A thermal imaging camera will be used to insure samples have been fully extinguished before placing in this dumpster. Appropriate protective clothing and breathing apparatus will be determined according to the hazards associated with disposal of post-project debris.
+\item {\bf Flammable/Reactive Materials}
+%Minimum PPE is safety glasses with side shields and steel toed safety shoes. Two permanent flammable gas alarms are located above the natural gas fuel delivery line in the ceiling area. Protective barrier posts are installed at the base of the natural gas line to prevent vehicle collision. The gas line is equipped with three quarter turn shutoff valves and an automatic safety shutoff valve (secured with a key to prevent unintended use). A quarter turn valve located on the south side of building 205 can be used to shut off the gas supply to the entire building.  The natural gas flow rate and pressure are monitored when the burner is in use.
+\item {\bf High Pressure Fluid Flow}
+%Minimum PPE is safety glasses with side shields and steel toed safety shoes. Fire hose stream operators must complete MFRI fire suppression training and NFRL WSM led training.  Fire hose lines are routinely inspected and checked for leaks and taken out of service when leaks are found. Standpipe valves are closed and secured when not in use. A minimum of two qualified operators are required to handle a hose stream suppression line. 
+\item {\bf Moving Heavy Objects}
+%A forklift, hand truck, pallet jack, hoist crane and/or skid loader will be utilized to lift and move heavy objects that cannot be moved by hand. All operators will be adequately trained to use these devices. Training records must be documented in an approved project FLHR document before the start of any activity with this equipment.
+\end{itemize}
+
+
+\section{Experimental Test Procedures}
+\label{test_procedure}
+
+\subsection{Cone Calorimeter}
+\label{proc_cone}
+\begin{enumerate}
+  \item Verify operation of the room exhaust hood. Do not proceed if exhaust hood is not operating properly.
+  \item Turn on bench power.
+  \item Turn on heat flux water.
+  \item Turn on chiller system (temperature will drop to about 2~$^{\circ}$C.
+  \item Turn on weigh system. Note that 30 minute warm up time is needed.
+  \item Run setup on Cone Application software.
+  \item Replace the ascerite and drierite as shown by the indicator. Collect the discarded material in the appropriate waste containers.
+  \item Check and clean the soot filter, replace filter as needed.
+  \item Calibrate system.
+  \item Prepare sample and place in specified sample holder. Place the sample such that it is not exposed to heat radiation from the cone prior to the experiment.
+  \item Once sample is exposed to heat, flaming combustion can occur.
+  \item Once the sample is no longer generating combustion products (e.g. no glowing embers, smoke) the sample is removed from the balance and transferred to the chemical hood. Use appropriate PPE (heat resistant gloves or channel locks held with leather gloves, safety glasses, lab jacket and closed toed shoes).
+  \item Switch off the cone heater power. 
+  \item Switch of the sample pump; exhaust system, methane system, weight system and chiller. Do not switch off the gas analyzers.
+  \item Switch off water.
+\end{enumerate}
+
+\subsection{Flow Loop}
+\label{proc_flowloop}
+\begin{enumerate}
+  \item Verify operation of the room exhaust hood. Do not proceed if exhaust hood is not operating properly.
+  \item Adjust the equipment platform, if necessary. Plug in the platform lift controller and use the control switches to raise or lower platform. 
+  \item After all equipment is setup, close the bottom opening of the flow loop test section using either the sliding door or the lift platform.  
+  \item Close and secure the side door of the flow loop test section.
+  \item Close the flow loop top vent located directly under the exhaust hood.
+  \item  Phone the NIST fire department (x6190) to notify them of high temperature testing in the laboratory (224/B345). They need to isolate the laboratory heat detector.
+  \item Turn on the blower.  Press``FDW'' button, and set controller to desired speed. ({\em Note: Always make sure blower is operating BEFORE turning on the heaters.  If heaters are activated without blower, the coils can overheat and damage the heater or the flow loop housing.})
+  \item Turn the temperature controller switch to ON (on large control box on the wall). The current flow loop air temperature, and the set-point temperature will be displayed in degrees C. To select a new set-point temperature, use the arrow buttons below the display on the the temperature controller.  
+  \item Unlock and remove the administrative locks from the two heater power switches (large red switches on wall next to control box).  
+  \item Activate the heaters by turning the two heater power switches to ON. Controller will increase heater temperature to the set point. 
+  \item Monitor the temperatures. The set point may be adjusted if desired.
+  \item For this test only, open the vent on top of the flow loop (under the exhaust hood) to vent the heated air from the flow loop. Keep the configuration in this setting for duration of testing.
+  \item To begin SHUTDOWN procedures, Turn OFF the heater power switches to shut off the heater. Replace and lock the administrative locks on the power switches.
+  \item Open the bottom door of the flow loop test section to allow room air to be drawn into the loop for cooling.
+  \item Leave the blower ON to circulate air to cool the heater and flow loop.   
+  \item Monitor the temperature inside the flow loop as indicated by temperature controller.  When the interior temperature is below 50~$^{\circ}$C, the blower may be turned off.
+  \item Notify the fire department that testing is finished.
+\end{enumerate}
+
+\subsection{Radiant Panel}
+\label{proc_radpanel}
+\begin{enumerate}
+  \item Verify operation of the room exhaust hood. Do not proceed if exhaust hood is not operating properly.
+  \item Fan should be operating in excess of 1500~SCFM
+  \item Turn on combustion air and check rotometer flow.
+  \item Turn on main gas value located on control panel along centerline of room.
+  \item Turn on value at the apparatus.
+  \item Light propane torch. While keeping the hand and propane bottle protected to the side and away from the panel, allow the flame to rest on teh upper face of the radiant panel.
+  \item Turn on electrical start toggle switch.
+  \item Observe that the UV sensor safety switch turns on.
+  \item When UV light turns on, push the electrical start switch and hold until the flame rod safety switch light comes on. Flames should cover the radiant panel.
+  \item Turn off propane torch and store in chemical hood.
+  \item To begin SHUTDOWN, turn off gas control switch.
+  \item Turn off gas to radiant panel.
+  \item Turn off main gas supply.
+  \item Allow combustion air to cool before turning off supply air.
+  \item EMERGENCY SHUT OFFs are location at each exit door the the laboratory.      
+\end{enumerate}
+
+\subsection{Pool Fires}
+\label{proc_poolfire}
+\begin{enumerate}
+  \item All flammable liquid stored are in safe container. 
+  \item A secondary containment device (graduate cylinder) will be used when transferring fuels and conducting fire tests.
+  \item Position test pan in appropriate position under test hood.
+  \item Fill ignition pans with desired level of liquid fuel.
+  \item Ignite fuel pans with a 1.22~m - 1.83~m (4-6~ft) propane wand igniter.
+  \item Workers are required to use PPE when performing post-fire cleanup.
+\end{enumerate}
+
+
+
+
+
+\end{document}
