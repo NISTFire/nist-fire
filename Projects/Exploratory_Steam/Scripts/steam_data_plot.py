@@ -2,11 +2,12 @@
 #1-15
 
 from __future__ import division
+import os
 import numpy as np
 import pandas as pd
 from pylab import *
 import datetime
-from bokeh.plotting import *
+#from bokeh.plotting import *
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
 
@@ -15,51 +16,74 @@ def DP_sub (b,c,temp,RH):
 	return DP_func;
 b = 17.67
 c = 243.5
-sample_rate = 6.
 
-T80_RH97_FC = pd.read_csv('../Experimental_Data/80degC_97RH_Full_Chamber.csv', header=5)
-TDP_T80_RH97_FC = np.zeros(len(T80_RH97_FC['Temperature (C)']))
-T80_RH97_FC_Time = np.zeros(len(T80_RH97_FC['Temperature (C)']))
+# Location of experimental data files
+data_dir = '../Experimental_Data/'
 
-T80_RH97_FS = pd.read_csv('../Experimental_Data/80degC_97RH_Full_Sample.csv', header=5)
-TDP_T80_RH97_FS = np.zeros(len(T80_RH97_FS['Temperature (C)']))
-T80_RH97_FS_Time = np.zeros(len(T80_RH97_FS['Temperature (C)']))
+# Read in test times file
+info = pd.read_csv('../Experimental_Data/Description_of_Experiments.csv', header=0, index_col=0)
 
-for i in range(len(T80_RH97_FC)):
-	T80_RH97_FC_Time[i] = -4476 + i*sample_rate
-	TDP_T80_RH97_FC[i] = DP_sub(b,c,T80_RH97_FC['Temperature (C)'][i],T80_RH97_FC['Humidity (RH)'][i])
+# Skip files
+skip_files = ['description_']
 
-k=1		
-for i in range(len(T80_RH97_FS)):
-	T80_RH97_FS_Time[i] = -4398 + i*sample_rate
-	TDP_T80_RH97_FS[i] = DP_sub(b,c,T80_RH97_FS['Temperature (C)'][i],T80_RH97_FS['Humidity (RH)'][i])
-	if TDP_T80_RH97_FS[i] > 37 and k == 1:
-		j = T80_RH97_FS_Time[i]
-		k = -1
+for f in os.listdir(data_dir):
+	if f.endswith('.csv'):
 
-output_file("steam.html", title="Steam Through Turnout Gear")
-p1 = figure()
-p1.line(T80_RH97_FC_Time, TDP_T80_RH97_FC, color='#1F78B4', legend='Test Chamber Conditions')
-p1.line(T80_RH97_FS_Time, TDP_T80_RH97_FS, color='#FB9A99', legend='Sample Penetration Conditions')
-p1.title = "Steam Penetration"
-p1.grid.grid_line_alpha=0.3
-p1.xaxis.axis_label = 'Time (sec)'
-p1.yaxis.axis_label = 'Dew Point Temperature (C)'
-show(VBox(p1))
+		# Skip files with time information or reduced data files
+		if any([substring in f.lower() for substring in skip_files]):
+			continue
 
-# fig = figure()
-# plt.plot(T80_RH97_FC_Time,TDP_T80_RH97_FC,'rs',linewidth=2, label='Test Chamber Conditions')
-# plt.plot(T80_RH97_FS_Time,TDP_T80_RH97_FS,'bo',linewidth=2, label='Sample Penetration Conditions')
-# axvline(x=j,linestyle='-',linewidth=2,color = '#000000')
-# plt.text(j+5., 22, 'Temperature for skin burn reached at '+str(j)+' s', 
-# 	 horizontalalignment='left',
-#      verticalalignment='center')
-# ax1 = gca()
-# xlabel('Time (s)')
-# ylabel('Dew Point Temperature ($^{\circ}$C)')
-# grid(True)
-# ax = gca()
-# legend(numpoints=1,loc=4)
-# axis([0, 400, 0, 90])
-# savefig('../Figures/DewTemp_T80_RH97.pdf',format='pdf')
-# close()
+		# Strip test name from file name
+		test_name = f[:-4]
+		print 'Test ' + test_name
+
+		# Load exp. data file
+		data = pd.read_csv(data_dir + f, header=5, index_col=0)
+
+		Temp_DewPoint_Chamber = np.zeros(len(data['Chamber_Temp']))
+		Chamber_Time = np.zeros(len(data['Chamber_Temp']))
+		start_of_chamber = info['Start of Chamber'][test_name]
+
+		Temp_DewPoint_Sample = np.zeros(len(data['Sample_Temp']))
+		Sample_Time = np.zeros(len(data['Sample_Temp']))
+		start_of_sample = info['Start of Sample'][test_name]
+
+		for i in range(len(data['Chamber_Temp'])):
+			Chamber_Time[i] = info['Sample_Rate'][test_name]*(i-int(start_of_chamber))
+			Temp_DewPoint_Chamber[i] = DP_sub(b,c,data['Chamber_Temp'][i],data['Chamber_Humidity'][i])
+
+		k=1		
+		for i in range(len(data['Sample_Temp'])):
+			Sample_Time[i] = info['Sample_Rate'][test_name]*(i-int(start_of_sample))
+			Temp_DewPoint_Sample[i] = DP_sub(b,c,data['Sample_Temp'][i],data['Sample_Humidity'][i])
+			if Temp_DewPoint_Sample[i] > 37 and k == 1:
+				j = Sample_Time[i]
+				k = -1
+
+		fig = figure()
+		plot(Chamber_Time,Temp_DewPoint_Chamber,'rs',lw=2, label='Test Chamber Conditions')
+		plot(Sample_Time,Temp_DewPoint_Sample,'bo',lw=2, label='Sample Penetration Conditions')
+		axvline(x=j,linestyle='-',linewidth=2,color = '#000000')
+		plt.text(j+5., 90, 'Temperature for skin burn reached at '+str(j)+' s', 
+			 horizontalalignment='left',
+		     verticalalignment='center')
+		ax1 = gca()
+		xlabel('Time (s)')
+		ylabel('Dew Point Temperature ($^{\circ}$C)')
+		xlim(0,info['End Time'][test_name])
+		ylim(0,100)
+		grid(True)
+		ax = gca()
+		legend(numpoints=1,loc=4)
+		savefig('../Figures/' + test_name + '.pdf')
+		close('all')
+
+# output_file("steam.html", title="Steam Through Turnout Gear")
+# p1 = figure()
+# p1.line(T80_RH97_FC_Time, TDP_T80_RH97_FC, color='#1F78B4', legend='Test Chamber Conditions')
+# p1.line(T80_RH97_FS_Time, TDP_T80_RH97_FS, color='#FB9A99', legend='Sample Penetration Conditions')
+# p1.title = "Steam Penetration"
+# p1.grid.grid_line_alpha=0.3
+# p1.xaxis.axis_label = 'Time (sec)'
+# p1.yaxis.axis_label = 'Dew Point Temperature (C)'
+# show(VBox(p1))
