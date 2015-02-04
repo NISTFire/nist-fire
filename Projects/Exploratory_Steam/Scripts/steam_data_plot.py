@@ -52,7 +52,8 @@ for f in os.listdir(data_dir):
 			Chamber_Time[i] = info['Sample_Rate'][test_name]*(i-int(start_of_chamber))
 			Temp_DewPoint_Chamber[i] = DP_sub(b,c,data['Chamber_Temp'][i],data['Chamber_Humidity'][i])
 
-		k=1		
+		k=1
+		j=0		
 		for i in range(len(data['Sample_Temp'])):
 			Sample_Time[i] = info['Sample_Rate'][test_name]*(i-int(start_of_sample))
 			Temp_DewPoint_Sample[i] = DP_sub(b,c,data['Sample_Temp'][i],data['Sample_Humidity'][i])
@@ -63,10 +64,15 @@ for f in os.listdir(data_dir):
 		fig = figure()
 		plot(Chamber_Time,Temp_DewPoint_Chamber,'rs',lw=2, label='Test Chamber Conditions')
 		plot(Sample_Time,Temp_DewPoint_Sample,'bo',lw=2, label='Sample Penetration Conditions')
-		axvline(x=j,linestyle='-',linewidth=2,color = '#000000')
-		plt.text(j+5., 90, 'Temperature for skin burn reached at '+str(j)+' s', 
-			 horizontalalignment='left',
-		     verticalalignment='center')
+		if j > 0:
+			axvline(x=j,linestyle='-',linewidth=2,color = '#000000')
+			plt.text(j+5., 90, 'Temperature for skin burn reached at '+str(j)+' s', 
+				 horizontalalignment='left',
+			     verticalalignment='center')
+		else:
+			plt.text(j+5., 90, 'Temperature for skin burn not reached during test',
+				 horizontalalignment='left',
+			     verticalalignment='center')
 		ax1 = gca()
 		xlabel('Time (s)')
 		ylabel('Dew Point Temperature ($^{\circ}$C)')
