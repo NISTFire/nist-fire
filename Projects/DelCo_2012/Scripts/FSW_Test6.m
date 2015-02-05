@@ -7,7 +7,7 @@ close all
 % Set Directory
 %------------------
 
-datadir = '../Raw_Data/';
+datadir = '../Experimental_Data/';
 
 %------------------
 % Pull Data From File 
