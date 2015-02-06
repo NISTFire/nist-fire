@@ -30,8 +30,8 @@ Collection Pan #,Total Mass Collected (kg),Mass of Water Collected (kg)
 29,4.3,0.443
 30,4.4,0.531
 31,4.3,0.44
-32,,0
-33,,0
+32,0,0
+33,0,0
 34,9.4,5.538
 35,6,2.162
 36,5.7,1.812
@@ -40,9 +40,9 @@ Collection Pan #,Total Mass Collected (kg),Mass of Water Collected (kg)
 39,4.2,0.312
 40,4.4,0.48
 41,4.1,0.19
-42,,0
-43,,0
-44,,0
+42,0,0
+43,0,0
+44,0,0
 45,4.8,0.938
 46,4.3,0.47
 47,4.3,0.496
