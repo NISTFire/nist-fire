@@ -1,0 +1,34 @@
+Test_No,Flowrate,Flow_Time,Date,Fluid,Line,Nozzle,Pattern,Nozze_Height,Location,Expansion 
+BB1,120,15,9/24/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream Full Back Position,"20_7/8"" above floor",UNK,N/A
+BB2,120,22.7,9/24/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream ,UNK,UNK,N/A
+BB3,122,UNK,9/24/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream,"16"" above floor","Hitting Mid Ceiling, 9' in",N/A
+BB4,120,UNK,9/24/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream,"16"" above floor","17"" center of nozzle",N/A
+BB5,120,19.87,9/24/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream,"16"" above floor",same as 3 & 4,N/A
+BB6,120,21.07,9/24/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,30 deg fog,"15"" above floor","17"" from door",N/A
+BB7,120,20.38,9/24/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,30 deg fog,"15"" above floor","17"" from door",N/A
+BB8,120,21.5,9/24/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,30 deg fog,"17"" above floor","15"" from door",N/A
+BB9,120,23.5,9/24/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,30 deg fog,"17.5"" above floor","15"" from door",N/A
+BB10,120,19.5,9/24/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,"Solid 7/8"" Slug","12.5"" above floor","13"" from door",N/A
+BB11,120,21.81,9/24/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,"Solid 7/8"" Slug","11.5"" above floor","14"" from door",N/A
+BB12,120,15,12/29/2012,CAF,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,"Smooth Bore 7/8""","12.5"" above floor ","14"" from door",60
+BB13,120,10,12/29/2012,CAF,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,"Smooth Bore 7/8""",UNK,UNK,60
+BB14,120,15,9/29/2012,CAF,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,"Smooth Bore 7/8""",UNK,Back position,60
+BB15,120,20,9/29/2012,CAF,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,"Smooth Bore 7/8""",UNK,UNK,60
+BB16,120,UNK,9/29/2012,CAF,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,30 deg fog Mid,"15"" above floor","17"" from door",60
+BB17,120,20,9/29/2012,CAF,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream Narrow,"15"" above floor","17"" from door",60
+BB18,120,10,9/29/2012,CAF,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream Mid,UNK,UNK,60
+BB19,120,15,9/29/2012,CAF,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,30 deg fog Mid,"15"" above floor","17"" from door",60
+BB20,120,UNK,9/29/2012,CAF,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,30 deg fog Back,"17"" above floor","17"" from door",60
+BB21,120,UNK,9/29/2012,CAF,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream Back,"20_7/8"" above floor","15"" from door",60
+ES1,"115,75",UNK,9/23/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream,UNK,UNK,N/A
+ES2,"120,115",18,9/23/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream,UNK,UNK,N/A
+ES3,120,18.8,9/23/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream,UNK,UNK,N/A
+ES4,"120,118",20.4,9/23/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream,UNK,UNK,N/A
+ES5,"120,118",21.4,9/23/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,30 deg fog,UNK,UNK,N/A
+ES6,"120,118",18.71,9/23/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,30 deg fog,UNK,UNK,N/A
+ES7,"120,125",15.2,9/23/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,"Solid 7/8"" Slug",UNK,UNK,N/A
+ES7.2,120,16.6,9/23/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,"Solid 7/8"" Slug",UNK,UNK,N/A
+ES8,"120,116",15.03,9/23/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,30 deg fog,UNK,UNK,N/A
+ES9,"120,116",15.44,9/23/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,30 deg fog,UNK,UNK,N/A
+ES10,"120,116",15.91,9/23/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream,UNK,UNK,N/A
+ES11,"120,117",15.41,9/23/2012,Water,"100' 1_3/4""",Metro 1 Fixed Blitz Lite,Solid Stream,UNK,UNK,N/A
