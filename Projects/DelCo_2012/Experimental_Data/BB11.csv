@@ -1,9 +1,5 @@
-Test No: BB11,Date: 9/24/12,Nozzle: Metro with slug
-Flowrate: 120,Fluid: Water,Pattern: Solid 
-Flow time: 21.81 s,,Nozzle Height: 11.5'' above floor
-,,"Nozzle Location: 14"" from door"
 Collection Pan #,Total Mass Collected (kg),Mass of Water Collected (kg)
-1,Full,
+1,Full,Full
 2,10.8,6.948
 3,10.6,6.772
 4,9,5.141
