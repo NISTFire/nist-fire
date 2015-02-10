@@ -232,7 +232,7 @@ Fire Dynamics Simulator (FDS), which is a fire model that is developed and maint
 \setcounter{page}{1}
 Part of the function of the Fire Research Division at NIST is to develop and apply technology, measurements, and standards to improve the understanding of the behavior, prevention, and control of fires to enhance fire fighting operations and equipment, fire suppression, fire investigations, and disaster response. NIST has previously used the Fire Dynamics Simulator (FDS) fire model to provide insight into the fire development and thermal conditions of fires that have resulted in line of duty deaths (LODDs)~\cite{Madrzykowski:1,Iowa,Texas,Bryner:Charleston,barowy:texas,Weinschenk:Chicago,Overholt:San_Francisco}. The objective of these studies has been to improve the safety and effectiveness of firefighters.
 
-On February 24, 2012, a fire in an uninhabitated residential structure injured seven Prince George's County firefighters. NIST examined the fire dynamics of this incident at the request of the Prince George's Country Fire/Emergency Medical Services (EMS) Department. Computer simulations of the fire incident were conducted using the NIST Fire Dynamics Simulator~\cite{FDS_Users_Guide} and Smokeview~\cite{Smokeview_Users_Guide} software to provide insight into the fire development and thermal conditions that likely existed in the residence during the fire. The specific objectives of the simulations detailed in this report are: 
+On February 24, 2012, a fire in an uninhabitated residential structure injured seven Prince George's County firefighters. NIST examined the fire dynamics of this incident at the request of the Prince George's Country Fire/Emergency Medical Services (EMS) Department. Computer simulations of the fire incident were conducted using the NIST Fire Dynamics Simulator~\cite{FDS_Users_Guide} and Smokeview~\cite{Smokeview_Users_Guide} software to provide insight into the fire development and thermal conditions that likely existed inside the residence during the fire. The specific objectives of the simulations detailed in this report are: 
 \begin{enumerate}
 \item To examine the effect of the flow path (including temperature, pressure, and fire conditions) in this single-story residential structure with a basement using physics-based calculations.
 \item To provide visualizations of the fire behavior that are representative of the conditions that members of the Prince George's Fire Department likely experienced during the course of their interior operations.
@@ -295,7 +295,7 @@ The analysis of the simulation results is focused on the impact of ventilation. 
 
 \section{Geometry}
 \label{geom}
-The structure involved in this fire incident was a one story, single-family structure with a basement. The structure was platform-framed wood construction with a gable roof. \footnote{Platform-framed construction means that floor joists are completely covered with a sub-floor. This forms a platform from which walls are built.} The structure had a first floor footprint of 9.14~m (30~ft) by 7.77~m (25.5~ft) with the basement being slightly smaller, 9.14~m (30~ft) by 7.16~m (23.5~ft), as show in Fig.~\ref{fig:simp_geom}. This resulted in a first floor area of 71~m$^2$ (764~ft$^2$) and a basement floor area of 65~m$^2$ (700~ft$^2$). The interior walls were composed of gypsum board over wood framing~\cite{PGCounty2013}. There was a single flight of stairs in the center of the structure which connected the first floor to the basement. 
+The structure involved in this fire incident was a single-story, single-family structure with a basement. The structure was platform-framed wood construction with a gable roof. \footnote{Platform-framed construction means that floor joists are completely covered with a sub-floor. This forms a platform from which walls are built.} The structure had a first floor footprint of 9.14~m (30~ft) by 7.77~m (25.5~ft) with the basement being slightly smaller, 9.14~m (30~ft) by 7.16~m (23.5~ft), as show in Fig.~\ref{fig:simp_geom}. This resulted in a first floor area of 71~m$^2$ (764~ft$^2$) and a basement floor area of 65~m$^2$ (700~ft$^2$). The interior walls were composed of gypsum board over wood framing~\cite{PGCounty2013}. There was a single flight of stairs in the center of the structure which connected the first floor to the basement. 
 
 The structure was built on a sloped landscape such that on the front side of the structure the first floor was located at street level but the basement was below street level (Fig.~\ref{fig:slope}). On the rear side of the structure, the slope allowed the basement to be a walkout. Therefore, access to the structure could be made on the front side to the first floor and on the rear side to the basement.
 
@@ -387,7 +387,7 @@ Figure~\ref{fig:hrr} shows the overall prescribed design fire for this scenario,
 \begin{figure}[!ht]
 \includegraphics[width=0.75\textwidth]{../Figures/Fire_HRR}
 \caption[Prescribed HRR vs. time for the simulation.]
-{Prescribed HRR vs. time for the simulation. The text labels indicate the prescribed steady peak HRR and the decay phase associated with firefighter water application. Time zero represnts 21:21:20, see Table~\ref{tab:combined_timeline}}.
+{Prescribed HRR vs. time for the simulation. The text labels indicate the prescribed steady peak HRR and the decay phase associated with firefighter water application. Time zero represnts 21:21:20, see Table~\ref{tab:combined_timeline}.}
 \label{fig:hrr}
 \end{figure}
 
@@ -415,7 +415,7 @@ While the fires were represented as fuel sources with a constant area (Section~\
 \label{Vents}
 The simulation in this study accounts for changes in the ventilation due to a combination of fire department operations (opening doors), fire acting on the structure (fire breaching windows) and wind (restricting flow, closing doors). The ventilation times and ventilation areas represent the best understanding of the incident. The estimated times of ventilation changes for doors and windows are provided in Table~\ref{tab:vents}.
 
-During the time when the firefighters exited the structure or were rescued from the structure, the state of some windows and doors in the structure was known. The state of the vents (opened versus closed) resulted in the establishment of a flow path in the interior stairwell leading from the basement to the first floor. The exact time of operation for other doors/windows was not known. Therefore, the following the two basement windows on the left rear corner of the structure were assumed to be open at the start of the simulation. The states of the front door and front window were specified at certain times based on observations (i.e. forcible entry, wind effects, forced window breakage) from post-incident reports.
+During the time when the firefighters exited the structure or were rescued from the structure, the state of some windows and doors in the structure was known. The state of the vents (opened versus closed) resulted in the establishment of a flow path in the interior stairwell leading from the basement to the first floor. The exact time of operation for other doors/windows was not known. Therefore, the two basement windows on the left rear corner of the structure were assumed to be open at the start of the simulation. The states of the front door and front window were specified at certain times based on observations (i.e. forcible entry, wind effects, forced window breakage) from post-incident reports.
 
 Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open rear basement windows at the start of the simulation were significantly larger than the typical total effective area of leakage of a structure of this type. Therefore, any leakage in the structure would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
 
@@ -592,7 +592,7 @@ Figure~\ref{fig:PG_Total_HRR} shows the HRR in the structure vs. time based on t
 
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{../Figures/PG_Total_9MW_HRR}
-\caption[Interior prescribed and calculated interior HRRs vs. time from the simulation.]
+\caption[Comparison of prescribed and calculated interior HRRs from the FDS simulation.]
 {Comparison of prescribed and calculated interior HRRs from the FDS simulation. The vertical lines indicate the times when ventilation occurred.}
 \label{fig:PG_Total_HRR}
 \end{figure}
@@ -618,7 +618,7 @@ A comparison of the differences between the HRR inside the structure (Fig.~\ref{
 \label{fig:ext_fire_dam}
 \end{figure}
 
-After 100 seconds of simulation time, 5~\sfrac{1}{2}~minutes after the first 911 call, firefighters open the front door to make entry to the first floor of the structure. The change in ventilation to the structure impacted the HRR. After the door was opened combustion no longer tool place outside of the structure, as shown in Fig.~\ref{fig:PG_Basement_9MW_HRR}, however the basement HRR was lower than the total HRR within the domain.
+After 100 seconds of simulation time, 5~\sfrac{1}{2}~minutes after the first 911 call, firefighters open the front door to make entry to the first floor of the structure. The change in ventilation to the structure impacted the HRR. After the door was opened combustion no longer took place outside of the structure, as shown in Fig.~\ref{fig:PG_Basement_9MW_HRR}, however the basement HRR was lower than the total HRR within the domain.
 
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{../Figures/PG_Basement_9MW_HRR}
@@ -750,7 +750,7 @@ To examine the impact of opening the front door on the establishment of a flow p
 
 \clearpage
 
-At the estimated time of firefighter entry to the first floor (142~s into the simulation at 21:14:42; see Table~\ref{tab:combined_timeline}), the simulated flow magnitudes through the first floor (stairwell and front doors) remained similar to the conditions just after opening the front door. Velocities through both the doorway at the top of the stairs and the front door were approximately 13~m/s (29~mph), which was faster than the imposed wind speed (9~m/s or 20~mph) because of the addition of the buoyancy of the fire plume. The model temperatures increased through the stairwell doorway to between 400~$^{\circ}$C and 425~$^{\circ}$C (750-800~$^{\circ}$F) and through the front door to approximately 375~$^{\circ}$C (700~$^{\circ}$F). From the approximate timeline (Table~\ref{tab:combined_timeline}), the front door was forced closed due to airflow pushing against the front door 207~s into the simulation. Figures~\ref{fig:flow_path_206s} and \ref{fig:flow_path_207s} show the conditions 1~s prior to and after the front door closed. The figures show that while the closed door stopped significant flow through the stairwell door and onto the first floor, the temperature hazard for the firefighters (temperatures at or above 400~$^{\circ}$C or 750~$^{\circ}$F) remained.
+At the estimated time of firefighter entry to the first floor (142~s into the simulation at 21:14:42; see Table~\ref{tab:combined_timeline}), the simulated flow magnitudes through the first floor (stairwell and front doors) remained similar to the conditions just after opening the front door. Velocities through both the doorway at the top of the stairs and the front door were approximately 13~m/s (29~mph), which was faster than the imposed wind speed (9~m/s or 20~mph) because of the addition of the buoyancy of the fire plume. The model temperatures increased through the stairwell doorway to between 400~$^{\circ}$C and 425~$^{\circ}$C (750-800~$^{\circ}$F) and through the front door to approximately 375~$^{\circ}$C (700~$^{\circ}$F). From the approximate timeline (Table~\ref{tab:combined_timeline}), the front door was forced closed due to airflow pushing against it, 207~s into the simulation. Figures~\ref{fig:flow_path_206s} and \ref{fig:flow_path_207s} show the conditions 1~s prior to and after the front door closed. The figures show that while the closed door stopped significant flow through the stairwell door and onto the first floor, the temperature hazard for the firefighters (temperatures at or above 400~$^{\circ}$C or 750~$^{\circ}$F) remained.
 
 \begin{figure}[!ht]
 \includegraphics[trim = 2.5in 0in 4in 0in, clip=true, width=.65\textwidth]{../Figures/flow_vector_142s}
@@ -797,7 +797,7 @@ Figures~\ref{fig:int_temp_99s} to \ref{fig:int_temp_142s} show two simulated int
 \input{../Scripts/colorbar_metric_temp}
 \input{../Scripts/colorbar_std_temp} \\
 \end{subfigure}
-\caption {Interior temperature contours 1~s before the front door was opened (21:13:59). The top snapshot shows temperatures on the first floor and basement on a plane that runs through the center of the front door. The bottom snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the interior stairwell doorway.}
+\caption {Interior temperature contours 1~s before the front door was opened (21:13:59). The top snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the front door. The bottom snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the interior stairwell doorway.}
 \label{fig:int_temp_99s}
 \end{figure}
 
@@ -811,7 +811,7 @@ Figures~\ref{fig:int_temp_99s} to \ref{fig:int_temp_142s} show two simulated int
 \input{../Scripts/colorbar_metric_temp}
 \input{../Scripts/colorbar_std_temp} \\
 \end{subfigure}
-\caption{Interior temperature contours 1~s after the front door was opened (21:14:01). The top snapshot shows temperatures on the first floor and basement on a plane that runs through the center of the front door. The bottom snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the interior stairwell doorway.}
+\caption{Interior temperature contours 1~s after the front door was opened (21:14:01). The top snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the front door. The bottom snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the interior stairwell doorway.}
 \label{fig:int_temp_101s}
 \end{figure}
 
@@ -825,7 +825,7 @@ Figures~\ref{fig:int_temp_99s} to \ref{fig:int_temp_142s} show two simulated int
 \input{../Scripts/colorbar_metric_temp}
 \input{../Scripts/colorbar_std_temp} \\
 \end{subfigure}
-\caption{Interior temperature contours as firefighters made entry to the structure (21:14:42). The top snapshot shows temperatures on the first floor and basement on a plane that runs through the center of the front door. The bottom snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the interior stairwell doorway.}
+\caption{Interior temperature contours as firefighters made entry to the structure (21:14:42). The top snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the front door. The bottom snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the interior stairwell doorway.}
 \label{fig:int_temp_142s}
 \end{figure}
 
@@ -910,14 +910,14 @@ The authors would like to thank Chief Marc Bashoor of the Prince George's County
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=1\textwidth]{../Figures/Basement_Metric}
-\caption[Dimensioned drawing of first floor.]{Dimensioned drawing of the basement. The measurements are accurate to within 15~cm (6~in).}
+\caption[Dimensioned drawing of the basement.]{Dimensioned drawing of the basement. The measurements are accurate to within 15~cm (6~in).}
 \label{fig:basement}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=1\textwidth]{../Figures/First_Floor_Metric}
-\caption[Dimensioned drawing of second floor.]{Dimensioned drawing of the first floor. The measurements are accurate to within 15~cm (6~in).}
+\caption[Dimensioned drawing of the first floor.]{Dimensioned drawing of the first floor. The measurements are accurate to within 15~cm (6~in).}
 \label{fig:first_floor}
 \end{figure}
 
