@@ -150,7 +150,7 @@ entities, materials, or equipment are necessarily the best available for the pur
 
 \large
 \flushright{\bf National Institute of Standards and Technology Technical Note XXXX \\
-Natl.~Inst.~Stand.~Technol.~Tech.~Note~XXXX, \pageref{LastPage} pages (November 2014) \\
+Natl.~Inst.~Stand.~Technol.~Tech.~Note~XXXX, \pageref{LastPage} pages (February 2015) \\
 CODEN: NTNOEF}
 
 \vspace{0.1in}
@@ -257,7 +257,7 @@ From a combination of on-scene video and the narrative accounts from the Prince 
 
 \begin{table}[!h]
 \centering
-\captionof{table}[Abridged approximate fire event timeline]{Abridged Prince George's Fire/EMS approximate fire event timeline~\cite{PGCounty2013}.}\label{tab:fire_info}
+\captionof{table}[Abridged approximate fire event timeline.]{Abridged Prince George's Fire/EMS approximate fire event timeline~\cite{PGCounty2013}.}\label{tab:fire_info}
 \begin{tabular}{cl}
 \toprule[1.5pt]
 Incident Time              &  Fire Behavior / Fireground Operation  \\
@@ -387,7 +387,7 @@ Figure~\ref{fig:hrr} shows the overall prescribed design fire for this scenario,
 \begin{figure}[!ht]
 \includegraphics[width=0.75\textwidth]{../Figures/Fire_HRR}
 \caption[Prescribed HRR vs. time for the simulation.]
-{Prescribed HRR vs. time for the simulation. The text labels indicate the prescribed steady peak HRR and the decay phase associated with firefighter water application.}
+{Prescribed HRR vs. time for the simulation. The text labels indicate the prescribed steady peak HRR and the decay phase associated with firefighter water application. Time zero represnts 21:21:20, see Table~\ref{tab:combined_timeline}}.
 \label{fig:hrr}
 \end{figure}
 
@@ -419,11 +419,22 @@ During the time when the firefighters exited the structure or were rescued from 
 
 Structure leakage has been shown to be important when modeling enclosure fires~\cite{beal2009}. The open rear basement windows at the start of the simulation were significantly larger than the typical total effective area of leakage of a structure of this type. Therefore, any leakage in the structure would have a negligible impact on the fluid mechanics within the structure and is not included in this study.
 
-In addition to the state of openings within the structure, outlined in Table~\ref{tab:vents}, an 8.9~m/s (20~mph) wind velocity boundary condition was assumed. The flow direction of the wind was from the rear toward the front of the structure, perpendicular to the rear of the structure.  Based on local weather conditions, mean wind velocities ranged between 4.5~m/s (10~mph) and 8.9~m/s (20~mph) with gusts up to 13.4~m/s (30~mph) with a direction that angled toward the back left of the structure~\cite{PGCounty2013}.
+In addition to the state of openings within the structure, outlined in Table~\ref{tab:vents}, an 8.9~m/s (20~mph) wind velocity boundary condition was assumed. The flow direction of the wind was asasumed from the rear toward the front of the structure, perpendicular to the rear of the structure.  Based on local weather conditions, mean wind velocities ranged between 4.5~m/s (10~mph) and 8.9~m/s (20~mph) with gusts up to 13.4~m/s (30~mph) with a direction that angled toward the back left of the structure~\cite{PGCounty2013}. The following lines define the wind boundary condition in the FDS input file:
+
+\begin{lstlisting}
+&SURF ID='wind', VEL=-8.94, RAMP_V='WIND RAMP',COLOR='INVISIBLE' /
+&VENT MB = 'YMAX', SURF_ID ='wind' /
+&RAMP ID='WIND RAMP', T=0,F=0.25 /
+&RAMP ID='WIND RAMP', T=10,F=0.50 /
+&RAMP ID='WIND RAMP', T=20,F=0.75 /
+&RAMP ID='WIND RAMP', T=30,F=1.00 /
+\end{lstlisting}
+
+Note that there is a 30~s ramp time to reach peak wind speed. This was inlcuded to prevent an abrupt change at the FDS domain boundary. Since the front door does not open until 100~s into the simulation there was sufficient time to for the airflow to stabilize.
 
 \begin{table}
 \centering
-\captionof{table}{Timeline of ventilation changes in the simulation}\label{tab:vents}
+\captionof{table}{Timeline of ventilation changes in the simulation.}\label{tab:vents}
 \begin{tabular}{lllll}
 \toprule[1.5pt]
 Baseline     &   Ventilation   &  Type       & State of       &  Side of  \\
@@ -509,7 +520,7 @@ Ambient Temperature$^*$                                    &  20~$^{\circ}$C (68
                                                            &  $c_{p}$: 1.38~\si{kJ/(kg.K)}                 &                                       \\ [.25cm]
 \multirow{3}{*}{Material: Gypsum Board~\cite{WAKILI2007}}  &  $k$: 0.28~\si{W/(m.K)}                       & \multirow{3}{*}{Section~\ref{matl}}   \\ 
                                                            &  $\rho$: 810~kg/m$^3$                         &                                       \\ 
-                                                           &  $c_{p}$: 1.0~\si{kJ/(kg.K)}                  &                                       \\
+                                                           &  $c_{p}$: 1.0~\si{kJ/(kg.K)}                  &                                       \\ [.25cm]
 Wind 													   &  8.9~m/s (20~mph)							   & Section~\ref{Vents}                   \\
 \bottomrule[1.25pt]
 \end{tabular}\par
@@ -580,7 +591,7 @@ In FDS, a HRR must be specified, which results in a specified amount of fuel vap
 Figure~\ref{fig:PG_Total_HRR} shows the HRR in the structure vs. time based on the fires described in Section~\ref{fire}. In this figure, the solid line represents the prescribed HRR that was input into the simulation (based on a prescribed mass flux), and the dashed line represents the HRR inside the structure that was calculated by FDS based on the ventilation conditions. The vertical lines represent the times at which ventilation occurred: front door opening and closing as well as the breaking of a front window for emergency escape. See Table~\ref{tab:vents} for a detailed list of the ventilation that occurred during the incident. The maximum size of the fire specified in this study was selected such that the conditions aligned with observations and fuel loads from the actual fire incident. 
 
 \begin{figure}[!ht]
-\includegraphics[width=5in]{../Figures/PG_Total_9MW_HRR}
+\includegraphics[width=\textwidth]{../Figures/PG_Total_9MW_HRR}
 \caption[Interior prescribed and calculated interior HRRs vs. time from the simulation.]
 {Comparison of prescribed and calculated interior HRRs from the FDS simulation. The vertical lines indicate the times when ventilation occurred.}
 \label{fig:PG_Total_HRR}
@@ -589,7 +600,7 @@ Figure~\ref{fig:PG_Total_HRR} shows the HRR in the structure vs. time based on t
 In Fig.~\ref{fig:PG_Total_HRR}, the prescribed HRR that was input into the simulation is different than the HRR calculated by FDS based on the ventilation conditions. From 0~s to approximately 9~s, the calculated HRR was in approximate agreement with the prescribed HRR because there was an adequate amount of oxygen for all of the fuel to combust. The differences in prescribed versus predicted HRR is a result of either fuel accumulation within the structure not combusting because of a lack of oxygen or combustion occurring exterior to the structure where fuel and oxygen can mix and react. Fig.~\ref{fig:PG_9MW_HRR} shows the total calculated HRR within the computational domain (includes combustion occurring exterior to the structure) compared to the prescribed HRR curve.
 
 \begin{figure}[!ht]
-\includegraphics[width=5in]{../Figures/PG_9MW_HRR}
+\includegraphics[width=\textwidth]{../Figures/PG_9MW_HRR}
 \caption[Prescribed and total calculated HRRs vs. time from the simulation.]
 {Comparison of total prescribed and calculated HRRs within the entire computational domain from the FDS simulation. The vertical lines indicate the times at which ventilation occurred.}
 \label{fig:PG_9MW_HRR}
@@ -610,7 +621,7 @@ A comparison of the differences between the HRR inside the structure (Fig.~\ref{
 After 100 seconds of simulation time, 5~\sfrac{1}{2}~minutes after the first 911 call, firefighters open the front door to make entry to the first floor of the structure. The change in ventilation to the structure impacted the HRR. After the door was opened combustion no longer tool place outside of the structure, as shown in Fig.~\ref{fig:PG_Basement_9MW_HRR}, however the basement HRR was lower than the total HRR within the domain.
 
 \begin{figure}[!ht]
-\includegraphics[width=5in]{../Figures/PG_Basement_9MW_HRR}
+\includegraphics[width=\textwidth]{../Figures/PG_Basement_9MW_HRR}
 \caption[Prescribed, calculated domain, and calculated basement HRRs vs. time from the simulation.]
 {Comparison of prescribed, total calculated domain HRR and basement calculated HRRs from the simulation. The vertical lines indicate the times when ventilation changed.}
 \label{fig:PG_Basement_9MW_HRR}
@@ -619,7 +630,7 @@ After 100 seconds of simulation time, 5~\sfrac{1}{2}~minutes after the first 911
 The differences in HRR between the total HRR and the basement HRR can be accounted for in combustion occurring on the first floor of the structure. Fuel that was combusting outside of the structure due to a lack of oxygen combusts on the first floor of the structure as the open front door allows flow to occur within the structure and fuel to mix with available oxygen and react (Fig.~\ref{fig:PG_First_9MW_HRR}).
 
 \begin{figure}[!ht]
-\includegraphics[width=5in]{../Figures/PG_First_9MW_HRR}
+\includegraphics[width=\textwidth]{../Figures/PG_First_9MW_HRR}
 \caption[First floor calculated HRR vs. time from the simulation.]
 {First floor calculated HRR from the simulation. The vertical lines indicate the times when ventilation changed.}
 \label{fig:PG_First_9MW_HRR}
@@ -642,7 +653,7 @@ In the top snapshot in Fig.~\ref{fig:pressure_slices}, the pressure profile show
 \vskip10pt
 \includegraphics[trim = 1in 1in 1in 1in, clip=true, width=.8\textwidth]{../Figures/pressure_slice_101s}
 \input{../Scripts/colorbar_metric_pres}
-\caption[Calculated pressure on first floor 1~s before and after front door opens.]
+\caption[Calculated pressure on first floor 1~s before and after the front door opened.]
 {Calculated pressure contours on the first floor of the structure 1~s prior to (top) and 1~s after (bottom) firefighter entry through the front door at 0.91~m (3~ft) above the floor.}
 \label{fig:pressure_slices}
 \end{figure}
@@ -663,7 +674,7 @@ In Fig.~\ref{fig:velocity_slices}, the velocity profile within the high-hazard a
 \includegraphics[trim = 0in 1in 0in 1in, clip=true, width=.65\textwidth]{../Figures/velocity_slice_101s}
 \input{../Scripts/colorbar_metric_velo}
 \input{../Scripts/colorbar_std_velo}
-\caption[Calculated velocity on the first floor 1~s before and after front door opens]
+\caption[Calculated velocity on the first floor 1~s before and after the front door opened.]
 {Calculated velocity contours on the first floor of the structure 1~s prior to (top) and 1~s after (bottom) firefighter entry through front door 0.91~m (3~ft) above the floor. Arrows indicate direction.}
 \label{fig:velocity_slices}
 \end{figure}
@@ -679,7 +690,7 @@ Analysis of the temperatures from the simulation focused on the high-hazard area
 \includegraphics[trim = 1in 1in 1in 1in, clip=true, width=.65\textwidth]{../Figures/temperature_slice_99s}
 \input{../Scripts/colorbar_metric_temp}
 \input{../Scripts/colorbar_std_temp}
-\caption[Calculated temperature on the first floor 1~s before front door opened.]
+\caption[Calculated temperature on the first floor 1~s before the front door opened.]
 {Calculated temperature contours on the first floor of the structure 1~s prior to firefighter entry through front door 0.91~m (3~ft) above the floor.}
 \label{fig:temperature_slice_99s}
 \end{figure}
@@ -690,7 +701,7 @@ After the front door is opened, hot fire gases from the basement begin to flow t
 \includegraphics[trim = 1in 1in 1in 1in, clip=true, width=.65\textwidth]{../Figures/temperature_slice_101s}
 \input{../Scripts/colorbar_metric_temp}
 \input{../Scripts/colorbar_std_temp}
-\caption[Calculated temperature on the first floor 1~s after front door opens.]
+\caption[Calculated temperature on the first floor 1~s after the front door opened.]
 {Calculated temperature contours on the first floor of the structure 1~s after firefighter entry through front door 0.91~m (3~ft) above the floor.}
 \label{fig:temperature_slice_101s}
 \end{figure}
@@ -699,7 +710,7 @@ After the front door is opened, hot fire gases from the basement begin to flow t
 \includegraphics[trim = 1in 1in 1in 1in, clip=true, width=.65\textwidth]{../Figures/temperature_slice_105s}
 \input{../Scripts/colorbar_metric_temp}
 \input{../Scripts/colorbar_std_temp}
-\caption[Calculated temperature on first floor 5~s after front door opens]
+\caption[Calculated temperature on first floor 5~s after the front door opened.]
 {Calculated temperature contours on first floor of the structure 5~s after firefighter entry through front door 0.91~m (3~ft) above the floor.}
 \label{fig:temperature_slice_105s}
 \end{figure}
@@ -772,7 +783,7 @@ At the estimated time of firefighter entry to the first floor (142~s into the si
 
 \section{Assessing the Hazard}
 \label{assessing_hazard}
-A person is susceptible to second-degree burn injuries if skin temperatures exceed 55~$^{\circ}$C (130~$^{\circ}$F)~\cite{contactburn}. Although firefighters wear protective gear, gear only offers a finite amount of protection. The polycarbonate material in the facepiece of a self-contained breathing apparatus begins to soften when the material temperature reaches approximately 140~$^{\circ}$C (284~$^{\circ}$F)~\cite{mensch2011emergency}. Structural fire fighting coats and pants are tested to withstand temperatures up to 260~$^{\circ}$C (500~$^{\circ}$F) or 10~kW/m$^2$~\cite{nfpa2013standard}. Exposure to elevated temperatures can result in a significant amount of heat transferred to the firefighter, putting him or her at risk.
+A person is susceptible to second-degree burn injuries if skin temperatures exceed 55~$^{\circ}$C (130~$^{\circ}$F)~\cite{contactburn}. Although firefighters wear protective gear, gear only offers a finite amount of protection. The polycarbonate material in the facepiece of a self-contained breathing apparatus begins to soften when the material temperature reaches approximately 140~$^{\circ}$C (284~$^{\circ}$F)~\cite{mensch2011emergency}. Structural fire fighting coats and pants are tested to withstand temperatures up to 260~$^{\circ}$C (500~$^{\circ}$F) or 10~kW/m$^2$~\cite{nfpa2013standard} for less than 2.5~min. Exposure to elevated temperatures can result in a significant amount of heat transferred to the firefighter, putting him or her at risk.
 
 Figures~\ref{fig:int_temp_99s} to \ref{fig:int_temp_142s} show two simulated interior views of temperature contours at particular snapshots in time. The top image is a planar view through the middle of the front door (from the front to the back of the house), which shows the conditions in the living area on the first floor and the conditions in the basement just past the bottom of the stairs. The bottom image shows temperature contours through the middle of the interior stairwell which connected the basement to the first floor of the structure (looking from the rear of the structure towards the front). Prior to the front door being opened, (Fig.~\ref{fig:int_temp_99s} shows that temperatures in excess of 200~$^{\circ}$C (400~$^{\circ}$F) were confined to the basement of the structure: specifically the rear of the structure and under the stairwell. One second after the door was opened, hazard in the structure increased with the most drastic change occurring at the top of the stairwell as peak simulated temperatures exceeded 400~$^{\circ}$C (750~$^{\circ}$F). At the approximate time firefighters made entry to the first floor, Fig.~\ref{fig:int_temp_142s}, the conditions within the flowpath (interior stairwell through front door) had become more severe with simulated temperatures in excess of 400~$^{\circ}$C (750~$^{\circ}$F), for which a fully protected firefighter would be susceptible to burn injuries. These high-hazard conditions within the flowpath remained until the HRR was reduced by the simulated action of applying water on the fire. 
 
@@ -786,7 +797,7 @@ Figures~\ref{fig:int_temp_99s} to \ref{fig:int_temp_142s} show two simulated int
 \input{../Scripts/colorbar_metric_temp}
 \input{../Scripts/colorbar_std_temp} \\
 \end{subfigure}
-\caption {Interior temperature contours 1~s before the front door was opened. The top snapshot shows temperatures on the first floor and basement on a plane that runs through the center of the front door. The bottom snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the interior stairwell doorway.}
+\caption {Interior temperature contours 1~s before the front door was opened (21:13:59). The top snapshot shows temperatures on the first floor and basement on a plane that runs through the center of the front door. The bottom snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the interior stairwell doorway.}
 \label{fig:int_temp_99s}
 \end{figure}
 
@@ -800,7 +811,7 @@ Figures~\ref{fig:int_temp_99s} to \ref{fig:int_temp_142s} show two simulated int
 \input{../Scripts/colorbar_metric_temp}
 \input{../Scripts/colorbar_std_temp} \\
 \end{subfigure}
-\caption{Interior temperature contours 1~s after the front door was opened. The top snapshot shows temperatures on the first floor and basement on a plane that runs through the center of the front door. The bottom snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the interior stairwell doorway.}
+\caption{Interior temperature contours 1~s after the front door was opened (21:14:01). The top snapshot shows temperatures on the first floor and basement on a plane that runs through the center of the front door. The bottom snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the interior stairwell doorway.}
 \label{fig:int_temp_101s}
 \end{figure}
 
@@ -814,7 +825,7 @@ Figures~\ref{fig:int_temp_99s} to \ref{fig:int_temp_142s} show two simulated int
 \input{../Scripts/colorbar_metric_temp}
 \input{../Scripts/colorbar_std_temp} \\
 \end{subfigure}
-\caption{Interior temperature contours as firefighters made entry to the structure. The top snapshot shows temperatures on the first floor and basement on a plane that runs through the center of the front door. The bottom snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the interior stairwell doorway.}
+\caption{Interior temperature contours as firefighters made entry to the structure (21:14:42). The top snapshot shows temperatures on the first floor and basement on a plane that runs through the center of the front door. The bottom snapshot shows temperatures on the first floor and basement on the plane that runs through the center of the interior stairwell doorway.}
 \label{fig:int_temp_142s}
 \end{figure}
 
@@ -829,17 +840,17 @@ Ongoing research and experimental work is being conducted by NIST to gain a bett
 
 In this fire incident, the initial failure of the basement windows with strong incident winds on the rear side of the structure coincided with a rapid change in the thermal conditions in the interior stairwell and first floor after the front door to the structure was opened. The open front door resulted in the establishment of a flow path within the interior stairwell from the high pressure side of the structure to the low presure side with highly hazardous conditions.
 
-The interior stairwell acted as a chimney for hot gases in the basement to flow towards regions of lower pressure and vent openings located on the front side of the structure. Firefighters should avoid placing themselves within a flow path where elevated temperatures and flow velocities can present hazardous conditions and increase the rate of heat transfer to firefighting gear via convection. A 360$^\circ$ scene size-up by arriving firefighters can help determine the location of the fire and identify potential flow paths within a structure. Door control can also be used to avoid creating inlet and outlet vents that could result in the establishment of a flow path.
+The interior stairwell acted as a chimney for hot gases in the basement to flow towards regions of lower pressure and vent openings located on the front side of the structure. Firefighters should avoid placing themselves within a flow path where elevated temperatures and flow velocities can present hazardous conditions and increase the rate of heat transfer to the firefighter via convection. A 360$^\circ$ scene size-up by arriving firefighters can help determine the location of the fire and identify potential flow paths within a structure. Door control can also be used to avoid creating inlet and outlet vents that could result in the establishment of a flow path.
 
-First suppression efforts should take place at the same level as the first with the wind at the back of firefighters. Ongoing research by NIST, Underwriters Laboratories (UL), and others has demonstrated that applying water from the exterior into the fire area of a structure (prior to the start of interior operations) can significantly improve the safety of firefighters by reducing the thermal hazard from the fire and reducing the potential for developing high velocity hot gas flows within the structure~\cite{madrzykowski2009fire, kerber2009fire}.
+First suppression efforts should take place at the same level as the fire (i.e. fight basement fires from the basement level) with the wind at the back of firefighters. Ongoing research by NIST, Underwriters Laboratories (UL), and others has demonstrated that applying water from the exterior into the fire area of a structure (prior to the start of interior operations) can significantly improve the safety of firefighters by reducing the thermal hazard from the fire and reducing the potential for developing high velocity hot gas flows within the structure~\cite{madrzykowski2009fire, kerber2009fire}.
 
 There have been many previous fire incidents~\cite{NIOSH:Pettit,NIOSH:Washenitz,NIOSH:Mezzanotte,NIOSH:McFall,NIOSH:McFall2,NIOSH:McFall3,NIOSH:Berardinelli,NIOSH:Koedam,NIOSH:McFall4,NIOSH:Tarley,NIOSH:Braddee,NIOSH:Merinar,NIOSH:Bowyer2,NIOSH:Loflin,NIOSH:Bowyer} in which changes in the flow paths are thought to have had an adverse impact on firefighter and occupant safety. Table~\ref{tab:LODD} lists the NIOSH investigation reports from the past 15 years in which it could be determined that a flow path played a role in the related incident. This table lists the NIOSH report number, the outcome, and a brief description of the flow path details.
 
-Based on a review of these incidents, it is clear that fires with rapidly developing or changing flow paths are a significant hazard to the fire service. The development of (or changes to) a flow path could be caused by the failure of a component of the structure, such as a door, window, or portion of a ceiling, wall or floor. Environmental conditions such as wind can generate hazardous thermal conditions within a flow path. Uncoordinated ventilation procedures can also be the cause of increased thermal hazards within a flow path.
+Based on a review of these incidents, it is clear that fires with rapidly developing or changing ventilation may lead to flow paths that are a significant hazard to the fire service during a response. The development of (or changes to) a flow path could be caused by the failure of a component of the structure, such as a door, window, or portion of a ceiling, wall or floor. Environmental conditions such as wind can generate hazardous thermal conditions within a flow path. Uncoordinated ventilation procedures can also be the cause of increased thermal hazards within a flow path.
 
 \begin{table}[!ht]
-\caption[Flow path related LODD/LODI incidents]
-{Flow path related LODD/LODI incidents}
+\caption[Flow path related LODD/LODI incidents.]
+{Flow path related LODD/LODI incidents.}
 \begin{tabular}{lll}
 \toprule
 NIOSH Report No. & No. of LODDs/LODIs & Flow Path Details                                              \\
@@ -888,7 +899,6 @@ Two firefighters were located in the flow path between the basement and the door
 \chapter{Acknowledgments}
 
 The authors would like to thank Chief Marc Bashoor of the Prince George's County Fire/EMS Department for their assistance with this study and their dedication to improving firefighter safety. The authors would like to thank members of the Safety Investigation Team for compiling the report: Deputy Chief Scott Hoglander, Battalion Chief Sayshan Conver-White, Chief Richard Bowers, Deputy Chief William Goldfeder, Assistant Chief Michael Nelson, Volunteer Safety Division Chief Stefan Ganset, Paramedic Captain Roland Berg, Lieutenant Philip Bird, Lieutenant Daniel Schrader, Investigator Aaron Tyler, Fire Protection Engineer Lee McCarthy, President Charles Walker, and Administrative Aide Xiomara Lozano-Chevez. The authors would also like to thank John Culbertson, Director of the Montana Fire Services Training School, for his assistance in researching and compiling the flow path related LODD/LODI incidents shown in Table~\ref{tab:LODD}. Finally, the authors would like to thank Joseph Willi of the University of Illinois Urbana-Champaign for his assistance in creating dimensioned drawings of the structure.
-
 
 \bibliography{../../../Bibliography/FDS_refs,../../../Bibliography/FDS_general}
 

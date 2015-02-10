@@ -6,7 +6,11 @@ from __future__ import division
 import numpy as np
 import pandas as pd
 from pylab import *
-
+rc('font',**{'size':14})
+params = {'legend.fontsize': 12,
+          'legend.linewidth': 4,
+          'lines.linewidth': 1.75,
+          'lines.markersize': 6}
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
 
@@ -43,38 +47,44 @@ for i in range (0, 999):
 
 
 fig = figure()
-plt.plot(HRR_time,HRR_theo,'k-',mfc='none',label='Prescribed HRR',linewidth=2)
-plot(FDS_HRR_20['Time'],FDS_HRR_20['HRR']/1000.,'r-',mfc='none',label='Total Calculated HRR',linewidth=2)
-plot(FDS_9MW_20['Time'],base_hrr_20mph,'b--',mfc='none',label='Calculated Basement HRR',linewidth=2)
-axvline(x=100,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=207,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=211,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=221,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=267,linestyle='-',linewidth=2,color = '#000000')
+plt.plot(HRR_time,HRR_theo,'k-',mfc='none',label='Prescribed HRR')
+plot(FDS_HRR_20['Time'],FDS_HRR_20['HRR']/1000.,'r-',mfc='none',label='Total Calculated HRR')
+plot(FDS_9MW_20['Time'],base_hrr_20mph,'b--',mfc='none',label='Calculated Basement HRR')
+axvline(x=100,linestyle='-',color = '#000000')
+axvline(x=207,linestyle='-',color = '#000000')
+axvline(x=211,linestyle='-',color = '#000000')
+axvline(x=221,linestyle='-',color = '#000000')
+axvline(x=267,linestyle='-',color = '#000000')
 ax1 = gca()
 xlim([100, 221])
 ax1.xaxis.set_major_locator(MaxNLocator(8))
 ax1_xlims = ax1.axis()[0:2]
 xlabel('Time (s)')
 ylabel('HRR (MW)')
-legend(numpoints=1,loc=4 )
+legend(numpoints=1,loc=3 )
 ax2 = ax1.twiny()
 ax2.set_xlim(ax1_xlims)
-ax2.set_xticks([100,207,211,221,267])
+ax2.set_xticks([100,206,211,221,267])
 setp(xticks()[1], rotation=60)
 labels = ['Front Door Open', 'Front Door Closed','Bottom Bay Window Open', 'Top Bay Window Open','Front Door Open']
-ax2.set_xticklabels(labels, fontsize=8, ha='left')
+ax2.set_xticklabels(labels, fontsize=12, ha='left')
+plt.tick_params(\
+    axis='x',
+    which='both',
+    bottom='off',
+    top='off',
+    labelbottom='off')
 axis([100, 221, 6, 10])
 savefig('../Figures/PG_Basement_9MW_HRR.pdf',format='pdf')
 close()
 
 fig = figure()
-plot(FDS_9MW_20['Time'],first_hrr_20mph,'b--',mfc='none',label='Calculated First Floor HRR',linewidth=2)
-axvline(x=100,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=207,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=211,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=221,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=267,linestyle='-',linewidth=2,color = '#000000')
+plot(FDS_9MW_20['Time'],first_hrr_20mph,'b--',mfc='none',label='Calculated First Floor HRR')
+axvline(x=100,linestyle='-',color = '#000000')
+axvline(x=207,linestyle='-',color = '#000000')
+axvline(x=211,linestyle='-',color = '#000000')
+axvline(x=221,linestyle='-',color = '#000000')
+axvline(x=267,linestyle='-',color = '#000000')
 ax1 = gca()
 xlim([100, 221])
 ax1.xaxis.set_major_locator(MaxNLocator(8))
@@ -84,66 +94,84 @@ ylabel('HRR (MW)')
 legend(numpoints=1,loc=2)
 ax2 = ax1.twiny()
 ax2.set_xlim(ax1_xlims)
-ax2.set_xticks([100,207,211,221,267])
+ax2.set_xticks([100,206,211,221,267])
 setp(xticks()[1], rotation=60)
 labels = ['Front Door Open', 'Front Door Closed','Bottom Bay Window Open', 'Top Bay Window Open','Front Door Open']
-ax2.set_xticklabels(labels, fontsize=8, ha='left')
+ax2.set_xticklabels(labels, fontsize=12, ha='left')
+plt.tick_params(\
+    axis='x',
+    which='both',
+    bottom='off',
+    top='off',
+    labelbottom='off')
 axis([100, 221, 0, 1])
 savefig('../Figures/PG_First_9MW_HRR.pdf',format='pdf')
 close()
 
 fig = figure()
-plt.plot(HRR_time,HRR_theo,'k-',mfc='none',label='Prescribed HRR',linewidth=2)
-plot(FDS_9MW_20['Time'],base_hrr_20mph+first_hrr_20mph,'b--',mfc='none',label='Structure Inteior Calculated HRR',linewidth=2)
-axvline(x=100,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=207,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=211,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=221,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=267,linestyle='-',linewidth=2,color = '#000000')
+plt.plot(HRR_time,HRR_theo,'k-',mfc='none',label='Prescribed HRR')
+plot(FDS_9MW_20['Time'],base_hrr_20mph+first_hrr_20mph,'b--',mfc='none',label='Structure Inteior Calculated HRR')
+axvline(x=100,linestyle='-',color = '#000000')
+axvline(x=207,linestyle='-',color = '#000000')
+axvline(x=211,linestyle='-',color = '#000000')
+axvline(x=221,linestyle='-',color = '#000000')
+axvline(x=267,linestyle='-',color = '#000000')
 ax1 = gca()
 xlim([0, 300])
 ax1.xaxis.set_major_locator(MaxNLocator(8))
 ax1_xlims = ax1.axis()[0:2]
 xlabel('Time (s)')
 ylabel('HRR (MW)')
-legend(numpoints=1,loc=4)
+legend(numpoints=1,loc=3)
 ax2 = ax1.twiny()
 ax2.set_xlim(ax1_xlims)
-ax2.set_xticks([100,207,211,221,267])
+ax2.set_xticks([100,204,211,221,267])
 setp(xticks()[1], rotation=60)
 labels = ['Front Door Open', 'Front Door Closed','Bottom Bay Window Open', 'Top Bay Window Open','Front Door Open']
-ax2.set_xticklabels(labels, fontsize=8, ha='left')
+ax2.set_xticklabels(labels, fontsize=12, ha='left')
+plt.tick_params(\
+    axis='x',
+    which='both',
+    bottom='off',
+    top='off',
+    labelbottom='off')
 axis([0, 300, 0, 10])
 savefig('../Figures/PG_Total_9MW_HRR.pdf',format='pdf')
 close()
 
 fig = figure()
-plt.plot(HRR_time,HRR_theo,'k-',mfc='none',label='Prescribed HRR',linewidth=2)
-plot(FDS_HRR_20['Time'],FDS_HRR_20['HRR']/1000.,'b--',mfc='none',label='Total Calculated HRR',linewidth=2)
-axvline(x=100,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=207,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=211,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=221,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=267 ,linestyle='-',linewidth=2,color = '#000000')
+plt.plot(HRR_time,HRR_theo,'k-',mfc='none',label='Prescribed HRR')
+plot(FDS_HRR_20['Time'],FDS_HRR_20['HRR']/1000.,'b--',mfc='none',label='Total Calculated HRR')
+axvline(x=100,linestyle='-',color = '#000000')
+axvline(x=207,linestyle='-',color = '#000000')
+axvline(x=211,linestyle='-',color = '#000000')
+axvline(x=221,linestyle='-',color = '#000000')
+axvline(x=267 ,linestyle='-',color = '#000000')
 ax1 = gca()
 xlim([0, 300])
 ax1.xaxis.set_major_locator(MaxNLocator(8))
 ax1_xlims = ax1.axis()[0:2]
 xlabel('Time (s)')
 ylabel('HRR (MW)')
-legend(numpoints=1,loc=4)
+legend(numpoints=1,loc=3)
 ax2 = ax1.twiny()
 ax2.set_xlim(ax1_xlims)
-ax2.set_xticks([100,207,211,221,267])
+ax2.set_xticks([100,204,211,221,267])
 setp(xticks()[1], rotation=60)
 labels = ['Front Door Open', 'Front Door Closed','Bottom Bay Window Open', 'Top Bay Window Open','Front Door Open']
-ax2.set_xticklabels(labels, fontsize=8, ha='left')
+ax2.set_xticklabels(labels, fontsize=12, ha='left')
+plt.tick_params(\
+    axis='x',
+    which='both',
+    bottom='off',
+    top='off',
+    labelbottom='off')
 axis([0, 300, 0, 10])
 savefig('../Figures/PG_9MW_HRR.pdf',format='pdf')
 close()
 
 fig = figure()
-plt.plot(HRR_time,HRR_theo,'k-',linewidth=2)
+plt.plot(HRR_time,HRR_theo,'k-')
 ax1 = gca()
 plt.text(88, 8.625, 'Steady Burning')
 plt.text(237, 5.35, 'Water on Fire')
@@ -160,25 +188,31 @@ savefig('../Figures/Fire_HRR.pdf',format='pdf')
 close()
 
 fig = figure()
-plot(FDS_HRR_20['Time'], FDS_HRR_20['HRR']/1000. - base_hrr_20mph+first_hrr_20mph,'b--',mfc='none',label='Calculated HRR',linewidth=2)
-axvline(x=100,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=207,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=211,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=221,linestyle='-',linewidth=2,color = '#000000')
-axvline(x=267 ,linestyle='-',linewidth=2,color = '#000000')
+plot(FDS_HRR_20['Time'], FDS_HRR_20['HRR']/1000. - base_hrr_20mph+first_hrr_20mph,'b--',mfc='none',label='Calculated HRR')
+axvline(x=100,linestyle='-',color = '#000000')
+axvline(x=207,linestyle='-',color = '#000000')
+axvline(x=211,linestyle='-',color = '#000000')
+axvline(x=221,linestyle='-',color = '#000000')
+axvline(x=267 ,linestyle='-',color = '#000000')
 ax1 = gca()
 xlim([0, 300])
 ax1.xaxis.set_major_locator(MaxNLocator(8))
 ax1_xlims = ax1.axis()[0:2]
 xlabel('Time (s)')
 ylabel('HRR (MW)')
-legend(numpoints=1,loc=4)
+legend(numpoints=1,loc=1)
 ax2 = ax1.twiny()
 ax2.set_xlim(ax1_xlims)
-ax2.set_xticks([100,207,211,221,267])
+ax2.set_xticks([100,204,211,221,267])
 setp(xticks()[1], rotation=60)
 labels = ['Front Door Open', 'Front Door Closed','Bottom Bay Window Open', 'Top Bay Window Open','Front Door Open']
-ax2.set_xticklabels(labels, fontsize=8, ha='left')
+ax2.set_xticklabels(labels, fontsize=12, ha='left')
+plt.tick_params(\
+    axis='x',
+    which='both',
+    bottom='off',
+    top='off',
+    labelbottom='off')
 axis([0, 300, 0, 1.5])
 savefig('../Figures/PG_HRR_diff.pdf',format='pdf')
 close() 
