@@ -1,0 +1,204 @@
+﻿[1]	C. Chasteen, ed. Division of the State Fire Marshal State of Florida, 2010.
+[2]	Z. R. E. N. Yahoo, "1100 Prospect Pl, Brooklyn, NY 11213 - Zillow," ed, 2012.
+[3]	R. Schlesinger, "The 2015 U.S. and World Populations," in U.S. Population 2015: 320 Million and World Population 7.2 Billion vol. 2015, R. Schlesinger, Ed., ed: US News, 2014.
+[4]	"America Burning Revisited," in America Burning Revisited National Workshop, Tyson’s Corner, Virginia, 1987.
+[5]	J. Almirall and K. Furton, Analysis and Interpretation of Fire Scene Evidence. Boca Raton, FL: CRC Press, 2004.
+[6]	C. L. Beyler, "Analysis of the Fire Investigation Methods and Procedures Used in the Crimal Arson Cases Against Ernest Ray Willis and Cameron Todd Willingham," Hughes Associates, Inc., Baltimore, MDAugust 17 2009.
+[7]	R. W. Bukowski and R. C. Spetzler, "Analysis of the Happyland Social Club Fire With HAZARD I," Journal of Fire Protection Engineering, vol. Vol. 4, No. 4,, pp. 117-131, 1992.
+[8]	"Anatomy of a Fire," ed. Garston, Watford, 1982.
+[9]	T. S. T. G. o. E. Practices, "Assessing Flame Radiaiton to External Targets from Pool Fires," Society of Fire Protection Engineers (SFPE), Bethesda, MD, Engineering GuideJune 1999.
+[10]	"ASTM E1355-12, Standard Guide for Evaluating the Predictive Capability of Deterministic Fire Models ", ed. West Conshohocken, PA: ASTM International.
+[11]	"ASTM E-1354-04a," in Standard Test Method for Heat and Visible Smoke Release Rates for Materials and Products Using an Oxygen Consumption Calorimeter, ed. West Conshohocken, PA: ASTM International, 2004.
+[12]	L. Y. Cooper and J.-M. Franssen, "A Basis for Using Fire Modeling With 1-D Thermal Analyses of Barriers/Partitions to Simulate 2-D and 3-D Barrier/Partition Structural Performance in Real Fires," National Institute of Standards and Technology, Gaithersburg, MD NISTIR 6170, September 1998.
+[13]	L. G. Blevins, ""Behavior of Bare and Aspirated Thermocouples in Compartment Fires"," in National Heat Transfer Conference, 33rd Proceedings  HTD99-280, Albuquerque, NM, 1999.
+[14]	J. J. A. Janssen, Building with Bamboo: a Handbook. London: Intermediate Technology Publications, 1988.
+[15]	"Career Fire Fighter Dies in Wind Driven Residential Structure Fire - Virginia," National Institute for Occupational Safety and Health, Morgantown, WV2008.
+[16]	"Career Probationary Fire Fighter and Captain Die as a Result of Rapid Fire Progression in a Wind-Driven Residential Structure Fire - Texas," The National Institute for Occupational Safety and Health, Cincinatti, OHApril 8, 2010.
+[17]	P. L. E. Richards, "CHARACTERISING A DESIGN FIRE FOR A DELIBERATELY LIT FIRE SCENARIO " Master of Fire Engineering, Fire Engineering, University of Canterbury, University of Canterbury, 2008.
+[18]	M. A. Kokkala, "Characteristics of a Flame in an Open Corner of Walls," presented at the Interflam '93, 1993.
+[19]	O. Popplewell, "Committee of Inquiry into Crowd Safety at Sports Grounds: Final Report," HMSO, London1986.
+[20]	K. McGrattan, C. Bouldin , and G. Forney, "Computer Simulation of the Fires in the World Trade Center Towers," Gaithersburg, MDSeptember 2005.
+[21]	S. Simcox, N. S. Wilkes, and I. P. Jones, "Computer Simulation of the Flows of Hot Gases from the Fire at King's Cross Underground Station," Fire Safety Journal, vol. vol 18, 1992.
+[22]	S. Simcox, N. S. Wilkes, and I. P. Jones, "Computer simulation of the flows of hot gases from the fire at the King's Cross Underground Station," Fire Safety Journal, vol. 18, pp. 49-73, 1992.
+[23]	D. Madrzykowski and W. Walton, "Cook County Administration Building Fire, 69 West Washington, Chicago, Illinois, October 17, 2003: Heat Release Rate Experiments and FDS Simulations," National Institute of Standards and Technology, Gaithersburg, MDDecember 2004.
+[24]	D. Madrzykowski and W. D. Walton, "Cook County Administration Building Fire, 69 West Washington, Chicago, Illinois, October 17, 2003: Heat Release Rate Experiments and FDS Simulations " National Institute of Standards and Technology, Gaithersburg, MD NIST SP - 1021.
+[25]	(2010, 2/20). Crime in the United States. Available: http://www.fbi.gov/about-us/cjis/ucr/crime-in-the-u.s/2010/crime-in-the-u.s.-2010/property-crime/arsonmain
+[26]	B. J. Stratton, "Determining Flame Height And Flame Pulsation Frequency And Estimating Heat Release Rate From 3D Flame Reconstruction," Master of Engineering in Fire Engineering, Department of Civil Engineering, University of Canterbury, Christchurch, New Zealand, 2005.
+[27]	B. J. Stratton, "Determining Flame Height and Flame Pulsation Frequency and Estimating Heat Release Rate From 3D Flame Reconsturction," Master of Engineering in Fire Engineering, Department of Civil Engineering, University of Canterbury, Christchurch, New Zealand, 2005.
+[28]	F. W. Mowrer, "The Effect of "Blistering" on the Ignition and Flammability of Painted Gypsum Wallboard," National Institue of Standards and Technology (NIST), Gaithersburg, MD NIST GCR 01-804, January 2001.
+[29]	A. Mensch  and N. Bryner, "Emergency First Responder Respirator Thermal Characteristics Workshop Proceedings," Gaithersburg, MD, June 2011.
+[30]	B. Karlsson and J. Quintiere, Q, Enclosure Fire Dynamics. Boca Raton, FL, USA: CRC Press, 2000.
+[31]	R. Noon, Engineering Analysis of Fires and Explosions. Boca Raton, FL, USA: CRC Press, 1995.
+[32]	G. Heskestad, "Engineering Relations for Fire Plumes," Fire Safety Journal, vol. 7, 1984.
+[33]	"Engineering Toolbox, April 2011. [Online]. Available: http://www.engineeringtoolbox.com/thermal-conductivity-d_429.html.," ed, 2011.
+[34]	H. E. Nelson, "An Engineering View of the Fire of May 4, 1988 in the First Interstate Bank Building, Los Angeles, California," National Institute of Standards and Technology, Gaithersburg, MD NISTIR 89-4061, 1989.
+[35]	B. M. Cetegen, E. E. Kukoski, and T. Kubota, "Entrainment and Flame Geometry of Fire Plumes," National Bureau of Standards, Washington DC NBS-GCR-82-402, August 1982.
+[36]	B. J. McCaffrey, "Entrainment and Heat Flux of Buoyant Diffusion Flames," National Bureau of Standards, Washington DC NBSIR 82-2473, February 1982.
+[37]	J. Watanabe and T. Takeyoshi, "Experimental Investigation into Penetration of a Weak Fire Plume into a Hot Upper Layer," Journal of Fire Sciences, vol. 22, pp. 405-420, September 2004.
+[38]	"Experimental research for Scottish Building Standards Agency following the fire at the Rosepark Care Home 31st January 2004," Building Research Establishment Ltd – Fire Safety Framework, Glasgow2004.
+[39]	"FDS-SMV for Windows," FDS 6.1.2, SMV 6.1.12 ed.
+[40]	"Fiberglas Insulation k values," in The Engineering Toolbox, ed, 2011.
+[41]	S. A. Chines and J. O. Stull, "Fibers and Textiles," in Fire Protection Handbook. vol. II, ed Quincy, MA, 2003.
+[42]	K. H. Woo, "Final Report of the Inquiry into the Garley Building Fire on 20th November 1996," Government Printer, Hong Kong1997.
+[43]	(2014, April) Fire and Climate Risk. World Fire Statistics [Bulletin]. 18. Available: https://www.genevaassociation.org/media/874729/ga2014-wfs29.pdf
+[44]	V. Babrauskas and J. Krasny, "Fire Behavior of Upholstered Furniture," National Institute of Standards and Technology (formerly NBS), Gaithersburg, MD NBS Monograph 173, 1985.
+[45]	K. McGrattan, S. Hostikka, R. McDermott, J. Floyd, C. Weinschenk, and K. Overholt, "Fire Dynamics Simulator Technical Reference Guide," National Institute of Standards and Technology, Gaithersburg, MD Special Publication 1018, September 30 2014.
+[46]	K. McGrattan, S. Hostikka, R. McDermott, J. Floyd, C. Weinschenk, and K. Overholt, "Fire Dynamics Simulator Technical Reference Guide
+" September 30 2014.
+[47]	K. B. McGrattan, R. J. McDermott, C. G. Weinschenk, and G. P. Forney, "Fire Dynamics Simulator Users Guide, Sixth Edition," N.I.S.T. NIST SP - 1019, November 04, 2013.
+[48]	K. B. McGrattan, R. J. McDermott, C. G. Weinschenk, and G. P. Forney, "Fire Dynamics Simulator, Technical Reference Guide, Sixth Edition," National Institute of Standards and Technology, Gaithersburg, MD NIST SP - 1018, November 04 2014.
+[49]	D. Madrzykowski  and S. Kerber, "Fire Fighting Tactics Under Wind Driven Conditions: Laboratory Experiments," National Institute of Standards and Technologies, Gaithersburg, MDJanuary 2009.
+[50]	S. Kerber and D. Madrzykowski, "Fire Fighting Tactics Under Wind Driven Fire Conditions: 7-Story Building Experiments," National Institute of Standards and Technology, Gaithersburg, MDApril 2009.
+[51]	P. Woodburn and D. D. Drysdale, "Fire in Inclined Trenches: the dependence of the critical angle on the trench and burner geometry," Fire Safety Journal, vol. 31, pp. 143-164, 1998.
+[52]	P. Woodburn and D. D. Drysdale, "Fire in Inclined Trenches: time-varying features of the attached plume," Fire Safety Journal, vol. 31, pp. 165-1172, 1998.
+[53]	Fire Investigation. Boca Raton: CRC Press, 2004.
+[54]	J. Michael J. Karter, "Fire Loss in the United States During 2013," Quincy, MA NFPA# FLX10-01, September 2014.
+[55]	B. J. McCaffrey, "Fire Plume Dynamics - A Review," presented at the Conference on Large-Scale Fire Phenomenology, National Bureau of Standards, Gaithersburg, MD, 1984.
+[56]	C. L. Beyler, "Fire Plumes and Ceiling Jets," Fire Safety Journal, vol. 11, July 1986.
+[57]	C. Beyler, "“Fire Plumes and Ceiling Jets.”  " Fire Safety Journal, vol. Vol. 11, pp. pp 53-75.
+[58]	H. G., “Fire Plumes, Flame Height and Air Entrainment”, 4th ed. ed.: SFPE 	2008.
+[59]	"Fire Safety Framework."
+[60]	"The Five E’s of Prevention — A New Approach ", U. S. D. o. H. Security, Ed., ed: Federal Emergency Management Agency (FEMA), 2013.
+[61]	W. Takahashi, H. Tanaka, O. Sugawa, and M. Ohtake, "Flame and Plume Behavior in and near a Corner of Walls," presented at the Fire Safety Science - Proceedings of the Fifth International Symposium.
+[62]	M. A. Delichatsios, "Flame Height in Turbulent Wall Fires with Significant Flame Radiation," presented at the Fire Research Conference in honor of Howard Emmons, Washington, D.C. , 1984.
+[63]	J. J. Robert McGraw and F. W. Mowrer, "Flammability and Dehydration of Painted Gypsum Wallboard Subjected to Fire Heat Fluxes," presented at the Fire Safety Science - Proceedings of the Sixth International Symposium.
+[64]	J. J. Robert McGraw and F. W. Mowrer, "Flammability and Dehydration of Painted Gypsum Wallboard Subjected to Fire Heat Fluxes," International Association for Fire Safety Science (IAFSS), Poitiers, France, Intl. Assoc. for Fire Safety Science, Boston, MA
+July 5-9 1999.
+[65]	T. Ohlemiller, J. Shields, R. McLane, and R. Gann, "Flammability Assessment Methods for Mattresses " National Institute of Standards and Technology, Gaithersburg, MDJune 2000.
+[66]	F. W. Mowrer, "Flammability of Oil-Based Painted Gypsum Wallboard Subjected to Fire Heat Fluxes," National Institute of Standards and Technology, Gaithersburg, MD NIST GCR 01-805, 2001.
+[67]	(2015). Flexible Polyurethane Foam: Industry at a Glance.  	  . Available: http://www.pfa.org/Library/IAG_no_logo.pdf
+[68]	Icove, DeHaan, and Haynes, Forensic Fire Scene Reconstruction. Upper Saddle River, NJ, USA: Pearson Education, Inc, 2013.
+[69]	A. D. Putorti, "Full Scale Room Burn Pattern Study," Washington D.C. NIJ Report 601-97, December 1997.
+[70]	J. Quintiere, Q, Fundamentals of Fire Phenomena. West Sussex, England: John Wiley & Sons Ltd, 2006.
+[71]	A. Tewarson, Generation of Heat and Gaseous, Liquid, and Solid Products in Fires, in The SFPE Handbook of Fire Protection Engineering. Bethesda, MD: National Fire Protection Association, 2008.
+[72]	"Giidlines for Substantiating a Fire Model for a Given Application," Society of Fire Protection Engineers, Bethesda ISBN 978-0-9830391-0-5, 2011.
+[73]	R. A. Bryant and G. W. Mulholland. (2008) A Guide to characterizing heat release rate measurement uncertainty for full-scall fire tests. Fire Mater. 121-139. 
+[74]	B. Taylor, N. and C. Kuyatt, E., "Guidelines for Evaluating and Expressing the Uncertainty of NIST Measurement Results," National Institute of Standards and Technology, Gaithersburg, MD NIST TN 1297, September 1994.
+[75]	B. N. Taylor and C. E. Kuyatt, "Guidelines for Evaluating and Expressing the Uncertainty of NIST Measurement Results," National Institute of Standards and Technology, Gaithersburg, MD NISTIR TN 1297, 1994.
+[76]	G. Wilkes, Heat Insulation: John Wiley & Sons, 1950.
+[77]	V. Babrauskas and R. Peacock, "Heat Release Rate: The Single Most Important Variable in Fire Hazard," Fire Safety Journal, vol. 18, pp. 255-272, 1992.
+[78]	K. Goble, " Height of Flames Projecting from Compartment Openings," Masters, Masters Thesis Dept. of Civil and Natural Resources Engineering, University of Canterbury, Christchurch, NZ, 2007.
+[79]	M. S. Isner, "High-Rise Office Building Fire, Alexis Nihon Plaza, Montreal, Canada," National Fire Protection Association, Quincy, MA1986.
+[80]	B. Evarts, ""Home Fires That Began With Mattresses and Bedding"," National Fire Protection Association (NFPA), Quincy, MAOctober 2011.
+[81]	M. Ahrens, ""Home Fires That Began with Upholstered Furniture"," National Fire Protection Agency (NFPA), Quincy, MAAugust 2011.
+[82]	V. Babrauskas, Ignition Handbook. Issaquah, WA: Fire Science Publishers, 2003.
+[83]	D. Thompson and H. Drysdale, "Ignition of PUFs: A Comparison of Modified and Unmodified Foams," London, Elsevier1990.
+[84]	S. Kerber, "Impact of Ventilation on Fire Behavior in Legacy and Contemporary Residential Construction," Underwriters Laboratories, Northbrook, IL2010.
+[85]	( 1992, In Touch, Information on Flexible Polyurethane Foam  	Vol. 2( No. 3). 
+[86]	R. Campbell, "INTENTIONAL FIRES," Quincy, MAApril 2014.
+[87]	"International Residential Code for One- and Two-Family Dwellings," in International Code Council, Inc., Country Club Hills, IL, 2006.
+[88]	D. Drysdale, An Introduction to Fire Dynamics. West Sussex: John Wiley & Sons, 1998.
+[89]	D. Fennell, Investigation into the King's Cross Underground Fire. London: The Department of Transport, 1988.
+[90]	R. Bilbao, J. Mastral, J. Ceamanos, and M. Aldea, "Kinetics of the Thermal Decomposition of Polyurethane Foams in Nitrogen and Air Atmospheres," Journal of Analytical and Applied Pyrolysis, vol. 37, pp. 69-82, February 1996.
+[91]	A. F. Roberts, "The King's Cross Fire: a correlation of eyewitness accounts and results of the scientific investigation," Fire Safety Journal, vol. 18, pp. 105-121, 1992.
+[92]	K. Moodie, "The King's Cross Fire: Damage Assessment and Overview of the Technical Investigation," Fire Safety Journal, vol. 18, 1992.
+[93]	D. D. Drysdale, A. J. R. Macmillan, and D. Shilitto, "The King's Cross Fire: experimental verification of the 'trench effect'," Fire Safety Journal, vol. 18, pp. 75-82, 1992.
+[94]	K. Moodie and S. F. Jagger, "The King's Cross Fire: results and analysis from the scale model tests," Fire Safety Journal, vol. 18, pp. 83-103, 1992.
+[95]	J. D. DeHaan and D. J. Icove, Kirk’s Fire Investigation, Seventh Edition ed. Prentice Hall, Upper Saddle River, New Jersey: Pearson, 2012.
+[96]	K. B. McGrattan, H. R. Baum, and R. G. Rehm, "Large Eddy Simulations of Smoke Movement," Fire Safety Journal, vol. 30, pp. 161-178, 1998.
+[97]	R. Dumont, H. Orr , and M. Lux, "Low Energy Prarie Housing," Division of Building Research, National Research Council of Canada, Ottowa1982.
+[98]	G. Heskestad, "Luminous Heights of Turbulent Diffusion Flames," Fire Safety Journal, vol. 5, 1983.
+[99]	(2013, February 11). MATBASE, "PVC Hard | Commodity Polymers Natural & synthetic Polymers | Material Categories | Mechanical, physical, chemical and environmental properties of materials Matbase: the online material selection resource. 
+[100]	"MATERIAL SAFETY DATA SHEET Sheetrock Gypsum Panels," 6 ed. Chicago, Illinois: United States Gypsum Company, 2008.
+[101]	B. Karlsson, "A mathematical model for calculating heat release rate in the room corner test," Fire Safety Journal, vol. 20, pp. 93-113, 1993.
+[102]	F. Berna, "Microstratigraphic evidence of in situ fire in the Acheulean strata of Wonderwerk Cave, Northern Cape province, South Africa.," in Proceedings of the National Academy of Sciences of the United States of America., 2012.
+[103]	R. W. Bukowski, "Modeling a Backdraft: The Fire at 62 Watts Street," NFPA Journal, vol. Vol. 89, No. 6,, pp. 85-89, November/December 1995.
+[104]	C. Beyler, "Modeling Fire Growth in Room/Corner Configurations," NIST, Gaithersburg, MD 6588, November 2000.
+[105]	Moisture Relations and Physical Properties of Wood, in Centennial edition of Wood handbook, Wood as an Engineering Material. Madison, WI: Forest Products Laboratory, 2010.
+[106]	"National Institute of Standards and Technology," ed.
+[107]	"National Type Evaluation Program," in Certificate Number 00-075A1,, ed. Mettler-Toledo
+Worthington, OH. , 2002.
+[108]	"NFPA 72, National Fire Alarm Code," ed. Quincy, MA: National Fire Protection Association (NFPA), 2002.
+[109]	"NFPA 921, Guide for Fire and Explosion Investigations," ed. Quincy, MA,: National Fire Protection Association (NFPA), 2014.
+[110]	NFPA 1971: Standard on Protective Ensembles for Structural Fire Fighting and Proximity Fire Fighting. Quincy, MA: National Fire Protection Association (NFPA), 2007.
+[111]	R. A. Bryant, T. J. Ohlemiller, E. L. Johnsson, A. H. Hamins, B. S. Grove, W. F. Guthrie, et al., "The NIST 3 MW Quantitative Heat Release Rate Facility," National Institute of Standanrds and Technology, Gaithersburg, MD, NIST Special Publication NIST Special Publication 1007, 2003.
+[112]	R. A. Bryant, T. J. Ohlemiller, E. L. Johnsson, A. H. Hamins, B. S. Grove, W. F. Guthrie, et al., "The NIST 3 MW Quantitative Heat Release Rate Facility: Description and Procedures," National Institute of Standards and Technology, Gaithersburg, MD NISTIR 7052, September  2004.
+[113]	C. P. Butler, "Notes on the charring rates in wood," Fire Research Institute, Borehamwood Fire Research Note 896, 1971.
+[114]	G. B. Grant and D. D. Drysdale, "Numerical modelling of early fire spread in warehouse fire," Fire Safety Journal vol. 24, pp. 247-278, 1995.
+[115]	K. Prasad, R. Kramer, N. Marsh , and M. Nyden, "Numerical Simulation of Fire Spread on Polyurethane Foam Slabs.," in Fire and Materials 11th International Conference, San Francisco, CA, January 26-28, 2009.
+[116]	D. Madrzykowski, "Office Work Station Heat Release Rate Study: Full Scale vs Bench Scale Proceedings," in 7th International Interflam Conference, London, 1996, pp. 47-55.
+[117]	"Ogden Manufacturing Company," ed, April 2011.
+[118]	T. J. Klem, "One Meridian Plaza, Philadelphia, PA, February 23, 1991," National Fire Protection Association, Quincy, MA1991.
+[119]	B. Jones, "Performance of Gypsum Plasterboard Assemblies Exposed to Real Building Fires," Christchurch, NA2001.
+[120]	N. Khan, Y. Su, S. Riffat, and C. Biggs. (2008, January ) Performance testing and comparison of turbine ventilators. Renewable Energy. 2441-2447. 
+[121]	G. R. Colonna, "Plastics and Rubber," in Fire Protection Handbook. vol. II, ed Quincy, MA: National Fire Protection Association, 2003.
+[122]	V. Babrauskas and R. B. Williamson, "Post flashover compartment fires: basis of a theoretical model," Fire and Materials, vol. 2, pp. 39-53, 1978.
+[123]	J. Sutula. Practical Applications of The Fire Dynamics Simulator in Fire Protection Engineering Consulting. Fire Protection Engineering Magazine. 27-31. 
+[124]	M. Spearpoint, "Predicting the Ignition and Burning of Wood in the Cone Calorimeter Using an Integral Mode," National Institute of Standards and Technology, Gaithersburg, MD1999.
+[125]	M. Graham. (2001, January ) Principles of attic ventilation. Professional Roofing Magazine. 
+[126]	J. Quintiere, Q, Principles of Fire Behavior. Albany, New York, USA: Delmar Publishing Company, 1997.
+[127]	K. D. Rohr, "PRODUCTS FIRST IGNITED IN U.S. HOME FIRES," Quincy, MAApril 2005.
+[128]	B. J. McCaffery, "Purely Buoyant Diffusion Flames: Some Experimental Results " National Bureau of Standards (currently NIST), Gaithersburg, MD NBSIR 79-1910, October 1979.
+[129]	B. J. McCaffrey, "Purely Buoyant Diffusion Flames: Some Experimental Results," National Bureau of Standards, Washington D.C. NBSIR 79-1910, October 1979.
+[130]	C. Wilkes, J. Summers, C. Daniels , and M. Berard, PVC Handbook: Hanser Verlag, , 2005.
+[131]	E. Budnick and W. D. Walton, "Quick Response Sprinklers in Office Configurations: Fire Test Results," National Bureau of Standards (NIST), Gaithersburg, MD1988.
+[132]	R. Bryant, C. Womeldorf, E. Johnsson, and T. Ohlemiller, "Radiative heat flux measurement uncertainty," Fire and Materials, vol. 27, pp. 209-222, 2003.
+[133]	"Recommendations of The Research Advisory Council on Post-fire Analysis," Quincy, Masachusetts February 2002.
+[134]	R. Gann, A. Hamins, K. McGrattan, G. Mullholland, H. Nelson, T. Ohlemiller, et al., "Reconstruction of the Fires in the World Trade Center Towers. Federal Building and Fire Safety Investigation of the World Trade Center Disaster," National Institute of Standards and Technology, Gaithersburg NCSTAR 1-5, December 2005.
+[135]	T. o. I. A. Dublin, "Report of the Tribunal of Inquiry on the Fire at the Stardust," Stationary Office, Artane, Dublin1982.
+[136]	S. o. California, "Requirements, Test Procedures and Apparatus for Testing the Flame Retardance of Resilient Filing Materials Used in Upholstered Furniture," State of California, Northlands, CA, Technical Bulletin 117 Technical Bulletin 117, 2000.
+[137]	S. o. California, "Requirements, Test Procedures and Apparatus for Testing the Flame Retardance Of Upholtered Furniture," Northlands, CA, Technical Bulletin 1161980.
+[138]	W. Pitts, M., A. V. Murthy, J. L. d. Ris, J.-R. Filtz, K. Nygard, D. Smith, et al., "Round robin study of total flux gauge calibration at fire  laboratories," Fire Safety Journal vol. 41, pp. pp 459-475, 2006.
+[139]	J. J. Lentinin, Scientific Protocols for Fire Investigation. Boca Raton: Taylor & Francis, 2006.
+[140]	M. Corporation, "Series 64 Heat Flux Transducers," Medtherm Corporation, Huntsville, AL Bulletin 118.
+[141]	SFPE Handbook of Fire Protection Engineering 4th ed ed. Bethesda, MD.: Society of Fire Protection Engineers, 2008.
+[142]	R. Vettori, D. Madrzykowski , and W. Walton, "Simulation of the Dynamics of a Fire in a One-Story Restaurant -- Texas, February 14, 2000," National Institute of Standards and Technology, Gaithersburg, MDOctober  2002.
+[143]	D. Madrzykowski, G. Forney, and D. Walton, "Simulation of the Dynamics of a Fire in a Two-Story Duplex - Iowa, December 22, 1999," National Instutute of Standards and Technology, Gaithersburg NISTIR 6584, January 2002.
+[144]	D. Madrzykowski , G. P. Forney, and W. D. Walton "Simulation of the dynamics of a fire in a two-story duplex—Iowa, December 22, 1999," National Institute of Standards and Technology, Gaithersburg, Md. NISTIR 6854, January 2002.
+[145]	S. Kerber and N. Bryner, "Simulation of the Dynamics of a Fire in the Basement of a Hardware Store - New York, June 17, 2001," National Institute of Standards and Technology, Gaithersburg, MD. NISTIR 6510, December  2004.
+[146]	A. Barowy  and D. Madrzykowski, "Simulation of the Dynamics of a Wind-Driven Fire in a Ranch-Style House - Texas," National Institute of Standards and Technology, Gaithersburg, MD NIST TN 1729, January 2012.
+[147]	A. Barowy and D. Madrzykowski "Simulation of the dynamics of a wind-driven fire in a single-story ranch-style house—Texas," National Institue of Standards and Technology, Gaithersburg, MDApril 12, 2009.
+[148]	R. Vettori and D. Madrzykowski, "Simulation of the Dynamics of the Fire at 3146 Cherry Road NE Washington D.C., May 30, 1999," National Institute of Standards and Technology, Gaithersburg, MD NISTIR 6510, April 2000.
+[149]	D. Madrzykowski and R. L. Vettori, "Simulation of the dynamics of the fire at 3146 Cherry Road NE, Washington, D.C., May 30, 1999," National Institute of Standards and Technology, Gaithersburg, Md. NISTIR 6510, April 2000.
+[150]	G. P. Forney, "Smokeview (Version 5), A tool for visualizing fire dynamics simulation data, Volume I: User’s Guide," National Institute of Standards and Technology, Gaithersburg, Md, NIST Special Publication 1017-1August 2007.
+[151]	G. Forney, "Smokeview, A Tool for Visualizing Fire Dynamics Simulation Data
+"  Special Publication 1017-1, September 2014.
+[152]	G. P. Forney, "Smokeview, A Tool for Visualizing Fire Dynamics Simulation Data
+"  Special Publication 1017-2, September 2014.
+[153]	G. P. Forney, "Smokeview, A Tool for Visualizing Fire Dynamics Simulation Data
+" September 2014.
+[154]	T. Chan and D. Napier. (1973, February) Smoldering and Ignition of Cotton Fibres and Dust. Fire Prevention Science and Technology. 13-23. 
+[155]	V. Babrauskas, "Specimen Heat Fluxes for Bench-Scale Heat Release Rate Testing, Fire and Materials," in Fire Safety, International Interflam Conference, 6th, London, England, 1993, pp. 57-74.
+[156]	D. Madrzykowski and R. L. Vettori, "A Sprinkler Fire Suppression Algorithm," Journal of Fire Protection Engineering, vol. 4, pp. 151-164, 1992.
+[157]	K. B. McGrattan, A. Hamins, and D. W. Stroup, "Sprinkler, Smoke and Heat Vent, Draft Curtain Interaction: Large Scale Experiments and Model Development," National Institute of Standards and Technology, Gaithersburg, MD, . International Fire Sprinkler-Smoke and Heat Vent-Draft Curtain Fire Test Project NISTIR 6196-1, 1998.
+[158]	A. S. f. T. a. Materials, Standard Guide for Heated Systems Surface Conditions that Produce Contact Burn Injuries,. West Conshohocken, PA: American Society for Testing and Materials, 2009.
+[159]	"Standard Guide for Room Fire Experiments," ASTM International Designation: E 603 - 07, 2008.
+[160]	"Standard Practice for Full-Scale Oxygen Consumption Calorimetry Fire Tests," ed. West Conshohocken, PA.: ASTM International, 2008.
+[161]	"Standard Practices for Full-Scale Oxygen Consumption Calorimetry Fire Tests," ASTM International, West Conshohocken Designation E 2067 - 08, 2008.
+[162]	"Standard Specification for Gypsum Board," ASTM International, West Conshohocken Designation: C 1396/C 1396M 06a, 2008.
+[163]	A. International, "Standard Specification for Gypsum Board," ed. West Conshohocken, PA: ASTM International, 2011.
+[164]	"Standard Terminology of Fire Standards," ASTM International, West Conshohocken Designation: E 176 - 08, 2008.
+[165]	"Standard Test Metho for Critical Radiant Flux of Floor-Covering Systems using a Radiant Heat Energy Source," ASTM International, West Conshohocken Designation: E 648 - 08, 2008.
+[166]	"Standard Test Method for Determining Material Ignition and Flame Spread Properties," ASTM, West Conshohocken Designation: E 1321 - 08, 2008.
+[167]	"Standard Test Method for Heat and Visible Smoke Release Rates for Materials and Products Using an Oxygen Consumption Calorimeter," ASTM International, West Conshohocken Designation: E 1354 - 08, 2008.
+[168]	"Standard Test Method for Surface Burning Characteristics of Building Materials," in ASTM E-84-04, ed. West Conshohocken, PA: ASTM International, 2004.
+[169]	W. A. Morris, "Stardust Disco Investigation - some observations on the full-scale fire tests," Fire Safety Journal, vol. 7, pp. 255-65, 1984.
+[170]	"State Fire Marshal's Office Fire Fighter Fatality Investigation," ed. Texas State Fire Marshal's Office, Austin, Texas, 2009.
+[171]	R. Nokes, "Streams," University of Canterbury, Christchurch, NZ.February 2011.
+[172]	Strengthening Forensic Science in the United States, A Path Forward. Washington D.C.: National Research Council of the National Academies, 2009.
+[173]	D. W. Stroup, N. P. Bryner, J. Lee, J. McElroy, G. Roadarmel, and W. H. Twilley, "Structural Collapse Fire Tests: Single Story Wood Frame Structures," National Institute of Standards and Technology, Gaithersburg MD NISTIR 7094, 2004.
+[174]	K. Saito, "Study of Fire Induced Flow Along the Vertical Corner Wall.Part 2," National Institute of Standards and Technology, Gaithersburg, MD NIST-GCR-93-628, April 1993.
+[175]	M. Poreh and G. Garrad, "A study of wall and corner fire plumes," Fire Safety Journal, vol. 34, 1999.
+[176]	N. Bryner, P. Fuss, B. Klein , and A. Putorti, "Technical Study of the Sofa Super Store Fire - South Carolina, June 18, 2007," National Institute of Standards and Technology, Gaithersburg, MD NIST SP 1119, , "," ,.  March 2011.
+[177]	N. P. Bryner, S. P. Fuss, B. W. Klein, and A. D. Putorti, "Technical study of the Sofa Super Store Fire, South Carolina, June 18, 2007," National Institute of Standards and Technology, Gaithersburg, Md NIST SP—1118, March 14, 2011.
+[178]	"Technician I Kyle Wilson LODD Report," in Prince William County, Va, ed.
+[179]	The Temperature Handbook. Stamford, CT: Omega Engineering Inc., 2004.
+[180]	O. E. Inc, The Temperature Handbook vol. MM. Stamford, CT: Omega Engineering Inc, 2004.
+[181]	W. M. Pitts, R. D. Braun, R. D. Peacock, H. E. Mitler, E. L. Johnsson, P. A. Reneke, et al., "Temperature Uncertainties for Bare-Bead and Aspirated Thermocouple 132 Measurements in Fire Environments," in Thermal Measurements: The Foundation of Fire Standards. American Society for Testing and Materials (ASTM), Dallas TX, 2001.
+[182]	M. Donnelly, W. Davis, J. R. Lawson, and M. Selepak, "Thermal Environment for Electronic Equipment Used by First Responders," Gaithersburg, MD2006.
+[183]	"Thermophysical Property Data," in SFPE Handbook of Fire Protection Engineering, ed Quincy, MA: NFPA, 2008, pp. A-33.
+[184]	"Types of Insulation," in Energy.gov, ed, 2011.
+[185]	K. Rohr, D., , " “The U.S. Home Product Report, Forms and Types of Materials First Ignited in Fires: Flammable or Combustible Liquids.” ", Quincy, MA.December 2001.
+[186]	S. M. Olenick and D. J. Carpenter, "An Updated International Survey of Computer Models for Fire and Smoke," Journal of Fire Protection Engineering, vol. 13, May 2003.
+[187]	D. W. Stroup, L. DeLauter, J. Lee, and G. Roadarmel, "Upholstered Chair Fire Tests Using a California Technical Bulletin 133 Burner Ignition Source," National Institute of Standards and Technology, Gaithersburg, MD, Report of Test Report of Test 4012, 2001.
+[188]	V. Babrauskas, J. R. Lawson, W. D. Walton, and W. H. Twilley, "Upholstered Furniture Heat Release Rates Measured with a Furniture Calorimeter," National Institute of Standards and TEchnology (formerly NBS), Gaithersburg, MD NBSIR 82-2604, 1982.
+[189]	C. L. Beyler and F. W. Williams, "Upward Flame Spread on Vertical Surfaces," NIST, Gaithersburg, MD 6030, June 1997.
+[190]	G. P. Forney and K. B. McGrattan, "User's Guide for Smokeview Version 3.1: A Tool for Visualizing Fire Dynamics Simulation Data, (Version 3.1)," National Institute of Standards and Technology, Gaithersburg, MD NISTIR 6980, 2003.
+[191]	J. Shanley, "USFA Fire Burn Pattern Tests," United States Fire AdministrationJuly 1997.
+[192]	K. J. Overholt, "Verification and Validation of Commonly Used Empirical Correlations for Fire Scenarios," US Department of Commerce, Gaithersburg, MD NIST Special Publication 1169, March 2014.
+[193]	H. F. D. Members, "Voluntary Statements of Houston Fire Department Members to Houston Arson Bureau," H. A. Bureau, Ed., ed, 2009.
+[194]	J. Quintiere, M. Harkleroad, and Y. Hasemi, "Wall Flames and Implications for Upward Flame Spread," Gaithersburg, MDSeptember 19 1985.
+[195]	G. Back, C. Beyler, P. DiNenno, and P. Tatem, "Wall Incident Heat Flux Distributions Resulting from an Adjacent Fire," presented at the Fire Safety Science - Proceedings of the Fourth International Symposium.
+[196]	Weather Station History | Weather Underground. The Weather Channel, . Available: http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KNYBROOK37&month=12&day=19&year=2011
+[197]	(2014, 2/21). WHO | Burns  [Fact Sheet]. Available: http://www.who.int/mediacentre/factsheets/fs365/en/
+[198]	D. Madrzykowski  and S. Kerber. (2010, March) Wind Driven Fire Research: Hazards and Tactics. Fire Engineering. 
