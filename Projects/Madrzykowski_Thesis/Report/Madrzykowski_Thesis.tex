@@ -98,6 +98,7 @@ This study is in response to the assessment above, specifically regarding the na
 
 
 \chapter{Scope of Study}
+\label{chapter:Scope of Study}
 
 Given that the majority of intentional fires in structures occurred in residential occupancies, this study will focus on fire patterns on painted gypsum wallboard, which is 2.4~m in height.  Given the upper bound of 2.4~m, the experiments will use small fires with mean flame heights of approximately 1.2~m.  The resulting patterns on the gypsum board wall would be representative of a pre-flashover fire pattern.
 
@@ -108,6 +109,7 @@ Replicate experiments exposing gypsum wallboard to the fires were conducted in o
 The last component of this study examines the capability of using numerical models to simulate the fires and the resulting fire patterns based on input data collected from engineering reference sources, as well as  bench scale and full scale fire experiments conducted in this study.
 
 \chapter{Technical Approach}
+\label{chapter:Technical Approach}
 
 This study includes several series of real-scale, replicate fire experiments to examine the repeatability of pre-flashover fire patterns, and ultimately examine the ability of simple correlations and the Fire Dynamic Simulator to recreate characteristics of the fire patterns.
 
@@ -133,12 +135,11 @@ A free standing, non-combustible, calcium silicate wall was instrumented to meas
 
 A free standing, non-combustible, steel frame with gypsum wallboard attached to the surface was instrumented to measure the thermal exposure of the wall from the fire in terms of temperature and heat flux.  The fires were initially placed at predetermined, fixed positions away from the wall. The burner was moved toward the wall until the burner was against the wall.  If the results indicated that no burn pattern would result from a given combination of fuel and position, then that fuel and position combination were eliminated from the remainder of the test matrix.
 
+\section{Fire Pattern Experiments}
+
 \subsubsection{Impact of Construction}
 
 Comparative experiments were conducted to examine the impact of the method of construction and support of the walls and corner sections on the development of the burn patterns.  Three cases were examined: (1) 12.7~mm thick, regular core, painted gypsum board on the front of a wall frame (open back); (2) 12.7~mm thick, regular core, painted gypsum board on the front and back of a wall frame (interior wall); and {3) 12.7~mm thick, regular core, painted gypsum board on the front and back of a wall frame, with fiberglass batting insulation in the voids of the wood frame (exterior wall).  The main consideration was to identify any differences in the height, width, shape, and area of the fire patterns. The results of these experiments determined the construction of the walls and corners used in subsequent phases of this study.
-
-
-\section{Fire Pattern Experiments}
 
 \subsubsection{Wall Fires}
 
@@ -148,20 +149,23 @@ Each of the test compartments consisted of three 3.6~m long by 2.4~m high wood f
 
 These experiments used the same test compartment as the wall fire pattern experiments.  In these cases the fire was located against both walls in a corner of the compartment.  The experimental process was the same as the wall fire pattern experiments.
 
-\subsection{Bench Scale Experiments}
+\section{Bench Scale Experiments}
 
 Several types of bench scale experiments were conducted to generate data. This data could be used to assist in the analysis of the fire patterns and potentially be used as input for the FDS models.
-Critical Heat Flux – Conducted a series of experiments on samples of painted gypsum wallboard to determine the repeatability of a ``critical heat flux'' that results in a clear line of demarcation, a ``burn/no burn'' line.  The flooring radiant panel (ASTM~E648) was used to examine this value.
+
+\subsection{Critical Heat Flux} 
+
+Conducted a series of experiments on samples of painted gypsum wallboard to determine the repeatability of a ``critical heat flux'' that results in a clear line of demarcation, a ``burn/no burn'' line.  The flooring radiant panel (ASTM~E648) was used to examine this value.
 
 \subsubsection{Cone Calorimeter}
 
 Cone calorimeter (ASTM~1354) experiments were conducted to estimate the ignition temperature, the time to ignition and the heat release rate from samples of painted gypsum wallboard under thermal flux conditions ranging from 25~kW/m$^2$ to 75~kW/m$^2$.
 
-\subsubsection{Fire Pattern Recreation}
+\section{Fire Pattern Recreation}
 
-Heskestad developed an empirical method for calculating the mean visible flame height for fuels which do not have substantial in-depth combustion~\cite{Beyler:1986,Heskestad:SFPE}. This correlation was compared with the flame height results of the source fires and the instrumented wall experiments.
+The ability to recreate or simulate a fire pattern or certain characteristics of a fire pattern was examined with a variety of tools.  The first characteristic examined was the ability to determine based on the calculated heat flux to the wall if a "visible or measurable physical change" would occur to the painted paper surface of the gypsum wallboard.  The next characteristic of the fire pattern that was examined was the height.  The height of the fire pattern was then compared to the predictive results from flame height correlations. Heskestad developed an empirical method for calculating the mean visible flame height for fuels which do not have substantial in-depth combustion~\cite{Beyler:1986,Heskestad:SFPE}. This correlation was compared with the flame height results of the source fires and the instrumented wall experiments.
 
-FDS~\cite{McGrattan:2014} and Smokeview~\cite{Forney:2014} were used to examine the ability to numerically reproduce the source fires and the instrumented wall experiments.  Comparison between the experiments and the model will provide valuable validation data for the model.
+FDS~\cite{McGrattan:2014} and Smokeview~\cite{Forney:2014} were used to examine the ability to numerically reproduce the source fires and the instrumented wall experiments. These simulation tools provide results in the form of visual field data, in other they provide results in the same format that the investigator would see or document the fire pattern.  Comparison between the experiments and the model may provide valuable validation data for the model.
 
 \subsubsection{Data Analysis}
 
@@ -169,11 +173,12 @@ Point measurements were reduced and compared with values from the literature on 
 The key measurements for repeatability of the fire patterns on the gypsum wallboard are height, maximum width, shape, and area.  The two significant outcomes will be the repeatability of the fire patterns themselves and the ability to numerically recreate key measures of the pattern.
 
 
-\section{Characterizing the Source Fires}
+\chapter{Characterizing the Source Fires}
+\label{chapter:Characterizing the Source Fires}
 
 A series of experiments were conducted to characterize a limited set of  residential scale, pre-flashover or incipient fires.  A fixed fire source footprint, 30.5~cm square, was chosen for this study and a range of common fuels was selected.  The fires were positioned under an oxygen consumption calorimetry hood to determine the heat release rate.  Heat release rate, flame/plume gas temperatures, and total heat flux from the flames were measured and flame movement and height were recorded with photographs and videos.  Given the focus on residential fires, small source fires were selected so that the burn pattern would be limited to less than 2.4~m in height.  Replicate experiments were conducted with each of the fuels, in order to examine the repeatability of the fires and to quantify the variability in the flames.
 
-\subsubsection{Fuels}
+\section{Fuels}
 
 Three different fuels were used in this study.  Experiments were conducted with a natural gas fueled burner, a liquid fueled pan fire, and a solid fuel. Natural gas was chosen as a fuel because it is used for calibrating the oxygen depletion calorimeters in NIST’s Large Fire Laboratory.  Therefore the heat content of the gas was monitored and mass flow controlled to provide a heat release rate based on fuel mass flow for comparison with the heat release rate values measured with the calorimeter.  The gas burner arrangement provides the most idealized fire, in that it can be ignited and brought up to a near steady state heat release rate within a few seconds and then be shut down just as quickly.  This provided an approximate “square wave” exposure to the gypsum wallboard.  This is important for determining the potential amount of energy transferred to the exposed surface.
 
@@ -187,7 +192,7 @@ Polyurethane foam was chosen as the solid fuel.  According to the Polyurethane F
 
 The flexible polyurethane foam had a density of approximately 23~kg/m$^3$.  Each block of foam was 30.5~cm on a side and was 7.5~cm thick. The bottom and sides of the foam block were wrapped in aluminum foil to prevent the fuel from flowing or spreading as it burned to ensure that the fuel area remained with the same fixed area as the gasoline and natural gas.
 
-\subsubsection{Experimental Arrangement}
+\section{Experimental Arrangement}
 
 The source fire characterization experiments were conducted in the NIST Large Fire Research Laboratory’s 3~m by 3~m hood oxygen consumption calorimeter. This apparatus follows the methodology of ASTM~E 2067-08, {\em Standard Practice for Full-Scale Oxygen Consumption Calorimetry Fire Tests}~\cite{ASTM_E2067}. The fires were centered under the hood of the calorimeter and positioned in an open steel frame which provided support for the thermocouples and heat flux sensors. A load cell was positioned as a support for the fuels.  All of the data was recorded at intervals of 1~s on a computer based data acquisition system.
 
@@ -232,6 +237,7 @@ A schematic drawing of the instrumentation arrangement is shown in Fig.~\ref{Dra
 
 
 \chapter{Results}
+\label{chapter:Results}
 
 {\section{HRR}
 
@@ -337,18 +343,44 @@ For the natural gas experiments, approximately 30~s of ``steady state'' video we
 
 Each frame from the video clip was saved as a full color Tagged Image File Format (TIFF) file and the pixel aspect ratio was changed from 0.9 to 1, so that each pixel had the same dimension in both the horizontal and vertical directions.  Once these images were rendered by the video editing program, each image was scaled and cropped to provide input for Streams, a suite of image processing programs developed by Nokes for analyzing fluid flow visualization experiments~\cite{Nokes:2011}. The images were scaled so that one pixel equals 5~mm in height and width.
 
-Examples of a set of TIFF images for each fuel are shown in Figures 16 through 18.   Each figure has 56 sequential images from the video segment.  The images total almost 2~s of actual burn time.  Notice how the flame height cycles up and down in each of the sequences.  These images provide additional information and continuity of the motion of the flame so that the analysis is less likely to miss and extreme (minimum or maximum) position when compared to the still photographs.
+Examples of a set of TIFF images for each fuel are shown in Figures .~\ref{flame_height_comp_FHNG80_1} through .~\ref{flame_height_comp_FHPUF_1}.   Each figure has 56 sequential images from the video segment.  The images total almost 2~s of actual burn time.  Notice how the flame height cycles up and down in each of the sequences.  These images provide additional information and continuity of the motion of the flame so that the analysis is less likely to miss and extreme (minimum or maximum) position when compared to the still photographs.
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{../Figures/flame height comp FHNG80-1.png}\\
+	\caption[Example of sequential video frames sampled from a natural gas fueled experiment]{Example of sequential video frames sampled from a natural gas fueled experiment.  In this set of images, which spans almost two seconds, the visual continuous flame height fluctuates from approximately 0.6 m to 1.1 m.}
+	\label{flame_height_comp_FHNG80_1}
+\end{figure}
 
-From each of the peak heat release rate video clips, the edited TIFF files were loaded into Streams.  For the natural gas and gasoline fueled fires, approximately 900 images were used in each image sequence.  The polyurethane foam experiments had approximately 450 images in each sequence for each experiment.  Once the image sequence was created, a series of filters and amplifiers are applied to the images to eliminate all colors but red, based on a method developed by Goble~\cite{Goble:2007}.  Once all of the images were converted to a pure red ``flame'' which represented the area of visible fire, on a black background, the images were processed within Streams to develop an intensity field based on all of the images being ``overlaid'' on each other.  The end result is a contour plot of the intermittency of the flame ranging from zero to one.
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{../Figures/flame height comp FHGAS-1.png}\\
+	\caption[Example of sequential video frames sampled from a gasoline fueled experiment]{Example of sequential video frames sampled from a gasoline fueled experiment.  In this set of images which spans almost two seconds the visual continuous flame height fluctuates from approximately 0.6 m to 1.1 m.}
+	\label{flame_height_comp_FHGAS_1}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{../Figures/flame height comp FHPUF-1.png}\\
+	\caption[Example of sequential video frames sampled from a polyurethane foam fueled experiment]{Example of sequential video frames sampled from a polyurethane foam fueled experiment.  In this set of images which spans almost two seconds the continuous visual flame height fluctuates from 0.4 m to 0.9 m.}
+	\label{flame_height_comp_FHPUF_1}
+\end{figure}
+
+
+From each of the peak heat release rate video clips, the edited TIFF files were loaded into Streams~\cite{Nokes:2011}.  For the natural gas and gasoline fueled fires, approximately 900 images were used in each image sequence.  The polyurethane foam experiments had approximately 450 images in each sequence for each experiment.  Once the image sequence was created, a series of filters and amplifiers are applied to the images to eliminate all colors but red, based on a method developed by Goble~\cite{Goble:2007}.  Once all of the images were converted to a pure red ``flame'' which represented the area of visible fire, on a black background, the images were processed within Streams to develop an intensity field based on all of the images being ``overlaid'' on each other.  The end result is a contour plot of the intermittency of the flame ranging from zero to one.
 
 The calculations for the intensity field are based on a user defined computation grid.  A grid sensitivity analysis was conducted with 5~mm, 10~mm, 20~mm, 40~mm and 80~mm square grids.  Examples of grid cell resolution outputs from Streams for the natural gas fueled burner are shown in Fig.~\ref{Intensity}.  The outputs shown are time averaged intensity fields generated with 5 resolutions listed above. In each output the x and y axis dimensions are in mm.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{../Figures/Fig19}\\
-  \caption[Comparison images of intensity fields derived from the video images of the natural gas fueled fire]{Comparison images of intensity fields derived from the video images of the natural gas fueled fire using Streams. The images, starting with the upper left, were generated with 5 mm, 10 mm, 20 mm, 40 mm and 80 mm resolutions.}
-  \label{Intensity}
+\begin{figure}[p]
+	\centering
+	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80-1_GS_5mm_10s_color}
+	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80-1_GS_10mm_10s_color}\\
+	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80-1_GS_20mm_10s_color}
+	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80-1_GS_40mm_10s_color}
+	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80-1_GS_80mm_10s_color}\\
+	 \caption[Comparison images of intensity fields derived from the video images of the natural gas fueled fire]{Comparison images of intensity fields derived from the video images of the natural gas fueled fire using Streams. The images, starting with the upper left, were generated with 5 mm, 10 mm, 20 mm, 40 mm and 80 mm resolutions.}
+	 \label{Intensity}
 \end{figure}
+
 
 Since each pixel in the original images was equal to 5~mm, in the highest resolution case, the 5~mm analysis grid would match the best resolution of the original image.  Four of the five cases resulted in similar results, only the 80~mm case generated significantly different results in flame height.  As a result of the sensitivity analysis, a 10~mm grid was chosen as an optimum size for providing a sufficient level of resolution, enabling efficient processing of 30~s worth of video frames.  At the 5~mm grid resolution, limitations within the processing system would not allow a full 30~s of video analysis.  Therefore the intensity fields and the resulting plots and data generated for this study were developed with a 10~mm grid.
 
@@ -404,23 +436,118 @@ The source fires have been characterized in terms of heat release rate, plume te
 
 
 \chapter{Instrumented Calibration (non-combustible) Wall Experiments}
+Purpose
+
 
 \section{Experimental Arrangement}
+A free standing, non-combustible, calcium silicate wall was instrumented to measure the thermal exposure of the wall from the fire in terms of temperature and heat flux.  The fires were initially placed at predetermined, fixed positions away from the wall. The burner was moved toward the wall until the burner was against the wall.
 
 \section{Results}
 
-\subsection{Heat Flux Wall Temperatures}
+\subsection{Wall Temperatures}
+
+\subsection{Heat Flux}
+
+\subsection{Fire Pattern}
 
 
 
 \chapter{Instrumented Gypsum Board Wall Experiments}
+Purpose
+\section{Experimental Arrangement}
+A free standing, non-combustible, steel frame with gypsum wallboard attached to the surface was instrumented to measure the thermal exposure of the wall from the fire in terms of temperature and heat flux.  The fires were initially placed at predetermined, fixed positions away from the wall. The burner was moved toward the wall until the burner was against the wall.  If the results indicated that no burn pattern would result from a given combination of fuel and position, then that fuel and position combination were eliminated from the remainder of the test matrix.
 
 \section{Characterization of Gypsum Board}
 
+\section{Results}
+
+\subsection{Wall Temperatures}
+
+\subsection{Heat Flux}
+
+\subsection{Fire Pattern}
+
+\chapter{Bench Scale Experiments}
+
 \section{Cone Calorimeter Experiments}
 
+\section{Radiant Flooring Panel Experiments}
+
+\section{Radiant Panel Experiments}
+
+\section{Results}
+
+\subsection{Ignition Temperature}
+
+\subsection{Heat Release Rate per Unit Area}
+
+\subsection{Critical Heat Flux}
 
 
+\chapter{Fire Pattern Compartment Experiments}
+
+\section{Wall Construction Type Experiments}
+\subsection{Experimental Arrangement}
+\subsection{Results}
+
+\section{Wall Position Experiments}
+\subsection{Experimental Arrangement}
+
+\subsection{Results}
+
+\subsubsection{Natural Gas}
+\subsubsection{Gasoline}
+\subsubsection{Polyurethane Foam}
+
+\section{Corner Position Experiments}
+
+\subsection{Experimental Arrangement}
+
+\subsection{Results}
+
+\subsubsection{Natural Gas}
+\subsubsection{Gasoline}
+\subsubsection{Polyurethane Foam}
+
+\chapter{Summary of Experimental Results}
+
+Needed?
+
+\chapter{Comparison of Algebraic Fire Characterizations with Fire Pattern Results}
+
+\section{Evidence of a Fire Pattern}
+
+\section{Flame Height Correlation}
+
+\subsection{Correlation Descriptions}
+
+\section{Comparison of Results}
+
+\chapter{Comparison of Field Model Simulations with Experimental Results}
+
+\section{Fire Dynamics Simulator and Smokeview}
+
+\subsection{Simulation of Fires}
+
+\subsection{Input Data}
+
+\section{Comparison of FDS with Source Fire Results}
+
+\subsection{Grid Size Analysis}
+
+\subsection{Plume Temperatures}
+
+\subsection{Heat Flux}
+
+\subsection{Flame Height}
+
+\section{Comparison of FDS with Fire Pattern Results} 
+
+\chapter{Discussion}
+
+\chapter{Future Research Needs}
+
+\chapter{Conclusions}
 
 
 
