@@ -54,7 +54,8 @@ gas_quantities = ['CO_', 'CO2_', 'O2_']
 
 # Load exp. timings, description, and averages file
 timings = pd.read_csv(timings_file, index_col=0)
-hose_info = pd.read_csv(hose_info_file, index_col=0)
+desired_tests = list(timings.columns.values)			# creates list of  column headers which
+hose_info = pd.read_csv(hose_info_file, index_col=0) 	# correspond to desired tests
 info = pd.read_csv(info_file, index_col=3)
 
 # Files to skip
@@ -73,189 +74,185 @@ CCW_avg = []
 #  ===============================
 
 for f in os.listdir(data_dir):
-    if f.endswith('.csv'):
+	if f.endswith('.csv'):
+		# Skip files with time information or reduced data files
+		if any([substring in f.lower() for substring in skip_files]):
+			continue
 
-        # Skip files with time information or reduced data files
-        if any([substring in f.lower() for substring in skip_files]):
-            continue
+		# Strip test name from file name
+		test_name = f[:-4]
+		print 'Test ' + test_name
 
-        # Strip test name from file name
-        test_name = f[:-4]
-        print 'Test ' + test_name
+		# Skips undesired tests
+		if test_name not in desired_tests:
+			continue
 
-        # Only loads desired hose tests
-        if 'Test_18_' not in test_name and 'Test_19_' not in test_name:
-            continue
+		# Load exp. data file
+		data = pd.read_csv(data_dir + f, index_col=0)
 
-        # Load exp. data file
-        data = pd.read_csv(data_dir + f, index_col=0)
+		# Load exp. scaling file
+		if 'West' in test_name:
+			scaling_file = scaling_file_west
+		elif 'East' in test_name:
+			scaling_file = scaling_file_east
+		else:
+			scaling_file = scaling_file_default
 
-        # Load exp. scaling file
-        # if 'West' in test_name:
-        scaling_file = scaling_file_west
-        # elif 'East' in test_name:
-        #     scaling_file = scaling_file_east
-        # else:
-        #     scaling_file = scaling_file_default
-        scaling = pd.read_csv(scaling_file, index_col=2)
+		scaling = pd.read_csv(scaling_file, index_col=2)
 
-        # Read in test times to offset plots 
-        start_of_test = info['Start of Test'][test_name]
-        end_of_test = info['End of Test'][test_name]
+		# Read in test times to offset plots 
+		start_of_test = info['Start of Test'][test_name]
+		end_of_test = info['End of Test'][test_name]
 
-        # Offset data time to start of test
-        t = data['Time'].values - start_of_test
+		# Offset data time to start of test
+		t = data['Time'].values - start_of_test
 
-        # Save converted time back to dataframe
-        data['Time'] = t
+		# Save converted time back to dataframe
+		data['Time'] = t
 
-        #  ============
-        #  = Plotting =
-        #  ============
+		#  ============
+		#  = Plotting =
+		#  ============
 
-        # Generate a plot for each quantity group
-        for group in sensor_groups:
+		# Generate a plot for each quantity group
+		for group in sensor_groups:
+			# Skips all groups not in "included groups" in hose_info file
+			if any([substring in group for substring in hose_info['Included Groups'][test_name].split('|')]) == False:
+				continue
 
-            # Skips excluded groups listed in test description file
-            if any([substring in group for substring in hose_info['Included Groups'][test_name].split('|')]) == False:
-                continue
+			# sets stream data frames to emply
+			SS_df = pd.DataFrame()
+			
+			
 
-            # Defines start and end times for different stream patterns
-            for stream in hose_info.columns[2:5]:
-                start_name = stream + '_start'
-                start = hose_info[start_name][test_name]
-                end_name = stream + '_end'
-                end = hose_info[end_name][test_name]
-                # Creates data set for specific hose stream
-                stream_data = data.iloc[start:end]
-                t_stream = stream_data['Time']
 
-                # Creates data frame for sensor group to plot average of channels for each stream
-                stream_sensor_group = pd.DataFrame(t_stream)
+			# Defines start and end times for different stream patterns
+			for stream in hose_info.columns[2:5]:
+				# ignores streams not involved in test (specified in hose_info file)
+				if stream[test_name] == 'NaN':
+					continue
 
-                for channel in stream_data.columns[1:]:
-                    # Skip excluded channels listed in test description file
-                    if any([substring in channel for substring in hose_info['Excluded Channels'][test_name].split('|')]):
-                        continue
+				start_name = stream + '_start'
+				start = hose_info[start_name][test_name]
+				end_name = stream + '_end'
+				end = hose_info[end_name][test_name]
 
-                    if any([substring in channel for substring in group]):
+				# Creates data set for specific hose stream
+				stream_data = data.iloc[start:end]
+				t_stream = stream_data['Time']
 
-                        calibration_slope = float(scaling['Calibration Slope'][channel])
-                        calibration_intercept = float(scaling['Calibration Intercept'][channel])
+				# Creates empty data frame (with time index) to plot average of channels for each stream and sensor group
+				stream_group = pd.DataFrame(t_stream)
 
-                        # Scale channel and set plot options depending on quantity
-                        # # Plot temperatures
-                        # if 'TC_' in channel:
-                        #     plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-                        #     quantity = data[channel] * calibration_slope + calibration_intercept
-                        #     ylabel('Temperature ($^\circ$C)', fontsize=20)
-                        #     line_style = '-'
-                        #     if 'TC_Helmet_' in channel:
-                        #         axis_scale = 'Y Scale TC_Helmet'
-                        #     else:
-                        #         axis_scale = 'Y Scale TC'
+				for channel in stream_data.columns[1:]:
+					# Skip excluded channels listed in hose_info file
+					if any([substring in channel for substring in hose_info['Excluded Channels'][test_name].split('|')]):
+						continue
 
-                        # Plot velocities
-                        if 'BDP_' in channel:
-                            plt.rc('axes', color_cycle=['k', 'b', 'r', 'b', '0.75', 'c', 'm', 'y'])
-                            conv_inch_h2o = 0.4
-                            conv_pascal = 248.8
+					if any([substring in channel for substring in group]):
 
-                            # Convert voltage to pascals
-                            # Get zero voltage from pre-test data
-                            zero_voltage = np.mean(stream_data[channel][0:pre_test_time])
-                            pressure = conv_inch_h2o * conv_pascal * (stream_data[channel] - zero_voltage)
+						calibration_slope = float(scaling['Calibration Slope'][channel])
+						calibration_intercept = float(scaling['Calibration Intercept'][channel])
 
-                            # Calculate velocity
-                            quantity = 0.0698 * np.sqrt(np.abs(pressure) * (stream_data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
-                            ylabel('Velocity (m/s)', fontsize=20)
-                            line_style = '-'
-                            axis_scale = 'Y Scale BDP'
+						# Plot velocities
+						if 'BDP_' in channel:
+							plt.rc('axes', color_cycle=['k', 'b', 'r', 'b', '0.75', 'c', 'm', 'y'])
+							conv_inch_h2o = 0.4
+							conv_pascal = 248.8
 
-                        # # Plot heat fluxes
-                        # if any([substring in channel for substring in heat_flux_quantities]):
-                        #     plt.rc('axes', color_cycle=['k', 'k',
-                        #                                 'r', 'r',
-                        #                                 'g', 'g',
-                        #                                 'b', 'b',
-                        #                                 'c', 'c'])
+							# Convert voltage to pascals
+							# Get zero voltage from pre-test data
+							zero_voltage = np.mean(stream_data[channel][0:pre_test_time])
+							pressure = conv_inch_h2o * conv_pascal * (stream_data[channel] - zero_voltage)
 
-                        #     # Get zero voltage from pre-test data
-                        #     zero_voltage = np.mean(data[channel][0:pre_test_time])
-                        #     quantity = (data[channel] - zero_voltage) * calibration_slope + calibration_intercept
-                        #     ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
-                        #     if 'HF' in channel:
-                        #         line_style = '-'
-                        #     elif 'RAD' in channel:
-                        #         line_style = '--'
-                        #     axis_scale = 'Y Scale HF'
+							# Calculate velocity
+							quantity = 0.0698 * np.sqrt(np.abs(pressure) * (stream_data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
+							ylabel('Velocity (m/s)', fontsize=20)
+							line_style = '-'
+							axis_scale = 'Y Scale BDP'
 
-                        # # # Plot gas measurements
-                        # if any([substring in channel for substring in gas_quantities]):
-                        #     plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-                        #     quantity = data[channel] * calibration_slope + calibration_intercept
-                        #     ylabel('Concentration (%)', fontsize=20)
-                        #     line_style = '-'
-                        #     axis_scale = 'Y Scale GAS'
+						# # Plot hose pressure
+						# if 'HOSE_' in channel:
+						# 	plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+						# 	# Skip data other than sensors on 2.5 inch hoseline
+						# 	if '2p5' not in channel:
+						# 		continue
+						# 	quantity = stream_data[channel] * calibration_slope + calibration_intercept
+						# 	ylabel('Pressure (psi)', fontsize=20)
+						# 	line_style = '-'
+						# 	axis_scale = 'Y Scale HOSE'
 
-                        # # Plot hose pressure
-                        # if 'HOSE_' in channel:
-                        #     plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-                        #     # Skip data other than sensors on 2.5 inch hoseline
-                        #     if '2p5' not in channel:
-                        #         continue
-                        #     quantity = stream_data[channel] * calibration_slope + calibration_intercept
-                        #     ylabel('Pressure (psi)', fontsize=20)
-                        #     line_style = '-'
-                        #     axis_scale = 'Y Scale HOSE'
+						# Save converted quantity back to exp. dataframe and sensor group dataframe
+						stream_data[channel] = quantity
+						stream_group[channel] = quantity
 
-                        # Save converted quantity back to exp. dataframe and sensor group dataframe
-                        stream_data[channel] = quantity
-                        stream_sensor_group[channel] = quantity
-                    
-                # Defines the average of all channels in sensor group 
-                channel_avg = []
-                for index, row in stream_sensor_group.iterrows():
-                    avg = np.mean(row[1:])
-                    channel_avg.append(avg)
+				# Calculates the average of all channels in sensor group 
+				group_avg = []
+				for index, row in stream_group.iterrows():
+					avg = np.mean(row[1:])
+					group_avg.append(avg)
 
-                # Adds a column of the average of all channels to the dataframe 
-                stream_sensor_group['Sensor Average'] = channel_avg
+				# Adds a column of the average of all channels to the dataframe 
+				stream_group['Average of Channels'] = group_avg
 
-                # Creates dataframe for each type of stream and type of pattern 
-                if stream == 'SS':
-                    SS_df = stream_sensor_group
-                    SS_fix = SS_df.iloc[0:180]
-                    SS_sweep = SS_df.iloc[240:420]
-                    SS_CW = SS_df.iloc[480:660]
-                    SS_CCW = SS_df.iloc[720:900]
-                    SS_CW_CCW = SS_df.iloc[480:900]
-                    SS_avg = stream_sensor_group['Sensor Average']
-                if stream == 'NF':
-                    NF_df = stream_sensor_group
-                    NF_fix = NF_df.iloc[0:180]
-                    NF_sweep = NF_df.iloc[240:420]
-                    NF_CW = NF_df.iloc[480:660]
-                    NF_CCW = NF_df.iloc[720:900]
-                    NF_CW_CCW = NF_df.iloc[480:900]
-                    NF_avg = stream_sensor_group['Sensor Average']
-                if stream == 'WF':
-                    WF_df = stream_sensor_group
-                    WF_fix = WF_df.iloc[0:180]
-                    WF_sweep = WF_df.iloc[240:420]
-                    WF_CW = WF_df.iloc[480:660]
-                    WF_CCW = WF_df.iloc[720:900]
-                    WF_CW_CCW = WF_df.iloc[480:900]
-                    WF_avg = stream_sensor_group['Sensor Average']
-        # #Saves result file with averages
-        # results = {'Stream':stream_id, 'Channel':channel_id, 'Fixed':fix_avg, 'Sweeping':sweep_avg, 
-        #     'CW':CW_avg, 'CCW':CCW_avg}
-        # results_file = pd.DataFrame(results, columns = ['Stream', 'Channel', 'Fixed', 'Sweeping', 
-        #     'CW', 'CCW'])
-        # results_file.to_csv(results_loc + 'Hose_Test_results.csv')
-        # print 'Saved results'
-        # close('all')
-        # print
+				# Saves dataframe based on stream 
+				if stream == 'SS':
+					SS_df = stream_group
+				if stream == 'NF':
+					NF_df = stream_group
+				if stream == 'WF':
+					WF_df = stream_group
+
+				# Creates dataframe for each type of stream and type of pattern
+				multi_fact = 0
+				for diff in hose_info['Difference'][test_name].split('|'):
+
+					multi_fact = multi_fact + 1
+					name = 
+					if stream == 'SS':
+						SS_df = stream_sensor_group
+						SS_fix = SS_df.iloc[0:180]
+						SS_sweep = SS_df.iloc[240:420]
+						SS_CW = SS_df.iloc[480:660]
+						SS_CCW = SS_df.iloc[720:900]
+						SS_CW_CCW = SS_df.iloc[480:900]
+						SS_avg = stream_sensor_group['Sensor Average']
+					if stream == 'NF':
+						NF_df = stream_sensor_group
+						NF_fix = NF_df.iloc[0:180]
+						NF_sweep = NF_df.iloc[240:420]
+						NF_CW = NF_df.iloc[480:660]
+						NF_CCW = NF_df.iloc[720:900]
+						NF_CW_CCW = NF_df.iloc[480:900]
+						NF_avg = stream_sensor_group['Sensor Average']
+					if stream == 'WF':
+						WF_df = stream_sensor_group
+						WF_fix = WF_df.iloc[0:180]
+						WF_sweep = WF_df.iloc[240:420]
+						WF_CW = WF_df.iloc[480:660]
+						WF_CCW = WF_df.iloc[720:900]
+						WF_CW_CCW = WF_df.iloc[480:900]
+						WF_avg = stream_sensor_group['Sensor Average']
+
+					multi_fact = multi_fact + 1
+					if stream == 'SS':
+
+					if stream == 'NF':
+
+					if stream == 'WF':
+
+
+                stream_id.append(stream)
+                channel_id.append(channel)
+        #Saves result file with averages
+        results = {'Stream':stream_id, 'Channel':channel_id, 'Fixed':fix_avg, 'Sweeping':sweep_avg, 
+            'CW':CW_avg, 'CCW':CCW_avg}
+        results_file = pd.DataFrame(results, columns = ['Stream', 'Channel', 'Fixed', 'Sweeping', 
+            'CW', 'CCW'])
+        results_file.to_csv(results_loc + 'Hose_Test_results.csv')
+        print 'Saved results'
+        close('all')
+        print
 
             # Plots sensor group channel average for each hose stream
             fig = figure()
