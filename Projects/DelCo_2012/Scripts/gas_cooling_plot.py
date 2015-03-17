@@ -75,7 +75,7 @@ for f in os.listdir(data_dir):
 						quantity = data[channel]
 						ylabel('Temperature ($^\circ$C)', fontsize=20)
 						line_style = '-'
-						ylim = ([0,800])
+						ylim([0,800])
 
 					if 'BDP_' in channel:
 						plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
@@ -90,7 +90,7 @@ for f in os.listdir(data_dir):
 						quantity = pd.rolling_mean(0.0698 * np.sqrt(np.abs(pressure) * (data['TC_'+ channel[4:]] + 273.15)) * np.sign(pressure),20,center=True)
 						ylabel('Velocity (m/s)', fontsize=20)
 						line_style = '-'
-						ylim = ([-10,10])
+						ylim([-10,10])
 
 					if any([substring in channel for substring in heat_flux_quantities]):
 						plt.rc('axes', color_cycle=['k', 'r',
@@ -108,7 +108,7 @@ for f in os.listdir(data_dir):
 							line_style = '-'
 						elif 'RAD' in channel:
 							line_style = '--'
-						ylim = ([0,50])
+						ylim([-5,20])
 
 					# Save converted quantity back to exp. dataframe
 					data[channel] = quantity
