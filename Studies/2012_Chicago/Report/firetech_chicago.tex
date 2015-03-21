@@ -89,7 +89,7 @@ grestore
 \maketitle
 
 \begin{abstract}
-The Fire Dynamics Simulator (FDS) fire model, which is developed and maintained by the National Institute of Standards and Technology (NIST), was used to provide insight into the dynamics of a fire that occurred on November 2, 2012, within a 2~\sfrac{1}{2}~story, single family structure in Chicago, IL, that resulted in the death of the captain of a fire department. The inputs for the FDS simulations are documented in this report and are based on the fire scenario, including the building geometry, interior furnishings, and ventilation conditions. The fire started in the attic and spread down through an opening into the enclosed porch on the rear of the structure. This resulted in ventilation limited (fuel rich) fire conditions in the attic and rear porch areas. The spread of fire and hot gases into the second floor of the structure was limited by a closed steel-faced, wood-framed door. After exposure to the elevated temperatures and pressure from the fire in the porch area, the wood frame of the door decomposed, the steel faces of the door failed, and the door collapsed inward. The door failure resulted in the establishment of a flow path between the higher pressure and higher temperature conditions in the enclosed porch and the lower pressure and lower temperature conditions in the hallway and kitchen areas of the second floor. The temperature of the gases that flowed into the hallway exceeded 260~$^{\circ}$C (500~$^{\circ}$F) at a height of 1.86~m (6~ft). Unfortunately, a captain and firefighter were advancing a hose line in the hallway near the door at the time of the door failure. It appears that the captain was likely overcome by the rapid change in conditions before he could exit to the safety of the kitchen area. After a Mayday call, the captain was rescued from the structure, but later succumbed to his injuries.
+The Fire Dynamics Simulator (FDS) fire model, which is developed and maintained by the National Institute of Standards and Technology (NIST), was used to provide insight into the dynamics of a fire that occurred on November 2, 2012, within a 2~\sfrac{1}{2}~story, single family structure in Chicago, IL, that resulted in the death of the captain of a fire department. The inputs for the FDS simulations are documented in this report and are based on the fire scenario, including the building geometry, interior furnishings, and ventilation conditions. The fire started in the attic and spread down through an opening into the enclosed porch on the rear of the structure. This resulted in ventilation limited (fuel rich) fire conditions in the attic and rear porch areas. Further spread of fire and hot gases from the attic downward into the second floor of the structure was limited by a closed steel-faced, wood-framed door. Note that there was no evidence of fire damage on the first floor of the structure. After exposure to the elevated temperatures and pressure from the fire in the porch area, the wood frame of the door decomposed, the steel faces of the door failed, and the door collapsed inward. The door failure resulted in the establishment of a flow path between the higher pressure and higher temperature conditions in the enclosed porch and the lower pressure and lower temperature conditions in the hallway and kitchen areas of the second floor. The temperature of the gases that flowed into the hallway exceeded 260~$^{\circ}$C (500~$^{\circ}$F) at a height of 1.86~m (6~ft). Unfortunately, a captain and firefighter were advancing a hose line in the hallway near the door at the time of the door failure. It appears that the captain was likely overcome by the rapid change in conditions before he could exit to the safety of the kitchen area. After a Mayday call, the captain was rescued from the structure, but later succumbed to his injuries.
 
 \keywords{LODD \and FDS \and CFD}
 \end{abstract}
@@ -155,12 +155,14 @@ Smokeview is a software tool designed to visualize simulation results from FDS~\
 Input data from various sources must be collected and documented to simulate a fire using FDS or any other fire model. For the simulation results presented in this document, information was obtained from two primary sources. The following information was gathered from the fire scene: the geometry of the building and the compartments being modeled, the size and location of exterior and interior ventilation openings, and documentation of fire damage to the building. The following information was gathered from witnesses, first responders, reports, and recorded media such as fire ground radios or videos: information on the timing of the fire development, the sequence and approximate timing of ventilation openings to the outside, and weather conditions at the time of the fire. 
 
 The analysis of the simulation results is focused on the interior conditions on the second floor before and after the interior door failure. Based on the goals of the analysis and the information collected, several engineering approximations were made. For example, the fire exhibited signs of under-ventilated conditions when firefighters arrived~\cite{NIOSH:Bowyer}; however, the exact ignition time, fire growth rate, and heat release rate (HRR) of the fire were not known. The ignition time and growth rate were estimated to reduce the amount of required calculation time while adhering to documented observations. The HRR of the fire was estimated using documentation of the potential fuel load within the structure.
+
+Whenever a computational analysis is conducted, it is important to match needs of the analysis with the necessary level of sophistication. To determine the best fire model for use in this study, the SFPE Guide to Substantiating a Fire Model for a Given Application~\cite{SFPE_G.06} was used. The author's determined that FDS and Smokeview were most appropriate.
  
 \subsection{Geometry}
 \label{geom}
-The structure involved in this fire incident was a 2~\sfrac{1}{2}~story residential building with balloon frame construction and a gable roof.\footnote{Balloon frame construction is a method of framing where a continuous stud runs from the bottom horizontal member to the top plate. Intermediate floors are built directly off of the studs. One potential issue with balloon frame construction is that without fire stops there is void space for fire to potentially travel between the floors within the wall cavity.} The structure had a 17.15~m (56~ft) by 6.15~m (20~ft) footprint, as shown in Fig.~\ref{fig:simp_geom}. This results in a floor area of approximately 105~m$^2$ (1100~ft$^2$) per floor and a main living area of approximately 110~m$^2$ (2200~ft$^2$). The interior walls were constructed from nominal lumber covered by 12.7~mm (0.5~in) gypsum board~\cite{NIOSH:Bowyer}. Additionally, there was a half-story attic that contained the structure's hot water heater. Three sets of stairs were present in the structure: one front stairwell that connected the first and second levels (Stair 1 in Fig.~\ref{fig:simp_geom}), one rear stairwell that connected the first and second levels (Stair 2 in Fig.~\ref{fig:simp_geom}) and a second rear set of stairs which provided access to the attic (Stair 3 in Fig.~\ref{fig:simp_geom}). Entry to the first floor of the structure can be made either in the front or rear, as shown in Fig.~\ref{fig:simp_geom}.
+The structure involved in this fire incident was a 2~\sfrac{1}{2}~story residential building with balloon frame construction and a gable roof.\footnote{Balloon frame construction is a method of framing where a continuous stud runs from the bottom horizontal member to the top plate. Intermediate floors are built directly off of the studs. One potential issue with balloon frame construction is that without fire stops there is void space for fire to potentially travel between the floors within the wall cavity.} The structure had a 17.15~m (56~ft) by 6.15~m (20~ft) footprint, as shown in Fig.~\ref{fig:simp_geom}. This results in a floor area of approximately 105~m$^2$ (1100~ft$^2$) per floor and a main living area of approximately 210~m$^2$ (2200~ft$^2$). The interior walls were constructed from nominal lumber covered by 12.7~mm (0.5~in) gypsum board~\cite{NIOSH:Bowyer}. Additionally, there was a half-story attic that contained the structure's hot water heater. Three sets of stairs were present in the structure: one front stairwell that connected the first and second levels (Stair 1 in Fig.~\ref{fig:simp_geom}), one rear stairwell that connected the first and second levels (Stair 2 in Fig.~\ref{fig:simp_geom}) and a second rear set of stairs which provided access to the attic (Stair 3 in Fig.~\ref{fig:simp_geom}). Entry to the first floor of the structure can be made either in the front or rear, as shown in Fig.~\ref{fig:simp_geom}.
 
-The fire, which is described in Section~\ref{fire}, started in the attic and spread to the rear porch. Discussion of the fire's impact on the interior conditions is provided in Section~\ref{results}. Figure~\ref{fig:alpha_ex} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the damage occurred in the attic and rear porch on the second floor. Fully dimensioned drawings of the interior of the first and second floors are shown in Figs.~\ref{fig:first_floor} and \ref{fig:second_floor}, respectively.
+The fire, which is described in Section~\ref{fire}, started in the attic and spread to the rear porch. Discussion of the fire's impact on the interior conditions is provided in Section~\ref{results}. Figure~\ref{fig:alpha_ex} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the damage occurred in the attic and rear porch on the second floor. Fully dimensioned drawings of the interior of the first and second floors are shown in Appendix~\ref{app_draw} in Figs.~\ref{fig:first_floor} and \ref{fig:second_floor}, respectively.
 
 \begin{figure}[!ht]
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
@@ -219,6 +221,8 @@ To calculate the total fire size, the appropriate burning area (exposed wood are
 &DEVC XYZ = -17.2,2,0, ID='SECOND FIRE', QUANTITY='TIME', SETPOINT=40, INITIAL_STATE=.FALSE. /
 \end{lstlisting}
 Note that the coordinates here are unique for the vents are specific to the input files used for these simulations. The key point is that they are 2-D planes located at a specific area.
+
+When using any computational model, the user is responsible for understanding it's limitations. In this simulation, one of the main concerns is the ability to accurately model an under-ventilated structure fire. Due to the nature of the ``mixed-is-burnt'' concept when using fast-chemistry reactions in FDS~\cite{FDS_Tech_Guide}, there exists the possibility for flaming conduction to be predicted by the model that may not occur in a real fire. 
 
 \subsection{Materials}
 \label{matl}
@@ -289,24 +293,7 @@ D^* = \left(
 From the FDS User's Guide~\cite{FDS_Users_Guide}, the characteristic fire diameter is related to the characteristic fire size via the
 relation $Q^* = (D^*/D)^{5/2}$. Here, $D$ is the physical diameter of the base of the fire specified in the simulation. Following Eq.~\ref{eq:mesh} and using a grid cell size of 10~cm, the characteristic fire diameter to cell size ($D^*/\dx$) ratio is 15.5 for the 3.3~MW porch fire and 23 for the 9~MW attic fire. Based on validation work performed for the U.S. Nuclear Regulatory Commission, $D^*/\dx$ values ranged between 4 and 16~\cite{NUREG_1824} and produced results that were adequate for engineering calculations. The grid resolution used in this model is within or exceeds typical engineering $D^*/\dx$ values.
 
-As discussed in Section~\ref{geom}, the structure has dimensions of 17.15~m (56~ft) by 6.15~m (20~ft) and a total height of 8.56~m (28~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 24~m (79~ft) by 10~m (33~ft) by 10~m (33~ft). A grid resolution of 10~cm (3.9~in) was used, which required 2.4 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:geom_grid} shows the front of the structure rendered in Smokeview with the 10~cm mesh. The domain was divided into 16 equally sized meshes (each containing 150,000 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 1.5~days. Figure~\ref{fig:mult_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. 
-
-\begin{figure}[!ht]
-\centering
-\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-   \scalebox{1.0}{\includegraphics[width=.49\textwidth]{../Figures/smv_exterior_grid}} &
-   \scalebox{1.0}{\includegraphics[width=.488\textwidth]{../Figures/smv_exterior_grid_rear}} \\
-\end{tabular*}
-\caption{Front (left) and rear (right) of the structure with 10~cm computational mesh}
-\label{fig:geom_grid}
-\end{figure}
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=.60\textwidth]{../Figures/smv_exterior_mesh}
-\caption[Front-right side of the structure within the computational domain]{Front-right side of the structure within the computational domain (with multiple meshes). Each of the 16 meshes is 3~m (9.8~ft) by 10~m (33~ft) by 5~m (16.4~ft)}
-\label{fig:mult_mesh}
-\end{figure}
+As discussed in Section~\ref{geom}, the structure has dimensions of 17.15~m (56~ft) by 6.15~m (20~ft) and a total height of 8.56~m (28~ft). To ensure adequately resolved fluid flow in and out of the structure, the computational domain was extended beyond the volume of the structure. The total volume of the computational domain was 24~m (79~ft) by 10~m (33~ft) by 10~m (33~ft). A grid resolution of 10~cm (3.9~in) was used, which required 2.4 million computational cells. As a result, all of the input model geometry lengths, ventilation openings (holes, doors, and windows), and fire areas will snap to the nearest 10~cm. Figure~\ref{fig:geom_grid} in Appendix~\ref{app_mesh} shows the front of the structure rendered in Smokeview with the 10~cm mesh. The domain was divided into 16 equally sized meshes (each containing 150,000 grid cells) that could be processed in parallel, which reduced the amount of required calculation time to approximately 1.5~days. Figure~\ref{fig:mult_mesh} in Appendix~\ref{app_mesh} shows the entire structure within the computational domain that has been divided into multiple meshes. 
 
 \subsection{Summary of Model Input Parameters}
 \label{sec:summary_of_model_inputs}
@@ -493,7 +480,7 @@ From on-scene reports (Section~\ref{fire_sum}) and the FDS simulation results (S
 \label{fig:chicago_doorfold}
 \end{figure}
 
-Recent experiments conducted by NIST revealed similar post-fire states after doors of similar construction were exposed to fires. Figure~\ref{fig:SC_doorfold} shows doors from two different residential fire experiments in different stages of degradation. In both cases, note that the door knob assembly served as a pivot point for the upper portion of the door to collapse around. This is similar to the location of the creases in the remains of the steel door that was located between the hallway and the enclosed porch in this fire incident.
+Recent experiments conducted by NIST revealed similar post-fire states after doors of similar construction were exposed to fires. Figure~\ref{fig:SC_doorfold} shows doors from two different residential fire experiments in different stages of degradation \footnote{At the time of this publication, the report detailing the structure fire experiments has not yet been published. Please check www.nist.gov/fire for updates regarding this work.}. In both cases, note that the door knob assembly served as a pivot point for the upper portion of the door to collapse around. This is similar to the location of the creases in the remains of the steel door that was located between the hallway and the enclosed porch in this fire incident.
 
 \begin{figure}[!ht]
 \centering
@@ -636,6 +623,28 @@ The authors would like to thank the Chicago Fire Department, especially Commissi
 \caption[Dimensioned drawing of second floor.]{Dimensioned drawing of second floor. The measurements are accurate to within 15~cm (6~in).}
 \label{fig:second_floor}
 \end{figure}
+
+\clearpage
+
+\section{Numerical Mesh Figures}
+\label{app_mesh}
+\begin{figure}[!ht]
+\centering
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+   \scalebox{1.0}{\includegraphics[width=.49\textwidth]{../Figures/smv_exterior_grid}} &
+   \scalebox{1.0}{\includegraphics[width=.488\textwidth]{../Figures/smv_exterior_grid_rear}} \\
+\end{tabular*}
+\caption{Front (left) and rear (right) of the structure with 10~cm computational mesh}
+\label{fig:geom_grid}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=.60\textwidth]{../Figures/smv_exterior_mesh}
+\caption[Front-right side of the structure within the computational domain]{Front-right side of the structure within the computational domain (with multiple meshes). Each of the 16 meshes is 3~m (9.8~ft) by 10~m (33~ft) by 5~m (16.4~ft)}
+\label{fig:mult_mesh}
+\end{figure}
+
 
 \end{document}
 
