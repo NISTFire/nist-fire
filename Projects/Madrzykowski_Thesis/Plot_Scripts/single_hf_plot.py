@@ -10,13 +10,16 @@ rcParams.update({'figure.autolayout': True})
 #read in data file(s) -- point to relative path in repository
 #if more than one line of headers at top of document add header=n-1
 #typically one header line, header = 1-1 -> header=0 which is default
-data = pd.read_csv('../Experimental_Data/nctw_ng_heatflux.csv', header=0)
+data_dir = '../Experimental_Data/TWPUF/'
+plot_dir = '../Figures/'
+test_name = 'NCTW_PUF_HF_Center_Avg'
+data = pd.read_csv(data_dir + test_name + '.csv', header=0)
 #fds = pd.read_csv('../FDS_Output_Data/testname.csv', header=1)
 
 #plotting
 fig = figure()
 #here data['Position'] is calling for the column named Position in data file which is x data
-#data[0,2 m] is the y data
+#data[0.2 m] is the y data
 plot(data['Position'],data['0.2 m'],'k-s', label='0.2 m Above Burner',ms=8)
 plot(data['Position'],data['0.4 m'],'r-*', label='0.4 m Above Burner',ms=8)
 plot(data['Position'],data['0.6 m'],'b-^', label='0.6 m Above Burner',ms=8)
@@ -30,8 +33,8 @@ xticks(fontsize=16)
 yticks(fontsize=16)
 grid(True)
 ax = gca()
-axis([0, 0.7, 0, 50])
+axis([0, 0.7, 0, 75])
 legend(numpoints=1,loc='upper right',fontsize=16 )
 #point figures to be written in Figures directory and desired file name
-savefig('../Figures/nctw_ng_heatflux.pdf',format='pdf')
+savefig(plot_dir + test_name + '.pdf',format='pdf')
 close()

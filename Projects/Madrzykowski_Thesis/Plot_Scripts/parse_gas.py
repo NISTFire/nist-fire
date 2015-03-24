@@ -27,7 +27,7 @@ hf_array = [0.2,0.4,0.6,0.8,1.0,1.2]
 # Load exp. timings and description file
 info = pd.read_csv(info_file,header=0, index_col=0)
 # Skip files
-skip_files = ['description_']
+skip_files = ['description_','nctw_']
 
 sample_rate = 4.
 sample_length = int(math.ceil(15./sample_rate))
@@ -88,7 +88,6 @@ for f in os.listdir(data_dir):
 								data_sub_TC[:,i] = data2[channel][max_id-sample_length:max_id+sample_length:1]
 						data_mean[k] = data_sub_TC.mean()
 						k=k+1
-						# ylabel('Temperature ($^\circ$C)', fontsize=20)
 
 					if 'HF ' in channel:
 						if info['Replicate_Of'][test_name] == test_name:
@@ -99,20 +98,7 @@ for f in os.listdir(data_dir):
 								data_sub_HF[:,i] = data2[channel][max_id-sample_length:max_id+sample_length:1]
 						data_mean[k] = data_sub_HF.mean()
 						k=k+1
-						# ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
 
-			# plot(x, data_mean,'k-s',lw=1.5,label=group)
-			# xlabel('Height (m)', fontsize=20)
-			# ax1 = gca()
-			# ax1.xaxis.set_major_locator(MaxNLocator(8))
-			# ax1_xlims = ax1.axis()[0:2]
-			# grid(True)
-			# xticks(fontsize=16)
-			# yticks(fontsize=16)
-			# legend(loc='upper right', fontsize=12)
-
-			# print 'Plotting', group
-			# savefig('../Figures/TWGas/' + test_name + '_' + group[0].rstrip('_') + '.pdf')
 			data_mean.to_csv(data_dir + 'Reduced/' + test_name + '_' + group[0].rstrip('_') + '.csv')
 			close('all')
 		close('all')
