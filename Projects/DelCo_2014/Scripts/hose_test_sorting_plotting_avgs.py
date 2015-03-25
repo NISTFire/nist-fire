@@ -122,6 +122,7 @@ for f in os.listdir(data_dir):
  			# reads in the stream patterns based on hose_info file
 			for diff in hose_info['Difference'][test_name].split('|'):
 				group_results[diff] = ' '
+				group_results[diff + ' StDev'] = ' '
 			row_num = 0
 
 			fig = figure()
@@ -200,7 +201,7 @@ for f in os.listdir(data_dir):
 				# Adds a column of the average of all channels to the dataframe 
 				stream_group['Average of Channels'] = group_avg
 
-				# determines the max and min y values for the sensor group averages
+				# determines the max and min y values for the current stream sensor group average
 				if max(group_avg) > max_y:
 					max_y = math.ceil(max(group_avg))
 				if min(group_avg) < min_y:
@@ -210,16 +211,16 @@ for f in os.listdir(data_dir):
 				start_time = hose_info['Start'][test_name]
 				# reads in time after beginning of experiment to when FP is complete
 				FP_beg = hose_info['Flowpath complete'][test_name]
-				# Averages for when flow path is completely established for each hose stream
-				diff_avgs = []
+				# Averages and stdevs added to data row for when flow path is completely established for each hose stream
+				data_row = [stream]
 				for diff in hose_info['Difference'][test_name].split('|'):
 					FP_end = FP_beg + hose_info['Duration'][test_name]
-					diff_avgs.append(round(np.mean(stream_group['Average of Channels'][int(FP_beg):int(FP_end)]), 2))
+					data_row.append(round(np.mean(stream_group['Average of Channels'][int(FP_beg):int(FP_end)]), 1))
+					data_row.append(round(np.std(stream_group['Average of Channels'][int(FP_beg):int(FP_end)]), 1))
 					FP_beg = hose_info['Flowpath complete'][test_name] + FP_end + hose_info['Time Between'][test_name]
 				
-				# creates an array for data file for current sensor group
-				data_row = np.append(stream, diff_avgs)
-				group_results.loc[row_num]  = np.array(data_row)
+				# adds row to data file for current stream in current sensor group
+				group_results.loc[row_num]  = data_row
 				row_num = row_num + 1
 
 				t = arange(len(stream_group.index))

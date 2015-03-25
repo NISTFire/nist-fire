@@ -16,6 +16,7 @@
 % Load packages
 \usepackage{graphicx}
 \usepackage[super]{nth}
+\usepackage{placeins}
 
 % Rename chapter headings
 \renewcommand{\chaptername}{Section}
@@ -110,7 +111,14 @@ Fire suppression tactics using hose streams also affect the ventilation in a str
 
 This report is concerned with examining the impact of hose stream selection and the pattern in which the stream is applied on the ventilation inside a structure with various flow path configurations. Two types of experiments were conducted in order to examine the impact. First, cold flow tests were performed. These tests involved using a 0.46 m (18 in) diameter positive pressure ventilation (PPV) fan to move air through a structure with various flow path configurations. The second type of experiment involved flowing water using various stream and application patterns into a structure with flow path configurations similar to the cold flow test configurations. Air velocities measured during the hose flow experiments were compared to the velocities measured during the cold flow tests to determine the impact of hose stream and application pattern combinations on ventilation throughout the structure relative to the impact of using a 0.46 m (18 in) diameter PPV fan to move air throughout the structure. 
 
-Three types of hose streams were each applied in four different fashions during each set of hose flow experiments. The three types of hose stream patterns studied were straight stream, narrow fog stream, and wide fog stream. Water was flowed into the structure by having the hose in a static, fixed position, moving the hose line left-to-right across the room in a sweeping motion, and rotating the hose line in both the clockwise and counterclockwise directions.
+Three types of hose streams were each applied in four different fashions during each set of hose flow experiments. The three types of hose stream patterns studied, pictured in Figure~\ref{fig:hose_streams}, were straight stream, narrow fog stream, and wide fog stream. Water was flowed into the structure by having the hose in a static, fixed position, moving the hose line left-to-right across the room in a sweeping motion, and rotating the hose line in both the clockwise and counterclockwise directions.
+
+\begin{figure}[!ht]
+\includegraphics[width=6in]{../../Figures/hose_streams.pdf}
+\caption[Different Hose Stream Patterns]{The three types of hose stream patterns, straight stream (left), narrow fog stream (middle), and wide fog stream (right), used during the water flow experiments.}
+\label{fig:hose_streams}
+\end{figure}
+\FloatBarrier
 
 \section{Background}
 \label{sec:Background}
@@ -121,22 +129,20 @@ Three types of hose streams were each applied in four different fashions during 
 
 \section{Experimental Structure}
 \label{sec:Experimental_Structure}
-This series of field experiments was conducted at the Delaware County Emergency Services Training Center in Sharon Hill, PA. 
+This series of field experiments was conducted into two structures located at the Delaware County Emergency Services Training Center in Sharon Hill, PA. 
 
-Two concrete structures were built on a concrete slab as shown in Figure XX. They were designed to simulate a single story and a two story residential structure.  The first floor of each structure had an outer wall composed of interlocking concrete blocks 0.61 m (2 ft) wide, 0.61 m (2 ft) high and 1.22 m (4 ft) long. The interior dimensions of each structure were 6.1 m (20 ft) wide, 11 m (36 ft) long and 2.4 m (8 ft) high.  The joints and gaps between the blocks were filled with high temperature insulation.
+\subsection{Construction}
+\label{sec:Construction}
+Two concrete structures were built on a concrete slab as shown in Fig.~\ref{fig:struct_pics}. They were designed to simulate a single story and a two story residential structure.  The first floor of each structure had an outer wall composed of interlocking concrete blocks 0.61 m (2 ft) wide, 0.61 m (2 ft) high and 1.22 m (4 ft) long. The interior dimensions of each structure were 6.1 m (20 ft) wide, 11 m (36 ft) long and 2.4 m (8 ft) high.  The joints and gaps between the blocks were filled with high temperature insulation.
 
-The interior walls of the first floor or each structure were framed with steel studs and track.  The studs were set to 0.40 m (16 in) centers.  The ceiling/floor support was composed of wood truss joist I-beams (TJIs) with a 299 mm (11.75 in) depth.  The TJI was composed of laminated veneer lumber flanges with a cross section of 29 mm (1.125 in) x 44 mm (1.75 in) and an 11 mm (0.43 in) thick oriented strand board web as shown in Figure  XX .  Tongue and grove, 18.3 mm (0.72 in) thick, oriented strand board was screwed (nailed?) to the top of the TJIs.     
+The interior walls of the first floor or each structure were framed with steel studs and track.  The studs were set to 0.40 m (16 in) centers.  The ceiling/floor support was composed of wood truss joist I-beams (TJIs) with a 299 mm (11.75 in) depth.  The TJI was composed of laminated veneer lumber flanges with a cross section of 29 mm (1.125 in) x 44 mm (1.75 in) and an 11 mm (0.43 in) thick oriented strand board web as shown in Figure  XX .  Tongue and grove, 18.3 mm (0.72 in) thick, oriented strand board was screwed (nailed?) to the top of the TJIs.
 
-The second story of the two level structure was built on the wood floor assembly as described above. The walls were framed with wood studs etc…
+The second story of the two level structure was built on the wood floor assembly as described above. The walls were framed with wood studs etc...
 
 Opening front door, window, rear doors.  
 
 Single story  
-The interior walls of the burn room were lined with 13 mm (0.5 in) thick cement board.  The ceiling of the burn room was the exposed “floor assembly”.  The walls of the hallway and entry foyer were composed of 16 mm (0.625 in) Type X gypsum room. The ceiling of the hallway and entry foyer was composed of two layers of 13 mm (0.5 in) thick cement board.    
-
-\subsection{Construction}
-\label{sec:Construction}
-Two structures, shown in Fig.~\ref{fig:struct_pics}, were constructed for the experiments. Each structure contained a ground level floor composed of walls surrounded by concrete blocks. The West Structure contained a second level.
+The interior walls of the burn room were lined with 13 mm (0.5 in) thick cement board.  The ceiling of the burn room was the exposed ``floor assembly".  The walls of the hallway and entry foyer were composed of 16 mm (0.625 in) Type X gypsum room. The ceiling of the hallway and entry foyer was composed of two layers of 13 mm (0.5 in) thick cement board.  
 
 \begin{figure}[!ht]
 \includegraphics[width=6in]{../../Figures/east_structure}
@@ -209,14 +215,16 @@ In the following sections, the measurements will be presented in graphic and tab
 
 \subsection{Water Flow Experimental Procedure}
 \label{sec:Water_Flow_Procedure}
+A variety of experiments were conducted to examine the impact of different hose streams and application methods on air flow inside a structure. All the experiments were conducted in either the East or West Structure; used a monitor or handline with a combination nozzle to flow water in a straight, narrow fog, or wide fog stream pattern; and involved opening and closing doors in the structure to change the ventilation patterns in the structure. Experiments that used a monitor to flow water focused on varying the location of water application, while the experiments that used a handline to flow water focused on varying the pattern in which water was applied.
 
 \subsubsection{East Structure Experiments}
 \label{sec:East_Structure_Water_Flow_Procedure}
+Five sets of water flow experiments (Tests 29-34) were conducted to observe the impact of different hose streams and application methods on the air flow in the East Structure. Water was flowed from the north side double doors into Room C during Tests 29-32 and from Room C into Room B for Tests 33 and 34. Tests 29 and 30 followed a similar procedure that differed in that Test 29 flowed water from a monitor in a straight stream pattern, while Test 30 flowed water from a monitor nozzle in a narrow fog pattern. 
 
 \subsubsection{West Structure Experiments}
 \label{sec:West_Structure_Water_Flow_Procedure}
 
-Four sets of water flow experiments were conducted to observe the impact of using different hose streams and application patterns on the ventilation in the West Structure. Water was flowed from the double doors on the first floor for all experiments. The experiments varied based on flow path configurations and the type of nozzle used. Two flow path configurations were used. Both configurations contained the double doors on the first level in the opened position and the stairwell door and west side double door on the second level being opened and closed depending on the time in the experiment. The main difference between the two configurations was that the first level, south side door was in the opened position for Flow Path Configuration 1 and was in the closed position for Flow Path Configuration 2. Fig.~\ref{fig:flow_path_1} and Fig.~\ref{fig:flow_path_2} contain the floor plan schematics for Flow Path Configuration 1 and Flow Path Configuration 2, respectively.
+Four sets of water flow experiments (Tests 16-19) were conducted to observe the impact of using different hose streams and application patterns on the ventilation in the West Structure. Water was flowed from the double doors on the first floor for all experiments. The experiments varied based on flow path configurations and the type of nozzle used. Two flow path configurations were used. Both configurations contained the double doors on the first level in the opened position and the stairwell door and west side double door on the second level being opened and closed depending on the time in the experiment. The main difference between the two configurations was that the first level, south side door was in the opened position for Flow Path Configuration 1 and was in the closed position for Flow Path Configuration 2. Fig.~\ref{fig:flow_path_1} and Fig.~\ref{fig:flow_path_2} contain the floor plan schematics for Flow Path Configuration 1 and Flow Path Configuration 2, respectively.
 
 \begin{figure}[!ht]
 \includegraphics[trim=0cm 0cm 0.75cm 4.5cm, clip=true, width=6in]{../../Drawings/PDFs/Without_Instrumentation/West_Structure_Hose_Test_18_1st_Floor}
@@ -273,13 +281,13 @@ To begin each set of experiments, the combination nozzle was adjusted to produce
 Figures \ref{fig:Test_16_BDP_A10_Avg_All}-\ref{fig:Test_17_BDP_A13_Avg_All} contain plots of the average velocity through the stairwell door and \nth{2} level, north side, west double door, measured by the bi-directional probes in each doorway for the two application locations and three hose stream patterns for Tests 16 and 17. 
 
 \begin{figure}[!ht]
-\includegraphics[width=6in]{../../Figures/Hose_Test_Figures/Test_16_West_063014_BDP_A10_Avg}
+\includegraphics[width=6in]{../../Figures/Hose_Test_Figures/Test_16_West_063014_custom_BDP_A10_Avg}
 \caption{Average Velocity through Stairwell Door, Test 16, All Streams}
 \label{fig:Test_16_BDP_A10_Avg_All}
 \end{figure}
 
 \begin{figure}[!ht]
-\includegraphics[width=6in]{../../Figures/Hose_Test_Figures/Test_16_West_063014_BDP_A13_Avg}
+\includegraphics[width=6in]{../../Figures/Hose_Test_Figures/Test_16_West_063014_custom_BDP_A13_Avg}
 \caption{Average Velocity through \nth{2} Level, North Side, West Double Door, Test 16, All Streams}
 \label{fig:Test_16_BDP_A13_Avg_All}
 \end{figure}
@@ -301,40 +309,64 @@ Figures \ref{fig:Test_16_BDP_A10_Avg_All}-\ref{fig:Test_17_BDP_A13_Avg_All} cont
 \clearpage
 
 \begin{table}[!ht]
-\caption{Average Air Velocity Through Stairwell Door for All Hose Stream and Application Location Combinations for Tests 16 and 17}
-\begin{tabular}{|l|l|c|c|c|c|}
-\hline
-\multicolumn{3}{|c|}{Test 16 Avg. Velocities (m/s)} \\ \hline
-\textbf{Stream} & \textbf{Near} & \textbf{Far} \\ \hline
-\textit{Straight} & 0.84 & 0.94 \\ \hline
-\textit{Narrow Fog} & 1.41 & 1.00 \\ \hline
-\textit{Wide Fog} & 1.23 & 1.37 \\ \hline
-\multicolumn{3}{|c|}{Test 17 Avg. Velocities (m/s)} \\ \hline
-\textbf{Stream} & \textbf{Near} & \textbf{Far} \\ \hline
-\textit{Straight} & 0.73 & 0.69 \\ \hline
-\textit{Narrow Fog} & 0.75 & 0.75 \\ \hline
-\textit{Wide Fog} & 0.88 & 0.71 \\ \hline
+\caption{Average air velocity (m/s) through stairwell door for all hose stream and application location combinations for Tests 16 and 17}
+\begin{tabular}{|l|c|c|c|c|}
+\cline{2-5}
+\multicolumn{1}{c|}{} & \multicolumn{2}{c|}{Test 16} & \multicolumn{2}{c|}{Test 17} \\ \hline
+\textbf{Stream} & \textbf{Near} & \textbf{Far} & \textbf{Near} & \textbf{Far} \\ \hline
+\textit{Straight} & 
+%%%%Test 16%%%% 
+0.8 $\pm 0.2$ & 0.9 $\pm 0.2$ & 
+%%%%Test 17%%%% 
+0.7 $\pm 0.1$ & 0.7 $\pm 0.2$ \\ \hline
+\textit{Narrow Fog} & 
+%%%%Test 16%%%% 
+1.4 $\pm 0.1$ & 1.0 $\pm 0.1$ & 
+%%%%Test 17%%%% 
+0.8 $\pm 0.2$ & 0.8 $\pm 0.1 $ \\ \hline
+\textit{Wide Fog} 	& 
+%%%%Test 16%%%% 
+1.2 $\pm 0.1$ & 1.4 $\pm 0.1$ & 
+%%%%Test 17%%%% 
+0.9 $\pm 0.2$ & 0.7 $\pm 0.2$ \\ \hline
 \end{tabular}
 \label{table:Tests_16_17_BDP_A10_Avgs}
 \end{table}
 
+%code for higher resolution in tabulated values
+%\textit{Straight} & 0.84 & 0.94 & 0.73 & 0.69 \\ \hline
+%\textit{Narrow Fog} & 1.41 & 1.00 & 0.75 & 0.75 \\ \hline
+%\textit{Wide Fog} & 1.23 & 1.37 & 0.88 & 0.71 \\ \hline
+
 \begin{table}[!ht]
-\caption{Average Air Velocity Through \nth{2} Level Double Door for All Hose Stream and Application Pattern Combinations for Tests 16 and 17}
-\begin{tabular}{|l|l|c|c|c|c|}
-\hline
-\multicolumn{3}{|c|}{Test 16 Avg. Velocities (m/s)} \\ \hline
-\textbf{Stream} & \textbf{Near} & \textbf{Far} \\ \hline
-\textit{Straight} & 2.82 & 3.10 \\ \hline
-\textit{Narrow Fog} & 4.39 & 3.26 \\ \hline
-\textit{Wide Fog} & 3.92 & 4.37 \\ \hline
-\multicolumn{3}{|c|}{Test 17 Avg. Velocities (m/s)} \\ \hline
-\textbf{Stream} & \textbf{Near} & \textbf{Far} \\ \hline
-\textit{Straight} & 2.66 & 2.33 \\ \hline
-\textit{Narrow Fog} & 2.58 & 2.68 \\ \hline
-\textit{Wide Fog} & 3.14 & 2.76 \\ \hline
+\caption{Average air velocity (m/s) through \nth{2} level double door for all hose stream and application location combinations for Tests 16 and 17}
+\begin{tabular}{|l|c|c|c|c|}
+\cline{2-5}
+\multicolumn{1}{c|}{} & \multicolumn{2}{c|}{Test 16} & \multicolumn{2}{c|}{Test 17} \\ \hline
+\textbf{Stream} & \textbf{Near} & \textbf{Far} & \textbf{Near} & \textbf{Far} \\ \hline
+\textit{Straight} 	& 
+%%%%Test 16%%%% 
+2.8 $\pm 0.6$ & 3.1 $\pm 0.5$ & 
+%%%%Test 17%%%% 
+2.7 $\pm 0.4$ & 2.3 $\pm 0.8$ \\ \hline
+\textit{Narrow Fog} & 
+%%%%Test 16%%%% 
+4.4 $\pm 0.3$ & 3.3 $\pm 0.4$ & 
+%%%%Test 17%%%% 
+2.6 $\pm 0.6$ & 2.7 $\pm 0.6$ \\ \hline
+\textit{Wide Fog} 	& 
+%%%%Test 16%%%% 
+3.9 $\pm 0.5$ & 4.4 $\pm 0.3$ & 
+%%%%Test 17%%%% 
+3.1 $\pm 0.7$ & 2.8 $\pm 0.7$ \\ \hline
 \end{tabular}
 \label{table:Tests_16_17_BDP_A13_Avgs}
 \end{table}
+
+%code for higher resolution in tabulated values
+%\textit{Straight} 	& 2.82 & 3.10 & 2.66 & 2.33 \\ \hline
+%\textit{Narrow Fog} & 4.39 & 3.26 & 2.58 & 2.68 \\ \hline
+%\textit{Wide Fog} 	& 3.92 & 4.37 & 3.14 & 2.76 \\ \hline
 
 \subsection{Handline Experiments}
 
@@ -371,40 +403,70 @@ Figures \ref{fig:Test_18_BDP_A10_Avg_All}-\ref{fig:Test_19_BDP_A13_Avg_All} cont
 Significant air flow through the stairwell and \nth{2} level double door only occurred when the flow path was complete, or when both doors were in the open position. Tables~\ref{table:Tests_18_19_BDP_A10_Avgs} and \ref{table:Tests_18_19_BDP_A13_Avgs} contain the average air velocity measured by the eight BDPs at the stairwell door and \nth{2} level, double door, respectively, during the time the flow path was complete for each application pattern and hose stream combination used during Tests 18 and 19.
 
 \begin{table}[!ht]
-\caption{Average Air Velocity Through Stairwell Door for All Hose Stream and Application Pattern Combinations for Tests 18 and 19}
-\begin{tabular}{|l|l|c|c|c|c|}
-\hline
-\multicolumn{5}{|c|}{Test 18 Avg. Velocities (m/s)} \\ \hline
-\textbf{Stream} & \textbf{Fixed} & \textbf{Sweeping} & \textbf{Clockwise} & \begin{tabular}{@{}c@{}} \textbf{Counter} \\ \textbf{Clockwise} \\ \end{tabular} \\ \hline
-\textit{Straight} & -0.17 & 0.48 & 0.65 & 0.63 \\ \hline
-\textit{Narrow Fog} & 0.41 & 1.02 & 0.79 & 0.99 \\ \hline
-\textit{Wide Fog} & 0.93 & 0.90 & 0.91 & 0.75 \\ \hline
-\multicolumn{5}{|c|}{Test 19 Avg. Velocities (m/s)} \\ \hline
-\textbf{Stream} & \textbf{Fixed} & \textbf{Sweeping} & \textbf{Clockwise} & \begin{tabular}{@{}c@{}} \textbf{Counter} \\ \textbf{Clockwise} \\ \end{tabular} \\ \hline
-\textit{Straight} & -0.05 & 0.47 & 0.67 & 0.62 \\ \hline
-\textit{Narrow Fog} & 1.23 & 1.18 & 1.14 & 1.22 \\ \hline
-\textit{Wide Fog} & 0.96 & 0.67 & 0.89 & 0.93 \\ \hline
+\addtolength{\tabcolsep}{-3.25pt}
+\small
+\caption{Average air velocity (m/s) through stairwell door for all hose stream and application pattern combinations for Tests 18 and 19}
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+\cline{2-9}
+\multicolumn{1}{c|}{} & \multicolumn{4}{c|}{Test 18} & \multicolumn{4}{c|}{Test 19} \\ \hline
+\textbf{Stream} & \textbf{Fixed} & \textbf{Sweeping} & \textbf{Clockwise} & \begin{tabular}{@{}c@{}} \textbf{Counter} \\ \textbf{Clockwise} \\ \end{tabular} & \textbf{Fixed} & \textbf{Sweeping} & \textbf{Clockwise} & \begin{tabular}{@{}c@{}} \textbf{Counter} \\ \textbf{Clockwise} \\ \end{tabular} \\ \hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textit{Straight} 	& 
+%%%%Test 18%%%% 
+-0.2 $\pm 0.3$ & 0.5 $\pm 0.2$ & 0.7 $\pm 0.2$ & 0.6 $\pm 0.2$ & 
+%%%%Test 19%%%% 
+ 0.0 $\pm 0.1$ & 0.5 $\pm 0.2$ & 0.7 $\pm 0.2$ & 0.6 $\pm 0.2$ \\ \hline
+\textit{Narrow Fog} & 
+%%%%Test 18%%%% 
+ 0.4 $\pm 0.3$ & 1.0 $\pm 0.2$ & 0.8 $\pm 0.2$ & 1.0 $\pm 0.4$ & 
+%%%%Test 19%%%% 
+ 1.2 $\pm 0.3$ & 1.2 $\pm 0.3$ & 1.1 $\pm 0.4$ & 1.2 $\pm 0.2$ \\ \hline
+\textit{Wide Fog} 	& 
+%%%%Test 18%%%% 
+ 0.9 $\pm 0.2$ & 0.9 $\pm 0.3$ & 0.9 $\pm 0.3$ & 0.8 $\pm 0.3$ & 
+%%%%Test 19%%%% 
+ 1.0 $\pm 0.2$ & 0.7 $\pm 0.2$ & 0.9 $\pm 0.2$ & 0.9 $\pm 0.2$ \\ \hline
 \end{tabular}
 \label{table:Tests_18_19_BDP_A10_Avgs}
 \end{table}
 
+%code to increase resolution of tabulated values
+%\textit{Straight} 	& -0.17 & 0.48 & 0.65 & 0.63 & -0.05 & 0.47 & 0.67 & 0.62 \\ \hline
+%\textit{Narrow Fog} & 0.41 & 1.02 & 0.79 & 0.99 & 1.23 & 1.18 & 1.14 & 1.22 \\ \hline
+%\textit{Wide Fog} 	& 0.93 & 0.90 & 0.91 & 0.75 & 0.96 & 0.67 & 0.89 & 0.93 \\ \hline
+
 \begin{table}[!ht]
-\caption{Average Air Velocity Through \nth{2} Level Double Door for All Hose Stream and Application Pattern Combinations for Tests 18 and 19}
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-\multicolumn{5}{|c|}{Test 18 Avg. Velocities (m/s)} \\ \hline
-\textbf{Stream} & \textbf{Fixed} & \textbf{Sweeping} & \textbf{Clockwise} & \begin{tabular}{@{}c@{}} \textbf{Counter} \\ \textbf{Clockwise} \\ \end{tabular} \\ \hline
-\textit{Straight} & -0.43 & 1.75 & 2.46 & 2.40 \\ \hline
-\textit{Narrow Fog} & 1.34 & 3.61 & 2.55 & 3.48 \\ \hline
-\textit{Wide Fog} & 3.02 & 3.22 & 3.06 & 2.57 \\ \hline
-\multicolumn{5}{|c|}{Test 19 Avg. Velocities (m/s)} \\ \hline
-\textbf{Stream} & \textbf{Fixed} & \textbf{Sweeping} & \textbf{Clockwise} & \begin{tabular}{@{}c@{}} \textbf{Counter} \\ \textbf{Clockwise} \\ \end{tabular} \\ \hline
-\textit{Straight} & 0.20 & 1.60 & 2.47 & 2.10 \\ \hline
-\textit{Narrow Fog} & 4.26 & 3.48 & 3.49 & 3.66 \\ \hline
-\textit{Wide Fog} & 3.31 & 2.60 & 3.13 & 3.19 \\ \hline
+\addtolength{\tabcolsep}{-3.25pt}
+\small
+\caption{Average air velocity (m/s) through \nth{2} level double door for all hose stream and application pattern combinations for Tests 18 and 19}
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+\cline{2-9}
+\multicolumn{1}{c|}{} & \multicolumn{4}{c|}{Test 18} & \multicolumn{4}{c|}{Test 19} \\ \hline
+\textbf{Stream} & \textbf{Fixed} & \textbf{Sweeping} & \textbf{Clockwise} & \begin{tabular}{@{}c@{}} \textbf{Counter} \\ \textbf{Clockwise} \\ \end{tabular} & \textbf{Fixed} & \textbf{Sweeping} & \textbf{Clockwise} & \begin{tabular}{@{}c@{}} \textbf{Counter} \\ \textbf{Clockwise} \\ \end{tabular} \\ \hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textit{Straight}  &
+%%%%Test 18%%%% 
+-0.4 $\pm 1.3$ & 1.8 $\pm 1.1$ & 2.5 $\pm 1.1$ & 2.4 $\pm 0.8$ &
+%%%%Test 19%%%%					
+ 0.2 $\pm 0.7$ & 1.6 $\pm 0.5$ & 2.5 $\pm 0.7$ & 2.1 $\pm 0.7$ \\ \hline
+\textit{Narrow Fog} & 
+%%%%Test 18%%%%
+ 1.3 $\pm 1.1$ & 3.6 $\pm 0.9$ & 2.6 $\pm 0.8$ & 3.5 $\pm 1.6$ & 
+%%%%Test 19%%%%
+ 4.3 $\pm 1.0$ & 3.5 $\pm 1.0$ & 3.5 $\pm 1.5$ & 3.7 $\pm 0.9$ \\ \hline
+\textit{Wide Fog} 	& 
+%%%%Test 18%%%%
+3.0 $\pm 0.7$ & 3.2 $\pm 1.0$ & 3.1 $\pm 1.1$ & 2.6 $\pm 1.3$ & 
+%%%%Test 19%%%%
+3.3 $\pm 0.7$ & 2.6 $\pm 0.6$ & 3.1 $\pm 0.6$ & 3.2 $\pm 0.5$ \\ \hline
 \end{tabular}
 \label{table:Tests_18_19_BDP_A13_Avgs}
 \end{table}
+
+%code to increase resolution of tabulated values
+%\textit{Straight} 	& -0.43 & 1.75 & 2.46 & 2.40 & 0.20 & 1.60 & 2.47 & 2.10 \\ \hline
+%\textit{Narrow Fog} & 1.34 & 3.61 & 2.55 & 3.48 & 4.26 & 3.48 & 3.49 & 3.66 \\ \hline
+%\textit{Wide Fog} 	& 3.02 & 3.22 & 3.06 & 2.57 & 3.31 & 2.60 & 3.13 & 3.19 \\ \hline
 
 Notice, there is a significant difference between the average air velocity caused by the fixed straight stream and the velocity caused by the narrow and wide fog streams; the velocities for the narrow and wide fog were always significantly higher than the velocity of the fixed stream. It was only when the hose began to move around that the air velocity through the doorways for the straight stream approached the air velocities associated with the narrow and wide fogs for the corresponding pattern. However, the straight stream hose pattern always resulted in the lowest average air velocity through each doorway for the three different hose streams at each of the four application patterns. 
 

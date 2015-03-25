@@ -53,6 +53,7 @@ Test Number,Test Type,Old Test Key,New Test Key,Start of Test,End of Test,Test D
 52,PPV,Test_14_West_063014,Test_14_West_063014,0,600,PPV Test,None,None,20,200,1500,None,None,None
 53,PPV,Test_15_West_063014,Test_15_West_063014,0,900,PPV Test,None,None,20,200,1500,None,None,None
 54,HOSE,Test_16_West_063014,Test_16_West_063014,0,2159,Hose Test,None,None,20,200,1500,None,None,None
+54,HOSE,Test_16_West_063014_custom,Test_16_West_063014_custom,0,2159,Hose Test,None,None,20,200,1500,None,None,None
 55,HOSE,Test_17_West_063014,Test_17_West_063014,0,1562,Hose Test,None,None,20,200,1500,None,None,None
 56,HOSE,Test_17b_West_063014,Test_17b_West_063014,0,560,Hose Test,None,None,20,200,1500,None,None,None
 57,HOSE,Test_18_West_063014,Test_18_West_063014,0,2961,Hose Test,None,None,20,200,1500,None,None,None
