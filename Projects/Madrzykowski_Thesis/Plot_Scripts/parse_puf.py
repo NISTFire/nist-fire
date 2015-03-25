@@ -30,7 +30,7 @@ info = pd.read_csv(info_file,header=0, index_col=0)
 skip_files = ['description_','nctw_']
 
 sample_rate = 4.
-sample_length = int(math.ceil(15./sample_rate))
+sample_length = int(math.ceil(8./sample_rate))
 
 
 #  =========================
