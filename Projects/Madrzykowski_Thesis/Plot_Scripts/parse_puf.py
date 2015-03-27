@@ -2,6 +2,7 @@ from __future__ import division
 
 import os
 import numpy as np
+import numpy.ma as ma
 import pandas as pd
 from pylab import *
 import math
@@ -11,10 +12,10 @@ from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
 
 # Location of experimental data files
-data_dir = '../Experimental_Data/TWPUF/'
+data_dir = '../Experimental_Data/IWGBPUF/'
 
 # Location of test description file
-info_file = '../Experimental_Data/TWPUF/Description_of_PUF_Tests.csv'
+info_file = '../Experimental_Data/IWGBPUF/Description_of_PUF_Tests.csv'
 
 # List of sensor groups for each plot
 sensor_groups = [['TC Surface Center'], ['TC Surface Offset'], ['TC Back Center'], ['TC Plume'], ['HF Center'],
@@ -27,9 +28,9 @@ hf_array = [0.2,0.4,0.6,0.8,1.0,1.2]
 # Load exp. timings and description file
 info = pd.read_csv(info_file,header=0, index_col=0)
 # Skip files
-skip_files = ['description_','nctw_']
+skip_files = ['description_','iwgb_']
 
-sample_rate = 4.
+sample_rate = 1.
 sample_length = int(math.ceil(8./sample_rate))
 
 
@@ -84,9 +85,9 @@ for f in os.listdir(data_dir):
 							for i in range(0,int(info['Replicate_Num'][test_name])):
 								Num = int(test_name[-2:])+i-1
 								data2 = pd.read_csv(data_dir + info['Rep_Name'][Num] + '.csv')
-								max_id = min(data2[channel].idxmax(), len(data2[channel]) - sample_length)
+								max_id = max(min(data2[channel].idxmax(), len(data2[channel]) - sample_length),2*sample_length)
 								data_sub_TC[:,i] = data2[channel][max_id-sample_length:max_id+sample_length:1]
-						data_mean[k] = data_sub_TC.mean()
+						data_mean[k] = ma.masked_outside(data_sub_TC,0.001,3000).mean()
 						k=k+1
 
 					if 'HF ' in channel:
@@ -94,9 +95,9 @@ for f in os.listdir(data_dir):
 							for i in range(0,int(info['Replicate_Num'][test_name])):
 								Num = int(test_name[-2:])+i-1
 								data2 = pd.read_csv(data_dir + info['Rep_Name'][Num] + '.csv')
-								max_id = min(data2[channel].idxmax(), len(data2[channel]) - sample_length)
+								max_id = max(min(data2[channel].idxmax(), len(data2[channel]) - sample_length),2*sample_length)
 								data_sub_HF[:,i] = data2[channel][max_id-sample_length:max_id+sample_length:1]
-						data_mean[k] = data_sub_HF.mean()
+						data_mean[k] = ma.masked_outside(data_sub_HF,0.001,100000).mean()
 						k=k+1
 
 			data_mean.to_csv(data_dir + 'Reduced/' + test_name + '_' + group[0].rstrip('_') + '.csv')
