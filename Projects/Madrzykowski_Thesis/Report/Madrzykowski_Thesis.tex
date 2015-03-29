@@ -373,12 +373,12 @@ The calculations for the intensity field are based on a user defined computation
 
 \begin{figure}[p]
 	\centering
-	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80-1_GS_5mm_10s_color}
-	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80-1_GS_10mm_10s_color}\\
-	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80-1_GS_20mm_10s_color}
-	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80-1_GS_40mm_10s_color}
-	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80-1_GS_80mm_10s_color}\\
-	 \caption[Comparison images of intensity fields derived from the video images of the natural gas fueled fire]{Comparison images of intensity fields derived from the video images of the natural gas fueled fire using Streams. The images, starting with the upper left, were generated with 5 mm, 10 mm, 20 mm, 40 mm and 80 mm resolutions.}
+	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80_1_GS_5mm_10s_color}
+	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80_1_GS_10mm_10s_color}\\
+	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80_1_GS_20mm_10s_color}
+	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80_1_GS_40mm_10s_color}
+	\includegraphics[trim=0in 0in 3.5in 0in,clip=true,width=1.7in]{../Figures/FHNG80_1_GS_80mm_10s_color}\\
+	 \caption[Comparison images of intensity fields derived from the video images of the natural gas fueled fire]{Comparison images of intensity fields derived from the video images of the natural gas fueled fire using Streams. The images, starting with the upper left, were generated with 5~mm, 10~mm, 20~mm, 40~mm and 80~mm resolutions.}
 	 \label{Intensity}
 \end{figure}
 
@@ -447,8 +447,8 @@ A free standing steel frame wall with a 12.7~mm thick, 2.44~m high by 1.22~m wid
 \begin{table}
 	\centering
 \begin{tabular}{|c|c|c|c|c|}
-	\hline Density (kg/m$^3&)  &Thermal Conductivity   & Specific Heat  &  &  \\ 
-	\hline   & Temperature ($^\circ$C) & (W/mK)  & Temperature ($^\circ$C)  & (kJ/kg $^\circ$C) \\ 
+	\hline Density & \multicolumn{2}{c|}{Thermal Conductivity} & \multicolumn{2}{c|}{Specific Heat}   \\ 
+    \hline (kg/m$^3$) & Temperature ($^\circ$C) & (W/mK)  & Temperature ($^\circ$C)  & (kJ/kg $^\circ$C) \\ 
 	\hline 737  & 24 & 0.13 & 93 & 0.28 \\ 
 	\hline  & 205 & 0.12  & 205 & 0.30 \\ 
 	\hline  & 316 & 0.11 & 316 & 0.32 \\ 
@@ -526,17 +526,17 @@ Figure~\ref{IW_HFC_TWGAS} shows the temperatures of the array of total heat flux
 
 \begin{figure}[p]
 	\centering
-	\includegraphics[width=2.5in]{../Figures/HF_Center_TWGas_0_61m_RepsAvg}
-	\includegraphics[width=2.5in]{../Figures/HF_Center_TWGas_0_31m_RepsAvg}\\
-	\includegraphics[width=2.5in]{../Figures/HF_Center_TWGas_0_15m_RepsAvg}
-	\includegraphics[width=2.5in]{../Figures/HF_Center_TWGas_0m_RepsAvg}\\
+	\includegraphics[width=2.5in]{../Figures/HF_Center_TWGas_0_61m_Reps_Avg}
+	\includegraphics[width=2.5in]{../Figures/HF_Center_TWGas_0_31m_Reps_Avg}\\
+	\includegraphics[width=2.5in]{../Figures/HF_Center_TWGas_0_15m_Reps_Avg}
+	\includegraphics[width=2.5in]{../Figures/HF_Center_TWGas_0m_Reps_Avg}\\
 	\caption[Wall heat fluxes along the centerline of the gasoline fueled burner]{Wall heat fluxes along the centerline of the gasoline fueled burner.  The heat fluxes are averages of three replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left position and moving from left to right the distances are 0.61~m, 0.31~m,0.15~m,and 0~m.}
 	\label{IW_HFC_TWGAS}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{../Figures/nctw_ng_heatflux}\\
+	\includegraphics[width=\textwidth]{../Figures/NCTW_NG_HF_Center_Avg}\\
 	\caption[Summary of wall heat fluxes along the centerline of the natural gas fueled burner]{Summary of the heat flux to the non-combustible wall along the verticle centerline of the natural gas fueled burner compared to the position away from the wall.}
 	\label{nctw_ng_heatflux}
 \end{figure}
@@ -566,7 +566,7 @@ A free standing, steel frame with a panel of gypsum wallboard attached to the su
 
 \section{Characterization of Gypsum WallBoard}
 
-According to the United States Geological Survey, most gypsum in the United States is used to make wallboards for homes and other structures.  A typical home in the United States contains more than 7 metric tons of gypsum ref USGS website http://minerals.usgs.gov/minerals/pubs/commodity/gypsum/.  As defined by ASTM, gypsum wallboard is gypsum board designed for use on walls, ceilings, or partitions and that affords a surface suitable to recieve decoration  ref ATSM 1396. The ASTM standard further describes gypsum wallboard as having a noncombustible core, surfaced with paper bonded to the core. By weight, wallboard is composed of more than 85~\% gypsum, less than 10~\% cellulose, less than 3~\% starch and approximately 1~\% of both crystalline silica and fibrous glass.  Chemically gypsum can be described as calcium sulfate dihydrate, (CaSO$_{4}$  2H$_{2}O) .  By weight pure gypsum is approximately 79~\% calcium sulfate and 21~\% chemically bound water ref Lawson 1977.    
+According to the United States Geological Survey, most gypsum in the United States is used to make wallboards for homes and other structures.  A typical home in the United States contains more than 7 metric tons of gypsum ref USGS website http://minerals.usgs.gov/minerals/pubs/commodity/gypsum/.  As defined by ASTM, gypsum wallboard is gypsum board designed for use on walls, ceilings, or partitions and that affords a surface suitable to recieve decoration  ref ATSM 1396. The ASTM standard further describes gypsum wallboard as having a noncombustible core, surfaced with paper bonded to the core. By weight, wallboard is composed of more than 85~\% gypsum, less than 10~\% cellulose, less than 3~\% starch and approximately 1~\% of both crystalline silica and fibrous glass.  Chemically gypsum can be described as calcium sulfate dihydrate, (CaSO$_{4}$2H$_{2}$O) .  By weight pure gypsum is approximately 79~\% calcium sulfate and 21~\% chemically bound water ref Lawson 1977.    
 
 
 The gypsum wallboard used in all of these experiments was purchased at one time from one vendor in an effort to have the most similar panels for used between the experiments.  The physical features of the gypsum wallboard panels are given in the table below.   After receipt of the gypsum wallboard panels, the panels were laid out on the floor or the NIST Large Fire Research Laboratory, finished paper side up and painted with a roller.  The first coat was a latex primer.  Once the primer dried a top coat of white latex paint was applied.  After the panels dried paint thickness measurements were made with a ultra sonic XXXX.  Some of the panels were then cut-up into samples think about this perhaps this goes into the FP Comp
@@ -582,9 +582,9 @@ The first series of experiments were conducted with the natural gas burner.
 
  \begin{figure}[p]
  	\centering
- 	\includegraphics[width=4.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg}\\
- 	\includegraphics[width=4.5in]{../Figures/IWGB_NG_TC_Surface_Offset_Avg}\\
- 	\includegraphics[width=4.5in]{../Figures/IWGB_NG_TC_Plume_Avg_Avg}\\
+ 	\includegraphics[width=4.in]{../Figures/IWGB_NG_TC_Surface_Center_Avg}\\
+ 	\includegraphics[width=4.in]{../Figures/IWGB_NG_TC_Surface_Offset_Avg}\\
+ 	\includegraphics[width=4.in]{../Figures/IWGB_NG_TC_Plume_Avg}\\
  	\caption[Averaged peak wall and plume temperatures for the natural gas burner]{Averaged peak wall and plume temperatures for the natural gas burner fires at several different positions from the instrumented gypsum board wall.  The positions ranged from 0.3 m away from the wall to physically touching the wall, 0.0 m.}
  	\label{IWGB_NG_Temp_FrontSet}
  \end{figure}
@@ -602,7 +602,7 @@ The first series of experiments were conducted with the natural gas burner.
 	\includegraphics[width=4.5in]{../Figures/IWGB_NG_HF_Center_Avg}\\
 	\includegraphics[width=4.5in]{../Figures/IWGB_NG_HF_Offset_Avg}\\
 	\caption[Averaged peak heat flux on the gypsum board wall for the natural gas burner fires.]{Averaged peak heat flux on the gypsum board wall along the vertical centerline and edge of the natural gas burner fires. }
-	\label{IWGB_NG_Temp_RearCenter}
+	\label{IWGB_NG_HF_RearCenter}
 \end{figure}
 
 \subsection{Wall Temperatures}
@@ -613,9 +613,9 @@ Comparisons NG to Gas to PUF
 
 \begin{figure}[p]
 	\centering
-	\includegraphics[width=4.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg}\\
-	\includegraphics[width=4.5in]{../Figures/IWGB_GAS_TC_Surface_Center_Avg}\\
-	\includegraphics[width=4.5in]{../Figures/IWGB_PUF_TC_Surface_Center_Avg}\\
+	\includegraphics[width=4.in]{../Figures/IWGB_NG_TC_Surface_Center_Avg}\\
+	\includegraphics[width=4.in]{../Figures/IWGB_GAS_TC_Surface_Center_Avg}\\
+	\includegraphics[width=4.in]{../Figures/IWGB_PUF_TC_Surface_Center_Avg}\\
 	\caption[Averaged centerline temperature for the natural gas, gasoline, and foam fires]{Averaged centerline temperature for the natural gas, gasoline, and foam fires. The number following the TC represents the height of thermocouple in decimeters  above the surface of the burner.}
 	\label{IWGB_Temp_Comp_FrontCenter}
 \end{figure}
