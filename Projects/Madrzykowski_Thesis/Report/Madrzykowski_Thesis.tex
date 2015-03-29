@@ -98,8 +98,7 @@ Another landmark document regarding the state of forensic science in the United 
 This study is in response to the assessment above, specifically regarding the natural variability of fire patterns.
 
 
-\chapter{Scope of Study}
-\label{chapter:Scope of Study}
+\section{Scope of Study}
 
 Given that the majority of intentional fires in structures occurred in residential occupancies, this study will focus on fire patterns on painted gypsum wallboard, which is 2.4~m in height.  Given the upper bound of 2.4~m, the experiments will use small fires with mean flame heights of approximately 1.2~m.  The resulting patterns on the gypsum board wall would be representative of a pre-flashover fire pattern.
 
@@ -109,12 +108,12 @@ Replicate experiments exposing gypsum wallboard to the fires were conducted in o
 
 The last component of this study examines the capability of using numerical models to simulate the fires and the resulting fire patterns based on input data collected from engineering reference sources, as well as  bench scale and full scale fire experiments conducted in this study.
 
-\chapter{Technical Approach}
-\label{chapter:Technical Approach}
+\section{Technical Approach}
+
 
 This study includes several series of real-scale, replicate fire experiments to examine the repeatability of pre-flashover fire patterns, and ultimately examine the ability of simple correlations and the Fire Dynamic Simulator to recreate characteristics of the fire patterns.
 
-\section{Selection of Measurement Methods and Analytical Tools}
+\subsection{Selection of Measurement Methods and Analytical Tools}
 
 Well-documented and characterized technologies such as thermocouples and heat flux gauges were used to assess the fire and the thermal exposure of the target material.  Oxygen consumption calorimetry and mass loss measurements were used for the determining the heat release rate of the fires.
 
@@ -136,7 +135,7 @@ A free standing, steel frame with non-combustible, calcium silicate faced wall w
 
 A free standing, steel frame with a panel of gypsum wallboard attached to the surface was instrumented to measure the thermal exposure of the wall from the fire in terms of temperature and heat flux.  The fires were initially placed at predetermined, fixed positions away from the wall. The burner was moved toward the wall until the burner was against the wall.  If the results indicated that no burn pattern would result from a given combination of fuel and position, then that fuel and position combination were eliminated from the remainder of the test matrix.
 
-\section{Fire Pattern Experiments}
+\subsection{Fire Pattern Experiments}
 
 \subsubsection{Impact of Construction}
 
@@ -150,11 +149,11 @@ Each of the test compartments consisted of three 3.6~m long by 2.4~m high wood f
 
 These experiments used the same test compartment as the wall fire pattern experiments.  In these cases the fire was located against both walls in a corner of the compartment.  The experimental process was the same as the wall fire pattern experiments.
 
-\section{Bench Scale Experiments}
+\subsection{Bench Scale Experiments}
 
 Several types of bench scale experiments were conducted to generate data. This data could be used to assist in the analysis of the fire patterns and potentially be used as input for the FDS models.
 
-\subsection{Critical Heat Flux}
+\subsubsection{Critical Heat Flux}
 
 Conducted a series of experiments on samples of painted gypsum wallboard to determine the repeatability of a ``critical heat flux'' that results in a clear line of demarcation, a ``burn/no burn'' line.  The flooring radiant panel (ASTM~E648) was used to examine this value.
 
@@ -162,7 +161,7 @@ Conducted a series of experiments on samples of painted gypsum wallboard to dete
 
 Cone calorimeter~\cite{ASTM_E1354} experiments were conducted to estimate the ignition temperature, the time to ignition and the heat release rate from samples of painted gypsum wallboard under thermal flux conditions ranging from 25~kW/m$^2$ to 75~kW/m$^2$.
 
-\section{Fire Pattern Recreation}
+\subsection{Numerical Fire Pattern Analysis}
 
 The ability to recreate or simulate a fire pattern or certain characteristics of a fire pattern was examined with a variety of tools.  The first characteristic examined was the ability to determine based on the calculated heat flux to the wall if a ``visible or measurable physical change'' would occur to the painted paper surface of the gypsum wallboard.  The next characteristic of the fire pattern that was examined was the height.  The height of the fire pattern was then compared to the predictive results from flame height correlations. Heskestad developed an empirical method for calculating the mean visible flame height for fuels which do not have substantial in-depth combustion~\cite{Beyler:1986,Heskestad:SFPE}. This correlation was compared with the flame height results of the source fires and the instrumented wall experiments.
 
@@ -237,10 +236,9 @@ A schematic drawing of the instrumentation arrangement is shown in Fig.~\ref{Dra
 
 
 
-\chapter{Results}
-\label{chapter:Results}
+\section{Results}
 
-{\section{HRR}
+\subsection{HRR}
 
 Figure~\ref{HRR} shows the measured heat release rates for the natural gas, gasoline and polyurethane foam fueled fires. In each graph, the replicate heat release time histories are overlaid to give a sense of the experimental repeatability for each fuel.
 
@@ -258,7 +256,7 @@ On each fuel’s averaged heat release rate curve, a bar representing the 95~\% 
 The natural gas burner provided the most repeatable results, with an average steady state heat release rate of 80~kW $\pm$ 9~kW with an average total heat release of 23.3~MJ $\pm$ 1.6~MJ over a 300~s period.  The gasoline, based on the average over a 30 s interval bounding the peak heat release rate of each of the 17 experiments, provided an average peak heat release rate of 80~kW $\pm$ 24~kW.  The total heat release of the gasoline over the 300~s period after ignition was 13.6~MJ $\pm$ 0.6~MJ.  The polyurethane foam demonstrated the largest variability of the three fuels in terms of peak heat release rate and time to peak heat release.  Averaging over a 15~s interval bounding the peak heat release rate from each of the ten experiments yielded an average peak heat release rate of 45~kW $\pm$ 21~kW.  The total heat release over the 300~s period after ignition was 4.1~MJ $\pm$ 0.2~MJ
 
 
-\section{Plume Temperatures}
+\subsection{Plume Temperatures}
 
 Plots of the centerline temperatures averaged over the replicate experiments for each of the fuels are presented in Fig.~\ref{Temp}. The natural gas temperatures were averaged over a ``steady-state'' burning period.  The temperature differences between the vertical thermocouple locations, for locations greater than 20~cm above the fire location, begin to decrease as the distances from the top of the burner increase.  This trend is similar for both the gasoline fires and the polyurethane foam fires as well.  The most notable difference between the natural gas and the other fuels is the growth and decay of the fire during the test period.
 
@@ -272,7 +270,7 @@ Plots of the centerline temperatures averaged over the replicate experiments for
 \end{figure}
 
 
-\section{Total Heat Flux}
+\subsection{Total Heat Flux}
 
 Plots of the total heat flux for each of the fuels are presented in Fig.~\ref{Flux}. The repeatability of the total heat flux values varied in a manner similar to the heat release rates, in that the natural gas fires provided a steady state value while the gasoline and the polyurethane foam fires generated a fire curve that has periods of growth and decay.   The sensing surface of the heat flux gauges were located 0.95~m horizontally from the center of the burner/fuel and 0.50~m above the top of the burner/pan lip/fuel surface.  The average peak total heat flux for the natural gas fires were approximately 2.0~kW/m$^2$.  The average peak values for the gasoline and polyurethane foam were approximately 3.5~kW/m$^2$ and 2.5~kW/m$^2$ respectively.  The values are only presented for the experiments which had two heat flux gauges installed as described in the instrumentation section above.
 
@@ -286,7 +284,7 @@ Plots of the total heat flux for each of the fuels are presented in Fig.~\ref{Fl
 \end{figure}
 
 
-\section{Mass Loss}
+\subsection{Mass Loss}
 
 Mass loss measurements were not possible for the natural gas burner experiments.  The mass loss versus time curves for the gasoline and the polyurethane experiments are shown in Fig.~\ref{Mass}.  The gasoline exhibits a linear mass loss rate for the initial 150~s of approximately 2~g/s.  The polyurethane foam was ignited with a small flame in the center of the top surface of the foam block.  As the flame spread across the surface it also began to burn down into the foam sample.  As a result the exposed surface of the foam began to take the shape of a bowl as the burning rate became linear at approximately 2~g/s.
 
@@ -299,7 +297,7 @@ Mass loss measurements were not possible for the natural gas burner experiments.
 \end{figure}
 
 
-\section{Flame Height}
+\subsection{Flame Height}
 
 Each of the experiments was photographed with a digital single lens reflex (SLR) camera, fixed on a tripod, with a capability of capturing at least five images per second.  Located adjacent to the camera was a video camera recording images at approximately thirty 30 frames per second (fps).  The experiments were also recorded with a thermal imager, however the videos were not used for analysis as it was difficult to determine the differences between the visible flame and the thermal plume from the black and white images.
 
@@ -430,13 +428,13 @@ Fraction (\%)   &       Natural Gas	            &   Gasoline	            & Polyu
 
 For both the natural gas and the gasoline experiments the 95~\% confidence limits show less than 20 percent variation in visible flame height within the intermittent flame region.  The percentage variation increases at the continuous flame region, although the magnitudes of the height variations are similar to other sections of the intermittent flame region.  The percentage variation is higher in the continuous flame region because the height of the continuous flame region is the smallest.  The 95~\% confidence limits for the polyurethane foam are about twice those of the natural gas and the gasoline.
 
-\section{Summary}
+\subsection{Summary}
 
 The source fires have been characterized in terms of heat release rate, plume temperature, total heat flux, mass loss and flame height.  This data has been collected for use in direct analysis of the burn patterns and as input into the engineering correlations and FDS models that are used later in this study.
 
 
 
-\chapter{Instrumented Calibration (non-combustible) Wall Experiments}
+\chapter{Instrumented Non-combustible Wall Experiments}
 
 Now that the characteristics of the fires had been measured, the next step was to measure the thermal impact that the fires had on a vertical target surface.  In these experiments the target is a non-combustible wall. The non-combustible material was chosen to minimize any contribution from the wall to the fire.  The fires were placed at predetermined, fixed positions away from the wall.  In the remainder of the report the term burner will be considered synonymous with the pan for the liquid fuel or the block of solid fuel. Experiments were conducted with the closest edge of the burner located in the following positions from the wall: two burner widths (0.610~m), one burner width (0.305~m), one half burner width (0.150~m), and then touching the wall (0.0~m).
 
@@ -461,7 +459,7 @@ A free standing steel frame wall with a 12.7~mm thick, 2.44~m high by 1.22~m wid
 \label{tab:Marinite_Thermal_Properties}
 \end{table}
 
-Two vertical arrays of water cooled, Schmidt-Boelter total heat flux gauges, as previously described in the instrumentation section above, were installed at 20 cm intervals from 0.2~m to 1.2~m above the burner.  One vertical array was centered on the burner and the other vertical array was centered on the right edge of the burner. The arrangement is shown in Fig.~\ref{Instrumented_NC_Wall}. Bare-bead, Chromel-Alumel (type K) thermocouples, with a 0.5~mm nominal diameter were installed next to the center of each heat flux sensors and continued, at 20~cm intervals, up to a height of 2.2~m above the surface of the burner. Photographs of the front and rear of the instrumented wall are shown in Figures~\ref{Instrumented_Wall_Front_photo} and \ref{Instrumented_Wall_Rear_photo} The thermocouples where installed in small holes from the back of the wall of the wall.  The bead of the thermocouple was flush with the surface on the calcium silcate board and was in contact with the board, as shown in Figure~\ref{Instrumented_Wall_Close_up_TC_HF_photo} For the center array,a second thermocouple was installed on the backside of the calcium silicate board, approximately 10~mm below the TC positioned on the front surface of the wall. The photograph in Figure~\ref{Instrumented_Wall_Detail_Rear_TC_photo} shows a rear thermocouple with the bead in contact with the rear surface of the wall and the relative position to the thermocouple on the front surface of the wall. In a manner similar to the source fire characterization experiments, the instrumented wall experiments were conducted under the NIST Large Fire Research Laboratory’s 3~m by 3~m oxygen depletion calorimeter.
+Two vertical arrays of water cooled, Schmidt-Boelter total heat flux gauges, as previously described in the instrumentation section above, were installed at 20 cm intervals from 0.2~m to 1.2~m above the burner.  One vertical array was centered on the burner and the other vertical array was centered on the right edge of the burner. The arrangement is shown in Fig.~\ref{Instrumented_NC_Wall}. Bare-bead, Chromel-Alumel (type K) thermocouples, with a 0.5~mm nominal diameter were installed next to the center of each heat flux sensors and continued, at 20~cm intervals, up to a height of 2.2~m above the surface of the burner. Photographs of the front and rear of the instrumented wall are shown in Figures~\ref{Instrumented_Wall_Front_photo} and \ref{Instrumented_Wall_Rear_photo} The thermocouples where installed in small holes from the back of the wall of the wall.  The bead of the thermocouple was flush with the surface on the calcium silcate board and was in contact with the board, as shown in Figure~\ref{Instrumented_Wall_Close_up_TC_HF_photo} For the center array,a second thermocouple was installed on the backside of the calcium silicate board, approximately 10~mm below the TC positioned on the front surface of the wall. The photograph in Figure~\ref{Instrumented_Wall_Detail_Rear_TC_photo} shows a rear thermocouple with the bead in contact with the rear surface of the wall and the relative position to the thermocouple on the front surface of the wall. In a manner similar to the source fire characterization experiments, the instrumented wall experiments were conducted under the NIST Large Fire Research Laboratory's 3~m by 3~m oxygen depletion calorimeter.
 
 \begin{figure}
 	\centering
@@ -501,50 +499,127 @@ Two vertical arrays of water cooled, Schmidt-Boelter total heat flux gauges, as 
 
 \section{Results}
 
-The results are presented for each of the four burner positions, (0.61~m, 0.31~m, 0.15~m and 0.0~m), and each of the three fuels in Appendix X.  For the natural gas fueled experiments only two replicates were conducted at each position given the higher level of control and repeatability.  For the gasoline and polyurethane fueled experiments, three replicates were conducted at each position. The position is measured as the distance between the edge of the burner closest to the wall and the wall.  The results of the wall temperatures and heat fluxes are presented as averages of the replicate experiments.  In the sections below, examples of the averaged data from the gasoline fueled experiments will be presented to demonstrate the impact on distance on the conditions measured on the wall. Then a composite graph of the measured thermal impacts on the wall versus distance will be shown for each fuel type.
+The results are presented for each of the four burner positions, (0.61~m, 0.31~m, 0.15~m and 0.0~m), and each of the three fuels in Appendix X.  For the natural gas fueled experiments only two replicates were conducted at each position given the higher level of control and repeatability.  For the gasoline and polyurethane fueled experiments, three replicates were conducted at each position. The position is measured as the distance between the edge of the burner closest to the wall and the wall.  The results of the wall temperatures and heat fluxes are presented as averages of the replicate experiments.  In the sections below,a full set of the averaged data from the natural gas fueled experiments will be presented to demonstrate the impact on distance from the wall on the temperatures in the plume as well as the conditions measured on the wall. Then composite graphs of the wall temperatures and heat flux measure on the wall versus distance will be shown for each fuel type.
+
+Figures~\ref{TC_Plume_TWNG_comp} through \ref{TC_Back_Center_TWNG_comp} show a complete set of data, averaged over two replicates, for the instrumented, non combustible wall natural gas burner experiments.      
+
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=3.in]{../Figures/TC_Plume_TWNG_0_61m_Reps_Avg}\\
+	\includegraphics[width=3.in]{../Figures/TC_Plume_TWNG_0_31m_Reps_Avg}\\
+	\includegraphics[width=3.in]{../Figures/TC_Plume_TWNG_0_15m_Reps_Avg}\\
+	\includegraphics[width=3.in]{../Figures/TC_Plume_TWNG_0m_Reps_Avg}\\
+	\caption[Plume temperatures along the centerline of the natural gas fueled burner]{Plume temperatures along the centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top graph position and moving down the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
+	\label{TC_Plume_TWNG_comp}
+\end{figure}
+
+
+
+
+\begin{figure}[p]
+	\centering
+		\includegraphics[width=3.in]{../Figures/TC_Surface_Center_TWNG_0_61m_Reps_Avg}\\
+		\includegraphics[width=3.in]{../Figures/TC_Surface_Center_TWNG_0_31m_Reps_Avg}\\
+		\includegraphics[width=3.in]{../Figures/TC_Surface_Center_TWNG_0_15m_Reps_Avg}\\
+		\includegraphics[width=3.in]{../Figures/TC_Surface_Center_TWNG_0m_Reps_Avg}\\
+	\caption[Wall Temperatures along the centerline of the natural gas fueled burner]{Wall Temperatures along the centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top graph position and moving down the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m, respectively.}
+	\label{TC_Surf_Cent_TWNG_comp}
+\end{figure}
+
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=3.in]{../Figures/TC_Surface_Offset_TWNG_0_61m_Reps_Avg}\\
+	\includegraphics[width=3.in]{../Figures/TC_Surface_Offset_TWNG_0_31m_Reps_Avg}\\
+	\includegraphics[width=3.in]{../Figures/TC_Surface_Offset_TWNG_0_15m_Reps_Avg}\\
+	\includegraphics[width=3.in]{../Figures/TC_Surface_Offset_TWNG_0m_Reps_Avg}\\
+	\caption[Wall Temperatures along the edge of the natural gas fueled burner]{Wall Temperatures along the right edge of the natural gas fueled burner, when facing the wall. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top graph position and moving down the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m, respectively.}
+	\label{TC_Surf_Edge_TWNG_comp}
+\end{figure}
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=3.in]{../Figures/TC_Back_Center_TWNG_0_61m_Reps_Avg}\\
+	\includegraphics[width=3.in]{../Figures/TC_Back_Center_TWNG_0_31m_Reps_Avg}\\
+	\includegraphics[width=3.in]{../Figures/TC_Back_Center_TWNG_0_15m_Reps_Avg}\\
+	\includegraphics[width=3.in]{../Figures/TC_Back_Center_TWNG_0m_Reps_Avg}\\
+	\caption[Backside wall Temperatures along the centerline of the natural gas fueled burner]{Backside wall Temperatures along the centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top graph position and moving down the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m, respectively.}
+	\label{TC_Back_Center_TWNG_comp}
+\end{figure}
+
+
+
+
 
 \subsection{Wall Temperatures}
 
 
 
-Figure~\ref{IW_SC_TWGAS} shows the temperatures of the array of thermocouples located along the vertical centerline of the gasoline fueled burner.  The beads of the thermocouples were installed in the wall and were flush with the wall surface. In each graph, the average temperature of the replicate experiments, for each thermocouple position is shown.  Moving from 0.2~m above the top surface of the burner up to 2.2~m above the top of the burner surface in increments of 0.2~m.
+Figure~\ref{NCTW_Surf_Center_comp} shows the temperatures of the array of thermocouples located along the vertical centerline of the burners for each of the three fuels.  The beads of the thermocouples were installed in the wall and were flush with the wall surface. In each graph, the average peak temperature of the replicate experiments, for each thermocouple position is shown. Moving from 0.2~m above the top surface of the burner up to 2.2~m above the top of the burner surface in increments of 0.2~m. As in the data analysis for the source fires, the peak averages were based on a 30 s period bounding the peak for the natural gas and gasoline fires.  A 15 s interval bounding the peak was used for the polyurethane, in order to be more representative of the peak conditions.  
+
+
 
 \begin{figure}[p]
 	\centering
-	\includegraphics[width=2.5in]{../Figures/TC_Surface_Center_TWGas_0_61m_RepsAvg}
-	\includegraphics[width=2.5in]{../Figures/TC_Surface_Center_TWGas_0_31m_RepsAvg}\\
-	\includegraphics[width=2.5in]{../Figures/TC_Surface_Center_TWGas_0_15m_RepsAvg}
-	\includegraphics[width=2.5in]{../Figures/TC_Surface_Center_TWGas_0m_RepsAvg}\\
-	\caption[Wall Temperatures along the centerline of the gasoline fueled burner]{Wall Temperatures along the centerline of the gasoline fueled burner. The temperatures are averages of three replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left position and moving from left to right the distances are 0.61~m, 0.31~m,0.15~m,and 0~m.}
-	\label{IW_SC_TWGAS}
+	\includegraphics[width=3.5in]{../Figures/NCTW_NG_TC_Surface_Center_Avg}\\
+	\includegraphics[width=3.5in]{../Figures/NCTW_GAS_TC_Surface_Center_Avg}\\
+	\includegraphics[width=3.5in]{../Figures/NCTW_PUF_TC_Surface_Center_Avg}\\
+
+	\caption[Composite graph of the wall temperatures along the centerline of the burners]{Composite graph of the wall temperatures along the centerline of the burners for each fuel. The peak temperatures are averages of replicate experiments for each instrument location at each position from the wall. Beginning with the top graph position and moving down the graph for natural gas, gasoline, and polyurethane foam are presented.}
+	\label{NCTW_Surf_Center_comp}
 \end{figure}
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=3.5in]{../Figures/NCTW_NG_TC_Surface_Offset_Avg}\\
+	\includegraphics[width=3.5in]{../Figures/NCTW_GAS_TC_Surface_Offset_Avg}\\
+	\includegraphics[width=3.5in]{../Figures/NCTW_PUF_TC_Surface_Offset_Avg}\\
+	
+	\caption[Composite graph of the wall temperatures along the edge of the burners]{Composite graph of the wall temperatures along the edge of the burners for each fuel. The peak temperatures are averages of replicate experiments for each instrument location at each position from the wall. Beginning with the top graph position and moving down, the graphs for natural gas, gasoline, and polyurethane foam are presented.}
+	\label{NCTW_Surf_Edge_comp}
+\end{figure}
+
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=3.5in]{../Figures/NCTW_NG_TC_Back_Center_Avg}\\
+	\includegraphics[width=3.5in]{../Figures/NCTW_GAS_TC_Back_Center_Avg}\\
+	\includegraphics[width=3.5in]{../Figures/NCTW_PUF_TC_Back_Center_Avg}\\
+	
+	\caption[Composite graph of the backside wall temperatures along the center of the burners]{Composite graph of the backside wall temperatures along the vertical centerline of the burners for each fuel. The peak temperatures are averages of replicate experiments for each instrument location at each position from the wall. Beginning with the top graph position and moving down, the graphs for natural gas, gasoline, and polyurethane foam are presented.}
+	\label{NCTW_Back_Cent_comp}
+\end{figure}
+
+
 
 
 
 \subsection{Heat Flux}
 
-Figure~\ref{IW_HFC_TWGAS} shows the temperatures of the array of total heat flux gauges located along the vertical centerline of the gasoline fueled burner.  The sensing surface of the gauges were installed flush with the wall surface and exposed to the fire. In each graph, the average temperature of the replicate experiments, for each total heat flux position is shown.  Moving from 0.2~m above the top surface of the burner up to 1.2~m above the top of the burner surface in increments of 0.2~m.
+Figure~\ref{NCTW_HF_Center_Comp} shows the results from the array of total heat flux gauges located along the vertical centerline of the burners for each fuel.  The sensing surface of the gauges were installed flush with the wall surface and exposed to the fire. In each graph, the averaged peak heat flux for each of the replicate experiments and each position is shown.  Moving from 0.2~m above the top surface of the burner up to 1.2~m above the top of the burner surface in increments of 0.2~m.
 
 \begin{figure}[p]
 	\centering
-	\includegraphics[width=2.5in]{../Figures/HF_Center_TWGas_0_61m_Reps_Avg}
-	\includegraphics[width=2.5in]{../Figures/HF_Center_TWGas_0_31m_Reps_Avg}\\
-	\includegraphics[width=2.5in]{../Figures/HF_Center_TWGas_0_15m_Reps_Avg}
-	\includegraphics[width=2.5in]{../Figures/HF_Center_TWGas_0m_Reps_Avg}\\
-	\caption[Wall heat fluxes along the centerline of the gasoline fueled burner]{Wall heat fluxes along the centerline of the gasoline fueled burner.  The heat fluxes are averages of three replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left position and moving from left to right the distances are 0.61~m, 0.31~m,0.15~m,and 0~m.}
-	\label{IW_HFC_TWGAS}
+	\includegraphics[width=3.5in]{../Figures/NCTW_NG_HF_Center_Avg} \\
+	\includegraphics[width=3.5in]{../Figures/NCTW_GAS_HF_Center_Avg}\\
+	\includegraphics[width=3.5in]{../Figures/NCTW_PUF_HF_Center_Avg} \\
+
+	\caption[Wall heat flux along the centerline of the burners]{Wall heat fluxes along the centerline of the burners.  The heat fluxes are averages of replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top graph position and moving down, the graphs for natural gas, gasoline, and polyurethane foam are presented.}
+	\label{NCTW_HF_Center_Comp}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[p]
 	\centering
-	\includegraphics[width=\textwidth]{../Figures/NCTW_NG_HF_Center_Avg}\\
-	\caption[Summary of wall heat fluxes along the centerline of the natural gas fueled burner]{Summary of the heat flux to the non-combustible wall along the verticle centerline of the natural gas fueled burner compared to the position away from the wall.}
-	\label{nctw_ng_heatflux}
+	\includegraphics[width=3.5in]{../Figures/NCTW_NG_HF_Offset_Avg} \\
+	\includegraphics[width=3.5in]{../Figures/NCTW_GAS_HF_Offset_Avg}\\
+	\includegraphics[width=3.5in]{../Figures/NCTW_PUF_HF_Offset_Avg} \\
+	
+	\caption[Wall heat flux along the edge of the burners]{Wall heat fluxes along the edge of the burners.  The heat fluxes are averages of replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top graph position and moving down, the graphs for natural gas, gasoline, and polyurethane foam are presented.}
+	\label{NCTW_HF_Edge_Comp}
 \end{figure}
 
 
-
-\subsection{Fire Pattern}
 
 
 
