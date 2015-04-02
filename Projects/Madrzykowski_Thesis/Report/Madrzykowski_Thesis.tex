@@ -242,7 +242,7 @@ A schematic drawing of the instrumentation arrangement is shown in Fig.~\ref{Dra
 
 Figures~\ref{HRR}-\ref{HRR2} show the measured heat release rates for the natural gas, gasoline and polyurethane foam fueled fires. In each graph, the replicate heat release time histories are overlaid to give a sense of the experimental repeatability for each fuel.
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=4.5in]{../Figures/ST_NG_HRR}\\
   \includegraphics[width=4.5in]{../Figures/ST_Gas_HRR}\\
@@ -250,7 +250,7 @@ Figures~\ref{HRR}-\ref{HRR2} show the measured heat release rates for the natura
   \label{HRR}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=4.5in]{../Figures/ST_PUF_HRR}\\
   \caption[Heat release rates for the polyurethane foam fires]{Heat release rates for the polyurethane foam fires.}
@@ -283,9 +283,9 @@ Plots of the total heat flux for each of the fuels are presented in Fig.~\ref{Fl
 
 \begin{figure}[p]
   \centering
-  \includegraphics[width=4.5in]{../Figures/Fig9}\\
-  \includegraphics[width=4.5in]{../Figures/Fig10}\\
-  \includegraphics[width=4.5in]{../Figures/Fig11}\\
+  \includegraphics[width=3.5in]{../Figures/HF_NG}\\
+  \includegraphics[width=3.5in]{../Figures/HF_GAS}\\
+  \includegraphics[width=3.5in]{../Figures/HF_PUF}\\
   \caption[Total heat flux versus time for natural gas, gasoline, and foam fires]{Total heat flux versus time for natural gas, gasoline, and foam fires.}
   \label{Flux}
 \end{figure}
@@ -350,6 +350,7 @@ For the natural gas experiments, approximately 30~s of ``steady state'' video we
 Each frame from the video clip was saved as a full color Tagged Image File Format (TIFF) file and the pixel aspect ratio was changed from 0.9 to 1, so that each pixel had the same dimension in both the horizontal and vertical directions.  Once these images were rendered by the video editing program, each image was scaled and cropped to provide input for Streams, a suite of image processing programs developed by Nokes for analyzing fluid flow visualization experiments~\cite{Nokes:2011}. The images were scaled so that one pixel equals 5~mm in height and width.
 
 Examples of a set of TIFF images for each fuel are shown in Figures~\ref{flame_height_comp_FHNG80_1} through \ref{flame_height_comp_FHPUF_1}.   Each figure has 56 sequential images from the video segment.  The images total almost 2~s of actual burn time.  Notice how the flame height cycles up and down in each of the sequences.  These images provide additional information and continuity of the motion of the flame so that the analysis is less likely to miss and extreme (minimum or maximum) position when compared to the still photographs.
+
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{../Figures/flame_height_comp_FHNG80}\\
@@ -510,7 +511,6 @@ The results are presented for each of the four burner positions, (0.61~m, 0.31~m
 
 Figures~\ref{TC_Plume_TWNG_comp} through \ref{TC_Back_Center_TWNG_comp} show a complete set of data, averaged over two replicates, for the instrumented, non combustible wall natural gas burner experiments.
 
-
 \begin{figure}[p]
 	\centering
 	\includegraphics[width=3.in]{../Figures/TC_Plume_TWNG_0p61m_Reps_Avg}\\
@@ -521,9 +521,6 @@ Figures~\ref{TC_Plume_TWNG_comp} through \ref{TC_Back_Center_TWNG_comp} show a c
 	\label{TC_Plume_TWNG_comp}
 \end{figure}
 
-
-
-
 \begin{figure}[p]
 	\centering
 		\includegraphics[width=3.in]{../Figures/TC_Surface_Center_TWNG_0p61m_Reps_Avg}\\
@@ -533,7 +530,6 @@ Figures~\ref{TC_Plume_TWNG_comp} through \ref{TC_Back_Center_TWNG_comp} show a c
 	\caption[Wall Temperatures along the centerline of the natural gas fueled burner]{Wall Temperatures along the centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top graph position and moving down the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m, respectively.}
 	\label{TC_Surf_Cent_TWNG_comp}
 \end{figure}
-
 
 \begin{figure}[p]
 	\centering
@@ -558,19 +554,17 @@ Figures~\ref{TC_Plume_TWNG_comp} through \ref{TC_Back_Center_TWNG_comp} show a c
 
 \subsection{Wall Temperatures}
 
-
 Figure~\ref{NCTW_Surf_Center_comp} shows the temperatures of the array of thermocouples located along the vertical centerline of the burners for each of the three fuels. Reviewing the graph for each fuel demonstrates how the temperature at the wall decreased as the position of the burner was moved away from the wall. The figures  The beads of the thermocouples were installed in the wall and were flush with the wall surface. In each graph, the average peak temperature of the replicate experiments, for each thermocouple position is shown. Moving from 0.2~m above the top surface of the burner up to 2.2~m above the top of the burner surface in increments of 0.2~m. As with the data analysis for the source fires, the peak averages were based on a 30~s period bounding the peak for the natural gas and gasoline fires.  A 15~s interval bounding the peak was used for the polyurethane, in order to be more representative of the peak conditions.
 
 Figure~\ref{NCTW_Surf_Edge_comp} presents the temperature of the vertical array of thermocouples positioned on the wall along the edge of the burner for each of the three fuels.  The data is treated in the same manner as in Figure~\ref{NCTW_Surf_Center_comp}.  For each fuel the average peak temperatures at the burner edge are significantly lower when the centerline temperatures when the burner is positioned against the wall.  As the burners were moved away from the wall the temperatures at the centerline and the edge thermocouple arrays begin to converge.
 
-Temperatures were also measured on the backside of the wall, along the vertical centerline of the burners, Figure~\{NCTW_Back_Cent_comp}. The temperature difference between the peak average temperatures on the front (fire side) of the wall at 0.2~m above the burner vs the corresponding temperatures on the backside of the wall have a difference of at least 400~$^\circ$C.  It is consistent with the temperature data shown in Figures~\ref{NCTW_Surf_Center_comp} and \ref{NCTW_Surf_Edge_comp}, that as the burners were moved away from the wall the temperature differences are reduced.      
+Temperatures were also measured on the backside of the wall, along the vertical centerline of the burners, Figure~\ref{NCTW_Back_Cent_comp}. The temperature difference between the peak average temperatures on the front (fire side) of the wall at 0.2~m above the burner vs the corresponding temperatures on the backside of the wall have a difference of at least 400~$^\circ$C.  It is consistent with the temperature data shown in Figures~\ref{NCTW_Surf_Center_comp} and \ref{NCTW_Surf_Edge_comp}, that as the burners were moved away from the wall the temperature differences are reduced.
 
 \begin{figure}[p]
 	\centering
 	\includegraphics[width=3.5in]{../Figures/NCTW_NG_TC_Surface_Center_Avg}\\
 	\includegraphics[width=3.5in]{../Figures/NCTW_GAS_TC_Surface_Center_Avg}\\
 	\includegraphics[width=3.5in]{../Figures/NCTW_PUF_TC_Surface_Center_Avg}\\
-
 	\caption[Composite graph of the wall temperatures along the centerline of the burners]{Composite graph of the wall temperatures along the centerline of the burners for each fuel. The peak temperatures are averages of replicate experiments for each instrument location at each position from the wall. Beginning with the top graph position and moving down the graph for natural gas, gasoline, and polyurethane foam are presented.}
 	\label{NCTW_Surf_Center_comp}
 \end{figure}
@@ -595,12 +589,9 @@ Temperatures were also measured on the backside of the wall, along the vertical 
 \end{figure}
 
 
-
-
-
 \subsection{Heat Flux}
 
-Figures~\ref{NCTW_HF_Center_Comp} and {NCTW_HF_Edge_Comp} show the results from the arrays of total heat flux gauges located along the vertical centerline and the edge of the burners for each fuel.  The sensing surface of the gauges were installed flush with the wall surface and exposed to the fire. In each graph, the averaged peak heat flux for each of the replicate experiments and each position is shown.  Moving from 0.2~m above the top surface of the burner up to 1.2~m above the top of the burner surface in increments of 0.2~m.  Reviewing the graph for each fuel demonstrates how the heat flux at the wall decreased as the position of the burner was moved away from the wall.  (Review video and tie in ST TC graph with edge peak NG at 0.15)
+Figures~\ref{NCTW_HF_Center_Comp} and \ref{NCTW_HF_Edge_Comp} show the results from the arrays of total heat flux gauges located along the vertical centerline and the edge of the burners for each fuel.  The sensing surface of the gauges were installed flush with the wall surface and exposed to the fire. In each graph, the averaged peak heat flux for each of the replicate experiments and each position is shown.  Moving from 0.2~m above the top surface of the burner up to 1.2~m above the top of the burner surface in increments of 0.2~m.  Reviewing the graph for each fuel demonstrates how the heat flux at the wall decreased as the position of the burner was moved away from the wall.  (Review video and tie in ST TC graph with edge peak NG at 0.15)
 
 \begin{figure}[p]
 	\centering
@@ -621,23 +612,12 @@ Figures~\ref{NCTW_HF_Center_Comp} and {NCTW_HF_Edge_Comp} show the results from 
 \end{figure}
 
 
-
-
-
 \chapter{Instrumented Gypsum Board Wall Experiments}
-Purpose
+
 \section{Experimental Arrangement}
-This series of experiments combined the instrumentation used in the non-combustible wall experiments with gypsum wallboard, which has a combustible paper surface.  A free standing, steel frame with a panel of gypsum wallboard attached to the surface was instrumented to measure the thermal exposure of the wall from the fire in terms of temperature and heat flux.  The fires were initially placed at predetermined, fixed positions away from the wall. The burner was moved toward the wall until the burner was against the wall.  If the results indicated that no burn pattern would result from a given combination of fuel and position, then that fuel and position combination were eliminated from the remainder of the test matrix. 
+This series of experiments combined the instrumentation used in the non-combustible wall experiments with gypsum wallboard, which has a combustible paper surface.  A free standing, steel frame with a panel of gypsum wallboard attached to the surface was instrumented to measure the thermal exposure of the wall from the fire in terms of temperature and heat flux.  The fires were initially placed at predetermined, fixed positions away from the wall. The burner was moved toward the wall until the burner was against the wall.  If the results indicated that no burn pattern would result from a given combination of fuel and position, then that fuel and position combination were eliminated from the remainder of the test matrix.
 
-The thermocouple arrangement for these experiments, only had one vertical array of thermocouples.  The thermocouples were positioned between the two vertical arrays of heat flux gauges as shown in Figure~ref\{Instrumented_GB_Wall}  As a means of ensuring contact between the gypsum wallboard and the thermocouple, the thermocouples were installed by pulling the positive and negative wires through holes drilled on the horizontal centerline between the heat flux gauges and positioning the bead of the thermocouple in a slit in the paper face made with a razor blade.  A thermocouple installed in this manner shown in Figure~ref\    
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{../Figures/Instrumented_GB_Wall}\\
-	\caption[Diagram of the instrumented non-combustible wall]{Diagram of the instrumented non-combustible wall. Two vertical arrays of total heat flux gauges and thermocouples were installed along the centerline of the burner and along the right edge of the burner.}
-	\label{Instrumented_GB_Wall}
-\end{figure}
-
+The thermocouple arrangement for these experiments, only had one vertical array of thermocouples.  The thermocouples were positioned between the two vertical arrays of heat flux gauges as shown in Figure~\ref{Instrumented_GB_Wall}  As a means of ensuring contact between the gypsum wallboard and the thermocouple, the thermocouples were installed by pulling the positive and negative wires through holes drilled on the horizontal centerline between the heat flux gauges and positioning the bead of the thermocouple in a slit in the paper face made with a razor blade.  A thermocouple installed in this manner shown in Figure {\bf fig reference}
 
 \begin{figure}
 	\centering
@@ -645,6 +625,13 @@ The thermocouple arrangement for these experiments, only had one vertical array 
 	\caption[Diagram of the instrumented non-combustible wall]{Diagram of the instrumented non-combustible wall. Two vertical arrays of total heat flux gauges and thermocouples were installed along the centerline of the burner and along the right edge of the burner.}
 	\label{Instrumented_GB_Wall}
 \end{figure}
+
+% \begin{figure}
+% 	\centering
+% 	\includegraphics[width=\textwidth]{../Figures/Instrumented_GB_Wall}\\
+% 	\caption[Diagram of the instrumented non-combustible wall]{Diagram of the instrumented non-combustible wall. Two vertical arrays of total heat flux gauges and thermocouples were installed along the centerline of the burner and along the right edge of the burner.}
+% 	\label{Instrumented_GB_Wall}
+% \end{figure}
 
 
 
@@ -678,9 +665,6 @@ After receipt of the gypsum wallboard panels, the panels were laid out on the fl
 
 
 \section{Results}
-
-
-
 
 The first series of experiments were conducted with the natural gas burner.
 
