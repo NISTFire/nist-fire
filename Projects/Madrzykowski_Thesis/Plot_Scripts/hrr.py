@@ -9,11 +9,15 @@ rcParams.update({'figure.autolayout': True})
 
 data_dir = '../Experimental_Data/STHRR/'
 plot_dir = '../Figures/'
-test_name = 'ST_NG_HRR'
+test_name = 'ST_PUF_HRR'
 data = pd.read_csv(data_dir + test_name + '.csv', header=0)
 data2 = pd.read_csv(data_dir + test_name + '.csv', header=0,index_col=0)
 
 fuel = test_name[3:-3]
+if 'Gas' in str(fuel):
+	col = 2
+else:
+	col = 1
 markers = ['s', '*', '^', 'o', '<', '>', '8', 'h','d','x','p','v','H', 'D', '1', '2', '3', '4', '|']
 colors=['r', 'b', 'g', 'c', 'm', '0.75', 'y','#cc5500', '#228b22','#f4a460','#4c177d','firebrick', 'mediumblue', 'darkgreen', 'cadetblue', 'indigo', 'crimson', 'gold']
 
@@ -30,8 +34,9 @@ xlabel('Time (s)', fontsize=20)
 ylabel('Heat Release Rate (kW)', fontsize=20)
 xticks(fontsize=16)
 yticks(fontsize=16)
-legend(numpoints=1,loc=1,ncol=1,fontsize=16)
+legend(numpoints=1,loc=1,ncol=col,fontsize=16)
 axis([0, 300, 0, 120])
+grid(True)
 savefig(plot_dir + test_name + '.pdf',format='pdf')
 close()
 
@@ -45,7 +50,8 @@ xlabel('Time (s)')
 ylabel('Heat Release Rate (kW)')
 xticks(fontsize=16)
 yticks(fontsize=16)
-legend(numpoints=1,loc=1,ncol=1,fontsize=16)
+legend(numpoints=1,loc=1,ncol=col,fontsize=16)
 axis([0, 300, 0, 120])
+grid(True)
 savefig(plot_dir + test_name + '_nosigma.pdf',format='pdf')
 close()
