@@ -57,12 +57,16 @@ for f in os.listdir(data_dir):
 		if info['Skip'][test_name] == 'Yes':
 			print 'Replicate test skipped'
 			continue
+		# Time sample rate
+		time_sample = 1
 
 		# Load first replicate of exp. data files
 		if info['Replicate_Of'][test_name] == test_name:
 			data = pd.read_csv(data_dir + test_name + '.csv')
-			data_sub=np.zeros(shape=(int(min(info['End_Time'])), int(info['Replicate_Num'][test_name])))
-			time = np.arange(0,int(min(info['End_Time'])),1)
+			data_len = int(int(min(info['End_Time']))/time_sample)
+			data_sub=np.zeros(shape=(data_len, int(info['Replicate_Num'][test_name])))
+			time = np.arange(0,int(min(info['End_Time'])),time_sample)
+
 
 		# Generate subsets for each setup
 		for group in sensor_groups:
@@ -71,7 +75,6 @@ for f in os.listdir(data_dir):
 				labels = label_plume
 				array = '_TC_Plume_Avg'
 				num_array = 12
-				data_average = np.zeros(shape=(int(min(info['End_Time'])), num_array))
 				shape_offset = 1
 				ymax,xmax = 1000,500
 				ylabel('Temperature ($^{\circ}$C)', fontsize=20)
@@ -79,7 +82,6 @@ for f in os.listdir(data_dir):
 				labels = label_surf_cen
 				array = '_TC_Surface_Center_Avg'
 				num_array = 11
-				data_average = np.zeros(shape=(int(min(info['End_Time'])), num_array))
 				shape_offset = 0
 				ymax,xmax = 500,600
 				ylabel('Temperature ($^{\circ}$C)', fontsize=20)
@@ -87,7 +89,6 @@ for f in os.listdir(data_dir):
 				labels = label_surf_off
 				array = '_TC_Surface_Offset_Avg'
 				num_array = 10
-				data_average = np.zeros(shape=(int(min(info['End_Time'])), num_array))
 				shape_offset = 0
 				ymax,xmax = 300,600
 				ylabel('Temperature ($^{\circ}$C)', fontsize=20)
@@ -95,7 +96,6 @@ for f in os.listdir(data_dir):
 				labels = label_back_cen
 				array = '_TC_Back_Center_Avg'
 				num_array = 11
-				data_average = np.zeros(shape=(int(min(info['End_Time'])), num_array))
 				shape_offset = 0
 				ymax,xmax = 120,600
 				ylabel('Temperature ($^{\circ}$C)', fontsize=20)
@@ -103,7 +103,6 @@ for f in os.listdir(data_dir):
 				labels = label_hf_cen
 				array = '_HF_Center_Avg'
 				num_array = 6
-				data_average = np.zeros(shape=(int(min(info['End_Time'])), num_array))
 				shape_offset = 0
 				ymax,xmax = 60,300
 				ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
@@ -111,10 +110,10 @@ for f in os.listdir(data_dir):
 				labels = label_hf_off
 				array = '_HF_Offset_Avg'
 				num_array = 6
-				data_average = np.zeros(shape=(int(min(info['End_Time'])), num_array))
 				shape_offset = 0
 				ymax,xmax = 50,300
 				ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
+			data_average = np.zeros(shape=(data_len, num_array))
 			for channel in data.columns[1:]:
 				if any([substring in channel for substring in group]):
 					if 'TC ' or 'HF ' in channel:
