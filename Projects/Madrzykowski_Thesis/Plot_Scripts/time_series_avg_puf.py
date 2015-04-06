@@ -68,6 +68,7 @@ for f in os.listdir(data_dir):
 			time = np.arange(0,int(min(info['End_Time'])),time_sample)
 
 		# Generate subsets for each setup
+		fig = figure()
 		for group in sensor_groups:
 			k=0
 			if 'TC Plume' in group:
@@ -125,7 +126,6 @@ for f in os.listdir(data_dir):
 						k=k+1
 			if 'TC Plume' in group:
 				data_average = np.fliplr(data_average)
-			fig = figure()
 			for i in range(data_average.shape[1]-shape_offset):
 				y = data_average[:,i]
 				plot(time,y,color=colors[i],marker=markers[i],markevery=10,ms=8,label=labels[i])

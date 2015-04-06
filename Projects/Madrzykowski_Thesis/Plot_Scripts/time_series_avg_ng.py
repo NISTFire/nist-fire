@@ -69,6 +69,7 @@ for f in os.listdir(data_dir):
 
 
 		# Generate subsets for each setup
+		fig = figure()
 		for group in sensor_groups:
 			k=0
 			if 'TC Plume' in group:
@@ -124,8 +125,6 @@ for f in os.listdir(data_dir):
 								data_sub[:,i] = data2[channel][:int(min(info['End_Time']))]
 						data_average[:,k] = ma.masked_outside(data_sub,-3000,3000).mean(axis=1)
 						k=k+1
-
-			fig = figure()
 			for i in range(data_average.shape[1]-shape_offset):
 				y = data_average[:,i+shape_offset]
 				plot(time,y,color=colors[i],marker=markers[i],markevery=50,ms=8,label=labels[i])

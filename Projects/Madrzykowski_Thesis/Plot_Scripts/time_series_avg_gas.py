@@ -12,9 +12,9 @@ from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
 
 # Location of files
-data_dir = '../Experimental_Data/IWGBGAS/'
+data_dir = '../Experimental_Data/TWGas/'
 plot_dir = '../Figures/'
-info_file = '../Experimental_Data/IWGBGAS/Description_of_GAS_Tests.csv'
+info_file = '../Experimental_Data/TWGas/Description_of_Gas_Tests.csv'
 
 # List of sensor groups for each plot
 sensor_groups = [['TC Plume'],['TC Surface Center'],['TC Surface Offset'],['TC Back Center'],['HF Center'],['HF Offset']]
@@ -23,7 +23,7 @@ sensor_groups = [['TC Plume'],['TC Surface Center'],['TC Surface Offset'],['TC B
 # Load exp. timings and description file
 info = pd.read_csv(info_file,header=0, index_col=0)
 # Skip files
-skip_files = ['description_','nctw_','iwgb_']
+skip_files = ['description_','nctw_']
 
 #  =========================
 #  = Reading in Data Files =
@@ -58,7 +58,7 @@ for f in os.listdir(data_dir):
 			print 'Replicate test skipped'
 			continue
 		# Time sample rate
-		time_sample = 1
+		time_sample = 4
 
 		# Load first replicate of exp. data files
 		if info['Replicate_Of'][test_name] == test_name:
@@ -68,6 +68,7 @@ for f in os.listdir(data_dir):
 			time = np.arange(0,int(min(info['End_Time'])),time_sample)
 
 		# Generate subsets for each setup
+		fig = figure()
 		for group in sensor_groups:
 			k=0
 			if 'TC Plume' in group:
@@ -125,7 +126,6 @@ for f in os.listdir(data_dir):
 						k=k+1
 			if 'TC Plume' in group:
 				data_average = np.fliplr(data_average)
-			fig = figure()
 			for i in range(data_average.shape[1]-shape_offset):
 				y = data_average[:,i]
 				plot(time,y,color=colors[i],marker=markers[i],markevery=10,ms=8,label=labels[i])
