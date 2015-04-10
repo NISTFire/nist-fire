@@ -78,6 +78,7 @@ for f in os.listdir(data_dir):
 				num_array = 12
 				shape_offset = 1
 				ymax,xmax = 1000,500
+				mean_length=1
 				ylabel('Temperature ($^{\circ}$C)', fontsize=20)
 			elif 'TC Surface Center' in group:
 				labels = label_surf_cen
@@ -85,6 +86,7 @@ for f in os.listdir(data_dir):
 				num_array = 11
 				shape_offset = 0
 				ymax,xmax = 500,600
+				mean_length=1
 				ylabel('Temperature ($^{\circ}$C)', fontsize=20)
 			elif 'TC Surface Offset' in group:
 				labels = label_surf_off
@@ -92,6 +94,7 @@ for f in os.listdir(data_dir):
 				num_array = 10
 				shape_offset = 0
 				ymax,xmax = 300,600
+				mean_length=1
 				ylabel('Temperature ($^{\circ}$C)', fontsize=20)
 			elif 'TC Back Center' in group:
 				labels = label_back_cen
@@ -99,6 +102,7 @@ for f in os.listdir(data_dir):
 				num_array = 11
 				shape_offset = 0
 				ymax,xmax = 120,600
+				mean_length=1
 				ylabel('Temperature ($^{\circ}$C)', fontsize=20)
 			elif 'HF Center' in group:
 				labels = label_hf_cen
@@ -106,6 +110,7 @@ for f in os.listdir(data_dir):
 				num_array = 6
 				shape_offset = 0
 				ymax,xmax = 60,300
+				mean_length=10
 				ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
 			elif 'HF Offset' in group:
 				labels = label_hf_off
@@ -113,6 +118,7 @@ for f in os.listdir(data_dir):
 				num_array = 6
 				shape_offset = 0
 				ymax,xmax = 50,300
+				mean_length=10
 				ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
 			data_average = np.zeros(shape=(data_len, num_array))
 			for channel in data.columns[1:]:
@@ -126,7 +132,7 @@ for f in os.listdir(data_dir):
 						data_average[:,k] = ma.masked_outside(data_sub,-3000,3000).mean(axis=1)
 						k=k+1
 			for i in range(data_average.shape[1]-shape_offset):
-				y = data_average[:,i+shape_offset]
+				y = pd.rolling_mean(data_average[:,i+shape_offset],mean_length,center=True)
 				plot(time,y,color=colors[i],marker=markers[i],markevery=50,ms=8,label=labels[i])
 			ax1 = gca()
 			xlabel('Time (s)', fontsize=20)
