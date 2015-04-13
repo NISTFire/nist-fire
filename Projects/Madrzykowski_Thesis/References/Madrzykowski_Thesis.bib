@@ -7,27 +7,27 @@
 	pages = {81-95}
 }
 
-@report{Lawson:1977,
+@report@{Lawson:1977,
 	author = {J. Randall Lawson},
 	title = {{An Evaluation of Fire Properties of Generic Gypsum Board Products}},
-	  year         = {1977},
-	  institution  = {National Bureau of Standards (now NIST)},
-	  type         = {NBS IR},
-	  number       = {77-1265},
-	  address      = {Gaithersburg, Maryland},
+    type = {NBS IR},
+	institution = {National Bureau of Standards (now NIST)},
+	date = {1977},
+    number = {77-1265},
+    location = {Gaithersburg, Maryland},
 }
 
 
 @MISC{USGS,
 	author       = {USGS},
-	title        = {Gypsum	Statistics and Information},
+	title        = {Gypsum Statistics and Information},
 	institution  = {USGS},
 	howpublished = {\\http://minerals.usgs.gov/minerals/pubs/commodity/gypsum/},
 	year         = {2015},
 }
 
 @manual{GA:2010,
-	ALTauthor = {Gypsum Association},
+	author = {Gypsum Association},
 	title = {{Gypsum Board Typical, Mechanical and Physical Properties}},
 	date = {2010},
 	subtitle = {GA-235-10},
@@ -35,10 +35,11 @@
 
 
 @manual{ASTM_E1355,
+   author = {ASTM International}, 
    title = {{ASTM E1355-12, Standard Guide for Evaluating the Predictive Capability of Deterministic Fire Models}},
-   organization = {ASTM International},
-   address = {West Conshohocken, Pennsylvania},
-   year = {2012}
+   date = {2012}
+   location = {West Conshohocken, Pennsylvania},
+
 }
 
 @techreport{Fire_Safety_Framework,
@@ -73,7 +74,7 @@
    year = {1997}
 }
 
-@manual{Mettler,
+@manual@{Mettler,
    title = {{National Type Evaluation Program, Certificate Number 00-075A1}},
    organization = {Mettler-Toledo},
    address = {Worthington, Ohio},
@@ -102,81 +103,89 @@
    type = {Report}
 }
 
-@book{Fire_Investigation,
-   title = {Fire Investigation},
+@book@{Fire_Investigation,
+   author = {David, Niamh Nic},
+   title = {{Fire Investigation}},
+   date = {2004},
    publisher = {CRC Press},
-   address = {Boca Raton},
-   year = {2004},
-   type = {Book}
+   location = {Boca Raton},
+
 }
 
-@manual{ASTM_E84,
+@manual@{ASTM_E84,
    title = {{Standard Test Method for Surface Burning Characteristics of Building Materials}},
-   publisher = {ASTM International},
-   ISBN = {ASTM E84-04},
-   year = {2004},
-   type = {Generic}
+   date = {2004},
+   type = {Generic},
+   organization = {ASTM International},
+   ISBN = {ASTM E84-04}
+
+   
 }
 
-@book{Temperature_Handbook,
+@book@{Temperature_Handbook,
+   author = {Omega Engineering Inc},
    title = {{The Temperature Handbook}},
+   date = {2004},
    publisher = {Omega Engineering Inc.},
-   address = {Stamford, CT},
-   year = {2004},
-   type = {Book}
+   location = {Stamford, CT}
+ 
 }
 
 @inproceedings{ICC,
-   title = {{International Residential Code for One- and Two-Family Dwellings}},
+   	editor = {International Code Council, Inc.},
+   	title = {{International Residential Code for One- and Two-Family Dwellings}},
+   	date = {2006}
    publisher = {International Code Council, Inc.},
+   location = {Country Club Hills, IL}
    type = {Conference Proceedings}
 }
 
-@book{NFPA_1971,
+@manual{NFPA_1971,
+   author = {NFPA}
    title = {{NFPA 1971: Standard on Protective Ensembles for Structural Fire Fighting and Proximity Fire Fighting}},
-   publisher = {{}National Fire Protection Association (NFPA)}},
-   address = {Quincy, MA},
-   year = {2007},
-   type = {Book}
+   date = {2007},
+   publisher = {{National Fire Protection Association (NFPA)}},
+   location = {Quincy, MA},
 }
 
 @techreport{NIOSH:2008,
-   title = {{Career Fire Fighter Dies in Wind Driven Residential Structure Fire - Virginia}},
-   institution = {National Institute for Occupational Safety and Health},
-   year = {2008},
-   type = {Report}
+	author = {National Institute for Occupational Safety and Health},
+	title = {{Career Fire Fighter Dies in Wind Driven Residential Structure Fire - Virginia}},
+	type = {Report},
+    institution = {National Institute for Occupational Safety and Health},
+    date = {2008},
+    location = {Morgantown, WV},
 }
 
 @misc{Gypsum,
+   author = {United States Gypsum Company},
    title = {{Material Safety Data Sheet (MSDS): Sheetrock Gypsum Panels},
-   publisher = {United States Gypsum Company},
-   month = {June},
+   date = {June 2008},
    howpublished = {www.usg.com},
-   year = {2008},
    type = {Chart or Table}
 }
 
 @book{SFPE_Handbook:2008,
+   author = {Society of Fire Protection Engineers},
    title = {{SFPE Handbook of Fire Protection Engineering}},
-   publisher = {Society of Fire Protection Engineers},
-   address = {Bethesda, MD.},
+   date = {2008},
    edition = {4th ed},
-   year = {2008},
-   type = {Book}
+   location = {Bethesda, MD.},
+
 }
 
 @manual{FDS_Users_Guide,
   author = {K. McGrattan and S. Hostikka and R. McDermott and J. Floyd and C. Weinschenk and K. Overholt},
   title = {{Fire Dynamics Simulator, User's Guide}},
-  organization = {National Institute of Standards and Technology, Gaithersburg, Maryland, USA, and VTT Technical Research Centre of Finland, Espoo, Finland},
-  year = 2013,
-  month = {September},
-  type   = {NIST Special Publication},
+  date = {September 2013},
+  edition = {sixth}  
+  type = {NIST Special Publication},
   number = 1019,
-  edition = {sixth}
+  organization = {{National Institute of Standards and Technology, Gaithersburg, Maryland, USA, and VTT Technical Research Centre of Finland, Espoo, Finland}},
   }
 
 @MISC{FDS-SMV_repository,
+  title = {{Fire Dynamics Simulator (FDS)}},
   howpublished = {{\tt http://code.google.com/p/fds-smv/source/browse/\#svn/trunk/FDS/trunk}},
 }
 
@@ -240,12 +249,10 @@
 
 @manual{Defelsko,
   title = {{PosiTector 200, Instruction Manual V. 2.0, Ultrasonic Coating Thickness Gage}},
+  date = {2006}
   organization = {{DeFelsko Corporation}},
-  address = {{Ogdensburg, NY}},
-  year = {2006}
+  location = {{Ogdensburg, NY}},
 } 
-
-
 
 
 %%% SV technical guide
@@ -278,1472 +285,1443 @@
 
 @manual{ASTM_E603,
    title = {{ASTM E603: Standard Guide for Room Fire Experiments}},
+   date = {2008}
    organization = {ASTM International},
-   address = {West Conshohocken, Pennsylvania},
-   year = {2008}
+   location = {West Conshohocken, Pennsylvania},
 }
 
 @manual{ASTM_E2067,
    title = {{ASTM E2067, Standard Practice for Full-Scale Oxygen Consumption Calorimetry Fire Tests}},
+   date = {2008}
    organization = {ASTM International},
-   address = {West Conshohocken, Pennsylvania},
-   year = {2008}
+   location = {West Conshohocken, Pennsylvania},
 }
 
 @manual{ASTM_C1396,
    title = {{ASTM C1396, Standard Specification for Gypsum Board}},
+   date = {2008}
    organization = {ASTM International},
-   address = {West Conshohocken, Pennsylvania},
-   year = {2008}
+   location = {West Conshohocken, Pennsylvania},
 }
 
 @manual{ASTM_E176,
    title = {{ASTM E176, Standard Terminology of Fire Standards}},
+   date = {2008}
    organization = {ASTM International},
-   address = {West Conshohocken, Pennsylvania},
-   year = {2008}
+   location = {West Conshohocken, Pennsylvania},
 }
 
 @manual{ASTM_E648,
    title = {{ASTM E648, Standard Test Method for Critical Radiant Flux of Floor-Covering Systems using a Radiant Heat Energy Source}},
+   date = {2008}
    organization = {ASTM International},
-   address = {West Conshohocken, Pennsylvania},
-   year = {2008}
+   location = {West Conshohocken, Pennsylvania},
 }
 
 @manual{ASTM_E1321,
    title = {{ASTM E1321, Standard Test Method for Determining Material Ignition and Flame Spread Properties}},
+   date = {2008}
    organization = {ASTM International},
-   address = {West Conshohocken, Pennsylvania},
-   year = {2008}
+   location = {West Conshohocken, Pennsylvania},
 }
 
 @manual{ASTM_E162,
    title = {{ASTM E162, Standard Test Method for Surface Flammability of Materials Using a Radiant Heat Energy Source}},
+   date = {2013}
    organization = {ASTM International},
-   address = {West Conshohocken, Pennsylvania},
-   year = {2013}
+   location = {West Conshohocken, Pennsylvania},
 }
 
 @manual{ASTM_E1354,
    title = {{ASTM E1354, Standard Test Method for Heat and Visible Smoke Release Rates for Materials and Products Using an Oxygen Consumption Calorimeter}},
+   date = {2008}
    organization = {ASTM International},
-   address={West Conshohocken, Pennsylvania},
-   year = {2008}
+   location = {West Conshohocken, Pennsylvania},
 }
 
 @inbook{SFPE_Handbook_Data,
-   title = {{Thermophysical Property Data}},
-   booktitle = {SFPE Handbook of Fire Protection Engineering},
+   author = {SFPE},
+   title = ,{SFPE Handbook of Fire Protection Engineering},
+   booktitle = {{Thermophysical Property Data, Appendix B}},
+   date = {2008},
    publisher = {NFPA},
-   address = {Quincy, MA},
+   location = {Quincy, MA},
    pages = {A-33},
-   year = {2008},
-   type = {Book Section}
 }
 
 @misc{State:2009,
    title = {{State Fire Marshal's Office Fire Fighter Fatality Investigation}},
-   DOI = {FY09-01},
-   year = {2009},
    type = {Case}
+   date = {2009},
+   DOI = {FY09-01},
 }
 
 @book{Forensic:2009,
+   author = {National Research Council of the National Academies}
    title = {{Strengthening Forensic Science in the United States, A Path Forward}},
+   date = {2009}
    publisher = {National Research Council of the National Academies},
-   address = {Washington D.C.},
-   year = {2009}
+   location = {Washington D.C.},
 }
 
 @misc{Crime:2010,
    title = {{Crime in the United States}},
-   publisher = {FBI},
-  howpublished = {\url {http://www.fbi.gov/about-us/cjis/ucr/crime-in-the-u.s/2010/crime-in-the-u.s.-2010/property-   crime/arsonmain}},
-  note = {Accessed: 2015-01-30}  
-  year = {2010},
+   date = {2010}, 
+   howpublished = {\url {http://www.fbi.gov/about-us/cjis/ucr/crime-in-the-u.s/2010/crime-in-the-u.s.-2010/property-   crime/arsonmain}},
    type = {Web Page}
+   note = {Accessed: 2015-01-30}  
+   organization= {FBI},
 }
 
 @book{Moisture:2010,
+   author = {Forest Products Laboratory}
    title = {{Moisture Relations and Physical Properties of Wood, in Centennial edition of Wood handbook, Wood as an Engineering Material}},
+   date = {2010},
    publisher = {Forest Products Laboratory},
-   address = {Madison, WI},
-   year = {2010},
-   type = {Book}
+   location = {Madison, WI},
 }
 
 @misc{Toolbox:2011,
    title = {{Engineering Toolbox, April 2011. [Online]. Available: http://www.engineeringtoolbox.com/thermal-conductivity-d_429.html.}},
-   month = {April},
+   date = {April 2011},
    howpublished = {http://www.engineeringtoolbox.com/thermal-conductivity-d_429.html.},
-   year = {2011},
    type = {Online Multimedia}
 }
 
 @misc{Fiberglass,
    title = {{Fiberglas Insulation k values}},
-   month = {April},
+   date = {April 2011},
    howpublished = {http://www.engineeringtoolbox.com/fiberglas-insulation-k-values-d_1172.html},
-   year = {2011},
    type = {Online Multimedia}
 }
 
 @techreport{SFPE_Model:2011,
+   author = {Society of Fire Protection Engineers},
    title = {{Guidlines for Substantiating a Fire Model for a Given Application}},
+   type = {Report},
    institution = {Society of Fire Protection Engineers},
+   date = {2011},
    ISBN = {978-0-9830391-0-5},
-   year = {2011},
-   type = {Report}
-}
-
-@misc{Insulation,
-   title = {{Types of Insulation}},
-   month = {September},
-   howpublished = {http://www.energysavers.gov/your_home/insulation_airsealing/index.cfm/mytopic=11650.},
-   year = {2011},
-   type = {Online Multimedia}
 }
 
 @misc{FEMA:2013,
    title = {{The Five E's of Prevention — A New Approach}},
-   publisher = {{Federal Emergency Management Agency (FEMA)}},
-   number = {FM-2013-13},
+   date = {2013}
    howpublished = {http://www.usfa.fema.gov/downloads/pdf/coffee-break/fm/fm_2013_13.pdf},
-   year = {2013},
    type = {Government Document}
+   number = {FM-2013-13},
+   organization = {{Federal Emergency Management Agency (FEMA)}},
 }
 
 @article{Climate:2014,
+   author = {The Geneva Association Staff},
    title = {{Fire and Climate Risk}},
-   journal = {World Fire Statistics},
+   journaltitle = {World Fire Statistics},
+   date = {April 2014},
    number = {29},
    pages = {18},
-   month = {April},
-   howpublished = {https://www.genevaassociation.org/media/874729/ga2014-wfs29.pdf},
-   year = {2014},
-   type = {Magazine Article}
+   url = {https://www.genevaassociation.org/media/874729/ga2014-wfs29.pdf},
 }
 
 @manual{NFPA_921,
    title = {{NFPA 921, Guide for Fire and Explosion Investigations}},
+   date = {2014},
+   type = {Standard},
    organization = {National Fire Protection Association},
-   address = {Quincy, Massachusetts},
-   year = {2014},
-   type = {Standard}
+   location = {Quincy, Massachusetts},
 }
 
 @techreport{WHO:2014,
+   author = {C. Mock and M. Peck and M. Peden and E. Krug},   
    title = {{A WHO Plan for Burn Prevention and Care}},
-   author = {C. Mock and M. Peck and M. Peden and E. Krug},
-   institution = {World Health Organization},
-   address = {Geneva, Switzerland},
-   year = {2008}
+   type = {Fact sheet number 365},
+   institution = {{World Health Organization (WHO)}},
+   date = {2008},
+   location = {Geneva, Switzerland},
 }
 
 @misc{Foam,
+   author = {Polyurethane Foam Association},
    title = {{Flexible Polyurethane Foam: Industry at a Glance.}},
-   publisher = {Polyurethane Foam Assn, Inc},
-   howpublished = { http://www.pfa.org/Library/IAG_no_logo.pdf},
-   year = {2015},
-   type = {Web Page}
+   date = {2015},
+   howpublished = {{ http://www.pfa.org/Library/IAG_no_logo.pdf}},
+   type = {Web Page},
+   organization = {{Polyurethane Foam Assn, Inc}},
 }
 
-@misc{Touch,
+@misc{Polyurethane Foam Assn, Inc.,
    title = {{In Touch, Information on Flexible Polyurethane Foam}},
-   publisher = {Polyurethane Foam Assn, Inc.},
-   volume = {Vol. 2},
-   number = {No. 3},
-   year = {1992},
-   type = {Electronic Article}
+   date = {1992},
+   howpublished = {http://www.pfa.org/intouch/pdf/IntouchV11_1_read.pdf},
+   type = {Electronic Article}, 
+   organization = {Polyurethane Foam Assn, Inc},
+   note = {{Vol. 2, No. 3}},
 }
 
 @techreport{Career,
+   author = {The National Institute for Occupational Safety and Health},
    title = {{Career Probationary Fire Fighter and Captain Die as a Result of Rapid Fire Progression in a Wind-Driven Residential Structure Fire - Texas}},
+   type = {Report},
    institution = {The National Institute for Occupational Safety and Health},
-   year = {April 8, 2010.},
-   type = {Report}
+   date = {April 8, 2010.},
 }
 
 @misc{Ogden,
    title = {{Ogden Manufacturing Company}},
+   date = {April 2011},
    howpublished = {http://www.ogdenmfg.com/pdf/tech9.pdf.},
-   year = {April 2011},
-   type = {Online Multimedia}
+   type = {Online Multimedia},
 }
 
 @techreport{Ahrens:2011,
    author = {Ahrens, Marty},
    title = {{Home Fires That Began with Upholstered Furniture}},
-   institution = {{National Fire Protection Agency (NFPA)}},
-   month = {August},
-   howpublished = {http://www.nfpa.org/research/reports-and-statistics/fire-causes/household-products/upholstered-furniture},
-   year = {2011},
    type = {Report}
+   institution = {{National Fire Protection Agency (NFPA)}},
+   date = {August 2011},
+   howpublished = {http://www.nfpa.org/research/reports-and-statistics/fire-causes/household-products/upholstered-furniture},
 }
 
 @book{Almirall:2004,
    author = {Almirall, J and Furton, K},
    title = {{Analysis and Interpretation of Fire Scene Evidence}},
+   date = {2004},   
    publisher = {CRC Press},
-   address = {Boca Raton, FL},
-   year = {2004},
-   type = {Book}
+   location = {Boca Raton, FL},
 }
 
 @inproceedings{Babrauskas:Interflam,
-   author = {Babrauskas, V},
+   author = {Babrauskas, V},   
+   editor = {Interscience Communications Ltd.},
    title = {{Specimen Heat Fluxes for Bench-Scale Heat Release Rate Testing, Fire and Materials}},
    booktitle = {Fire Safety, International Interflam Conference, 6th},
+   date = {1993},
    publisher = {Interscience Communications Ltd.},
+   location = London, England,
    pages = {57-74},
    type = {Conference Proceedings}
 }
 
 @book{Babrauskas:2003,
    author = {Babrauskas, Vytenis},
-   title = {{Ignition Handbook}},
+   title = {{Ignition Handbook}}, 
+   date = {2003},
    publisher = {Fire Science Publishers},
-   address = {Issaquah, WA},
-   year = {2003},
-   type = {Book}
+   location = {Issaquah, WA},
 }
 
 @techreport{Babrauskas:1985,
    author = {Babrauskas, V. and Krasny, J.},
    title = {{Fire Behavior of Upholstered Furniture}},
-   institution = {{National Institute of Standards and Technology (formerly NBS)}},
-   address = {Gaithersburg, Maryland},
-   number = {173},
-   year = {1985},
-   type = {NBS Monograph}
+   type = {NBS Monograph},
+   institution = {{National Institute of Standards and Technology (formerly NBS)}},   
+   date = {1985},
+   number = {173},   
+   location = {Gaithersburg, Maryland},
 }
 
 @techreport{Babrauskas:1982,
    author = {Babrauskas, V. and Lawson, J.R. and Walton, W.D. and Twilley, W.H.},
    title = {{Upholstered Furniture Heat Release Rates Measured with a Furniture Calorimeter}},
+   type = {NBSIR},
    institution = {{National Institute of Standards and TEchnology (formerly NBS)}},
-   address = {Gaithersburg, Maryland},
+   date = {1982},
    number = {82-2604},
-   year = {1982},
-   type = {NBSIR}
+   location = {Gaithersburg, Maryland},   
 }
 
 @article{Babrauskas:1992,
    author = {Babrauskas, V. and Peacock, R.},
    title = {{Heat Release Rate: The Single Most Important Variable in Fire Hazard}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1992},
    volume = {18},
    pages = {255-272},
-   year = {1992}
 }
 
 @article{Babrauskas:1978,
    author = {Babrauskas, V. and Williamson, R.B.},
    title = {{Post flashover compartment fires: basis of a theoretical model}},
-   journal = {Fire and Materials},
+   journaltitle = {Fire and Materials},
+   date = {1978},
    volume = {2},
    pages = {39-53},
-   year = {1978}
 }
 
-@misc{Back,
+@inproceedings{Back,
    author = {Back, G. and Beyler, C. and DiNenno, P. and Tatem, P.},
+   editor = {International Association for Fire Safety Science},
    title = {{Wall Incident Heat Flux Distributions Resulting from an Adjacent Fire}},
+   booktitle = {Fire Safety Science},
+   date = {1994},
+   volume = {4},
    pages = {pp. 241-252},
-   type = {Conference Paper}
+   doi = {10.3801},
 }
 
 @techreport{Barowy:2009,
    author = {Barowy, A and Madrzykowski , D},
    title = {{Simulation of the dynamics of a wind-driven fire in a single-story ranch-style house—Texas}},
-   institution = {National Institute of Standards and Technology},
-   address = {Gaithersburg, Maryland},
-   year = {2009},
    type = {NIST Technical Note},
-   number = {XXXX}
+   institution = {National Institute of Standards and Technology},
+   date = {2009},
+   location = {Gaithersburg, Maryland},
 }
 
 @techreport{Barowy:2012,
    author = {Barowy , A and Madrzykowski, D},
    title = {{Simulation of the Dynamics of a Wind-Driven Fire in a Ranch-Style House - Texas}},
+   type = {NIST Technical Note},
    institution = {National Institute of Standards and Technology},
-   address = {Gaithersburg, Maryland},
-   number = {1729},
-   year = {2012},
-   type = {NIST Technical Note}
+   date = {2012},
+   location = {Gaithersburg, Maryland},
+   number = {1729},  
 }
 
 @inproceedings{Berna:2012,
-   author = {Berna, F.},
+   author = {Francesco Berna, Paul Goldberga, Liora Kolska Horwitz, James Brinkd, Sharon Holt, Marion Bamford, and Michael Chazan},
+   editor = {Donald K. Grayson},
    title = {{Microstratigraphic evidence of in situ fire in the Acheulean strata of Wonderwerk Cave, Northern Cape province, South Africa}},
    booktitle = {{Proceedings of the National Academy of Sciences of the United States of America}},
-   year = {2012}
+   date = {2012}
 }
 
 @techreport{Beyler:2000,
    author = {C. Beyler},
    title = {{Modeling Fire Growth in Room/Corner Configurations}},
+   type = {NIST GCR},
    institution = {National Institute of Standards and Technology},
-   address = {Gaithersburg, Maryland},
+   date = {2000},
+   location = {Gaithersburg, Maryland},
    number = {6588},
    month = {November},
-   year = {2000},
-   type = {NIST GCR}
 }
 
 @article{Beyler:1986,
    author = {Beyler, C.L.},
    title = {{Fire Plumes and Ceiling Jets}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1986}
    volume = {11},
-   pages = {53-75},
-   year = {1986}
+   pages = {53-75},  
 }
 
 @techreport{Beyler:2009,
    author = {C.L. Beyler},
    title = {{Analysis of the Fire Investigation Methods and Procedures Used in the Criminal Arson Cases Against Ernest Ray Willis and Cameron Todd Willingham}},
+   type = {report},
    institution = {Hughes Associates, Inc.},
-   address = {Baltimore, Maryland},
-   month = {August},
-   year = {2009}
+   date = {August 17 2009},
+   location = {Baltimore, Maryland},
 }
 
 @techreport{Beyler:1997,
    author = {C.L. Beyler and F.W. Williams},
    title = {{Upward Flame Spread on Vertical Surfaces}},
+   type = {NIST GCR},
    institution = {National Institute of Standards and Technology},
-   address = {Gaithersburg, Maryland},
+   date = {June 1997},
+   location = {Gaithersburg, Maryland},
    number = {6030},
-   month = {June},
-   year = {1997},
-   type = {NIST GCR}
 }
 
 @article{Bilbao:1996,
    author = {Bilbao, R. and Mastral, J. and Ceamanos, J. and Aldea, M.},
    title = {{Kinetics of the Thermal Decomposition of Polyurethane Foams in Nitrogen and Air Atmospheres}},
-   journal = {Journal of Analytical and Applied Pyrolysis},
+   journaltitle = {Journal of Analytical and Applied Pyrolysis},
+   date = {1996},
    volume = {37},
    pages = {69-82},
-   year = {1996},
-   type = {Journal Article}
 }
 
 @inproceedings{Blevins:1999,
    author = {Blevins, L.G.},
+   editor = {National Institute of Standards and Technology},
    title = {{Behavior of Bare and Aspirated Thermocouples in Compartment Fires}},
    booktitle = {Proceedings of the 33rd National Heat Transfer Conference, HTD99-280},
-   address = {Albuqueque, New Mexico},
-   year = {1999}
+   date = {1999},
+   location = {Albuqueque, New Mexico},
 }
 
 @article{Bryant:2003,
    author = {Bryant, R and Womeldorf, C and Johnsson, E and Ohlemiller, T},
    title = {{Radiative heat flux measurement uncertainty}},
-   journal = {Fire and Materials},
-   volume = {27},
+   journaltitle = {Fire and Materials},
+   date = {2003},volume = {27},
    pages = {209-222},
-   year = {2003},
-   type = {Journal Article}
 }
 
 @article{Bryant:2008,
    author = {Bryant, Rodney A and Mulholland, George W},
    title = {{A Guide to characterizing heat release rate measurement uncertainty for full-scall fire tests}},
-   journal = {Fire and Materials},
+   journaltitle = {Fire and Materials},
+   date = {2008},
    volume = {32},
    pages = {121-139},
-   year = {2008},
-   type = {Magazine Article}
 }
 
 @techreport{Bryant:2003,
    author = {Bryant, R A and Ohlemiller, T J and Johnsson, E L and Hamins, A H and Grove, B S and Guthrie, W F and Maranghides, A and Mulholland, G W},
    title = {{The NIST 3~MW Quantitative Heat Release Rate Facility}},
-   institution = {National Institute of Standards and Technology},
-   address = {Gaithersburg, Maryland},
-   number = {1007},
    type = {NIST Special Publication},
-   year = {2003}
+   institution = {National Institute of Standards and Technology},
+   date = {2003},
+   number = {1007},
+   location = {Gaithersburg, Maryland},
 }
 
 @techreport{Bryant:2004,
    author = {Bryant, R.A. and Ohlemiller, T.J. and Johnsson, E.L. and Hamins, A.H. and Grove, B.S. and Guthrie, W.F. and Maranghides, A. and Mulholland, G.W.},
    title = {{The NIST 3~MW Quantitative Heat Release Rate Facility: Description and Procedures}},
+   type = {NISTIR},
    institution = {National Institute of Standards and Technology},
-   address = {Gaithersburg, Maryland},
+   date = {September 2004},
    number = {7052},
-   month = {September},
-   year = {2004},
-   type = {NISTIR}
+   location = {Gaithersburg, Maryland},
 }
-
 
 @techreport{Bryner:2011,
    author = {Bryner, N P and Fuss, S P and Klein, B W and Putorti, A D},
    title = {{Technical study of the Sofa Super Store Fire, South Carolina, June 18, 2007}},
+   type = {NIST Special Publication},
    institution = {National Institute of Standards and Technology},
-   address = {Gaithersburg, Maryland},
+   date = {2011},
    number = {1118},
-   year = {2011},
-   type = {NIST Special Publication}
+   location = {Gaithersburg, Maryland},
 }
 
 @techreport{Budnick:1988,
    author = {Budnick, E and Walton, W D},
    title = {{Quick Response Sprinklers in Office Configurations: Fire Test Results}},
+   type = {Report},
    institution = {National Bureau of Standards (NIST)},
-   year = {1988},
-   type = {Report}
+   date = {1988},
 }
 
 @article{Bukowski:1995,
    author = {Bukowski, R W},
    title = {{Modeling a Backdraft: The Fire at 62 Watts Street}},
-   journal = {NFPA Journal},
+   journaltitle = {NFPA Journal},
+   date = {1995},
    volume = {Vol. 89, No. 6,},
    pages = {85-89},
-   year = {1995},
-   type = {Journal Article}
 }
 
 @article{Bukowski:1992,
    author = {Bukowski, R W and Spetzler, R C},
    title = {{Analysis of the Happyland Social Club Fire With HAZARD I}},
-   journal = {Journal of Fire Protection Engineering},
+   journaltitle = {Journal of Fire Protection Engineering},
+   date = {1992},
    volume = {Vol. 4, No. 4,},
    pages = {117-131},
-   year = {1992},
-   type = {Journal Article}
 }
 
 @techreport{Butler:1971,
    author = {Butler, C P},
    title = {{Notes on the charring rates in wood}},
+   type = {Report},
    institution = {Fire Research Institute},
+   date = {1971},
    number = {Fire Research Note 896},
-   year = {1971},
-   type = {Report}
 }
 
 @techreport{Cal:1980,
    author = {California, State of},
-   title = {{Requirements, Test Procedures and Apparatus for Testing the Flame Retardance Of Upholtered Furniture}},
-   type = {Technical Bulletin 116},
-   year = {1980},
-   type = {Report}
+   title = {{Requirements, Test Procedures and Apparatus for Testing the Flame Retardance Of Upholstered Furniture}},
+   type = {Technical Bulletin},
+   institution = {State of California Department of Consumer Affairs},
+   date = {1980},
+   number = {116},
 }
 
 @techreport{Cal:2000,
    author = {California, State of},
    title = {{Requirements, Test Procedures and Apparatus for Testing the Flame Retardance of Resilient Filing Materials Used in Upholstered Furniture}},
+   type = {Technical Bulletin},
    institution = {State of California},
-   number = {Technical Bulletin 117},
-   type = {Technical Bulletin 117},
-   year = {2000},
-   type = {Report}
+   date = {2000},
+   number = {117},
 }
 
 @techreport{Campbell:2014,
    author = {R. Campbell},
    title = {{Intentional Fires}},
+   type = {Report},
    institution = {National Fire Protection Association},
-   address = {Quincy, Massachusetts},
-   month = {April},
-   year = {2014}
+   date = {April 2014}
+   location = {Quincy, Massachusetts},
 }
 
 @techreport{Cetegen:1982,
    author = {Cetegen, B.M. and Kukoski, E.E. and Kubota, T.},
    title = {{Entrainment and Flame Geometry of Fire Plumes}},
-   institution = {National Bureau of Standards},
-   number = {NBS-GCR-82-402},
-   month = {August},
-   year = {1982},
    type = {Report}
+   institution = {National Bureau of Standards},
+   date = {August 1982},
+   number = {NBS-GCR-82-402},
 }
 
 @article{Chan:1973,
    author = {Chan, T and Napier, D},
    title = {{Smoldering and Ignition of Cotton Fibers and Dust}},
-   journal = {Fire Prevention Science and Technology},
+   journaltitle = {Fire Prevention Science and Technology},
+   date = {February 1973},
    volume = {no. 4},
    pages = {13-23},
-   month = {February},
-   year = {1973},
-   type = {Magazine Article}
 }
 
 @misc{Chasteen:2010,
    author = {Chasteen, Carl},
-   month = {April},
-   year = {2010},
-   type = {Personal Communication}
+   title = {Prevelence of the use of gasoline in arson fires},
+   date = {April 2010},
+   type = {Personal Communication},
+   organization = {Division of the State Fire Marshal State of Florida},
 }
 
 @inbook{Chines:2003,
    author = {Chines, S A and Stull, J O},
    title = {{Fibers and Textiles}},
    booktitle = {Fire Protection Handbook},
-   address = {Quincy, MA},
+   date = {2003},
    volume = {II},
+   publisher = {National Fire Protection Association},
+   location = {Quincy, MA},
    chapter = {Chapter 5, Section 8},
-   year = {2003},
-   type = {Book Section}
 }
 
 @inbook{Colonna:2003,
    author = {Colonna, G R},
    title = {{Plastics and Rubber}},
    booktitle = {Fire Protection Handbook},
-   publisher = {National Fire Protection Association},
-   address = {Quincy, MA},
+   date = {2003},
    volume = {II},
+   publisher = {National Fire Protection Association},
+   location = {Quincy, MA},
    chapter = {Chapter 10, Section 8},
-   year = {2003},
-   type = {Book Section}
 }
 
 @techreport{Cooper:1998,
    author = {Cooper, Leonard Y. and Franssen, Jean-Marc},
    title = {{A Basis for Using Fire Modeling With 1-D Thermal Analyses of Barriers/Partitions to Simulate 2-D and 3-D Barrier/Partition Structural Performance in Real Fires}},
+   type = {Report},
    institution = {National Institute of Standards and Technology},
+   date = {September 1998},
    number = {NISTIR 6170},
-   month = {September},
-   year = {1998},
-   type = {Report}
 }
 
 @manual{Medtherm,
-   organization = {Medtherm Corporation},
-   address = {Huntsville, Alabama},
    title = {{Series 64 Heat Flux Transducers}},
+   date = {August 2003},
+   organization = {Medtherm Corporation},
+   location = {Huntsville, Alabama},
    note = {Bulletin 118}
 }
 
 @book{DeHaan:2012,
    author = {DeHaan, J.D. and Icove, D.J.},
    title = {{Kirk’s Fire Investigation}},
-   publisher = {Pearson Prentice Hall},
-   address = {Upper Saddle River, New Jersey},
+   date = {2012}, 
    edition = {Seventh},
-   year = {2012}
+   publisher = {Pearson Prentice Hall},
+   location = {Upper Saddle River, New Jersey},
 }
 
-@misc{Delichatsios:1984,
+@inproceedings{Delichatsios:1984,
    author = {Delichatsios, Michael A.},
+   editor = {Fire Science and Technology Laboratory},
    title = {{Flame Height in Turbulent Wall Fires with Significant Flame Radiation}},
+   booktitle = {Fire Research Conference in honor of Howard Emmons},
+   date = {1984},
    publisher = {Gordon and Breach Science Publishers, Inc. },
-   year = {1984},
-   type = {Conference Paper}
 }
 
 @techreport{Dillon:1998,
-   title= {{Determination of Properties and the Prediction of the Energy Release Rate of Materials in the ISO 9705 Room-corner Test}},
    author = {Dillon, S.E. and Kim, W.H. and Quintiere, J.G.},
-   year = {1998},
-   publisher = {National Institute of Standards and Technology, Building and Fire Research Laboratory},
-   type = {Report}
+   title= {{Determination of Properties and the Prediction of the Energy Release Rate of Materials in the ISO 9705 Room-corner Test}},
+   type = {Report},
+   institution = {National Institute of Standards and Technology, Building and Fire Research Laboratory},
+   date = {1998},
 }
-
 
 @techreport{Donnelly:2006,
    author = {Donnelly, M and Davis, W and Lawson, J R and Selepak, M},
    title = {{Thermal Environment for Electronic Equipment Used by First Responders}},
-   year = {2006},
-   type = {Report}
+   type = {Report},
+   institution = {National Institute of Standards and Technology, Building and Fire Research Laboratory},
+   date = {2006},
 }
 
 @book{Drysdale:1998,
    author = {Drysdale, D},
    title = {{An Introduction to Fire Dynamics}},
+   date = {1998},
    publisher = {John Wiley & Sons},
-   address = { West Sussex},
-   year = {1998},
-   type = {Book}
+   location = { West Sussex},
 }
 
 @article{Drysdale:1992,
    author = {Drysdale, D D and Macmillan, A J R and Shilitto, D},
    title = {{The King's Cross Fire: experimental verification of the 'trench effect'}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1992},
    volume = {18},
    pages = {75-82},
-   year = {1992},
-   type = {Journal Article}
 }
 
 @techreport{Dublin,
    author = {Dublin, Tribunal of Inquiry Artane},
    title = {{Report of the Tribunal of Inquiry on the Fire at the Stardust}},
+   type = {Report},
    institution = {Stationary Office},
-   year = {1982},
-   type = {Report}
+   date = {1982},
+  
 }
 
 @techreport{Dumont:1982,
    author = {Dumont, R and Orr , H and Lux, M},
    title = {{Low Energy Prarie Housing}},
+   type = {Report},
    institution = {Division of Building Research, National Research Council of Canada},
-   year = {1982},
-   type = {Report}
+   date = {1982},
+   
 }
 
 @techreport{Evarts:2011,
    author = {Evarts, B.},
    title = {{Home Fires That Began With Mattresses and Bedding}},
+   type = {Report},
    institution = {National Fire Protection Association (NFPA)},
-   month = {October},
-   howpublished = {http://www.nfpa.org/research/reports-and-statistics/fire-causes/household-products/mattresses-and-bedding},
-   year = {2011},
-   type = {Report}
+   date = {October 2011},
+   url = {http://www.nfpa.org/research/reports-and-statistics/fire-causes/household-products/mattresses-and-bedding},
 }
 
 @book{Fennell:1988,
    author = {Fennell, Desmond},
    title = {{Investigation into the King's Cross Underground Fire}},
+   date = {1988},
    publisher = {The Department of Transport},
-   address = {London},
+   location = {London},
    ISBN = {ISBN 0-10-104992-7},
-   year = {1988},
-   type = {Book}
 }
 
 @techreport{Forney:2014,
    author = {G. Forney},
    title = {{Smokeview, A Tool for Visualizing Fire Dynamics Simulation Data}},
+   type = {Special Publication},
    institution = {National Institute of Standards and Technology},
-   address = {Gaithersburg, Maryland},
+   date = {September 2014},
+   location = {Gaithersburg, Maryland},
    number = {1017-1},
-   month = {September},
-   year = {2014},
-   type = {Special Publication}
 }
 
 @inbook{Heskestad:SFPE,
    author = {G. Heskestad},
-   chapter = {{Fire Plumes, Flame Height and Air Entrainment}},
-   publisher = {National Fire Protection Association},
-   address = {Quincy, Massachusetts},
-   edition = {Fourth},
    title = {Handbook of Fire Protection Engineering},
-   year = {2008}
+   booktitle = {{Fire Plumes, Flame Height and Air Entrainment}},
+   date = {2008}
+   edition = {Fourth},
+   publisher = {National Fire Protection Association},
+   location = {Quincy, Massachusetts},
 }
 
 @techreport{Gann:2005,
    author = {Gann, R and Hamins, A and McGrattan, K and Mullholland, G and Nelson, H and Ohlemiller, T and Pitts, W and Prasad, K},
    title = {{Reconstruction of the Fires in the World Trade Center Towers. Federal Building and Fire Safety Investigation of the World Trade Center Disaster}},
+   type = {Report},
    institution = {National Institute of Standards and Technology},
+   date = {December 2005},
    number = {NCSTAR 1-5},
-   year = {December 2005},
-   type = {Report}
 }
 
 @phdthesis{Goble:2007,
    author = {K. Goble},
    title = {{Height of Flames Projecting from Compartment Openings}},
-   school = {University of Canterbury},
-   address = {Christchurch, New Zealand},
-   year = {2007},
-   type = {Master's Thesis}
+   type = {Master's Thesis},
+   institution = {University of Canterbury},
+   date = {2007},
+   location = {Christchurch, New Zealand},
 }
 
 @article{Graham:2001,
    author = {Graham, M},
    title = {{Principles of attic ventilation}},
-   journal = {Professional Roofing Magazine},
-   month = {January },
-   year = {2001},
-   type = {Magazine Article}
+   journaltitle = {Professional Roofing Magazine},
+   date = {January 2001},
 }
 
 @article{Grant:1995,
    author = {Grant, G B and Drysdale, D D},
    title = {{Numerical modelling of early fire spread in warehouse fire}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1995},
    volume = {24},
    pages = {247-278},
-   year = {1995},
-   type = {Journal Article}
 }
 
 @article{Heskestad:1983,
    author = {Heskestad, Gunnar},
    title = {{Luminous Heights of Turbulent Diffusion Flames}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1983},
    volume = {5},
-   year = {1983},
-   type = {Journal Article}
 }
 
 @article{Heskestad:1984,
    author = {Heskestad, Gunnar},
    title = {{Engineering Relations for Fire Plumes}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1984},
    volume = {7},
-   year = {1984},
-   type = {Journal Article}
 }
 
 @book{Icove:2013,
    author = {Icove and DeHaan and Haynes},
    title = {{Forensic Fire Scene Reconstruction}},
+   date = {2013},
    publisher = {Pearson Education, Inc},
-   address = {Upper Saddle River, NJ, USA},
-   year = {2013},
-   type = {Book}
+   location = {Upper Saddle River, NJ, USA},
 }
 
 @manual{Omega,
-   organization = {Omega Engineering, Inc.},
    title = {{The Temperature Handbook}},
-   address = {Stamford, Connecticut},
-   volume = {MM},
-   year = {2004}
+   date = {2004},
+   organization = {Omega Engineering, Inc.},
+   location = {Stamford, Connecticut},
+   volume = {MM}, 
 }
 
-@misc{ASTM_C1396,
-   author = {International, ASTM},
+@manual{ASTM_C1396,
    title = {{Standard Specification for Gypsum Board}},
+   date = {2011},
+   type = {Standard},
+   organization = {International, ASTM},
    publisher = {ASTM International},
    ISBN = {ASTM C1396/1396M-11},
-   year = {2011},
-   type = {Standard}
 }
 
 @techreport{Isner:1986,
    author = {Isner, M S},
    title = {{High-Rise Office Building Fire, Alexis Nihon Plaza, Montreal, Canada}},
+   type = {Report},
    institution = {National Fire Protection Association},
-   year = {1986},
-   type = {Report}
+   date = {1986},
 }
 
 @techreport{McGraw:1999,
    author = {J. Robert McGraw, Jr.  and Mowrer, Frederick W.},
    title = {{Flammability and Dehydration of Painted Gypsum Wallboard Subjected to Fire Heat Fluxes}},
+   type = {Report},
    institution = {International Association for Fire Safety Science (IAFSS)},
-   month = {July 5-9},
+   date = {{July 5-9, 1999}},
    pages = {1003-1014},
-   year = {1999},
-   type = {Report}
 }
 
 @book{Janssen:1988,
    author = {Janssen, J.},
    title = {{Building with Bamboo: a Handbook}},
+   date = {1988},
    publisher = {Intermediate Technology Publications},
-   address = {London},
-   year = {1988},
-   type = {Book}
+   location = {London},
 }
 
 @techreport{Jones:2001,
    author = {Jones, B},
    title = {{Performance of Gypsum Plasterboard Assemblies Exposed to Real Building Fires}},
-   year = {2001},
-   type = {Report}
+   type = {Report},
+   institution = {University of Canterbury},
+   date = {2001},  
 }
 
 @article{Karlsson:1993,
    author = {Karlsson, B},
    title = {{A mathematical model for calculating heat release rate in the room corner test}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1993},
    volume = {20},
    pages = {93-113},
-   year = {1993},
-   type = {Journal Article}
 }
 
 @book{Karlsson:2000,
    author = {Karlsson, Bjorn and Quintiere, James, Q},
    title = {{Enclosure Fire Dynamics}},
+   date = {2000},
    publisher = {CRC Press},
    address = {Boca Raton, FL, USA},
-   year = {2000},
-   type = {Book}
 }
 
 @techreport{Kerber:2010,
    author = {Kerber, S},
    title = {{Impact of Ventilation on Fire Behavior in Legacy and Contemporary Residential Construction}},
+   type = {Report},
    institution = {Underwriters Laboratories},
-   year = {2010},
-   type = {Report}
+   date = {2010},
 }
 
 @techreport{Kerber:2004,
    author = {Kerber, S and Bryner, N},
    title = {{Simulation of the Dynamics of a Fire in the Basement of a Hardware Store - New York, June 17, 2001}},
+   type = {Report},
    institution = {National Institute of Standards and Technology},
+   date = {December  2004},
    number = {NISTIR 6510},
-   year = {December  2004},
-   type = {Report}
 }
 
 @techreport{Kerber:2009,
    author = {Kerber, S and Madrzykowski, D},
    title = {{Fire Fighting Tactics Under Wind Driven Fire Conditions: 7-Story Building Experiments}},
+   type = {Report},
    institution = {National Institute of Standards and Technology},
-   year = {April 2009},
-   type = {Report}
+   date = {April 2009},
 }
 
 @article{Khan:2008,
    author = {Khan, N and Su, Y and Riffat, S and Biggs, C},
    title = {{Performance testing and comparison of turbine ventilators}},
-   journal = {Renewable Energy},
+   journaltitle = {Renewable Energy},
+   date = {January 2008},
    number = {33},
    pages = {2441-2447},
-   month = {January },
-   year = {2008},
-   type = {Magazine Article}
 }
 
 @techreport{Klem:1991,
    author = {Klem, T J},
    title = {{One Meridian Plaza, Philadelphia, PA, February 23, 1991}},
+   type = {Report},
    institution = {National Fire Protection Association},
-   year = {1991},
-   type = {Report}
+   date = {1991},
 }
 
 @techreport{Kokkala:1993,
    author = {Kokkala, M.A.},
    title = {{Characteristics of a Flame in an Open Corner of Walls}},
+   type = {Report},
    institution = {VTT, Fire Technology Laboratory},
-   address = {Espoo, Finland},
-   year = {1993}
+   date = {1993},
+   location = {Espoo, Finland},
 }
 
 @book{Lentini:2006,
    author = {Lentini, J.J.},
    title = {{Scientific Protocols for Fire Investigation}},
+   date = {2006},
    publisher = {Taylor \& Francis},
-   address = {Boca Raton, Florida},
-   year = {2006}
+   location = {Boca Raton, Florida},
 }
 
 @inproceedings{Madrzykowski:Interflam,
    author = {Madrzykowski, D.},
+   editor = {Franks, C A and Grayson, S},
    title = {{Office Work Station Heat Release Rate Study: Full Scale vs Bench Scale Proceedings}},
    booktitle = {7th International Interflam Conference},
-   editor = {Franks, C A and Grayson, S},
+   date = {1996},
    publisher = {Interscience Communications Ltd},
    pages = {47-55},
-   type = {Conference Proceedings}
+
 }
 
 @techreport{Madrzykowski:2002,
    author = {Madrzykowski, D and Forney, G and Walton, D},
    title = {{Simulation of the Dynamics of a Fire in a Two-Story Duplex - Iowa, December 22, 1999}},
+   type = {Report},
    institution = {National Instutute of Standards and Technology},
+   date = {January 2002},
    number = {NISTIR 6584},
-   year = {January 2002},
-   type = {Report}
 }
 
 @article{Madrzykowski:2010,
    author = {Madrzykowski , D and Kerber, S},
    title = {{Wind Driven Fire Research: Hazards and Tactics}},
-   journal = {Fire Engineering},
-   month = {March},
-   year = {2010},
-   type = {Magazine Article}
+   journaltitle = {Fire Engineering},
+   date = {March 2010},
 }
 
 @techreport{Madrzykowski:2009,
    author = {Madrzykowski , D and Kerber, S},
    title = {{Fire Fighting Tactics Under Wind Driven Conditions: Laboratory Experiments}},
+   type = {Report},
    institution = {National Institute of Standards and Technologies},
-   year = {January 2009},
-   type = {Report}
+   date = {January 2009},
 }
 
 @article{Madrzykowski:1992,
    author = {Madrzykowski, D and Vettori, R L},
    title = {{A Sprinkler Fire Suppression Algorithm}},
-   journal = {Journal of Fire Protection Engineering},
+   journaltitle = {Journal of Fire Protection Engineering},
+   date = {1992},
    volume = {4},
    number = {4},
    pages = {151-164},
-   year = {1992},
-   type = {Journal Article}
 }
 
 @techreport{Madrzykowski:2000,
    author = {Madrzykowski, D and Vettori, R L},
    title = {{Simulation of the dynamics of the fire at 3146 Cherry Road NE, Washington, D.C., May 30, 1999}},
+   type = {Report},
    institution = {National Institute of Standards and Technology},
+   date = {April 2000},
    number = {NISTIR 6510},
-   year = {April 2000},
-   type = {Report}
 }
 
 @techreport{Madrzykowski:2004,
    author = {Madrzykowski, D and Walton, W},
    title = {{Cook County Administration Building Fire, 69 West Washington, Chicago, Illinois, October 17, 2003: Heat Release Rate Experiments and FDS Simulations}},
-   institution = {National Institute of Standards and Technology},
-   year = {December 2004},
    type = {Report}
+   institution = {National Institute of Standards and Technology},
+   date = {December 2004},
 }
 
-@book{ASTM_C1055,
+@manual{ASTM_C1055,
    author = {Materials, American Society for Testing and},
    title = {{ASTM C1055, Standard Guide for Heated Systems Surface Conditions that Produce Contact Burn Injuries,}},
+   date = {2009},
    publisher = {American Society for Testing and Materials},
-   address = {West Conshohocken, PA},
-   year = {2009},
-   type = {Book}
+   location = {West Conshohocken, PA},
 }
 
 @techreport{McCaffrey:1979,
    author = {McCaffrey, B.J.},
    title = {{Purely Buoyant Diffusion Flames: Some Experimental Results}},
+   type = {NBSIR},
    institution = {National Bureau of Standards (currently NIST)},
-   address = {Gaithersburg, Maryland},
+   date = {October 1979},
+   location = {Gaithersburg, Maryland},
    number = {79-1910},
-   month = {October},
-   year = {1979},
-   type = {NBSIR}
 }
 
 @techreport{McCaffrey:1982,
    author = {McCaffrey, B.J.},
    title = {{Entrainment and Heat Flux of Buoyant Diffusion Flames}},
+   type = {NBSIR},
    institution = {National Bureau of Standards},
-   address = {Gaithersburg, Maryland},
+   date = {February 1982},
+   location = {Gaithersburg, Maryland},
    number = {82-2473},
-   month = {February},
-   year = {1982},
-   type = {NBSIR}
 }
 
 @techreport{McGrattan:2005,
    author = {McGrattan, K and Bouldin , C and Forney, G},
    title = {{Computer Simulation of the Fires in the World Trade Center Towers}},
-   year = {September 2005},
-   type = {Report}
+   type = {Report},
+   institution = {National Institute of Standards and Technology},
+   date = {September 2005},
 }
 
 @techreport{McGrattan:2014,
    author = {K. McGrattan and S. Hostikka and R. McDermott and J. Floyd and C. Weinschenk and K. Overholt},
    title = {{Fire Dynamics Simulator Technical Reference Guide}},
+   type = {Special Publication},
    institution = {National Institute of Standards and Technology},
+   date = {September 2014},
    number = {1018},
-   month = {September},
-   year = {2014},
-   type = {Special Publication}
 }
 
 @article{McGrattan:1998,
    author = {McGrattan, K B and Baum, H R and Rehm, R G},
    title = {{Large Eddy Simulations of Smoke Movement}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1998},
    volume = {30},
    pages = {161-178},
-   year = {1998},
-   type = {Journal Article}
 }
 
-@techreport{McGrattan:1998b,
+@techreport{McGrattan:1998,
    author = {McGrattan, K B and Hamins, A and Stroup, D W},
    title = {{Sprinkler, Smoke and Heat Vent, Draft Curtain Interaction: Large Scale Experiments and Model Development}},
-   institution = {National Institute of Standards and Technology},
-   number = {NISTIR 6196-1},
-   type = {. International Fire Sprinkler-Smoke and Heat Vent-Draft Curtain Fire Test Project},
-   year = {1998},
    type = {Report}
+   institution = {National Institute of Standards and Technology},
+   date = {1998},
+   subtitle = {{International Fire Sprinkler-Smoke and Heat Vent-Draft Curtain Fire Test Project}},
+   number = {NISTIR 6196-1},
 }
 
 @techreport{McGrattan:2013,
    author = {McGrattan, Kevin B. and McDermott, Randall J. and Weinschenk, Craig G. and Forney, Glenn P.},
    title = {{Fire Dynamics Simulator Users Guide, Sixth Edition}},
-   institution = {N.I.S.T.},
-   number = {NIST SP - 1019},
-   abstract = {This Guide describes how to use the Fire Dynamics Simulator (FDS), a software package used to simulate the impact of fire on buildings.},
+   type = {Special Report}.
+   institution = {National Institute of Standards and Technology},
+   date = {November 04, 2013},
+   number = {1019},
+   abstract = {{This Guide describes how to use the Fire Dynamics Simulator (FDS), a software package used to simulate the impact of fire on buildings.}},
    keywords = {fire model; user guide},
-   year = {November 04, 2013},
-   type = {Report}
 }
 
 @misc{Houston,
    author = {Members, Houston Fire Department},
    title = {{Voluntary Statements of Houston Fire Department Members to Houston Arson Bureau}},
-   year = {2009},
-   type = {Unused 1}
+   date = {2009},
 }
 
 @inproceedings{Mensch,
    author = {Mensch , A and Bryner, N},
+   editor = {National Institute of Standards and Technology},
    title = {{Emergency First Responder Respirator Thermal Characteristics Workshop Proceedings}},
+   booktitle = ({NIST SP - 1123}},
+   date = {June 2011},
    type = {Conference Proceedings}
 }
 
 @techreport{Karter:2014,
    author = {M.J. Karter},
    title = {{Fire Loss in the United States During 2013}},
+   type = {Report},
    institution = {National Fire Protection Association},
-   address = {Quincy, Massachusetts},
+   date = {September 2014},
+   location = {Quincy, Massachusetts},
    number = {FLX10-01},
-   month = {September},
-   year = {2014},
-   type = {NFPA}
 }
 
 @article{Moodie:1992,
    author = {Moodie, K},
    title = {{The King's Cross Fire: Damage Assessment and Overview of the Technical Investigation}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1992},
    volume = {18},
-   year = {1992},
-   type = {Journal Article}
 }
 
 @article{Moodie:1992b,
    author = {Moodie, K and Jagger, S F},
    title = {{The King's Cross Fire: results and analysis from the scale model tests}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1992},
    volume = {18},
    pages = {83-103},
-   year = {1992},
-   type = {Journal Article}
 }
 
 @article{Morris:1984,
    author = {Morris, W A},
    title = {{Stardust Disco Investigation - some observations on the full-scale fire tests}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1984},
    volume = {7},
    pages = {255-65},
-   year = {1984},
-   type = {Journal Article}
 }
 
 @techreport{Mowrer:2001,
    author = {Mowrer, Frederick W.},
    title = {{The Effect of ``Blistering'' on the Ignition and Flammability of Painted Gypsum Wallboard}},
+   type = {Report},
    institution = {National Institue of Standards and Technology (NIST)},
+   date = {January 2001},
    number = {NIST GCR 01-804},
-   month = {January},
-   year = {2001},
-   type = {Report}
 }
 
 @techreport{Mowrer:2001,
    author = {Mowrer, F W},
    title = {{Flammability of Oil-Based Painted Gypsum Wallboard Subjected to Fire Heat Fluxes}},
+   type = {Report},
    institution = {National Institute of Standards and Technology},
+   date = {2001},
    number = {NIST GCR 01-805},
-   year = {2001},
-   type = {Report}
 }
 
 @techreport{Nelson:1989,
    author = {Nelson, H E},
    title = {{An Engineering View of the Fire of May 4, 1988 in the First Interstate Bank Building, Los Angeles, California}},
+   type = {Report},
    institution = {National Institute of Standards and Technology},
+   date = {1989},
    number = {NISTIR 89-4061},
-   year = {1989},
-   type = {Report}
 }
 
 @techreport{Nokes:2011,
-   author = {Nokes, Roger},
+   author = {Nokes,Roger},
    title = {{Streams}},
-   institution = {University of Canterbury},
-   month = {February},
-   year = {2011},
    type = {Report}
+   institution = {{University of Canterbury, Dept. of Civil and Natural Resources Engineering}},
+   date {February 2011},
+   version = {Version 1.07}
+   location = {Christchurch NZ.}
 }
 
 @book{Noon:1995,
    author = {Noon, Randall},
    title = {{Engineering Analysis of Fires and Explosions}},
+   date = {1995},
    publisher = {CRC Press},
-   address = {Boca Raton, FL, USA},
-   year = {1995},
-   type = {Book}
+   location = {Boca Raton, FL, USA},
 }
 
 @techreport{Ohlemiller:2000,
    author = {Ohlemiller, T and Shields, J and McLane, R and Gann, R},
    title = {{Flammability Assessment Methods for Mattresses }},
+   type = {Report},
    institution = {National Institute of Standards and Technology},
-   month = {June },
-   year = {2000},
-   type = {Report}
+   date = {June 2000},
 }
 
 @article{Olenick:2003,
    author = {S.M. Olenick and D.J. Carpenter},
    title = {{An Updated International Survey of Computer Models for Fire and Smoke}},
-   journal = {Journal of Fire Protection Engineering},
-   volume = {13},
-   year = {2003}
+   journaltitle = {Journal of Fire Protection Engineering},
+   date = {2003},
+   volume = {13},  
 }
 
 @techreport{Overholt:2014,
    author = {K.J. Overholt},
    title = {{Verification and Validation of Commonly Used Empirical Correlations for Fire Scenarios}},
+   type = {NIST Special Publication},
    institution = {National Institute of Standards and Technology},
-   address = {Gaithersburg, Maryland},
+   date = {March 2014},
+   location = {Gaithersburg, Maryland},
    number = {1169},
-   month = {March},
-   year = {2014},
-   type = {NIST Special Publication}
 }
 
 @article{Pitts:2006,
    author = {Pitts, W.M. and Murthy, A.V. and de Ris, J.L. and Filtz, J.R. and Nygard, K. and Smith, D. and Wetterlund, I.},
    title = {{Round robin study of total flux gauge calibration at fire laboratories}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {2006},
    volume = {41},
    pages = {459-475},
-   year = {2006}
 }
 
 @inproceedings{Pitts:2001,
    author = {Pitts, W M and Braun, R D and Peacock, R D and Mitler, H E and Johnsson, E L and Reneke, P A and Blevins, L G},
+   editor = {National Institute of Standards and Technology},
    title = {{Temperature Uncertainties for Bare-Bead and Aspirated Thermocouple}},
-   booktitle = {Thermal Measurements: The Foundation of Fire Standards},
+   booktitle = {{Thermal Measurements: The Foundation of Fire Standards}},
+   date = {2001}
    organization = {American Society of Testing and Materials},
    series = {ASTM STP 1427},
-   address = {Dallas, Texas},
-   year = {2001}
+   location = {Dallas, Texas},
+   
 }
 
 @techreport{Popplewell:1986,
    author = {Popplewell, O},
    title = {{Committee of Inquiry into Crowd Safety at Sports Grounds: Final Report}},
+   type = {Report},
    institution = {HMSO},
-   year = {1986},
-   type = {Report}
+   date = {1986},
 }
 
 @article{Poreh:1999,
    author = {Poreh, Michael and Garrad, Gordon},
    title = {{A study of wall and corner fire plumes}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1999},
    volume = {34},
    number = {1},
    url = {www.elsevier.com/locate/firesaf},
-   year = {1999},
-   type = {Journal Article}
 }
 
 @techreport{SFPE:1999,
    author = {Practices, The SFPE Task Group on Engineering},
    title = {{Assessing Flame Radiaiton to External Targets from Pool Fires}},
-   institution = {Society of Fire Protection Engineers (SFPE)},
    type = {Engineering Guide},
-   month = {June},
-   year = {1999},
-   type = {Report}
+   institution = {Society of Fire Protection Engineers (SFPE)},
+   date = {June 1999},
 }
 
 @inproceedings{Prasad,
    author = {Prasad, K and Kramer, R and Marsh , N and Nyden, M},
    title = {{Numerical Simulation of Fire Spread on Polyurethane Foam Slabs.}},
    booktitle = {Fire and Materials 11th International Conference},
-   type = {Conference Proceedings}
+   date = {{January 26-28, 2009}}
 }
 
 @techreport{Putorti:1997,
    author = {Putorti, A.D.},
    title = {{Full Scale Room Burn Pattern Study}},
+   type = {NIJ Report},
    institution = {National Institute of Justice},
-   address = {Washington, D.C.},
+   date = {December 1997},
+   location = {Washington, D.C.},
    number = {601-97},
-   month = {December},
-   year = {1997},
-   type = {NIJ Report}
 }
 
 @book{Quintiere:1997,
    author = {Quintiere, James, Q},
    title = {{Principles of Fire Behavior}},
+   date = {1997},
    publisher = {Delmar Publishing Company},
-   address = {Albany, New York, USA},
-   year = {1997},
-   type = {Book}
+   location = {Albany, New York, USA},
 }
 
 @book{Quintiere:2006,
    author = {Quintiere, James, Q},
    title = {{Fundamentals of Fire Phenomena}},
+   date = {2006},
    publisher = {John Wiley & Sons Ltd},
-   address = {West Sussex, England},
-   year = {2006},
-   type = {Book}
+   location = {West Sussex, England},
 }
 
 @techreport{Quintiere:1985,
    author = {Quintiere, James and Harkleroad, Margaret and Hasemi, Yuki},
    title = {{Wall Flames and Implications for Upward Flame Spread}},
-   month = {September 19},
-   year = {1985},
-   type = {Report}
+   type = {Report},
+   institution = {{National Institute of Standards and Technology},
+   date = {September 19 1985},
 }
 
 @phdthesis{Richards:2008,
    author = {Richards, P. L. E.},
    title = {{Characterising A Design Fire for A Deliberately Lit Fire Scenerio}},
-   university = {University of Canterbury},
-   year = {2008},
    type = {Thesis}
+   institution = {University of Canterbury},
+   date = {2008},
 }
 
 @article{Roberts:1992,
    author = {Roberts, A F},
    title = {{The King's Cross Fire: a correlation of eyewitness accounts and results of the scientific investigation}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1992},
    volume = {18},
    pages = {105-121},
-   year = {1992},
-   type = {Journal Article}
 }
 
 @techreport{Rohr:2001,
    author = {K.D. Rohr},
    title = {{The U.S. Home Product Report, Forms and Types of Materials First Ignited in Fires: Flammable or Combustible Liquids}},
+   type = {Report},
    institution = {National Fire Protection Association},
-   address = {Quincy, Massachusetts},
-   month = {December},
-   year = {2001}
+   date = {December 2001},
+   location = {Quincy, Massachusetts},
 }
 
 @techreport{Rohr:2005,
    author = {K.D. Rohr},
    title = {{Products First Ignited in U.S. Home Fires}},
+   type = {Report},
    institution = {National Fire Protection Association},
-   address = {Quincy, Massachusetts},
-   month = {April},
-   year = {2005}
+   date = {April 2005},
+   location = {Quincy, Massachusetts},
 }
 
 @techreport{Saito:1993,
    author = {Saito, Kozo},
    title = {{Study of Fire Induced Flow Along the Vertical Corner Wall.Part 2}},
+   type = {Report}.
    institution = {National Institute of Standards and Technology},
+   date = {April 1993},
    number = {NIST-GCR-93-628},
-   month = {April},
-   year = {1993},
-   type = {Report}
 }
 
 @misc{Schlesinger:2015,
    author = {Schlesinger, Robert},
    title = {{The 2015 U.S. and World Populations}},
-   publisher = {US News},
-   volume = {2015},
-   number = {2/21},
+   date = {{2/21/2014}},
    howpublished = {http://www.usnews.com/opinion/blogs/robert-schlesinger/2014/12/31/us-population-2015-320-million-and-world-population-72-billion},
-   year = {2014},
+   organization = {US News},
    type = {Blog}
 }
 
 @techreport{Shanley:1997,
    author = {Shanley, J},
    title = {{USFA Fire Burn Pattern Tests}},
+   type = {Report},
    institution = {United States Fire Administration},
-   month = {July},
-   year = {1997},
-   type = {Report}
+   date = {July 1997},
 }
 
 @article{Simcox:1992,
    author = {Simcox, S and Wilkes, N S and Jones, I P},
    title = {{Computer Simulation of the Flows of Hot Gases from the Fire at King's Cross Underground Station}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1992},
    volume = {vol 18},
-   year = {1992},
-   type = {Journal Article}
 }
 
 @techreport{Spearpoint:1999,
    author = {Spearpoint, M},
    title = {{Predicting the Ignition and Burning of Wood in the Cone Calorimeter Using an Integral Mode}},
+   type = {Report},
    institution = {National Institute of Standards and Technology},
-   year = {1999},
-   type = {Report}
+   date = {1999},   
 }
 
 @phdthesis{Stratton:2005,
    author = {Stratton, Blair J.},
    title = {{Determining Flame Height And Flame Pulsation Frequency And Estimating Heat Release Rate From 3D Flame Reconstruction}},
-   university = {University of Canterbury},
-   year = {2005},
    type = {Thesis}
+   institution = {University of Canterbury},
+   date = {2005},
 }
 
 @techreport{Stroup:2004,
    author = {Stroup, D W and Bryner, N P and Lee, J and McElroy, J and Roadarmel, G and Twilley, W H},
    title = {{Structural Collapse Fire Tests: Single Story Wood Frame Structures}},
+   type = {Report},
    institution = {National Institute of Standards and Technology},
+   date = {2004},
    number = {NISTIR 7094},
-   year = {2004},
-   type = {Report}
 }
 
 @techreport{Stroup:2001,
    author = {Stroup, D W and DeLauter, L and Lee, J and Roadarmel, G},
    title = {{Upholstered Chair Fire Tests Using a California Technical Bulletin 133 Burner Ignition Source}},
+   type = {Report},
    institution = {National Institute of Standards and Technology},
+   date = {2001},
    number = {Report of Test 4012},
-   type = {Report of Test},
-   year = {2001},
-   type = {Report}
 }
 
 @article{Sutula,
    author = {J. Sutula},
    title = {{Practical Applications of The Fire Dynamics Simulator in Fire Protection Engineering Consulting}},
-   journal = {Fire Protection Engineering Magazine},
+   journaltitle = {Fire Protection Engineering Magazine},
+   date = {2001},
    volume = {15},
    pages = {27-31},
-   year = {2001}
+   
 }
 
-@misc{Takahashi,
+@inproceedings{Takahashi,
    author = {Takahashi, Wataru and Tanaka, Hirokazu and Sugawa, Osami and Ohtake, Masanori},
+   editor = {International Association for Fire Safety Science},
    title = {{Flame and Plume Behavior in and near a Corner of Walls}},
-   type = {Conference Paper}
+   booktitle = {{Fire Safety Science-Proceeding of the Fifth International Symposium}} 
+   date = {1997},
 }
 
 @techreport{Taylor:1994,
    author = {Taylor, B.N. and Kuyatt, C.E.},
    title = {{Guidelines for Evaluating and Expressing the Uncertainty of NIST Measurement Results}},
+   type = {NIST Technical Note},
    institution = {National Institute of Standards and Technology},
-   address = {Gaithersburg, Maryland},
-   number = {1297},
-   month = {September },
-   year = {1994},
-   type = {NIST Technical Note}
+   date = {September 1994},
+   location = {Gaithersburg, Maryland},
+   number = {1297},  
 }
 
 @book{Tewarson:SFPE,
    author = {Tewarson, A},
    title = {{Generation of Heat and Gaseous, Liquid, and Solid Products in Fires, in The SFPE Handbook of Fire Protection Engineering}},
+   date = {2008},
    publisher = {National Fire Protection Association},
-   address = {Bethesda, MD},
-   year = {2008},
-   type = {Book}
+   location = {Bethesda, MD},
 }
 
 @techreport{Thompson:1990,
    author = {Thompson, D and Drysdale, H},
    title = {{Ignition of PUFs: A Comparison of Modified and Unmodified Foams}},
-   year = {1990},
-   type = {Report}
+   type = {Report},
+   institution = {University of Edinburgh},
+   date =  = {1990},
 }
 
 @techreport{Vettori:2000,
    author = {Vettori, R and Madrzykowski, D},
    title = {{Simulation of the Dynamics of the Fire at 3146 Cherry Road NE Washington D.C., May 30, 1999}},
+   type = {NISTIR},
    institution = {National Institute of Standards and Technology},
-   address = {Gaithersburg, Maryland},
+   date = {April 2000},
+   location = {Gaithersburg Maryland},
    number = {6510},
-   month = {April},
-   year = {2000},
-   type = {NISTIR}
 }
 
 @techreport{Vettori:2002,
    author = {Vettori, R and Madrzykowski , D and Walton, W},
    title = {{Simulation of the Dynamics of a Fire in a One-Story Restaurant -- Texas, February 14, 2000}},
+   type = {NISTIR},
    institution = {National Institute of Standards and Technology},
-   address = {Gaithersburg, Maryland},
-   year = {October  2002},
-   number = {XXXX},
-   type = {NISTIR}
+   date = {October  2002},
+   location = {Gaithersburg, Maryland},
 }
 
 @article{Watanabe:2004,
    author = {Watanabe, J and Takeyoshi, T},
    title = {{Experimental Investigation into Penetration of a Weak Fire Plume into a Hot Upper Layer}},
-   journal = {Journal of Fire Sciences},
+   journaltitle = {Journal of Fire Sciences},
+   date = {2004},
    volume = {22},
    pages = {405-420},
-   year = {2004},
-   type = {Journal Article}
 }
 
 @book{Wilkes:2005,
    author = {Wilkes, C and Summers, J and Daniels , C and Berard, M},
    title = {{PVC Handbook}},
+   date = {2005},
    publisher = {Hanser Verlag},
-   year = {2005},
-   type = {Book}
 }
 
 @book{Wilkes:1950,
    author = {Wilkes, G},
    title = {{Heat Insulation}},
+   date = {1950},
    publisher = {John Wiley & Sons},
-   year = {1950},
-   type = {Book}
 }
 
 @techreport{Woo:1997,
    author = {Woo, K H},
    title = {{Final Report of the Inquiry into the Garley Building Fire on 20th November 1996}},
+   type = {Report},
    institution = {Government Printer},
-   year = {1997},
-   type = {Report}
+   date = {1997},
 }
 
 @article{Woodburn:1998,
    author = {Woodburn, P and Drysdale, D D},
    title = {{Fire in Inclined Trenches: time-varying features of the attached plume}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1998},
    volume = {31},
    pages = {165-1172},
-   year = {1998},
-   type = {Journal Article}
 }
 
 @article{Woodburn:1998b,
    author = {Woodburn, P and Drysdale, D D},
    title = {{Fire in Inclined Trenches: the dependence of the critical angle on the trench and burner geometry}},
-   journal = {Fire Safety Journal},
+   journaltitle = {Fire Safety Journal},
+   date = {1998},
    volume = {31},
    pages = {143-164},
-   year = {1998},
-   type = {Journal Article}
 }
 
 @misc{Yahoo:2012,
    author = {Yahoo, Zillow Real Estate Network},
    title = {{1100 Prospect Pl, Brooklyn, NY 11213 - Zillow}},
-   month = {November},
+   date = {November 2012},
    howpublished = {http://www.zillow.com/homedetails/1100-Prospect-Pl-Brooklyn-NY-11213/30592028_zpid},
-   year = {2012},
    type = {Online Multimedia}
 }
 
 @manual{BNZ:MSDS,
 	author = {BNZ},
 	title = {{Marinite}},
-	year = {2012},
-	month = {June}
+	date = {June 2012},
 	subtitle = {MSDS BNZ 20-105},
 	edition = {Rev 02},
-	howpublished = {http://www.bnzmaterials.com/wp-content/uploads/2013/03/BNZ-20-105-Marinite-I-M-P-IL-ML-FD-MBI-MSDS.pdf},
+	url = {http://www.bnzmaterials.com/wp-content/uploads/2013/03/BNZ-20-105-Marinite-I-M-P-IL-ML-FD-MBI-MSDS.pdf},
 	urldate = {04/04/2015},
 }
 
 @manual{Marinite:1997,
 	author = {{BNZ Materials Inc}},
 	title = {Marinite I: Refractory Products, Fire-Resistant Thermal, Structural Insulation},
-	year = {1997},
-	month = (November)
+	date = {November 1997},
 	edition = {{BNZ R-3261-W}},
 	howpublished = {http://www.bnzmaterials.com/wp-content/uploads/2013/03/Mar-I.pdf},
 	urldate = {04/04/2015},
 }
+@report{Gross:1985,
+    author = {Daniel Gross},
+    title = {Data Sources for Parameters Used in Predictive Modeling of Fire Growth and Smoke Spread},
+    type = {report},
+    institution = {National Bureau of Standards},
+    date = {September 1985},
 
+@manual{BNZ:2012,
+	ALTauthor = {BNZ Materials},
+	ALTeditor = {editor},
+	title = {Marinite®},
+	date = {June 11, 2012},
+	OPTsubtitle = {MSDS BNZ 20-105}
+
+@manual{BNZ:97,
+	ALTauthor = {BNZ Materials, Inc},
+	title = {Marinite® I},
+	date = {11/97},
+	OPTsubtitle = {Refractory Products},
+	OPTtitleaddon = {Fire-Resistant Thermal,Structural Insulation},
+	
+@thesis{Schroeder:1999,
+	author = {Robert Allen Schroeder},
+	title = {Post-Analysis of Construction Materials},
+	type = {Doctor Of Engineering},
+	institution = {University of California, Berkeley},
+	date = {1999},
 
 
