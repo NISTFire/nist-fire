@@ -1,0 +1,36 @@
+\documentclass[border=.1cm]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\begin{document}
+\thispagestyle{empty}
+
+\pgfplotsset{
+    colormap={blackwhite}{[5pt]
+        rgb255(0pt)=(0,0,255);
+        rgb255(100pt)=(0,255,255);
+        rgb255(200pt)=(0,255,0);
+        rgb255(300pt)=(255,255,0);
+        rgb255(400pt)=(255,0,0)
+    },
+} % defines smokeview colorbar
+
+\begin{tikzpicture}
+\node at (0.45,0.67) {Velocity};
+\node at (0.4,0.3) {(mph)};
+\begin{axis}[
+    hide axis,
+    scale only axis,
+    height=0pt,
+    width=0pt,
+    colorbar,
+    point meta min=0,
+    point meta max=35,
+    colorbar style={
+        height=5cm,
+        ytick={0,5,10,...,35}
+    }]
+    \addplot [draw=none] coordinates {(0,0)};
+\end{axis}
+\end{tikzpicture}
+
+\end{document}
