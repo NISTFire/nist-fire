@@ -4,26 +4,34 @@
 
 \section{Comments from the Editor}
 \begin{itemize}
-\item We would appreciate more efforts in assessing or estimation somehow the error or uncertainty of your results.
-\item An effort to read some of the work published in Fire Technology on the topics at hand would be appreciated by the editorial board.
-\item There are too many figures (20); please consider removing some or creating an Appendix where the 5 least important figures are presented.
-\item Please consider to submit the input file/s for this work as Electronic Supplementary Material.
+\item We would appreciate more efforts in assessing or estimation somehow the error or uncertainty of your results. \\
+{\bf Dan -- not sure about this comment - there is model uncertaintly in predicting temperature from a HRR or undercertainty in specifying uncertainty. I have something written at the end of Section 3.6 - but as far as error/uncertainty it could be massive based on all the unknowns we have. I also added a comment about 50 kW/m2 being conservative.}
+\item An effort to read some of the work published in Fire Technology on the topics at hand would be appreciated by the editorial board. \\
+{\it Added addtional references where appropriate.}
+\item There are too many figures (20); please consider removing some or creating an Appendix where the 5 least important figures are presented. \\
+{\it Moved figures}
+\item Please consider to submit the input file/s for this work as Electronic Supplementary Material. \\
+{\it Will do}
 \end{itemize}
 
 \section{Comments from Reviewer 1}
 \begin{itemize}
 \item It may be better to summarize the account in the author's own words, and to link it more closely to Table 1. This would be particularly helpful for section 3.4, since the ventilation conditions are not explained in great detail. \\
 {\it The authors were able to view portions of video taken during the incident that allowed for the estimation of failure times and failure areas of exterior walls and windows. This is addressed in the text in Section 3.4. Since this case deals with the death of a firefighter the authors decided to leave the decription of events to narrative from the official NIOSH report.}
-\item I miss, however, a more critical point of view that would be essential in guiding fire modellers as to what the limits of applicability of these models is. In this context I would require that the authors elaborate on how they approached the modelling of under-ventilated conditions. FDS is known for running into problems when flaming in vitiated air occurs. In figure 7 the authors present external flaming out of the rear window. Is this realistic? FDS tends to present combustion at vents, even when the flames in the interior have already been extinguished due to lack of oxygen. Is the flow of hot gases into the hallway after the door breakage accompanied by flaming combustion?
-\item The authors discard the secondary simulation based on the similarity of the overall HRR, but an alternative ventilation pattern could potentially alter the flow path inside the building. They should explain in more detail why this is not the case in this scenario (or provide images of the flow path and temperature distributions of the secondary simulation).
+\item I miss, however, a more critical point of view that would be essential in guiding fire modellers as to what the limits of applicability of these models is. In this context I would require that the authors elaborate on how they approached the modelling of under-ventilated conditions. FDS is known for running into problems when flaming in vitiated air occurs. In figure 7 the authors present external flaming out of the rear window. Is this realistic? FDS tends to present combustion at vents, even when the flames in the interior have already been extinguished due to lack of oxygen. Is the flow of hot gases into the hallway after the door breakage accompanied by flaming combustion? \\
+{\bf Dan - we know this behavior - exterior combustion -- is pretty realistic from the UL tests - but I cannot find the report anywhere. Do you have it or should I try to cite the course? FDS predicts minimal flaming combustion into the hallways at the ceiling right near the doorway. This seems realistic me but we have nothing to confirm or deny that.}
+\item The authors discard the secondary simulation based on the similarity of the overall HRR, but an alternative ventilation pattern could potentially alter the flow path inside the building. They should explain in more detail why this is not the case in this scenario (or provide images of the flow path and temperature distributions of the secondary simulation). \\
+{\it Text was added to state that in both cases the flow path path was the same and the hazard to the firefighters were similar.}
 \item I further think that the beginning of section 5.2 is misleading. Surely second-degree burn injuries are only produced by direct contact with objects at 55C. Air at 55C would not burn the skin. It would be useful to relate the temperatures (gas and wall) to heat fluxes, as this would be a more correct approach in terms of human perception and injuries. \\
 {\it The section has been updated.}
 \end{itemize}
 
 \section{Comments from Reviewer 2}
 \begin{itemize}
- \item The authors mention that the fire was under-ventilated yet the species that they have used in the analysis are well ventilated values.  Although the results of the modelling will not be effected by the assumed fuel, the precedent set in this paper could be used by others to justify these as appropriate values for under-ventilated fire when clearly they are not.  Additional discussion on the species and why the well ventilated values used are appropriate for this analysis but should not be used when modelling under-ventilated fire.
-\item The authors used 50kW/m2 for calculating there maximum heat release rate yet this value is lower than expected.  The author should explain why this low value was chosen.  The authors then go on and use a HRRPUA=2250kW/m2.  Why did not use the original 50kW/m2 and expand the area burning?  Additional explanation would be helpful.
+ \item The authors mention that the fire was under-ventilated yet the species that they have used in the analysis are well ventilated values.  Although the results of the modelling will not be effected by the assumed fuel, the precedent set in this paper could be used by others to justify these as appropriate values for under-ventilated fire when clearly they are not.  Additional discussion on the species and why the well ventilated values used are appropriate for this analysis but should not be used when modelling under-ventilated fire. \\
+{\it Good points! Additional discussion was added to the report after the chemical reaction and yeilds were specified.}
+\item The authors used 50kW/m2 for calculating there maximum heat release rate yet this value is lower than expected.  The author should explain why this low value was chosen.  The authors then go on and use a HRRPUA=2250kW/m2.  Why did not use the original 50kW/m2 and expand the area burning?  Additional explanation would be helpful. \\
+{\it The 50 kW/m2 is a conservative estimate for the HRRPUA. In reality the fire might have been larger - but even a fire of this size produced high hazard conditions for firefighters. There is discussion added to the report. In the attic, there could have been a larger burning area with smaller heat release rate but a compromise was made for Q* and D*.}
 \item This results in a floor area of approximately 105 m2 (1100 ft2) per floor and a main living area of approximately 110 m2 (2200 ft2).
 The 110m2 should be 210m2??? \\
 {\it Thanks for the keen eye. Typo is corrected.}
@@ -38,8 +46,10 @@ The 110m2 should be 210m2??? \\
 
 \section{Comments from Reviewer 3}
 \begin{itemize}
-\item It is interesting that the roof is vented at 17:27 right as the Mayday is called.  I suspect that it is a coincidence as there doesn't appear to have been 30-60 seconds for any change in the flow path caused by that action to propagate...but it might be worth inclusion in Table 1 and/or a little discussion.
-\item Page 6.  With the discussion of the specified fire size, I was left wondering if that would be vent limited by the model.  It turns out it was, and you covered that well...but perhaps a note in this section mentioning that might be nice.
+\item It is interesting that the roof is vented at 17:27 right as the Mayday is called.  I suspect that it is a coincidence as there doesn't appear to have been 30-60 seconds for any change in the flow path caused by that action to propagate...but it might be worth inclusion in Table 1 and/or a little discussion. \\
+{\it The roof vent was completed when they heard the MayDay. The door failed and the flow path was established before the MayDay was called therefore the roof vent was not a major factor. The last communication from E123 Captain was at 17:23 which is included in Table 1.}
+\item Page 6.  With the discussion of the specified fire size, I was left wondering if that would be vent limited by the model.  It turns out it was, and you covered that well...but perhaps a note in this section mentioning that might be nice. \\
+{\it At the stage of the discussion, the model results are not yet presented. There has been additional discussion added here based on other comments though.}
 \item Page 16 line 40-41.  If there is a reference available for the NIST testing looking at the post-fire state of doors (as shown in Figure 15) it would be nice to provide that here. (or perhaps if unpublished just footnote the person who did the testing so readers know who they could ask for further info) \\
 {\it A footnote has been added with a webadress where the report will live upon publication}
 \end{itemize}
@@ -52,20 +62,34 @@ The 110m2 should be 210m2??? \\
 {\it The abstract was clarified to indicate the fire spread downward and that there was no fire damage on the first floor.}
 \item At the end of introduction to section 3, it would be good to put a reference to the SFPE Guide to Selecting a Fire Model for a Particular Purpose and that the authors considered the relevant physics and output to decide to use FDS. [See p. 4] \\
 {\it Discussion was added referring to the SFPE Guide}
-\item  Section 3.3 Materials would be more helpful if it also more fully addressed the exterior walls. I am expecting these were modeled just with gypsum board given the descriptions, rather than some sort of sandwich or other heat transfer approach. [See p. 7]
-\item Section 3.3 Materials should also address what was done with the windows. No description of glass was given, so this should be addressed explicitly. [See p. 7]
-\item The vents are unclear to me [See Tab. 2 and accompanying text, p. 7]. For example, which vents are the ones that were cut into the roof to vent the attic? In addition, I don't see any vents in the figure of the roof [See, for example, Fig. 5, p. 9].
-\item Vents: Were all of the windows considered closed? I did not find that directly stated, especially given the details about all of the windows in the last two diagrams.
-\item Vents: Where is the connection between the 2nd floor porch and attic? I saw it described broadly in the paper, but don't recall it being described more fully and it is not depicted in any of the diagrams.
-\item Vents: Table 2, p. 7, it would be helpful to have a quick description of what each vent is in terms of the fire incident report.
-\item On the numerical resolution examination [see p. 8, lines 22-27], it would be helpful to explain that higher numbers equate to better resolution as the non-user may not appreciate this and think that being outside the range makes it an unreliable calculation.
-\item HRR: The graphic [Fig. 6, p.10] is fine and accompanying text is also good. One thing that is not clear, but may be helpful to the reader is to explain that some of that combustion is occurring outside the structure [See Fig. 7, p. 12]. This is important given the discussion of temperatures, etc. If the authors know the amount of HRR within the structure, that may be an interesting/helpful value for the readers.
-\item Attic fire: Was any of the roof ``consumed?'' [See Fig. 7, p. 12 and associated text] It would be interesting to know if any of the roof was ultimately consumed and whether that occurred subsequent to the modeled period or if there was another reason to disregard that phenomenon. [See Fig. 2, p. 6]
+\item  Section 3.3 Materials would be more helpful if it also more fully addressed the exterior walls. I am expecting these were modeled just with gypsum board given the descriptions, rather than some sort of sandwich or other heat transfer approach. [See p. 7] \\
+{\it Added discussion.}
+\item Section 3.3 Materials should also address what was done with the windows. No description of glass was given, so this should be addressed explicitly. [See p. 7] \\
+{\it That is correct. This is clarified in the text.}
+\item The vents are unclear to me [See Tab. 2 and accompanying text, p. 7]. For example, which vents are the ones that were cut into the roof to vent the attic? In addition, I don't see any vents in the figure of the roof [See, for example, Fig. 5, p. 9]. \\
+{\it You are correct in that there were roof ventilation holes that were made. Roof ventilation occured after the interior flow path was established and was not considered in the model.}
+\item Vents: Were all of the windows considered closed? I did not find that directly stated, especially given the details about all of the windows in the last two diagrams. \\
+{\it Addressed related to prior comment.}
+\item Vents: Where is the connection between the 2nd floor porch and attic? I saw it described broadly in the paper, but don't recall it being described more fully and it is not depicted in any of the diagrams. \\
+{\it Addtional text was added describing the stair connecting the porch to the attic.}
+\item Vents: Table 2, p. 7, it would be helpful to have a quick description of what each vent is in terms of the fire incident report. \\
+{\it These vents were found by watching a video of the incident. Besides the door opening they do not tie into the narrative from NIOSH.}
+\item On the numerical resolution examination [see p. 8, lines 22-27], it would be helpful to explain that higher numbers equate to better resolution as the non-user may not appreciate this and think that being outside the range makes it an unreliable calculation. \\
+{\it Text added to clarify.}
+\item HRR: The graphic [Fig. 6, p.10] is fine and accompanying text is also good. One thing that is not clear, but may be helpful to the reader is to explain that some of that combustion is occurring outside the structure [See Fig. 7, p. 12]. This is important given the discussion of temperatures, etc. If the authors know the amount of HRR within the structure, that may be an interesting/helpful value for the readers. \\
+{\bf Dan - I don't have this unless I re-run the simulation with a ton of devices to calculate this. Not sure what value it adds though - but I could add a point that a lot of the combustion is exterior to the structure.}
+\item Attic fire: Was any of the roof ``consumed?'' [See Fig. 7, p. 12 and associated text] It would be interesting to know if any of the roof was ultimately consumed and whether that occurred subsequent to the modeled period or if there was another reason to disregard that phenomenon. [See Fig. 2, p. 6]\\
+{\it The authors used video evidence to examine the breaches through the structure from the fire prior to the MayDay call. At that time there was no breach through the roof. Post incident there were holes cut by the fire service as well as some that might have been caused by the fire but we do not have enough evidence to make a difinitive assessment.}
 \item Pressure: Section 4.2 [See p. 12, line 30] discusses over-pressure. I am unclear about that particular part of the discussion. The text references``at 1 m'', but I think this could be more clear that you are not talking about a compartment over-pressure, but that generated by buoyancy due to temperature differences. I don't think the authors mean that the whole compartment is over-pressured. This is an important distinction, because later the discussion focuses on the door, but I am under the impression that the door folding is heat caused structural failure, not overpressure. Therefore, it's important to clarify this point.
-\item Pressure: [See Fig. 8, p. 12] I am unsure how to interpret this graphic as presumably there are some lower pressures driving air into the various spaces as normal gravity flows. I think this figure should have some additional description to better explain what it's showing. Somewhere, there must be air entering these various spaces in order to continue combustion in those volumes.
-\item Fig. 14, p. 16: This photo shows the door and discusses the crease, which I can see. I assume from my reading that this is the interior face of the door and that the top of the door is towards the background. This should be clarified in the caption.
-\item Fig. 20, p. 24 \& Fig. 21, p. 25: These graphics are good overall. Unfortunately, the cross-hatching is difficult to interpret in some places. Furthermore, it will be impossible to read this if it is reproduced in black and white.
-\item  It would be helpful to have a floor plan of the attic space that includes the locations of the roof vents.
+{\it Excellent point. This is clarified.}
+\item Pressure: [See Fig. 8, p. 12] I am unsure how to interpret this graphic as presumably there are some lower pressures driving air into the various spaces as normal gravity flows. I think this figure should have some additional description to better explain what it's showing. Somewhere, there must be air entering these various spaces in order to continue combustion in those volumes. \\
+{\it Discussion added to Pressure section.}
+\item Fig. 14, p. 16: This photo shows the door and discusses the crease, which I can see. I assume from my reading that this is the interior face of the door and that the top of the door is towards the background. This should be clarified in the caption. \\
+{\it Clarified in the text.}
+\item Fig. 20, p. 24 \& Fig. 21, p. 25: These graphics are good overall. Unfortunately, the cross-hatching is difficult to interpret in some places. Furthermore, it will be impossible to read this if it is reproduced in black and white. \\
+{\bf I don't want to change this because I like the colored cross hatching, but I guess I am going to have to?}
+\item  It would be helpful to have a floor plan of the attic space that includes the locations of the roof vents. \\
+{\it Because of post-incident safety concerns we were unable to measure the attic or get accurate location of roof vents. Note that these vents were made after the interior door failed.}
 \end{itemize}
 
 \end{document}
