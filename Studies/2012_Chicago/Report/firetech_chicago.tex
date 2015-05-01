@@ -162,7 +162,7 @@ Whenever a computational analysis is conducted, it is important to match needs o
 \label{geom}
 The structure involved in this fire incident was a 2~\sfrac{1}{2}~story residential building with balloon frame construction and a gable roof.\footnote{Balloon frame construction is a method of framing where a continuous stud runs from the bottom horizontal member to the top plate. Intermediate floors are built directly off of the studs. One potential issue with balloon frame construction is that without fire stops there is void space for fire to potentially travel between the floors within the wall cavity.} The structure had a 17.15~m (56~ft) by 6.15~m (20~ft) footprint, as shown in Fig.~\ref{fig:simp_geom}. This results in a floor area of approximately 105~m$^2$ (1100~ft$^2$) per floor and a main living area of approximately 210~m$^2$ (2200~ft$^2$). The interior walls were constructed from nominal lumber covered by 12.7~mm (0.5~in) gypsum board~\cite{NIOSH:Bowyer}. Additionally, there was a half-story attic that contained the structure's hot water heater. Three sets of stairs were present in the structure: one front stairwell that connected the first and second levels (Stair 1 in Fig.~\ref{fig:simp_geom}), one rear stairwell that connected the first and second levels (Stair 2 in Fig.~\ref{fig:simp_geom}) and a second rear set of stairs which provided access to the attic (Stair 3 in Fig.~\ref{fig:simp_geom}). Stair 3 directly asceneds to attic without a doorway or method to isolate the rear porch from the attic (the top stair is the floor of the attic). Entry to the first floor of the structure can be made either in the front or rear, as shown in Fig.~\ref{fig:simp_geom}.
 
-The fire, which is described in Section~\ref{fire}, started in the attic and spread to the rear porch. Discussion of the fire's impact on the interior conditions is provided in Section~\ref{results}. Figure~\ref{fig:alpha_ex} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the damage occurred in the attic and rear porch on the second floor. Fully dimensioned drawings of the interior of the first and second floors are shown in Appendix~\ref{app_draw} in Figs.~\ref{fig:first_floor} and \ref{fig:second_floor}, respectively.
+The fire, which is described in Section~\ref{fire}, started in the attic and spread to the rear porch. Discussion of the fire's impact on the interior conditions is provided in Section~\ref{results}. Figure~\ref{fig:alpha_ex} shows the exterior of the front and rear of the structure after the incident. Note that the majority of the damage occurred in the attic and rear porch on the second floor. Fully dimensioned drawings of the interior of the first and second floors can be found in~\cite{Weinschenk:Chicago}.
 
 \begin{figure}[!ht]
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
@@ -333,6 +333,13 @@ $^{*}$Initial interior temperatures were assumed to be 20~$^{\circ}$C; exterior 
 \normalsize
 \end{table}
 
+\subsection{Model Uncertainy}
+\label{mod_uncertain}
+FDS can provide valuable insight into how a fire may have developed. However, the model is only a simulation. The model output is dependent on a variety of input values such as material properties, time lines, geometry, and ventilation openings. Since complete knowledge of every detail of the fire site, fuel load, or fire timeline is never available; estimations are incorporated into the model. For example, the estimation of the energy release rate of an initial ``source fire'' as a starting point for fire development and spread throughout the structure is a necessary part of recreating this fire scenario. These estimations and others used in this simulation are further described in Section~\ref{model} of this report.
+
+The ability of the FDS model to predict accurately the temperature and velocity of fire gases has been previously evaluated by conducting experiments, both lab-scale and fullscale, and measuring quantities of interest. For relatively simple fire driven flows, such as buoyant plumes and flows through doorways, FDS predictions are within the experimental uncertainty of the values measured in the experiments~\cite{FDS_Validation_Guide}. For example, if a gas flow velocity is measured at 0.5 m/s (1.6 ft/s) with an experimental uncertainty of $\pm$ 0.05 m/s ($\pm$ 0.2 ft/s), the FDS model gas flow velocity predictions were also in the range between 0.45 m/s and 0.55 m/s (1.5 ft/s and 1.8 ft/s). In large scale fire tests reported in \cite{FDS_Validation_Guide}, FDS temperature predictions were found to be within 15 \% of the measured temperatures and the FDS heat release rates were predicted to within 20 \% of the measured values. Therefore, the results should be considered as ranges to address these uncertainties.
+
+
 \section{Model Results}
 \label{results}
 
@@ -393,14 +400,15 @@ The heat release rate output data from FDS quantifies the simulated rate of ener
 \label{fig:hrr}
 \end{figure}
 
-In Fig.~\ref{fig:hrr}, the solid line represents the baseline FDS simulation (this follows the noted door openings from the incident). The dashed line represents an alternative series of events in which the rear door does not get opened and the subsequent breach of the rear porch wall on the left side of the structure does not occur. The dash-dotted line represents the prescribed (or nominal) HRR that was input into FDS. As shown in Fig.~\ref{fig:hrr}, the HRR output from FDS is less than the prescribed HRR because the fire in the structure becomes ventilation limited. The maximum HRR value is slightly less than 9~MW before the fire becomes ventilation limited and begins to decay. The HRR is reduced to 5~MW as the oxygen inside the structure is consumed. There is an insufficient amount of oxygen in the structure to burn all of the fuel, therefore combustion occurs locally at the vents where fresh air is available. Figure~\ref{fig:smv_ext_fire} shows flaming combustion through the failed window on the rear side of the structure and attic breach just after the second fire ignites at 40~s. After additional wall breaches occur at 45~s and 55~s (see Table~\ref{tab:vents}), the abrupt change in ventilation causes the HRR to increase to 9~MW before it decreases to approximately 6~MW. The HRR then increases towards a sustainable steady-state value.
+In Fig.~\ref{fig:hrr}, the solid line represents the baseline FDS simulation (this follows the noted door openings from the incident). The dashed line represents an alternative series of events in which the rear door does not get opened and the subsequent breach of the rear porch wall on the left side of the structure does not occur. The dash-dotted line represents the prescribed (or nominal) HRR that was input into FDS. As shown in Fig.~\ref{fig:hrr}, the HRR output from FDS is less than the prescribed HRR because the fire in the structure becomes ventilation limited. The maximum HRR value is slightly less than 9~MW before the fire becomes ventilation limited and begins to decay. The HRR is reduced to 5~MW as the oxygen inside the structure is consumed. There is an insufficient amount of oxygen in the structure to burn all of the fuel, therefore combustion occurs locally at the vents where fresh air is available. Figure~\ref{fig:smv_ext_fire} shows flaming combustion through the failed window on the rear side of the structure and attic breach just after the second fire ignites at 40~s. Figure~\ref{fig:smv_ext_fire} also shows a photograph taken during an attic fire experiment that cofirms this type of fire behavoir. After additional wall breaches occur at 45~s and 55~s (see Table~\ref{tab:vents}), the abrupt change in ventilation causes the HRR to increase to 9~MW before it decreases to approximately 6~MW. The HRR then increases towards a sustainable steady-state value.
 
 Figure~\ref{fig:hrr} indicates that the HRRs for both of the ventilation scenarios in FDS are identical until 130~s (HRR $\approx$ 7~MW). At 130~s, the rear door is opened in the baseline simulation. At 135~s, there is an additional breach on the left side of the structure (Table~\ref{tab:vents}). The open door and breach act as additional pressure releases for the structure. Again, the abrupt change in ventilation causes the HRR to increase from approximately 7~MW to 9.7~MW at 139~s. At the time of the door failure (160~s), the HRR in both cases was approximately 9~MW because of the increased amount of ventilation. While there might be some locally different burning characteristics between the baseline simulation and the alternative simulation, with respect to exposure to firefighters operating within flow path, both cases presented similar high hazard contitions. Therefore, the analysis will focus on the results of the baseline simulation.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=.675\textwidth]{../Figures/smv_exterior_fire}
-\caption{Smokeview rendering of exterior combustion occurring on the rear side of the structure.}
+\includegraphics[width=.5\textwidth]{../Figures/smv_exterior_fire}
+\includegraphics[width=.45\textwidth]{../Figures/PA020413}
+\caption{Smokeview rendering of exterior combustion occurring on the rear side of the structure (left) and photograph from ongoing attic fire experiments (right).}
 \label{fig:smv_ext_fire}
 \end{figure}
 
@@ -511,7 +519,7 @@ After the interior door failed, an interior flow path was created from the enclo
 
 \subsection{Assessing the Hazard}
 \label{hazard}
-A person is susceptible to second-degree burn injuries if skin temperatures exceed 55~$^{\circ}$C (130~$^{\circ}$F)~\cite{contactburn}. Although firefighters wear protective gear, gear only offers a finite amount of protection. The polycarbonate material in the facepiece of a self-contained breathing apparatus begins to soften when the material temperature reaches approximately 140~$^{\circ}$C (284~$^{\circ}$F)~\cite{mensch2011emergency}. Structural fire fighting coats and pants are tested to withstand temperatures up to 260~$^{\circ}$C (500~$^{\circ}$F) or 10~kW/m$^2$~\cite{nfpa2013standard} for less than 2.5~min. Exposure to elevated temperatures can result in a significant amount of heat transferred to the firefighter, putting him or her at risk.
+A person is susceptible to second-degree burn injuries if skin temperatures exceed 55~$^{\circ}$C (130~$^{\circ}$F)~\cite{contactburn}. Although firefighters wear protective gear, gear only offers a finite amount of protection. The polycarbonate material in the facepiece of a self-contained breathing apparatus begins to soften when the material temperature reaches approximately 140~$^{\circ}$C (284~$^{\circ}$F)~\cite{mensch2011emergency}. Structural fire fighting coats and pants are tested to withstand temperatures up to 260~$^{\circ}$C (500~$^{\circ}$F) or 10~kW/m$^2$~\cite{nfpa2013standard} for less than 2.5~min. Exposure to elevated temperatures can result in a significant amount of heat transferred to the firefighter, putting him or her at risk. In this case, according the NIOSH report the victim was not wearing gloves or flash hood~\cite{NIOSH:Bowyer}.
 
 Prior to the interior door failure, the elevated temperatures on the second floor were limited to the rear porch, as shown in Fig.~\ref{fig:temp_top_159}. The temperatures were greatest at the back-left corner where there is sufficient oxygen due to the section of porch wall that had burned away and allowed additional oxygen to mix with the fuel-rich fire gases. Five seconds after the interior door failed, hot gases traveled the length of the interior hallway and approached the doorway into the kitchen, which was approximately 4.5~m (14.8~ft) away from the source fire, as shown in Fig.~\ref{fig:temp_top_165}. Within 60~s of the interior door failure, the hallway temperatures were approximately at or above 260~$^{\circ}$C (500~$^{\circ}$F) throughout the hallway, as shown in Fig.~\ref{fig:temp_top_220}. These results indicate that the high temperature gases seen 5~s after failure were not just a burst but rather the front of a sustained exhaust gas flow from the fire burning in the enclosed rear porch. The conditions in this hallway changed from tenable to high-hazard very rapidly following the door failure. Figure~\ref{fig:temp_top_220} also shows that the temperatures in the kitchen were at or below 90~$^{\circ}$C (194~$^{\circ}$F), and the temperatures at the top of the stairs were at or below 70~$^{\circ}$C (158~$^{\circ}$F). At these locations within the structure, the exhaust gases in the flow path were cooled and diluted by the inflowing ambient gas. These simulated temperatures are consistent with the post-incident conditions that were documented in the kitchen and second floor stairwell.
 
@@ -612,25 +620,6 @@ The authors would like to thank the Chicago Fire Department, especially Commissi
 \clearpage
 
 \appendix
-
-\section{Dimensioned Drawings}
-\label{app_draw}
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=1\textwidth]{../Figures/50th_Place_1st_Floor}
-\caption[Dimensioned drawing of first floor.]{Dimensioned drawing of first floor. The measurements are accurate to within 15~cm (6~in).}
-\label{fig:first_floor}
-\end{figure}
-
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=1\textwidth]{../Figures/50th_Place_2nd_Floor}
-\caption[Dimensioned drawing of second floor.]{Dimensioned drawing of second floor. The measurements are accurate to within 15~cm (6~in).}
-\label{fig:second_floor}
-\end{figure}
-
-\clearpage
 
 \section{Numerical Mesh Figures}
 \label{app_mesh}
