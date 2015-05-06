@@ -45,19 +45,31 @@ grestore
 %
 \smartqed  % flush right qed marks, e.g. at end of proof
 
-\input{../../../Bibliography/commoncommands}
+\usepackage{pdfsync,cite,hyperref}
+\usepackage{tikz,pgfplots}
+\usepackage{rotating,lscape}
+\usepackage{listings}
+\usepackage{multirow,tabularx,ragged2e,booktabs,caption,graphicx,longtable}
+\usepackage{mathptmx,xfrac,amsmath,siunitx}
+
+\pgfplotsset{
+  colormap={blackwhite}{[5pt]
+    rgb255(0pt)=(0,0,255);
+    rgb255(100pt)=(0,255,255);
+    rgb255(200pt)=(0,255,0);
+    rgb255(300pt)=(255,255,0);
+    rgb255(400pt)=(255,0,0)
+  },
+} % sets colors for colorbar
+
 \renewcommand{\sb}[1]{_\mathrm{#1}}
-\renewcommand{\C}{\mbox{C}}
+\newcommand{\C}{\mbox{C}}
 \renewcommand{\H}{\mbox{H}}
 \renewcommand{\O}{\mbox{O}}
 \newcommand{\N}{\mbox{N}}
+\newcommand{\dx}{\delta x}
+\newcommand{\dQ}{\dot{Q}}
 
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\lhead{}
-\rhead{}
-\chead{}
-\renewcommand{\headrulewidth}{0pt}
 
 % Insert the name of "your journal" with
 \journalname{Fire Technology}
@@ -219,8 +231,10 @@ To calculate the total fire size, the appropriate burning area (exposed wood are
 &SURF ID='FIRE', HRRPUA=2250., COLOR='ORANGE', TAU_Q=10 /
 &VENT XB=-13.5,-13,1,5,6.16,6.16, SURF_ID='FIRE' /
 &VENT XB=-14.5,-14,1,5,6.16,6.16, SURF_ID='FIRE' /
-&VENT XB=-16.5,-15.5,1,2.5,3.14,3.14, SURF_ID='FIRE', DEVC_ID='SECOND FIRE'/
-&DEVC XYZ = -17.2,2,0, ID='SECOND FIRE', QUANTITY='TIME', SETPOINT=40, INITIAL_STATE=.FALSE. /
+&VENT XB=-16.5,-15.5,1,2.5,3.14,3.14, 
+      SURF_ID='FIRE', DEVC_ID='SECOND FIRE'/
+&DEVC XYZ = -17.2,2,0, ID='SECOND FIRE', 
+      QUANTITY='TIME', SETPOINT=40, INITIAL_STATE=.FALSE. /
 \end{lstlisting}
 Note that the coordinates here are unique for the vents are specific to the input files used for these simulations. The key point is that they are 2-D planes located at a specific area.
 
@@ -238,7 +252,8 @@ While the fires were represented as fuel sources with a constant area (Section~\
     DENSITY = 810. /
 
 &MATL ID = 'WOOD MAT'
-    FYI = 'Incropera and DeWitt, Fundamentals of Heat and Mass Transfer'
+    FYI = 'Incropera and DeWitt, 
+          Fundamentals of Heat and Mass Transfer'
     CONDUCTIVITY = 0.12
     SPECIFIC_HEAT = 1.38
     DENSITY = 510. /
