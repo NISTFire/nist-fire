@@ -110,7 +110,7 @@ close()
 
 fig = figure()
 plt.plot(HRR_time,HRR_theo,'k-',mfc='none',label='Prescribed HRR')
-plot(FDS_9MW_20['Time'],base_hrr_20mph+first_hrr_20mph,'b--',mfc='none',label='Structure Inteior Calculated HRR')
+plot(FDS_9MW_20['Time'],base_hrr_20mph+first_hrr_20mph,'b--',mfc='none',label='Structure Interior Calculated HRR')
 axvline(x=100,linestyle='-',color = '#000000')
 axvline(x=207,linestyle='-',color = '#000000')
 axvline(x=211,linestyle='-',color = '#000000')
