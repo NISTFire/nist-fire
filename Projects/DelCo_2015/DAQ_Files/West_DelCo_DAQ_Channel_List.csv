@@ -223,15 +223,15 @@ SC1Mod12,28,TC_S_13,TC,,,,,1,0,TC S 13
 SC1Mod12,29,TC_S_14,TC,,,,,1,0,TC S 14
 SC1Mod12,30,TC_S_15,TC,,,,,1,0,TC S 15
 SC1Mod12,31,TC_S_16,TC,,,,,1,0,TC S 16
-SC1Mod5,8,CO_A,Voltage,,,,A,1,0,CO Gas Analyzer A
-SC1Mod5,9,CO2_A,Voltage,,,,A,2,0,CO2 Gas Analyzer A
-SC1Mod5,10,O2_A,Voltage,,,,A,20,0,O2 Gas Analyzer A
-SC1Mod5,11,CO_B,Voltage,,,,B,1,0,CO Gas Analyzer B
-SC1Mod5,12,CO2_B,Voltage,,,,B,2,0,CO2 Gas Analyzer B
-SC1Mod5,13,O2_B,Voltage,,,,B,20,0,O2 Gas Analyzer B
-SC1Mod5,14,CO_C,Voltage,,,,C,1,0,CO Gas Analyzer C
-SC1Mod5,15,CO2_C,Voltage,,,,C,2,0,CO2 Gas Analyzer C
-SC1Mod5,16,O2_C,Voltage,,,,C,20,0,O2 Gas Analyzer C
-SC1Mod5,17,CO_D,Voltage,,,,D,1,0,CO Gas Analyzer D
-SC1Mod5,18,CO2_D,Voltage,,,,D,2,0,CO2 Gas Analyzer D
-SC1Mod5,19,O2_D,Voltage,,,,D,20,0,O2 Gas Analyzer D
+SC1Mod5,8,CO_A,Voltage,,,,A,1.25,-1.01,CO Gas Analyzer A
+SC1Mod5,9,CO2_A,Voltage,,,,A,2.5,-1.01,CO2 Gas Analyzer A
+SC1Mod5,10,O2_A,Voltage,,,,A,5.25,-1,O2 Gas Analyzer A
+SC1Mod5,11,CO_B,Voltage,,,,B,1.25,-1.01,CO Gas Analyzer B
+SC1Mod5,12,CO2_B,Voltage,,,,B,2.5,-1.01,CO2 Gas Analyzer B
+SC1Mod5,13,O2_B,Voltage,,,,B,5.25,-1,O2 Gas Analyzer B
+SC1Mod5,14,CO_C,Voltage,,,,C,1.25,-1.01,CO Gas Analyzer C
+SC1Mod5,15,CO2_C,Voltage,,,,C,2.5,-1.01,CO2 Gas Analyzer C
+SC1Mod5,16,O2_C,Voltage,,,,C,5.25,-1,O2 Gas Analyzer C
+SC1Mod5,17,CO_D,Voltage,,,,D,1.25,-1.01,CO Gas Analyzer D
+SC1Mod5,18,CO2_D,Voltage,,,,D,2.5,-1.01,CO2 Gas Analyzer D
+SC1Mod5,19,O2_D,Voltage,,,,D,5.25,-1,O2 Gas Analyzer D

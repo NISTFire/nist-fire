@@ -31,7 +31,7 @@ pre_test_time = 60
 sensor_groups = [['TC_A1_'], ['TC_A2_'], ['TC_A3_'], ['TC_A4_'], ['TC_A5_'],
                  ['TC_A6_'], ['TC_A7_'], ['TC_A8_'], ['TC_A9_'], ['TC_A10_'],
                  ['TC_A11_'], ['TC_A12_'], ['TC_A13_'], ['TC_A14_'], ['TC_A15_'],
-                 ['TC_A16_'], ['TC_A17_'], ['TC_A18_'], ['TC_A19_'],['TC_S_'],
+                 ['TC_A16_'], ['TC_A17_'], ['TC_A18_'], ['TC_A19_'],
                  ['BDP_A4_'], ['BDP_A5_'], ['BDP_A6_'], ['BDP_A7_'],
                  ['BDP_A8_'], ['BDP_A9_'], ['BDP_A10_'], ['BDP_A11_'],
                  ['BDP_A12_'], ['BDP_A13_'], ['BDP_A14_'], ['BDP_A15_'],
@@ -48,7 +48,7 @@ timings = pd.read_csv(timings_file, index_col=0)
 info = pd.read_csv(info_file, index_col=3)
 
 # Files to skip
-skip_files = ['_times', '_reduced', 'description_']
+skip_files = ['_times', '_reduced', 'description_','zero_']
 
 #  ===============================
 #  = Loop through all data files =
