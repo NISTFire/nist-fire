@@ -68,6 +68,6 @@ Test Number,Test Type,Old Test Key,New Test Key,Start of Test,End of Test,Test D
 61,FIRE,Test_27_West_070814,Test_27_West_070814,0,1518,Fire test,None,None,20,200,1500,300,25,None,None,None
 62,FIRE,Test_28_East_070814,Test_28_East_070814,0,2468,Fire test,None,None,20,200,1500,300,25,None,None,None
 63,FIRE,Test_29_West_071014,Test_29_West_071014,0,1259,Fire test,None,None,20,200,1500,300,25,None,None,None
-64,FIRE,Test_30_West_51415,Test_30_West_51415,150,780,Fire test,Gas,TC S 7|TC S 8,20,100,1500,300,25,None,800,None
-65,FIRE,Test_31_West_51615,Test_31_West_51615,300,1300,Fire test,None,TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,20,100,1500,300,25,None,800,None
-66,FIRE,Test_32_West_51815,Test_32_West_51815,990,1550,Fire test,None,TC 3 0.30 m BC West|TC S 13|TC S 14|TC Gear 5|TC Gear 6|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,20,50,1500,300,25,None,800,None
+64,FIRE,Test_30_West_51415,Test_30_West_51415,150,780,Fire test,Gas|TC Basement|BDP A15|TC A15,TC 5 0.08 m BS West|TC 10 0.08 m BS West|TC 14 1.95 m BS West|TC 18 2.13 m BC West|TC Gear 6|TC S 7|TC S 8,20,100,1500,300,25,None,800,None
+65,FIRE,Test_31_West_51615,Test_31_West_51615,300,1300,Fire test,TC Basement|BDP A15|TC A15,TC 14 1.95 m BS West|TC 18 2.13 m BC West|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,20,100,1500,300,25,None,800,None
+66,FIRE,Test_32_West_51815,Test_32_West_51815,990,1550,Fire test,BDP A15|TC A15,TC 3 0.30 m BC West|TC S 13|TC S 14|TC Gear 5|TC Gear 6|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,20,20,1500,300,25,None,800,None
