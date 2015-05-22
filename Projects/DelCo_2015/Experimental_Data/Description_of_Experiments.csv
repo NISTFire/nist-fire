@@ -73,3 +73,4 @@ Test Number,Test Type,Old Test Key,New Test Key,Start of Test,End of Test,Test D
 66,FIRE,Test_32_West_51815,Test_32_West_51815,990,1550,Fire test,BDP A15|TC A15,TC 3 0.30 m BC West|TC S 13|TC S 14|TC Gear 5|TC Gear 6|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,20,20,1500,300,25,None,800,None
 67,PPV,Test_33_West_52015,Test_33_West_52015,300,1620,PPV Test,TC A1|TC A2|TC A3|TC A5|TC A6|TC A7|TC A8|TC A9|TC A10|TC A11|TC A12|TC A13|TC A14|TC A15|TC A16|TC A17|TC A18|Gas|Heat Flux|TC Basement|TC Gear|BDP A15,TC S 7|TC S 8,10,20,1500,300,25,None,800,25
 68,FIRE,Test_34_West_52115,Test_34_West_52115,360,840,Fire test,BDP A15|TC A15,TC S 13|TC S 14|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,10,15,1000,300,25,None,800,50
+69,FIRE,Test_35_West_52115,Test_35_West_52115,420,1020,Fire test,BDP A15|TC A15|BDP A12|TC A12,TC S 13|TC S 14|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,10,100,1000,300,25,None,800,100
