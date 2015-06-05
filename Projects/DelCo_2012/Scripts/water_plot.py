@@ -15,7 +15,7 @@ rcParams.update({'figure.autolayout': True})
 data_dir = '../Experimental_Data/'
 
 # Skip files
-skip_files = ['_reduced', 'description_','zero','gcs','fse','cafs','fsw','_attic','sc']
+skip_files = ['cafs','fse_','fsw_','sc']
 
 for f in os.listdir(data_dir):
 	if f.endswith('.csv'):
@@ -27,7 +27,7 @@ for f in os.listdir(data_dir):
 		# Strip test name from file name
 		test_name = f[:-4]
 		print 'Test ' + test_name
-
+		
 		# Load exp. data file
 		data = pd.read_csv(data_dir + f, header=0, index_col=0)
 
@@ -77,4 +77,4 @@ for f in os.listdir(data_dir):
 		z_data = np.nan_to_num(water_mass.flatten())
 		ax.bar3d(x_data, y_data, np.zeros(len(z_data)), dx, dy, z_data,zsort='max')
 		savefig('../Figures/Bars/' + test_name + '.pdf')
-		close('all')
+		close('all')	
