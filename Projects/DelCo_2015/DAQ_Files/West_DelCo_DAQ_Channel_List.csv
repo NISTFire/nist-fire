@@ -189,8 +189,8 @@ SC1Mod11,26,TC_S_3,1,0,TC Gear 3,TC Gear,Temperature
 SC1Mod11,27,TC_S_4,1,0,TC Gear 4,TC Gear,Temperature
 SC1Mod11,28,TC_S_5,1,0,TC Gear 5,TC Gear,Temperature
 SC1Mod11,29,TC_S_6,1,0,TC Gear 6,TC Gear,Temperature
-SC1Mod11,30,TC_S_7,1,0,TC S 7,TC Gear,Temperature
-SC1Mod11,31,TC_S_8,1,0,TC S 8,TC Gear,Temperature
+SC1Mod11,30,TC_S_7,1,0,TC Facepiece Front,TC Manikin,Temperature
+SC1Mod11,31,TC_S_8,1,0,TC Facepiece Rear,TC Manikin,Temperature
 SC1Mod12,0,TC_A12_1,1,0,TC 12 1 West,TC A12,Temperature
 SC1Mod12,1,TC_A12_2,1,0,TC 12 2 West,TC A12,Temperature
 SC1Mod12,2,TC_A12_3,1,0,TC 12 3 West,TC A12,Temperature
@@ -219,8 +219,8 @@ SC1Mod12,24,TC_S_9,1,0,TC Basement 1,TC Basement,Temperature
 SC1Mod12,25,TC_S_10,1,0,TC Basement 2,TC Basement,Temperature
 SC1Mod12,26,TC_S_11,1,0,TC Basement 3,TC Basement,Temperature
 SC1Mod12,27,TC_S_12,1,0,TC Basement 4,TC Basement,Temperature
-SC1Mod12,28,TC_S_13,1,0,TC S 13,TC Basement,Temperature
-SC1Mod12,29,TC_S_14,1,0,TC S 14,TC Basement,Temperature
+SC1Mod12,28,TC_S_13,1,0,TC Top of Head,TC Manikin,Temperature
+SC1Mod12,29,TC_S_14,1,0,TC Gear Front,TC Manikin,Temperature
 SC1Mod12,30,TC_S_15,99.52,-248.8,Pressure S 1,Pressure,Pressure
 SC1Mod12,31,TC_S_16,99.52,-248.8,Pressure S 2,Pressure,Pressure
 SC1Mod5,8,CO_A,1.25,0,Carbon Monoxide A,Gas,Gas

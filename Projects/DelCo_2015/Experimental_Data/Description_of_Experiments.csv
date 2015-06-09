@@ -1,76 +1,77 @@
-Test Number,Test Type,Old Test Key,New Test Key,Start of Test,End of Test,Test Description,Excluded Groups,Excluded Channels,Y Scale BDP,Y Scale HF,Y Scale TC,Y Scale TC_Helmet,Y Scale GAS,Y Scale HOSE,Y Scale TC_Gear,Y Scale PRESSURE
-1,PPV,PPV_NCCNY,PPV_NCCNC,60,180,,None,None,None,None,None,None,None,None,None,None
-2,PPV,PPV_NOCNY,PPV_NOCNC,60,240,,None,None,None,None,None,None,None,None,None,None
-3,PPV,PPV_NCONY,PPV_NCONC,60,240,,None,None,None,None,None,None,None,None,None,None
-4,PPV,PPV_NOONY,PPV_NOONC,60,240,,None,None,None,None,None,None,None,None,None,None
-5,PPV,PPV_YoCONY,PPV_OCONC,70,250,,None,None,None,None,None,None,None,None,None,None
-6,PPV,PPV_YoOONY,PPV_OOONC,60,240,,None,None,None,None,None,None,None,None,None,None
-7,PPV,PPV_YiCCNY,PPV_ICCNC,1,240,,None,None,None,None,None,None,None,None,None,None
-8,PPV,PPV_YiOCNY,PPV_IOCNC,64,240,,None,None,None,None,None,None,None,None,None,None
-9,PPV,PPV_YiCONY,PPV_ICONC,60,240,,None,None,None,None,None,None,None,None,None,None
-10,PPV,PPV_YiOONY,PPV_IOONC,60,261,,None,None,None,None,None,None,None,None,None,None
-11,PPV,PPV_YoCOrNY,PPV_OCRNC,60,242,,None,None,None,None,None,None,None,None,None,None
-12,PPV,PPV_YoOOrNY,PPV_OORNC,60,242,,None,None,None,None,None,None,None,None,None,None
-13,PPV,PPV_YoColNY,PPV_OCLNC,60,242,,None,None,None,None,None,None,None,None,None,None
-14,PPV,PPV_YoOOlNY,PPV_OOLNC,60,242,,None,None,None,None,None,None,None,None,None,None
-15,PPV,PPV_NCCNN,PPV_NCCNO,60,180,,None,None,None,None,None,None,None,None,None,None
-16,PPV,PPV_NOCNN,PPV_NOCNO,60,240,,None,None,None,None,None,None,None,None,None,None
-17,PPV,PPV_NCONN,PPV_NCONO,60,242,,None,None,None,None,None,None,None,None,None,None
-18,PPV,PPV_NOONN,PPV_NOONO,60,242,,None,None,None,None,None,None,None,None,None,None
-19,PPV,PPV_YoCONN,PPV_OCONO,60,240,,None,None,None,None,None,None,None,None,None,None
-20,PPV,PPV_YoOONN,PPV_OOONO,60,242,,None,None,None,None,None,None,None,None,None,None
-21,PPV,PPV_YiCCNN,PPV_ICCNO,60,240,,None,None,None,None,None,None,None,None,None,None
-22,PPV,PPV_YiOCNN,PPV_IOCNO,61,242,,None,None,None,None,None,None,None,None,None,None
-23,PPV,PPV_YiCONN,PPV_ICONO,71,251,,None,None,None,None,None,None,None,None,None,None
-24,PPV,PPV_YiOONN,PPV_IOONO,66,246,,None,None,None,None,None,None,None,None,None,None
-25,PPV,PPV_YoCOrNN,PPV_OCRNO,60,241,,None,None,None,None,None,None,None,None,None,None
-26,PPV,PPV_YoOOrNN,PPV_OORNO,60,240,,None,None,None,None,None,None,None,None,None,None
-27,PPV,PPV_YoCOlNN,PPV_OCLNO,64,244,,None,None,None,None,None,None,None,None,None,None
-28,PPV,PPV_YoOOlNN,PPV_OOLNO,60,241,,None,None,None,None,None,None,None,None,None,None
-29,HOSE,HOSE_DSTODF,HOSE_DSXOXF,128,612,Monitor located at Door C,None,BDP_A7_1p15_BS|BDP_A7_1p68_BS|BDP_A7_1p95_BS|BDP_A9_0p34_BS|BDP_A9_0p88_BS|BDP_A9_1p42_BS|BDP_A9_1p68_BS|BDP_A9_1p95_BS,5,None,None,None,None,120,None,None
-30,HOSE,HOSE_DNTODF,HOSE_DNXOXF,120,660,Monitor located at Door BC,None,BDP_A7_1p15_BS|BDP_A7_1p68_BS|BDP_A7_1p95_BS|BDP_A9_0p34_BS|BDP_A9_0p88_BS|BDP_A9_1p42_BS|BDP_A9_1p68_BS|BDP_A9_1p95_BS,5,None,None,None,None,120,None,None
-31,HOSE,HOSE_DSTADF,HOSE_DSXAXF,150,1980,Manual nozzle located at Door C,None,BDP_A7_1p15_BS|BDP_A7_1p68_BS|BDP_A7_1p95_BS|BDP_A9_0p34_BS|BDP_A9_0p88_BS|BDP_A9_1p42_BS|BDP_A9_1p68_BS|BDP_A9_1p95_BS,5,None,None,None,None,120,None,None
-32,HOSE,HOSE_DNTADM,HOSE_DNXAXX,180,1920,Manual nozzle located at Door C,None,BDP_A7_1p15_BS|BDP_A7_1p68_BS|BDP_A7_1p95_BS|BDP_A9_0p34_BS|BDP_A9_0p88_BS|BDP_A9_1p42_BS|BDP_A9_1p68_BS|BDP_A9_1p95_BS,5,None,None,None,None,120,None,None
-33,HOSE,HOSE_IMTADM,HOSE_IXXAXX,60,660,Monitor located near Door BC,None,BDP_A7_1p15_BS|BDP_A7_1p68_BS|BDP_A7_1p95_BS|BDP_A9_0p34_BS|BDP_A9_0p88_BS|BDP_A9_1p42_BS|BDP_A9_1p68_BS|BDP_A9_1p95_BS,5,None,None,None,None,120,None,None
-34,HOSE,HOSE_IMAODM,HOSE_IXAOXX,150,1140,Manual nozzle located near Door BC,None,BDP_A7_1p15_BS|BDP_A7_1p68_BS|BDP_A7_1p95_BS|BDP_A9_0p34_BS|BDP_A9_0p88_BS|BDP_A9_1p42_BS|BDP_A9_1p68_BS|BDP_A9_1p95_BS,5,None,None,None,None,120,None,None
-35,PPV,PPV_NOOYY,PPV_NOOYC,120,1135,,None,None,None,None,None,None,None,None,None,None
-36,FIRE,FIRE_NCONN,FIRE_FA2S1C1NCX1_1,90,2000,,None,None,20,200,3000,None,25,None,None,None
-37,FIRE,FIRE_NCONN,FIRE_FA2S1C1NCX1_2,480,2700,,None,None,20,200,1500,None,25,None,None,None
-38,FIRE,FIRE_NCONN,FIRE_FA2S1C1NCX1_3,240,2700,,None,None,20,200,1500,None,25,None,None,None
-39,GAS,Test_1_East_062514,Test_1_East_062514,0,450,Wind and door test only,None,None,20,200,1500,None,None,None,None,None
-40,GAS,Test_2_East_062514,Test_2_East_062514,0,3310,"Propane fire w/ doors, Replicate 1",None,None,20,200,1500,None,25,None,None,None
-41,GAS,Test_3_East_062514,Test_3_East_062514,0,2160,"Propane fire w/ doors, Replicate 2",None,None,20,200,1500,None,25,None,None,None
-42,GAS,Test_4_East_062514,Test_4_East_062514,0,1976,"Propane fire w/ doors, Replicate 3",None,None,20,200,1500,None,25,None,None,None
-43,GAS,Test_5_East_062614,Test_5_East_062614,0,4140,"Propane fire w/ ceiling vent/door, 3 tests",None,None,20,200,None,1500,25,None,None,None
-44,GAS,Test_6_East_062614,Test_6_East_062614,0,1941,"Propane fire w/ door/ceiling vent, 3 tests",None,None,20,200,None,1500,25,None,None,None
-45,GAS,Test_7_East_062714,Test_7_East_062714,0,542,Cold flow U-shape setup,None,None,20,200,1500,None,None,None,None,None
-46,GAS,Test_8_East_062714,Test_8_East_062714,0,1490,"Hot flow U-shape setup, no targets",None,None,20,200,1500,None,None,None,None,None
-47,GAS,Test_9_East_062714,Test_9_East_062714,0,356,"Hot flow U-shape setup, targets (plastic helmet and fabric)",None,None,20,200,1500,300,None,None,None,None
-48,GAS,Test_10_East_062714,Test_10_East_062714,0,3818,"Hot flow U-shape setup, targets (leather helmet and fabric)",None,None,20,200,1500,300,None,None,None,None
-49,GAS,Test_11_East_062714,Test_11_East_062714,0,966,"Hot flow U-shape setup, targets (plastic helmet and fabric)",None,None,20,200,1500,300,None,None,None,None
-50,GAS,Test_12_East_062914,Test_12_East_062914,0,1030,"Fire test, single couch in SW corner of fire room",None,None,20,200,1500,None,25,None,None,None
-51,GAS,Test_13_East_062914,Test_13_East_062914,0,4151,"Fire test, two couches in SE corner of fire room",None,None,20,200,1500,None,25,None,None,None
-52,PPV,Test_14_West_063014,Test_14_West_063014,0,600,PPV Test,None,None,20,200,1500,None,None,None,None,None
-53,PPV,Test_15_West_063014,Test_15_West_063014,0,900,PPV Test,None,None,20,200,1500,None,None,None,None,None
-54,HOSE,Test_16_West_063014,Test_16_West_063014,0,2159,Hose Test,None,None,20,200,1500,None,None,None,None,None
-54,HOSE,Test_16_West_063014_custom,Test_16_West_063014_custom,0,2159,Hose Test,None,None,20,200,1500,None,None,None,None,None
-55,HOSE,Test_17_West_063014,Test_17_West_063014,0,1562,Hose Test,None,None,20,200,1500,None,None,None,None,None
-56,HOSE,Test_17b_West_063014,Test_17b_West_063014,0,560,Hose Test,None,None,20,200,1500,None,None,None,None,None
-57,HOSE,Test_18_West_063014,Test_18_West_063014,0,2961,Hose Test,None,None,20,200,1500,None,None,None,None,None
-58,HOSE,Test_19_West_063014,Test_19_West_063014,0,2953,Hose Test,None,None,20,200,1500,None,None,None,None,None
-59,HOSE,Test_20_West_063014,Test_20_West_063014,0,5,"Hose Test, lost data",None,None,20,200,1500,None,None,None,None,None
-60,FIRE,Test_21_East_070114,Test_21_East_070114,0,1750,"Fire Test, full fuel load",None,None,20,200,1500,None,25,None,None,None
-59,GAS,Test_22_West_070214,Test_22_West_070214,0,1950,Propane fire,None,None,20,200,1500,300,25,None,None,None
-59,GAS,Test_23_West_070214,Test_23_West_070214,0,1246,Propane fire,None,None,20,200,1500,300,25,None,None,None
-59,GAS,Test_24_West_070214,Test_24_West_070214,0,1326,Propane fire,None,None,20,200,1500,300,25,None,None,None
-59,GAS,Test_25_West_070214,Test_25_West_070214,0,1080,Propane fire,None,None,20,200,1500,300,25,None,None,None
-60,FIRE,Test_26_East_070714,Test_26_East_070714,0,1089,Fire test,None,None,20,200,1500,300,25,None,None,None
-61,FIRE,Test_27_West_070814,Test_27_West_070814,0,1518,Fire test,None,None,20,200,1500,300,25,None,None,None
-62,FIRE,Test_28_East_070814,Test_28_East_070814,0,2468,Fire test,None,None,20,200,1500,300,25,None,None,None
-63,FIRE,Test_29_West_071014,Test_29_West_071014,0,1259,Fire test,None,None,20,200,1500,300,25,None,None,None
-64,FIRE,Test_30_West_51415,Test_30_West_51415,150,780,Fire test,Gas|TC Basement|BDP A15|TC A15,TC 5 0.08 m BS West|TC 10 0.08 m BS West|TC 14 1.95 m BS West|TC 18 2.13 m BC West|TC Gear 6|TC S 7|TC S 8,20,100,1500,300,25,None,800,None
-65,FIRE,Test_31_West_51615,Test_31_West_51615,300,1300,Fire test,TC Basement|BDP A15|TC A15,TC 14 1.95 m BS West|TC 18 2.13 m BC West|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,20,100,1500,300,25,None,800,None
-66,FIRE,Test_32_West_51815,Test_32_West_51815,990,1550,Fire test,BDP A15|TC A15,TC 3 0.30 m BC West|TC S 13|TC S 14|TC Gear 5|TC Gear 6|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,20,20,1500,300,25,None,800,None
-67,PPV,Test_33_West_52015,Test_33_West_52015,300,1620,PPV Test,TC A1|TC A2|TC A3|TC A5|TC A6|TC A7|TC A8|TC A9|TC A10|TC A11|TC A12|TC A13|TC A14|TC A15|TC A16|TC A17|TC A18|Gas|Heat Flux|TC Basement|TC Gear|BDP A15,TC S 7|TC S 8,10,20,1500,300,25,None,800,25
-68,FIRE,Test_34_West_52115,Test_34_West_52115,360,840,Fire test,BDP A15|TC A15,TC S 13|TC S 14|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,10,15,1000,300,25,None,800,50
-69,FIRE,Test_35_West_52115,Test_35_West_52115,420,1020,Fire test,BDP A15|TC A15|BDP A12|TC A12,TC S 13|TC S 14|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,10,100,1000,300,25,None,800,100
+Test Number,Test Type,Old Test Key,New Test Key,Start of Test,End of Test,Test Description,Excluded Groups,Excluded Channels,Y Scale BDP,Y Scale HF,Y Scale TC,Y Scale TC_Helmet,Y Scale GAS,Y Scale HOSE,Y Scale TC_Gear,Y Scale PRESSURE,Y Scale MANIKIN
+1,PPV,PPV_NCCNY,PPV_NCCNC,60,180,,None,None,None,None,None,None,None,None,None,None,None
+2,PPV,PPV_NOCNY,PPV_NOCNC,60,240,,None,None,None,None,None,None,None,None,None,None,None
+3,PPV,PPV_NCONY,PPV_NCONC,60,240,,None,None,None,None,None,None,None,None,None,None,None
+4,PPV,PPV_NOONY,PPV_NOONC,60,240,,None,None,None,None,None,None,None,None,None,None,None
+5,PPV,PPV_YoCONY,PPV_OCONC,70,250,,None,None,None,None,None,None,None,None,None,None,None
+6,PPV,PPV_YoOONY,PPV_OOONC,60,240,,None,None,None,None,None,None,None,None,None,None,None
+7,PPV,PPV_YiCCNY,PPV_ICCNC,1,240,,None,None,None,None,None,None,None,None,None,None,None
+8,PPV,PPV_YiOCNY,PPV_IOCNC,64,240,,None,None,None,None,None,None,None,None,None,None,None
+9,PPV,PPV_YiCONY,PPV_ICONC,60,240,,None,None,None,None,None,None,None,None,None,None,None
+10,PPV,PPV_YiOONY,PPV_IOONC,60,261,,None,None,None,None,None,None,None,None,None,None,None
+11,PPV,PPV_YoCOrNY,PPV_OCRNC,60,242,,None,None,None,None,None,None,None,None,None,None,None
+12,PPV,PPV_YoOOrNY,PPV_OORNC,60,242,,None,None,None,None,None,None,None,None,None,None,None
+13,PPV,PPV_YoColNY,PPV_OCLNC,60,242,,None,None,None,None,None,None,None,None,None,None,None
+14,PPV,PPV_YoOOlNY,PPV_OOLNC,60,242,,None,None,None,None,None,None,None,None,None,None,None
+15,PPV,PPV_NCCNN,PPV_NCCNO,60,180,,None,None,None,None,None,None,None,None,None,None,None
+16,PPV,PPV_NOCNN,PPV_NOCNO,60,240,,None,None,None,None,None,None,None,None,None,None,None
+17,PPV,PPV_NCONN,PPV_NCONO,60,242,,None,None,None,None,None,None,None,None,None,None,None
+18,PPV,PPV_NOONN,PPV_NOONO,60,242,,None,None,None,None,None,None,None,None,None,None,None
+19,PPV,PPV_YoCONN,PPV_OCONO,60,240,,None,None,None,None,None,None,None,None,None,None,None
+20,PPV,PPV_YoOONN,PPV_OOONO,60,242,,None,None,None,None,None,None,None,None,None,None,None
+21,PPV,PPV_YiCCNN,PPV_ICCNO,60,240,,None,None,None,None,None,None,None,None,None,None,None
+22,PPV,PPV_YiOCNN,PPV_IOCNO,61,242,,None,None,None,None,None,None,None,None,None,None,None
+23,PPV,PPV_YiCONN,PPV_ICONO,71,251,,None,None,None,None,None,None,None,None,None,None,None
+24,PPV,PPV_YiOONN,PPV_IOONO,66,246,,None,None,None,None,None,None,None,None,None,None,None
+25,PPV,PPV_YoCOrNN,PPV_OCRNO,60,241,,None,None,None,None,None,None,None,None,None,None,None
+26,PPV,PPV_YoOOrNN,PPV_OORNO,60,240,,None,None,None,None,None,None,None,None,None,None,None
+27,PPV,PPV_YoCOlNN,PPV_OCLNO,64,244,,None,None,None,None,None,None,None,None,None,None,None
+28,PPV,PPV_YoOOlNN,PPV_OOLNO,60,241,,None,None,None,None,None,None,None,None,None,None,None
+29,HOSE,HOSE_DSTODF,HOSE_DSXOXF,128,612,Monitor located at Door C,None,BDP_A7_1p15_BS|BDP_A7_1p68_BS|BDP_A7_1p95_BS|BDP_A9_0p34_BS|BDP_A9_0p88_BS|BDP_A9_1p42_BS|BDP_A9_1p68_BS|BDP_A9_1p95_BS,5,None,None,None,None,120,None,None,None
+30,HOSE,HOSE_DNTODF,HOSE_DNXOXF,120,660,Monitor located at Door BC,None,BDP_A7_1p15_BS|BDP_A7_1p68_BS|BDP_A7_1p95_BS|BDP_A9_0p34_BS|BDP_A9_0p88_BS|BDP_A9_1p42_BS|BDP_A9_1p68_BS|BDP_A9_1p95_BS,5,None,None,None,None,120,None,None,None
+31,HOSE,HOSE_DSTADF,HOSE_DSXAXF,150,1980,Manual nozzle located at Door C,None,BDP_A7_1p15_BS|BDP_A7_1p68_BS|BDP_A7_1p95_BS|BDP_A9_0p34_BS|BDP_A9_0p88_BS|BDP_A9_1p42_BS|BDP_A9_1p68_BS|BDP_A9_1p95_BS,5,None,None,None,None,120,None,None,None
+32,HOSE,HOSE_DNTADM,HOSE_DNXAXX,180,1920,Manual nozzle located at Door C,None,BDP_A7_1p15_BS|BDP_A7_1p68_BS|BDP_A7_1p95_BS|BDP_A9_0p34_BS|BDP_A9_0p88_BS|BDP_A9_1p42_BS|BDP_A9_1p68_BS|BDP_A9_1p95_BS,5,None,None,None,None,120,None,None,None
+33,HOSE,HOSE_IMTADM,HOSE_IXXAXX,60,660,Monitor located near Door BC,None,BDP_A7_1p15_BS|BDP_A7_1p68_BS|BDP_A7_1p95_BS|BDP_A9_0p34_BS|BDP_A9_0p88_BS|BDP_A9_1p42_BS|BDP_A9_1p68_BS|BDP_A9_1p95_BS,5,None,None,None,None,120,None,None,None
+34,HOSE,HOSE_IMAODM,HOSE_IXAOXX,150,1140,Manual nozzle located near Door BC,None,BDP_A7_1p15_BS|BDP_A7_1p68_BS|BDP_A7_1p95_BS|BDP_A9_0p34_BS|BDP_A9_0p88_BS|BDP_A9_1p42_BS|BDP_A9_1p68_BS|BDP_A9_1p95_BS,5,None,None,None,None,120,None,None,None
+35,PPV,PPV_NOOYY,PPV_NOOYC,120,1135,,None,None,None,None,None,None,None,None,None,None,None
+36,FIRE,FIRE_NCONN,FIRE_FA2S1C1NCX1_1,90,2000,,None,None,20,200,3000,None,25,None,None,None,None
+37,FIRE,FIRE_NCONN,FIRE_FA2S1C1NCX1_2,480,2700,,None,None,20,200,1500,None,25,None,None,None,None
+38,FIRE,FIRE_NCONN,FIRE_FA2S1C1NCX1_3,240,2700,,None,None,20,200,1500,None,25,None,None,None,None
+39,GAS,Test_1_East_062514,Test_1_East_062514,0,450,Wind and door test only,None,None,20,200,1500,None,None,None,None,None,None
+40,GAS,Test_2_East_062514,Test_2_East_062514,0,3310,"Propane fire w/ doors, Replicate 1",None,None,20,200,1500,None,25,None,None,None,None
+41,GAS,Test_3_East_062514,Test_3_East_062514,0,2160,"Propane fire w/ doors, Replicate 2",None,None,20,200,1500,None,25,None,None,None,None
+42,GAS,Test_4_East_062514,Test_4_East_062514,0,1976,"Propane fire w/ doors, Replicate 3",None,None,20,200,1500,None,25,None,None,None,None
+43,GAS,Test_5_East_062614,Test_5_East_062614,0,4140,"Propane fire w/ ceiling vent/door, 3 tests",None,None,20,200,None,1500,25,None,None,None,None
+44,GAS,Test_6_East_062614,Test_6_East_062614,0,1941,"Propane fire w/ door/ceiling vent, 3 tests",None,None,20,200,None,1500,25,None,None,None,None
+45,GAS,Test_7_East_062714,Test_7_East_062714,0,542,Cold flow U-shape setup,None,None,20,200,1500,None,None,None,None,None,None
+46,GAS,Test_8_East_062714,Test_8_East_062714,0,1490,"Hot flow U-shape setup, no targets",None,None,20,200,1500,None,None,None,None,None,None
+47,GAS,Test_9_East_062714,Test_9_East_062714,0,356,"Hot flow U-shape setup, targets (plastic helmet and fabric)",None,None,20,200,1500,300,None,None,None,None,None
+48,GAS,Test_10_East_062714,Test_10_East_062714,0,3818,"Hot flow U-shape setup, targets (leather helmet and fabric)",None,None,20,200,1500,300,None,None,None,None,None
+49,GAS,Test_11_East_062714,Test_11_East_062714,0,966,"Hot flow U-shape setup, targets (plastic helmet and fabric)",None,None,20,200,1500,300,None,None,None,None,None
+50,GAS,Test_12_East_062914,Test_12_East_062914,0,1030,"Fire test, single couch in SW corner of fire room",None,None,20,200,1500,None,25,None,None,None,None
+51,GAS,Test_13_East_062914,Test_13_East_062914,0,4151,"Fire test, two couches in SE corner of fire room",None,None,20,200,1500,None,25,None,None,None,None
+52,PPV,Test_14_West_063014,Test_14_West_063014,0,600,PPV Test,None,None,20,200,1500,None,None,None,None,None,None
+53,PPV,Test_15_West_063014,Test_15_West_063014,0,900,PPV Test,None,None,20,200,1500,None,None,None,None,None,None
+54,HOSE,Test_16_West_063014,Test_16_West_063014,0,2159,Hose Test,None,None,20,200,1500,None,None,None,None,None,None
+54,HOSE,Test_16_West_063014_custom,Test_16_West_063014_custom,0,2159,Hose Test,None,None,20,200,1500,None,None,None,None,None,None
+55,HOSE,Test_17_West_063014,Test_17_West_063014,0,1562,Hose Test,None,None,20,200,1500,None,None,None,None,None,None
+56,HOSE,Test_17b_West_063014,Test_17b_West_063014,0,560,Hose Test,None,None,20,200,1500,None,None,None,None,None,None
+57,HOSE,Test_18_West_063014,Test_18_West_063014,0,2961,Hose Test,None,None,20,200,1500,None,None,None,None,None,None
+58,HOSE,Test_19_West_063014,Test_19_West_063014,0,2953,Hose Test,None,None,20,200,1500,None,None,None,None,None,None
+59,HOSE,Test_20_West_063014,Test_20_West_063014,0,5,"Hose Test, lost data",None,None,20,200,1500,None,None,None,None,None,None
+60,FIRE,Test_21_East_070114,Test_21_East_070114,0,1750,"Fire Test, full fuel load",None,None,20,200,1500,None,25,None,None,None,None
+59,GAS,Test_22_West_070214,Test_22_West_070214,0,1950,Propane fire,None,None,20,200,1500,300,25,None,None,None,None
+59,GAS,Test_23_West_070214,Test_23_West_070214,0,1246,Propane fire,None,None,20,200,1500,300,25,None,None,None,None
+59,GAS,Test_24_West_070214,Test_24_West_070214,0,1326,Propane fire,None,None,20,200,1500,300,25,None,None,None,None
+59,GAS,Test_25_West_070214,Test_25_West_070214,0,1080,Propane fire,None,None,20,200,1500,300,25,None,None,None,None
+60,FIRE,Test_26_East_070714,Test_26_East_070714,0,1089,Fire test,None,None,20,200,1500,300,25,None,None,None,None
+61,FIRE,Test_27_West_070814,Test_27_West_070814,0,1518,Fire test,None,None,20,200,1500,300,25,None,None,None,None
+62,FIRE,Test_28_East_070814,Test_28_East_070814,0,2468,Fire test,None,None,20,200,1500,300,25,None,None,None,None
+63,FIRE,Test_29_West_071014,Test_29_West_071014,0,1259,Fire test,None,None,20,200,1500,300,25,None,None,None,None
+64,FIRE,Test_30_West_51415,Test_30_West_51415,150,780,Fire test,Gas|TC Basement|BDP A15|TC A15|TC Manikin,TC 5 0.08 m BS West|TC 10 0.08 m BS West|TC 14 1.95 m BS West|TC 18 2.13 m BC West|TC Gear 6|TC S 7|TC S 8,20,100,1500,300,25,None,800,None,None
+65,FIRE,Test_31_West_51615,Test_31_West_51615,300,1300,Fire test,TC Basement|BDP A15|TC A15|TC Manikin,TC 14 1.95 m BS West|TC 18 2.13 m BC West|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,20,100,1500,300,25,None,800,None,None
+66,FIRE,Test_32_West_51815,Test_32_West_51815,990,1550,Fire test,BDP A15|TC A15|TC Manikin,TC 3 0.30 m BC West|TC S 13|TC S 14|TC Gear 5|TC Gear 6|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,20,20,1500,300,25,None,800,None,None
+67,PPV,Test_33_West_52015,Test_33_West_52015,300,1620,PPV Test,TC A1|TC A2|TC A3|TC A5|TC A6|TC A7|TC A8|TC A9|TC A10|TC A11|TC A12|TC A13|TC A14|TC A15|TC A16|TC A17|TC A18|Gas|Heat Flux|TC Basement|TC Gear|BDP A15|TC Manikin,TC S 7|TC S 8,10,20,1500,300,25,None,800,25,None
+68,FIRE,Test_34_West_52115,Test_34_West_52115,360,840,Fire test,BDP A15|TC A15|TC Manikin,TC S 13|TC S 14|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,10,15,1000,300,25,None,800,50,None
+69,FIRE,Test_35_West_52115,Test_35_West_52115,420,1020,Fire test,BDP A15|TC A15|BDP A12|TC A12,TC S 13|TC S 14|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,10,100,1000,300,25,None,800,100,None
+70,FIRE,Test_36_West_60915,Test_36_West_60915,180,960,Fire Test,BDP A15|TC A15|BDP A12|TC A12,Carbon Monoxide D|Carbon Dioxide D|Oxygen D,10,15,1000,300,25,None,100,100,250
