@@ -75,3 +75,4 @@ Test Number,Test Type,Old Test Key,New Test Key,Start of Test,End of Test,Test D
 68,FIRE,Test_34_West_52115,Test_34_West_52115,360,840,Fire test,BDP A15|TC A15|TC Manikin,TC S 13|TC S 14|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,10,15,1000,300,25,None,800,50,None
 69,FIRE,Test_35_West_52115,Test_35_West_52115,420,1020,Fire test,BDP A15|TC A15|BDP A12|TC A12,TC S 13|TC S 14|TC S 7|TC S 8|Carbon Monoxide D|Carbon Dioxide D|Oxygen D,10,100,1000,300,25,None,800,100,None
 70,FIRE,Test_36_West_60915,Test_36_West_60915,180,960,Fire Test,BDP A15|TC A15|BDP A12|TC A12,Carbon Monoxide D|Carbon Dioxide D|Oxygen D,10,15,1000,300,25,None,100,100,250
+71,FIRE,Test_37_West_61015,Test_37_West_61015,418,1440,Fire Test,BDP A15|TC A15|BDP A12|TC A12,Carbon Monoxide D|Carbon Dioxide D|Oxygen D,20,50,1000,300,25,None,500,100,500
