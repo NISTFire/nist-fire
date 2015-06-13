@@ -203,11 +203,11 @@ SC1Mod12,8,BDP_A12_3,99.52,-248.8,BDP 12 3 West,BDP A12,Velocity
 SC1Mod12,9,BDP_A12_4,99.52,-248.8,BDP 12 4 West,BDP A12,Velocity
 SC1Mod12,10,BDP_A12_5,99.52,-248.8,BDP 12 5 West,BDP A12,Velocity
 SC1Mod12,11,BDP_A12_6,99.52,-248.8,BDP 12 6 West,BDP A12,Velocity
-SC1Mod12,12,TC_A15_1,1,0,TC 15 1 West,TC A15,Temperature
-SC1Mod12,13,TC_A15_2,1,0,TC 15 2 West,TC A15,Temperature
-SC1Mod12,14,TC_A15_3,1,0,TC 15 3 West,TC A15,Temperature
-SC1Mod12,15,BDP_A15_1,99.52,-248.8,BDP 15 1 West,BDP A15,Velocity
-SC1Mod12,16,BDP_A15_2,99.52,-248.8,BDP 15 2 West,BDP A15,Velocity
+SC1Mod12,12,TC_S_17,1,0,TC Basement Front High,TC Basement,Temperature
+SC1Mod12,13,TC_S_18,1,0,TC Basement Front Low,TC Basement,Temperature
+SC1Mod12,14,TC_S_19,1,0,TC Basement Rear High,TC Basement,Temperature
+SC1Mod12,15,TC_S_20,1,0,TC Basement Rear Low,TC Basement,Temperature
+SC1Mod12,16,BDP_A15_2,6120,0,Heat Flux Mask,Heat Flux,Heat Flux
 SC1Mod12,17,BDP_A15_3,99.52,-248.8,BDP 15 3 West,BDP A15,Velocity
 SC1Mod12,18,HF_1_V,1603.85,0,Heat Flux 1 V West,Heat Flux,Heat Flux
 SC1Mod12,19,HF_1_H,1759.01,0,Heat Flux 1 H West,Heat Flux,Heat Flux
