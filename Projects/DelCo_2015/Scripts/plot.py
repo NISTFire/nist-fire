@@ -147,7 +147,7 @@ for f in os.listdir(data_dir):
                     elif 'TC Gear ' in channel:
                         axis_scale = 'Y Scale TC_Gear'
                     elif 'TC Manikin ' in group:
-                    	axis_scale = 'Y Scale MANIKIN'
+                    	axis_scale = 'Y Scale TC_Manikin'
                     else:
                         axis_scale = 'Y Scale TC'
                     secondary_axis_label = 'Temperature ($^\circ$F)'
