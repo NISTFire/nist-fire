@@ -243,7 +243,9 @@ for f in os.listdir(data_dir):
             # Plot options for figure plotting
             if plot_mode == 'figure':
                 # Scale y-axis limit based on specified range in test description file
-                if axis_scale == 'Y Scale BDP' or 'Y Scale PRESSURE':
+                if axis_scale == 'Y Scale BDP':
+                    plt.ylim([-np.float(info[axis_scale][test_name]), np.float(info[axis_scale][test_name])])
+                elif axis_scale == 'Y Scale PRESSURE':
                     plt.ylim([-np.float(info[axis_scale][test_name]), np.float(info[axis_scale][test_name])])
                 else:
                     plt.ylim([0, np.float(info[axis_scale][test_name])])
