@@ -81,3 +81,4 @@ Test Number,Test Type,Old Test Key,New Test Key,Start of Test,End of Test,Test D
 74,FIRE,Test_40_West_61415,Test_40_West_61415,330,1620,Fire Test,BDP A15|TC A15|BDP A12|TC A12|Gas|TC Manikin|TC Gear,Heat Flux Mask|TC Basement 7,20,100,1200,300,25,None,600,100,600
 75,FIRE,Test_41_West_61415,Test_41_West_61415,627,1440,Fire Test,BDP A15|TC A15|BDP A12|TC A12|Gas|TC Manikin|TC Gear,Heat Flux Mask,20,50,1200,300,25,None,600,100,600
 76,FIRE,Test_42_West_61615,Test_42_West_61615,390,1320,Fire Test,BDP A15|TC A15|BDP A12|TC A12|TC Manikin|TC Gear,Heat Flux Mask,20,50,1200,300,25,None,600,100,600
+77,FIRE,Test_43_West_61715,Test_43_West_61715,300,1620,Fire Test,BDP A15|TC A15|BDP A12|TC A12|TC Manikin,Heat Flux Mask|Carbon Monoxide D|Carbon Dioxide D|Oxygen D|Carbon Monoxide B|Carbon Dioxide B|Oxygen B|TC Gear 3| TC Gear 4|TC Gear 5|TC Gear 6,20,50,1200,300,25,None,600,100,600
