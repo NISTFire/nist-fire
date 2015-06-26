@@ -1,0 +1,70 @@
+######### General Explanation #########
+
+There is a 3-D Inventor file for each floor plan (Inventor Files > Models). Each file contains a sketch that can be extruded to show certain doors are opened or closed.
+
+Once the 3-D model has been edited to specific needs, it can be saved UNDER A DIFFERENT FILE NAME in the "Additional_Layouts" folder.
+
+A new .idw drawing can be created using the new 3-D model and edited to fit desired needs. Once complete, the .idw file can be saved in the "Drawings" folder and a .pdf can be exported to the "PDFs" folder. 
+
+Below are some guidelines for drawing sensors and generating .pdf files for the Hose Stream Report LaTeX document. 
+
+	########## Sensor Drawings and Door/Window Shading ##########
+
+		- Create a new sketch UNDER THE VIEW tab. (Note, if sketch generated under drawing but not under the view, the following dimensions will not scale correctly)
+
+		########## Door/Window Shading ##########
+
+		- Project the geometry of the lines making up the door/window
+
+		- Draw a rectangle over the door/window
+
+		- Select "Fill/Hatch Region" and shade with desired pattern or fill color
+
+		- Sketch line weight: 0.020 in
+
+		########## Sensor Drawings ##########
+
+		- PDFs of the original dimensioned sensor drawings can be found under 
+			PDFs > With_Instrumenation > Original Device Drawings
+
+		- The following shapes and colors should be used for each sensor:
+
+			Temperatures: 
+				- Circle with diameter of 12 in
+				- Fill/Hatch region using lightest shade of red under the basic colors option
+
+			BDPs
+				- 45-45-90 triangle with 12 in length sides
+				- Fill/Hatch region using light blue color located in the top row of the basic color options
+
+			Heat Flux
+				- Square with 14 in sides
+				- Fill/hatch region with first shade of green in the top row of the basic color options
+
+			Gas
+				- Hexagon 16 in wide
+				- Fill/hatch reion with light gray color in bottom row of the basic color options
+
+		- If multiple sensors in same position, place shapes on top of each other, starting with the sensor listed first in the list above (ie, TC/BDP combo would show a red circle with blue triangle on top of it)
+
+		- Sketch line weight: 0.020 in
+
+		- All label font: Tahoma, bolded, 0.120 in
+
+	########## Drawing Positioning for Hose Stream Report ##########
+
+		- Scale drawing to 1/48
+
+		- Align East edge of 2ft wall with edge of the tail of the bottom arrow from border design.
+
+		- Align South edge of 2ft wall with left border line.
+
+		- If applicable, unit numbers should be centered, the East-West dimension should be dragged out to left edge of page, and the North-South unit should be dragged up until it auto-snaps into place.
+
+		- If desired, generate a leader text arrow with letter 'N' (0.240pt font, bolded) to indicate North direction. To align leader text, align the bottom of the 'N' with the top of the 'B' from the border design, the left side of the 'N' with the North edge of the 2ft wall, and drag the tip of the arrow to the right border line.
+
+		- If drawing is of second level of West Structure, remove the visibility of the 2ft wall outline around the drawing.
+
+		- Delete "Default Border" from drawing.
+
+		- Export drawing as PDF, save, and then select undo twice so border outline reappears and save .idw file
