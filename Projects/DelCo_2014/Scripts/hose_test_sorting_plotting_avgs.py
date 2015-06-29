@@ -63,6 +63,10 @@ info = pd.read_csv(info_file, index_col=3)
 # Files to skip
 skip_files = ['_times', '_reduced', '_results', 'description_']
 
+def movingaverage(interval, window_size):
+    window= np.ones(int(window_size))/float(window_size)
+    return np.convolve(interval, window, 'same')
+
 #  ===============================
 #  = Loop through all data files =
 #  ===============================
@@ -223,10 +227,12 @@ for f in os.listdir(data_dir):
 				group_results.loc[row_num]  = data_row
 				row_num = row_num + 1
 
+				group_avg_ma = movingaverage(group_avg, 5)
+
 				t = arange(len(stream_group.index))
 
 				# plots average for current stream in current sensor group
-				plot(t, group_avg, lw=1.5, ls='-', label=stream + ' Average')
+				plot(t, group_avg_ma, lw=1.5, ls='-', label=stream + ' Average')
 
 			#Saves results .csv file for sensor group
 			group_results.to_csv(results_dir + test_name + '_' + str(group)[2:-2]  + 'averages.csv')
