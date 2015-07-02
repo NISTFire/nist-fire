@@ -17,6 +17,8 @@
 \usepackage{graphicx}
 \usepackage[super]{nth}
 \usepackage{placeins}
+\usepackage{units}
+\usepackage[percent]{overpic}
 
 % Rename chapter headings
 \renewcommand{\chaptername}{Section}
@@ -221,7 +223,24 @@ In the following sections, the measurements will be presented in graphic and tab
 
 \subsection{Water Flow Experimental Procedure}
 \label{sec:Water_Flow_Procedure}
-A variety of experiments were conducted to examine the impact of different hose streams and application methods on air flow inside a structure. All the experiments were conducted in either the East or West Structure; used a monitor or handline with a combination nozzle to flow water in a straight, narrow fog, or wide fog stream pattern; and involved opening and closing doors in the structure to change the ventilation patterns in the structure. Experiments that used a monitor to flow water focused on varying the location of water application, while the experiments that used a handline to flow water focused on varying the pattern in which water was applied.
+A variety of experiments were conducted to examine the impact of different hose streams and application methods on air flow inside a structure. All the experiments were conducted in either the East or West Structure; used a monitor %reference for specs? 2000 LPM (500 GPM)?
+or 1 \nicefrac{3}{4}" handline with a combination nozzle (Fig.~\ref{fig:monitor+handline}) to flow water in a straight, narrow fog, or wide fog stream pattern; and involved opening and closing doors in the structure to change the ventilation patterns in the structure. Experiments that used a monitor to flow water focused on varying the location of water application, while the experiments that used a handline to flow water focused on varying the pattern in which water was applied.
+
+\begin{figure}[!ht]
+\minipage{3in}
+\begin{center}
+	\includegraphics[width=2.9in]{../Pictures/monitor}
+\end{center} 
+\endminipage \hfill
+\minipage{3in}
+\begin{center}
+	\includegraphics[width=2.9in]{../Pictures/handline}
+\end{center}
+\endminipage \hfill
+\caption[Monitor and Handline Equipped with Combination Nozzle]{Monitor (left) and 1 \nicefrac{3}{4}" handline (right). Both are equipped with a combination nozzle and were used in the water flow experiments.}
+\label{fig:monitor+handline}
+\end{figure}
+\FloatBarrier
 
 \subsubsection{Monitor Experiments}
 \label{sec:Water_Flow_Monitor_Procedure}
@@ -230,7 +249,9 @@ A total of five sets of experiments were conducted using a monitor with a combin
 Tests 29 and 30 followed an identical procedure that involved flowing water from the north side double doors of the East Structure using a monitor equipped with a combination nozzle. A schematic of the structure's layout during the two tests is presented in Fig.~\ref{fig:test_29-32_setup}. Each test began by flowing water with the nozzle aimed at the ceiling of Room C, as pictured in Fig.~\ref{fig:test_29_30_pic}. After 30 seconds had elapsed, the south side door was opened for 30 seconds and then closed, and the water flow was stopped. The monitor was adjusted so the nozzle was aimed at Door BC. Then, water flow began and after 30 seconds had elapsed, the south side door was opened for 30 seconds and then closed and the water flow was stopped. This entire procedure was repeated an additional time. A straight stream pattern was used during Test 29 and a narrow fog stream pattern was used during Test 30. 
 
 \begin{figure}[!ht]
-\includegraphics[trim=0cm 0cm 0cm 4.5cm, clip=true, width=6in]{../Drawings/Specific_Tests/East_Structure_Hose_Test_29-32}
+\begin{overpic}[trim=0cm 0cm 0cm 4.5cm, clip=true, width=6in]{../Drawings/Specific_Tests/East_Structure_Hose_Test_29-32}
+	\put(83,24){\includegraphics[width=1in]{../Drawings/monitor_graphic}}
+\end{overpic}
 \caption[East Structure Layout for Tests 29-32]{East Structure layout for Tests 29-32}
 \label{fig:test_29-32_setup}
 \end{figure}
@@ -246,6 +267,15 @@ Tests 29 and 30 followed an identical procedure that involved flowing water from
 Test 33 varied from Tests 29 and 30 in multiple ways. During Test 33, the monitor was located inside Room C and aimed at the ceiling of Room B, as shown in Fig.~\ref{fig:test_33_pic}. A schematic of the structure's layout during Test 33 is presented in Fig.~\ref{fig:test_33_34_setup}. The test began by flowing water in a straight stream pattern for 30 seconds, then in a narrow fog stream for 30 seconds, and finally in a wide fog stream for 30 seconds. Then, the south side door was opened and each stream was applied for 30 seconds again.
 
 \begin{figure}[!ht]
+\begin{overpic}[trim=0cm 0cm 0cm 4.5cm, clip=true, width=6in]{../Drawings/Specific_Tests/East_Structure_Hose_Test_33_34}
+	\put(66,36){\includegraphics[width=1in]{../Drawings/monitor_graphic}}
+\end{overpic}
+\caption[East Structure Layout for Tests 33 and 34]{East Structure layout for Tests 33 and 34}
+\label{fig:test_33_34_setup}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[!ht]
 \includegraphics[trim=16cm 6.25cm 9cm 6cm, clip=true, width=4in]{../Pictures/SS_Room_B_Test_33}
 \\~\\
 \includegraphics[trim=16cm 6.25cm 9cm 6cm, clip=true, width=4in]{../Pictures/NF_Room_B_Test_33}
@@ -256,18 +286,13 @@ Test 33 varied from Tests 29 and 30 in multiple ways. During Test 33, the monito
 \end{figure}
 \FloatBarrier
 
-\begin{figure}[!ht]
-\includegraphics[trim=0cm 0cm 0cm 4.5cm, clip=true, width=6in]{../Drawings/Specific_Tests/East_Structure_Hose_Test_33_34}
-\caption[East Structure Layout for Tests 33 and 34]{East Structure layout for Tests 33 and 34}
-\label{fig:test_33_34_setup}
-\end{figure}
-\FloatBarrier
-
 %ADD TARGET DIMENSION%
 Tests 16 and 17 followed an identical procedure that involved flowing water from the north side double doors on the first level of the West Structure using a monitor equipped with a combination nozzle. The nozzle was aimed at two targets throughout the tests: a "near" target, located approximately X m (X ft) from the interior side of the north wall, and a "far" target, located approximately X m (X ft) from the interior side of the north wall. The difference between the tests was that Test 16 contained the flow path configuration presented in Fig.~\ref{fig:flow_path_1}, while Test 17 contained the flow path configuration presented in Fig.~\ref{fig:flow_path_2}. Each test began by flowing water in a straight stream pattern at the far target for 60 seconds. After 60 seconds of water flow, the stairwell door was opened. One minute later, the north side, west double door on the second floor was opened, and water continued to flow for 60 seconds. Then, water flow was stopped, the two doors were closed, and the procedure was repeated with the monitor aimed at the near target. The entire process was repeated for the narrow fog and wide fog streams. Fig.~\ref{fig:test_16_17_pic} contains images of each type of hose stream aimed at the near and far targets.
 
 \begin{figure}[!ht]
-\includegraphics[trim=0cm 0cm 0.75cm 4.5cm, clip=true, width=6in]{../Drawings/Specific_Tests/West_Structure_Hose_Test_18_1st_Floor}
+\begin{overpic}[trim=0cm 0cm 0.75cm 4.5cm, clip=true, width=6in]{../Drawings/Specific_Tests/West_Structure_Hose_Test_18_1st_Floor}
+	\put(81,23){\includegraphics[width=1in]{../Drawings/monitor_graphic}}
+\end{overpic}
 \\
 \includegraphics[trim=0cm 0cm 0.75cm 5cm, clip=true, width=6in]{../Drawings/Specific_Tests/West_Structure_Hose_Test_18_2nd_Floor}
 \caption[West Structure Layout for Tests 16 and 18]{West Structure first floor (top) and second floor (bottom) layouts for Tests 16 and 18. Both double doors and the south side door on the first floor were in the opened position for the duration of the test. On the second floor, the stairwell door and north side, west double door were opened and closed during the tests, while the north side, east double door and south side door were in the closed position throughout the entire test.}
@@ -276,7 +301,9 @@ Tests 16 and 17 followed an identical procedure that involved flowing water from
 \FloatBarrier
 
 \begin{figure}[!ht]
-\includegraphics[trim=0cm 0cm 0.75cm 4.5cm, clip=true, width=6in]{../Drawings/Specific_Tests/West_Structure_Hose_Test_19_1st_Floor}
+\begin{overpic}[trim=0cm 0cm 0.75cm 4.5cm, clip=true, width=6in]{../Drawings/Specific_Tests/West_Structure_Hose_Test_19_1st_Floor}
+	\put(81,23){\includegraphics[width=1in]{../Drawings/monitor_graphic}}
+\end{overpic}
 \\
 \includegraphics[trim=0cm 0cm 0.75cm 5cm, clip=true, width=6in]{../Drawings/Specific_Tests/West_Structure_Hose_Test_19_2nd_Floor}
 \caption[West Structure Layout for Tests 17 and 19]{West Structure first floor (top) and second floor (bottom) layouts for Tests 17 and 19. Both double doors on the first floor were in the opened position and the south side door on the first floor was in the closed position for the duration of the test. On the second floor, the stairwell door and north side, west double door were opened and closed during the tests, while the north side, east double door and south side door were in the closed position throughout the entire test.}
@@ -333,19 +360,30 @@ Tests 31 and 32 followed an identical procedure that involved flowing water from
 \caption[Straight Stream and Narrow Fog Stream during Tests 31 and 32]{Straight stream (left column) and narrow fog stream (right column) aimed at ceiling of Room C (top row) and Door BC (bottom row) during Tests 31 and 32}
 \label{fig:test_31_32_pic}
 \end{figure}
-\FloatBarrier
+\clearpage
 
 Test 34 varied from Tests 31 and 32 in multiple ways. During Test 34, the handline was located inside Room C. The structure's layout during Test 34 was identical to the layout used in Test 33 (Fig.~\ref{fig:test_33_34_setup}). The test began by flowing water in a straight stream at the ceiling in Room B for 30 seconds in a fixed position, as pictured in Fig.~\ref{fig:test_34_pic}. Next, the nozzle was rotated in the clockwise direction for 30 seconds. Then, the handline was aimed at Door AB, and water was applied for 30 seconds in a fixed position and for 30 seconds in a clockwise pattern. This process were repeated for narrow fog and wide fog streams. Then, the entire procedure was repeated for the three types of streams, except a counter-clockwise pattern was applied.
 
+\begin{figure}[!ht]
+\includegraphics[trim=23cm 6.5cm 4cm 6cm, clip=true, width=3.75in]{../Pictures/SS_Room_B_Test_34}
+\\~\\
+\includegraphics[trim=23cm 6.5cm 4cm 6cm, clip=true, width=3.75in]{../Pictures/NF_Room_B_Test_34}
+\\~\\
+\includegraphics[trim=23cm 6.5cm 4cm 6cm, clip=true, width=3.75in]{../Pictures/WF_Room_B_Test_34}
+\caption[Straight Stream, Narrow Fog Stream, and Wide Fog Stream during Test 34]{Straight stream (top), narrow fog stream (middle), and wide fog stream (bottom) aimed at ceiling of Room B during Test 34}
+\label{fig:test_34_pic}
+\end{figure}
+\FloatBarrier
+
 %Where was the handline aimed?%
-Tests 18 and 19 followed an identical procedure that involved flowing water from the north side, double doors on the first level of the West Structure using a combination nozzle attached to a 1.75" handline. The difference between the two tests was that Test 18 contained the same flow path configuration as Test 16 (Fig.~\ref{fig:flow_path_1}), while Test 19 contained the same flow path configuration as Test 17 (Fig.~\ref{fig:flow_path_2}). Each test began by flowing water in a straight stream pattern and fixed position. After 60 seconds of water flow, the stairwell door was opened. One minute later, the north side, west double door on the second floor was opened, and water continued to flow for 60 seconds. Then, water flow stopped, the two doors were closed, and the procedure was repeated three additional times for sweeping, clockwise, and counterclockwise application patterns. This entire procedure was repeated for narrow fog and wide fog streams.
+Tests 18 and 19 followed an identical procedure that involved flowing water from the north side, double doors on the first level of the West Structure using a combination nozzle attached to a 1 \nicefrac{3}{4}" handline. The difference between the two tests was that Test 18 contained the same flow path configuration as Test 16 (Fig.~\ref{fig:flow_path_1}), while Test 19 contained the same flow path configuration as Test 17 (Fig.~\ref{fig:flow_path_2}). Each test began by flowing water in a straight stream pattern and fixed position. After 60 seconds of water flow, the stairwell door was opened. One minute later, the north side, west double door on the second floor was opened, and water continued to flow for 60 seconds. Then, water flow stopped, the two doors were closed, and the procedure was repeated three additional times for sweeping, clockwise, and counterclockwise application patterns. This entire procedure was repeated for narrow fog and wide fog streams.
 
 \begin{figure}[!ht]
-\includegraphics[width=6in]{../Pictures/Test_18}
+\includegraphics[width=4.25in]{../Pictures/Test_18}
 \caption[North Side of West Structure during Test 18]{North side of West Structure during Test 18. A straight stream pattern is being applied, and the flow path is fully established with the stairway door and the north side, west double door both opened.}
 \label{fig:test_18_pic}
 \end{figure}
-\FloatBarrier
+\clearpage
 
 \chapter{Results}
 \label{chap:Results}
@@ -358,7 +396,9 @@ Tests 18 and 19 followed an identical procedure that involved flowing water from
 
 \subsection{Monitor Nozzle Experiments}
 
-Figures \ref{fig:Test_16_BDP_A10_Avg_All}-\ref{fig:Test_17_BDP_A13_Avg_All} contain plots of the average velocity through the stairwell door and \nth{2} level, north side, west double door, measured by the bi-directional probes in each doorway for the two application locations and three hose stream patterns for Tests 16 and 17. 
+Fig.~\ref{fig:Test_16_BDP_A10_Avg_All} and Fig.~\ref{fig:Test_16_BDP_A13_Avg_All} contain plots of the average velocity measured by the bi-directional probes in the stairwell doorway (A10) and \nth{2} level, north side, west double doorway (A13), respectively, for Test 16. A similar set of plots was generated using data from Test 17 and can be found in Appendix~\ref{sec:additional_figures}.
+
+Notice, the only instances in which significant air movement (average velocity greater than 0.5 m/s) occurs through either doorway is when the flow path is fully established, or when both the stairwell door and the \nth{2} level, north side, west double door are opened. Tables~\ref{table:Tests_16_17_BDP_A10_Avgs} and~\ref{table:Tests_16_17_BDP_A13_Avgs} contain the average air velocity measured by the bi-directional probes at A10 and A13, respectively, when the flow path was completely established for each hose stream pattern and application location for Tests 16 and 17.
 
 \begin{figure}[!ht]
 \includegraphics[width=6in]{../../../Figures/Hose_Test_Figures/Test_16_West_063014_custom_BDP_A10_Avg}
@@ -374,19 +414,7 @@ Figures \ref{fig:Test_16_BDP_A10_Avg_All}-\ref{fig:Test_17_BDP_A13_Avg_All} cont
 
 \clearpage
 
-\begin{figure}[!ht]
-\includegraphics[width=6in]{../../../Figures/Hose_Test_Figures/Test_17_West_063014_BDP_A13_Avg}
-\caption{Average Velocity through Stairwell Door, Test 17, All Streams}
-\label{fig:Test_17_BDP_A10_Avg_All}
-\end{figure}
 
-\begin{figure}[!ht]
-\includegraphics[width=6in]{../../../Figures/Hose_Test_Figures/Test_17_West_063014_BDP_A13_Avg}
-\caption{Average Velocity through \nth{2} Level, North Side, West Double Door, Test 17, All Streams}
-\label{fig:Test_17_BDP_A13_Avg_All}
-\end{figure}
-
-\clearpage
 
 %%%%%%%%%%%%%%%%%%% ORIGINAL TABLES %%%%%%%%%%%%%%%%%%%%%%
 %\begin{table}[!ht]
@@ -451,7 +479,7 @@ Figures \ref{fig:Test_16_BDP_A10_Avg_All}-\ref{fig:Test_17_BDP_A13_Avg_All} cont
 
 
 \begin{table}[!ht]
-\caption{Average air velocity (m/s) through stairwell door for all hose stream and application location combinations for Tests 16 and 17}
+\caption{Average air velocity (m/s) through stairwell door for all hose stream and application location combinations when the flow path was fully established during Tests 16 and 17}
 \begin{tabular}{lcccc}
 \toprule
  & \multicolumn{2}{c}{\underline{Test 16}} & \multicolumn{2}{c}{\underline{Test 17}}
@@ -482,7 +510,7 @@ Figures \ref{fig:Test_16_BDP_A10_Avg_All}-\ref{fig:Test_17_BDP_A13_Avg_All} cont
 \end{table}
 
 \begin{table}[!ht]
-\caption{Average air velocity (m/s) through \nth{2} level double door for all hose stream and application location combinations for Tests 16 and 17}
+\caption{Average air velocity (m/s) through \nth{2} level double door for all hose stream and application location combinations when the flow path was fully established during Tests 16 and 17}
 \begin{tabular}{lcccc}
 \toprule
  & \multicolumn{2}{c}{\underline{Test 16}} & \multicolumn{2}{c}{\underline{Test 17}}
@@ -755,10 +783,25 @@ Another important result shown in Figures \ref{fig:Test_18_BDP_A10_Avg_All} and 
 \bibliography{../../../../../Bibliography/FDS_general}
 
 \appendix
+\chapter{Appendix}
+\label{chap:appendix}
 
-\chapter{Appendix A}
+\section{Additional Figures}
+\label{sec:additional_figures}
 
-Placeholder
+\begin{figure}[!ht]
+\includegraphics[width=6in]{../../../Figures/Hose_Test_Figures/Test_17_West_063014_BDP_A13_Avg}
+\caption{Average Velocity through Stairwell Door, Test 17, All Streams}
+\label{fig:Test_17_BDP_A10_Avg_All}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width=6in]{../../../Figures/Hose_Test_Figures/Test_17_West_063014_BDP_A13_Avg}
+\caption{Average Velocity through \nth{2} Level, North Side, West Double Door, Test 17, All Streams}
+\label{fig:Test_17_BDP_A13_Avg_All}
+\end{figure}
+
+\clearpage
 
 
 \end{document}
