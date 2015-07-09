@@ -51,7 +51,7 @@ all_times = all_times.set_index('Time')
 info = pd.read_csv(info_file, index_col=3)
 
 # Files to skip
-skip_files = ['_times', '_reduced', 'description_','zero_']
+skip_files = ['_times', '_reduced', 'description_','zero_','_rh']
 
 #  ===================
 #  = Video Plot Mode =

@@ -223,15 +223,15 @@ SC1Mod12,28,TC_S_13,1,0,TC Manikin 3,TC Manikin,Temperature
 SC1Mod12,29,TC_S_14,1,0,TC Manikin 4,TC Manikin,Temperature
 SC1Mod12,30,TC_S_15,99.52,-248.8,Pressure S 1,Pressure,Pressure
 SC1Mod12,31,TC_S_16,99.52,-248.8,Pressure S 2,Pressure,Pressure
-SC1Mod5,8,CO_A,1.25,0,Carbon Monoxide A,Gas,Gas
-SC1Mod5,9,CO2_A,2.5,0,Carbon Dioxide A,Gas,Gas
-SC1Mod5,10,O2_A,5.2375,0,Oxygen A,Gas,Gas
-SC1Mod5,11,CO_B,1.25,0,Carbon Monoxide B,Gas,Gas
-SC1Mod5,12,CO2_B,2.5,0,Carbon Dioxide B,Gas,Gas
-SC1Mod5,13,O2_B,5.2375,0,Oxygen B,Gas,Gas
-SC1Mod5,14,CO_C,1.25,0,Carbon Monoxide C,Gas,Gas
-SC1Mod5,15,CO2_C,2.5,0,Carbon Dioxide C,Gas,Gas
-SC1Mod5,16,O2_C,5.2375,0,Oxygen C,Gas,Gas
-SC1Mod5,17,CO_D,1.25,0,Carbon Monoxide D,Gas,Gas
-SC1Mod5,18,CO2_D,2.5,0,Carbon Dioxide D,Gas,Gas
-SC1Mod5,19,O2_D,5.2375,0,Oxygen D,Gas,Gas
+SC1Mod5,8,CO_A,1,0,Carbon Monoxide A,Gas,Gas
+SC1Mod5,9,CO2_A,2,0,Carbon Dioxide A,Gas,Gas
+SC1Mod5,10,O2_A,4.18,0,Oxygen A,Gas,Gas
+SC1Mod5,11,CO_B,1,0,Carbon Monoxide B,Gas,Gas
+SC1Mod5,12,CO2_B,2,0,Carbon Dioxide B,Gas,Gas
+SC1Mod5,13,O2_B,4.18,0,Oxygen B,Gas,Gas
+SC1Mod5,14,CO_C,1,0,Carbon Monoxide C,Gas,Gas
+SC1Mod5,15,CO2_C,2,0,Carbon Dioxide C,Gas,Gas
+SC1Mod5,16,O2_C,4.18,0,Oxygen C,Gas,Gas
+SC1Mod5,17,CO_D,1,0,Carbon Monoxide D,Gas,Gas
+SC1Mod5,18,CO2_D,2,0,Carbon Dioxide D,Gas,Gas
+SC1Mod5,19,O2_D,4.18,0,Oxygen D,Gas,Gas
