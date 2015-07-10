@@ -16,6 +16,7 @@ rcParams.update({'figure.autolayout': True})
 
 # Plot mode: figure or video
 plot_mode = 'figure'
+
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
 
@@ -218,11 +219,19 @@ for f in os.listdir(data_dir):
                 # Plot gas measurements
                 if channel_list['Measurement Type'][channel] == 'Gas':
                     zero_voltage = np.mean(current_channel_data[0:pre_test_time])
-                    if 'Carbon ' in channel:
-                        current_channel_data = (current_channel_data-zero_voltage) * calibration_slope + calibration_intercept
+                    if int(test_name[5:-11]) >= 45:
+                        if 'Carbon Dioxide ' in channel:
+                            current_channel_data = current_channel_data * 2.0
+                        elif 'Carbon Monoxide ' in channel:
+                            current_channel_data = current_channel_data * 1.0
+                        else:
+                            current_channel_data = current_channel_data * 4.18 * 1.2
                     else:
-                        calibration_slope = 20.95/(zero_voltage-1.)
-                        current_channel_data = (current_channel_data-1.) * calibration_slope 
+                        if 'Carbon ' in channel:
+                            current_channel_data = (current_channel_data-zero_voltage) * calibration_slope + calibration_intercept
+                        else:
+                            calibration_slope = 20.95/(zero_voltage-1.)
+                            current_channel_data = (current_channel_data-1.) * calibration_slope 
 
                     plt.ylabel('Concentration (%)', fontsize=20)
                     line_style = '-'
