@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\usepackage{nopageno}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{pdfsync}
+\usepackage{microtype}
+\usepackage{siunitx}
+\usepackage{rotating}
+\usepackage{tabularx,ragged2e,booktabs,caption}
+\usepackage{caption}
+\frenchspacing
+
+\begin{document}
+
+\begin{sidewaystable}[htbp]
+\centering
+\captionof{table}{DelCo ESTC 2015 Tests}\label{tab:tests}
+\begin{tabular}{lllll}
+\toprule[1.5pt]
+Test \#         &  Vent Configuration         	& Attack           & Hose Stream                         & Gear      \\
+\midrule
+30              &  Cherry Road                	& Uncoordinated    &  Straight, 120~gpm                  & 3 samples \\
+31              &  Cherry Road; single basement & Uncoordinated    &  Straight, 120~gpm                  & 3 samples \\
+32              &  Cherry Road + upper C doors  & Uncoordinated    &  Straight, 120~gpm                  & 2 samples \\
+33              &  PPV Test                     & & &           \\  
+34              &  Cherry Road                  & Coordinated      &  Straight, 120~gpm                  & 3 samples \\   
+35              &  Cherry Road + PPV            & Uncoordinated    &  Straight, 180~gpm + interior fog   & 3 samples \\
+36              &  Cherry Road                  & Coordinated      &  Straight, 180~gpm + interior fog   & 3 samples + manikin \\
+37              &  Cherry Road                  & Uncoordinated    &  Straight, 180~gpm + interior fog   & 3 samples + manikin \\
+38              &  Open A door + C doors        &                  &  Straight, CAFS, 120~gpm            & 3 samples + facepieces \\
+39				&  Open A door + C doors        &                  &  Straight, 130~gpm                  & \\
+40				&  Open A door + C doors        &                  &  Straight, CAFS, 130~gpm            & \\
+41				&  Open A door + C doors        &                  &  CAFS, varied                       & \\
+42				&  Cherry Road + upper C doors  & Allow decay      &  Straight, 150~gpm                  & \\
+43				&  Open A door + C doors        &                  &  Straight/narrow fog, 120/180~gpm   & 1 sample \\
+44				&  Open A door + C doors        &                  &  Interior wide fog, 130~gpm         & 1 sample, facepiece \\
+45              &  Open A door + C doors        & Delay water 44   &  Interior wide fog, 130~gpm         & 1 sample, facepiece, helmet \\
+45              &  Cherry Road; single basement & Uncoordinated    &  Straight, 150~gpm					 & \\
+\bottomrule[1.25pt]
+\end{tabular}
+\end{sidewaystable}
+
+\end{document}
+
