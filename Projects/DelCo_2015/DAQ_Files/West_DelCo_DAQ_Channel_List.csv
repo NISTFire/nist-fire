@@ -234,4 +234,11 @@ SC1Mod5,15,CO2_C,2.5,0,Carbon Dioxide C,Gas,Gas
 SC1Mod5,16,O2_C,5.2375,0,Oxygen C,Gas,Gas
 SC1Mod5,17,CO_D,1.25,0,Carbon Monoxide D,Gas,Gas
 SC1Mod5,18,CO2_D,2.5,0,Carbon Dioxide D,Gas,Gas
-SC1Mod5,19,O2_D,5.2375,0,Oxygen D,Gas,Gas
+SC1Mod5,24,TC_G_1,1,0,TC G 1,TC Gear,Temperature
+SC1Mod5,25,TC_G_2,1,0,TC G 2,TC Gear,Temperature
+SC1Mod5,26,TC_G_3,1,0,TC G 3,TC Gear,Temperature
+SC1Mod5,27,TC_G_4,1,0,TC G 4,TC Gear,Temperature
+SC1Mod5,28,TC_G_5,1,0,TC G 5,TC Gear,Temperature
+SC1Mod5,29,TC_G_6,1,0,TC G 6,TC Gear,Temperature
+SC1Mod5,30,TC_G_7,1,0,TC G 7,TC Gear,Temperature
+SC1Mod5,31,TC_G_8,1,0,TC G 8,TC Gear,Temperature

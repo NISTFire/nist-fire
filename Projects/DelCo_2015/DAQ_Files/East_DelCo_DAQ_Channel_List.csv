@@ -115,10 +115,10 @@ SC1Mod5,16,O2_C,5.016,0,O2 Gas Analyzer C,Gas,Gas
 SC1Mod5,17,CO_D,1,0,CO Gas Analyzer D,Gas,Gas
 SC1Mod5,18,CO2_D,2,0,CO2 Gas Analyzer D,Gas,Gas
 SC1Mod5,19,O2_D,5.016,0,O2 Gas Analyzer D,Gas,Gas
-SC1Mod5,20,TC_S_9,1,0,TC S 9,TC Gear,Temperature
-SC1Mod5,21,TC_S_10,1,0,TC S 10,TC Gear,Temperature
-SC1Mod5,22,TC_S_11,1,0,TC S 11,TC Gear,Temperature
-SC1Mod5,23,TC_S_12,1,0,TC S 12,TC Gear,Temperature
+SC1Mod5,20,TC_S_1,1,0,TC S 1,TC Gear,Temperature
+SC1Mod5,21,TC_S_2,1,0,TC S 2,TC Gear,Temperature
+SC1Mod5,22,TC_S_3,1,0,TC S 3,TC Gear,Temperature
+SC1Mod5,23,TC_S_4,1,0,TC S 4,TC Gear,Temperature
 SC1Mod5,24,TC_G_1,1,0,TC G 1,TC Gear,Temperature
 SC1Mod5,25,TC_G_2,1,0,TC G 2,TC Gear,Temperature
 SC1Mod5,26,TC_G_3,1,0,TC G 3,TC Gear,Temperature
@@ -127,11 +127,3 @@ SC1Mod5,28,TC_G_5,1,0,TC G 5,TC Gear,Temperature
 SC1Mod5,29,TC_G_6,1,0,TC G 6,TC Gear,Temperature
 SC1Mod5,30,TC_G_7,1,0,TC G 7,TC Gear,Temperature
 SC1Mod5,31,TC_G_8,1,0,TC G 8,TC Gear,Temperature
-SC1Mod11,24, TC_S_1,1,0,TC S 1,TC Gear,Temperature
-SC1Mod11,25, TC_S_2,1,0,TC S 2,TC Gear,Temperature
-SC1Mod11,26, TC_S_3,1,0,TC S 3,TC Gear,Temperature
-SC1Mod11,27, TC_S_4,1,0,TC S 4,TC Gear,Temperature
-SC1Mod11,28, TC_S_5,1,0,TC S 5,TC Gear,Temperature
-SC1Mod11,29, TC_S_6,1,0,TC S 6,TC Gear,Temperature
-SC1Mod11,30, TC_S_7,1,0,TC S 7,TC Gear,Temperature
-SC1Mod11,31, TC_S_8,1,0,TC S 8,TC Gear,Temperature
