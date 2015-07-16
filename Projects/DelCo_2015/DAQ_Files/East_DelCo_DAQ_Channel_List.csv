@@ -87,16 +87,16 @@ SC1Mod4,20,BDP_A9_5,99.52,-248.8,BDP 9 1.15 m BS East,BDP A9,Velocity
 SC1Mod4,21,BDP_A9_6,99.52,-248.8,BDP 9 1.42 m BS East,BDP A9,Velocity
 SC1Mod4,22,BDP_A9_7,99.52,-248.8,BDP 9 1.68 m BS East,BDP A9,Velocity
 SC1Mod4,23,BDP_A9_8,99.52,-248.8,BDP 9 1.95 m BS East,BDP A9,Velocity
-SC1Mod4,24,HF_A1,10964.91,0,Heat Flux 1 0.15 m AF East,Heat Flux,Heat Flux
-SC1Mod4,25,RAD_A1,12220.91,0,Radiometer 1 0.15 m AF East,Heat Flux,Heat Flux
-SC1Mod4,26,HF_A2,11210.76,0,Heat Flux 2 0.15 m AF East,Heat Flux,Heat Flux
-SC1Mod4,27,RAD_A2,11350.74,0,Radiometer 2 0.15 m AF East,Heat Flux,Heat Flux
-SC1Mod4,28,HF_A3,5537.1,0,Heat Flux 3 0.15 m AF East,Heat Flux,Heat Flux
-SC1Mod4,29,RAD_A3,11350.74,0,Radiometer 3 0.15 m AF East,Heat Flux,Heat Flux
-SC1Mod4,30,HF_A4,6613.76,0,Heat Flux 4 0.15 m AF East,Heat Flux,Heat Flux
-SC1Mod4,31,RAD_A4,5274.26,0,Radiometer 4 0.15 m AF East,Heat Flux,Heat Flux
-SC1Mod5,0,HF_A5,2976.19,0,Heat Flux 4 0.15 m AF East,Heat Flux,Heat Flux
-SC1Mod5,1,RAD_A5,6242.2,0,Radiometer 4 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod4,24,HF_A1,0,0,Heat Flux 1 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod4,25,RAD_A1,0,0,Radiometer 1 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod4,26,HF_A2,11350.74,0,Heat Flux 2 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod4,27,RAD_A2,6016.85,0,Radiometer 2 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod4,28,HF_A3,6613.76,0,Heat Flux 3 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod4,29,RAD_A3,5274.26,0,Radiometer 3 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod4,30,HF_A4,2976.19,0,Heat Flux 4 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod4,31,RAD_A4,6242.2,0,Radiometer 4 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod5,0,HF_A5,0,0,Heat Flux 4 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod5,1,RAD_A5,0,0,Radiometer 4 0.15 m AF East,Heat Flux,Heat Flux
 SC1Mod5,2,TC_A10_1,1,0,TC 10 1 East,TC A10,Temperature
 SC1Mod5,3,TC_A10_2,1,0,TC 10 2 East,TC A10,Temperature
 SC1Mod5,4,TC_A10_3,1,0,TC 10 3 East,TC A10,Temperature
