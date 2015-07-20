@@ -78,7 +78,7 @@ for f in os.listdir(data_dir):
         # Skip files with time information or reduced data files
         if any([substring in f.lower() for substring in skip_files]):
             continue
-        
+
         # Strip test name from file name
         test_name = f[:-4]
         print 'Test ' + test_name
@@ -101,7 +101,7 @@ for f in os.listdir(data_dir):
         # Read in test times to offset plots
         start_of_test = info['Start of Test'][test_name]
         end_of_test = info['End of Test'][test_name]
-        
+
         # Load exp. data file
         data = pd.read_csv(data_dir + f)
         data = data.set_index('TimeStamp(s)')
@@ -203,6 +203,8 @@ for f in os.listdir(data_dir):
                         line_style = '-'
                     elif ' V' in channel:
                         line_style = '--'
+                    if 'Radiometer' in channel:
+                        line_style = '--'
                     axis_scale = 'Y Scale HF'
 
                 # Plot pressures
@@ -231,7 +233,7 @@ for f in os.listdir(data_dir):
                             current_channel_data = (current_channel_data-zero_voltage) * calibration_slope + calibration_intercept
                         else:
                             calibration_slope = 20.95/(zero_voltage-1.)
-                            current_channel_data = (current_channel_data-1.) * calibration_slope 
+                            current_channel_data = (current_channel_data-1.) * calibration_slope
 
                     plt.ylabel('Concentration (%)', fontsize=20)
                     line_style = '-'

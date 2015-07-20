@@ -1,4 +1,4 @@
-Panel,Channel,Device Name,Calibration Slope,Calibration Intercept,Test Specific Name,Group Name,Measurement Type
+Panel,Channel,Device Name,Calibration Slope,Calibration Intercept,Channel Name,Group Name,Measurement Type
 SC1Mod2,0,TC_A1_1,1,0,TC 1 0.03 m BC East,TC A1,Temperature
 SC1Mod2,1,TC_A1_2,1,0,TC 1 0.30 m BC East,TC A1,Temperature
 SC1Mod2,2,TC_A1_3,1,0,TC 1 0.61 m BC East,TC A1,Temperature
@@ -87,34 +87,34 @@ SC1Mod4,20,BDP_A9_5,99.52,-248.8,BDP 9 1.15 m BS East,BDP A9,Velocity
 SC1Mod4,21,BDP_A9_6,99.52,-248.8,BDP 9 1.42 m BS East,BDP A9,Velocity
 SC1Mod4,22,BDP_A9_7,99.52,-248.8,BDP 9 1.68 m BS East,BDP A9,Velocity
 SC1Mod4,23,BDP_A9_8,99.52,-248.8,BDP 9 1.95 m BS East,BDP A9,Velocity
-SC1Mod4,24,HF_A1,0,0,Heat Flux 1 0.15 m AF East,Heat Flux,Heat Flux
-SC1Mod4,25,RAD_A1,0,0,Radiometer 1 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod4,24,HF_A1,1,0,Heat Flux 1 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod4,25,RAD_A1,1,0,Radiometer 1 0.15 m AF East,Heat Flux,Heat Flux
 SC1Mod4,26,HF_A2,11350.74,0,Heat Flux 2 0.15 m AF East,Heat Flux,Heat Flux
 SC1Mod4,27,RAD_A2,6016.85,0,Radiometer 2 0.15 m AF East,Heat Flux,Heat Flux
 SC1Mod4,28,HF_A3,6613.76,0,Heat Flux 3 0.15 m AF East,Heat Flux,Heat Flux
 SC1Mod4,29,RAD_A3,5274.26,0,Radiometer 3 0.15 m AF East,Heat Flux,Heat Flux
 SC1Mod4,30,HF_A4,2976.19,0,Heat Flux 4 0.15 m AF East,Heat Flux,Heat Flux
-SC1Mod4,31,RAD_A4,6242.2,0,Radiometer 4 0.15 m AF East,Heat Flux,Heat Flux
-SC1Mod5,0,HF_A5,0,0,Heat Flux 4 0.15 m AF East,Heat Flux,Heat Flux
-SC1Mod5,1,RAD_A5,0,0,Radiometer 4 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod4,31,RAD_A4,6242,0,Radiometer 4 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod5,0,HF_A5,1,0,Heat Flux 5 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod5,1,RAD_A5,1,0,Radiometer 5 0.15 m AF East,Heat Flux,Heat Flux
 SC1Mod5,2,TC_A10_1,1,0,TC 10 1 East,TC A10,Temperature
 SC1Mod5,3,TC_A10_2,1,0,TC 10 2 East,TC A10,Temperature
 SC1Mod5,4,TC_A10_3,1,0,TC 10 3 East,TC A10,Temperature
 SC1Mod5,5,BDP_A10_1,99.52,-248.8,BDP 10 1 East,BDP A10,Velocity
 SC1Mod5,6,BDP_A10_2,99.52,-248.8,BDP 10 2 East,BDP A10,Velocity
 SC1Mod5,7,BDP_A10_3,99.52,-248.8,BDP 10 3 East,BDP A10,Velocity
-SC1Mod5,8,CO_A,1,0,CO Gas Analyzer A,Gas,Gas
-SC1Mod5,9,CO2_A,2,0,CO2 Gas Analyzer A,Gas,Gas
-SC1Mod5,10,O2_A,5.016,0,O2 Gas Analyzer A,Gas,Gas
-SC1Mod5,11,CO_B,1,0,CO Gas Analyzer B,Gas,Gas
-SC1Mod5,12,CO2_B,2,0,CO2 Gas Analyzer B,Gas,Gas
-SC1Mod5,13,O2_B,5.016,0,O2 Gas Analyzer B,Gas,Gas
-SC1Mod5,14,CO_C,1,0,CO Gas Analyzer C,Gas,Gas
-SC1Mod5,15,CO2_C,2,0,CO2 Gas Analyzer C,Gas,Gas
-SC1Mod5,16,O2_C,5.016,0,O2 Gas Analyzer C,Gas,Gas
-SC1Mod5,17,CO_D,1,0,CO Gas Analyzer D,Gas,Gas
-SC1Mod5,18,CO2_D,2,0,CO2 Gas Analyzer D,Gas,Gas
-SC1Mod5,19,O2_D,5.016,0,O2 Gas Analyzer D,Gas,Gas
+SC1Mod5,8,CO_A,1,0,Carbon Monoxide A,Gas,Gas
+SC1Mod5,9,CO2_A,2,0,Carbon Dioxide A,Gas,Gas
+SC1Mod5,10,O2_A,5.016,0,Oxygen A,Gas,Gas
+SC1Mod5,11,CO_B,1,0,Carbon Monoxide B,Gas,Gas
+SC1Mod5,12,CO2_B,2,0,Carbon Dioxide B,Gas,Gas
+SC1Mod5,13,O2_B,5.016,0,Oxygen B,Gas,Gas
+SC1Mod5,14,CO_C,1,0,Carbon Monoxide C,Gas,Gas
+SC1Mod5,15,CO2_C,2,0,Carbon Dioxide C,Gas,Gas
+SC1Mod5,16,O2_C,5.016,0,Oxygen C,Gas,Gas
+SC1Mod5,17,CO_D,1,0,Carbon Monoxide D,Gas,Gas
+SC1Mod5,18,CO2_D,2,0,Carbon Dioxide D,Gas,Gas
+SC1Mod5,19,O2_D,5.016,0,Oxygen D,Gas,Gas
 SC1Mod5,20,TC_S_1,1,0,TC S 1,TC Gear,Temperature
 SC1Mod5,21,TC_S_2,1,0,TC S 2,TC Gear,Temperature
 SC1Mod5,22,TC_S_3,1,0,TC S 3,TC Gear,Temperature
