@@ -1,0 +1,54 @@
+Device Name,Calibration Slope,Calibration Intercept,Channel Name,Group Name,Measurement Type
+FSE1_0-03mBC,1,0,TC 1 0.03 m BC,TC A1,Temperature
+FSE1_0-3mBC,1,0,TC 1 0.30 m BC,TC A1,Temperature
+FSE1_0-61mBC,1,0,TC 1 0.61 m BC,TC A1,Temperature
+FSE1_0-91mBC,1,0,TC 1 0.91 m BC,TC A1,Temperature
+FSE1_1-22mBC,1,0,TC 1 1.22 m BC,TC A1,Temperature
+FSE1_1-52mBC,1,0,TC 1 1.52 m BC,TC A1,Temperature
+FSE1_1-83mBC,1,0,TC 1 1.83 m BC,TC A1,Temperature
+FSE1_2-13mBC,1,0,TC 1 2.13 m BC,TC A1,Temperature
+FSE2_0-03mBC,1,0,TC 2 0.03 m BC,TC A2,Temperature
+FSE2_0-3mBC,1,0,TC 2 0.30 m BC,TC A2,Temperature
+FSE2_0-61mBC,1,0,TC 2 0.61 m BC,TC A2,Temperature
+FSE2_0-91mBC,1,0,TC 2 0.91 m BC,TC A2,Temperature
+FSE2_1-22mBC,1,0,TC 2 1.22 m BC,TC A2,Temperature
+FSE2_1-52mBC,1,0,TC 2 1.52 m BC,TC A2,Temperature
+FSE2_1-83mBC,1,0,TC 2 1.83 m BC,TC A2,Temperature
+FSE2_2-13mBC,1,0,TC 2 2.13 m BC,TC A2,Temperature
+FSE3_0-3mBC,1,0,TC 3 0.30 m BC,TC A3,Temperature
+FSE3_0-61mBC,1,0,TC 3 0.61 m BC,TC A3,Temperature
+FSE3_0-91mBC,1,0,TC 3 0.91 m BC,TC A3,Temperature
+FSE3_1-22mBC,1,0,TC 3 1.22 m BC,TC A3,Temperature
+FSE3_1-52mBC,1,0,TC 3 1.52 m BC,TC A3,Temperature
+FSE3_1-83mBC,1,0,TC 3 1.83 m BC,TC A3,Temperature
+FSE3_2-13mBC,1,0,TC 3 2.13 m BC,TC A3,Temperature
+FSE4_0-15mBC,1,0,TC 4 0.15 m BS,TC A4,Temperature
+FSE4_0-3mBC,1,0,TC 4 0.30 m BS,TC A4,Temperature
+FSE4_0-61mBC,1,0,TC 4 0.61 m BS,TC A4,Temperature
+FSE4_0-91mBC,1,0,TC 4 0.91 m BS,TC A4,Temperature
+FSE4_1-22mBC,1,0,TC 4 1.22 m BS,TC A4,Temperature
+FSE4_1-52mBC,1,0,TC 4 1.52 m BS,TC A4,Temperature
+FSE4_1-83mBC,1,0,TC 4 1.83 m BS,TC A4,Temperature
+FSE5_1-22mBC,1,0,TC 5 1.22 m BC,TC A5,Temperature
+FSE3_bdp_0-3mBC,99.52,-248.8,BDP 3 0.30 m BC,BDP A3,Velocity
+FSE3_bdp_0-61mBC,99.52,-248.8,BDP 3 0.61 m BC,BDP A3,Velocity
+FSE3_bdp_0-91mBC,99.52,-248.8,BDP 3 0.91 m BC,BDP A3,Velocity
+FSE3_bdp_1-22mBC,99.52,-248.8,BDP 3 1.22 m BC,BDP A3,Velocity
+FSE3_bdp_1-52mBC,99.52,-248.8,BDP 3 1.52 m BC,BDP A3,Velocity
+FSE3_bdp_1-83mBC,99.52,-248.8,BDP 3 1.83 m BC,BDP A3,Velocity
+FSE3_bdp_2-13mBC,99.52,-248.8,BDP 3 2.13 m BC,BDP A3,Velocity
+FSE4_bdp_0-15mBC,99.52,-248.8,BDP 4 0.15 m BS,BDP A4,Velocity
+FSE4_bdp_0-3mBC,99.52,-248.8,BDP 4 0.30 m BS,BDP A4,Velocity
+FSE4_bdp_0-61mBC,99.52,-248.8,BDP 4 0.61 m BS,BDP A4,Velocity
+FSE4_bdp_0-91mBC,99.52,-248.8,BDP 4 0.91 m BS,BDP A4,Velocity
+FSE4_bdp_1-22mBC,99.52,-248.8,BDP 4 1.22 m BS,BDP A4,Velocity
+FSE4_bdp_1-52mBC,99.52,-248.8,BDP 4 1.52 m BS,BDP A4,Velocity
+FSE4_bdp_1-83mBC,99.52,-248.8,BDP 4 1.83 m BS,BDP A4,Velocity
+FSE1_HF_0-15mAF,11910,0,Heat Flux 1,Heat Flux 1,Heat Flux
+FSE1_RAD_0-15mAF,11350,0,Radiometer 1,Heat Flux 1,Heat Flux
+FSE2_HF_0-15mAF,6164,0,Heat Flux 2,Heat Flux 2,Heat Flux
+FSE2_RAD_0-15mAF,6281,0,Radiometer 2,Heat Flux 2,Heat Flux
+FSE3_HF_Fire_1-52mBC,6375,0,Heat Flux 3 Horizontal,Heat Flux 3,Heat Flux
+FSE3_HF_Ceil_1-52mBC,6395,0,Heat Flux 3 Vertical,Heat Flux 3,Heat Flux
+FSE5_HF_Fire_1-52mBC,5195,0,Heat Flux 4 Horizontal,Heat Flux 5,Heat Flux
+FSE5_HF_Ceil_1-52mBC,4822,0,Heat Flux 4 Vertical,Heat Flux 5,Heat Flux
