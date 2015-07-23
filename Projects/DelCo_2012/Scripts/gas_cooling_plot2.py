@@ -5,7 +5,7 @@ import os
 import numpy as np
 import pandas as pd
 from pylab import *
-
+import statsmodels.api as sm
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
 
@@ -61,6 +61,7 @@ for group in sensor_groups:
 del_water = concatenate([del_TC_1_h2o, del_TC_3_h2o], axis=1)
 del_cafs  = concatenate([del_TC_1_cafs, del_TC_3_cafs], axis=1)
 
+
 fig = figure()
 plot(del_water.mean(axis=1),y,'k',label='7/8 H$_2$O',linewidth=3)
 plt.fill_betweenx(y,del_water.mean(axis=1)+del_water.std(axis=1),del_water.mean(axis=1)-del_water.std(axis=1), facecolor='black',alpha=0.5,linewidth=3)
@@ -75,4 +76,22 @@ legend(numpoints=1,loc=1,fontsize=16)
 axis([0, 85, 0, 12])
 grid(True)
 savefig(plot_dir + test_name + '_delta_T.pdf',format='pdf')
+
+
+y = del_water.ravel()
+X = del_cafs.ravel()
+est = sm.OLS(y, X)
+est = est.fit()
+print est.summary()
+X_prime = np.linspace(X.min(), X.max(), 100)[:, np.newaxis]
+#X_prime = sm.add_constant(X_prime)  # add constant
+y_hat = est.predict(X_prime)
+
+fig = figure()
+plt.scatter(X,y,alpha=0.5)
+plt.plot(X_prime, y_hat, 'r', alpha=0.9)  # Add the regression line, colored in red
+axis([0, 100, 0, 100])
+xlabel('$\Delta$T ($^{\circ}$C) CAFS')
+ylabel('$\Delta$T ($^{\circ}$C) H$_2$O')
+savefig(plot_dir + test_name + '_scatter.pdf',format='pdf')
 
