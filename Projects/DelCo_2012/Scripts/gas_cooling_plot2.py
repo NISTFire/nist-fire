@@ -31,8 +31,12 @@ skip_files = ['_reduced', 'description_','zero','bb','es_','fse','cafs','fsw','_
 #  ===============================
 
 # Load exp. data file
-data = pd.read_csv(data_dir + 'GCSeries1.csv')
-test_name = 'GCSeries1'
+data = pd.read_csv(data_dir + 'GCSeries5.csv')
+test_name = 'GCSeries5'
+
+data2 = pd.read_csv(data_dir + 'GCSeries4.csv')
+test_name2 = 'GCSeries4'
+
 
 y = [1,2,3,4,5,6,7,8,9,10,11]
 
@@ -44,28 +48,42 @@ del_TC_3_cafs = np.zeros((11,3))
 
 for group in sensor_groups:
 	for channel in data.columns[1:]:
+		# if 'TC_A1_' in channel:
+		# 	del_TC_1_h2o[int(channel[6:])-1,0] = max(data[channel][1290:1350]) - min(data[channel][1290:1350])
+		# 	del_TC_1_h2o[int(channel[6:])-1,1] = max(data[channel][1600:1700]) - min(data[channel][1600:1700])
+		# 	del_TC_1_h2o[int(channel[6:])-1,2] = max(data[channel][2170:2250]) - min(data[channel][2170:2250])
+		# 	del_TC_1_cafs[int(channel[6:])-1,0] = max(data[channel][2450:2550]) - min(data[channel][2450:2550])
+		# 	del_TC_1_cafs[int(channel[6:])-1,1] = max(data[channel][2950:3000]) - min(data[channel][2950:3000])
+		# 	del_TC_1_cafs[int(channel[6:])-1,2] = max(data[channel][3100:3150]) - min(data[channel][3100:3150])
+		# if 'TC_A3_' in channel:
+		# 	del_TC_3_h2o[int(channel[6:])-1,0] = max(data[channel][1290:1350]) - min(data[channel][1290:1350])
+		# 	del_TC_3_h2o[int(channel[6:])-1,1] = max(data[channel][1600:1700]) - min(data[channel][1600:1700])
+		# 	del_TC_3_h2o[int(channel[6:])-1,2] = max(data[channel][2170:2250]) - min(data[channel][2170:2250])
+		# 	del_TC_3_cafs[int(channel[6:])-1,0] = max(data[channel][2450:2550]) - min(data[channel][2450:2550])
+		# 	del_TC_3_cafs[int(channel[6:])-1,1] = max(data[channel][2950:3000]) - min(data[channel][2950:3000])
+		# 	del_TC_3_cafs[int(channel[6:])-1,2] = max(data[channel][3100:3150]) - min(data[channel][3100:3150])
 		if 'TC_A1_' in channel:
-			del_TC_1_h2o[int(channel[6:])-1,0] = max(data[channel][1290:1350]) - min(data[channel][1290:1350])
-			del_TC_1_h2o[int(channel[6:])-1,1] = max(data[channel][1600:1700]) - min(data[channel][1600:1700])
-			del_TC_1_h2o[int(channel[6:])-1,2] = max(data[channel][2170:2250]) - min(data[channel][2170:2250])
-			del_TC_1_cafs[int(channel[6:])-1,0] = max(data[channel][2450:2550]) - min(data[channel][2450:2550])
-			del_TC_1_cafs[int(channel[6:])-1,1] = max(data[channel][2950:3000]) - min(data[channel][2950:3000])
-			del_TC_1_cafs[int(channel[6:])-1,2] = max(data[channel][3100:3150]) - min(data[channel][3100:3150])
+			del_TC_1_h2o[int(channel[6:])-1,0] = max(data2[channel][2852:2920]) - min(data2[channel][2852:2920])
+			del_TC_1_h2o[int(channel[6:])-1,1] = max(data2[channel][3073:3176]) - min(data2[channel][3073:3176])
+			del_TC_1_h2o[int(channel[6:])-1,2] = max(data2[channel][3255:3332]) - min(data2[channel][3255:3332])
+			del_TC_1_cafs[int(channel[6:])-1,0] = max(data[channel][3575:3624]) - min(data[channel][3575:3624])
+			del_TC_1_cafs[int(channel[6:])-1,1] = max(data[channel][3811:3867]) - min(data[channel][3811:3867])
+			del_TC_1_cafs[int(channel[6:])-1,2] = max(data[channel][5062:5107]) - min(data[channel][5062:5107])
 		if 'TC_A3_' in channel:
-			del_TC_3_h2o[int(channel[6:])-1,0] = max(data[channel][1290:1350]) - min(data[channel][1290:1350])
-			del_TC_3_h2o[int(channel[6:])-1,1] = max(data[channel][1600:1700]) - min(data[channel][1600:1700])
-			del_TC_3_h2o[int(channel[6:])-1,2] = max(data[channel][2170:2250]) - min(data[channel][2170:2250])
-			del_TC_3_cafs[int(channel[6:])-1,0] = max(data[channel][2450:2550]) - min(data[channel][2450:2550])
-			del_TC_3_cafs[int(channel[6:])-1,1] = max(data[channel][2950:3000]) - min(data[channel][2950:3000])
-			del_TC_3_cafs[int(channel[6:])-1,2] = max(data[channel][3100:3150]) - min(data[channel][3100:3150])
+			del_TC_3_h2o[int(channel[6:])-1,0] = max(data2[channel][2852:2920]) - min(data2[channel][2852:2920])
+			del_TC_3_h2o[int(channel[6:])-1,1] = max(data2[channel][3073:3176]) - min(data2[channel][3073:3176])
+			del_TC_3_h2o[int(channel[6:])-1,2] = max(data2[channel][3255:3332]) - min(data2[channel][3255:3332])
+			del_TC_3_cafs[int(channel[6:])-1,0] = max(data[channel][3575:3624]) - min(data[channel][3575:3624])
+			del_TC_3_cafs[int(channel[6:])-1,1] = max(data[channel][3811:3867]) - min(data[channel][3811:3867])
+			del_TC_3_cafs[int(channel[6:])-1,2] = max(data[channel][5062:5107]) - min(data[channel][5062:5107])
 del_water = concatenate([del_TC_1_h2o, del_TC_3_h2o], axis=1)
 del_cafs  = concatenate([del_TC_1_cafs, del_TC_3_cafs], axis=1)
 
 
 fig = figure()
-plot(del_water.mean(axis=1),y,'k',label='7/8 H$_2$O',linewidth=3)
+plot(del_water.mean(axis=1),y,'k',label='SS Mid H$_2$O',linewidth=3)
 plt.fill_betweenx(y,del_water.mean(axis=1)+del_water.std(axis=1),del_water.mean(axis=1)-del_water.std(axis=1), facecolor='black',alpha=0.5,linewidth=3)
-plot(del_cafs.mean(axis=1),y,'r-',label='7/8 CAFS',linewidth=3)
+plot(del_cafs.mean(axis=1),y,'r-',label='SS Mid CAFS',linewidth=3)
 plt.fill_betweenx(y,del_cafs.mean(axis=1)+del_cafs.std(axis=1),del_cafs.mean(axis=1)-del_cafs.std(axis=1), facecolor='red',alpha=0.25,linewidth=3)
 ax1 = gca()
 xlabel('$\Delta$T ($^{\circ}$C)')
@@ -83,15 +101,23 @@ X = del_cafs.ravel()
 est = sm.OLS(y, X)
 est = est.fit()
 print est.summary()
+print around(est.rsquared,decimals=3)
 X_prime = np.linspace(X.min(), X.max(), 100)[:, np.newaxis]
 #X_prime = sm.add_constant(X_prime)  # add constant
 y_hat = est.predict(X_prime)
+
+avg_rel_diff = sum((y-X)/((y+X)/2.))/len(X)
+print (y-X)/((y+X)/2.)
+print avg_rel_diff
 
 fig = figure()
 plt.scatter(X,y,alpha=0.5)
 plt.plot(X_prime, y_hat, 'r', alpha=0.9)  # Add the regression line, colored in red
 axis([0, 100, 0, 100])
+plt.text(8, 97, 'R$^2$ = ' + str(around(est.rsquared,decimals=3)),
+	 horizontalalignment='center',
+     verticalalignment='center', bbox=dict(facecolor='none', edgecolor='black'))
 xlabel('$\Delta$T ($^{\circ}$C) CAFS')
 ylabel('$\Delta$T ($^{\circ}$C) H$_2$O')
-savefig(plot_dir + test_name + '_scatter.pdf',format='pdf')
+savefig(plot_dir + 'SS' + '_scatter.pdf',format='pdf')
 
