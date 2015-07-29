@@ -14,6 +14,9 @@ rcParams.update({'figure.autolayout': True})
 #  = User Settings =
 #  =================
 
+# Choose Test Number
+current_test = 'Test_46_West_71015'
+
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
 
@@ -42,7 +45,7 @@ all_times = all_times.set_index('Time')
 info = pd.read_csv(info_file, index_col=3)
 
 # List of sensor groups for each plot
-sensor_groups = [['TC_A5_'],['TC_A6_'],['TC_A6_'],['BDP_A5_'],['BDP_A6_'],['BDP_A10_']]
+sensor_groups = [['TC_A5_'],['TC_A6_'],['TC_A10_'],['BDP_A5_'],['BDP_A6_'],['BDP_A10_']]
 
 # Files to skip
 skip_files = ['_times', '_reduced', 'description_','zero_','_rh','east']
@@ -57,12 +60,16 @@ def density (T):
 	density_value = [1.247,1.225,1.204,1.184,1.165,1.127,1.109,1.060,
 				1.029,.9996,.9721,.9461,.7461,.6159,.5243,.4565,.2772]
 
-	for i in range(0,len(density_temp)):
-		if T < density_temp[i] and T > density_temp[i-1]:
-			rho = density_value[i] - (density_value[i]-density_value[i-1])*(density_temp[i]-T)/(density_temp[i]-density_temp[i-1])
-		else:
-			continue
-		i += 1
+	rho = np.zeros(len(T))
+	#print len(T)
+	for h in range (0,len(T)):
+		for i in range(0,len(density_temp)):
+			if T[h] < density_temp[i] and T[h] > density_temp[i-1]:
+				rho[h] = density_value[i] - (density_value[i]-density_value[i-1])*(density_temp[i]-T[h])/(density_temp[i]-density_temp[i-1])
+			else:
+				continue
+			#i += 1
+		#h += 1
 
 	return rho;
 
@@ -99,6 +106,9 @@ for f in os.listdir(data_dir):
 		# Strip test name from file name
 		test_name = f[:-4]
 		print 'Test ' + test_name
+
+		if test_name != current_test:
+			continue
 
 		# Load exp. scaling file
 		if 'West' in test_name:
@@ -150,29 +160,28 @@ for f in os.listdir(data_dir):
 					# Grab coresponding TC
 					quantity_tc[:,int(channel[-1:])-1] = data['TC_' + channel[4:]] + 273.15
 
-		print quantity_tc #here is the full array for each group of TCs
-		print quantity_v  #here is the full array for each group of BDPs
-		#you want to operate on this tab space for each of the groups to calculate Q may have to add a tab level to sum Qs for each test though
+		# np.savetxt('../HRR_Data/quantity_tc.csv',quantity_tc,delimiter=",")
+		# np.savetxt('../HRR_Data/quantity_v.csv',quantity_v,delimiter=",")
 
+			rho = np.zeros(shape=(len(quantity_tc),8))
+			cp = np.zeros(shape=(len(quantity_tc),8))
 
+			for channel in range(0,8):
+				if ['TC_A5_'] or ['TC_A6'] in group:
+					print group
+					rho[:,channel] = density(quantity_tc[:,channel])
+					#cp[:,channel] = heatCapacity(quantity_tc[:,channel])
+			#print rho                              
 
-# #  ===================
-# #  = HRR Calculation =
-# #  ===================
-
-# time = 490
-
-# data = pd.read_csv(data_dir + 'Test_46_West_71015_Reduced.csv')
-
-# groups2 = ['TC 5 ']
-
-# for group in groups2:
-	
-
-# TC_A5_1 = data['TC 5 0.08 m BS West']
-# rho_A5_1 = np.zeros(len(TC_A5_1))
-# for i in range(0,len(TC_A5_1)):
-# 	rho_A5_1[i] = density(TC_A5_1[i])
+					# if 'TC_A5' in group:
+					# 	rho_A5[n] = density(TC_A5[n])
+					# 	cp_A5[n] = heatCapacity(TC_A5[n])
+					# elif 'TC_A6' in group:
+					# 	rho_A6[n] = density(TC_A6[n])
+					# 	cp_A6[n] = heatCapacity(TC_A6[n])
+					# else:
+					# 	rho_A10[n] = density(TC_A10[n])
+					# 	cp_A10[n] = heatCapacity(TC_A10[n])
 
 
 # TC_A5 = [331.4311939,326.0074702,336.83139,317.6481487,300.2922252,274.4683349,201.8816151,124.7623352]
@@ -185,22 +194,6 @@ for f in os.listdir(data_dir):
 # cp_A5 = np.zeros(8)
 # cp_A6 = np.zeros(8)
 # cp_A10 = np.zeros(8)
-
-# groups = ['TC_A5','TC_A6','TC_A10']
-
-# for group in groups:
-# 	for n in range(0,8):
-# 		if 'TC_A5' in group:
-# 			rho_A5[n] = density(TC_A5[n])
-# 			cp_A5[n] = heatCapacity(TC_A5[n])
-# 		elif 'TC_A6' in group:
-# 			rho_A6[n] = density(TC_A6[n])
-# 			cp_A6[n] = heatCapacity(TC_A6[n])
-# 		else:
-# 			rho_A10[n] = density(TC_A10[n])
-# 			cp_A10[n] = heatCapacity(TC_A10[n])
-
-
 
 # print np.mean(rho_A10)
 # print np.mean(cp_A10)
