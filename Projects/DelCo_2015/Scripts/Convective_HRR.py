@@ -24,7 +24,7 @@ current_test = 'Test_40_West_61415'
 
 # Constants for Calculations
 Area_A5_A6 = 3.716/16
-Area_A10 = 2.426/8
+Area_A10 = 2.168/8
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
