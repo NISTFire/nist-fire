@@ -137,7 +137,7 @@ for f in os.listdir(data_dir):
 		end_of_test = info['End of Test'][test_name]
 
 		# Read in Ambient Temperature from Test day
-		T_infinity = info['Ambient Temp'][test_name]
+		T_infinity = 32 #info['Ambient Temp'][test_name]
 
 		# Load exp. data file
 		data = pd.read_csv(data_dir + f)
@@ -198,34 +198,38 @@ for f in os.listdir(data_dir):
 		#  = Plotting =
 		#  ============
 
-		# plt.plot(q_dot_groups)
-		# plt.savefig(save_dir + test_name + '_HRR.pdf')
-		# plt.close('all')
+		fig = figure()
+		# Set axis options, legend, tickmarks, etc.
+		ax1 = plt.gca()
+		handles1, labels1 = ax1.get_legend_handles_labels()
+		plt.xlim([0, end_of_test - start_of_test])
+		ax1.xaxis.set_major_locator(plt.MaxNLocator(8))
+		ax1_xlims = ax1.axis()[0:2]
+		plt.grid(True)
+		plt.xlabel('Time (s)', fontsize=20)
+		plt.xticks(fontsize=16)
+		plt.yticks(fontsize=16)
+		plt.ylabel('Heat Release Rate (kW)', fontsize=20)
+		plt.ylim([0, 7000])
+		plt.xticks(fontsize=16)
+		plt.yticks(fontsize=16)
+		grid(True)
+		plot(data['Time'],q_dot_groups)
 
-			fig = figure()
-			plot(data['Time'],q_dot_groups)
-			ax1 = gca()
-			xlabel('Time (s)', fontsize=20)
-			ylabel('Heat Release Rate (kW)', fontsize=20)
-			xticks(fontsize=16)
-			yticks(fontsize=16)
-			#legend(numpoints=1,loc=2,ncol=1,fontsize=16)
-			axis([0, end_of_test - start_of_test, 0, 6000])
-			grid(True)
-	      	#Add vertical lines and labels for timing information (if available)
-			try:
-				ax3 = ax1.twiny()
-				ax3.set_xlim(ax1_xlims)
-				events = all_times[test_name].dropna()
-				events = events[~events.str.startswith('#')]
-				[plt.axvline(_x - start_of_test, color='0.50', lw=1) for _x in events.index.values]
-				ax3.set_xticks(events.index.values - start_of_test)
-				plt.setp(plt.xticks()[1], rotation=60)
-				ax3.set_xticklabels(events.values, fontsize=8, ha='left')
-				plt.xlim([0, end_of_test - start_of_test])
-				fig.set_size_inches(10, 6)
-			except:
-				pass
-			savefig(save_dir + test_name + '_HRR.pdf',format='pdf')
-			close()
+		#Add vertical lines and labels for timing information (if available)
+		try:
+			ax3 = ax1.twiny()
+			ax3.set_xlim(ax1_xlims)
+			events = all_times[test_name].dropna()
+			events = events[~events.str.startswith('#')]
+			[plt.axvline(_x - start_of_test, color='0.50', lw=1) for _x in events.index.values]
+			ax3.set_xticks(events.index.values - start_of_test)
+			plt.setp(plt.xticks()[1], rotation=60)
+			ax3.set_xticklabels(events.values, fontsize=8, ha='left')
+			plt.xlim([0, end_of_test - start_of_test])
+			fig.set_size_inches(10, 6)
+		except:
+			pass
+		savefig(save_dir + test_name + '_HRR.pdf',format='pdf')
+		close()
 
