@@ -20,12 +20,12 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Choose Test Number
-current_test = 'Test_46_West_71015'
+current_test = 'Test_30_West_51415'
 
 # Constants for Calculations
 Area_A5_A6 = 3.716/16
 Area_A10 = 2.426/8
-T_infinity = 30
+#T_infinity = 30
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
@@ -42,6 +42,8 @@ info_file = '../Experimental_Data/Description_of_Experiments.csv'
 
 # Location to save/output figures
 save_dir = '../Figures/HRR_Script_Figures/'
+if not os.path.exists(save_dir):
+    os.makedirs(save_dir)
 
 # Time averaging window for data smoothing
 data_time_averaging_window = 10
@@ -118,6 +120,7 @@ for f in os.listdir(data_dir):
 		test_name = f[:-4]
 		print 'Test ' + test_name
 
+		# Option to specify which test is run
 		# if test_name != current_test:
 		# 	continue
 
@@ -133,6 +136,9 @@ for f in os.listdir(data_dir):
 		# Read in test times to offset plots
 		start_of_test = info['Start of Test'][test_name]
 		end_of_test = info['End of Test'][test_name]
+
+		# Read in Ambient Temperature from Test day
+		T_infinity = info['Ambient Temp'][test_name]
 
 		# Load exp. data file
 		data = pd.read_csv(data_dir + f)
@@ -175,7 +181,9 @@ for f in os.listdir(data_dir):
 					# Calculate velocity
 					quantity_v[:,int(channel[-1:])-1] = 0.0698 * np.sqrt(np.abs(pressure) * (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
 					# Grab coresponding TC
-					quantity_tc[:,int(channel[-1:])-1] = data['TC_' + channel[4:]] + 273.15
+					quantity_tc[:,int(channel[-1:])-1] = data['TC_' + channel[4:]] #+ 273.15
+			# if 'BDP_A5_' in group:
+			# 	np.savetxt("../HRR_Data/temp.csv",quantity_tc[:,1],delimiter=",") 
 
 			# HRR Calculation
 			if 'BDP_A5_' in group or 'BDP_A6_' in group or 'BDP_A10_' in group:
