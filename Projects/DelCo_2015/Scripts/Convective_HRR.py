@@ -7,6 +7,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from itertools import cycle
 
+import numpy.ma as ma
+from pylab import *
+import math
+import string
+
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
 
@@ -16,6 +21,11 @@ rcParams.update({'figure.autolayout': True})
 
 # Choose Test Number
 current_test = 'Test_46_West_71015'
+
+# Constants for Calculations
+Area_A5_A6 = 3.716/16
+Area_A10 = 2.426/8
+T_infinity = 30
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
@@ -31,7 +41,7 @@ scaling_file_east = '../DAQ_Files/East_DelCo_DAQ_Channel_List.csv'
 info_file = '../Experimental_Data/Description_of_Experiments.csv'
 
 # Location to save/output figures
-save_dir = '../Figures/Script_Figures/'
+save_dir = '../Figures/HRR_Script_Figures/'
 
 # Time averaging window for data smoothing
 data_time_averaging_window = 10
@@ -61,7 +71,7 @@ def density (T):
 				1.029,.9996,.9721,.9461,.7461,.6159,.5243,.4565,.2772]
 
 	rho = np.zeros(len(T))
-	#print len(T)
+
 	for h in range (0,len(T)):
 		for i in range(0,len(density_temp)):
 			if T[h] < density_temp[i] and T[h] > density_temp[i-1]:
@@ -70,7 +80,6 @@ def density (T):
 				continue
 			#i += 1
 		#h += 1
-
 	return rho;
 
 def heatCapacity (T):
@@ -81,13 +90,15 @@ def heatCapacity (T):
 	cp_value = [1.003,1.005,1.008,1.013,1.020,1.029,1.040,1.051,1.063,
 				1.075,1.087,1.099,1.121,1.142,1.155,1.173,1.190,1.204,1.216]
 
+	cp = np.zeros(len(T))
 
-	for i in range(0,len(cp_temp)):
-		if T_Kelvin < cp_temp[i] and T_Kelvin > cp_temp[i-1]:
-			cp = cp_value[i] - (cp_value[i]-cp_value[i-1])*(cp_temp[i]-T_Kelvin)/(cp_temp[i]-cp_temp[i-1])
-		else:
-			continue
-		i += 1
+	for h in range(0,len(T)):
+		for i in range(0,len(cp_temp)):
+			if T_Kelvin[h] < cp_temp[i] and T_Kelvin[h] > cp_temp[i-1]:
+				cp[h] = cp_value[i] - (cp_value[i]-cp_value[i-1])*(cp_temp[i]-T_Kelvin[h])/(cp_temp[i]-cp_temp[i-1])
+			else:
+				continue
+
 
 	return cp;
 
@@ -107,8 +118,8 @@ for f in os.listdir(data_dir):
 		test_name = f[:-4]
 		print 'Test ' + test_name
 
-		if test_name != current_test:
-			continue
+		# if test_name != current_test:
+		# 	continue
 
 		# Load exp. scaling file
 		if 'West' in test_name:
@@ -140,6 +151,12 @@ for f in os.listdir(data_dir):
 		quantity_v = np.zeros((len(data),8))
 		quantity_tc = np.zeros((len(data),8))
 
+		rho = np.zeros((len(data),8))
+		cp = np.zeros((len(data),8))
+		mass_flow = np.zeros((len(data),8))
+		q_dot_channels = np.zeros(len(data))
+		q_dot_groups = np.zeros(len(data))
+
 		#  ============
 		#  = Get Data =
 		#  ============
@@ -160,41 +177,50 @@ for f in os.listdir(data_dir):
 					# Grab coresponding TC
 					quantity_tc[:,int(channel[-1:])-1] = data['TC_' + channel[4:]] + 273.15
 
-		# np.savetxt('../HRR_Data/quantity_tc.csv',quantity_tc,delimiter=",")
-		# np.savetxt('../HRR_Data/quantity_v.csv',quantity_v,delimiter=",")
-
-			rho = np.zeros(shape=(len(quantity_tc),8))
-			cp = np.zeros(shape=(len(quantity_tc),8))
-
-			for channel in range(0,8):
-				if ['TC_A5_'] or ['TC_A6'] in group:
-					print group
+			# HRR Calculation
+			if 'BDP_A5_' in group or 'BDP_A6_' in group or 'BDP_A10_' in group:
+				for channel in range(0,8):
 					rho[:,channel] = density(quantity_tc[:,channel])
-					#cp[:,channel] = heatCapacity(quantity_tc[:,channel])
-			#print rho                              
+					cp[:,channel] = heatCapacity(quantity_tc[:,channel])
+					if 'BDP_A5_' in group or 'BDP_A6_' in group:
+						mass_flow[:,channel] = rho[:,channel]*quantity_v[:,channel]*Area_A5_A6
+					else:
+						mass_flow[:,channel] = rho[:,channel]*quantity_v[:,channel]*Area_A10
+					q_dot_channels[:] += mass_flow[:,channel]*cp[:,channel]*(quantity_tc[:,channel]-T_infinity)
+				q_dot_groups += q_dot_channels
 
-					# if 'TC_A5' in group:
-					# 	rho_A5[n] = density(TC_A5[n])
-					# 	cp_A5[n] = heatCapacity(TC_A5[n])
-					# elif 'TC_A6' in group:
-					# 	rho_A6[n] = density(TC_A6[n])
-					# 	cp_A6[n] = heatCapacity(TC_A6[n])
-					# else:
-					# 	rho_A10[n] = density(TC_A10[n])
-					# 	cp_A10[n] = heatCapacity(TC_A10[n])
+		#  ============
+		#  = Plotting =
+		#  ============
 
+		# plt.plot(q_dot_groups)
+		# plt.savefig(save_dir + test_name + '_HRR.pdf')
+		# plt.close('all')
 
-# TC_A5 = [331.4311939,326.0074702,336.83139,317.6481487,300.2922252,274.4683349,201.8816151,124.7623352]
-# TC_A6 = [314.2820229,329.4394212,286.9078352,241.185635,207.0832675,173.6605126,136.6284685,101.0759911]
-# TC_A10 = [281.3507691,304.6334154,262.1768415,296.8416945,294.4427193,288.5982813,190.1521199,101.5997678]
-
-# rho_A5 = np.zeros(8)
-# rho_A6 = np.zeros(8)
-# rho_A10 = np.zeros(8)
-# cp_A5 = np.zeros(8)
-# cp_A6 = np.zeros(8)
-# cp_A10 = np.zeros(8)
-
-# print np.mean(rho_A10)
-# print np.mean(cp_A10)
+		fig = figure()
+		plot(q_dot_groups)
+		ax1 = gca()
+		xlabel('Time (s)', fontsize=20)
+		ylabel('Heat Release Rate (kW)', fontsize=20)
+		xticks(fontsize=16)
+		yticks(fontsize=16)
+		#legend(numpoints=1,loc=2,ncol=1,fontsize=16)
+		axis([0, end_of_test - start_of_test, -3000, 4000])
+		grid(True)
+      	# Add vertical lines and labels for timing information (if available)
+		try:
+			ax3 = ax1.twiny()
+			ax3.set_xlim(ax1_xlims)
+			events = all_times[test_name].dropna()
+			events = events[~events.str.startswith('#')]
+			[plt.axvline(_x - start_of_test, color='0.50', lw=1) for _x in events.index.values]
+			ax3.set_xticks(events.index.values - start_of_test)
+			plt.setp(plt.xticks()[1], rotation=60)
+			ax3.set_xticklabels(events.values, fontsize=8, ha='left')
+			plt.xlim([0, end_of_test - start_of_test])
+			fig.set_size_inches(10, 6)
+		except:
+			pass
+		savefig(save_dir + test_name + '_HRR.pdf',format='pdf')
+		close()
 
