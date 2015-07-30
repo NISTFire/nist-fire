@@ -20,12 +20,11 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Choose Test Number
-current_test = 'Test_30_West_51415'
+current_test = 'Test_40_West_61415'
 
 # Constants for Calculations
 Area_A5_A6 = 3.716/16
 Area_A10 = 2.426/8
-#T_infinity = 30
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
@@ -180,10 +179,8 @@ for f in os.listdir(data_dir):
 					pressure = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Convert voltage to pascals
 					# Calculate velocity
 					quantity_v[:,int(channel[-1:])-1] = 0.0698 * np.sqrt(np.abs(pressure) * (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
-					# Grab coresponding TC
-					quantity_tc[:,int(channel[-1:])-1] = data['TC_' + channel[4:]] #+ 273.15
-			# if 'BDP_A5_' in group:
-			# 	np.savetxt("../HRR_Data/temp.csv",quantity_tc[:,1],delimiter=",") 
+					# Grab corresponding TC
+					quantity_tc[:,int(channel[-1:])-1] = data['TC_' + channel[4:]] 
 
 			# HRR Calculation
 			if 'BDP_A5_' in group or 'BDP_A6_' in group or 'BDP_A10_' in group:
@@ -205,30 +202,30 @@ for f in os.listdir(data_dir):
 		# plt.savefig(save_dir + test_name + '_HRR.pdf')
 		# plt.close('all')
 
-		fig = figure()
-		plot(q_dot_groups)
-		ax1 = gca()
-		xlabel('Time (s)', fontsize=20)
-		ylabel('Heat Release Rate (kW)', fontsize=20)
-		xticks(fontsize=16)
-		yticks(fontsize=16)
-		#legend(numpoints=1,loc=2,ncol=1,fontsize=16)
-		axis([0, end_of_test - start_of_test, -3000, 4000])
-		grid(True)
-      	# Add vertical lines and labels for timing information (if available)
-		try:
-			ax3 = ax1.twiny()
-			ax3.set_xlim(ax1_xlims)
-			events = all_times[test_name].dropna()
-			events = events[~events.str.startswith('#')]
-			[plt.axvline(_x - start_of_test, color='0.50', lw=1) for _x in events.index.values]
-			ax3.set_xticks(events.index.values - start_of_test)
-			plt.setp(plt.xticks()[1], rotation=60)
-			ax3.set_xticklabels(events.values, fontsize=8, ha='left')
-			plt.xlim([0, end_of_test - start_of_test])
-			fig.set_size_inches(10, 6)
-		except:
-			pass
-		savefig(save_dir + test_name + '_HRR.pdf',format='pdf')
-		close()
+			fig = figure()
+			plot(data['Time'],q_dot_groups)
+			ax1 = gca()
+			xlabel('Time (s)', fontsize=20)
+			ylabel('Heat Release Rate (kW)', fontsize=20)
+			xticks(fontsize=16)
+			yticks(fontsize=16)
+			#legend(numpoints=1,loc=2,ncol=1,fontsize=16)
+			axis([0, end_of_test - start_of_test, 0, 6000])
+			grid(True)
+	      	#Add vertical lines and labels for timing information (if available)
+			try:
+				ax3 = ax1.twiny()
+				ax3.set_xlim(ax1_xlims)
+				events = all_times[test_name].dropna()
+				events = events[~events.str.startswith('#')]
+				[plt.axvline(_x - start_of_test, color='0.50', lw=1) for _x in events.index.values]
+				ax3.set_xticks(events.index.values - start_of_test)
+				plt.setp(plt.xticks()[1], rotation=60)
+				ax3.set_xticklabels(events.values, fontsize=8, ha='left')
+				plt.xlim([0, end_of_test - start_of_test])
+				fig.set_size_inches(10, 6)
+			except:
+				pass
+			savefig(save_dir + test_name + '_HRR.pdf',format='pdf')
+			close()
 
