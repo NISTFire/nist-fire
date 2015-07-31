@@ -133,7 +133,7 @@ for f in os.listdir(data_dir):
 		end_of_test = info['End of Test'][test_name]
 
 		# Read in Ambient Temperature from Test day
-		T_infinity = 32 #info['Ambient Temp'][test_name]
+		T_infinity = info['Ambient Temp'][test_name]
 
 		# Load exp. data file
 		data = pd.read_csv(data_dir + f)
@@ -189,6 +189,7 @@ for f in os.listdir(data_dir):
 						mass_flow[:,channel] = rho[:,channel]*quantity_v[:,channel]*Area_A10
 					q_dot_channels[:] += mass_flow[:,channel]*cp[:,channel]*(quantity_tc[:,channel]-T_infinity)
 				q_dot_groups += q_dot_channels
+		#print max(q_dot_groups)
 
 		#  ============
 		#  = Plotting =

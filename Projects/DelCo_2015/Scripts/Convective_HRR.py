@@ -20,7 +20,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Choose Test Number
-current_test = 'Test_39_West_61315'
+current_test = 'Test_46_West_71015'
 
 # Constants for Calculations
 Area_A5_A6 = 3.716/16
@@ -116,7 +116,11 @@ for f in os.listdir(data_dir):
 		print 'Test ' + test_name
 
 		# Option to specify which test is run
-		if test_name != current_test:
+		# if test_name != current_test:
+		# 	continue
+
+		# Skip Test 39, it gets run its own unique script
+		if test_name == 'Test_39_West_61315':
 			continue
 
 		# Load exp. scaling file
@@ -133,7 +137,7 @@ for f in os.listdir(data_dir):
 		end_of_test = info['End of Test'][test_name]
 
 		# Read in Ambient Temperature from Test day
-		T_infinity = 32 #info['Ambient Temp'][test_name]
+		T_infinity = info['Ambient Temp'][test_name]
 
 		# Load exp. data file
 		data = pd.read_csv(data_dir + f)
@@ -164,6 +168,16 @@ for f in os.listdir(data_dir):
 
 		for group in sensor_groups: #cycle through specified groups
 			for channel in data.columns[1:]:	#go through the channels
+				# Find Excluded Channels
+				if any([substring in channel for substring in info['HRR Excluded Channels'][test_name].split('|')]):
+					channel_name = channel[:-1]
+					channel_number = int(channel[-1:])
+					if channel_number is 1:	# Replace channel 1 with channel 2
+						data[channel] = data[(channel_name + (channel_number + 1))]
+					elif channel_number is 8:	# Replace channel 8 with channel 7
+						data[channel] = data[(channel_name + (channel_number - 1))]
+					else:	# Replace current channel with average of channels above and below
+						data[channel] = np.mean([data[channel_name + str(channel_number-1)],data[channel_name + str(channel_number+1)]])
 				if not 'BDP_' in channel:	#operate only on BDPs
 					continue
 				if any([substring in channel for substring in group]):
@@ -189,6 +203,7 @@ for f in os.listdir(data_dir):
 						mass_flow[:,channel] = rho[:,channel]*quantity_v[:,channel]*Area_A10
 					q_dot_channels[:] += mass_flow[:,channel]*cp[:,channel]*(quantity_tc[:,channel]-T_infinity)
 				q_dot_groups += q_dot_channels
+		#print max(q_dot_groups)
 
 		#  ============
 		#  = Plotting =
