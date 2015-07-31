@@ -48,31 +48,30 @@ for entry in range(0,len(info)):
 		del_TC_1_cafs = np.zeros((11,num_rep))
 		del_TC_3_cafs = np.zeros((11,num_rep))
 
-		for group in sensor_groups:
-			for channel in data1.columns[1:]:
-				for reps in range(0,num_rep):
+		for reps in range(0,num_rep):
+			for group in sensor_groups:
+				for channel in data1.columns[1:]:
 					if 'TC_A1_' in channel:
-						water_test = 'data'+str(info['Test_Series_Water'][entry])
+						water_test = 'data'+str(info['Test_Series_Water'][entry+reps])
 						water_test = locals().get(water_test)
-						water_data_interval = water_test[channel][info['Start_Time_Water'][entry]:info['Stop_Time_Water'][entry]]
+						water_data_interval = water_test[channel][info['Start_Time_Water'][entry+reps]:info['Stop_Time_Water'][entry+reps]]
 						del_TC_1_h2o[int(channel[6:])-1,reps] = max(water_data_interval) - min(water_data_interval)
-						
-						cafs_test = 'data'+str(info['Test_Series_CAFS'][entry])
+
+						cafs_test = 'data'+str(info['Test_Series_CAFS'][entry+reps])
 						cafs_test = locals().get(cafs_test)
-						cafs_data_interval = cafs_test[channel][info['Start_Time_CAFS'][entry]:info['Stop_Time_CAFS'][entry]]
+						cafs_data_interval = cafs_test[channel][info['Start_Time_CAFS'][entry+reps]:info['Stop_Time_CAFS'][entry+reps]]
 						del_TC_1_cafs[int(channel[6:])-1,reps] = max(cafs_data_interval) - min(cafs_data_interval)
 					if 'TC_A3_' in channel:
-						water_test = 'data'+str(info['Test_Series_Water'][entry])
+						water_test = 'data'+str(info['Test_Series_Water'][entry+reps])
 						water_test = locals().get(water_test)
-						water_data_interval = water_test[channel][info['Start_Time_Water'][entry]:info['Stop_Time_Water'][entry]]
+						water_data_interval = water_test[channel][info['Start_Time_Water'][entry+reps]:info['Stop_Time_Water'][entry+reps]]
 						del_TC_3_h2o[int(channel[6:])-1,reps] = max(water_data_interval) - min(water_data_interval)
-						
-						cafs_test = 'data'+str(info['Test_Series_CAFS'][entry])
+
+						cafs_test = 'data'+str(info['Test_Series_CAFS'][entry+reps])
 						cafs_test = locals().get(cafs_test)
-						cafs_data_interval = cafs_test[channel][info['Start_Time_CAFS'][entry]:info['Stop_Time_CAFS'][entry]]
+						cafs_data_interval = cafs_test[channel][info['Start_Time_CAFS'][entry+reps]:info['Stop_Time_CAFS'][entry+reps]]
 						del_TC_3_cafs[int(channel[6:])-1,reps] = max(cafs_data_interval) - min(cafs_data_interval)
 		del_water = concatenate([del_TC_1_h2o, del_TC_3_h2o], axis=1)
-		print del_water
 		del_cafs  = concatenate([del_TC_1_cafs, del_TC_3_cafs], axis=1)
 
 
@@ -94,8 +93,9 @@ for entry in range(0,len(info)):
 		fig = figure()
 		plt.scatter(X,y,alpha=0.5)
 		plt.plot(X_prime, y_hat, 'r', alpha=0.9)  # Add the regression line, colored in red
+		plt.plot(X_prime,X_prime,'k')
 		axis([0, max_axis, 0, max_axis])
-		plt.text(8, max_axis-5, 'R$^2$ = ' + str(around(est.rsquared,decimals=3)),
+		plt.text(0.1*max_axis , 0.95*max_axis, 'R$^2$ = ' + str(around(est.rsquared,decimals=3)),
 			 horizontalalignment='center',
 		     verticalalignment='center', bbox=dict(facecolor='none', edgecolor='black'))
 		xlabel('$\Delta$T ($^{\circ}$C) CAFS')
