@@ -22,8 +22,8 @@ rcParams.update({'figure.autolayout': True})
 # Choose Test Number
 current_test = 'Test_39_West_61315'
 
-# Constants for Calculations
-Area_A5_A6 = 3.716/16
+# Area of Flow Per Channel
+Area_A5_A6 = 3.716/8
 Area_A10 = 2.168/8
 
 # Location of experimental data files
@@ -179,7 +179,7 @@ for f in os.listdir(data_dir):
 					quantity_tc[:,int(channel[-1:])-1] = data['TC_' + channel[4:]] 
 
 			# HRR Calculation
-			if 'BDP_A5_' in group or 'BDP_A6_' in group or 'BDP_A10_' in group:
+			if 'BDP_A6_' in group or 'BDP_A10_' in group:
 				for channel in range(0,8):
 					rho[:,channel] = density(quantity_tc[:,channel])
 					cp[:,channel] = heatCapacity(quantity_tc[:,channel])
@@ -226,7 +226,6 @@ for f in os.listdir(data_dir):
 			fig.set_size_inches(10, 6)
 		except:
 			pass
-			
 		savefig(save_dir + test_name + '_HRR.pdf',format='pdf')
 		close()
 
