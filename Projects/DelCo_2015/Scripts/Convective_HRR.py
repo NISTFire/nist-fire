@@ -103,7 +103,8 @@ def heatCapacity (T):
 #  ===============================
 #  = Loop through all data files =
 #  ===============================
-
+i = 0
+max_HRR_array = np.zeros(((len(data_dir)-2),2))
 for f in os.listdir(data_dir):
 	if f.endswith('.csv'):
 
@@ -119,7 +120,7 @@ for f in os.listdir(data_dir):
 		# if test_name != current_test:
 		# 	continue
 
-		# Skip Test 39, it gets run its own unique script
+		# Skip Test 39, it gets its own unique script
 		if test_name == 'Test_39_West_61315':
 			continue
 
@@ -203,7 +204,12 @@ for f in os.listdir(data_dir):
 						mass_flow[:,channel] = rho[:,channel]*quantity_v[:,channel]*Area_A10
 					q_dot_channels[:] += mass_flow[:,channel]*cp[:,channel]*(quantity_tc[:,channel]-T_infinity)
 				q_dot_groups += q_dot_channels
-		#print max(q_dot_groups)
+		max_HRR = max(q_dot_groups)
+		max_HRR_array[i,1] = max_HRR
+		max_HRR_array[i,0] = int(test_name[5:7])
+		print max_HRR
+		np.savetxt(save_dir + "Peak_HRR_Values.csv",max_HRR_array,delimiter=",")
+		i += 1
 
 		#  ============
 		#  = Plotting =

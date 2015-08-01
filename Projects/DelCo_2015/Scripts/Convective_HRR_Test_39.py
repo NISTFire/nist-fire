@@ -189,7 +189,7 @@ for f in os.listdir(data_dir):
 						mass_flow[:,channel] = rho[:,channel]*quantity_v[:,channel]*Area_A10
 					q_dot_channels[:] += mass_flow[:,channel]*cp[:,channel]*(quantity_tc[:,channel]-T_infinity)
 				q_dot_groups += q_dot_channels
-		#print max(q_dot_groups)
+		print max(q_dot_groups)
 
 		#  ============
 		#  = Plotting =
