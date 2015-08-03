@@ -51,8 +51,8 @@ for f in os.listdir(data_dir):
 		data['Time'] = data['Time'].values - start_of_test
 
 		fig = figure()
-		plot(data['Time'],data['TC17'],'b*-',markevery=50,ms=8,label='1')
-		plot(data['Time'],data['TC16'],'rs-',markevery=50,ms=8,label='2')
+		plot(data['Time'],data['TC16'],'b*-',markevery=50,ms=8,label='1')
+		plot(data['Time'],data['TC17'],'rs-',markevery=50,ms=8,label='2')
 		plot(data['Time'],data['TC18'],'g^-',markevery=50,ms=8,label='3')
 		plot(data['Time'],data['TC19'],'co-',markevery=50,ms=8,label='4')
 		plot(data['Time'],data['TC20'],'m<-',markevery=50,ms=8,label='5')
