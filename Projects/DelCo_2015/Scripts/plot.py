@@ -15,7 +15,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Choose Test Number
-current_test = 'Test_58_East_80615'
+current_test = 'Test_59_East_80815'
 
 # Plot mode: figure or video
 plot_mode = 'figure'
@@ -144,7 +144,7 @@ for f in os.listdir(data_dir):
 
             # Plot style - colors and markers
             plt.rc('axes', color_cycle=['k', 'r', 'g', 'b','#f4a460','#4c177d', 'c','gold','m','firebrick', 'mediumblue','#cc5500'])
-            plot_markers = cycle(['s', 'o', '^', 'd', 'h', 's', 'p', 'v'])
+            plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p', 'v'])
 
             for channel in channel_groups.get_group(group).index.values:
 
@@ -176,10 +176,10 @@ for f in os.listdir(data_dir):
                     line_style = '-'
                     if 'TC Helmet ' in channel:
                         axis_scale = 'Y Scale TC_Helmet'
-                    elif 'TC Gear ' in channel:
+                    elif 'TC Gear' in group:
                         axis_scale = 'Y Scale TC_Gear'
                     elif 'TC Manikin ' in channel:
-                    	axis_scale = 'Y Scale TC_Gear'
+                    	axis_scale = 'Y Scale TC_Manikin'
                     else:
                         axis_scale = 'Y Scale TC'
                     secondary_axis_label = 'Temperature ($^\circ$F)'
