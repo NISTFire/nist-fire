@@ -14,6 +14,9 @@ rcParams.update({'figure.autolayout': True})
 #  = User Settings =
 #  =================
 
+# Choose Test Number
+current_test = 'Test_58_East_80615'
+
 # Plot mode: figure or video
 plot_mode = 'figure'
 
@@ -83,6 +86,10 @@ for f in os.listdir(data_dir):
         test_name = f[:-4]
         print 'Test ' + test_name
 
+        # Option to specify which test is run
+        if test_name != current_test:
+          continue
+
         # If video plot mode is enabled, then plot from only one test
         if plot_mode == 'video':
             if video_test_name not in test_name:
@@ -122,7 +129,6 @@ for f in os.listdir(data_dir):
 
         # Generate a plot for each quantity group
         for group in channel_groups.groups:
-
             # Skip excluded groups listed in test description file
             if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
                 continue
@@ -137,7 +143,7 @@ for f in os.listdir(data_dir):
             fig = plt.figure()
 
             # Plot style - colors and markers
-            plt.rc('axes', color_cycle=['k', 'r', 'g', 'b','#f4a460','#4c177d', 'c','gold','m',])
+            plt.rc('axes', color_cycle=['k', 'r', 'g', 'b','#f4a460','#4c177d', 'c','gold','m','firebrick', 'mediumblue','#cc5500'])
             plot_markers = cycle(['s', 'o', '^', 'd', 'h', 's', 'p', 'v'])
 
             for channel in channel_groups.get_group(group).index.values:
@@ -205,6 +211,8 @@ for f in os.listdir(data_dir):
                         line_style = '--'
                     if 'Radiometer' in channel:
                         line_style = '--'
+                    elif 'Heat Flux' in channel:
+                        line_style = '-'
                     axis_scale = 'Y Scale HF'
 
                 # Plot pressures
