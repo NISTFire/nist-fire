@@ -15,7 +15,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Choose Test Number
-current_test = 'Test_63_East_81015'
+current_test = 'Test_61_East_80915'
 
 # Plot mode: figure or video
 plot_mode = 'figure'
@@ -191,14 +191,20 @@ for f in os.listdir(data_dir):
                     conv_pascal = 248.8
                     zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
                     pressure = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Convert voltage to pascals
-                    # Calculate velocity
-                    current_channel_data = 0.0698 * np.sqrt(np.abs(pressure) *
-                                                            (data[channel_list['Device Name']['TC ' + channel[4:]]] + 273.15)) * np.sign(pressure)
-                    plt.ylabel('Velocity (m/s)', fontsize=20)
-                    line_style = '-'
-                    axis_scale = 'Y Scale BDP'
-                    secondary_axis_label = 'Velocity (mph)'
-                    secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
+                    if int(test_name[5:-11]) >= 57 and 'East' in test_name and 'BDP A7' in group:
+                        current_channel_data = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)
+                        plt.ylabel('Pressure (Pa)', fontsize=20)
+                        line_style = '-'
+                        axis_scale = 'Y Scale PRESSURE'
+                    else:
+                        # Calculate velocity
+                        current_channel_data = 0.0698 * np.sqrt(np.abs(pressure) *
+                                                                (data[channel_list['Device Name']['TC ' + channel[4:]]] + 273.15)) * np.sign(pressure)
+                        plt.ylabel('Velocity (m/s)', fontsize=20)
+                        line_style = '-'
+                        axis_scale = 'Y Scale BDP'
+                        secondary_axis_label = 'Velocity (mph)'
+                        secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
 
                 # Plot heat fluxes
                 if channel_list['Measurement Type'][channel] == 'Heat Flux':
@@ -231,10 +237,11 @@ for f in os.listdir(data_dir):
                     zero_voltage = np.mean(current_channel_data[0:pre_test_time])
                     if int(test_name[5:-11]) >= 45:
                         if 'Carbon Dioxide ' in channel:
-                            current_channel_data = current_channel_data * 2.0
+                            current_channel_data = (current_channel_data-zero_voltage) * 10/(5.-zero_voltage)
                         elif 'Carbon Monoxide ' in channel:
-                            current_channel_data = current_channel_data * 1.0
+                            current_channel_data = (current_channel_data-zero_voltage) * 5.0/(5.-zero_voltage)
                         else:
+                            calibration_slope = 20.9/(zero_voltage-1.)
                             current_channel_data = current_channel_data * 4.18 * 1.2
                     else:
                         if 'Carbon ' in channel:
