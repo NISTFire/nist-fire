@@ -15,7 +15,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Choose Test Number
-current_test = 'Test_59_East_80815'
+current_test = 'Test_63_East_81015'
 
 # Plot mode: figure or video
 plot_mode = 'figure'
@@ -40,7 +40,7 @@ elif plot_mode == 'video':
     save_dir = '../Figures/Video_Figures/'
 
 # Time averaging window for data smoothing
-data_time_averaging_window = 10
+data_time_averaging_window = 5
 
 # Duration of pre-test time for bi-directional probes and heat flux gauges (s)
 pre_test_time = 60

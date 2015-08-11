@@ -207,8 +207,8 @@ SC1Mod12,12,TC_A15_1,1,0,TC Basement 5,TC Basement,Temperature
 SC1Mod12,13,TC_A15_2,1,0,TC Basement 6,TC Basement,Temperature
 SC1Mod12,14,TC_A15_3,1,0,TC Basement 7,TC Basement,Temperature
 SC1Mod12,15,BDP_A15_1,1,0,TC Basement 8,TC Basement,Temperature
-SC1Mod12,16,BDP_A15_2,6242.2,0,Heat Flux Mask,Heat Flux 2,Heat Flux
-SC1Mod12,17,BDP_A15_3,2976.19,0,Radiometer,Heat Flux 2,Heat Flux
+SC1Mod12,16,BDP_A15_2,11350.74,0,Heat Flux,Heat Flux 2,Heat Flux
+SC1Mod12,17,BDP_A15_3,6016.85,0,Radiometer,Heat Flux 2,Heat Flux
 SC1Mod12,18,HF_1_V,1603.85,0,Heat Flux 1 V West,Heat Flux,Heat Flux
 SC1Mod12,19,HF_1_H,1759.01,0,Heat Flux 1 H West,Heat Flux,Heat Flux
 SC1Mod12,20,HF_2_V,4821.6,0,Heat Flux 2 V West,Heat Flux,Heat Flux
