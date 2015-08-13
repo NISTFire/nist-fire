@@ -15,7 +15,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Choose Test Number
-current_test = 'Test_61_East_80915'
+current_test = 'Test_66_East_81315'
 
 # Plot mode: figure or video
 plot_mode = 'figure'
