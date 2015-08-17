@@ -2,10 +2,10 @@ from __future__ import division
 import os
 import numpy as np
 import pandas as pd
-from bokeh.plotting import figure,show,output_file
-from bokeh.io import output_notebook
+from bokeh.plotting import figure,show,output_file,vplot
 from bokeh.models import HoverTool
 from collections import OrderedDict
+from bokeh.plotting import figure
 
 #  =================
 #  = User Settings =
@@ -13,7 +13,7 @@ from collections import OrderedDict
 
 # Choose Test Number
 
-current_test = 'Test_66_East_81315'
+current_test = 'Test_64_West_81215'
 
 # Plot mode: figure or video
 plot_mode = 'figure'
@@ -44,6 +44,8 @@ info = pd.read_csv(info_file, index_col=3)
 
 # Files to skip
 skip_files = ['_times', '_reduced', 'description_','zero_','_rh']
+
+colors=['#cc5500', '#228b22','#f4a460','#4c177d','firebrick', 'mediumblue', 'darkgreen', 'cadetblue', 'indigo', 'crimson', 'gold']
 
 for f in os.listdir(data_dir):
 	if f.endswith('.csv'):
@@ -88,21 +90,30 @@ for f in os.listdir(data_dir):
 		data_copy = data_copy.dropna()
 		data = data_copy
 
-		x=data['Time']
-		y=data['TC_A1_1']
-		y8=data['TC_A1_8']		
+		output_file(test_name +'.html')
 
-		p=figure(tools="pan,box_zoom,reset,resize,save,hover",
-				title = "TC A1",
-				x_axis_label = 'Time (s)',
-				y_axis_label = 'Temperature (C)')
-		output_file("TC_A1.html")
-		p.line(data['Time'], data['TC_A1_1'], color='#1F78B4', legend='TC_A1_1',line_width=3)
-		p.select(dict(type=HoverTool)).tooltips = [("Time","$x"), ("Temperature","$y")]
-		p.line(data['Time'], data['TC_A1_8'], color='#33A02C', legend='TC_A1_8',line_width=3)
-		p.select(dict(type=HoverTool)).tooltips = [("Time","$x"), ("Temperature","$y")]
-		show(p)
-
-
-
+		for group in channel_groups.groups:
+			
+			# Skip excluded groups listed in test description file
+			if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
+				continue
+			if 'TC A1' == group:
+				p=figure(tools="pan,box_zoom,wheel_zoom,reset,resize,save,hover", title = group, x_axis_label = 'Time (s)', y_axis_label = 'Temperature (C)')
+				i=0
+				for channel in channel_groups.get_group(group).index.values:
+					# Skip excluded channels listed in test description file
+					if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
+						continue
+					# Scale channel and set plot options depending on quantity
+					current_channel_data = data[channel_list['Device Name'][channel]]
+					calibration_slope = float(channel_list['Calibration Slope'][channel])
+					calibration_intercept = float(channel_list['Calibration Intercept'][channel])
+					x=data['Time']
+					y=current_channel_data
+					z=channel
+					p.line(x, y, legend=channel,line_width=4,color=colors[i])
+					p.select(dict(type=HoverTool)).tooltips = [('Channel','$channel'),('Time','$x{000}'), ('Temperature','$y{000}')]
+					p.legend.orientation = "top_left"
+					i=i+1
+				show(p)
 
