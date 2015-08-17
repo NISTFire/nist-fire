@@ -28,6 +28,9 @@ scaling_file_east = '../DAQ_Files/East_DelCo_DAQ_Channel_List.csv'
 # Location of test description file
 info_file = '../Experimental_Data/Description_of_Experiments.csv'
 
+# Save Directory
+save_dir = '../Figures/HTML_Figures/'
+
 # Time averaging window for data smoothing
 data_time_averaging_window = 5
 
@@ -90,14 +93,14 @@ for f in os.listdir(data_dir):
 		data_copy = data_copy.dropna()
 		data = data_copy
 
-		output_file(test_name +'.html')
+		# output_file(test_name +'.html')
 
 		for group in channel_groups.groups:
-			
 			# Skip excluded groups listed in test description file
 			if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
 				continue
-			if 'TC A17' == group:
+			if 'TC A1' == group:
+				output_file(save_dir + test_name + '_' + group.replace(' ', '_') + '.html')
 				p=figure(tools=TOOLS, title = group, x_axis_label = 'Time (s)', y_axis_label = 'Temperature (C)')
 				i=0
 				for channel in channel_groups.get_group(group).index.values:
