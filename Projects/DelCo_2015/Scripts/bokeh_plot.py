@@ -2,7 +2,7 @@ from __future__ import division
 import os
 import numpy as np
 import pandas as pd
-from bokeh.plotting import figure,show,output_file,vplot
+from bokeh.plotting import figure,show,output_file,vplot,ColumnDataSource
 from bokeh.models import HoverTool
 from collections import OrderedDict
 from bokeh.plotting import figure
@@ -14,9 +14,6 @@ from bokeh.plotting import figure
 # Choose Test Number
 
 current_test = 'Test_64_West_81215'
-
-# Plot mode: figure or video
-plot_mode = 'figure'
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
@@ -46,6 +43,9 @@ info = pd.read_csv(info_file, index_col=3)
 skip_files = ['_times', '_reduced', 'description_','zero_','_rh']
 
 colors=['#cc5500', '#228b22','#f4a460','#4c177d','firebrick', 'mediumblue', 'darkgreen', 'cadetblue', 'indigo', 'crimson', 'gold']
+
+# Bokeh options
+TOOLS="pan,box_zoom,wheel_zoom,reset,resize,save,hover"
 
 for f in os.listdir(data_dir):
 	if f.endswith('.csv'):
@@ -97,8 +97,8 @@ for f in os.listdir(data_dir):
 			# Skip excluded groups listed in test description file
 			if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
 				continue
-			if 'TC A1' == group:
-				p=figure(tools="pan,box_zoom,wheel_zoom,reset,resize,save,hover", title = group, x_axis_label = 'Time (s)', y_axis_label = 'Temperature (C)')
+			if 'TC A17' == group:
+				p=figure(tools=TOOLS, title = group, x_axis_label = 'Time (s)', y_axis_label = 'Temperature (C)')
 				i=0
 				for channel in channel_groups.get_group(group).index.values:
 					# Skip excluded channels listed in test description file
@@ -110,9 +110,11 @@ for f in os.listdir(data_dir):
 					calibration_intercept = float(channel_list['Calibration Intercept'][channel])
 					x=data['Time']
 					y=current_channel_data
-					z=channel
-					p.line(x, y, legend=channel,line_width=4,color=colors[i])
-					p.select(dict(type=HoverTool)).tooltips = [('Channel','$channel'),('Time','$x{000}'), ('Temperature','$y{000}')]
+					channel_label= np.tile(channel[:-5], [len(x),1])
+					source = ColumnDataSource({'channels': channel_label})
+					p.line(x, y, source=source,legend=channel,line_width=4,color=colors[i])
+					hover = p.select(dict(type=HoverTool))
+					hover.tooltips = [('Time','$x{000}'), ('Temperature','$y{000}'),('Channel','@channels')]
 					p.legend.orientation = "top_left"
 					i=i+1
 				show(p)
