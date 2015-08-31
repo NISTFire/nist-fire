@@ -16,6 +16,7 @@ rcParams.update({'figure.autolayout': True})
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
 results_dir = '../Results/'
+fig_dir = '../Figures/Hose_Test_Figures/'
 
 # Location of file with timing information
 timings_file = '../Experimental_Data/All_Hose_Times.csv'
@@ -64,7 +65,7 @@ info = pd.read_csv(info_file, index_col=3)
 skip_files = ['_times', '_reduced', '_results', 'description_']
 
 def movingaverage(interval, window_size):
-    window= np.ones(int(window_size))/float(window_size)
+    window = np.ones(int(window_size))/float(window_size)
     return np.convolve(interval, window, 'same')
 
 #  ===============================
@@ -110,6 +111,10 @@ for f in os.listdir(data_dir):
 
 		# Generate a plot for each quantity group
 		for group in sensor_groups:
+			# set new figure, re-set y min and max
+			fig = figure()
+			y_min = 0
+			y_max = 0
 
 			# Skips all groups not in "included groups" in hose_info file
 			if any([substring in group for substring in hose_info['Included Groups'][test_name].split('|')]) == False:
@@ -117,240 +122,320 @@ for f in os.listdir(data_dir):
 
 			# West Test Plotting
 			if 'Test' in test_name:
-				# creates empty "stream" list for the sensor group's results file
-				blank_list = []
-				group_set = {'Stream': blank_list}
-	 			group_results = pd.DataFrame(group_set, columns = ['Stream'])
+				# Generates .csv file times and information for each event
+				# initialize lists and start_seq value
+				start_seq = 0
+				door_status = 'C'
+				streams_ls = []
+				P_or_L_ls = []		
+				start_times_ls = []
+				end_times_ls = []
+				door_status_ls = []
 
-	 			# reads in the stream patterns based on hose_info file
-				for diff in hose_info['Difference'][test_name].split('|'):
-					group_results[diff] = ' '
-					group_results[diff + ' StDev'] = ' '
-				row_num = 0
+				if 'Test_16' in test_name or 'Test_17' in test_name:
+					P_or_L_heading = 'Location'
+				else:
+					P_or_L_heading = 'Pattern'
 
-				fig = figure()
-
-				# resets max and min y values
-				max_y = 0
-				min_y = 0
-
-				# Defines start and end times for different stream patterns
-				for stream in hose_info.columns[2:5]:
-					# ignores streams not involved in test (specified in hose_info file)
-					if hose_info[stream][test_name] == False:
+				# gathers timing information from hose_times file
+				for index, row in timings.iterrows():
+					if pd.isnull(row[test_name]):
 						continue
 
-					# reads start and end times for current stream from hose_info file
-					start_name = stream + '_start'
-					start = hose_info[start_name][test_name]
-					end_name = stream + '_end'
-					end = hose_info[end_name][test_name]
+					else:
+						# add information to event row
+						if start_seq != 0:
+							end_seq = index
+							streams_ls.append(stream)
+							P_or_L_ls.append(P_or_L)
+							start_times_ls.append(start_seq)
+							end_times_ls.append(end_seq)
+							door_status_ls.append(door_status)
+
+						# Determine stream type, pattern/location
+						if any('traight stream' in row[test_name]):
+							stream = 'SS'
+						elif any('arrow fog' in row[test_name]):
+							stream = 'NF'
+						elif any('ide fog' in row[test_name]):
+							stream = 'WF'
+						
+						# stores location, door status, pattern, and start time for next row
+						
+						if 'near target' in row[test_name]:
+							P_or_L = 'Near'
+						elif 'far target' in row[test_name]:
+							P_or_L = 'Far'
+
+						if 'door closed' in row[test_name]:
+							door_status = 'C'
+
+						if 'door opened' in row[test_name]:
+							door_status = 'O'
+							
+						if any('ixed' in row[test_name]):
+							pattern = 'fixed'
+						elif any('rotated right' in row[test_name]):
+							pattern = 'CW'
+						elif any('rotated left' in row[test_name]):
+							pattern = 'CCW'
+						
+						start_seq = index
+
+				group_set = {'Start': start_times_ls, 'End':end_times_ls, 'Stream':streams_ls, P_or_L_heading:P_or_L_ls,'Door':door_status_ls}
+				group_results = pd.DataFrame(group_set, columns = ['Start', 'End', 'Stream', 'Pattern', 'Location', 'Door'])
+				
+				for channel in data.columns[1:]:
+					# Skip excluded channels listed in hose_info file
+					if any([substring in channel for substring in hose_info['Excluded Channels'][test_name].split('|')]):
+						continue
+
+					# Add column for channel to group_results df
+					if any([substring in channel for substring in group]):
+						group_results[channel] = ''
+						print ' Added column for channel ' + channel
+
+				group_results['Avg'] = ''
+
+				# Calculate avg velocity at each event for each channel and over all channels	
+				for index, row in group_results.iterrows():
+					# grabs start/end time for each event in new .csv file
+					start = row['Start']
+					end = row['End']
 
 					# Creates data set of start and end times for current hose stream 
-					stream_data = data.iloc[start:end]
-					t_stream = stream_data['Time']
+					seq_data = data.iloc[start:end]
+					all_channels = []
 
-					# Creates empty data frame (with time index) to plot average of channels for each stream and sensor group
-					stream_group = pd.DataFrame(t_stream)
+					# Calculate average for each channel during sequence
+					for column in group_results.columns[6:-1]:
+						# Convert voltage to pascals
+						conv_inch_h2o = 0.4
+						conv_pascal = 248.8
 
-					for channel in stream_data.columns[1:]:
-						# Skip excluded channels listed in hose_info file
-						if any([substring in channel for substring in hose_info['Excluded Channels'][test_name].split('|')]):
-							continue
+						# Get zero voltage from pre-test data
+						zero_voltage = np.mean(data[column][0:pre_test_time])
+						pressure = conv_inch_h2o * conv_pascal * (seq_data[column] - zero_voltage)
 
-						if any([substring in channel for substring in group]):
+						# Calculate velocity
+						quantity = 0.0698 * np.sqrt(np.abs(pressure) * (seq_data['TC_' + column[4:]] + 273.15)) * np.sign(pressure)
+						
+						# save average to results dataframe
+						group_results.loc[index,column] = round(np.mean(quantity), 2)
+						all_channels.append(quantity)
 
-							calibration_slope = float(scaling['Calibration Slope'][channel])
-							calibration_intercept = float(scaling['Calibration Intercept'][channel])
-
-							# Plot velocities
-							if 'BDP_' in channel:
-								plt.rc('axes', color_cycle=['k', 'b', 'r', 'b', '0.75', 'c', 'm', 'y'])
-								conv_inch_h2o = 0.4
-								conv_pascal = 248.8
-
-								# Convert voltage to pascals
-								# Get zero voltage from pre-test data
-								zero_voltage = np.mean(stream_data[channel][0:pre_test_time])
-								pressure = conv_inch_h2o * conv_pascal * (stream_data[channel] - zero_voltage)
-
-								# Calculate velocity
-								quantity = 0.0698 * np.sqrt(np.abs(pressure) * (stream_data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
-								ylabel('Velocity (m/s)', fontsize=20)
-								line_style = '-'
-								axis_scale = 'Y Scale BDP'
-
-							# # Plot hose pressure
-							# if 'HOSE_' in channel:
-							# 	plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-							# 	# Skip data other than sensors on 2.5 inch hoseline
-							# 	if '2p5' not in channel:
-							# 		continue
-							# 	quantity = stream_data[channel] * calibration_slope + calibration_intercept
-							# 	ylabel('Pressure (psi)', fontsize=20)
-							# 	line_style = '-'
-							# 	axis_scale = 'Y Scale HOSE'
-
-							# Save converted quantity back to exp. dataframe and sensor group dataframe
-							stream_data[channel] = quantity
-							stream_group[channel] = quantity
-
-					# Calculates the average of all channels in sensor group from recently created sensor group dataframe
-					group_avg = []
-					for index, row in stream_group.iterrows():
-						avg = np.mean(row[1:])
-						group_avg.append(avg)
-
-					# Adds a column of the average of all channels to the dataframe 
-					stream_group['Average of Channels'] = group_avg
-
-					# determines the max and min y values for the current stream sensor group average
-					if max(group_avg) > max_y:
-						max_y = math.ceil(max(group_avg))
-					if min(group_avg) < min_y:
-						min_y = math.floor(min(group_avg))
-
-					# reads time before first experiment begins
-					start_time = hose_info['Start'][test_name]
-					# reads in time after beginning of experiment to when FP is complete
-					FP_beg = hose_info['Flowpath complete'][test_name]
-					# Averages and stdevs added to data row for when flow path is completely established for each hose stream
-					data_row = [stream]
-					for diff in hose_info['Difference'][test_name].split('|'):
-						FP_end = FP_beg + hose_info['Duration'][test_name]
-						data_row.append(round(np.mean(stream_group['Average of Channels'][int(FP_beg):int(FP_end)]), 1))
-						data_row.append(round(np.std(stream_group['Average of Channels'][int(FP_beg):int(FP_end)]), 1))
-						FP_beg = hose_info['Flowpath complete'][test_name] + FP_end + hose_info['Time Between'][test_name]
-					
-					# adds row to data file for current stream in current sensor group
-					group_results.loc[row_num] = data_row
-					row_num = row_num + 1
-
-					group_avg_ma = movingaverage(group_avg, 5)
-
-					t = arange(len(stream_group.index))
-
-					# plots average for current stream in current sensor group
-					plot(t, group_avg_ma, lw=1.5, ls='-', label=stream + ' Average')
+					group_results.loc[index, 'Avg'] = round(np.mean(all_channels), 2)
+					# if any('BDP_A6' in group)
 
 				#Saves results .csv file for sensor group
 				group_results.to_csv(results_dir + test_name + '_' + str(group)[2:-2]  + 'averages.csv')
 				print 'Saving ' + test_name + '_' + str(group)[2:-2]  + 'Averages'
+				print
 
-				# format plot of averages for different streams in sensor group
-				ylim([min_y, max_y])
+			#=== Plotting ===#
+				for channel in group_results.columns[6:-1]:
+					# set up and plot
+					plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+					conv_inch_h2o = 0.4
+					conv_pascal = 248.8
 
-				# Set axis options, legend, tickmarks, etc.
-				ax1 = gca()
-				xlim(0, len(t))
-				ax1.xaxis.set_major_locator(MaxNLocator(8))
-				ax1_xlims = ax1.axis()[0:2]
-				ax1.axhspan(0, 0, color='0.50', lw=1)
-				#grid(True)
-				xlabel('Time', fontsize=20)
-				ylabel('Velocity (m/s)', fontsize=20)
-				xticks(fontsize=16)
-				yticks(fontsize=16)
-				legend(loc='lower right', fontsize=8)
+					# Convert voltage to pascals
+					# Get zero voltage from pre-test data
+					zero_voltage = np.mean(data[channel][0:pre_test_time])
+					pressure = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)
 
-				try:
-					# Add vertical lines for timing information (if available)
-					for index, row in timings.iterrows():
-						if pd.isnull(row[test_name]):
-							continue
-						axvline(index-start_of_test-start_time, color='0.50', lw=1)
+					# Calculate velocity, set plot characteristics
+					quantity = 0.0698 * np.sqrt(np.abs(pressure) * (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
+					ylabel('Velocity (m/s)', fontsize=20)
+					line_style = '-'
+					axis_scale = 'Y Scale BDP'
 
-					# Add secondary x-axis labels for timing information
-					ax2 = ax1.twiny()
-					ax2.set_xlim(ax1_xlims)
-					ax2.set_xticks(timings[test_name].dropna().index.values - (start_of_test)-start_time)
-					setp(xticks()[1], rotation=60)
-					ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
-					xlim(0, t)
+					# check y min and max
+					q_max = max(quantity)
+					q_min = min(quantity)
+					if q_max > y_max:
+						y_max = q_max
+					if q_min < y_min:
+						y_min = q_min
 
-				except:
-					pass
+					plot(t, quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
+
+			#=== Sorting ===
+			# East Tests
+			else:
+				# Generates .csv file times and information for each event
+				# initialize lists and start_seq value
+				start_seq = 0
+				door_status = 'C'
+				streams_ls = []
+				patterns_ls = []		
+				start_times_ls = []
+				end_times_ls = []
+				location_ls = []
+				door_status_ls = []
+
+				# gathers timing information from hose_times file
+				for index, row in timings.iterrows():
+					if pd.isnull(row[test_name]):
+						continue
+
+					else:
+						# add information to event row
+						if start_seq != 0:
+							end_seq = index
+							streams_ls.append(stream)
+							patterns_ls.append(pattern)
+							start_times_ls.append(start_seq)
+							end_times_ls.append(end_seq)
+							location_ls.append(location)
+							door_status_ls.append(door_status)
+
+						# Determine stream type, pattern, and target location
+						if any('traight stream' in row[test_name]):
+							stream = 'SS'
+						elif any('arrow fog' in row[test_name]):
+							stream = 'NF'
+						elif any('ide fog' in row[test_name]):
+							stream = 'WF'
+						
+						# stores location, door status, pattern, and start time for next row
+						if ' at ' in row[test_name]:
+							location = row[test_name].split(' at ')[1]
+
+						if 'door closed' in row[test_name]:
+							door_status = 'C'
+
+						if 'door opened' in row[test_name]:
+							door_status = 'O'
+							
+						if any('ixed' in row[test_name]):
+							pattern = 'fixed'
+						elif any('rotated right' in row[test_name]):
+							pattern = 'CW'
+						elif any('rotated left' in row[test_name]):
+							pattern = 'CCW'
+						
+						start_seq = index
+
+						if 'flow stopped' in row[test_name]:
+							start_seq = 0
+
+				group_set = {'Start': start_times_ls, 'End':end_times_ls, 'Stream':streams_ls, 'Pattern':patterns_ls,
+				'Location':location_ls, 'Door':door_status_ls}
+				group_results = pd.DataFrame(group_set, columns = ['Start', 'End', 'Stream', 'Pattern', 'Location', 'Door'])
+				
+				for channel in data.columns[1:]:
+					# Skip excluded channels listed in hose_info file
+					if any([substring in channel for substring in hose_info['Excluded Channels'][test_name].split('|')]):
+						continue
+
+					# Add column for channel to group_results df
+					if any([substring in channel for substring in group]):
+						group_results[channel] = ''
+						print ' Added column for channel ' + channel
+
+				group_results['Avg'] = ''
+
+				# Calculate avg velocity at each event for each channel and over all channels	
+				for index, row in group_results.iterrows():
+					# grabs start/end time for each event in new .csv file
+					start = row['Start']
+					end = row['End']
+
+					# Creates data set of start and end times for current hose stream 
+					seq_data = data.iloc[start:end]
+					all_channels = []
+
+					# Calculate average for each channel during sequence
+					for column in group_results.columns[6:-1]:
+						# Convert voltage to pascals
+						conv_inch_h2o = 0.4
+						conv_pascal = 248.8
+
+						# Get zero voltage from pre-test data
+						zero_voltage = np.mean(data[column][0:pre_test_time])
+						pressure = conv_inch_h2o * conv_pascal * (seq_data[column] - zero_voltage)
+
+						# Calculate velocity
+						quantity = 0.0698 * np.sqrt(np.abs(pressure) * (seq_data['TC_' + column[4:]] + 273.15)) * np.sign(pressure)
+						
+						# save average to results dataframe
+						group_results.loc[index,column] = round(np.mean(quantity), 2)
+						all_channels.append(quantity)
+
+					group_results.loc[index, 'Avg'] = round(np.mean(all_channels), 2)
+					# if any('BDP_A6' in group)
+
+				#Saves results .csv file for sensor group
+				group_results.to_csv(results_dir + test_name + '_' + str(group)[2:-2]  + 'averages.csv')
+				print 'Saving ' + test_name + '_' + str(group)[2:-2]  + 'Averages'
+				print
+
+			#=== Plotting ===#
+				for channel in group_results.columns[6:-1]:
+					# set up and plot
+					plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+					conv_inch_h2o = 0.4
+					conv_pascal = 248.8
+
+					# Convert voltage to pascals
+					# Get zero voltage from pre-test data
+					zero_voltage = np.mean(data[channel][0:pre_test_time])
+					pressure = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)
+
+					# Calculate velocity, set plot characteristics
+					quantity = 0.0698 * np.sqrt(np.abs(pressure) * (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
+					ylabel('Velocity (m/s)', fontsize=20)
+					line_style = '-'
+					axis_scale = 'Y Scale BDP'
+
+					# check y min and max
+					q_max = max(quantity)
+					q_min = min(quantity)
+					if q_max > y_max:
+						y_max = q_max
+					if q_min < y_min:
+						y_min = q_min
+
+					plot(t, quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
+
+			# Set axis options, legend, tickmarks, etc.
+			ax1 = gca()
+			xlim([0, end_of_test - start_of_test])
+			ylim(floor(y_min), ceil(y_max))
+			ax1.xaxis.set_major_locator(MaxNLocator(8))
+			ax1_xlims = ax1.axis()[0:2]
+			# grid(True)
+			axhline(0, color='0.50', lw=1)
+			xlabel('Time', fontsize=20)
+			xticks(fontsize=16)
+			yticks(fontsize=16)
+			legend(loc='lower right', fontsize=8)
+
+			try:
+				# Add vertical lines for timing information (if available)
+				for index, row in timings.iterrows():
+					if pd.isnull(row[test_name]):
+						continue
+					axvline(index - start_of_test, color='0.50', lw=1)
+
+				# Add secondary x-axis labels for timing information
+				ax2 = ax1.twiny()
+				ax2.set_xlim(ax1_xlims)
+				ax2.set_xticks(timings[test_name].dropna().index.values - start_of_test)
+				setp(xticks()[1], rotation=60)
+				ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
+				xlim([0, end_of_test - start_of_test])
 
 				# Increase figure size for plot labels at top
-				fig.set_size_inches(8, 8)
+				fig.set_size_inches(11, 10)
+			except:
+				pass
 
-				# Save plot to file
-				print 'Plotting ' + str(group)[2:-2] + ' Channel Average'
-				savefig('../Figures/Hose_Test_Figures/' + test_name + '_' + str(group)[2:-2] + 'Avg.pdf')
-				close('all')
-
-		# East Tests
-		else:
-			
-			# Determines if they're multiple streams for test
-			if test_name[6] == 'S':
-				stream = 'SS'
-			elif test_name[6] == 'N':
-				stream = 'NF'
-			elif test_name[6] == 'X':
-				stream = 'X'
-
-			# Defines start and end times for different sequences
-
-				# Monitor test
-				if test_name[8] == 'O':
-
-
-				#handline test 
-				if test_name[8] == 'A':					
-
-					# gathers timing information from hose_times file
-					for index, row in timings.iterrows():
-						if pd.isnull(row[test_name]):
-							continue
-
-						if stream == 'X':
-							if end_seq != 0 or :
-								# create new row in data file
-								end_seq = row['Time']
-
-								# End current sequence
-							if row[test_name] == 'Water flow stopped':
-								end_seq = row['Time']
-							# Determine stream type, pattern, and target location
-							if any('traight stream' in row[test_name]):
-								stream = 'SS'
-							elif any('arrow fog' in row[test_name]):
-								stream = 'NF'
-							elif any('ide fog' in row[test_name]):
-								stream = 'WF'
-							
-							location = row[test_name].split(' at ')[2]
-							
-							if any('Fixed' in row[test_name]):
-								pattern = 'fixed'
-							elif any('rotated right' in row[test_name]):
-								pattern = 'CW'
-							elif any('rotated left' in row[test_name]):
-								pattern = 'CCW'
-
-							start_seq = row['Time']
-
-							print '	Beginning sequence: ' + stream + ' ' + pattern + ' ' + location
-
-							elif in_seq == 1:
-								if any('rotated right' in row[test_name]):
-									pattern = 'CW'
-								elif any('rotated left' in row[test_name]):
-									pattern = 'CCW'
-
-
-							
-							else:
-
-
-
-						else:
-							if 'Hose'
-
-
-
-						
+			# Save plot to file
+			print 'Plotting ', group
+			savefig(fig_dir + test_name + '_' + group[0].rstrip('_') + '.pdf')
+			close('all')		
 
 
 
