@@ -1,0 +1,16 @@
+# mac file
+.DS_Store
+._*
+
+# latex output files
+*.aux
+*.bak
+*.bbl
+*.blg
+*.brf
+*.err
+*.lof
+*.log
+*.out
+*.pdfsync
+*.toc
