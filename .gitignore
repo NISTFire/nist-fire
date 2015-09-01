@@ -14,3 +14,6 @@
 *.out
 *.pdfsync
 *.toc
+*.eps
+*.fdb_latexmk
+*.synctex.gz
