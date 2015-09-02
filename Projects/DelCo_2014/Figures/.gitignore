@@ -1,0 +1,2 @@
+# ignore .pdfs created by plotting scripts
+*.pdf

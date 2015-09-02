@@ -1,0 +1,2 @@
+# ignore .csv created by sorting script #
+*.csv
