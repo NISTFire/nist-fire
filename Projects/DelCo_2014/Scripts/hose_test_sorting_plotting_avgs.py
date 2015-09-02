@@ -115,8 +115,9 @@ for f in os.listdir(data_dir):
 
 		# Generate a plot for each quantity group
 		for group in sensor_groups:
-			# set new figure, re-set y min and max
+			# set new figure, figure name; re-set y min and max
 			fig = figure()
+			fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + '.pdf'
 			y_min = 0
 			y_max = 0
 
@@ -124,7 +125,7 @@ for f in os.listdir(data_dir):
 			if any([substring in group for substring in hose_info['Included Groups'][test_name].split('|')]) == False:
 				continue
 
-			# West Test Plotting
+			# West Test Sorting/Plotting
 			if 'Test' in test_name:
 				# Generates .csv file times and information for each event
 				# initialize lists and start_seq value
@@ -159,6 +160,7 @@ for f in os.listdir(data_dir):
 						if row[test_name] == '1st floor BC and stairwell doors closed':
 							# experiment has ended
 							door_status = 'All closed'
+							row[test_name] = 'Doors closed'
 							start_seq = 0
 							continue
 
@@ -197,8 +199,10 @@ for f in os.listdir(data_dir):
 								P_or_L = 'sweep'
 							elif ' clockwise' in row[test_name]:
 								P_or_L = 'CW'
+								row[test_name] = row[test_name].replace('clockwise', P_or_L)
 							elif any('counterclockwise' in row[test_name]):
 								P_or_L = 'CCW'
+								row[test_name] = row[test_name].replace('counterclockwise', P_or_L)
 
 						if 'opened' in row[test_name]:
 							if 'BC door' in row[test_name]:
@@ -258,12 +262,15 @@ for f in os.listdir(data_dir):
 
 					group_results.loc[index, 'Avg'] = round(np.mean(all_channels), 2)
 
-				#Saves results .csv file for sensor group
+				# Saves results .csv file for sensor group
 				group_results.to_csv(results_dir + test_name + '_' + str(group)[2:-2]  + 'averages.csv')
 				print 'Saving ' + test_name + '_' + str(group)[2:-2]  + 'Averages'
 				print
 
-			#=== Plotting ===#
+				# Plotting 
+				#############################################
+				# uncomment to plot individual channel data #
+				#############################################
 				for channel in group_results.columns[5:-1]:
 					# set up and plot
 					plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
@@ -290,8 +297,36 @@ for f in os.listdir(data_dir):
 
 					plot(t, ma_quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
 
-			#=== Sorting ===
-			# East Tests
+				#############################################
+				# uncomment to plot average of all channels #
+				#############################################
+				channel_avgs = []
+				full_test_data = data.iloc[start_of_test:end_of_test]
+				for index, row in full_test_data.iterrows():
+					channel_data = []
+					for channel in group_results.columns[6:-1]:
+						# Convert voltage to pascals
+						# Get zero voltage from pre-test data
+						zero_voltage = np.mean(data[channel][0:pre_test_time])
+						pressure = conv_inch_h2o * conv_pascal * (row[channel] - zero_voltage)
+
+						# Calculate velocity, add it to array
+						quantity = 0.0698 * np.sqrt(np.abs(pressure) * (row['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
+						channel_data.append(quantity)
+					channel_avgs.append(round(np.mean(channel_data),2))
+
+				ylabel('Velocity (m/s)', fontsize=20)
+				line_style = '-'
+				axis_scale = 'Y Scale BDP'
+
+				# check y min and max
+				ma_quantity = movingaverage(channel_avgs, 5)
+				y_max = max(ma_quantity)
+				y_min = min(ma_quantity)
+
+				plot(t, ma_quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel], color = 'b')
+
+			# East Tests Sorting/Plotting
 			else:
 				# Generates .csv file times and information for each event
 				# initialize lists and start_seq value
@@ -392,37 +427,67 @@ for f in os.listdir(data_dir):
 
 					group_results.loc[index, 'Avg'] = round(np.mean(all_channels), 2)
 
-				#Saves results .csv file for sensor group
+				# Saves results .csv file for sensor group
 				group_results.to_csv(results_dir + test_name + '_' + str(group)[2:-2]  + 'averages.csv')
 				print 'Saving ' + test_name + '_' + str(group)[2:-2]  + 'Averages'
 				print
 
-			#=== Plotting ===#
-				for channel in group_results.columns[6:-1]:
-					# set up and plot
-					plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+				#############################################
+				# uncomment to plot individual channel data #
+				#############################################
+				# for channel in group_results.columns[6:-1]:
+					# plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
 
-					# Convert voltage to pascals
-					# Get zero voltage from pre-test data
-					zero_voltage = np.mean(data[channel][0:pre_test_time])
-					pressure = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)
+					# # Convert voltage to pascals
+					# # Get zero voltage from pre-test data
+					# zero_voltage = np.mean(data[channel][0:pre_test_time])
+					# pressure = conv_inch_h2o * conv_pascal * (data[channel] - zero_voltage)
 
-					# Calculate velocity, set plot characteristics
-					quantity = 0.0698 * np.sqrt(np.abs(pressure) * (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
-					ylabel('Velocity (m/s)', fontsize=20)
-					line_style = '-'
-					axis_scale = 'Y Scale BDP'
+					# # Calculate velocity, set plot characteristics
+					# quantity = 0.0698 * np.sqrt(np.abs(pressure) * (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
+					# ylabel('Velocity (m/s)', fontsize=20)
+					# line_style = '-'
+					# axis_scale = 'Y Scale BDP'
 
-					# check y min and max
-					ma_quantity = movingaverage(quantity, 5)
-					q_max = max(ma_quantity)
-					q_min = min(ma_quantity)
-					if q_max > y_max:
-						y_max = q_max
-					if q_min < y_min:
-						y_min = q_min
+					# # check y min and max
+					# ma_quantity = movingaverage(quantity, 5)
+					# q_max = max(ma_quantity)
+					# q_min = min(ma_quantity)
+					# if q_max > y_max:
+					# 	y_max = q_max
+					# if q_min < y_min:
+					# 	y_min = q_min
 
-					plot(t, ma_quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
+					# plot(t, ma_quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
+
+				#############################################
+				# uncomment to plot average of all channels #
+				#############################################
+				channel_avgs = []
+				full_test_data = data.iloc[start_of_test:end_of_test]
+				for index, row in full_test_data.iterrows():
+					channel_data = []
+					for channel in group_results.columns[6:-1]:
+						# Convert voltage to pascals
+						# Get zero voltage from pre-test data
+						zero_voltage = np.mean(data[channel][0:pre_test_time])
+						pressure = conv_inch_h2o * conv_pascal * (row[channel] - zero_voltage)
+
+						# Calculate velocity, add it to array
+						quantity = 0.0698 * np.sqrt(np.abs(pressure) * (row['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
+						channel_data.append(quantity)
+					channel_avgs.append(round(np.mean(channel_data),2))
+
+				ylabel('Velocity (m/s)', fontsize=20)
+				line_style = '-'
+				axis_scale = 'Y Scale BDP'
+
+				# check y min and max
+				ma_quantity = movingaverage(channel_avgs, 5)
+				y_max = max(ma_quantity)
+				y_min = min(ma_quantity)
+
+				plot(t, ma_quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel], color = 'b')
 
 			# Set axis options, legend, tickmarks, etc.
 			ax1 = gca()
@@ -434,7 +499,7 @@ for f in os.listdir(data_dir):
 			axhline(0, color='0.50', lw=1)
 			xlabel('Time', fontsize=20)
 			xticks(fontsize=16)
-			yticks(fontsize=16)
+			yticks(arange(floor(y_min), ceil(y_max)+1, 1), fontsize=16)
 			legend(loc='lower right', fontsize=8)
 
 			try:
@@ -453,13 +518,13 @@ for f in os.listdir(data_dir):
 				xlim([0, end_of_test - start_of_test])
 
 				# Increase figure size for plot labels at top
-				fig.set_size_inches(11, 10)
+				fig.set_size_inches(12, 9)
 			except:
 				pass
 
 			# Save plot to file
 			print 'Plotting ', group
-			savefig(fig_dir + test_name + '_' + group[0].rstrip('_') + '.pdf')
+			savefig(fig_name)
 			close('all')		
 
 
