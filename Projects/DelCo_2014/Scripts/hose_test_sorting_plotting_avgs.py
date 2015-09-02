@@ -72,6 +72,10 @@ def movingaverage(interval, window_size):
 #  = Loop through all data files =
 #  ===============================
 
+# Convert voltage to pascals
+conv_inch_h2o = 0.4
+conv_pascal = 248.8
+
 for f in os.listdir(data_dir):
 	if f.endswith('.csv'):
 		# Skip files with time information or reduced data files
@@ -125,7 +129,7 @@ for f in os.listdir(data_dir):
 				# Generates .csv file times and information for each event
 				# initialize lists and start_seq value
 				start_seq = 0
-				door_status = 'C'
+				door_status = 'All closed'
 				streams_ls = []
 				P_or_L_ls = []		
 				start_times_ls = []
@@ -152,38 +156,69 @@ for f in os.listdir(data_dir):
 							end_times_ls.append(end_seq)
 							door_status_ls.append(door_status)
 
+						if row[test_name] == '1st floor BC and stairwell doors closed':
+							# experiment has ended
+							door_status = 'All closed'
+							start_seq = 0
+							continue
+
 						# Determine stream type, pattern/location
 						if any('traight stream' in row[test_name]):
 							stream = 'SS'
+							if 'straight stream' in row[test_name]:
+								row[test_name] = row[test_name].replace('straight stream', stream)
+							else:
+								row[test_name] = row[test_name].replace('Straight stream', stream)
 						elif any('arrow fog' in row[test_name]):
 							stream = 'NF'
+							if 'narrow fog' in row[test_name]:
+								row[test_name] = row[test_name].replace('narrow fog', stream)
+							else:
+								row[test_name] = row[test_name].replace('Narrow fog', stream)
 						elif any('ide fog' in row[test_name]):
 							stream = 'WF'
+							if 'wide fog' in row[test_name]:
+								row[test_name] = row[test_name].replace('wide fog', stream)
+							else:
+								row[test_name] = row[test_name].replace('Wide fog', stream)
 						
 						# stores location, door status, pattern, and start time for next row
-						
-						if 'near target' in row[test_name]:
-							P_or_L = 'Near'
-						elif 'far target' in row[test_name]:
-							P_or_L = 'Far'
+						if P_or_L_heading == 'Location':
+							if 'near target' in row[test_name]:
+								P_or_L = 'Near'
+								row[test_name] = row[test_name].replace('near target', 'near')
+							elif 'far target' in row[test_name]:
+								P_or_L = 'Far'
+								row[test_name] = row[test_name].replace('far target', 'far')
+						else:
+							if any('ixed' in row[test_name]):
+								P_or_L = 'fixed'
+							elif any('weeping' in row[test_name]):
+								P_or_L = 'sweep'
+							elif ' clockwise' in row[test_name]:
+								P_or_L = 'CW'
+							elif any('counterclockwise' in row[test_name]):
+								P_or_L = 'CCW'
 
-						if 'door closed' in row[test_name]:
-							door_status = 'C'
-
-						if 'door opened' in row[test_name]:
-							door_status = 'O'
-							
-						if any('ixed' in row[test_name]):
-							pattern = 'fixed'
-						elif any('rotated right' in row[test_name]):
-							pattern = 'CW'
-						elif any('rotated left' in row[test_name]):
-							pattern = 'CCW'
+						if 'opened' in row[test_name]:
+							if 'BC door' in row[test_name]:
+								door_status = 'BC open'
+							elif any('tairwell door' in row[test_name]):
+								door_status = 'Stair open'
+							elif 'A door' in row[test_name]:
+								door_status = 'A open'
+							else:
+								print '[Error] "Opened read", no door found..'
+								print '..reading line: ' + row[test_name]
+								sys.exit()
 						
+						if 'A door closed' in row[test_name]:
+							door_status = 'Closed A'
+
 						start_seq = index
 
 				group_set = {'Start': start_times_ls, 'End':end_times_ls, 'Stream':streams_ls, P_or_L_heading:P_or_L_ls,'Door':door_status_ls}
-				group_results = pd.DataFrame(group_set, columns = ['Start', 'End', 'Stream', 'Pattern', 'Location', 'Door'])
+				group_results = pd.DataFrame(group_set, columns = ['Start', 'End', 'Stream', P_or_L_heading, 'Door'])
 				
 				for channel in data.columns[1:]:
 					# Skip excluded channels listed in hose_info file
@@ -208,10 +243,7 @@ for f in os.listdir(data_dir):
 					all_channels = []
 
 					# Calculate average for each channel during sequence
-					for column in group_results.columns[6:-1]:
-						# Convert voltage to pascals
-						conv_inch_h2o = 0.4
-						conv_pascal = 248.8
+					for column in group_results.columns[5:-1]:
 
 						# Get zero voltage from pre-test data
 						zero_voltage = np.mean(data[column][0:pre_test_time])
@@ -225,7 +257,6 @@ for f in os.listdir(data_dir):
 						all_channels.append(quantity)
 
 					group_results.loc[index, 'Avg'] = round(np.mean(all_channels), 2)
-					# if any('BDP_A6' in group)
 
 				#Saves results .csv file for sensor group
 				group_results.to_csv(results_dir + test_name + '_' + str(group)[2:-2]  + 'averages.csv')
@@ -233,11 +264,9 @@ for f in os.listdir(data_dir):
 				print
 
 			#=== Plotting ===#
-				for channel in group_results.columns[6:-1]:
+				for channel in group_results.columns[5:-1]:
 					# set up and plot
 					plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-					conv_inch_h2o = 0.4
-					conv_pascal = 248.8
 
 					# Convert voltage to pascals
 					# Get zero voltage from pre-test data
@@ -251,14 +280,15 @@ for f in os.listdir(data_dir):
 					axis_scale = 'Y Scale BDP'
 
 					# check y min and max
-					q_max = max(quantity)
-					q_min = min(quantity)
+					ma_quantity = movingaverage(quantity,5)
+					q_max = max(ma_quantity)
+					q_min = min(ma_quantity)
 					if q_max > y_max:
 						y_max = q_max
 					if q_min < y_min:
 						y_min = q_min
 
-					plot(t, quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
+					plot(t, ma_quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
 
 			#=== Sorting ===
 			# East Tests
@@ -348,9 +378,6 @@ for f in os.listdir(data_dir):
 
 					# Calculate average for each channel during sequence
 					for column in group_results.columns[6:-1]:
-						# Convert voltage to pascals
-						conv_inch_h2o = 0.4
-						conv_pascal = 248.8
 
 						# Get zero voltage from pre-test data
 						zero_voltage = np.mean(data[column][0:pre_test_time])
@@ -364,7 +391,6 @@ for f in os.listdir(data_dir):
 						all_channels.append(quantity)
 
 					group_results.loc[index, 'Avg'] = round(np.mean(all_channels), 2)
-					# if any('BDP_A6' in group)
 
 				#Saves results .csv file for sensor group
 				group_results.to_csv(results_dir + test_name + '_' + str(group)[2:-2]  + 'averages.csv')
@@ -375,8 +401,6 @@ for f in os.listdir(data_dir):
 				for channel in group_results.columns[6:-1]:
 					# set up and plot
 					plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
-					conv_inch_h2o = 0.4
-					conv_pascal = 248.8
 
 					# Convert voltage to pascals
 					# Get zero voltage from pre-test data
@@ -390,14 +414,15 @@ for f in os.listdir(data_dir):
 					axis_scale = 'Y Scale BDP'
 
 					# check y min and max
-					q_max = max(quantity)
-					q_min = min(quantity)
+					ma_quantity = movingaverage(quantity, 5)
+					q_max = max(ma_quantity)
+					q_min = min(ma_quantity)
 					if q_max > y_max:
 						y_max = q_max
 					if q_min < y_min:
 						y_min = q_min
 
-					plot(t, quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
+					plot(t, ma_quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
 
 			# Set axis options, legend, tickmarks, etc.
 			ax1 = gca()

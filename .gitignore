@@ -17,3 +17,4 @@
 *.eps
 *.fdb_latexmk
 *.synctex.gz
+*.lot
