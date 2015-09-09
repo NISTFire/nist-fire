@@ -429,7 +429,7 @@ for f in os.listdir(data_dir):
 								zero_start = int(row['Time'])
 								zero_end = zero_start + 20
 								zero_voltage = np.mean(data[channel][zero_start:zero_end])
-								# iterate i if additional zero voltages will be calculated
+								# iterate i if additional zero voltage will be calculated
 								if i < (len(zero_time_ls)-1):
 									i += 1
 						
