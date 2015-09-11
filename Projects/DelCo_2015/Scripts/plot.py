@@ -15,7 +15,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Choose Test Number
-current_test = 'Test_66_East_81315'
+current_test = 'Test_30_West_51415'
 
 # Plot mode: figure or video
 plot_mode = 'figure'
@@ -87,8 +87,8 @@ for f in os.listdir(data_dir):
         print 'Test ' + test_name
 
         # Option to specify which test is run
-        if test_name != current_test:
-          continue
+        # if test_name != current_test:
+        #   continue
 
         # If video plot mode is enabled, then plot from only one test
         if plot_mode == 'video':
