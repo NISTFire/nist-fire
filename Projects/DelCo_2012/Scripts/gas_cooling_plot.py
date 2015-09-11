@@ -5,6 +5,7 @@ import os
 import numpy as np
 import pandas as pd
 from pylab import *
+from itertools import cycle
 
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
@@ -66,19 +67,32 @@ for f in os.listdir(data_dir):
 
 			fig = figure()
 
+			# Plot style - colors and markers
+			# These are the "Tableau 20" colors as RGB.
+			tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
+			             (44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
+			             (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
+			             (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
+			             (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
+
+			# Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
+			for i in range(len(tableau20)):
+			    r, g, b = tableau20[i]
+			    tableau20[i] = (r / 255., g / 255., b / 255.)
+			plt.rc('axes', color_cycle=tableau20)
+			plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
+
 			for channel in data.columns[1:]:
 
 				if any([substring in channel for substring in group]):
 
 					if 'TC_' in channel:
-						plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y','#cc5500', '#228b22','#f4a460'])
 						quantity = data[channel]
 						ylabel('Temperature ($^\circ$C)', fontsize=20)
 						line_style = '-'
 						ylim([0,800])
 
 					if 'BDP_' in channel:
-						plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
 						conv_inch_h2o = 0.4
 						conv_pascal = 248.8
 
@@ -93,9 +107,6 @@ for f in os.listdir(data_dir):
 						ylim([-10,10])
 
 					if any([substring in channel for substring in heat_flux_quantities]):
-						plt.rc('axes', color_cycle=['k', 'r',
-													'r', 'r'])
-
 						# Get zero voltage from pre-test data
 						zero_voltage = zero['Calibration'][channel]
 						if 'HF_' in channel:
@@ -112,7 +123,14 @@ for f in os.listdir(data_dir):
 
 					# Save converted quantity back to exp. dataframe
 					data[channel] = quantity
-					plot(t, quantity, lw=1.5, ls=line_style,label=zero['Test Specific Name'][channel])
+					plot(t, quantity,
+							 lw=1.5,
+							 ls=line_style,
+							 marker=next(plot_markers),
+							 markevery=int((end_of_test - start_of_test)/10),
+							 mew=1.5,
+                             mec='none',
+                             ms=7,label=zero['Test Specific Name'][channel])
 
 			# Set axis options, legend, tickmarks, etc.
 			ax1 = gca()
