@@ -98,7 +98,8 @@ for entry in range(0,len(info)):
 		avg_rel_diff = sum((y-X)/((y+X)/2.))/len(X)
 
 		p = ggplot(aes('del_cafs', 'del_water'),data = del_temp) + geom_point() + stat_smooth(method='lm', color='blue',se=True) + \
-		scale_x_continuous("$\Delta$T (deg C) CAFS", limits=(0,max_axis)) + scale_y_continuous("$\Delta$T (deg C) H$_2$O",limits=(0,max_axis))
+		geom_abline(intercept=0,slope=1,colour="black") + scale_x_continuous("$\Delta$T (deg C) CAFS", limits=(0,max_axis)) + \
+		scale_y_continuous("$\Delta$T (deg C) H$_2$O",limits=(0,max_axis))
 		ggsave(p,plot_dir + info['Nozzle'][entry] + '_' + info['Position'][entry] + '_scatter_ggplot.pdf',format='pdf' )
 
 		# fig = figure()
