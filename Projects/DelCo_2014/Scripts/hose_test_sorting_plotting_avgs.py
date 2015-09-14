@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
 import os
+import collections
 import numpy as np
 import pandas as pd
 from pylab import *
 import math
+from itertools import cycle
 
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
@@ -57,8 +59,13 @@ gas_quantities = ['CO_', 'CO2_', 'O2_']
 
 # Load exp. timings, description, and averages file
 timings = pd.read_csv(timings_file, index_col=0)
-desired_tests = list(timings.columns.values)			# creates list of  column headers which correspond
-hose_info = pd.read_csv(hose_info_file, index_col=0) 	# to desired tests listed in All_Hose_Time.csv file
+desired_tests = []			
+for name in list(timings.columns.values):				# creates list of  column headers which correspond
+	if 'HOSE_D' in name:								# to desired tests listed in All_Hose_Times.csv file
+		continue
+	else:
+		desired_tests.append(name)
+hose_info = pd.read_csv(hose_info_file, index_col=0)
 info = pd.read_csv(info_file, index_col=3)
 
 # Files to skip
@@ -75,6 +82,17 @@ def movingaverage(interval, window_size):
 # Convert voltage to pascals
 conv_inch_h2o = 0.4
 conv_pascal = 248.8
+
+# Create lists for column titles for desired latex tables
+streams = ['SS', 'NF', 'WF']
+stream_ls = pd.Series(['\\textit{Straight}', '\\textit{Narrow Fog}', '\\textit{Wide Fog}'], index = streams)
+west_hand_caption = 'Average air velocity (m/s) through stairwell door with fully established flow path for stream and pattern combinations during Tests 18 and 19'
+west_hand_label = 'table:west_hand_A10_avgs'
+west_mon_columns = ['\\textbf{Stream}', '\\textbf{Near}', '\\textbf{Far}', '\\textbf{Near}', '\\textbf{Far}']
+west_hand_columns = ['\\textbf{Stream}', '\\textbf{Fixed}', '\\textbf{Sweeping}', '\\textbf{Clockwise}', '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}']
+# east_mon_columns = 
+east_hand_columns = ['\\textbf{Stream}', '\\textbf{Fixed}', '\\textbf{Clockwise}', '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}']
+
 
 for f in os.listdir(data_dir):
 	if f.endswith('.csv'):
@@ -146,7 +164,7 @@ for f in os.listdir(data_dir):
 						continue
 
 					else:
-						# check if event in beginning of new test, if so add to array to re-zero voltages
+					# check if event in beginning of new test, if so add to array to re-zero voltages
 						if ('Monitor on,' in row[test_name]) or ('Hose on,' in row[test_name]):
 							zero_time_ls.append(index)
 
@@ -290,6 +308,49 @@ for f in os.listdir(data_dir):
 				print 'Saving ' + test_name + '_' + str(group)[2:-2]  + 'Averages'
 				print
 
+				###########################################################
+				# uncomment to populate lists used for LaTeX table values #
+				###########################################################
+				# Handline
+				if P_or_L_heading == 'Pattern':
+					fixed_ls = pd.Series(range(3), index = streams)
+					sweep_ls = pd.Series(range(3), index = streams)
+					CW_ls = pd.Series(range(3), index = streams)
+					CCW_ls = pd.Series(range(3), index = streams)
+					for index, row in group_results.iterrows():
+						if row['Door'] == 'BC open':
+							start = row['Start']
+							end = row['End']
+							seq_data = group_data.iloc[start:end]
+							if row['Pattern'] == 'fixed':
+								fixed_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+							elif row['Pattern'] == 'sweep':
+								sweep_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+							elif row['Pattern'] == 'CW':
+								CW_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+							elif row['Pattern'] == 'CCW':
+								CCW_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+
+						else:
+							continue
+
+					if 'Test_18' in test_name:
+						fixed_18 = fixed_ls
+						sweep_18 = sweep_ls
+						CW_18 = CW_ls
+						CCW_18 = CCW_ls
+					elif 'Test_19' in test_name:
+						fixed_19 = fixed_ls
+						sweep_19 = sweep_ls
+						CW_19 = CW_ls
+						CCW_19 = CCW_ls
+					else:
+						print '[ERROR]: Creating west_handline table, neither Test 18 nor Test 19 read'
+						sys.exit()
+
+				# # Monitor
+				# else:
+
 				############
 				# Plotting #
 				############
@@ -305,7 +366,20 @@ for f in os.listdir(data_dir):
 				#############################################
 				# uncomment to plot individual channel data #
 				#############################################
-				plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+				# Plot style - colors and markers
+            	# These are the "Tableau 20" colors as RGB.
+				tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
+					(44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
+					(148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
+					(227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
+					(188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
+
+				# Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
+				for i in range(len(tableau20)):
+					r, g, b = tableau20[i]
+					tableau20[i] = (r / 255., g / 255., b / 255.)
+				plt.rc('axes', color_cycle=tableau20)
+				plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
 				fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + '.pdf'
 
 				for channel in group_data.columns[1:-1]:
@@ -322,7 +396,6 @@ for f in os.listdir(data_dir):
 
 					plot(t, ma_quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
 					print ' Plotting channel ' + channel
-
 
 				#############################################
 				# uncomment to plot average of all channels #
@@ -483,7 +556,20 @@ for f in os.listdir(data_dir):
 				#############################################
 				# uncomment to plot individual channel data #
 				#############################################
-				plt.rc('axes', color_cycle=['k', 'r', 'g', 'b', '0.75', 'c', 'm', 'y'])
+				# Plot style - colors and markers
+				# These are the "Tableau 20" colors as RGB.
+				tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
+					(44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
+					(148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
+					(227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
+					(188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
+
+				# Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
+				for i in range(len(tableau20)):
+					r, g, b = tableau20[i]
+					tableau20[i] = (r / 255., g / 255., b / 255.)
+				plt.rc('axes', color_cycle=tableau20)
+				plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
 				fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + '.pdf'
 
 				for channel in group_data.columns[1:-1]:
@@ -552,7 +638,44 @@ for f in os.listdir(data_dir):
 			print 'Saving plot for ', group
 			print
 			savefig(fig_name)
-			close('all')		
+			close('all')
+
+######################################################################
+# uncomment to print latex code for tables containing average values #
+######################################################################
+print
+print '#######################'
+print '# West Handline Table #'
+print '#######################'
+print
+print '\\begin{table}[!ht]'
+print '\\caption{' + west_hand_caption + '}'
+print '\\begin{tabular}{lcccc}'
+print '\\toprule'
+print ' & \\multicolumn{4}{c}{\\underline{Test 18}}'
+print '\\\\'
+print ' & '.join(str(column) for column in west_hand_columns)
+print '\\\ \\midrule'
+for index in streams:
+	print stream_ls[index] + ' & ' + fixed_18[index] + ' & ' + sweep_18[index] + ' & ' + CW_18[index] + ' & ' + CCW_18[index]
+	if index == 'WF':
+		print '\\\ \\midrule'
+	else:
+		print '\\\ \\multicolumn{5}{c}{} \\\\'
+print ' & \\multicolumn{4}{c}{\\underline{Test 19}}'
+print '\\\\'
+print ' & '.join(str(column) for column in west_hand_columns)
+print '\\\ \\midrule'
+for index in streams:
+	print stream_ls[index] + ' & ' + fixed_19[index] + ' & ' + sweep_19[index] + ' & ' + CW_19[index] + ' & ' + CCW_19[index]
+	if index == 'WF':
+		print '\\\ \\bottomrule'
+	else:
+		print '\\\ \\multicolumn{5}{c}{} \\\\'
+print '\\end{tabular}'
+print '\\label{' + west_hand_label + '}'
+print '\\end{table}'
+print
 
 
 
