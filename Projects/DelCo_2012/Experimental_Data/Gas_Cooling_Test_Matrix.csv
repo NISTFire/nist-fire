@@ -1,17 +1,1 @@
-Test,Replicates,Old_Test_Name_Water,Old_Test_Name_CAFS,Date,Nozzle,Agent,Position,Test_Series_Water,Start_Time_Water,Stop_Time_Water,Test_Series_CAFS,Start_Time_CAFS,Stop_Time_CAFS
-1_2,7,2,6,9/25/12,7_8_Solid,Water,mid,1,1290,1350,1,2950,3000
-1_3,0,3,7,9/25/12,7_8_Solid,Water,mid,1,1600,1700,1,3100,3150
-1_4,0,4,10,9/25/12,7_8_Solid,Water,mid,1,2170,2250,1,4180,4230
-1_9,0,9,11,9/25/12,7_8_Solid,Water,mid,1,4000,4055,1,4350,4430
-4_1,0,17,52,9/26/12,7_8_Solid,Water             ,mid,4,1750,1808,5,5828,5872
-4_2,0,18,53,9/26/12,7_8_Solid,Water             ,mid,4,1964,2046,5,6240,6296
-4_3,0,19,54,9/26/12,7_8_Solid,Water             ,mid,4,2319,2373,5,6369,6408
-3_5,6,16,45,9/25/12,SS,Water,mid,3,1100,1170,5,3575,3624
-4_4,0,20,46,9/26/12,SS,Water             ,mid,4,2852,2920,5,3811,3867
-4_5,0,21,47,9/26/12,SS,Water             ,mid,4,3073,3176,5,5062,5107
-4_6,0,22,48,9/26/12,SS,Water             ,mid,4,3255,3332,5,5167,5206
-5_8,0,40,49,9/26/12,SS,Water             ,mid,5,2470,2517,5,5272,5312
-5_9,0,41,50,9/26/12,SS,Water             ,mid,5,2644,2694,5,5421,5457
-4_13,1,29,12,9/26/12,SS,Water             ,full back,4,5274,5338,3,100,150
-5_1,2,33,13,9/26/12,30_Fog,Water             ,full back,5,801,850,3,420,480
-5_2,0,34,14,9/26/12,30_Fog,Water             ,full back,5,957,1008,3,750,850
+Test,Replicates,Old_Test_Name_Water,Old_Test_Name_CAFS,Date,Nozzle,Agent,Position,Test_Series_Water,Start_Time_Water,Stop_Time_Water,Test_Series_CAFS,Start_Time_CAFS,Stop_Time_CAFS1_2,7,2,6,9/25/12,7_8_Solid,Water,mid,1,1290,1350,1,2950,30001_3,0,3,7,9/25/12,7_8_Solid,Water,mid,1,1600,1700,1,3100,31501_4,0,4,10,9/25/12,7_8_Solid,Water,mid,1,2170,2250,1,4180,42301_9,0,9,11,9/25/12,7_8_Solid,Water,mid,1,4000,4055,1,4350,44304_1,0,17,52,9/26/12,7_8_Solid,Water             ,mid,4,1750,1808,5,5828,58724_2,0,18,53,9/26/12,7_8_Solid,Water             ,mid,4,1964,2046,5,6240,62964_3,0,19,54,9/26/12,7_8_Solid,Water             ,mid,4,2319,2373,5,6369,64083_5,6,16,45,9/25/12,SS,Water,mid,3,1100,1170,5,3575,36244_4,0,20,46,9/26/12,SS,Water             ,mid,4,2852,2920,5,3811,38674_5,0,21,47,9/26/12,SS,Water             ,mid,4,3073,3176,5,5062,51074_6,0,22,48,9/26/12,SS,Water             ,mid,4,3255,3332,5,5167,52065_8,0,40,49,9/26/12,SS,Water             ,mid,5,2470,2517,5,5272,53125_9,0,41,50,9/26/12,SS,Water             ,mid,5,2644,2694,5,5421,54574_13,1,29,12,9/26/12,SS,Water             ,full_back,4,5274,5338,3,100,1505_1,2,33,13,9/26/12,30_Fog,Water             ,full_back,5,801,850,3,420,4805_2,0,34,14,9/26/12,30_Fog,Water             ,full_back,5,957,1008,3,750,850

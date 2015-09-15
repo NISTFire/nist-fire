@@ -90,7 +90,7 @@ for f in os.listdir(data_dir):
 						quantity = data[channel]
 						ylabel('Temperature ($^\circ$C)', fontsize=20)
 						line_style = '-'
-						ylim([0,800])
+						ylim([0,600])
 
 					if 'BDP_' in channel:
 						conv_inch_h2o = 0.4
@@ -127,7 +127,7 @@ for f in os.listdir(data_dir):
 							 lw=1.5,
 							 ls=line_style,
 							 marker=next(plot_markers),
-							 markevery=int((end_of_test - start_of_test)/10),
+							 markevery=int((end_of_test - start_of_test)/20),
 							 mew=1.5,
                              mec='none',
                              ms=7,label=zero['Test Specific Name'][channel])
@@ -138,10 +138,10 @@ for f in os.listdir(data_dir):
 			ax1.xaxis.set_major_locator(MaxNLocator(8))
 			ax1_xlims = ax1.axis()[0:2]
 			grid(True)
-			xlabel('Time', fontsize=20)
+			xlabel('Time (s)', fontsize=20)
 			xticks(fontsize=16)
 			yticks(fontsize=16)
-			legend(loc='lower right', fontsize=8)
+			legend(loc='upper left', fontsize=8)
 
 			print 'Plotting', group
 			savefig('../Figures/Gas_Cooling/' + test_name + '_' + group[0].rstrip('_') + '.pdf')
