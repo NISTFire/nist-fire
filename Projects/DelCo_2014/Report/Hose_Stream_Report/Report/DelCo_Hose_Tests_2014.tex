@@ -101,7 +101,7 @@ Impact of Hose Streams on Air Flows inside a Structure
 
 \headerC{
 \flushright{
-Joseph Willi \\
+Joseph M. Willi \\
 Daniel Madrzykowski \\
 Craig G. Weinschenk \\
 {\em Fire Research Division \\
@@ -185,17 +185,23 @@ CODEN: NTNOEF }
 
 \begin{tabbing}
 \hspace{1.5in} \= \\
-FDS \> Fire Dynamics Simulator \\
-HGL \> Hot Gas Layer \\
-HRR \> Heat Release Rate \\
-HRRPUA \> Heat Release Rate per Unit Area \\
+% FDS \> Fire Dynamics Simulator \\
+% HGL \> Hot Gas Layer \\
+% HRR \> Heat Release Rate \\
+% HRRPUA \> Heat Release Rate per Unit Area \\
+BDP \> Bi-Directional Probe \\
 NIST \> National Institute of Standards and Technology \\
 \end{tabbing}
 
 \mainmatter
 
+
+% ================
+% = Introduction =
+% ================
+
 \chapter{Introduction}
-\label{chap:Introduction}
+\label{chap:intro}
 NIST has conducted a significant amount of research examining how ventilation affects the growth and spread of fire within structures and how the air flow to the fire may be controlled to limit or delay the growth of the fire. The studies have resulted in guidance to the fire service regarding ventilation tactics. However, ventilation tactics alone will not result in the complete extinguishment of the fire; fire suppression with hose streams is also needed.
 
 Fire suppression tactics using hose streams also affect the ventilation in a structure and can impact the movement of smoke and heat through a structure as vents are made to advance the line or if ventilation inducing hand line tactics are in practice. This research addressing the coordination of suppression tactics and the impact on ventilation is needed to complete recommendations on fire control tactics to appropriate standards, education, and training documents.
@@ -206,13 +212,13 @@ Three types of hose streams were each applied in four different fashions during 
 
 \begin{figure}[!ht]
 \includegraphics[width=6in]{../Pictures/hose_streams.pdf}
-\caption[Different Hose Stream Patterns]{The three types of hose stream patterns used during the water flow experiments from left to right: straight stream, narrow fog stream, and wide fog stream.}
+\caption[Different Hose Stream Patterns]{The three types of stream patterns used during water flow experiments. From left to right: straight stream, narrow fog stream, and wide fog stream.}
 \label{fig:hose_streams}
 \end{figure}
 \FloatBarrier
 
 \section{Background}
-\label{sec:Background}
+\label{sec:background}
 %http://www.tft.com/literature/library/files/bfa.pdf
 Nelson and Royer suggest using a clockwise rotation instead of a counterclockwise application pattern for the following reasons:
 \begin{enumerate} 
@@ -223,18 +229,26 @@ produces steam with an inactive and lazy action.
 \item A clockwise rotation produces a faster knockdown time.
 \end{enumerate}
 
-\chapter{Experimental Setup}
-\label{chap:Experimental_Setup}
 
-\section{Experimental Structure}
-\label{sec:Experimental_Structure}
-This series of field experiments was conducted in two structures located at the Delaware County Emergency Services Training Center in Sharon Hill, PA. 
+% =========================
+% = EXPERIMENTAL OVERVIEW =
+% =========================
+\chapter{Experimental Overview}
+\label{chap:exp_overview}
+To study the impact of different hose stream and application pattern selections on air movement inside a structure, numerous experiments were conducted in structures with different ventilation patterns. 
 
-\subsection{Construction}
-\label{sec:Construction}
-Two concrete structures were built on a concrete slab as shown in Fig.~\ref{fig:struct_pics}. They were designed to simulate a single-story and a two-story residential structure. The first floor of each structure had an outer wall composed of interlocking concrete blocks of dimensions 0.61 m x 0.61 m X 0.61 m (2 ft x 2 ft x 2 ft). The interior dimensions of each structure were 6.1 m (20 ft) wide, 11 m (36 ft) long and 2.4 m (8 ft) high. The joints and gaps between the blocks were filled with high temperature insulation.
+\section{Experimental Setup}
+\label{sec:exp_setup}
 
-The interior walls of the first floor of each structure were framed with steel studs and track. The studs were set to 0.40 m (16 in) centers. The ceiling/floor support was composed of wood truss joist I-beams (TJIs) with a 299 mm (11.75 in) depth. The TJI was composed of laminated veneer lumber flanges with a cross section of 29 mm (1\nicefrac{1}{8} in) x 44 mm (1.75 in) and an 11 mm (0.43 in) thick oriented strand board web as shown in Figure \ref{fig:TJI}. Tongue and grove, 18.3 mm (0.72 in) thick, oriented strand board was screwed to the top of the TJIs.
+\subsection{Test Structures}
+\label{subsec:test_structs}
+The series of field experiments described in this report was conducted in two structures of similar design located at the Delaware County Emergency Services Training Center in Sharon Hill, PA. 
+
+\subsubsection{Construction}
+\label{subsubsec:construction}
+Each test structure was built on a concrete slab as shown in Fig.~\ref{fig:struct_pics}. They were designed to simulate a single-story and a two-story residential structure. The first floor of each structure had an outer wall composed of interlocking concrete blocks shaped as cubes with each side measuring approximately 0.61 m (2 ft) in length. The interior dimensions of each structure were 6.1 m (20 ft) wide, 11 m (36 ft) long and 2.4 m (8 ft) high. The joints and gaps between the blocks were filled with high temperature insulation.
+
+The interior walls of the first floor of each structure were framed with steel studs and track. The studs were set to 0.40 m (16 in) centers. The ceiling/floor support was composed of wood truss joist I-beams (TJIs) with a 299 mm (11.75 in) depth. The TJI was composed of laminated veneer lumber flanges with a cross section of 29 mm (1.13 in) x 44 mm (1.75 in) and an 11 mm (0.43 in) thick oriented strand board web as shown in Fig.~\ref{fig:TJI}. Tongue and grove, 18.3 mm (0.72 in) thick, oriented strand board was screwed to the top of the TJIs.
 
 \begin{figure}[!ht]
 \includegraphics[width=6in]{../Pictures/TJI_support}
@@ -244,7 +258,7 @@ The interior walls of the first floor of each structure were framed with steel s
 
 The second story of the two level structure was built on the wood floor assembly as described above. The walls were framed with wood studs..**** NEED MORE DETAILS ******
 
-The interior walls of the burn room were lined with 13 mm (0.5 in) thick cement board.  The ceiling of the burn room was the exposed "floor assembly".  The walls of the hallway and entry foyer were composed of 16 mm (\nicefrac{3}{8} in) Type X gypsum room. The ceiling of the hallway and entry foyer was composed of two layers of 13 mm (0.5 in) thick cement board.  
+The interior walls of the burn room were lined with 13 mm (0.5 in) thick cement board.  The ceiling of the burn room was the exposed "floor assembly".  The walls of the hallway and entry foyer were composed of 16 mm (0.38 in) Type X gypsum room. The ceiling of the hallway and entry foyer was composed of two layers of 13 mm (0.5 in) thick cement board.  
 
 \begin{figure}[!ht]
 \includegraphics[width=6in]{../Pictures/east_structure}
@@ -253,6 +267,12 @@ The interior walls of the burn room were lined with 13 mm (0.5 in) thick cement 
 \caption[East and West Test Structures]{East (top) and West (bottom) Test Structures}
 \label{fig:struct_pics}
 \end{figure}
+
+\clearpage
+
+\subsubsection{Layout}
+\label{subsubsec:layout}
+**** Dimension detail, introduce floor plan figures, etc. ****
 
 \begin{figure}[!ht]
 \includegraphics[trim=0cm 0cm 0.25cm 4cm, clip=true, width=6in]{../Drawings/East_Structure_Metric_Simple}
@@ -273,13 +293,13 @@ The interior walls of the burn room were lined with 13 mm (0.5 in) thick cement 
 \clearpage
 
 \subsection{Instrumentation}
-\label{sec:Instrumentation}
-There is a discussion of uncertainties for each measurement below in Section~\ref{sec:Uncertainty}. Gas velocity was measured at various doorways using differential pressure transducers connected to bi-directional velocity probes (BDPs)~\cite{McCaffrey:Combustion_and_Flame}. Each set of BDPs contained 8 probes located at distances of 0.08 m, 0.34 m, 0.61 m, 0.88 m, 1.15 m, 1.42 m, 1.68 m, and 1.95 m below the soffit of the corresponding doorway. Fig.~\ref{fig:BDPs} shows a picture of two sets of BDPs, A5 and A6, located at each double door on the first floor of the West Structure. To avoid potential measurement errors due to external environmental conditions, only velocity data measured by BDPs located in interior doorways were considered during analyses. Schematic plan overviews of the instrumentation in the East and West Structures are provided in Fig.~\ref{fig:east_instrumentation} and Fig.~\ref{fig:west_instrumentation}. A single thermocouple was attached to each bi-directional probe. The thermocouples that are used with the bi-directional probes are exposed-bead, Chromel-Alumel (type K) with a 1.0 mm (0.04 in) diameter. Starting with the exposed bead, the thermocouple wire was sheathed in a 3.2 mm (0.13 in) diameter Inconel shield, 0.76 m (2.5 ft) in length.
+\label{subsec:instrumentation}
+There is a discussion of uncertainties for each measurement below in Section~\ref{subsec:uncertainty}. Gas velocity was measured at various doorways using differential pressure transducers connected to bi-directional velocity probes (BDPs)~\cite{McCaffrey:Combustion_and_Flame}. Each set of BDPs contained 8 probes located at distances of 0.08 m, 0.34 m, 0.61 m, 0.88 m, 1.15 m, 1.42 m, 1.68 m, and 1.95 m below the soffit of the corresponding doorway. Fig.~\ref{fig:BDPs} shows a picture of two sets of BDPs, A5 and A6, located at each double door on the first floor of the West Structure. To avoid potential measurement errors due to external environmental conditions, only velocity data measured by BDPs located in interior doorways were considered during analyses. Schematic plan overviews of the instrumentation in the East and West Structures are provided in Fig.~\ref{fig:east_devices} and Fig.~\ref{fig:west_devices}. A single thermocouple was attached to each bi-directional probe. The thermocouples that are used with the bi-directional probes are exposed-bead, Chromel-Alumel (type K) with a 1.0 mm (0.04 in) diameter. Starting with the exposed bead, the thermocouple wire was sheathed in a 3.2 mm (0.13 in) diameter Inconel shield, 0.76 m (2.5 ft) in length.
 
 \begin{figure}[!ht]
 \includegraphics[trim=0cm 0cm 0.25cm 3.75cm, clip=true, width=6in]{../Drawings/Instrumentation/East_Structure_Devices_Hose_Test}
 \caption[Location of Instrumentation in East Structure]{Location of instrumentation in East Structure}
-\label{fig:east_instrumentation}
+\label{fig:east_devices}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -287,7 +307,7 @@ There is a discussion of uncertainties for each measurement below in Section~\re
 \\
 \includegraphics[trim=0cm 0cm 0.75cm 5.0cm, clip=true, width=6in]{../Drawings/Instrumentation/West_Test_Structure_Devices_Hose_Test_2nd_Floor}
 \caption[Location of Instrumentation in West Structure]{Location of instrumentation in West Structure}
-\label{fig:west_instrumentation}
+\label{fig:west_devices}
 \end{figure}
 
 \clearpage
@@ -298,8 +318,8 @@ There is a discussion of uncertainties for each measurement below in Section~\re
 \label{fig:BDPs}
 \end{figure}
 
-\section{Uncertainty}
-\label{sec:Uncertainty}
+\subsection{Uncertainty}
+\label{subsec:uncertainty}
 There are different components of uncertainty in the length, differential pressure, and gas velocity reported here. Uncertainties are grouped into two categories according to the method used to estimate them. Type A uncertainties are those which are evaluated by statistical methods, and Type B are those which are evaluated by other means~\cite{Taylor&Kuyatt:1994}. Type B analysis of systematic uncertainties involves estimating the upper (+a) and lower (-a) limits for the quantity in question such that the probability that the value would be in the interval ($\pm$a) is essentially 100\%. After estimating uncertainties by either Type A or B analysis, the uncertainties are combined in quadrature to yield the combined standard uncertainty. Then, the combined standard uncertainty is multiplied by a coverage factor of two, which results in the expanded uncertainty with a 95\% confidence interval (2$\sigma$). For some of these components, such as the zero and calibration elements, uncertainties are derived from referenced instrument specifications. For other components, referenced research results and past experience with the instruments provided input in the uncertainty determination. 
 
 Each length measurement was taken carefully. Length measurements such as the room dimensions,
@@ -319,10 +339,10 @@ Water flowrate was measured with a pressure and flow meter combination shown in 
 In the following sections, the measurements will be presented in graphic and tabular form. In the graphs, an error bar will represent the estimated uncertainty of the measurement. In the tables, the uncertainty will be included in the table of as part of the caption.
 
 \section{Experimental Procedure}
-\label{sec:Experimental_Procedure}
+\label{sec:exp_procedure}
 
 A variety of experiments were conducted to examine the impact of different hose streams and application methods on air flow inside a structure. All the experiments were conducted in either the East or West Structure; used a monitor %reference for specs? 2000 LPM (500 GPM)?
-or 1~\nicefrac{3}{4}" handline with a combination nozzle (Fig.~\ref{fig:monitor+handline}) to flow water at approximately 120 GPM in a straight, narrow fog, or wide fog stream pattern; and involved opening and closing doors in the structure to change the ventilation patterns. Experiments that used a monitor to flow water focused on varying the location of water application, while the experiments that used a handline to flow water focused on varying the pattern in which water was applied.
+or 1.75 in handline with a combination nozzle (Fig.~\ref{fig:monitor+handline}) to flow water at approximately 120 GPM in a straight, narrow fog, or wide fog stream pattern; and involved opening and closing doors in the structure to change the ventilation patterns. Experiments that used a monitor to flow water focused on varying the location of water application, while the experiments that used a handline to flow water focused on varying the pattern in which water was applied.
 
 \begin{figure}[!ht]
 \minipage{3in}
@@ -341,8 +361,8 @@ or 1~\nicefrac{3}{4}" handline with a combination nozzle (Fig.~\ref{fig:monitor+
 \FloatBarrier
 
 \subsection{Monitor Experiments}
-\label{sec:Water_Flow_Monitor_Procedure}
-Numerous experiments were conducted during three different test series using a monitor equipped with a combination nozzle to flow water in the straight, narrow fog, and wide fog stream patterns. One test series, Test 33, occurred in the East Structure, and the two remaining series, Tests 16 and 17, occurred in the West Structure. 
+\label{subsec:monitor_procedure}
+Numerous experiments were conducted during three different test series using a monitor equipped with a combination nozzle to flow water in a straight, narrow fog, and wide fog stream pattern. One test series, Test 33, occurred in the East Structure, and the two remaining series, Tests 16 and 17, occurred in the West Structure. Because monitor nozzles are designed to flow water from a set position, water was always applied in a fixed position during the monitor experiments. Thus, the monitor experiments primarily focused on the impact of different hose stream patterns on air movement in a structure.
 
 Test 33 involved flowing water using a monitor equipped with a combination nozzle from Room C to the ceiling of Room B in the East Structure (Fig.~\ref{fig:test_33_pic}). A schematic of the structure's layout during the test series is presented in Fig.~\ref{fig:test_33_34_setup}. Test 33 began by flowing water in a straight stream pattern for 30 seconds, then in a narrow fog stream for 30 seconds, and finally in a wide fog stream for 30 seconds. Then, the south side door was opened and each stream was applied for 30 seconds again.
 
@@ -367,7 +387,7 @@ Test 33 involved flowing water using a monitor equipped with a combination nozzl
 \FloatBarrier
 
 % Add flow chart? %
-Tests 16 and 17 followed an identical procedure that involved flowing water from the north side double doors on the first level of the West Structure using a monitor equipped with a combination nozzle. The nozzle was aimed at two targets during the tests: a "near" target, located approximately 1.8 m (6 ft) from the interior side of the north wall and a "far" target, located approximately 3.7 m (12 ft) from the interior side of the north wall. The difference between the tests was that Test 16 contained the flow path configuration presented in Fig.~\ref{fig:flow_path_1}, while Test 17 contained the flow path configuration presented in Fig.~\ref{fig:flow_path_2}. Each test began by flowing water in a straight stream pattern at the far target for 60 seconds. After 60 seconds of water flow, the stairwell door was opened. One minute later, the north side, west double door on the second floor was opened, and water continued to flow for 60 seconds. Then, water flow was stopped, the two doors were closed, and the procedure was repeated with the monitor aimed at the near target. The entire process was repeated for the narrow fog and wide fog streams. Fig.~\ref{fig:test_16_17_pic} contains images of each type of hose stream aimed at the near and far targets.
+Tests 16 and 17 followed identical procedures that involved flowing water from the north side double doors on the first level of the West Structure using a monitor equipped with a combination nozzle. The nozzle was aimed at two targets during the tests: a "near" target, located approximately 1.8 m (6 ft) from the interior side of the north wall and a "far" target, located approximately 3.7 m (12 ft) from the interior side of the north wall. The difference between the tests was that Test 16 contained the flow path configuration presented in Fig.~\ref{fig:flow_path_1}, while Test 17 contained the flow path configuration presented in Fig.~\ref{fig:flow_path_2}. Each test began by flowing water in a straight stream pattern at the far target for 60 seconds. After 60 seconds of water flow, the stairwell door was opened. One minute later, the north side, west double door on the second floor was opened, and water continued to flow for 60 seconds. Then, water flow was stopped, the two doors were closed, and the procedure was repeated with the monitor aimed at the near target. The entire process was repeated for the narrow fog and wide fog streams. Fig.~\ref{fig:test_16_17_pic} contains images of each type of hose stream aimed at the near and far targets.
 
 \begin{figure}[!ht]
 \begin{overpic}[trim=0cm 0cm 0.75cm 4.5cm, clip=true, width=6in]{../Drawings/Specific_Tests/West_Structure_Hose_Test_18_1st_Floor}
@@ -430,7 +450,7 @@ Tests 16 and 17 followed an identical procedure that involved flowing water from
 \clearpage
 
 \subsection{Handline Experiments}
-\label{sec:Water_Flow_Handline_Procedure}
+\label{subsec:handline_procedure}
 Numerous experiments were conducted during three different test series using a 1.75" handline with a combination nozzle to flow water. One test series, Test 34, occurred in the East Structure, and the two other series, Tests 18 and 19, occurred in the West Structure. 
 
 Test 34 involved flowing water using a 1.75" handline equipped with a combination nozzle located inside Room C. A schematic of the structure's layout during the test series is presented in Fig.~\ref{fig:test_33_34_setup}. The test began by flowing water in a straight stream at the ceiling in Room B for 30 seconds in a fixed position, as pictured in Fig.~\ref{fig:test_34_pic}. Next, the nozzle was rotated in the clockwise direction for 30 seconds. Then, the handline was aimed at Door AB, and water was applied for 30 seconds in a fixed position and for 30 seconds in a clockwise pattern. This process were repeated for narrow fog and wide fog streams. Then, the entire procedure was repeated for the three types of streams, except a counter-clockwise pattern was applied.
@@ -462,10 +482,14 @@ Tests 18 and 19 followed an identical procedure that involved flowing water from
 \end{figure}
 \clearpage
 
+% ===========
+% = RESULTS =
+% ===========
+
 \chapter{Results}
 \label{chap:Results}
 
-\section{Monitor Nozzle Experiments}
+\section{Monitor Experiments}
 \label{sec:monitor_results}
 
 Fig.~\ref{fig:Test_16_BDP_A10_Avg_All} contains plots of the average velocity measured by the bi-directional probes in the stairwell doorway (A10) for the straight, narrow fog, and wide fog stream patterns aimed at the near and far targets during Test 16. A similar figure was generated using data from Test 17 and can be found in Appendix~\ref{sec:additional_figures}.
@@ -511,10 +535,30 @@ Notice, the only instances in which significant air movement (average velocity g
 \label{table:Tests_16_17_BDP_A10_Avgs}
 \end{table}
 
+% West Monitor Table
+
+\begin{table}[!ht]
+\caption{Average air velocity (m/s) through stairwell door with fully established flow path for stream and target location for all monitor tests}
+\begin{tabular}{lccccc}
+\toprule
+ & \multicolumn{2}{c}{\underline{Test 16}} & \multicolumn{2}{c}{\underline{Test 17}} & \underline{Test 33}
+\\
+\textbf{Stream} & \textbf{Near} & \textbf{Far} & \textbf{Near} & \textbf{Far} & \textbf{Door AB}
+\\ \midrule
+\textit{Straight} & 0.9 $\pm0.1$ & 0.9 $\pm0.2$ & 0.7 $\pm0.1$ & 0.7 $\pm0.2$ & -0.3 $\pm0.1$
+\\ \multicolumn{6}{c}{} \\
+\textit{Narrow Fog} & 0.9 $\pm0.2$ & 1.4 $\pm0.2$ & 0.7 $\pm0.2$ & 0.7 $\pm0.1$ & 1.0 $\pm0.6$
+\\ \multicolumn{6}{c}{} \\
+\textit{Wide Fog} & 1.2 $\pm0.2$ & 1.3 $\pm0.2$ & 0.9 $\pm0.2$ & 0.8 $\pm0.2$ & 2.4 $\pm0.3$
+\\ \bottomrule
+\end{tabular}
+\label{table:all_mon_vel_avgs}
+\end{table}
+
 \section{Handline Experiments}
 \label{sec:handline_results}
 
-Figures \ref{fig:Test_18_BDP_A10_Avg_All}-\ref{fig:Test_19_BDP_A13_Avg_All} contain plots of the average velocity through the stairwell door and \nth{2} level, north side, west double door, measured by the bi-directional probes in each doorway for the four application patterns and three hose stream patterns for Tests 18 and 19. 
+Figs.~\ref{fig:Test_18_BDP_A10_Avg_All}-\ref{fig:Test_19_BDP_A13_Avg_All} contain plots of the average velocity through the stairwell door and \nth{2} level, north side, west double door, measured by the bi-directional probes in each doorway for the four application patterns and three hose stream patterns for Tests 18 and 19. 
 
 % \begin{figure}[!ht]
 % \includegraphics[width=6in]{../../../Figures/Hose_Test_Figures/Test_18_West_063014_BDP_A10_Avg}
@@ -648,6 +692,61 @@ Notice, there is a significant difference between the average air velocity cause
 
 Another important result shown in Figures \ref{fig:Test_18_BDP_A10_Avg_All} and \ref{fig:Test_19_BDP_A10_Avg_All} and in Tables \ref{table:Tests_18_19_BDP_A10_Avgs} and \ref{table:Tests_18_19_BDP_A13_Avgs} is that there is statistically no significant difference in the amount of air flow through the doorways between rotating the hoseline in the clockwise and counter clockwise directions for the three hose streams tested. 
 
+% #######################
+% # West Handline Table #
+% #######################
+
+\begin{table}[!ht]
+\caption{Average air velocity (m/s) through stairwell door with fully established flow path for stream and application pattern combinations during Tests 18 and 19}
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{4}{c}{\underline{Test 18}}
+\\
+\textbf{Stream} & \textbf{Fixed} & \textbf{Sweeping} & \textbf{Clockwise} & \begin{tabular}{@{}c@{}} \textbf{Counter} \\ \textbf{Clockwise} \\ \end{tabular}
+\\ \midrule
+\textit{Straight} & -0.2 $\pm0.3$ & 0.5 $\pm0.2$ & 0.7 $\pm0.2$ & 0.7 $\pm0.2$
+\\ \multicolumn{5}{c}{} \\
+\textit{Narrow Fog} & 0.4 $\pm0.3$ & 1.0 $\pm0.2$ & 0.8 $\pm0.2$ & 1.0 $\pm0.3$
+\\ \multicolumn{5}{c}{} \\
+\textit{Wide Fog} & 0.9 $\pm0.2$ & 0.9 $\pm0.3$ & 0.9 $\pm0.3$ & 0.8 $\pm0.3$
+\\ \midrule
+ & \multicolumn{4}{c}{\underline{Test 19}}
+\\
+\textbf{Stream} & \textbf{Fixed} & \textbf{Sweeping} & \textbf{Clockwise} & \begin{tabular}{@{}c@{}} \textbf{Counter} \\ \textbf{Clockwise} \\ \end{tabular}
+\\ \midrule
+\textit{Straight} & -0.1 $\pm0.1$ & 0.5 $\pm0.2$ & 0.7 $\pm0.1$ & 0.6 $\pm0.2$
+\\ \multicolumn{5}{c}{} \\
+\textit{Narrow Fog} & 1.2 $\pm0.3$ & 1.2 $\pm0.3$ & 1.2 $\pm0.4$ & 1.2 $\pm0.2$
+\\ \multicolumn{5}{c}{} \\
+\textit{Wide Fog} & 1.0 $\pm0.2$ & 0.7 $\pm0.2$ & 0.9 $\pm0.2$ & 0.9 $\pm0.2$
+\\ \bottomrule
+\end{tabular}
+\label{table:west_hand_A10_avgs}
+\end{table}
+
+
+% #######################
+% # East Handline Table #
+% #######################
+
+\begin{table}[!ht]
+\caption{Average air velocity (m/s) through A6 with established flow path for the stream and application pattern combinations at each target (Room A and ceiling of Room B) during Test 34}
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{3}{c}{\underline{Room A}} & \multicolumn{3}{c}{\underline{Room B Ceiling}}
+\\
+\textbf{Stream} & \textbf{Fixed} & \textbf{Clockwise} & \begin{tabular}{@{}c@{}} \textbf{Counter} \\ \textbf{Clockwise} \\ \end{tabular} & \textbf{Fixed} & \textbf{Clockwise} & \begin{tabular}{@{}c@{}} \textbf{Counter} \\ \textbf{Clockwise} \\ \end{tabular}
+\\ \midrule
+\textit{Straight} & 0.2 $\pm0.3$ & 0.6 $\pm0.2$ & 0.8 $\pm0.3$ & -0.1 $\pm0.1$ & 0.5 $\pm0.3$ & 0.5 $\pm0.2$
+\\ \multicolumn{7}{c}{} \\
+\textit{Narrow Fog} & 1.7 $\pm0.4$ & 1.8 $\pm0.2$ & 1.6 $\pm0.1$ & 0.9 $\pm0.2$ & 1.5 $\pm0.3$ & 1.6 $\pm0.2$
+\\ \multicolumn{7}{c}{} \\
+\textit{Wide Fog} & 1.9 $\pm0.2$ & 2.1 $\pm0.1$ & 2.2 $\pm0.1$ & 2.1 $\pm0.3$ & 2.3 $\pm0.1$ & 2.6 $\pm0.1$
+\\ \bottomrule
+\end{tabular}
+\label{table:east_hand_A6_avgs}
+\end{table}
+
 %\begin{figure}[!ht]
 %\includegraphics[width=6in]{../../Figures/Hose_Test_Figures/Test_18_West_063014_BDP_A10_Avg_CW_vs_CCW}
 %\caption{Average Velocity of Stairwell Door, Test 18, All Streams, CW vs. CCW}
@@ -662,6 +761,9 @@ Another important result shown in Figures \ref{fig:Test_18_BDP_A10_Avg_All} and 
 %
 %\clearpage
 
+% ===============
+% = CONCLUSIONS =
+% ===============
 \chapter{Conclusions}
 \label{chap:Conclusions}
 \begin{enumerate}
@@ -670,14 +772,18 @@ Another important result shown in Figures \ref{fig:Test_18_BDP_A10_Avg_All} and 
 \item No difference between rotating hose CW or CCW
 \end{enumerate}
 
+% ===============
+% = FUTURE WORK =
+% ===============
 \chapter{Future Work}
 \label{chap:Future_Work}
 Need to determine if air movement caused by hose streams has significant impact on flow path and fire development in involved structure
 
-compare to cold flow tests?
-
+% ====================
+% = ACKNOWLEDGEMENTS =
+% ====================
 \chapter{Acknowledgments}
-\label{chap:Acknowledgments}
+\label{chap:acknowledgments}
 
 \bibliography{../../../../../Bibliography/FDS_general}
 

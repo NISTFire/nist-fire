@@ -11,6 +11,20 @@ from itertools import cycle
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
 
+#  ==================
+#  = User functions =
+#  ==================
+
+# Allows printing of line number in code for custom printed error messages
+import inspect
+def lineno():
+    return inspect.currentframe().f_back.f_lineno
+
+# moving average   
+def movingaverage(interval, window_size):
+    window = np.ones(int(window_size))/float(window_size)
+    return np.convolve(interval, window, 'same')
+
 #  =================
 #  = User Settings =
 #  =================
@@ -71,9 +85,44 @@ info = pd.read_csv(info_file, index_col=3)
 # Files to skip
 skip_files = ['_times', '_reduced', '_results', 'description_']
 
-def movingaverage(interval, window_size):
-    window = np.ones(int(window_size))/float(window_size)
-    return np.convolve(interval, window, 'same')
+# ============================================
+# Execute or skip specific parts of the code =
+# ============================================
+
+result_file = False			# Generate a .csv file with channel avgs for specified sensor groups
+plotting = False			# Generate any plot?
+all_channel_plot = False	# Plot individual channels
+group_avg_plot = False		# or plot sensor group avgs
+latex_table_code = True     # Print code to generate tables in LaTeX?
+if(latex_table_code):		# specify table properties (if applicable)
+	# Create lists for column titles for desired latex tables
+	streams = ['SS', 'NF', 'WF']
+	stream_ls = pd.Series(['\\textit{Straight}', '\\textit{Narrow Fog}', '\\textit{Wide Fog}'], index = streams)
+
+	# West handline table
+	west_hand_caption = ('Average air velocity (m/s) through stairwell door with fully established flow path '
+		'for stream and application pattern combinations during Tests 18 and 19')
+	west_hand_label = 'table:west_hand_A10_avgs'
+	west_hand_columns = ['\\textbf{Stream}', '\\textbf{Fixed}', '\\textbf{Sweeping}', '\\textbf{Clockwise}', 
+		'\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}']
+
+	# West monitor table
+	west_mon_caption = ('Average air velocity (m/s) through stairwell door with fully established flow path '
+		'for stream and target location for all monitor tests')
+	west_mon_label = 'table:all_mon_vel_avgs'
+	west_mon_columns = ['\\textbf{Stream}', '\\textbf{Near}', '\\textbf{Far}', '\\textbf{Near}', '\\textbf{Far}', '\\textbf{Door AB}']
+
+	# East handline table
+	east_hand_caption = ('Average air velocity (m/s) through A6 with established flow path for the stream and application pattern '
+		'combinations at each target (Room A and ceiling of Room B) during Test 34') 
+	east_hand_label = 'table:east_hand_A6_avgs'
+	east_hand_columns = ['\\textbf{Stream}', '\\textbf{Fixed}', '\\textbf{Clockwise}', 
+		'\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}', '\\textbf{Fixed}', 
+		'\\textbf{Clockwise}', '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}']
+
+	# East monitor table
+	# east monitor data currently included in west monitor table #
+
 
 #  ===============================
 #  = Loop through all data files =
@@ -82,17 +131,6 @@ def movingaverage(interval, window_size):
 # Convert voltage to pascals
 conv_inch_h2o = 0.4
 conv_pascal = 248.8
-
-# Create lists for column titles for desired latex tables
-streams = ['SS', 'NF', 'WF']
-stream_ls = pd.Series(['\\textit{Straight}', '\\textit{Narrow Fog}', '\\textit{Wide Fog}'], index = streams)
-west_hand_caption = 'Average air velocity (m/s) through stairwell door with fully established flow path for stream and pattern combinations during Tests 18 and 19'
-west_hand_label = 'table:west_hand_A10_avgs'
-west_mon_columns = ['\\textbf{Stream}', '\\textbf{Near}', '\\textbf{Far}', '\\textbf{Near}', '\\textbf{Far}']
-west_hand_columns = ['\\textbf{Stream}', '\\textbf{Fixed}', '\\textbf{Sweeping}', '\\textbf{Clockwise}', '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}']
-# east_mon_columns = 
-east_hand_columns = ['\\textbf{Stream}', '\\textbf{Fixed}', '\\textbf{Clockwise}', '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}']
-
 
 for f in os.listdir(data_dir):
 	if f.endswith('.csv'):
@@ -139,9 +177,9 @@ for f in os.listdir(data_dir):
 
 			# West Test Sorting/Plotting
 			if 'Test' in test_name:
-				########################################################
-				# Generates event times and information for each event #
-				########################################################
+				###########
+				# Sorting #
+				###########
 
 				# initialize lists and start_seq value
 				start_seq = 0
@@ -279,141 +317,194 @@ for f in os.listdir(data_dir):
 						# add velocities to group_data df and add a column for channel to group_results df
 						group_data[channel] = quantity
 						group_results[channel] = ''
-						print ' Added data for ' + channel
 
 				# calculate channel avg at each second and add to group_data
 				channel_avg = []
 				for index, row in group_data.iterrows():
 					channel_avg.append(np.mean(row[1:]))
-				group_data['Avg'] = channel_avg
-				print ' Calculated average of all channels'				
+				group_data['Avg'] = channel_avg			
 
-				###########################################################################
-				# uncomment to produce .csv result files with channel avgs for each event #
-				###########################################################################
-				group_results['Avg'] = ''
-				for index, row in group_results.iterrows():
-					# grab start/end time for each event in new .csv file
-					start = row['Start']
-					end = row['End']
-					seq_data = group_data.iloc[start:end]
-
-					# Calculate average for each channel during sequence
-					for column in group_results.columns[5:]:
-						# calculate avg for each channel during event 
-						group_results.loc[index, column] = round(np.mean(seq_data[column]), 2)
-
-				# Saves results .csv file for sensor group
-				group_results.to_csv(results_dir + test_name + '_' + str(group)[2:-2]  + 'averages.csv')
-				print 'Saving ' + test_name + '_' + str(group)[2:-2]  + 'Averages'
-				print
-
-				###########################################################
-				# uncomment to populate lists used for LaTeX table values #
-				###########################################################
-				# Handline
-				if P_or_L_heading == 'Pattern':
-					fixed_ls = pd.Series(range(3), index = streams)
-					sweep_ls = pd.Series(range(3), index = streams)
-					CW_ls = pd.Series(range(3), index = streams)
-					CCW_ls = pd.Series(range(3), index = streams)
+				if(result_file):
+					group_results['Avg'] = ''
 					for index, row in group_results.iterrows():
-						if row['Door'] == 'BC open':
-							start = row['Start']
-							end = row['End']
-							seq_data = group_data.iloc[start:end]
-							if row['Pattern'] == 'fixed':
-								fixed_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
-							elif row['Pattern'] == 'sweep':
-								sweep_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
-							elif row['Pattern'] == 'CW':
-								CW_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
-							elif row['Pattern'] == 'CCW':
-								CCW_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+						# grab start/end time for each event in new .csv file
+						start = row['Start']
+						end = row['End']
+						seq_data = group_data.iloc[start:end]
+
+						# Calculate average for each channel during sequence
+						for column in group_results.columns[5:]:
+							# calculate avg for each channel during event 
+							group_results.loc[index, column] = round(np.mean(seq_data[column]), 2)
+
+					# Saves results .csv file for sensor group
+					group_results.to_csv(results_dir + test_name + '_' + str(group)[2:-2]  + 'averages.csv')
+					print 'Saving ' + test_name + '_' + str(group)[2:-2]  + 'Averages'
+					print
+
+				if(latex_table_code):
+					# Handline
+					if P_or_L_heading == 'Pattern':
+						fixed_ls = pd.Series(range(3), index = streams)
+						sweep_ls = pd.Series(range(3), index = streams)
+						CW_ls = pd.Series(range(3), index = streams)
+						CCW_ls = pd.Series(range(3), index = streams)
+						for index, row in group_results.iterrows():
+							if row['Door'] == 'BC open':
+								start = row['Start']
+								end = row['End']
+								seq_data = group_data.iloc[start:end]
+								if row['Pattern'] == 'fixed':
+									fixed_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+								elif row['Pattern'] == 'sweep':
+									sweep_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+								elif row['Pattern'] == 'CW':
+									CW_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+								elif row['Pattern'] == 'CCW':
+									CCW_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+							else:
+								continue
+
+						if 'Test_18' in test_name:
+							fixed_18 = fixed_ls
+							sweep_18 = sweep_ls
+							CW_18 = CW_ls
+							CCW_18 = CCW_ls
+						elif 'Test_19' in test_name:
+							fixed_19 = fixed_ls
+							sweep_19 = sweep_ls
+							CW_19 = CW_ls
+							CCW_19 = CCW_ls
+						else:
+							print '[ERROR, line '+lineno()+']:' 
+							print 'Test is not a west handline test:'
+							print 'Test = ' + test_name
+							sys.exit()
+
+					# Monitor
+					else:
+						near_ls = pd.Series(range(3), index = streams)
+						far_ls = pd.Series(range(3), index = streams)
+						# if-else due to flowrate of WF dropping during Test 17, so Test 17b was performed for WF at proper flowrate 
+						if 'Test_17' not in test_name:
+							for index, row in group_results.iterrows():
+								if row['Door'] == 'BC open':
+									start = row['Start']
+									end = row['End']
+									seq_data = group_data.iloc[start:end]
+									if row['Location'] == 'Near':
+										near_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+									elif row['Location'] == 'Far':
+										far_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+									else:
+										print '[ERROR, line '+lineno()+']:'
+										print 'Read row[Door] as "BC open" but row[Location] is not a valid input'
+										print 'row[Location] = ' + row['Location']
+										sys.exit()
+								else:
+									continue
+							near_16 = near_ls
+							far_16 = far_ls
 
 						else:
-							continue
+							if 'Test_17b' in test_name:
+								for index, row in group_results.iterrows():
+									if row['Door'] == 'BC open':
+										start = row['Start']
+										end = row['End']
+										seq_data = group_data.iloc[start:end]
+										if row['Location'] == 'Near':
+											near_17_WF = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+										elif row['Location'] == 'Far':
+											far_17_WF = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+										else:
+											print '[ERROR, line '+lineno()+']:'
+											print 'Read row[Door] as "BC open" but row[Location] is not a valid input'
+											print 'row[Location] = ' + row['Location']
+											sys.exit()
+									else:
+										continue
 
-					if 'Test_18' in test_name:
-						fixed_18 = fixed_ls
-						sweep_18 = sweep_ls
-						CW_18 = CW_ls
-						CCW_18 = CCW_ls
-					elif 'Test_19' in test_name:
-						fixed_19 = fixed_ls
-						sweep_19 = sweep_ls
-						CW_19 = CW_ls
-						CCW_19 = CCW_ls
-					else:
-						print '[ERROR]: Creating west_handline table, neither Test 18 nor Test 19 read'
-						sys.exit()
-
-				# # Monitor
-				# else:
+							else:
+								for index, row in group_results.iterrows():
+									if row['Door'] == 'BC open':
+										start = row['Start']
+										end = row['End']
+										seq_data = group_data.iloc[start:end]
+										if row['Location'] == 'Near':
+											near_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+										elif row['Location'] == 'Far':
+											far_ls[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+										else:
+											print '[ERROR, line '+lineno()+']:'
+											print 'Read row[Door] as "BC open" but row[Location] is not a valid input'
+											print 'row[Location] = ' + row['Location']
+											sys.exit()
+									else:
+										continue
+								near_17 = near_ls
+								far_17 = far_ls
 
 				############
 				# Plotting #
 				############
-				# set new figure, figure name; re-set y min and max
-				fig = figure()
-				y_min = 0
-				y_max = 0
-				t = group_data['Time']
-				ylabel('Velocity (m/s)', fontsize=20)
-				line_style = '-'
-				axis_scale = 'Y Scale BDP'
+				if(plotting):
+					# set new figure, figure name; re-set y min and max
+					fig = figure()
+					y_min = 0
+					y_max = 0
+					t = group_data['Time']
+					ylabel('Velocity (m/s)', fontsize=20)
+					line_style = '-'
+					axis_scale = 'Y Scale BDP'
 
-				#############################################
-				# uncomment to plot individual channel data #
-				#############################################
-				# Plot style - colors and markers
-            	# These are the "Tableau 20" colors as RGB.
-				tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
-					(44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
-					(148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
-					(227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
-					(188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
+					if(all_channel_plot):
+						# Plot style - colors and markers
+		            	# These are the "Tableau 20" colors as RGB.
+						tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
+							(44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
+							(148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
+							(227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
+							(188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
 
-				# Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
-				for i in range(len(tableau20)):
-					r, g, b = tableau20[i]
-					tableau20[i] = (r / 255., g / 255., b / 255.)
-				plt.rc('axes', color_cycle=tableau20)
-				plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
-				fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + '.pdf'
+						# Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
+						for i in range(len(tableau20)):
+							r, g, b = tableau20[i]
+							tableau20[i] = (r / 255., g / 255., b / 255.)
+						plt.rc('axes', color_cycle=tableau20)
+						plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
+						fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + '.pdf'
 
-				for channel in group_data.columns[1:-1]:
-					quantity = group_data[channel]
+						for channel in group_data.columns[1:-1]:
+							quantity = group_data[channel]
 
-					# check y min and max
-					ma_quantity = movingaverage(quantity,5)
-					q_max = max(ma_quantity)
-					q_min = min(ma_quantity)
-					if q_max > y_max:
-						y_max = q_max
-					if q_min < y_min:
-						y_min = q_min
+							# check y min and max
+							ma_quantity = movingaverage(quantity,5)
+							q_max = max(ma_quantity)
+							q_min = min(ma_quantity)
+							if q_max > y_max:
+								y_max = q_max
+							if q_min < y_min:
+								y_min = q_min
 
-					plot(t, ma_quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
-					print ' Plotting channel ' + channel
+							plot(t, ma_quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
+							print ' Plotting channel ' + channel
 
-				#############################################
-				# uncomment to plot average of all channels #
-				#############################################
-				# fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + '_avg.pdf'
+					elif(group_avg_plot):
+						fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + '_avg.pdf'
 
-				# quantity = group_data['Avg']
-				# ma_quantity = movingaverage(quantity, 5)
-				# y_max = max(ma_quantity)
-				# y_min = min(ma_quantity)
+						quantity = group_data['Avg']
+						ma_quantity = movingaverage(quantity, 5)
+						y_max = max(ma_quantity)
+						y_min = min(ma_quantity)
 
-				# plot(t, ma_quantity, lw=1.5, ls=line_style, label=group_results.columns[5:-1], color = 'b')
+						plot(t, ma_quantity, lw=1.5, ls=line_style, label=group_results.columns[5:-1], color = 'b')
 
 			# East Tests Sorting/Plotting
 			else:
-				########################################################
-				# Generates event times and information for each event #
-				########################################################
+				###########
+				# Sorting #
+				###########
 
 				# initialize lists and start_seq value
 				start_seq = 0
@@ -521,162 +612,315 @@ for f in os.listdir(data_dir):
 				group_data['Avg'] = channel_avg
 				print ' Calculated average of all channels'		
 
-				###########################################################################
-				# uncomment to produce .csv result files with channel avgs for each event #
-				###########################################################################
-				group_results['Avg'] = ''
-				for index, row in group_results.iterrows():
-					# grab start/end time for each event in new .csv file
-					start = row['Start']
-					end = row['End']
-					seq_data = group_data.iloc[start:end]
+				if(result_file):
+					group_results['Avg'] = ''
+					for index, row in group_results.iterrows():
+						# grab start/end time for each event in new .csv file
+						start = row['Start']
+						end = row['End']
+						seq_data = group_data.iloc[start:end]
 
-					# Calculate average for each channel during sequence
-					for column in group_results.columns[6:]:
-						# calculate avg for each channel during event 
-						group_results.loc[index, column] = round(np.mean(seq_data[column]), 2)
+						# Calculate average for each channel during sequence
+						for column in group_results.columns[6:]:
+							# calculate avg for each channel during event 
+							group_results.loc[index, column] = round(np.mean(seq_data[column]), 2)
 
-				# Saves results .csv file for sensor group
-				group_results.to_csv(results_dir + test_name + '_' + str(group)[2:-2]  + 'averages.csv')
-				print 'Saving ' + test_name + '_' + str(group)[2:-2]  + 'Averages'
-				print
+					# Saves results .csv file for sensor group
+					group_results.to_csv(results_dir + test_name + '_' + str(group)[2:-2]  + 'averages.csv')
+					print 'Saving ' + test_name + '_' + str(group)[2:-2]  + 'Averages'
+					print
+
+				if(latex_table_code):
+					# Handline
+					if test_name[7] == 'A':
+						# multiple 30 second increments of fixed streams, create list to store all data for each fixed stream
+						# and location combination and calc avgs at end
+						raw_fix_A_SS = []
+						raw_fix_A_NF = []
+						raw_fix_A_WF = []
+						raw_fix_B_SS = []
+						raw_fix_B_NF = []
+						raw_fix_B_WF = []
+						fixed_A = pd.Series(range(3), index = streams)
+						fixed_B = pd.Series(range(3), index = streams)
+						CW_A = pd.Series(range(3), index = streams)
+						CW_B = pd.Series(range(3), index = streams)
+						CCW_A = pd.Series(range(3), index = streams)
+						CCW_B = pd.Series(range(3), index = streams)
+
+						for index, row in group_results.iterrows():
+							start = row['Start']
+							end = row['End']
+							seq_data = group_data.iloc[start:end]
+							if row['Location'] == 'Room A':
+								if row['Pattern'] == 'fixed':
+									if row['Stream'] == 'SS':
+										raw_fix_A_SS.append(seq_data['Avg'])
+									elif row['Stream'] == 'NF':
+										raw_fix_A_NF.append(seq_data['Avg'])
+									elif row['Stream'] == 'WF':
+										raw_fix_A_WF.append(seq_data['Avg'])
+								elif row['Pattern'] == 'CW':
+									CW_A[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+								elif row['Pattern'] == 'CCW':
+									CCW_A[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+								else:
+									print '[ERROR, line '+lineno()+']:'
+									print 'Read "Room A" as location, invalid row[Pattern] input'
+									print 'row[Pattern] = ' + row['Pattern']
+									sys.exit()
+							elif 'Room B' in row['Location']:
+								if row['Pattern'] == 'fixed':
+									if row['Stream'] == 'SS':
+										raw_fix_B_SS.append(seq_data['Avg'])
+									elif row['Stream'] == 'NF':
+										raw_fix_B_NF.append(seq_data['Avg'])
+									elif row['Stream'] == 'WF':
+										raw_fix_B_WF.append(seq_data['Avg'])
+								elif row['Pattern'] == 'CW':
+									CW_B[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+								elif row['Pattern'] == 'CCW':
+									CCW_B[row['Stream']] = str(round(np.mean(seq_data['Avg']), 1)) + ' $\pm' + str(round(np.std(seq_data['Avg']), 1)) + '$'
+								else:
+									print '[ERROR, line '+lineno()+']:'
+									print 'Read "Room B ceiling" as location, invalid row[Pattern] input'
+									print 'row[Pattern] = ' + row['Pattern']
+									sys.exit()
+							else:
+								continue
+						# Calculate fixed Series values
+						fixed_A['SS'] = str(round(np.mean(raw_fix_A_SS), 1)) + ' $\pm' + str(round(np.std(raw_fix_A_SS), 1)) + '$'
+						fixed_A['NF'] = str(round(np.mean(raw_fix_A_NF), 1)) + ' $\pm' + str(round(np.std(raw_fix_A_NF), 1)) + '$'
+						fixed_A['WF'] = str(round(np.mean(raw_fix_A_WF), 1)) + ' $\pm' + str(round(np.std(raw_fix_A_WF), 1)) + '$'
+						fixed_B['SS'] = str(round(np.mean(raw_fix_B_SS), 1)) + ' $\pm' + str(round(np.std(raw_fix_B_SS), 1)) + '$'
+						fixed_B['NF'] = str(round(np.mean(raw_fix_B_NF), 1)) + ' $\pm' + str(round(np.std(raw_fix_B_NF), 1)) + '$'
+						fixed_B['WF'] = str(round(np.mean(raw_fix_B_WF), 1)) + ' $\pm' + str(round(np.std(raw_fix_B_WF), 1)) + '$'
+
+					# monitor
+					else:
+						AB_33 = pd.Series(range(3), index = streams)
+						raw_SS = []
+						raw_NF = []
+						raw_WF = []
+						for index, row in group_results.iterrows():
+							if row['Door'] == 'C':
+								start = row['Start']
+								end = row['End']
+								seq_data = group_data.iloc[start:end]
+								if row['Stream'] == 'SS':
+									raw_SS.append(seq_data['Avg'])
+								elif row['Stream'] == 'NF':
+									raw_NF.append(seq_data['Avg'])
+								elif row['Stream'] == 'WF':
+									raw_WF.append(seq_data['Avg'])
+							else:
+								continue
+
+						AB_33['SS'] = str(round(np.mean(raw_SS), 1)) + ' $\pm' + str(round(np.std(raw_SS), 1)) + '$'
+						AB_33['NF'] = str(round(np.mean(raw_NF), 1)) + ' $\pm' + str(round(np.std(raw_NF), 1)) + '$'
+						AB_33['WF'] = str(round(np.mean(raw_WF), 1)) + ' $\pm' + str(round(np.std(raw_WF), 1)) + '$'
 
 				############
 				# Plotting #
 				############
-				# set new figure, figure name; re-set y min and max
-				fig = figure()
-				y_min = 0
-				y_max = 0
-				t = group_data['Time']
-				ylabel('Velocity (m/s)', fontsize=20)
-				line_style = '-'
-				axis_scale = 'Y Scale BDP'
+				if(plotting):
+					# set new figure, figure name; re-set y min and max
+					fig = figure()
+					y_min = 0
+					y_max = 0
+					t = group_data['Time']
+					ylabel('Velocity (m/s)', fontsize=20)
+					line_style = '-'
+					axis_scale = 'Y Scale BDP'
 
-				#############################################
-				# uncomment to plot individual channel data #
-				#############################################
-				# Plot style - colors and markers
-				# These are the "Tableau 20" colors as RGB.
-				tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
-					(44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
-					(148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
-					(227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
-					(188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
+					if(all_channel_plot):
+						# Plot style - colors and markers
+						# These are the "Tableau 20" colors as RGB.
+						tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
+							(44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
+							(148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
+							(227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
+							(188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
 
-				# Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
-				for i in range(len(tableau20)):
-					r, g, b = tableau20[i]
-					tableau20[i] = (r / 255., g / 255., b / 255.)
-				plt.rc('axes', color_cycle=tableau20)
-				plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
-				fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + '.pdf'
+						# Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
+						for i in range(len(tableau20)):
+							r, g, b = tableau20[i]
+							tableau20[i] = (r / 255., g / 255., b / 255.)
+						plt.rc('axes', color_cycle=tableau20)
+						plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
+						fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + '.pdf'
 
-				for channel in group_data.columns[1:-1]:
-					quantity = group_data[channel]
+						for channel in group_data.columns[1:-1]:
+							quantity = group_data[channel]
 
-					# check y min and max
-					ma_quantity = movingaverage(quantity,5)
-					q_max = max(ma_quantity)
-					q_min = min(ma_quantity)
-					if q_max > y_max:
-						y_max = q_max
-					if q_min < y_min:
-						y_min = q_min
+							# check y min and max
+							ma_quantity = movingaverage(quantity,5)
+							q_max = max(ma_quantity)
+							q_min = min(ma_quantity)
+							if q_max > y_max:
+								y_max = q_max
+							if q_min < y_min:
+								y_min = q_min
 
-					plot(t, ma_quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
-					print ' Plotting channel ' + channel
+							plot(t, ma_quantity, lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
+							print ' Plotting channel ' + channel
 
+					elif(group_avg_plot):
+						fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + '_avg.pdf'
 
-				#############################################
-				# uncomment to plot average of all channels #
-				#############################################
-				# fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + '_avg.pdf'
+						quantity = group_data['Avg']
+						ma_quantity = movingaverage(quantity, 5)
+						y_max = max(ma_quantity)
+						y_min = min(ma_quantity)
 
-				# quantity = group_data['Avg']
-				# ma_quantity = movingaverage(quantity, 5)
-				# y_max = max(ma_quantity)
-				# y_min = min(ma_quantity)
+						plot(t, ma_quantity, lw=1.5, ls=line_style, label=group_results.columns[6:-1], color = 'b')
 
-				# plot(t, ma_quantity, lw=1.5, ls=line_style, label=group_results.columns[6:-1], color = 'b')
-
-
-			# Set axis options, legend, tickmarks, etc.
-			ax1 = gca()
-			xlim([0, end_of_test - start_of_test])
-			ylim(floor(y_min), ceil(y_max))
-			ax1.xaxis.set_major_locator(MaxNLocator(8))
-			ax1_xlims = ax1.axis()[0:2]
-			# grid(True)
-			axhline(0, color='0.50', lw=1)
-			xlabel('Time', fontsize=20)
-			xticks(fontsize=16)
-			yticks(arange(floor(y_min), ceil(y_max)+1, 1), fontsize=16)
-			legend(loc='lower right', fontsize=8)
-
-			try:
-				# Add vertical lines for timing information (if available)
-				for index, row in timings.iterrows():
-					if pd.isnull(row[test_name]):
-						continue
-					axvline(index - start_of_test, color='0.50', lw=1)
-
-				# Add secondary x-axis labels for timing information
-				ax2 = ax1.twiny()
-				ax2.set_xlim(ax1_xlims)
-				ax2.set_xticks(timings[test_name].dropna().index.values - start_of_test)
-				setp(xticks()[1], rotation=60)
-				ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
+			if(plotting):
+				# Set axis options, legend, tickmarks, etc.
+				ax1 = gca()
 				xlim([0, end_of_test - start_of_test])
+				ylim(floor(y_min), ceil(y_max))
+				ax1.xaxis.set_major_locator(MaxNLocator(8))
+				ax1_xlims = ax1.axis()[0:2]
+				# grid(True)
+				axhline(0, color='0.50', lw=1)
+				xlabel('Time', fontsize=20)
+				xticks(fontsize=16)
+				yticks(arange(floor(y_min), ceil(y_max)+1, 1), fontsize=16)
+				legend(loc='lower right', fontsize=8)
 
-				# Increase figure size for plot labels at top
-				fig.set_size_inches(12, 9)
-			except:
-				pass
+				try:
+					# Add vertical lines for timing information (if available)
+					for index, row in timings.iterrows():
+						if pd.isnull(row[test_name]):
+							continue
+						axvline(index - start_of_test, color='0.50', lw=1)
 
-			# Save plot to file
-			print 'Saving plot for ', group
-			print
-			savefig(fig_name)
-			close('all')
+					# Add secondary x-axis labels for timing information
+					ax2 = ax1.twiny()
+					ax2.set_xlim(ax1_xlims)
+					ax2.set_xticks(timings[test_name].dropna().index.values - start_of_test)
+					setp(xticks()[1], rotation=60)
+					ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
+					xlim([0, end_of_test - start_of_test])
 
-######################################################################
-# uncomment to print latex code for tables containing average values #
-######################################################################
-print
-print '#######################'
-print '# West Handline Table #'
-print '#######################'
-print
-print '\\begin{table}[!ht]'
-print '\\caption{' + west_hand_caption + '}'
-print '\\begin{tabular}{lcccc}'
-print '\\toprule'
-print ' & \\multicolumn{4}{c}{\\underline{Test 18}}'
-print '\\\\'
-print ' & '.join(str(column) for column in west_hand_columns)
-print '\\\ \\midrule'
-for index in streams:
-	print stream_ls[index] + ' & ' + fixed_18[index] + ' & ' + sweep_18[index] + ' & ' + CW_18[index] + ' & ' + CCW_18[index]
-	if index == 'WF':
-		print '\\\ \\midrule'
-	else:
-		print '\\\ \\multicolumn{5}{c}{} \\\\'
-print ' & \\multicolumn{4}{c}{\\underline{Test 19}}'
-print '\\\\'
-print ' & '.join(str(column) for column in west_hand_columns)
-print '\\\ \\midrule'
-for index in streams:
-	print stream_ls[index] + ' & ' + fixed_19[index] + ' & ' + sweep_19[index] + ' & ' + CW_19[index] + ' & ' + CCW_19[index]
-	if index == 'WF':
-		print '\\\ \\bottomrule'
-	else:
-		print '\\\ \\multicolumn{5}{c}{} \\\\'
-print '\\end{tabular}'
-print '\\label{' + west_hand_label + '}'
-print '\\end{table}'
-print
+					# Increase figure size for plot labels at top
+					fig.set_size_inches(12, 9)
+				except:
+					pass
 
+				# Save plot to file
+				print 'Saving plot for ', group
+				print
+				savefig(fig_name)
+				close('all')
 
+if(latex_table_code):
+	# Replace Test 17 with Test 17b results due to dropped flowrate 
+	far_17['WF'] = far_17_WF
+	near_17['WF'] = near_17_WF
+	print 
+	print '% #######################'
+	print '% # West Handline Table #'
+	print '% #######################'
+	print
+	print '\\begin{table}[!ht]'
+	print '\\caption{' + west_hand_caption + '}'
+	print '\\begin{tabular}{lcccc}'
+	print '\\toprule'
+	print ' & \\multicolumn{4}{c}{\\underline{Test 18}}'
+	print '\\\\'
+	print ' & '.join(str(column) for column in west_hand_columns)
+	print '\\\ \\midrule'
+	for index in streams:
+		print stream_ls[index] + ' & ' + fixed_18[index] + ' & ' + sweep_18[index] + ' & ' + CW_18[index] + ' & ' + CCW_18[index]
+		if index == 'WF':
+			print '\\\ \\midrule'
+		else:
+			print '\\\ \\multicolumn{5}{c}{} \\\\'
+	print ' & \\multicolumn{4}{c}{\\underline{Test 19}}'
+	print '\\\\'
+	print ' & '.join(str(column) for column in west_hand_columns)
+	print '\\\ \\midrule'
+	for index in streams:
+		print stream_ls[index] + ' & ' + fixed_19[index] + ' & ' + sweep_19[index] + ' & ' + CW_19[index] + ' & ' + CCW_19[index]
+		if index == 'WF':
+			print '\\\ \\bottomrule'
+		else:
+			print '\\\ \\multicolumn{5}{c}{} \\\\'
+	print '\\end{tabular}'
+	print '\\label{' + west_hand_label + '}'
+	print '\\end{table}'
+	print
 
+	print
+	print '% ######################'
+	print '% # West Monitor Table #'
+	print '% ######################'
+	print
+	print '\\begin{table}[!ht]'
+	print '\\caption{' + west_mon_caption + '}'
+	print '\\begin{tabular}{lccccc}'
+	print '\\toprule'
+	print ' & \\multicolumn{2}{c}{\\underline{Test 16}} & \\multicolumn{2}{c}{\\underline{Test 17}} & \\underline{Test 33}'
+	print '\\\\'
+	print ' & '.join(str(column) for column in west_mon_columns)
+	print '\\\ \\midrule'
+	for index in streams:
+		print stream_ls[index] + ' & ' + near_16[index] + ' & ' + far_16[index] + ' & ' + near_17[index] + ' & ' + far_17[index] + ' & ' + AB_33[index]
+		if index == 'WF':
+			print '\\\ \\bottomrule'
+		else:
+			print '\\\ \\multicolumn{6}{c}{} \\\\'
+	print '\\end{tabular}'
+	print '\\label{' + west_mon_label + '}'
+	print '\\end{table}'
+	print
 
+	print
+	print '% #######################'
+	print '% # East Handline Table #'
+	print '% #######################'
+	print
+	print '\\begin{table}[!ht]'
+	print '\\caption{' + east_hand_caption + '}'
+	print '\\begin{tabular}{lcccccc}'
+	print '\\toprule'
+	print ' & \\multicolumn{3}{c}{\\underline{Room A}} & \\multicolumn{3}{c}{\\underline{Room B Ceiling}}'
+	print '\\\\'
+	print ' & '.join(str(column) for column in east_hand_columns)
+	print '\\\ \\midrule'
+	for index in streams:
+		print stream_ls[index] + ' & ' + fixed_A[index] + ' & ' + CW_A[index] + ' & ' + CCW_A[index] + ' & ' + fixed_B[index] + ' & ' + CW_B[index] + ' & ' + CCW_B[index]
+		if index == 'WF':
+			print '\\\ \\bottomrule'
+		else:
+			print '\\\ \\multicolumn{7}{c}{} \\\\'
+	print '\\end{tabular}'
+	print '\\label{' + east_hand_label + '}'
+	print '\\end{table}'
+	print
+
+	# print
+	# print '% ######################'
+	# print '% # East Monitor Table #'
+	# print '% ######################'
+	# print
+	# print '\\begin{table}[!ht]'
+	# print '\\caption{' + east_mon_caption + '}'
+	# print '\\begin{tabular}{lcccccc}'
+	# print '\\toprule'
+	# print ' & \\multicolumn{3}{c}{\\underline{Room A}} & \\multicolumn{3}{c}{\\underline{Room B Ceiling}}'
+	# print '\\\\'
+	# print ' & '.join(str(column) for column in east_mon_columns)
+	# print '\\\ \\midrule'
+	# for index in streams:
+	# 	print stream_ls[index] + ' & ' + fixed_A[index] + ' & ' + CW_A[index] + ' & ' + CCW_A[index] + ' & ' + fixed_B[index] + ' & ' + CW_B[index] + ' & ' + CCW_B[index]
+	# 	if index == 'WF':
+	# 		print '\\\ \\bottomrule'
+	# 	else:
+	# 		print '\\\ \\multicolumn{5}{c}{} \\\\'
+	# print '\\end{tabular}'
+	# print '\\label{' + east_mon_label + '}'
+	# print '\\end{table}'
+	# print
