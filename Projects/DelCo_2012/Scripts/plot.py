@@ -14,7 +14,6 @@ rcParams.update({'figure.autolayout': True})
 #  = User Settings =
 #  =================
 
-# Plot mode: figure or video
 plot_mode = 'figure'
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
@@ -32,8 +31,6 @@ info_file = '../Experimental_Data/Description_of_Experiments.csv'
 # Location to save/output figures
 if plot_mode == 'figure':
     save_dir = '../Figures/Script_Figures/'
-elif plot_mode == 'video':
-    save_dir = '../Figures/Video_Figures/'
 
 # Time averaging window for data smoothing
 data_time_averaging_window = 10
@@ -52,20 +49,6 @@ info = pd.read_csv(info_file, index_col=3)
 
 # Files to skip
 skip_files = ['_times','_reduced','description_','zero','bb','es_','cafs','_attic','sc','gas_cooling_','west_','east_','gcs']
-
-#  ===================
-#  = Video Plot Mode =
-#  ===================
-
-video_test_name = 'Test_38_West_61315'
-video_groups = ['Heat Flux']
-video_channels = ['Heat Flux 1 V West','Heat Flux 1 H West','Heat Flux Mask']
-video_line_colors = ['yellow', 'cyan', 'green']
-video_ylabel = 'Heat Flux (kW/m$^2$)'
-video_rescale_factor = 1
-video_rescale_offset = 0
-video_xlim_lower, video_xlim_upper, video_ylim_lower, video_ylim_upper = [0, 400, 0, 30]
-video_plots = collections.OrderedDict()
 
 #  ===============================
 #  = Loop through all data files =
@@ -118,6 +101,7 @@ for f in os.listdir(data_dir):
         #  ============
         #  = Plotting =
         #  ============
+        temp_slope = [] # initialize tempeerature array for slopes
 
         # Generate a plot for each quantity group
         for group in channel_groups.groups:
@@ -189,7 +173,18 @@ for f in os.listdir(data_dir):
                         axis_scale = 'Y Scale TC'
                     secondary_axis_label = 'Temperature ($^\circ$F)'
                     secondary_axis_scale = np.float(info[axis_scale][test_name]) * 9/5 + 32
-
+                if 'TC A1' in group:
+                    events = pd.DataFrame(all_times[test_name].dropna())
+                    for i, j in enumerate(events.values):
+                        if j == 'Hallway Nozzle On':
+                            water_on_index = i
+                        if j == 'Hallway Nozzle Off':
+                            water_off_index = i
+                    water_on = events.index.values[water_on_index]
+                    water_off = events.index.values[water_off_index]
+                    temp_slope.append((((current_channel_data[water_on]-current_channel_data[water_off])/current_channel_data[water_on])/(water_on-water_off)))
+                    avg_slope = np.mean(temp_slope)
+                    std_slope = np.std(temp_slope)
                 # Plot velocities
                 if channel_list['Measurement Type'][channel] == 'Velocity':
                     conv_inch_h2o = 0.4
@@ -310,7 +305,9 @@ for f in os.listdir(data_dir):
                 print 'Plotting', group
                 plt.savefig(save_dir + test_name + '_' + group.replace(' ', '_') + '.pdf')
                 plt.close('all')
-
+                if 'TC A1' in group and 'avg_slope' in locals():
+                    print 'Normalized Average Temperature decrease per second is: ' + str(avg_slope)
+                    print 'Normalized standard deviation is: ' + str(std_slope)
         plt.close('all')
         print
 
@@ -322,55 +319,3 @@ for f in os.listdir(data_dir):
 
         # Write offset times and converted quantities back to reduced exp. data file
         data.to_csv(data_dir + test_name + '_Reduced.csv')
-
-        if plot_mode == 'video':
-            rcParams.update({'figure.autolayout': True,
-                             'axes.facecolor': 'black',
-                             'figure.facecolor': 'black',
-                             'figure.edgecolor': 'black',
-                             'savefig.facecolor': 'black',
-                             'savefig.edgecolor': 'black',
-                             'axes.edgecolor': 'white',
-                             'axes.labelcolor': 'white',
-                             'lines.color': 'white',
-                             'grid.color': 'white',
-                             'patch.edgecolor': 'white',
-                             'text.color': 'white',
-                             'xtick.color': 'white',
-                             'ytick.color': 'white'})
-
-            # Save plot frames to file
-            for frame_number, frame_time in enumerate(video_time):
-                # Constrain plots to positive times less than the upper y-axis limit
-                if (frame_time >= 0) and (frame_time <= video_xlim_upper):
-                    print 'Plotting Frame:', frame_time
-                    fig = plt.figure()
-                    for channel_number, channel_name in enumerate(video_plots):
-                        video_data = video_plots[channel_name] * video_rescale_factor + video_rescale_offset
-                        plt.plot(video_time[:frame_number],
-                                 video_data[:frame_number],
-                                 lw=4,
-                                 color=video_line_colors[channel_number])
-                    ax1 = plt.gca()
-                    ax1.spines['top'].set_visible(False)
-                    ax1.spines['right'].set_visible(False)
-                    ax1.xaxis.set_ticks_position('none')
-                    ax1.yaxis.set_ticks_position('none')
-                    plt.xlim([video_xlim_lower, video_xlim_upper])
-                    plt.ylim([video_ylim_lower, video_ylim_upper])
-                    plt.xlabel('Time (s)', fontsize=24, fontweight='bold')
-                    plt.ylabel(video_ylabel, fontsize=24, fontweight='bold')
-                    plt.xticks(fontsize=20, fontweight='bold')
-                    plt.yticks(fontsize=20, fontweight='bold')
-                    ### Begin custom plot code
-                    plt.text(71, 20, 'Position 1 Vertical', color='cyan', fontsize=16, fontweight='bold', ha='center')
-                    plt.text(82, 18, 'Position 1 Horizontal', color='green', fontsize=16, fontweight='bold', ha='center')
-                    plt.text(54, 16, 'Interior Mask', color='yellow', fontsize=16, fontweight='bold', ha='center')
-                    if frame_time >= 271:
-                        plt.axvline(x=271,linestyle='-',color = 'white')
-                    if frame_time >= 295:
-                        plt.axvline(x=295,linestyle='-',color = 'white')
-                    #### End custom plot code
-                    plt.savefig(save_dir + video_test_name + '_' + str(frame_time) + '.png')
-                    plt.close('all')
-
