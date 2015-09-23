@@ -537,6 +537,8 @@ for f in os.listdir(data_dir):
 							print ' Plotting channel ' + channel
 
 						save_plot(x_max_index, y_max, y_min, start_plot, end_plot, group, fig_name)
+						y_min = 0
+						y_max = 0
 
 					if(group_avg_plot):
 						fig = figure()
@@ -545,20 +547,38 @@ for f in os.listdir(data_dir):
 						axis_scale = 'Y Scale BDP'
 						fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + '_avg.pdf'
 
-						quantity = group_data['Avg']
-						ma_quantity = movingaverage(quantity, 5)
+						quantity = plot_data['Avg']
+						ma_quantity = pd.rolling_mean(quantity, 5)
+						ma_quantity = ma_quantity.fillna(method='bfill')
 						y_max = max(ma_quantity)
 						y_min = min(ma_quantity)
 
 						plot(t, ma_quantity, lw=1.5, ls=line_style, label=group_results.columns[5:-1], color = 'b')
 
-						save_plot(x_max_index, y_max, y_min, start_of_test, end_of_test, group, fig_name)
+						save_plot(x_max_index, y_max, y_min, start_plot, end_plot, group, fig_name)
+						y_min = 0
+						y_max = 0
 
-					# if(monitor_avgs_plot):
-					# 	# create lists to use in plots after all files have been read
-					# 	# 
-					# 	if 'Test_16' in test_name:
-					# 		for index, row 
+					if(monitor_avgs_plot):
+						fig = plt.figure()
+						ylabel('Velocity (m/s)', fontsize=20)
+						line_style = '-'
+						axis_scale = 'Y Scale BDP'
+						fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + 'stream_avgs.pdf'
+
+						plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
+
+						# create lists to use in plots after all files have been read
+						if 'Test_16' in test_name:
+							for index, row in group_results.iterrows():
+								seq_start = row['Start']
+								seq_end = row['End']
+								if row['Stream'] == 'SS':
+									if row['Door'] == 'All Closed':
+										if row['Location'] == 'Near':
+											ss_mon_closed_near.append(group_data[channel].iloc[seq_start:seq_end])
+
+
 						
 
 # 			# East Tests Sorting/Plotting
@@ -838,46 +858,6 @@ for f in os.listdir(data_dir):
 
 # 						plot(t, ma_quantity, marker=next(plot_markers), lw=1.5, ls=line_style, label=group_results.columns[6:-1], color = 'b')
 
-# 			if(plotting):
-# 				plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
-# 				# Set axis options, legend, tickmarks, etc.
-# 				ax1 = gca()
-# 				xlim([0, end_of_test - start_of_test])
-# 				ylim(floor(y_min), ceil(y_max))
-# 				ax1.xaxis.set_major_locator(MaxNLocator(8))
-# 				ax1_xlims = ax1.axis()[0:2]
-# 				# grid(True)
-# 				axhline(0, color='0.50', lw=1)
-# 				xlabel('Time', fontsize=20)
-# 				xticks(fontsize=16)
-# 				yticks(arange(floor(y_min), ceil(1.18*y_max)+1, 1), fontsize=16)
-# 				legend(loc='lower right', fontsize=8)
-
-# 				try:
-# 					# Add vertical lines for timing information (if available)
-# 					for index, row in timings.iterrows():
-# 						if pd.isnull(row[test_name]):
-# 							continue
-# 						axvline(index - start_of_test, color='0.50', lw=1)
-
-# 					# Add secondary x-axis labels for timing information
-# 					ax2 = ax1.twiny()
-# 					ax2.set_xlim(ax1_xlims)
-# 					ax2.set_xticks(timings[test_name].dropna().index.values - start_of_test)
-# 					setp(xticks()[1], rotation=60)
-# 					ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
-# 					xlim([0, end_of_test - start_of_test])
-
-# 					# Increase figure size for plot labels at top
-# 					fig.set_size_inches(12, 9)
-# 				except:
-# 					pass
-
-# 				# Save plot to file
-# 				print 'Saving plot for ', group
-# 				print
-# 				savefig(fig_name)
-# 				close('all')
 
 # if(latex_table_code):
 # 	# Replace Test 17 with Test 17b results due to dropped flowrate 
