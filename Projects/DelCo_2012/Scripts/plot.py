@@ -23,7 +23,9 @@ all_times_file = '../Experimental_Data/All_Times.csv'
 
 # Location of scaling conversion files
 scaling_file_west = '../Experimental_Data/West_DelCo_DAQ_Channel_List.csv'
+scaling_file_west_2013 = '../Experimental_Data/West_DelCo_DAQ_Channel_List_2013.csv'
 scaling_file_east = '../Experimental_Data/East_DelCo_DAQ_Channel_List.csv'
+scaling_file_east_2013 = '../Experimental_Data/East_DelCo_DAQ_Channel_List_2013.csv'
 
 # Location of test description file
 info_file = '../Experimental_Data/Description_of_Experiments.csv'
@@ -63,7 +65,7 @@ for f in os.listdir(data_dir):
 
         # Strip test name from file name
         test_name = f[:-4]
-        print 'Test ' + test_name
+        print ('Test ' + test_name)
 
         # If video plot mode is enabled, then plot from only one test
         if plot_mode == 'video':
@@ -72,9 +74,15 @@ for f in os.listdir(data_dir):
 
         # Load exp. scaling file
         if 'FSW' in test_name:
-            channel_list_file = scaling_file_west
+            if '13' in test_name[-2:]:
+                channel_list_file = scaling_file_west_2013
+            else:
+                channel_list_file = scaling_file_west
         elif 'FSE' in test_name:
-            channel_list_file = scaling_file_east
+            if '13' in test_name[-2:]:
+                channel_list_file = scaling_file_east_2013
+            else:
+                channel_list_file = scaling_file_east
 
         channel_list = pd.read_csv(channel_list_file)
         channel_list = channel_list.set_index('Channel Name')
@@ -90,14 +98,12 @@ for f in os.listdir(data_dir):
 
         # Offset data time to start of test
         data['X_Value'] = data['X_Value'].values - start_of_test
-
         # Smooth all data channels with specified data_time_averaging_window
         data_copy = data.drop('X_Value', axis=1)
         data_copy = pd.rolling_mean(data_copy, data_time_averaging_window, center=True)
         data_copy.insert(0, 'X_Value', data['X_Value'])
         data_copy = data_copy.dropna()
         data = data_copy
-
         #  ============
         #  = Plotting =
         #  ============
@@ -109,13 +115,6 @@ for f in os.listdir(data_dir):
             # Skip excluded groups listed in test description file
             if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
                 continue
-
-            # If video plot mode is enabled, then plot only specified groups
-            if plot_mode == 'video':
-                if any([substring in group for substring in video_groups]):
-                    pass
-                else:
-                    continue
 
             fig = plt.figure()
 
@@ -136,7 +135,6 @@ for f in os.listdir(data_dir):
             plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
 
             for channel in channel_groups.get_group(group).index.values:
-
                 # Skip plot quantity if channel name is blank
                 if pd.isnull(channel):
                     continue
@@ -144,13 +142,6 @@ for f in os.listdir(data_dir):
                 # Skip excluded channels listed in test description file
                 if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
                     continue
-
-                # If video plot mode is enabled, then plot only specified channels
-                if plot_mode == 'video':
-                    if any([substring in channel for substring in video_channels]):
-                        pass
-                    else:
-                        continue
 
                 # Scale channel and set plot options depending on quantity
                 current_channel_data = data[channel_list['Device Name'][channel]]
@@ -173,7 +164,7 @@ for f in os.listdir(data_dir):
                         axis_scale = 'Y Scale TC'
                     secondary_axis_label = 'Temperature ($^\circ$F)'
                     secondary_axis_scale = np.float(info[axis_scale][test_name]) * 9/5 + 32
-                if 'TC A1' in group:
+                if 'TC A1' in group and '12' in test_name[-2:]:
                     events = pd.DataFrame(all_times[test_name].dropna())
                     for i, j in enumerate(events.values):
                         if j == 'Hallway Nozzle On':
@@ -302,14 +293,14 @@ for f in os.listdir(data_dir):
                 plt.legend(handles1, labels1, loc='upper left', fontsize=8, handlelength=3)
 
                 # Save plot to file
-                print 'Plotting', group
+                print ('Plotting', group)
                 plt.savefig(save_dir + test_name + '_' + group.replace(' ', '_') + '.pdf')
                 plt.close('all')
                 if 'TC A1' in group and 'avg_slope' in locals():
-                    print 'Normalized Average Temperature decrease per second is: ' + str(avg_slope)
-                    print 'Normalized standard deviation is: ' + str(std_slope)
+                    print ('Normalized Average Temperature decrease per second is: ' + str(avg_slope))
+                    print ('Normalized standard deviation is: ' + str(std_slope))
         plt.close('all')
-        print
+        print()
 
         # Rename data column headers from device names to descriptive channel names for reduced data file
         old_name = channel_list['Device Name']
