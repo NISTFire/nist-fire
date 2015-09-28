@@ -79,9 +79,13 @@ skip_files = ['_times', '_reduced', '_results', 'description_']
 
 result_file = False			# Generate a .csv file with channel avgs for specified sensor groups
 plotting = True	  			# Generate any plot?
-all_channel_plot = True 	# Plot individual channels
+all_channel_plot = False	# Plot individual channels
 group_avg_plot = False		# Plot sensor group avgs
 monitor_avgs_plot = False	# Plot BDP avgs from monitor experiments for SS, NF, WF application
+handline_avgs_plot = True 	# # Plot BDP avgs from handline experiments for SS, NF, WF application
+west_handline_labels = ['Hose on, fixed', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed',
+'Hose on, sweeping', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed', 'Hose on, rotate CW', 'Stairwell door opened', 
+'2nd floor, W door opened', 'Doors closed', 'Hose on, rotate CCW', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed',]
 latex_table_code = False    # Print code to generate tables in LaTeX?
 if(latex_table_code):		# specify table properties (if applicable)
 	# Create lists for column titles for desired latex tables
@@ -120,40 +124,57 @@ if(latex_table_code):		# specify table properties (if applicable)
 def lineno():
     return inspect.currentframe().f_back.f_lineno
 
-def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name):
+def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, plot_type):
 	plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
 	# Set axis options, legend, tickmarks, etc.
 	ax1 = gca()
-	xlim([0, end_time-start_time])
-	ylim(floor(y_min), ceil(y_max))
+	y_tick_ls = []
+	y_label_ls = []
+	xlim([0, end_time])
+	ylim(floor(y_min)-0.1, ceil(y_max)+0.1)
 	ax1.xaxis.set_major_locator(MaxNLocator(8))
-	ax1_xlims = ax1.axis()[0:2]
+	# ax1_xlims = ax1.axis()[0:2]
 	# grid(True)
 	axhline(0, color='0.50', lw=1)
-	xlabel('Time', fontsize=20)
+	xlabel('Time (s)', fontsize=20)
 	xticks(fontsize=16)
-	yticks(arange(floor(y_min), ceil(1.18*y_max)+1, 1), fontsize=16)
-	legend(loc='lower right', fontsize=8)
+	y_tick_ls = arange(floor(y_min), ceil(1.18*y_max)+1, 1)
+	yticks(np.around(y_tick_ls,1), fontsize=16)
+
+	ax2 = ax1.twinx()
+	ax2.set_ylabel('Velocity (mph)', fontsize=20)
+	plt.xticks(fontsize=16)
+	ylim(floor(y_min)-0.1, ceil(y_max)+0.1)
+	yticks(y_tick_ls, fontsize=16)
+	y_label_ls = np.array(y_tick_ls) * 2.23694
+	ax2.set_yticklabels(np.around(y_label_ls, 1))
 
 	try:
 		# Add vertical lines for timing information (if available)
+		x_ticks_ls = []
 		for index, row in timings.iterrows():
 			if pd.isnull(row[test_name]):
 				continue
 			axvline(index - start_time, color='0.50', lw=1)
+			x_ticks_ls.append(index-start_time)
 
 		# Add secondary x-axis labels for timing information
-		ax2 = ax1.twiny()
-		ax2.set_xlim(ax1_xlims)
-		ax2.set_xticks(timings[test_name].dropna().index.values - start_time)
+		ax3 = ax1.twiny()
+		ax3.set_xlim([0, end_time])
+		# ax3.set_xticks(timings[test_name].dropna().index.values - start_time)
+		ax3.set_xticks(x_ticks_ls)
 		setp(xticks()[1], rotation=60)
-		ax2.set_xticklabels(timings[test_name].dropna().values, fontsize=8, ha='left')
-		xlim([0, end_time - start_time])
+		if plot_type != 'west handline':
+			ax3.set_xticklabels(timings[test_name].dropna().values, fontsize=10, ha='left')
+		else:
+			ax3.set_xticklabels(west_handline_labels, fontsize=10, ha='left')
 
 		# Increase figure size for plot labels at top
-		fig.set_size_inches(12, 9)
+		fig.set_size_inches(8,8)
 	except:
 		pass
+
+	gca().add_artist(ax1.legend(loc='lower right', fontsize=10, frameon = True))
 
 	# Save plot to file
 	print 'Saving plot for ', group
@@ -320,7 +341,6 @@ for f in os.listdir(data_dir):
 				group_results = pd.DataFrame(group_set, columns = ['Start', 'End', 'Stream', P_or_L_heading, 'Door'])
 				
 				# create empty df to fill with desired channel data
-				start_data = group_results['Start'].iloc[0] - 25
 				end_data = group_results['End'].iloc[-1]
 				group_data = pd.DataFrame(data['Time'].iloc[0:end_data], columns = ['Time'])
 				
@@ -486,10 +506,10 @@ for f in os.listdir(data_dir):
 				############
 				# Plotting #
 				############
-				if all_channel_plot or group_avg_plot or other_plots:
+				if (plotting):
 					y_min = 0
 					y_max = 0
-					start_plot = start_data + 25
+					start_plot = group_results['Start'].iloc[0]
 					end_plot = end_data
 					plot_data = group_data.iloc[start_plot:end_plot]
 					t = range(0, len(plot_data['Time']))
@@ -536,7 +556,7 @@ for f in os.listdir(data_dir):
 								lw=1.5, ls=line_style, label=scaling['Test Specific Name'][channel])
 							print ' Plotting channel ' + channel
 
-						save_plot(x_max_index, y_max, y_min, start_plot, end_plot, group, fig_name)
+						save_plot(x_max_index, y_max, y_min, start_plot, end_plot, group, fig_name, 'all channels')
 						y_min = 0
 						y_max = 0
 
@@ -555,28 +575,67 @@ for f in os.listdir(data_dir):
 
 						plot(t, ma_quantity, lw=1.5, ls=line_style, label=group_results.columns[5:-1], color = 'b')
 
-						save_plot(x_max_index, y_max, y_min, start_plot, end_plot, group, fig_name)
+						save_plot(x_max_index, y_max, y_min, start_plot, end_plot, group, fig_name, 'group avgs')
 						y_min = 0
 						y_max = 0
 
-					if(monitor_avgs_plot):
-						fig = plt.figure()
-						ylabel('Velocity (m/s)', fontsize=20)
-						line_style = '-'
-						axis_scale = 'Y Scale BDP'
-						fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + 'stream_avgs.pdf'
+					if P_or_L_heading == 'Pattern':
+						if(handline_avgs_plot):
+							fig = plt.figure()
+							ylabel('Velocity (m/s)', fontsize=20)
+							line_style = '-'
+							axis_scale = 'Y Scale BDP'
+							fig_name = fig_dir + test_name + '_' + group[0].rstrip('_') + '_stream_avgs.pdf'
 
-						plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
+							plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
 
-						# create lists to use in plots after all files have been read
-						if 'Test_16' in test_name:
 							for index, row in group_results.iterrows():
-								seq_start = row['Start']
-								seq_end = row['End']
-								if row['Stream'] == 'SS':
-									if row['Door'] == 'All Closed':
-										if row['Location'] == 'Near':
-											ss_mon_closed_near.append(group_data[channel].iloc[seq_start:seq_end])
+								if row['Pattern'] == 'fixed' and row['Door'] == 'All closed':
+									start_pattern = row['Start']
+									stream = row['Stream']
+								elif row['Pattern'] == 'CCW' and row['Door'] == 'BC open':
+									end_pattern = row['End']
+									# Calculate moving average and plot sequence
+									quantity = plot_data['Avg'].iloc[start_pattern:end_pattern]
+									ma_quantity = pd.rolling_mean(quantity, 5)
+									ma_quantity = ma_quantity.fillna(method='bfill')
+
+									q_max = max(ma_quantity)
+									q_min = min(ma_quantity)
+									if q_max > y_max:
+										y_max = q_max
+										x_max_index = plot_data['Time'][ma_quantity.idxmax(y_max)]-start_pattern-start_plot
+									if q_min < y_min:
+										y_min = q_min
+
+									if stream == 'SS':
+										color = 'k'
+									elif stream == 'NF':
+										color = 'b'
+									elif stream == 'WF':
+										color = 'r'
+
+									t = range(0, len(ma_quantity))
+
+									plot(t, ma_quantity, 
+										marker=next(plot_markers), markevery=int((len(t))/10), 
+										mew=1.5, mec='none', ms=7, lw=1.5, ls=line_style, color = color,
+										label=stream+' '+group[0].rstrip('_')+' Average')
+								else:
+									continue
+
+							save_plot(x_max_index, y_max, y_min, start_plot, len(t), group, fig_name, 'west handline')
+
+								
+						# # create lists to use in plots after all files have been read
+						# if 'Test_16' in test_name:
+						# 	for index, row in group_results.iterrows():
+						# 		seq_start = row['Start']
+						# 		seq_end = row['End']
+						# 		if row['Stream'] == 'SS':
+						# 			if row['Door'] == 'All Closed':
+						# 				if row['Location'] == 'Near':
+						# 					ss_mon_closed_near.append(group_data[channel].iloc[seq_start:seq_end])
 
 
 						
