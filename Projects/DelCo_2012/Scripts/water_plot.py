@@ -77,4 +77,4 @@ for f in os.listdir(data_dir):
 		z_data = np.nan_to_num(water_mass.flatten())
 		ax.bar3d(x_data, y_data, np.zeros(len(z_data)), dx, dy, z_data,zsort='max')
 		savefig('../Figures/Bars/' + test_name + '.pdf')
-		close('all'
+		close('all')
