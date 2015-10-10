@@ -10,8 +10,8 @@ import statsmodels.api as sm
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
 
-from ggplot import *
-from patsy import ModelDesc
+#from ggplot import *
+#from patsy import ModelDesc
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
