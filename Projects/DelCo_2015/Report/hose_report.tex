@@ -21,7 +21,8 @@
 \usepackage{hyperref}
 \frenchspacing
 \setlength{\parindent}{15pt} % Indent paragraphs
-
+\usepackage{color}
+\newcommand{\white}[1]{{\textcolor{white}{#1}}}
 \hypersetup{colorlinks=true, urlcolor=blue, citecolor=black, linkcolor=blue}
 
 %----------------------------------------------------------------------------------------
@@ -30,7 +31,7 @@
 
 \memoto{NFPA 1961 Technical Committee} % Recipient(s)
 
-\memofrom{Daniel Madrzykowski \\ Craig Weinschenk \\ NIST Firefighting Technology Group} % Sender(s)
+\memofrom{Daniel Madrzykowski \\ \white{s:}Craig Weinschenk \\ \white{s:}NIST Firefighting Technology Group} % Sender(s)
 
 \memosubject{Full-scale Exposure Testing of Hoselines} % Memo subject
 
@@ -76,7 +77,7 @@ On Side A of the lower level the single door remained closed for these experimen
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.45\columnwidth]{../Figures/Hose_Figures/exterior_a}
-\includegraphics[width=0.45\columnwidth]{../Figures/Hose_Figures/exterior_c}
+\includegraphics[width=0.45\columnwidth,trim = 1.25in 1.5in .75in 0in, clip=true,]{../Figures/Hose_Figures/exterior_c}
 \caption{Photographs of Side A (Left) and Side C (Right). }
 \label{fig:exterior}
 \end{figure}
@@ -98,7 +99,7 @@ The heat flux gauges used were Schmidt-Boelter type, water cooled gauges.  Total
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.8\columnwidth]{../Figures/Hose_Figures/test_setup_1b}
+\includegraphics[width=0.8\columnwidth,angle =-90]{../Figures/Hose_Figures/test_setup_1b}
 \caption{Locations of instrumented hose samples relative to the vertical thermocouple array, the heat flux gauge and the radiometer.}
 \label{fig:test_setup_1b}
 \end{figure}
@@ -106,15 +107,22 @@ The heat flux gauges used were Schmidt-Boelter type, water cooled gauges.  Total
 \section{Hose}
 The fire hose that was used for the experiments was ``Big - 10'' brand manufactured by Key Hose. According to the manufacturer the hose meets or exceeds all of the performance requirements of NFPA 1961. The ``1 3/4"~in. hose is constructed with 100 polyester double jacket and the rubber lining is made of a single-ply extruded tube of synthetic EPDM a minimum wall thickness of 0.040~in. The hose condition was new, right out of the box. See Attachment 1 for further hose information. Note that the brand name of this material was included for purposes of explaining the experiment. Identification in this report is not intended to imply recommendation or endorsement by NIST, nor is it intended to imply that such materials are necessarily the best available for the purpose. 
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=.8\columnwidth]{../Figures/Hose_Figures/test_plan}
-\caption{Schematic showing the test arrangement on the lower level. The circle represents the thermocouple array, the diamond represents the heat flux gauge and radiometer, and the squares represent the bi-directional velocity probes in the open doorway on Side C.}
-\label{fig:test_plan}
-\end{figure}
+% \begin{figure}[!ht]
+% \centering
+% \includegraphics[width=.8\columnwidth]{../Figures/Hose_Figures/test_plan}
+% \caption{Schematic showing the test arrangement on the lower level. The circle represents the thermocouple array, the diamond represents the heat flux gauge and radiometer, and the squares represent the bi-directional velocity probes in the open doorway on Side C.}
+% \label{fig:test_plan}
+% \end{figure}
 
 \section{Results}
 Two experiments were conducted to examine the amount of thermal exposure required to cause the fire hose to burn through. In each experiment three different hose conditions were examined: hose filled with air, hose filled with water, hose flowing 150 gpm of water. The difference between the two experiments was the location of the exposed hose section. In Experiment 1 the center of the exposed hose section and instrumentation was located 3.4~m (11.2~ft) from the open doorway on Side C. In Experiment 2 the exposed hose section and instrumentation was located 1.2~m (4~ft) from the open doorway on Side C.  
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=.8\columnwidth]{../Figures/Hose_Figures/IMG_8431}
+\caption{Photograph as the fire room transitioned to flashover in Experiment 2.}
+\label{fig:flashover}
+\end{figure}
 
 In Experiment 1, all three hose samples failed during the transition to flashover. Given the high rate of change of the thermal exposure in Experiment 1, the exposed section was moved closer to the open doorway for Experiment 2 as an attempt to reduce the exposure by taking advantage of the cool air being entrained near the floor through the open door way. In Experiment 2, the hose filled with air failed followed by the hose filled with static water.  These two ruptures happened very close together in time. The water from the ruptured line suppressed the fire to a degree and protected the hose line with the flowing water, so that it did not fail although the outer jacket was burned away and the hose was compromised.
 
