@@ -15,7 +15,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Choose Test Number
-current_test = 'Test_30_West_51415'
+current_test = 'Test_75_West_101515'
 
 # Plot mode: figure or video
 plot_mode = 'figure'
@@ -84,11 +84,11 @@ for f in os.listdir(data_dir):
 
         # Strip test name from file name
         test_name = f[:-4]
-        print 'Test ' + test_name
+        print ('Test ' + test_name)
 
         # Option to specify which test is run
-        # if test_name != current_test:
-        #   continue
+        if test_name != current_test:
+          continue
 
         # If video plot mode is enabled, then plot from only one test
         if plot_mode == 'video':
@@ -202,7 +202,7 @@ for f in os.listdir(data_dir):
                     conv_pascal = 248.8
                     zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
                     pressure = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Convert voltage to pascals
-                    if int(test_name[5:-11]) >= 57 and 'East' in test_name and 'BDP A7' in group:
+                    if int(test_name[5:-12]) >= 57 and 'East' in test_name and 'BDP A7' in group:
                         current_channel_data = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)
                         plt.ylabel('Pressure (Pa)', fontsize=20)
                         line_style = '-'
@@ -246,7 +246,7 @@ for f in os.listdir(data_dir):
                 # Plot gas measurements
                 if channel_list['Measurement Type'][channel] == 'Gas':
                     zero_voltage = np.mean(current_channel_data[0:pre_test_time])
-                    if int(test_name[5:-11]) >= 45:
+                    if int(test_name[5:-12]) >= 45:
                         if 'Carbon Dioxide ' in channel:
                             current_channel_data = (current_channel_data-zero_voltage) * 10/(5.-zero_voltage)
                         elif 'Carbon Monoxide ' in channel:
@@ -359,12 +359,12 @@ for f in os.listdir(data_dir):
                 plt.legend(handles1, labels1, loc='upper left', fontsize=8, handlelength=3)
 
                 # Save plot to file
-                print 'Plotting', group
+                print ('Plotting', group)
                 plt.savefig(save_dir + test_name + '_' + group.replace(' ', '_') + '.pdf')
                 plt.close('all')
 
         plt.close('all')
-        print
+        print()
 
         # Rename data column headers from device names to descriptive channel names for reduced data file
         old_name = channel_list['Device Name']
@@ -395,7 +395,7 @@ for f in os.listdir(data_dir):
             for frame_number, frame_time in enumerate(video_time):
                 # Constrain plots to positive times less than the upper y-axis limit
                 if (frame_time >= 0) and (frame_time <= video_xlim_upper):
-                    print 'Plotting Frame:', frame_time
+                    print ('Plotting Frame:', frame_time)
                     fig = plt.figure()
                     for channel_number, channel_name in enumerate(video_plots):
                         video_data = video_plots[channel_name] * video_rescale_factor + video_rescale_offset
