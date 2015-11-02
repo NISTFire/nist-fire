@@ -46,7 +46,7 @@ for f in os.listdir(data_dir):
 
 		# Strip test name from file name
 		test_name = f[:-4]
-		print 'Test ' + test_name
+		print ('Test ' + test_name)
 
 		# Load exp. data file
 		data = pd.read_csv(data_dir + f)
@@ -91,6 +91,7 @@ for f in os.listdir(data_dir):
 						ylabel('Temperature ($^\circ$C)', fontsize=20)
 						line_style = '-'
 						ylim([0,600])
+						axhline(260,0,len(t),color = '#000000',ls='--',lw=2)
 
 					if 'BDP_' in channel:
 						conv_inch_h2o = 0.4
@@ -143,7 +144,7 @@ for f in os.listdir(data_dir):
 			yticks(fontsize=16)
 			legend(loc='upper left', fontsize=8)
 
-			print 'Plotting', group
+			print ('Plotting', group)
 			savefig('../Figures/Gas_Cooling/' + test_name + '_' + group[0].rstrip('_') + '.pdf')
 			close('all')
 

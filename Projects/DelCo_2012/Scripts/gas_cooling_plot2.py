@@ -30,6 +30,7 @@ info = pd.read_csv(info_file, index_col=0)
 
 # Skip files
 skip_files = ['_reduced', 'description_','zero','bb','es_','fse','cafs','fsw','_attic','sc','gas_cooling','west_','east_','all_']
+skip_channels = ['_9','_10','_11']
 
 #  ===============================
 #  = Loop through all data files =
@@ -48,17 +49,20 @@ for entry in range(0,len(info)):
 	else:
 		print (info['Nozzle'][entry]+ ' ' + info['Position'][entry])
 		num_rep = info['Replicates'][entry]
-		del_TC_1_h2o = np.zeros((11,num_rep))
-		del_TC_2_h2o = np.zeros((11,num_rep))
-		del_TC_3_h2o = np.zeros((11,num_rep))
-		del_TC_1_cafs = np.zeros((11,num_rep))
-		del_TC_2_cafs = np.zeros((11,num_rep))
-		del_TC_3_cafs = np.zeros((11,num_rep))
+		del_TC_1_h2o = np.zeros((8,num_rep))
+		del_TC_2_h2o = np.zeros((8,num_rep))
+		del_TC_3_h2o = np.zeros((8,num_rep))
+		del_TC_1_cafs = np.zeros((8,num_rep))
+		del_TC_2_cafs = np.zeros((8,num_rep))
+		del_TC_3_cafs = np.zeros((8,num_rep))
 
 
 		for reps in range(0,num_rep):
 			for channel in data1.columns[1:]:
-				if 'TC_A1_' in channel:
+                # Skip excluded channels
+				if any([substring in channel for substring in skip_channels]):
+					continue
+				elif 'TC_A1_' in channel:
 					water_test = 'data'+str(info['Test_Series_Water'][entry+reps])
 					water_test = locals().get(water_test)
 					water_data_interval = water_test[channel][info['Start_Time_Water'][entry+reps]:info['Stop_Time_Water'][entry+reps]]
@@ -70,18 +74,20 @@ for entry in range(0,len(info)):
 					cafs_data_interval = cafs_test[channel][info['Start_Time_CAFS'][entry+reps]:info['Stop_Time_CAFS'][entry+reps]]
 					del_TC_1_cafs[int(channel[6:])-1,reps] = max(cafs_data_interval) - min(cafs_data_interval)
 					#del_TC_1_cafs[int(channel[6:])-1,reps] = (max(cafs_data_interval) - min(cafs_data_interval))/max(cafs_data_interval)
-				if 'TC_A3_' in channel:
+				elif 'TC_A3_' in channel:
 					water_test = 'data'+str(info['Test_Series_Water'][entry+reps])
 					water_test = locals().get(water_test)
 					water_data_interval = water_test[channel][info['Start_Time_Water'][entry+reps]:info['Stop_Time_Water'][entry+reps]]
 					del_TC_3_h2o[int(channel[6:])-1,reps] = max(water_data_interval) - min(water_data_interval)
-					#del_TC_3_h2o[int(channel[6:])-1,reps] = (max(water_data_interval) - min(water_data_interval))/max(water_data_interval)
-
+					# del_TC_3_h2o[int(channel[6:])-1,reps] = (max(water_data_interval) - min(water_data_interval))/max(water_data_interval)
+					# print (max(water_data_interval) , min(water_data_interval), max(water_data_interval) - min(water_data_interval), channel,reps,'water')
 					cafs_test = 'data'+str(info['Test_Series_CAFS'][entry+reps])
 					cafs_test = locals().get(cafs_test)
 					cafs_data_interval = cafs_test[channel][info['Start_Time_CAFS'][entry+reps]:info['Stop_Time_CAFS'][entry+reps]]
 					del_TC_3_cafs[int(channel[6:])-1,reps] = max(cafs_data_interval) - min(cafs_data_interval)
-					#del_TC_3_cafs[int(channel[6:])-1,reps] = (max(cafs_data_interval) - min(cafs_data_interval))/max(cafs_data_interval)
+ 					# del_TC_3_cafs[int(channel[6:])-1,reps] = (max(cafs_data_interval) - min(cafs_data_interval))/max(cafs_data_interval)
+					# print (max(cafs_data_interval) , min(cafs_data_interval),max(cafs_data_interval) - min(cafs_data_interval),channel,reps,'cafs')
+					# print()
 				if 'TC_A2_' in channel:
 					water_test = 'data'+str(info['Test_Series_Water'][entry+reps])
 					water_test = locals().get(water_test)
@@ -95,7 +101,7 @@ for entry in range(0,len(info)):
 		#del_water = concatenate([del_TC_1_h2o, del_TC_3_h2o], axis=1)
 		del_water = del_TC_3_h2o
 		del_water = del_water.reshape(-1)
-		#del_cafs  = concatenate([del_TC_1_cafs, del_TC_3_cafs], axis=1)
+		# del_cafs  = concatenate([del_TC_1_cafs, del_TC_3_cafs], axis=1)
 		del_cafs = del_TC_3_cafs
 		del_cafs  = del_cafs.reshape(-1)
 		dif_data  = []
