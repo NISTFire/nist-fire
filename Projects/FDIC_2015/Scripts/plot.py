@@ -186,7 +186,7 @@ for f in os.listdir(data_dir):
                 # Plot velocities
                 if channel_list['Measurement Type'][channel] == 'Velocity':
                     conv_inch_h2o = 0.4
-                    conv_pascal = 248.8
+                    conv_pascal = 124.54
                     zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
                     pressure = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Convert voltage to pascals
                     # Calculate velocity
@@ -216,7 +216,7 @@ for f in os.listdir(data_dir):
                 # Plot pressures
                 if channel_list['Measurement Type'][channel] == 'Pressure':
                     conv_inch_h2o = 0.4
-                    conv_pascal = 248.8
+                    conv_pascal = 124.54
                     zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Convert voltage to pascals
                     current_channel_data = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Get zero voltage from pre-test data
 

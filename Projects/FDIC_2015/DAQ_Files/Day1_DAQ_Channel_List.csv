@@ -1,150 +1,1 @@
-Channel,Device Name,Calibration Slope,Calibration Intercept,Channel Name,Group Name,Measurement Type
-0,GarageFrontRight1Ft,1,0,TC 1 0.03 m BC West,TC Garage Front Right,Temperature
-1,GarageFrontRight2Ft,1,0,TC 1 0.30 m BC West,TC Garage Front Right,Temperature
-2,GarageFrontRight3Ft,1,0,TC 1 0.61 m BC West,TC Garage Front Right,Temperature
-3,GarageFrontRight4Ft,1,0,TC 1 0.91 m BC West,TC Garage Front Right,Temperature
-4,GarageFrontRight5Ft,1,0,TC 1 1.22 m BC West,TC Garage Front Right,Temperature
-5,GarageFrontRight6Ft,1,0,TC 1 1.52 m BC West,TC Garage Front Right,Temperature
-6,GarageFrontRight7Ft,1,0,TC 1 1.83 m BC West,TC Garage Front Right,Temperature
-7,GarageFrontRight8Ft,1,0,TC 1 2.13 m BC West,TC Garage Front Right,Temperature
-8,GarageFrontRight9Ft,1,0,TC 2 0.03 m BC West,TC Garage Front Right,Temperature
-9,GarageRearRight1Ft,1,0,TC 2 0.30 m BC West,TC Garage Rear Right,Temperature
-10,GarageRearRight2Ft,1,0,TC 2 0.61 m BC West,TC Garage Rear Right,Temperature
-11,GarageRearRight3Ft,1,0,TC 2 0.91 m BC West,TC Garage Rear Right,Temperature
-12,GarageRearRight4Ft,1,0,TC 2 1.22 m BC West,TC Garage Rear Right,Temperature
-13,GarageRearRight5Ft,1,0,TC 2 1.52 m BC West,TC Garage Rear Right,Temperature
-14,GarageRearRight6Ft,1,0,TC 2 1.83 m BC West,TC Garage Rear Right,Temperature
-15,GarageRearRight7Ft,1,0,TC 2 2.13 m BC West,TC Garage Rear Right,Temperature
-16,GarageRearRight8Ft,1,0,TC 5 0.08 m BS West,TC Garage Rear Right,Temperature
-17,GarageRearRight9Ft,1,0,TC 5 0.34 m BS West,TC Garage Rear Right,Temperature
-18,DSideGarageDoor1T,1,0,TC 5 0.61 m BS West,TC D Side Garage Door,Temperature
-19,DSideGarageDoor2T,1,0,TC 5 0.88 m BS West,TC D Side Garage Door,Temperature
-20,DSideGarageDoor3T,1,0,TC 5 1.15 m BS West,TC D Side Garage Door,Temperature
-21,DSideGarageDoor4T,1,0,TC 5 1.42 m BS West,TC D Side Garage Door,Temperature
-22,DSideGarageDoor5T,1,0,TC 5 1.68 m BS West,TC D Side Garage Door,Temperature
-23,DSideGarageDoor6T,1,0,TC 5 1.95 m BS West,TC D Side Garage Door,Temperature
-24,GarageFrontLeft1Ft,1,0,TC 6 0.08 m BS West,TC Garage Front Left,Temperature
-25,GarageFrontLeft2Ft,1,0,TC 6 0.34 m BS West,TC Garage Front Left,Temperature
-26,GarageFrontLeft3Ft,1,0,TC 6 0.61 m BS West,TC Garage Front Left,Temperature
-27,GarageFrontLeft4Ft,1,0,TC 6 0.88 m BS West,TC Garage Front Left,Temperature
-28,GarageFrontLeft5Ft,1,0,TC 6 1.15 m BS West,TC Garage Front Left,Temperature
-29,GarageFrontLeft6Ft,1,0,TC 6 1.42 m BS West,TC Garage Front Left,Temperature
-30,GarageFrontLeft7Ft,1,0,TC 6 1.68 m BS West,TC Garage Front Left,Temperature
-31,GarageFrontLeft8Ft,1,0,TC 6 1.95 m BS West,TC Garage Front Left,Temperature
-0,GarageFrontLeft9Ft,1,0,TC 9 0.03 m BC West,TC Garage Front Left,Temperature
-1,GarageRearLeft1Ft,1,0,TC 9 0.30 m BC West,TC Garage Rear Left,Temperature
-2,GarageRearLeft2Ft,1,0,TC 9 0.61 m BC West,TC Garage Rear Left,Temperature
-3,GarageRearLeft3Ft,1,0,TC 9 0.91 m BC West,TC Garage Rear Left,Temperature
-4,GarageRearLeft4Ft,1,0,TC 9 1.22 m BC West,TC Garage Rear Left,Temperature
-5,GarageRearLeft5Ft,1,0,TC 9 1.52 m BC West,TC Garage Rear Left,Temperature
-6,GarageRearLeft6Ft,1,0,TC 9 1.83 m BC West,TC Garage Rear Left,Temperature
-7,GarageRearLeft7Ft,1,0,TC 9 2.13 m BC West,TC Garage Rear Left,Temperature
-8,GarageRearLeft8Ft,1,0,TC 10 0.08 m BS West,TC Garage Rear Left,Temperature
-9,GarageRearLeft9Ft,1,0,TC 10 0.34 m BS West,TC Garage Rear Left,Temperature
-10,BSideGarageDoor1T,1,0,TC 10 0.61 m BS West,TC B Side Garage Door,Temperature
-11,BSideGarageDoor2T,1,0,TC 10 0.88 m BS West,TC B Side Garage Door,Temperature
-12,BSideGarageDoor3T,1,0,TC 10 1.15 m BS West,TC B Side Garage Door,Temperature
-13,BSideGarageDoor4T,1,0,TC 10 1.42 m BS West,TC B Side Garage Door,Temperature
-14,BSideGarageDoor5T,1,0,TC 10 1.68 m BS West,TC B Side Garage Door,Temperature
-15,BSideGarageDoor6T,1,0,TC 10 1.95 m BS West,TC B Side Garage Door,Temperature
-16,Livingroom1Front1Ft,1,0,TC 11 0.08 m BS West,TC Livingroom 1 Front,Temperature
-17,Livingroom1Front2Ft,1,0,TC 11 0.34 m BS West,TC Livingroom 1 Front,Temperature
-18,Livingroom1Front3Ft,1,0,TC 11 0.61 m BS West,TC Livingroom 1 Front,Temperature
-19,Livingroom1Front4Ft,1,0,TC 11 0.88 m BS West,TC Livingroom 1 Front,Temperature
-20,Livingroom1Front5Ft,1,0,TC 11 1.15 m BS West,TC Livingroom 1 Front,Temperature
-21,Livingroom1Front6Ft,1,0,TC 11 1.42 m BS West,TC Livingroom 1 Front,Temperature
-22,Livingroom1Front7Ft,1,0,TC 11 1.68 m BS West,TC Livingroom 1 Front,Temperature
-23,Livingroom1Front8Ft,1,0,TC 11 1.95 m BS West,TC Livingroom 1 Front,Temperature
-24,Livingroom1Rear1Ft,1,0,TC 13 0.08 m BS West,TC Livingroom 1 Rear,Temperature
-25,Livingroom1Rear2Ft,1,0,TC 13 0.34 m BS West,TC Livingroom 1 Rear,Temperature
-26,Livingroom1Rear3Ft,1,0,TC 13 0.61 m BS West,TC Livingroom 1 Rear,Temperature
-27,Livingroom1Rear4Ft,1,0,TC 13 0.88 m BS West,TC Livingroom 1 Rear,Temperature
-28,Livingroom1Rear5Ft,1,0,TC 13 1.15 m BS West,TC Livingroom 1 Rear,Temperature
-29,Livingroom1Rear6Ft,1,0,TC 13 1.42 m BS West,TC Livingroom 1 Rear,Temperature
-30,Livingroom1Rear7Ft,1,0,TC 13 1.68 m BS West,TC Livingroom 1 Rear,Temperature
-31,Livingroom1Rear8Ft,1,0,TC 13 1.95 m BS West,TC Livingroom 1 Rear,Temperature
-0,Livingroom21Ft,1,0,TC 14 0.08 m BS West,TC Livingroom 2,Temperature
-1,Livingroom22Ft,1,0,TC 14 0.34 m BS West,TC Livingroom 2,Temperature
-2,Livingroom23Ft,1,0,TC 14 0.61 m BS West,TC Livingroom 2,Temperature
-3,Livingroom24Ft,1,0,TC 14 0.88 m BS West,TC Livingroom 2,Temperature
-4,Livingroom25Ft,1,0,TC 14 1.15 m BS West,TC Livingroom 2,Temperature
-5,Livingroom26Ft,1,0,TC 14 1.42 m BS West,TC Livingroom 2,Temperature
-6,Livingroom27Ft,1,0,TC 14 1.68 m BS West,TC Livingroom 2,Temperature
-7,Livingroom28Ft,1,0,TC 14 1.95 m BS West,TC Livingroom 2,Temperature
-8,StairwellDoor1T,1,0,TC 16 0.03 m BC West,TC Stairwell Door,Temperature
-9,StairwellDoor2T,1,0,TC 16 0.30 m BC West,TC Stairwell Door,Temperature
-10,StairwellDoor3T,1,0,TC 16 0.61 m BC West,TC Stairwell Door,Temperature
-11,StairwellDoor4T,1,0,TC 16 0.91 m BC West,TC Stairwell Door,Temperature
-12,StairwellDoor5T,1,0,TC 16 1.22 m BC West,TC Stairwell Door,Temperature
-13,StairwellDoor6T,1,0,TC 16 1.52 m BC West,TC Stairwell Door,Temperature
-14,Bedroom11Ft,1,0,TC 16 1.83 m BC West,TC Bedroom 1,Temperature
-15,Bedroom12Ft,1,0,TC 16 2.13 m BC West,TC Bedroom 1,Temperature
-16,Bedroom13Ft,1,0,TC 17 0.03 m BC West,TC Bedroom 1,Temperature
-17,Bedroom14Ft,1,0,TC 17 0.30 m BC West,TC Bedroom 1,Temperature
-18,Bedroom15Ft,1,0,TC 17 0.61 m BC West,TC Bedroom 1,Temperature
-19,Bedroom16Ft,1,0,TC 17 0.91 m BC West,TC Bedroom 1,Temperature
-20,Bedroom17Ft,1,0,TC 17 1.22 m BC West,TC Bedroom 1,Temperature
-21,Bedroom18Ft,1,0,TC 17 1.52 m BC West,TC Bedroom 1,Temperature
-22,Bedroom21Ft,1,0,TC 17 1.83 m BC West,TC Bedroom 2,Temperature
-23,Bedroom22Ft,1,0,TC 17 2.13 m BC West,TC Bedroom 2,Temperature
-24,Bedroom23Ft,1,0,TC 18 0.03 m BC West,TC Bedroom 2,Temperature
-25,Bedroom24Ft,1,0,TC 18 0.30 m BC West,TC Bedroom 2,Temperature
-26,Bedroom25Ft,1,0,TC 18 0.61 m BC West,TC Bedroom 2,Temperature
-27,Bedroom26Ft,1,0,TC 18 0.91 m BC West,TC Bedroom 2,Temperature
-28,Bedroom27Ft,1,0,TC 18 1.22 m BC West,TC Bedroom 2,Temperature
-29,Bedroom28Ft,1,0,TC 18 1.52 m BC West,TC Bedroom 2,Temperature
-30,Halldoor1T,1,0,TC 18 1.83 m BC West,TC Halldoor,Temperature
-31,Halldoor2T,1,0,TC 18 2.13 m BC West,TC Halldoor,Temperature
-0,Halldoor3T,1,0,TC 19 0.03 m BC West,TC Halldoor,Temperature
-1,Halldoor4T,1,0,TC 19 0.30 m BC West,TC Halldoor,Temperature
-2,Halldoor5T,1,0,TC 19 0.61 m BC West,TC Halldoor,Temperature
-3,Halldoor6T,1,0,TC 19 0.91 m BC West,TC Halldoor,Temperature
-4,Bedroom1HeatFluxVertV,1603,0,TC 19 1.22 m BC West,HF Bedroom 1,Heat Flux
-5,Bedroom1HeatFluxHorzV,1759,0,TC 19 1.52 m BC West,HF Bedroom 1,Heat Flux
-6,Bedroom2HeatFluxVertV,2143,0,TC 19 1.83 m BC West,HF Bedroom 2,Heat Flux
-7,Bedroom2HeatFluxHorzV,3369,0,TC 19 2.13 m BC West,HF Bedroom 2,Heat Flux
-8,GaragePressureLowV,1,0,TC 3 0.03 m BC West,Pressure Garage,Pressure
-9,GaragePressureMidV,1,0,TC 3 0.30 m BC West,Pressure Garage,Pressure
-10,GaragePressureHighV,1,0,TC 3 0.61 m BC West,Pressure Garage,Pressure
-11,Livingroom1PressureLowV,1,0,TC 3 0.91 m BC West,Pressure Livingroom 1,Pressure
-12,Livingroom1PressureMidV,1,0,TC 3 1.22 m BC West,Pressure Livingroom 1,Pressure
-13,Livingroom1PressureHighV,1,0,TC 3 1.52 m BC West,Pressure Livingroom 1,Pressure
-14,Livingroom2PressureLowV,1,0,TC 3 1.83 m BC West,Pressure Livingroom 2,Pressure
-15,Livingroom2PressureMidV,1,0,TC 3 2.13 m BC West,Pressure Livingroom 2,Pressure
-16,Livingroom2PressureHighV,1,0,TC 7 0.03 m BC West,Pressure Livingroom 2,Pressure
-17,Bedroom1PressureLowV,1,0,TC 7 0.30 m BC West,Pressure Bedroom 1,Pressure
-18,Bedroom1PressureMidV,1,0,TC 7 0.61 m BC West,Pressure Bedroom 1,Pressure
-19,Bedroom1PressureHighV,1,0,TC 7 0.91 m BC West,Pressure Bedroom 1,Pressure
-20,Bedroom2PressureLowV,1,0,TC 7 1.22 m BC West,Pressure Bedroom 2,Pressure
-21,Bedroom2PressureMidV,1,0,TC 7 1.52 m BC West,Pressure Bedroom 2,Pressure
-22,Bedroom2PressureHighV,1,0,TC 7 1.83 m BC West,Pressure Bedroom 2,Pressure
-23,BSideGarageDoor2V,1,0,TC 7 2.13 m BC West,Pressure B Side Garage Door,Pressure
-24,Bedroom1COV,10000,0,TC 8 0.03 m BC West,Gas Bedroom 1,Gas
-25,Bedroom1CO2V,5,0,TC 8 0.30 m BC West,Gas Bedroom 1,Gas
-26,Bedroom1O2V,5,0,TC 8 0.61 m BC West,Gas Bedroom 1,Gas
-27,Bedroom2COV,10000,0,TC 8 0.91 m BC West,Gas Bedroom 2,Gas
-28,Bedroom2CO2V,5,0,TC 8 1.22 m BC West,Gas Bedroom 2,Gas
-29,Bedroom2O2V,5,0,TC 8 1.52 m BC West,Gas Bedroom 2,Gas
-30,DSideGarageDoor1V,99.52,-248.8,TC 8 1.83 m BC West,BDP D Side Garage Door,Velocity
-31,DSideGarageDoor2V,99.52,-248.8,TC 8 2.13 m BC West,BDP D Side Garage Door,Velocity
-0,DSideGarageDoor3V,99.52,-248.8,BDP 5 0.08 m BS West,BDP D Side Garage Door,Velocity
-1,DSideGarageDoor4V,99.52,-248.8,BDP 5 0.34 m BS West,BDP D Side Garage Door,Velocity
-2,DSideGarageDoor5V,99.52,-248.8,BDP 5 0.61 m BS West,BDP D Side Garage Door,Velocity
-3,DSideGarageDoor6V,99.52,-248.8,BDP 5 0.88 m BS West,BDP D Side Garage Door,Velocity
-4,BSideGarageDoor1V,99.52,-248.8,BDP 5 1.15 m BS West,BDP B Side Garage Door,Velocity
-5,BSideGarageDoor3V,99.52,-248.8,BDP 5 1.42 m BS West,BDP B Side Garage Door,Velocity
-6,BSideGarageDoor4V,99.52,-248.8,BDP 5 1.68 m BS West,BDP B Side Garage Door,Velocity
-7,BSideGarageDoor5V,99.52,-248.8,BDP 5 1.95 m BS West,BDP B Side Garage Door,Velocity
-8,BSideGarageDoor6V,99.52,-248.8,BDP 6 0.08 m BS West,BDP B Side Garage Door,Velocity
-9,StairwellDoor1V,99.52,-248.8,BDP 6 0.34 m BS West,BDP Stairwell Door,Velocity
-10,StairwellDoor2V,99.52,-248.8,BDP 6 0.61 m BS West,BDP Stairwell Door,Velocity
-11,StairwellDoor3V,99.52,-248.8,BDP 6 0.88 m BS West,BDP Stairwell Door,Velocity
-12,StairwellDoor4V,99.52,-248.8,BDP 6 1.15 m BS West,BDP Stairwell Door,Velocity
-13,StairwellDoor5V,99.52,-248.8,BDP 6 1.42 m BS West,BDP Stairwell Door,Velocity
-14,StairwellDoor6V,99.52,-248.8,BDP 6 1.68 m BS West,BDP Stairwell Door,Velocity
-15,Halldoor1V,99.52,-248.8,BDP 6 1.95 m BS West,BDP Hallway Door,Velocity
-16,Halldoor2V,99.52,-248.8,BDP 10 0.08 m BS West,BDP Hallway Door,Velocity
-17,Halldoor3V,99.52,-248.8,BDP 10 0.34 m BS West,BDP Hallway Door,Velocity
-18,Halldoor4V,99.52,-248.8,BDP 10 0.61 m BS West,BDP Hallway Door,Velocity
-19,Halldoor5V,99.52,-248.8,BDP 10 0.88 m BS West,BDP Hallway Door,Velocity
-20,Halldoor6V,99.52,-248.8,BDP 10 1.15 m BS West,BDP Hallway Door,Velocity
+Channel,Device Name,Calibration Slope,Calibration Intercept,Channel Name,Group Name,Measurement Type0,GarageFrontRight9Ft,1,0,Garage Front Right 0.30 m BC ,TC Garage Front Right,Temperature1,GarageFrontRight8Ft,1,0,Garage Front Right 0.61 m BC ,TC Garage Front Right,Temperature2,GarageFrontRight7Ft,1,0,Garage Front Right 0.91 m BC ,TC Garage Front Right,Temperature3,GarageFrontRight6Ft,1,0,Garage Front Right 1.22 m BC ,TC Garage Front Right,Temperature4,GarageFrontRight5Ft,1,0,Garage Front Right 1.52 m BC ,TC Garage Front Right,Temperature5,GarageFrontRight4Ft,1,0,Garage Front Right 1.83 m BC ,TC Garage Front Right,Temperature6,GarageFrontRight3Ft,1,0,Garage Front Right 2.13 m BC ,TC Garage Front Right,Temperature7,GarageFrontRight2Ft,1,0,Garage Front Right 2.44 m BC ,TC Garage Front Right,Temperature8,GarageFrontRight1Ft,1,0,Garage Front Right 2.74 m BC ,TC Garage Front Right,Temperature9,GarageRearRight9Ft,1,0,Garage Rear Right 0.30 m BC ,TC Garage Rear Right,Temperature10,GarageRearRight8Ft,1,0,Garage Rear Right 0.61 m BC ,TC Garage Rear Right,Temperature11,GarageRearRight7Ft,1,0,Garage Rear Right 0.91 m BC ,TC Garage Rear Right,Temperature12,GarageRearRight6Ft,1,0,Garage Rear Right 1.22 m BC ,TC Garage Rear Right,Temperature13,GarageRearRight5Ft,1,0,Garage Rear Right 1.52 m BC ,TC Garage Rear Right,Temperature14,GarageRearRight4Ft,1,0,Garage Rear Right 1.83 m BC ,TC Garage Rear Right,Temperature15,GarageRearRight3Ft,1,0,Garage Rear Right 2.13 m BC ,TC Garage Rear Right,Temperature16,GarageRearRight2Ft,1,0,Garage Rear Right 2.44 m BC ,TC Garage Rear Right,Temperature17,GarageRearRight1Ft,1,0,Garage Rear Right 2.74 m BC ,TC Garage Rear Right,Temperature18,DSideGarageDoor1T,1,0,TC D Side Door 0.15 m BS,TC D Side Garage Door,Temperature19,DSideGarageDoor2T,1,0,TC D Side Door 0.46 m BS,TC D Side Garage Door,Temperature20,DSideGarageDoor3T,1,0,TC D Side Door 0.76 m BS,TC D Side Garage Door,Temperature21,DSideGarageDoor4T,1,0,TC D Side Door 1.07 m BS,TC D Side Garage Door,Temperature22,DSideGarageDoor5T,1,0,TC D Side Door 1.37 m BS,TC D Side Garage Door,Temperature23,DSideGarageDoor6T,1,0,TC D Side Door 1.68 m BS,TC D Side Garage Door,Temperature24,GarageFrontLeft9Ft,1,0,Garage Front Left 0.30 m BC ,TC Garage Front Left,Temperature25,GarageFrontLeft8Ft,1,0,Garage Front Left 0.61 m BC ,TC Garage Front Left,Temperature26,GarageFrontLeft7Ft,1,0,Garage Front Left 0.91 m BC ,TC Garage Front Left,Temperature27,GarageFrontLeft6Ft,1,0,Garage Front Left 1.22 m BC ,TC Garage Front Left,Temperature28,GarageFrontLeft5Ft,1,0,Garage Front Left 1.52 m BC ,TC Garage Front Left,Temperature29,GarageFrontLeft4Ft,1,0,Garage Front Left 1.83 m BC ,TC Garage Front Left,Temperature30,GarageFrontLeft3Ft,1,0,Garage Front Left 2.13 m BC ,TC Garage Front Left,Temperature31,GarageFrontLeft2Ft,1,0,Garage Front Left 2.44 m BC ,TC Garage Front Left,Temperature0,GarageFrontLeft1Ft,1,0,Garage Front Left 2.74 m BC ,TC Garage Front Left,Temperature1,GarageRearLeft9Ft,1,0,Garage Rear Left 0.30 m BC ,TC Garage Rear Left,Temperature2,GarageRearLeft8Ft,1,0,Garage Rear Left 0.61 m BC ,TC Garage Rear Left,Temperature3,GarageRearLeft7Ft,1,0,Garage Rear Left 0.91 m BC ,TC Garage Rear Left,Temperature4,GarageRearLeft6Ft,1,0,Garage Rear Left 1.22 m BC ,TC Garage Rear Left,Temperature5,GarageRearLeft5Ft,1,0,Garage Rear Left 1.52 m BC ,TC Garage Rear Left,Temperature6,GarageRearLeft4Ft,1,0,Garage Rear Left 1.83 m BC ,TC Garage Rear Left,Temperature7,GarageRearLeft3Ft,1,0,Garage Rear Left 2.13 m BC ,TC Garage Rear Left,Temperature8,GarageRearLeft2Ft,1,0,Garage Rear Left 2.44 m BC ,TC Garage Rear Left,Temperature9,GarageRearLeft1Ft,1,0,Garage Rear Left 2.74 m BC ,TC Garage Rear Left,Temperature10,BSideGarageDoor1T,1,0,TC B Side Door 0.15 m BS,TC B Side Garage Door,Temperature11,BSideGarageDoor2T,1,0,TC B Side Door 0.46 m BS,TC B Side Garage Door,Temperature12,BSideGarageDoor3T,1,0,TC B Side Door 0.76 m BS,TC B Side Garage Door,Temperature13,BSideGarageDoor4T,1,0,TC B Side Door 1.07 m BS,TC B Side Garage Door,Temperature14,BSideGarageDoor5T,1,0,TC B Side Door 1.37 m BS,TC B Side Garage Door,Temperature15,BSideGarageDoor6T,1,0,TC B Side Door 1.68 m BS,TC B Side Garage Door,Temperature16,Livingroom1Front8Ft,1,0,Living Room 1 Front 0.30 m BC,TC Livingroom 1 Front,Temperature17,Livingroom1Front7Ft,1,0,Living Room 1 Front 0.61 m BC,TC Livingroom 1 Front,Temperature18,Livingroom1Front6Ft,1,0,Living Room 1 Front 0.91 m BC,TC Livingroom 1 Front,Temperature19,Livingroom1Front5Ft,1,0,Living Room 1 Front 1.22 m BC,TC Livingroom 1 Front,Temperature20,Livingroom1Front4Ft,1,0,Living Room 1 Front 1.52 m BC,TC Livingroom 1 Front,Temperature21,Livingroom1Front3Ft,1,0,Living Room 1 Front 1.83 m BC,TC Livingroom 1 Front,Temperature22,Livingroom1Front2Ft,1,0,Living Room 1 Front 2.13 m BC,TC Livingroom 1 Front,Temperature23,Livingroom1Front1Ft,1,0,Living Room 1 Front 2.44 m BC,TC Livingroom 1 Front,Temperature24,Livingroom1Rear8Ft,1,0,Living Room 1 Rear 0.30 m BC,TC Livingroom 1 Rear,Temperature25,Livingroom1Rear7Ft,1,0,Living Room 1 Rear 0.61 m BC,TC Livingroom 1 Rear,Temperature26,Livingroom1Rear6Ft,1,0,Living Room 1 Rear 0.91 m BC,TC Livingroom 1 Rear,Temperature27,Livingroom1Rear5Ft,1,0,Living Room 1 Rear 1.22 m BC,TC Livingroom 1 Rear,Temperature28,Livingroom1Rear4Ft,1,0,Living Room 1 Rear 1.52 m BC,TC Livingroom 1 Rear,Temperature29,Livingroom1Rear3Ft,1,0,Living Room 1 Rear 1.83 m BC,TC Livingroom 1 Rear,Temperature30,Livingroom1Rear2Ft,1,0,Living Room 1 Rear 2.13 m BC,TC Livingroom 1 Rear,Temperature31,Livingroom1Rear1Ft,1,0,Living Room 1 Rear 2.44 m BC,TC Livingroom 1 Rear,Temperature0,Livingroom28Ft,1,0,Living Room 2 0.03 m BC,TC Livingroom 2,Temperature1,Livingroom27Ft,1,0,Living Room 2 0.30 m BC,TC Livingroom 2,Temperature2,Livingroom26Ft,1,0,Living Room 2 0.61 m BC,TC Livingroom 2,Temperature3,Livingroom25Ft,1,0,Living Room 2 0.91 m BC,TC Livingroom 2,Temperature4,Livingroom24Ft,1,0,Living Room 2 1.22 m BC,TC Livingroom 2,Temperature5,Livingroom23Ft,1,0,Living Room 2 1.52 m BC,TC Livingroom 2,Temperature6,Livingroom22Ft,1,0,Living Room 2 1.83 m BC,TC Livingroom 2,Temperature7,Livingroom21Ft,1,0,Living Room 2 2.13 m BC,TC Livingroom 2,Temperature8,StairwellDoor1T,1,0,TC Stairwell Door 0.15 m BS,TC Stairwell Door,Temperature9,StairwellDoor2T,1,0,TC Stairwell Door 0.46 m BS,TC Stairwell Door,Temperature10,StairwellDoor3T,1,0,TC Stairwell Door 0.76 m BS,TC Stairwell Door,Temperature11,StairwellDoor4T,1,0,TC Stairwell Door 1.07 m BS,TC Stairwell Door,Temperature12,StairwellDoor5T,1,0,TC Stairwell Door 1.37 m BS,TC Stairwell Door,Temperature13,StairwellDoor6T,1,0,TC Stairwell Door 1.68 m BS,TC Stairwell Door,Temperature14,Bedroom11Ft,1,0,Bedroom 1 0.30 m BC,TC Bedroom 1,Temperature15,Bedroom12Ft,1,0,Bedroom 1 0.61 m BC,TC Bedroom 1,Temperature16,Bedroom13Ft,1,0,Bedroom 1 0.91 m BC,TC Bedroom 1,Temperature17,Bedroom14Ft,1,0,Bedroom 1 1.22 m BC,TC Bedroom 1,Temperature18,Bedroom15Ft,1,0,Bedroom 1 1.52 m BC,TC Bedroom 1,Temperature19,Bedroom16Ft,1,0,Bedroom 1 1.83 m BC,TC Bedroom 1,Temperature20,Bedroom17Ft,1,0,Bedroom 1 2.13 m BC,TC Bedroom 1,Temperature21,Bedroom18Ft,1,0,Bedroom 1 2.44 m BC,TC Bedroom 1,Temperature22,Bedroom21Ft,1,0,Bedroom 2 0.30 m BC,TC Bedroom 2,Temperature23,Bedroom22Ft,1,0,Bedroom 2 0.61 m BC,TC Bedroom 2,Temperature24,Bedroom23Ft,1,0,Bedroom 2 0.91 m BC,TC Bedroom 2,Temperature25,Bedroom24Ft,1,0,Bedroom 2 1.22 m BC,TC Bedroom 2,Temperature26,Bedroom25Ft,1,0,Bedroom 2 1.52 m BC,TC Bedroom 2,Temperature27,Bedroom26Ft,1,0,Bedroom 2 1.83 m BC,TC Bedroom 2,Temperature28,Bedroom27Ft,1,0,Bedroom 2 2.13 m BC,TC Bedroom 2,Temperature29,Bedroom28Ft,1,0,Bedroom 2 2.44 m BC,TC Bedroom 2,Temperature30,Halldoor1T,1,0,TC Hall Door 0.15 m BS,TC Halldoor,Temperature31,Halldoor2T,1,0,TC Hall Door 0.46 m BS,TC Halldoor,Temperature0,Halldoor3T,1,0,TC Hall Door 0.76 m BS,TC Halldoor,Temperature1,Halldoor4T,1,0,TC Hall Door 1.07 m BS,TC Halldoor,Temperature2,Halldoor5T,1,0,TC Hall Door 1.37 m BS,TC Halldoor,Temperature3,Halldoor6T,1,0,TC Hall Door 1.68 m BS,TC Halldoor,Temperature4,Bedroom1HeatFluxVertV,1603,0,Bedroom 1 HF Vertical,HF Bedroom 1,Heat Flux5,Bedroom1HeatFluxHorzV,1759,0,Bedroom 1 HF Horizontal,HF Bedroom 1,Heat Flux6,Bedroom2HeatFluxVertV,2143,0,Bedroom 2 HF Vertical,HF Bedroom 2,Heat Flux7,Bedroom2HeatFluxHorzV,3369,0,Bedroom 2 HF Horizontal,HF Bedroom 2,Heat Flux8,GaragePressureLowV,1,0,Garage Pressure 2.85 m BC,Pressure Garage,Pressure9,GaragePressureMidV,1,0,Garage Pressure 1.57 m BC,Pressure Garage,Pressure10,GaragePressureHighV,1,0,Garage Pressure 0.30 m BC,Pressure Garage,Pressure11,Livingroom1PressureLowV,1,0,Living Room 1 Pressure 2.54 m BC,Pressure Livingroom 1,Pressure12,Livingroom1PressureMidV,1,0,Living Room 1 Pressure 1.42 m BC,Pressure Livingroom 1,Pressure13,Livingroom1PressureHighV,1,0,Living Room 1 Pressure 0.30 m BC,Pressure Livingroom 1,Pressure14,Livingroom2PressureLowV,1,0,Living Room 2 Pressure 2.13 m BC,Pressure Livingroom 2,Pressure15,Livingroom2PressureMidV,1,0,Living Room 2 Pressure 1.22 m BC,Pressure Livingroom 2,Pressure16,Livingroom2PressureHighV,1,0,Living Room 2 Pressure 0.30 m BC,Pressure Livingroom 2,Pressure17,Bedroom1PressureLowV,1,0,Bedroom 1 Pressure 2.90 m BC,Pressure Bedroom 1,Pressure18,Bedroom1PressureMidV,1,0,Bedroom 1 Pressure 1.60 m BC,Pressure Bedroom 1,Pressure19,Bedroom1PressureHighV,1,0,Bedroom 1 Pressure 0.30 m BC,Pressure Bedroom 1,Pressure20,Bedroom2PressureLowV,1,0,Bedroom 2 Pressure 2.90 m BC,Pressure Bedroom 2,Pressure21,Bedroom2PressureMidV,1,0,Bedroom 2 Pressure 1.60 m BC,Pressure Bedroom 2,Pressure22,Bedroom2PressureHighV,1,0,Bedroom 2 Pressure 0.30 m BC,Pressure Bedroom 2,Pressure23,BSideGarageDoor2V,1,0,Garaage B Side Pressure 2.85 m BC,Pressure Garage,Pressure24,Bedroom1COV,10000,0,Bedroom 1 CO,Gas Bedroom,Gas25,Bedroom1CO2V,5,0,Bedroom 1 CO2,Gas Bedroom,Gas26,Bedroom1O2V,5,0,Bedroom 1 O2,Gas Bedroom,Gas27,Bedroom2COV,10000,0,Bedroom 2 CO,Gas Bedroom,Gas28,Bedroom2CO2V,5,0,Bedroom 2 CO2,Gas Bedroom,Gas29,Bedroom2O2V,5,0,Bedroom 2 O2,Gas Bedroom,Gas30,DSideGarageDoor1V,99.52,-248.8,BDP D Side Door 0.15 m BS,BDP D Side Garage Door,Velocity31,DSideGarageDoor2V,99.52,-248.8,BDP D Side Door 0.46 m BS,BDP D Side Garage Door,Velocity0,DSideGarageDoor3V,99.52,-248.8,BDP D Side Door 0.76 m BS,BDP D Side Garage Door,Velocity1,DSideGarageDoor4V,99.52,-248.8,BDP D Side Door 1.07 m BS,BDP D Side Garage Door,Velocity2,DSideGarageDoor5V,99.52,-248.8,BDP D Side Door 1.37 m BS,BDP D Side Garage Door,Velocity3,DSideGarageDoor6V,99.52,-248.8,BDP D Side Door 1.68 m BS,BDP D Side Garage Door,Velocity4,BSideGarageDoor1V,99.52,-248.8,BDP B Side Door 0.15 m BS,BDP B Side Garage Door,Velocity5,BSideGarageDoor3V,99.52,-248.8,BDP B Side Door 0.76 m BS,BDP B Side Garage Door,Velocity6,BSideGarageDoor4V,99.52,-248.8,BDP B Side Door 1.07 m BS,BDP B Side Garage Door,Velocity7,BSideGarageDoor5V,99.52,-248.8,BDP B Side Door 1.37 m BS,BDP B Side Garage Door,Velocity8,BSideGarageDoor6V,99.52,-248.8,BDP B Side Door 1.68 m BS,BDP B Side Garage Door,Velocity9,StairwellDoor1V,99.52,-248.8,BDP Stairwell Door 0.15 m BS,BDP Stairwell Door,Velocity10,StairwellDoor2V,99.52,-248.8,BDP Stairwell Door 0.46 m BS,BDP Stairwell Door,Velocity11,StairwellDoor3V,99.52,-248.8,BDP Stairwell Door 0.76 m BS,BDP Stairwell Door,Velocity12,StairwellDoor4V,99.52,-248.8,BDP Stairwell Door 1.07 m BS,BDP Stairwell Door,Velocity13,StairwellDoor5V,99.52,-248.8,BDP Stairwell Door 1.37 m BS,BDP Stairwell Door,Velocity14,StairwellDoor6V,99.52,-248.8,BDP Stairwell Door 1.68 m BS,BDP Stairwell Door,Velocity15,Halldoor1V,99.52,-248.8,BDP Hall Door 0.15 m BS,BDP Hallway Door,Velocity16,Halldoor2V,99.52,-248.8,BDP Hall Door 0.46 m BS,BDP Hallway Door,Velocity17,Halldoor3V,99.52,-248.8,BDP Hall Door 0.76 m BS,BDP Hallway Door,Velocity18,Halldoor4V,99.52,-248.8,BDP Hall Door 1.07 m BS,BDP Hallway Door,Velocity19,Halldoor5V,99.52,-248.8,BDP Hall Door 1.37 m BS,BDP Hallway Door,Velocity20,Halldoor6V,99.52,-248.8,BDP Hall Door 1.68 m BS,BDP Hallway Door,Velocity
