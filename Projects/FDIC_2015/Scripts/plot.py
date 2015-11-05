@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 #!/usr/bin/env python
 
 import os
@@ -15,7 +17,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Choose Test Number
-current_test = 'Test_1_04202015'
+current_test = 'Test_8_04212015'
 
 # Plot mode: figure or video
 plot_mode = 'figure'
@@ -29,6 +31,7 @@ all_times_file = '../Experimental_Data/All_Times.csv'
 # Location of scaling conversion files
 scaling_file_day1 = '../DAQ_Files/Day1_DAQ_Channel_List.csv'
 scaling_file_day2 = '../DAQ_Files/Day2_DAQ_Channel_List.csv'
+scaling_file_day2_2 = '../DAQ_Files/Day2_DAQ_Channel_List_2.csv'
 
 # Location of test description file
 info_file = '../Experimental_Data/Description_of_Experiments.csv'
@@ -83,8 +86,8 @@ for f in os.listdir(data_dir):
         print ('Test ' + test_name)
 
         # Option to specify which test is run
-        if test_name != current_test:
-          continue
+        # if test_name != current_test:
+        #   continue
 
         # If video plot mode is enabled, then plot from only one test
         if plot_mode == 'video':
@@ -95,8 +98,11 @@ for f in os.listdir(data_dir):
         if '04202015' in test_name:
             channel_list_file = scaling_file_day1
         elif '04212015' in test_name:
-            channel_list_file = scaling_file_day2
-
+            if int(test_name[5:-9]) < 7:
+                channel_list_file = scaling_file_day2
+            else:
+                print ('here')
+                channel_list_file = scaling_file_day2_2
         channel_list = pd.read_csv(channel_list_file)
         channel_list = channel_list.set_index('Channel Name')
         channel_groups = channel_list.groupby('Group Name')
@@ -235,16 +241,6 @@ for f in os.listdir(data_dir):
                     plt.ylabel('Concentration (%)', fontsize=20)
                     line_style = '-'
                     axis_scale = 'Y Scale GAS'
-
-                # Plot hose pressure
-                if channel_list['Measurement Type'][channel] == 'Hose':
-                    # Skip data other than sensors on 2.5 inch hoseline
-                    if '2p5' not in channel:
-                        continue
-                    current_channel_data = current_channel_data * calibration_slope + calibration_intercept
-                    plt.ylabel('Pressure (psi)', fontsize=20)
-                    line_style = '-'
-                    axis_scale = 'Y Scale HOSE'
 
                 # Plot channel data or save channel data for later usage, depending on plot mode
                 if plot_mode == 'figure':
