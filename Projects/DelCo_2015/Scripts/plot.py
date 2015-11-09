@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 #!/usr/bin/env python
 
 import os
@@ -15,7 +17,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Choose Test Number
-current_test = 'Test_75_West_101515'
+current_test = 'Test_73_Burn_2nd_Floor_101315_BDPs'
 
 # Plot mode: figure or video
 plot_mode = 'figure'
@@ -55,8 +57,7 @@ all_times = all_times.set_index('Time')
 info = pd.read_csv(info_file, index_col=3)
 
 # Files to skip
-skip_files = ['_times', '_reduced', 'description_','zero_','_rh']
-
+skip_files = ['_times', '_reduced', 'description_','zero_','_rh','burn','helmet']
 #  ===================
 #  = Video Plot Mode =
 #  ===================
@@ -87,8 +88,8 @@ for f in os.listdir(data_dir):
         print ('Test ' + test_name)
 
         # Option to specify which test is run
-        if test_name != current_test:
-          continue
+        # if test_name != current_test:
+        #   continue
 
         # If video plot mode is enabled, then plot from only one test
         if plot_mode == 'video':
