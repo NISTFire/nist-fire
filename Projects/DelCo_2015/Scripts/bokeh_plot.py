@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from __future__ import division
 import os
 import numpy as np
@@ -13,7 +15,7 @@ from bokeh.plotting import figure
 
 # Choose Test Number
 
-current_test = 'Test_64_West_81215'
+current_test = 'Test_64_West_081215'
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
@@ -45,7 +47,20 @@ info = pd.read_csv(info_file, index_col=3)
 # Files to skip
 skip_files = ['_times', '_reduced', 'description_','zero_','_rh']
 
-colors=['#cc5500', '#228b22','#f4a460','#4c177d','firebrick', 'mediumblue', 'darkgreen', 'cadetblue', 'indigo', 'crimson', 'gold']
+# Plot style - colors and markers
+# These are the "Tableau 20" colors as RGB.
+tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
+             (44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
+             (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
+             (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
+             (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
+
+# Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
+for i in range(len(tableau20)):
+    r, g, b = tableau20[i]
+    tableau20[i] = (r, g, b )
+
+colors=tableau20
 
 # Bokeh options
 TOOLS="pan,box_zoom,wheel_zoom,reset,resize,save,hover"
@@ -59,7 +74,7 @@ for f in os.listdir(data_dir):
 
 		# Strip test name from file name
 		test_name = f[:-4]
-		print 'Test ' + test_name
+		print ('Test ' + test_name)
 
 		# Option to specify which test is run
 		if test_name != current_test:
@@ -99,7 +114,7 @@ for f in os.listdir(data_dir):
 			# Skip excluded groups listed in test description file
 			if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
 				continue
-			if 'TC A1' == group:
+			if 'TC A17' == group:
 				output_file(save_dir + test_name + '_' + group.replace(' ', '_') + '.html')
 				p=figure(tools=TOOLS, title = group, x_axis_label = 'Time (s)', y_axis_label = 'Temperature (C)')
 				i=0
