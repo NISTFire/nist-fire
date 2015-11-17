@@ -115,7 +115,7 @@ for f in os.listdir(data_dir):
 			if 'TC A17' == group:
 				axis_scale = 'Y Scale TC'
 				output_file(save_dir + test_name + '_' + group.replace(' ', '_') + '.html')
-				p=figure(tools=TOOLS, title = group, x_axis_label = 'Time (s)', y_axis_label = 'Temperature (C)',plot_width=1000,plot_height=600,
+				p=figure(tools=TOOLS, title = test_name+': '+group, x_axis_label = 'Time (s)', y_axis_label = 'Temperature (C)',plot_width=1000,plot_height=600,
 					x_range=(0, end_of_test - start_of_test),y_range=(0, np.float(info[axis_scale][test_name])))
 				i=0
 				for channel in channel_groups.get_group(group).index.values:
