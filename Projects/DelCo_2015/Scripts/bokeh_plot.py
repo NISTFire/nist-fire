@@ -9,13 +9,17 @@ from bokeh.models import HoverTool
 from collections import OrderedDict
 from bokeh.plotting import figure
 
+def mtext(p, x, y, textstr):
+    p.text(x, y, text=[textstr],
+         text_align="center", text_font_size="10pt",angle=1.57079633)
+
 #  =================
 #  = User Settings =
 #  =================
 
 # Choose Test Number
 
-current_test = 'Test_64_West_081215'
+current_test = 'Test_50_West_071615'
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
@@ -54,12 +58,6 @@ tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
              (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
              (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
              (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
-
-# Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
-for i in range(len(tableau20)):
-    r, g, b = tableau20[i]
-    tableau20[i] = (r, g, b )
-
 colors=tableau20
 
 # Bokeh options
@@ -115,8 +113,10 @@ for f in os.listdir(data_dir):
 			if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
 				continue
 			if 'TC A17' == group:
+				axis_scale = 'Y Scale TC'
 				output_file(save_dir + test_name + '_' + group.replace(' ', '_') + '.html')
-				p=figure(tools=TOOLS, title = group, x_axis_label = 'Time (s)', y_axis_label = 'Temperature (C)')
+				p=figure(tools=TOOLS, title = group, x_axis_label = 'Time (s)', y_axis_label = 'Temperature (C)',plot_width=1000,plot_height=600,
+					x_range=(0, end_of_test - start_of_test),y_range=(0, np.float(info[axis_scale][test_name])))
 				i=0
 				for channel in channel_groups.get_group(group).index.values:
 					# Skip excluded channels listed in test description file
@@ -134,6 +134,16 @@ for f in os.listdir(data_dir):
 					hover = p.select(dict(type=HoverTool))
 					hover.tooltips = [('Time','$x{000}'), ('Temperature','$y{000}'),('Channel','@channels')]
 					p.legend.orientation = "top_left"
+					try:
+					# Add vertical lines and labels for timing information (if available)
+						events = all_times[test_name].dropna()
+						ii=0
+						for _x in events.index.values:
+							p.ray(x=_x - start_of_test, y=0, length=0, angle=1.57079633, color='black')
+							mtext(p,[_x - start_of_test],[np.float(info[axis_scale][test_name])-200],events.values[ii])
+							ii=ii+1
+					except:
+						pass
 					i=i+1
 				show(p)
 
