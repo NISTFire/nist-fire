@@ -3,18 +3,22 @@
 # views for the DelCo 2012 East and West Structures #
 #####################################################
 
-- Open the .ipt (3D model file) and the .idw (2D drawing file) files corresponding to the desired structure
+For West Structure:
+- Open the .ipt (3D model file) and the .idw (2D drawing file) files corresponding to the West structure
+For East Structure:
+- Open the .ipt (3D model file) file for the East structure
+	> Because the East structure has 2 different fuel loads, you need to choose which (if any) to display. So, rearrange the items on the left side menu such that the fuel load that you DO NOT want to display is at the bottom of the list. Then, drage the 'End of Part' icon above the fuel load name.
 
-- Notice, the initial .idw file contains all dimensions for the structure, instrumentation, and fuel load
+	> Now open the .idw (2D drawing file) corresponding to the East structure and correct fuel load 
 
-- To edit this, switch to the .ipt file. On the left menu bar, sort the list such that the item(s) you wish to remove from the dimensioned view are at the bottom of the list.
+- The initial .idw file contains all dimensions for the structure, instrumentation, and fuel load. To edit the items that are displayed, switch to the .ipt file. On the left menu bar, sort the list such that the item(s) you wish to remove from the dimensioned view are at the bottom of the list.
 
 - Move the 'End of Part' icon above the last item you wish to remove from the dimensioned view.
 
-- Switch back to the .idw file. In the left menu bar under the line beginning with 'VIEW#:', delete the sketch(es) corresponding to the items you want removed.
+- Switch back to the .idw file. In the left menu bar under the line beginning with 'VIEW#:', delete the sketch(es) corresponding to the items you have removed.
 
 - Verify that the items have been removed from the floor plan view and update dimensions as desired.
 
 - Click on file (the orange 'I' in the top left of the window) -> Export -> PDF and save file as desired.
 
-- After exporting the PDF, close the .idt and .idw files WITHOUT SAVING -- By default, the .idw and .ipt files should contain all the items corresponding to the structure
+- After exporting the PDF, close the .ipt and .idw files WITHOUT SAVING -- By default, the .idw and .ipt files should contain all the items corresponding to the structure
