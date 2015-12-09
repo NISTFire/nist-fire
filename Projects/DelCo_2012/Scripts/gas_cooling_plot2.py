@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 #Weinschenk
 #3-15
 from __future__ import division
@@ -78,14 +80,14 @@ for entry in range(0,len(info)):
 					water_test = 'data'+str(info['Test_Series_Water'][entry+reps])
 					water_test = locals().get(water_test)
 					water_data_interval = water_test[channel][info['Start_Time_Water'][entry+reps]:info['Stop_Time_Water'][entry+reps]]
-					del_TC_3_h2o[int(channel[6:])-1,reps] = max(water_data_interval) - min(water_data_interval)
-					# del_TC_3_h2o[int(channel[6:])-1,reps] = (max(water_data_interval) - min(water_data_interval))/max(water_data_interval)
+					#del_TC_3_h2o[int(channel[6:])-1,reps] = max(water_data_interval) - min(water_data_interval)
+					del_TC_3_h2o[int(channel[6:])-1,reps] = (max(water_data_interval) - min(water_data_interval))/max(water_data_interval)
 					# print (max(water_data_interval) , min(water_data_interval), max(water_data_interval) - min(water_data_interval), channel,reps,'water')
 					cafs_test = 'data'+str(info['Test_Series_CAFS'][entry+reps])
 					cafs_test = locals().get(cafs_test)
 					cafs_data_interval = cafs_test[channel][info['Start_Time_CAFS'][entry+reps]:info['Stop_Time_CAFS'][entry+reps]]
-					del_TC_3_cafs[int(channel[6:])-1,reps] = max(cafs_data_interval) - min(cafs_data_interval)
- 					# del_TC_3_cafs[int(channel[6:])-1,reps] = (max(cafs_data_interval) - min(cafs_data_interval))/max(cafs_data_interval)
+					#del_TC_3_cafs[int(channel[6:])-1,reps] = max(cafs_data_interval) - min(cafs_data_interval)
+					del_TC_3_cafs[int(channel[6:])-1,reps] = (max(cafs_data_interval) - min(cafs_data_interval))/max(cafs_data_interval)
 					# print (max(cafs_data_interval) , min(cafs_data_interval),max(cafs_data_interval) - min(cafs_data_interval),channel,reps,'cafs')
 					# print()
 				if 'TC_A2_' in channel:

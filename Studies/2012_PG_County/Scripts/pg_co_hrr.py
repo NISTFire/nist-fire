@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 #Weinschenk
 #9-14
 
@@ -33,7 +35,7 @@ first_hrr_20mph = pd.rolling_mean(first_hrr_20mph_raw,10,center=True)
 FDS_HRR_20 = pd.rolling_mean(pd.read_csv('../FDS_Output_Files/pg_county_20mph_9MW_hrr.csv', header=1),10,center=True)
 
 HRR_theo = [None]*1000
-HRR_time = list(xrange(1000))
+HRR_time = list(range(1000))
 
 for i in range (0, 999):
     if i <= 10:
