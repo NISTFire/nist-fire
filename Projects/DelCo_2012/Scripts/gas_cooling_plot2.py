@@ -131,7 +131,7 @@ for entry in range(0,len(info)):
 
 		fig = figure()
 		plt.scatter(X,y,alpha=0.5)
-		plt.plot(X_prime, y_hat, 'r', alpha=0.9)  # Add the regression line, colored in red
+		plt.plot(X_prime, y_hat, 'r--', alpha=0.9,linewidth=3)  # Add the regression line, colored in red
 		plt.plot(X_prime,X_prime,'k')
 		plt.fill_between(X_prime,0.85*X_prime,1.15*X_prime, facecolor='gray',alpha=0.5, interpolate=True,linewidth=3)
 		axis([0, max_axis, 0, max_axis])

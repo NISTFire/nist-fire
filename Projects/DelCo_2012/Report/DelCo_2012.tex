@@ -528,6 +528,14 @@ After weighing each of the bins the mass of water (kg) in each bin was plotted b
 
 The 88 gas cooling experiments were completed as part of 9 separate tests in the burn building. During each test, the fire was ignited and the fire developed until the temperature 1.83~m (6~ft) below the ceiling in the gas cooling room reached or exceeded 260~$^{\circ}$C (500~$^{\circ}$F). Once this criteria was met, gas cooling began. 
 
+
+To compare the effectiveness of the suppression agents (CAFS, water), the temperatures from the thermocouple tree which was not directly impacted by the streams was analyzed. Thermocouples that were greater than 2.13~m (7~ft) below the ceiling (the bottom 3 thermocouples) were not included because of the minimal temperature readings throughout the tests. Gas cooling was determined by taking the normalized maximum change in temperature ($\hat{T}$) over the test interval ($T_{max}$ is peak temperature before suppression and $T_{min}$ is minimum temperature after suppression):
+\begin{equation}
+\label{eq:norm_temp}
+\hat{T} = \frac{T_{max}-T_{min}}{T_{max}}
+\end{equation}
+The normalized temperature difference is taken because of the large variation in pre-suppression temperature within replicates of a particular suppression agent and between suppression agents.
+
 \begin{figure}[!ht]
 	\includegraphics[width=.8\columnwidth]{../Figures/Gas_Cooling/7_8_Solid_mid_A3_scatter}
 	\caption{CAFS vs Water Gas Cooling Comparison for 7/8 Solid Stream}
