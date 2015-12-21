@@ -26,7 +26,7 @@ for f in os.listdir(data_dir):
 
 		# Strip test name from file name
 		test_name = f[:-4]
-		print 'Test ' + test_name
+		print ('Test ' + test_name)
 
 		# Load exp. data file
 		data = pd.read_csv(data_dir + f, header=0, index_col=0)
