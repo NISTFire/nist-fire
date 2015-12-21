@@ -373,6 +373,14 @@ Note: the following assumes that the server/host computer's address is 192.168.1
 \begin{enumerate}
 \item Install RabbitMQ for your platform and start the RabbitMQ server (./sbin/rabbitmq-server on Mac or Linux).
 https://www.rabbitmq.com/
+\item Create .config file 
+    \begin{itemize}
+    \item Open \textit{rabbitmq.config.example} (./etc/rabbitmq/ on Mac/Linux; ./etc/ on Windows)
+    \item Add `[ \{loopback\_users, [] \}' after the `\{rabbit,' line and save file as `rabbitmq.config' in the directory containing the example file \\
+    \textit{Note:} On Windows, may have to save it in the directory \\
+    `C:\textbackslash Users/\%USERNAME\%/AppData/Roaming/RabbitMQ/' \\
+    To find such directory, search `rabbitmq.config.example' on computer and open approriate file location.
+    \end{itemize}
 \item Copy the receive\_data.py script from the NIST-FIRE repository to the data logging computer.
 \item Install Python (The Anaconda Python distribution from Continuum Analytics is recommended)
 \item Install the pika module for Python using
