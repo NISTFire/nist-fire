@@ -1,0 +1,261 @@
+\documentclass[12pt,oneside]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                                                 %
+% The mathematical style of these documents follows                                               %
+%                                                                                                 %
+% A. Thompson and B.N. Taylor. The NIST Guide for the Use of the International System of Units.   %
+%    NIST Special Publication 881, 2008.                                                          %
+%                                                                                                 %
+% http://www.nist.gov/pml/pubs/sp811/index.cfm                                                    %
+%                                                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{../../../Bibliography/commoncommands}
+
+% Rename chapter headings
+\renewcommand{\chaptername}{Section}
+\renewcommand{\bibname}{References}
+
+% Math shortcuts
+\renewcommand{\sb}[1]{_\mathrm{#1}}
+\renewcommand{\C}{\mbox{C}}
+\renewcommand{\H}{\mbox{H}}
+\renewcommand{\O}{\mbox{O}}
+\newcommand{\N}{\mbox{N}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\rhead{}
+\chead{}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+\pagenumbering{gobble}
+
+\bibliographystyle{unsrt}
+%\pagestyle{empty}
+
+\begin{minipage}[t][9in][s]{6.25in}
+
+\begin{flushright}
+\fontsize{20}{24}\selectfont
+\bf{NIST Technical Note XXXX}
+\end{flushright}
+
+\headerB{
+Exploratory Study on the Heating of \\
+Protective Clothing in a Convective Flow \\
+}
+
+\normalsize
+
+\headerC{
+{
+\flushright{
+Daniel Madrzykowski \\
+Craig Weinschenk \\
+Joeseph Willi \\
+
+\vspace*{2\baselineskip}
+
+\begingroup
+This publication is available free of charge from:
+\hypersetup{urlcolor=black}
+\href{http://dx.doi.org/10.6028/NIST.TN.XXXX}{http://dx.doi.org/10.6028/NIST.TN.XXXX}
+\endgroup
+}
+
+\vfill
+
+\flushright{
+
+\includegraphics[width=2.in]{../../../Bibliography/nistident_flright_vec} \\[.3in]
+}
+}
+}
+
+\end{minipage}
+
+\newpage
+\hspace{5in}
+\newpage
+
+\frontmatter
+
+\begin{minipage}[t][9in][s]{6.25in}
+\pagenumbering{gobble}
+
+\begin{flushright}
+\fontsize{20}{24}\selectfont
+\bf{NIST Technical Note XXXX}
+\end{flushright}
+
+\headerB{
+Exploratory Study on the Heating of \\
+Protective Clothing in a Convective Flow \\
+}
+
+\headerC{
+\flushright{
+Daniel Madrzykowski \\
+Craig Weinschenk \\
+Joeseph Willi \\
+{\em Fire Research Division \\
+Engineering Laboratory} \\
+
+\vspace*{2\baselineskip}
+
+\begingroup
+This publication is available free of charge from:
+\hypersetup{urlcolor=black}
+\href{http://dx.doi.org/10.6028/NIST.TN.XXXX}{http://dx.doi.org/10.6028/NIST.TN.XXXX} \\
+\endgroup
+
+\vspace*{2\baselineskip}
+
+December 2015}}
+
+\vfill
+
+\flushright{\includegraphics[width=1in]{../../../Bibliography/doc} }
+
+\titlesigs
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}[t][9in][s]{6.25in}
+
+\flushright{Certain commercial entities, equipment, or materials may be identified in this \\
+document in order to describe an experimental procedure or concept adequately. \\
+Such identification is not intended to imply recommendation or endorsement by the \\
+National Institute of Standards and Technology, nor is it intended to imply that the \\
+entities, materials, or equipment are necessarily the best available for the purpose. \\
+}
+
+\vspace{3in}
+
+\large
+\flushright{\bf National Institute of Standards and Technology Technical Note XXXX \\
+Natl.~Inst.~Stand.~Technol.~Tech.~Note~XXXX, \pageref{LastPage} pages (December 2015) \\
+CODEN: NTNOEF}
+
+\vspace{0.2in}
+
+\begingroup
+{\bf This publication is available free of charge from:}
+\hypersetup{urlcolor=black}
+\href{http://dx.doi.org/10.6028/NIST.TN.XXXX}{\bf http://dx.doi.org/10.6028/NIST.TN.XXXX} \\
+\endgroup
+
+\vfill
+
+\hspace{1in}
+
+\end{minipage}
+
+\newpage
+
+\frontmatter
+
+\pagestyle{plain}
+\pagenumbering{roman}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+\chapter{List of Acronyms}
+
+\begin{tabbing}
+\hspace{1.5in} \= \\
+NIST \> National Institute of Standards and Technology \\
+\end{tabbing}
+
+\mainmatter
+
+\chapter*{\centering Abstract}
+\pagenumbering{gobble}
+The overall objective of this interagency agreement between the United States Fire Administration (USFA) and the National Institute of Standards and Technology (NIST) is to would be to fill that data gap to better define the thermal limits of the operational fire environment its impact on structural firefighting PPE and deliver this information to the appropriate standards groups and the fire service.  Without an accurate understanding of the conditions of environments in which a firefighter can safely operate, firefighters are more at risk of injuries and death.
+To accomplish this, NIST will examine documented on-duty injuries and fatalities of firefighters due to thermal exposure of PPE used by structural firefighters.  Further NIST will conduct laboratory thermal testing of commercially available this PPE as part of this phase of the study.
+
+Tasks:
+
+1.	NIST shall examine documented on-duty injuries and fatalities of firefighters due to thermal exposure of structural firefighting PPE.    (LIST)
+
+2.	NIST shall conduct laboratory thermal testing of commercially available structural firefighting PPE as part of this phase of the study, with a focus on convective heat transfer.  The testing shall include any relevant performance requirements for structural firefighting PPE thermal exposure in NFPA 1971.   Plunge Test $\&$ Flow Loop
+
+3.	NIST shall conduct full-scale thermal testing of structural firefighting PPE at field test sites.  Field testing will be coordinated with the COR.
+
+
+
+\chapter{Introduction}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+There is a gap in the understanding of the thermal failure temperature (melting point) of various pieces of personal protective equipment (PPE) worn or used by firefighters.  As a result, there may be a misunderstanding of the thermal conditions in which a firefighter can safely operate.  Ignition and melt testing on various pieces of PPE will define the thermal failure temperatures and lead to a better understanding of the conditions of a safer firefighting environment.  Although there are flame and heat resistance tests in NFPA 1971, Standard on Protective Ensembles for Structural Fire Fighting and Proximity Fire Fighting and NFPA 1981, Standard on Open-Circuit Self Contained Breathing Apparatus for Fire and Emergency Services, these tests do not provide the engineering data needed to connect laboratory based research data with field data (thermally damaged equipment) from actual fire incidents.
+
+There have been incidents of failure of structural firefighting PPE has impacted the operational safety of firefighters.  There is need to examine ways to enhance the understanding of thermal performance of structural firefighting PPE to enhance protection of firefighters.
+
+The initial phase of this study would examine documented on-duty injuries and fatalities of firefighters due to thermal exposure of structural firefighting PPE.  This phase of the study would also work with the National Fire Protection Association (NFPA) 1971 Standard on Protective Ensembles for Structural Fire Fighting technical committee on ways to enhance the operational effectiveness of structural firefighting PPE.  Initial laboratory thermal testing of commercially available structural firefighting PPE shall also be conducted as part of this phase of the study.
+
+Existing Tests – high thermal flux, short exposure
+TTP Test- PPE
+Thermo man – (pyro man) PPE
+Flame contact – helmet
+While under bench scale test conditions it is less difficult to decouple convective heating from a radiant heat exposure.  However with current test apparatus while convective heating is dominant, there is some level of radiant heating that is contributing to the heat transfer.
+Under full scale conditions in a flow path the PPE is exposed to a combination of convective and radiative heating.
+LoDDs
+Use - Cherry Road and San Francisco as examples
+Items examined
+
+Turnout gear material
+Helmets    thermoplastic shell, fiberglas shell and leather shell
+Facepieces
+Old Scott AV 3000?,  New Scott 3000HT
+MSA Old  and New MSA 7
+Tests
+Heat Gun Exposure?
+Flow loops
+	Plunge test
+		Temperature, velocity, heat flux measure?
+	Thermal Flow Loop
+		Temperature, velocity, heat flux
+Full Scale
+	Delco Exposures
+
+
+Future Research
+
+Flow loop    with 20 mph and 300 to 500 F - Donnelly
+Substrates
+2D vs 3D samples
+Gaps – refer to Lawson and Stroup
+Instrumentation – ref to Vettori
+Steam
+
+
+\chapter{Discussion}
+
+\chapter{Summary}
+
+\chapter{Acknowledgments}
+
+\bibliography{../../../Bibliography/FDS_refs,../../../Bibliography/FDS_general}
+
+\appendix
+
+\end{document}
