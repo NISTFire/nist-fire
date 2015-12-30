@@ -1,5 +1,5 @@
 \documentclass[12pt,oneside]{book}
-
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                                                 %
 % The mathematical style of these documents follows                                               %
@@ -539,13 +539,20 @@ To compare the effectiveness of the suppression agents (CAFS, water), the temper
 \label{eq:norm_temp}
 \hat{T} = \frac{T_{max}-T_{min}}{T_{max}}
 \end{equation}
-The normalized temperature difference is taken because of the large variation in pre-suppression temperature within replicates of a particular suppression agent and between suppression agents.
+The normalized temperature difference is taken because of the variation in pre-suppression temperature within replicates of a particular suppression agent and between suppression agents.
+
+For the 7/8~in solid stream tests there were 7 replicate conducted for both water and CAFs suppression. The normalized temperature differences for the 8 thermocouples analyzed from the water experiments were compared against the same normalized temperature differences from the CAFs tests. These data points are visualized through a scatterplot, Fig.~\ref{fig:CAFS_Water_Comp_7_8}.
 
 \begin{figure}[!ht]
 	\includegraphics[width=.8\columnwidth]{../Figures/Gas_Cooling/7_8_Solid_mid_A3_scatter}
 	\caption{CAFS vs Water Gas Cooling Comparison for 7/8 Solid Stream}
 	\label{fig:CAFS_Water_Comp_7_8}
 \end{figure}
+
+The circles in Fig.~\ref{fig:CAFS_Water_Comp_7_8} are the normalized temperature measure points. If water and CAFs had the exact same normalized temperature differences, all of the points would fall along solid black line in the figure. Circles that vary from that line represent measurements where either water or CAFS cooled more signifcantly than the other agent. The gray area surrounding the solid black line, represents measurment uncertainty (\ref{subsec:Uncertainty}). For data that fall within this area, there is an inability to determine which agent was more or less effective than the other. The red dashed line is the line the fits the data representing the minimal difference between the two suppression agents by a linear approximation of the data. Since this line falls within the gray area there is an inability to distinguish, with statistical confidence, a difference between water or CAFs to cool gases from a 7/8~in solid stream.
+
+The second water and CAFs comparison was to examine 5 replicate tests for a straight stream in the mid-position, Fig.~\ref{fig:CAFS_Water_Comp_SS_mid}. The same analysis was performed for this configuration. These results also indicate that there is 
+
 
 \begin{figure}[!ht]
 	\includegraphics[width=.8\columnwidth]{../Figures/Gas_Cooling/SS_mid_A3_scatter}
