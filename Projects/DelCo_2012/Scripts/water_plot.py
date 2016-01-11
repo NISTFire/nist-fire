@@ -1,8 +1,8 @@
-#Weinschenk
-#2-15
-
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from __future__ import division
 import os
+import string
 import numpy as np
 import pandas as pd
 from pylab import *

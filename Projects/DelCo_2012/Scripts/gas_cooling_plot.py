@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 #Weinschenk
 #3-15
 
@@ -91,7 +93,7 @@ for f in os.listdir(data_dir):
 						ylabel('Temperature ($^\circ$C)', fontsize=20)
 						line_style = '-'
 						ylim([0,600])
-						axhline(260,0,len(t),color = '#000000',ls='--',lw=2)
+						axhline(250,0,len(t),color = '#000000',ls='--',lw=2)
 
 					if 'BDP_' in channel:
 						conv_inch_h2o = 0.4
