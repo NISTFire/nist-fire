@@ -43,17 +43,17 @@ c9 = -1.052755 * 10**-8
 
 # Calculate coefficients for SBG
 zero_voltage = 0
-m = 3.08857142857
+m = 0.308857142857
 b = 0.00142857142857
 # --- numpy is not supported by opkg on Yun, so calculate -----#
 # --- by copying and running following lines into another -----#
 # --- .py file to obtain the values for m and b ---------------#
-# x = np.array([0.0, 0.4, 0.8, 1.2, 1.6, 2.0])
+# import numpy as np
+# x = np.array([0.0, 4.0, 8.0, 12.0, 16.0, 20.0])
 # y = np.array([0.0, 1.24, 2.47, 3.71, 4.94, 6.18])
 # z = np.polyfit(x, y, 1)
 # m = z[0]
 # b = z[1]
-
 # print m
 # print b
 
@@ -63,7 +63,6 @@ parser.add_argument('broker', help='Network or IP address of message broker')
 parser.add_argument('logger_id', help='Logger name or ID')
 parser.add_argument('log_file', help='Location of log file')
 args = parser.parse_args()
-
 
 def read_voltage(channel):
     # Read voltage from specified ADC channel over REST API

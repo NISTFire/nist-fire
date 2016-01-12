@@ -14,13 +14,29 @@ time_x = np.array([])
 T_data = np.array([])
 HF_data = np.array([])
 
-p1 = figure(title='FF Helmet - Ambient Temp', x_axis_label = 'Time (s)', y_axis_label = 'Temperature (°C)',
-	tools=TOOLS, plot_width=1000, plot_height=600)
-p1.line(time_x, T_data, color="#dd0022", line_width = 3, legend='Amb T')
+p1 = figure(title='FF Helmet - Temperature', x_axis_label = 'Time (s)', y_axis_label = 'Temperature (°C)',
+	tools=TOOLS, plot_width=1900, plot_height=1300)
+p1.line(time_x, T_data, color="#dd0022", line_width = 5)
+# legend='Amb T')
+p1.xaxis.axis_label_text_font_size = '50pt'
+p1.xaxis.major_label_text_font_size = '40pt'
+p1.yaxis.major_label_text_font_size = '40pt'
+p1.yaxis.axis_label_text_font_size = '50pt'
+p1.yaxis.axis_label_standoff = 25
+p1.title_text_font_size = '55pt'
+# p1.title_label_standoff = 20
 
 p2 = figure(title='FF Helmet - Heat Flux', x_axis_label = 'Time (s)', y_axis_label = 'Heat Flux (kW/m²)',
-	tools=TOOLS, plot_width=1000, plot_height=600)
-p2.line(time_x, HF_data, color="#0000dd", line_width = 3, line_dash = 'dashed', legend='Heat Flux')
+	tools=TOOLS, plot_width=1900, plot_height=1300)
+p2.line(time_x, HF_data, color="#0000dd", line_width = 7, line_dash = 'dashed') 
+#legend='Heat Flux')
+
+p2.xaxis.axis_label_text_font_size = '50pt'
+p2.xaxis.major_label_text_font_size = '40pt'
+p2.yaxis.major_label_text_font_size = '40pt'
+p2.yaxis.axis_label_text_font_size = '50pt'
+p2.yaxis.axis_label_standoff = 25
+p2.title_text_font_size = '55pt'
 
 p = vplot(p1, p2)
 
