@@ -20,23 +20,23 @@ rcParams.update({'figure.autolayout': True})
 
 # Specify name
 specify_test = False
-# specific_name = 'Test_25_West_070214'
+specific_name = 'Test_16_West_063014'
 
 # Specify year to skip
-specify_year = True
+specify_year = False
 skip_year = '2014'
-# skip_year = '2015'
+skip_year = '2015'
 
 # Specify type 
-specify_type = True
+specify_type = False
 specific_type = 'HOSE'
 
 # Specify structure
-specify_struct = True
+specify_struct = False
 specific_struct = 'West'
 
 # Different file output options
-result_file = True          # Generate a .csv file with channel avgs for specified sensor groups
+result_file = True         # Generate a .csv file with channel avgs for specified sensor groups
 all_channel_plot = True    # Plot each individual channel
 group_avg_plot = True      # Plot avgs of all channels in group
 # Plot BDP avgs from monitor experiments for SS, NF, WF application
@@ -56,39 +56,13 @@ west_handline_labels = ['Hose on, fixed', 'Stairwell door opened', '2nd floor, W
 plot_mode = 'figure'
 
 # Files to skip
-skip_files = ['_times', '_reduced', 'description_','zero_','_rh','burn','helmet']
+skip_files = ['_times', '_reduced', 'description_','zero_','_rh','burn','helmet','ppv_']
 
 # Time averaging window for data smoothing
 data_time_averaging_window = 5
 
 # Duration of pre-test time for bi-directional probes and heat flux gauges (s)
 pre_test_time = 60
-
-# DelCo 2014 sensor grouping
-sensor_groups_2014 = [['TC_A1_'], ['TC_A2_'], ['TC_A3_'], ['TC_A4_'], ['TC_A5_'],
-                 ['TC_A6_'], ['TC_A7_'], ['TC_A8_'], ['TC_A9_'], ['TC_A10_'],
-                 ['TC_A11_'], ['TC_A12_'], ['TC_A13_'], ['TC_A14_'], ['TC_A15_'],
-                 ['TC_A16_'], ['TC_A17_'], ['TC_A18_'], ['TC_A19_'],
-                 ['TC_Ignition'],
-                 ['TC_Helmet_'],
-                 ['BDP_A4_'], ['BDP_A5_'], ['BDP_A6_'], ['BDP_A7_'],
-                 ['BDP_A8_'], ['BDP_A9_'], ['BDP_A10_'], ['BDP_A11_'],
-                 ['BDP_A12_'], ['BDP_A13_'], ['BDP_A14_'], ['BDP_A15_'],
-                 ['BDP_A18_'],
-                 ['HF_', 'RAD_'],
-                 ['GAS_', 'CO_', 'CO2_', 'O2_'],
-                 ['HOSE_']]
-
-# Common quantities for y-axis labelling
-heat_flux_quantities = ['HF_', 'RAD_']
-gas_quantities = ['CO_', 'CO2_', 'O2_']
-
-plot_temp = False
-plot_vel = False
-plot_HF = False
-plot_press = False
-plot_gas = False
-plot_hose = False
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
@@ -136,11 +110,11 @@ video_plots = collections.OrderedDict()
 #  ==========================
 
 # Prints an error message and stops code
-def error_message(message):
-    lineno = inspect.currentframe().f_back.f_lineno
-    print '[ERROR, line '+str(lineno)+']:'  
-    print '  ' + message
-    sys.exit()
+# def error_message(message):
+#     lineno = inspect.currentframe().f_back.f_lineno
+#     print '[ERROR, line '+str(lineno)+']:'  
+#     print '  ' + message
+#     sys.exit()
 
 # checks if file should be skipped
 def check_name(test_name, test_year, test_type):
@@ -288,7 +262,7 @@ def sort_hose_group(group, test_name):
         group_results = pd.DataFrame(group_set, columns = ['Start', 'End', 'Stream', P_or_L_heading, 'Door'])
         return group_results, zero_time_ls
     else:
-        print 'Need to write code for sorting East Tests'
+        print ('Need to write code for sorting East Tests')
         sys.exit()
 
 # Finishes formatting and saves plots for hose stream tests
@@ -376,7 +350,7 @@ def save_hose_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_n
     plt.gca().add_artist(ax1.legend(loc='lower right', fontsize=10, frameon = True))
 
     # Save plot to file
-    print '  Saving ' + plot_type + ' plot for ' + group
+    print ('  Saving ' + plot_type + ' plot for ' + group)
     plt.savefig(fig_name)
     plt.close('all')
 
@@ -400,13 +374,15 @@ for f in os.listdir(data_dir):
 
         test_type = info['Test Type'][test_name]
         
+        if test_type == 'HOSE':
+            continue
+
         if check_name(test_name, test_year, test_type):     # check if file should be skipped
             continue
         else:   # Load exp. data file
             data = pd.read_csv(data_dir + f)
             data = data.set_index('TimeStamp(s)')
-            print
-            print '--- Loaded ' + test_name + ' ---'
+            print ('--- Loaded ' + test_name + ' ---')
 
         # Read in test times to offset plots
         start_of_test = info['Start of Test'][test_name]
@@ -432,39 +408,24 @@ for f in os.listdir(data_dir):
                 channel_list_file = '../DAQ_Files/DAQ_Files_2014/East_DelCo_DAQ_Channel_List.csv'
             else:
                 channel_list_file = '../DAQ_Files/DAQ_Files_2014/Delco_DAQ_Channel_List.csv'
-            channel_list = pd.read_csv(channel_list_file)
-            channel_list = channel_list.set_index('Device Name')
-            sensor_group_list = sensor_groups_2014
         elif test_year == '2015':
             if 'West' in test_name:
-                channel_list_file = '../DAQ_Files/West_DelCo_DAQ_Channel_List.csv'
+                channel_list_file = '../DAQ_Files/DAQ_Files_2015/West_DelCo_DAQ_Channel_List.csv'
             else:
-                channel_list_file = '../DAQ_Files/East_DelCo_DAQ_Channel_List.csv'
-            channel_list = pd.read_csv(channel_list_file)
-            channel_list = channel_list.set_index('Device Name')
-            channel_groups = channel_list.groupby('Group Name')
-            for sensor_group in channel_groups.groups:
-                sensor_group_list.append(sensor_group)
+                channel_list_file = '../DAQ_Files/DAQ_Files_2015/East_DelCo_DAQ_Channel_List.csv'
+        channel_list = pd.read_csv(channel_list_file)
+        channel_list = channel_list.set_index('Device Name')
+        channel_groups = channel_list.groupby('Group Name')
 
         #  ============
         #  = Plotting =
         #  ============
 
         # Generate a plot for each quantity group
-        for group in sensor_group_list:
+        for group in channel_groups.groups:
             # Skip excluded groups listed in test description file
             if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
                 continue
-
-            # generate list of channel names for current group
-            channel_names = []
-            if test_year == '2015':
-                for name in channel_groups.get_group(group).index.values:
-                    channel_names.append(name)
-            else:
-                for name in data.columns[1:]:
-                    if any([substring in channel for substring in group]):
-                        channel_names.append(name)
 
             # If video plot mode is enabled, then plot only specified groups
             if plot_mode == 'video':
@@ -505,8 +466,7 @@ for f in os.listdir(data_dir):
                 t = range(0, len(group_data['Time'])-start_plot)
                 line_width = 1.5
 
-            for channel in channel_names:
-
+            for channel in channel_groups.get_group(group).index.values:
                 # Skip plot quantity if channel name is blank
                 if pd.isnull(channel):
                     continue
@@ -566,74 +526,24 @@ for f in os.listdir(data_dir):
                     calibration_intercept = float(channel_list['Calibration Intercept'][channel])
                     secondary_axis_label = None  # Reset secondary axis variable
 
-                    if test_year == '2015':
-                        if channel_list['Measurement Type'][channel] == 'Temperature':
-                            if 'TC Helmet ' in channel or 'TC_Helmet_' in channel:
-                                axis_scale = 'Y Scale TC_Helmet'
-                            elif 'TC Gear' in group:
-                                axis_scale = 'Y Scale TC_Gear'
-                            elif 'TC Manikin ' in channel:
-                                axis_scale = 'Y Scale TC_Manikin'
-                            else:
-                                axis_scale = 'Y Scale TC'
-                            plot_temp = True
-                        elif channel_list['Measurement Type'][channel] == 'Velocity':
-                            if int(info['Test Number'][test_name]) >= 91 and 'East' in test_name and 'BDP A7' in group:
-                                axis_scale = 'Y Scale PRESSURE'
-                            else:
-                                axis_scale = 'Y Scale BDP'
-                            plot_vel = True
-                        elif channel_list['Measurement Type'][channel] == 'Heat Flux':
-                            axis_scale = 'Y Scale HF'
-                            plot_HF = True
-                        elif channel_list['Measurement Type'][channel] == 'Pressure':
-                            axis_scale = 'Y Scale PRESSURE'
-                            plot_press = True
-                        elif channel_list['Measurement Type'][channel] == 'Gas':
-                            axis_scale = 'Y Scale GAS'
-                            plot_gas = True
-                        elif channel_list['Measurement Type'][channel] == 'Hose':
-                            axis_scale = 'Y Scale HOSE'
-                            plot_hose = True
-                    elif test_year == '2014':
-                        if 'TC_' in channel:
-                            if 'TC Helmet ' in channel or 'TC_Helmet_' in channel:
-                                axis_scale = 'Y Scale TC_Helmet'
-                            elif 'TC Gear' in group:
-                                axis_scale = 'Y Scale TC_Gear'
-                            elif 'TC Manikin ' in channel:
-                                axis_scale = 'Y Scale TC_Manikin'
-                            else:
-                                axis_scale = 'Y Scale TC'
-                            plot_temp = True
-                        elif 'BDP_' in channel:
-                            axis_scale = 'Y Scale BDP'
-                            plot_vel = True
-                        elif any([substring in channel for substring in heat_flux_quantities]):
-                            axis_scale = 'Y Scale HF'
-                            plot_HF = True
-                        elif any([substring in channel for substring in gas_quantities]):
-                            axis_scale = 'Y Scale GAS'
-                            plot_gas = True
-                        elif 'HOSE_' in channel:
-                            axis_scale = 'Y Scale HOSE'
-                            plot_hose = True
-
-                    # Skip plot quantity if disabled in test description file
-                    if info[axis_scale][test_name] == 'None':
-                        continue
-
                     # Plot temperatures
-                    if plot_temp:
+                    if channel_list['Measurement Type'][channel] == 'Temperature':
                         current_channel_data = current_channel_data * calibration_slope + calibration_intercept
                         plt.ylabel('Temperature ($^\circ$C)', fontsize=20)
                         line_style = '-'
+                        if 'TC Helmet ' in channel or 'TC_Helmet_' in channel:
+                            axis_scale = 'Y Scale TC_Helmet'
+                        elif 'TC Gear' in group:
+                            axis_scale = 'Y Scale TC_Gear'
+                        elif 'TC Manikin ' in channel:
+                            axis_scale = 'Y Scale TC_Manikin'
+                        else:
+                            axis_scale = 'Y Scale TC'
                         secondary_axis_label = 'Temperature ($^\circ$F)'
                         secondary_axis_scale = np.float(info[axis_scale][test_name]) * 9/5 + 32
-                        plot_temp = False
 
                     # Plot velocities
-                    elif plot_vel:
+                    if channel_list['Measurement Type'][channel] == 'Velocity':
                         conv_inch_h2o = 0.4
                         conv_pascal = 248.8
                         zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
@@ -641,16 +551,17 @@ for f in os.listdir(data_dir):
                         if int(info['Test Number'][test_name]) >= 91 and 'East' in test_name and 'BDP A7' in group:
                             current_channel_data = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)
                             plt.ylabel('Pressure (Pa)', fontsize=20)
+                            axis_scale = 'Y Scale PRESSURE'
                         else:
                             current_channel_data = 0.0698 * np.sqrt(np.abs(pressure) * (data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
                             plt.ylabel('Velocity (m/s)', fontsize=20)
+                            axis_scale = 'Y Scale BDP'
                         line_style = '-'
                         secondary_axis_label = 'Velocity (mph)'
                         secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
-                        plot_vel = False
 
                     # Plot heat fluxes
-                    elif plot_HF:
+                    if channel_list['Measurement Type'][channel] == 'Heat Flux':
                         zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
                         current_channel_data = (current_channel_data - zero_voltage) * calibration_slope + calibration_intercept
                         plt.ylabel('Heat Flux (kW/m$^2$)', fontsize=20)
@@ -658,20 +569,20 @@ for f in os.listdir(data_dir):
                             line_style = '-'
                         elif ' V' in channel or 'RAD' in channel or 'Radiometer' in channel:
                             line_style = '--'
-                        plot_HF = False
+                        axis_scale = 'Y Scale HF'
 
                     # Plot pressures
-                    elif plot_press:
+                    if channel_list['Measurement Type'][channel] == 'Pressure':
                         conv_inch_h2o = 0.4
                         conv_pascal = 248.8
                         zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Convert voltage to pascals
                         current_channel_data = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Get zero voltage from pre-test data
                         plt.ylabel('Pressure (Pa)', fontsize=20)
                         line_style = '-'
-                        plot_press = False
+                        axis_scale = 'Y Scale PRESSURE'
 
                     # Plot gas measurements
-                    elif plot_gas:
+                    if channel_list['Measurement Type'][channel] == 'Gas':
                         if test_year == '2015':
                             zero_voltage = np.mean(current_channel_data[0:pre_test_time])
                             if int(test_name[5:-12]) >= 45:
@@ -692,10 +603,10 @@ for f in os.listdir(data_dir):
                             quantity = current_channel_data * calibration_slope + calibration_intercept
                         plt.ylabel('Concentration (%)', fontsize=20)
                         line_style = '-'
-                        plot_gas = False
+                        axis_scale = 'Y Scale GAS'
 
                     # Plot hose pressure
-                    elif plot_hose:
+                    if channel_list['Measurement Type'][channel] == 'Hose':
                         # Skip data other than sensors on 2.5 inch hoseline
                         if '2p5' not in channel:
                             continue
@@ -703,23 +614,31 @@ for f in os.listdir(data_dir):
                         plt.ylabel('Pressure (psi)', fontsize=20)
                         line_style = '-'
                         axis_scale = 'Y Scale HOSE'
-                        plot_hose = False
 
                     t = data['Time']
                     line_width = 2
                     # Save converted channel data back to exp. dataframe
                     data[channel] = current_channel_data
 
-                # Plot channel data or save channel data for later usage, depending on plot mode
+               # Plot channel data or save channel data for later usage, depending on plot mode
                 if plot_mode == 'figure':
-                    plt.plot(t, current_channel_data, 
-                        lw=line_width, marker=next(plot_markers), markevery=int((end_of_test - start_of_test)/10),
-                        mew=1.5, mec='none', ms=7, ls=line_style, label=channel.replace('_', ' '))
+                    plt.plot(t,
+                             current_channel_data,
+                             lw=2,
+                             marker=next(plot_markers),
+                             markevery=int((end_of_test - start_of_test)/10),
+                             mew=1.5,
+                             mec='none',
+                             ms=7,
+                             ls=line_style,
+                             label=channel)
+                    # Save converted channel data back to exp. dataframe
+                    data[channel] = current_channel_data
                     plots_exist = True
 
                 elif plot_mode == 'video':
                     # Save quantities for later video plotting
-                    video_time = t
+                    video_time = data['X_Value']
                     video_plots[channel] = current_channel_data
                     plots_exist = True
 
@@ -751,7 +670,7 @@ for f in os.listdir(data_dir):
                     if result_file:
                         # Saves results .csv file for sensor group
                         group_results.to_csv(results_dir + test_name + '_' + group.replace(' ', '_') + '_averages.csv')
-                        print '  Saving ' + group.replace(' ', '_') + ' averages in result file'
+                        print ('  Saving ' + group.replace(' ', '_') + ' averages in result file')
 
                     if group_avg_plot:
                         plt.close('all')
@@ -780,6 +699,10 @@ for f in os.listdir(data_dir):
                 if plots_exist:
                     plots_exist = False
                 else:
+                    continue
+
+                # Skip plot quantity if disabled in test description file
+                if info[axis_scale][test_name] == 'None':
                     continue
 
                 # Plot options for figure plotting
@@ -835,75 +758,70 @@ for f in os.listdir(data_dir):
                     plt.legend(handles1, labels1, loc='upper left', fontsize=8, handlelength=3)
 
                     # Save plot to file
-                    if test_year == '2015':
-                        print '     Plotting ' + group.replace(' ', '_')
-                        plt.savefig(save_dir + test_name + '_' + group.replace(' ', '_') + '.pdf')
-                    elif test_year == '2014':
-                        print '     Plotting ' + group[0].rstrip('_')
-                        plt.savefig('../Figures/Script_Figures/' + test_name + '_' + group[0].rstrip('_') + '.pdf')
+                    print ('     Plotting ' + group.replace(' ', '_'))
+                    plt.savefig(save_dir + test_name + '_' + group.replace(' ', '_') + '.pdf')
                     plt.close('all')
 
         plt.close('all')
         print
 
-        # if test_year == '2015':
-        #     # Rename data column headers from device names to descriptive channel names for reduced data file
-        #     old_name = channel_list.index
-        #     new_name = channel_list['Channel Name']
-        #     channel_name_mapping = dict(zip(old_name, new_name))
-        #     data.rename(columns=channel_name_mapping, inplace=True)
+        # Rename data column headers from device names to descriptive channel names for reduced data file
+        old_name = channel_list.index
+        new_name = channel_list['Channel Name']
+        channel_name_mapping = dict(zip(old_name, new_name))
+        data.rename(columns=channel_name_mapping, inplace=True)
 
-        # # Write offset times and converted quantities back to reduced exp. data file
-        # data.to_csv(data_dir + test_name + '_Reduced.csv')
+        # Write offset times and converted quantities back to reduced exp. data file
+        data.to_csv(data_dir + test_name + '_Reduced.csv')
 
-        # if plot_mode == 'video':
-        #     rcParams.update({'figure.autolayout': True,
-        #                      'axes.facecolor': 'black',
-        #                      'figure.facecolor': 'black',
-        #                      'figure.edgecolor': 'black',
-        #                      'savefig.facecolor': 'black',
-        #                      'savefig.edgecolor': 'black',
-        #                      'axes.edgecolor': 'white',
-        #                      'axes.labelcolor': 'white',
-        #                      'lines.color': 'white',
-        #                      'grid.color': 'white',
-        #                      'patch.edgecolor': 'white',
-        #                      'text.color': 'white',
-        #                      'xtick.color': 'white',
-        #                      'ytick.color': 'white'})
+        if plot_mode == 'video':
+            rcParams.update({'figure.autolayout': True,
+                             'axes.facecolor': 'black',
+                             'figure.facecolor': 'black',
+                             'figure.edgecolor': 'black',
+                             'savefig.facecolor': 'black',
+                             'savefig.edgecolor': 'black',
+                             'axes.edgecolor': 'white',
+                             'axes.labelcolor': 'white',
+                             'lines.color': 'white',
+                             'grid.color': 'white',
+                             'patch.edgecolor': 'white',
+                             'text.color': 'white',
+                             'xtick.color': 'white',
+                             'ytick.color': 'white'})
 
-        #     # Save plot frames to file
-        #     for frame_number, frame_time in enumerate(video_time):
-        #         # Constrain plots to positive times less than the upper y-axis limit
-        #         if (frame_time >= 0) and (frame_time <= video_xlim_upper):
-        #             print ('Plotting Frame:', frame_time)
-        #             fig = plt.figure()
-        #             for channel_number, channel_name in enumerate(video_plots):
-        #                 video_data = video_plots[channel_name] * video_rescale_factor + video_rescale_offset
-        #                 plt.plot(video_time[:frame_number],
-        #                          video_data[:frame_number],
-        #                          lw=4,
-        #                          color=video_line_colors[channel_number])
-        #             ax1 = plt.gca()
-        #             ax1.spines['top'].set_visible(False)
-        #             ax1.spines['right'].set_visible(False)
-        #             ax1.xaxis.set_ticks_position('none')
-        #             ax1.yaxis.set_ticks_position('none')
-        #             plt.xlim([video_xlim_lower, video_xlim_upper])
-        #             plt.ylim([video_ylim_lower, video_ylim_upper])
-        #             plt.xlabel('Time (s)', fontsize=24, fontweight='bold')
-        #             plt.ylabel(video_ylabel, fontsize=24, fontweight='bold')
-        #             plt.xticks(fontsize=20, fontweight='bold')
-        #             plt.yticks(fontsize=20, fontweight='bold')
-        #             ### Begin custom plot code
-        #             plt.text(71, 20, 'Position 1 Vertical', color='cyan', fontsize=16, fontweight='bold', ha='center')
-        #             plt.text(82, 18, 'Position 1 Horizontal', color='green', fontsize=16, fontweight='bold', ha='center')
-        #             plt.text(54, 16, 'Interior Mask', color='yellow', fontsize=16, fontweight='bold', ha='center')
-        #             if frame_time >= 271:
-        #                 plt.axvline(x=271,linestyle='-',color = 'white')
-        #             if frame_time >= 295:
-        #                 plt.axvline(x=295,linestyle='-',color = 'white')
-        #             #### End custom plot code
-        #             plt.savefig(save_dir + video_test_name + '_' + str(frame_time) + '.png')
-        #             plt.close('all')
+            # Save plot frames to file
+            for frame_number, frame_time in enumerate(video_time):
+                # Constrain plots to positive times less than the upper y-axis limit
+                if (frame_time >= 0) and (frame_time <= video_xlim_upper):
+                    print ('Plotting Frame:', frame_time)
+                    fig = plt.figure()
+                    for channel_number, channel_name in enumerate(video_plots):
+                        video_data = video_plots[channel_name] * video_rescale_factor + video_rescale_offset
+                        plt.plot(video_time[:frame_number],
+                                 video_data[:frame_number],
+                                 lw=4,
+                                 color=video_line_colors[channel_number])
+                    ax1 = plt.gca()
+                    ax1.spines['top'].set_visible(False)
+                    ax1.spines['right'].set_visible(False)
+                    ax1.xaxis.set_ticks_position('none')
+                    ax1.yaxis.set_ticks_position('none')
+                    plt.xlim([video_xlim_lower, video_xlim_upper])
+                    plt.ylim([video_ylim_lower, video_ylim_upper])
+                    plt.xlabel('Time (s)', fontsize=24, fontweight='bold')
+                    plt.ylabel(video_ylabel, fontsize=24, fontweight='bold')
+                    plt.xticks(fontsize=20, fontweight='bold')
+                    plt.yticks(fontsize=20, fontweight='bold')
+                    ### Begin custom plot code
+                    plt.text(71, 20, 'Position 1 Vertical', color='cyan', fontsize=16, fontweight='bold', ha='center')
+                    plt.text(82, 18, 'Position 1 Horizontal', color='green', fontsize=16, fontweight='bold', ha='center')
+                    plt.text(54, 16, 'Interior Mask', color='yellow', fontsize=16, fontweight='bold', ha='center')
+                    if frame_time >= 271:
+                        plt.axvline(x=271,linestyle='-',color = 'white')
+                    if frame_time >= 295:
+                        plt.axvline(x=295,linestyle='-',color = 'white')
+                    #### End custom plot code
+                    plt.savefig(save_dir + video_test_name + '_' + str(frame_time) + '.png')
+                    plt.close('all')
 
