@@ -27,7 +27,7 @@ specify_year = False
 skip_year = '2014'
 skip_year = '2015'
 
-# Specify type 
+# Specify type
 specify_type = False
 specific_type = 'HOSE'
 
@@ -47,9 +47,9 @@ west_monitor_labels = ['Hose on, near target', 'Stairwell door opened', '2nd flo
 # west_monitor_labels = ['Hose on, near target', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed',
 # 'Hose on, far target', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed']
 # Plot BDP avgs from handline experiments for SS, NF, WF application
-handline_avgs_plot = False 
+handline_avgs_plot = False
 west_handline_labels = ['Hose on, fixed', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed',
-'Hose on, sweeping', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed', 'Hose on, rotate CW', 'Stairwell door opened', 
+'Hose on, sweeping', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed', 'Hose on, rotate CW', 'Stairwell door opened',
 '2nd floor, W door opened', 'Doors closed', 'Hose on, rotate CCW', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed',]
 
 # Plot mode: figure or video
@@ -112,7 +112,7 @@ video_plots = collections.OrderedDict()
 # Prints an error message and stops code
 # def error_message(message):
 #     lineno = inspect.currentframe().f_back.f_lineno
-#     print '[ERROR, line '+str(lineno)+']:'  
+#     print '[ERROR, line '+str(lineno)+']:'
 #     print '  ' + message
 #     sys.exit()
 
@@ -129,7 +129,7 @@ def check_name(test_name, test_year, test_type):
 
     # Skip if not specified structure
     if specify_struct:
-        if specific_struct == 'West': 
+        if specific_struct == 'West':
             if specific_struct not in test_name:
                 return(True)
         elif specific_struct == 'East':
@@ -137,7 +137,7 @@ def check_name(test_name, test_year, test_type):
                 return(True)
         else:
             error_message('Invalid name for specific_struct')
- 
+
     # Skip if not specified type of test
     if specify_type:
         if test_type != specific_type:
@@ -373,7 +373,7 @@ for f in os.listdir(data_dir):
             test_year = '2015'
 
         test_type = info['Test Type'][test_name]
-        
+
         if test_type == 'HOSE':
             continue
 
@@ -651,10 +651,10 @@ for f in os.listdir(data_dir):
                     x_max_index = 0
                 if result_file or group_avg_plot:
                     # add column for avg velocity of all channels in the group
-                    channel_avg = [] 
+                    channel_avg = []
                     for index, row in group_data.iterrows():
                         channel_avg.append(np.mean(row[1:]))
-                    group_data['Avg'] = channel_avg 
+                    group_data['Avg'] = channel_avg
                     group_results['Avg'] = ''
                     for index, row in group_results.iterrows():
                         # grab start/end time for each event in new .csv file
@@ -664,7 +664,7 @@ for f in os.listdir(data_dir):
 
                         # Calculate average for each channel during sequence
                         for column in group_results.columns[5:]:
-                            # calculate avg for each channel during event 
+                            # calculate avg for each channel during event
                             group_results.loc[index, column] = round(np.mean(seq_data[column]), 2)
 
                     if result_file:
@@ -677,16 +677,16 @@ for f in os.listdir(data_dir):
                         fig = plt.figure()
                         fig_name = hose_fig_dir + test_name + '_' + group.replace(' ', '_') + '_avg.pdf'
                         plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
-                        
+
                         avg_vel = group_data['Avg'].iloc[start_plot:end_data]
                         avg_vel = pd.rolling_mean(avg_vel, 5)
                         avg_vel = avg_vel.fillna(method='bfill')
-                        
+
                         y_max = max(avg_vel)
                         y_min = min(avg_vel)
                         x_max_index = group_data['Time'][avg_vel.idxmax(y_max)]-start_plot
 
-                        plt.plot(t, avg_vel, 
+                        plt.plot(t, avg_vel,
                             marker=next(plot_markers), markevery=int((end_data - start_plot)/10), mew=1.5, mec='none', ms=7, 
                             lw=1.5, ls=line_style, label=group + ' Avg')
 
