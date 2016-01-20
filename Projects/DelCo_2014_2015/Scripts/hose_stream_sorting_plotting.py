@@ -450,6 +450,21 @@ for f in os.listdir(data_dir):
                 channel_avg.append(np.mean(row[1:]))
             group_data['Avg'] = channel_avg   
 
+            if result_file:     # create file with averages for each channel at each event listed in group_results
+                group_results['Avg'] = ''
+                for index, row in group_results.iterrows():
+                    # create df for each event in new .csv file
+                    seq_data = group_data.iloc[row['Start']:row['End']]
+                    # Calculate average for each channel during sequence
+                    for column in group_results.columns[5:]:
+                        # calculate avg for each channel during event 
+                        group_results.loc[index, column] = round(np.mean(seq_data[column]), 2)
+
+                # Saves results .csv file for sensor group
+                group_results.to_csv(results_dir + test_name + '_' + group.replace(' ', '_')  + 'averages.csv')
+                print ('    Saving result file for ' + group)
+                print
+
             if all_channel_plot:        # save plot of individual channels
                 fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '.pdf'
                 save_plot(x_max_index, y_max, y_min, start_of_test, end_data, group, fig_name, 'all channels', [])
@@ -465,7 +480,7 @@ for f in os.listdir(data_dir):
                 line_style = '-'
                 secondary_axis_label = 'Velocity (mph)'
                 secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
-                fig_dir + test_name + '_' + group.replace(' ', '_') + '_average.pdf'
+                fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_average.pdf'
 
                 # check y min and max
                 ma_quantity = pd.rolling_mean(channel_avg, 5)
@@ -477,8 +492,8 @@ for f in os.listdir(data_dir):
                     y_min = min(ma_quantity)
 
                 plt.plot(group_data['Time'], ma_quantity, 
-                    marker=next(plot_markers), markevery=int(len(group_data['Time']))/10,
-                    mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=channel)
+                    marker=next(plot_markers), markevery=int(len(group_data['Time']))/10, mew=1.5, mec='none', ms=7, 
+                    ls=line_style, lw=2, label=channel)
 
                 save_plot(x_max_index, y_max, y_min, start_of_test, end_data, group, fig_name, 'group avg', [])
                 y_min = 0
@@ -493,6 +508,7 @@ for f in os.listdir(data_dir):
                 line_style = '-'
                 secondary_axis_label = 'Velocity (mph)'
                 secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
+                fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_stream_comparison.pdf'
                 
                 x_tick_labels = []
                 if test_year == '2014':
@@ -504,27 +520,81 @@ for f in os.listdir(data_dir):
                         for variable in variable_list:
                             xtick_labels.extend('Hose on, ' + variable,'Stairwell door opened',
                                 '2nd floor, W door opened', 'Doors closed')
+                    else:
+                        error_message('Need to add code for East tests')
                 else:
-                    
-                fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_stream_comparison.pdf'
+                    variable_list = ['near target', 'far target']
+                    for variable in variable_list:
+                        xtick_labels.extend('Hose on, ' + variable, '2nd floor, W door opened', 'Water off',
+                            'Hose on, ' + variable, 'Water off', 'Hose on, ' + variable, 'Water off, doors closed')
+                    xlabel_times = []
+                    stream_num = 1
+                    stream_names = []
+                    time_btwn_seq = []
+
+                    for index, row in group_results.iterrows():
+                        start_seq = row['Start']
+                        if index == 0:      # first row, set initial values
+                            end_seq = row['End']
+                            stream = row['Stream']
+                            stream_names.append(stream)
+                            xlabel_times.extend(start_seq, end_seq)
+                            continue
+
+                        if stream_num == 1:
+                            if stream == row['Stream']:
+                                time_btwn_seq.append(start_seq - end_seq)
+                                end_seq = row['End']
+                                xlabel_times.extend(start_seq, end_seq)
+                                continue
+                            else:
+                                stream_times_setup = {stream:xlabel_times}
+                                stream_times = pd.DataFrame(stream_times_setup, columns = [stream])
+                                current_stream_times = []
+                                end_seq = row['End']
+                                current_stream_times.extend(start_seq, end_seq)
+                                stream = row['Stream']
+                                stream_names.append(stream)
+                                stream_num = stream_num + 1
+                                i = 0
+                                continue
+                        else:
+                            if stream == row['Stream']:
+                                current_time_btwn = start_seq-end_seq
+                                if time_btwn_seq[i] < current_time_btwn:    # new minimum time between seqs
+                                    time_btwn_seq[i] = current_time_btwn
+                                end_seq = row['End']
+                                current_stream_times.extend(start_seq, end_seq)
+                                i = i + 1
+                            else:
+                                stream_times[stream] = current_stream_times
+                                current_stream_times = []
+                                end_seq = row['End']
+                                current_stream_times.extend(start_seq, end_seq)
+                                stream = row['Stream']
+                                stream_names.append(stream)
+                                stream_num = stream_num + 1
+                                i = 0                                   
+
+                    for column in stream_times.columns[:]:
+                        stream_data = []
+                        i = 0
+                        for index, row in stream_times.iterrows():
+                            if index % 2 == 0:
+                                start_loc = row[column]
+                            else:
+                                if i > (len(time_btwn_seq)-1): 
+                                    end_loc = row[column]
+                                else:
+                                    end_loc = row[column] + time_btwn_seq[i]
+                                stream_data.extend(group_data['Avg'].iloc[start_loc:end_loc])
+                                i = i + 1
+                        t = range(0, len(stream_data))
+                        plt.plot(t, stream_data, 
+                            marker=next(plot_markers), markevery=int(len(group_data['Time']))/10, 
+                            mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=column)
+
                 save_plot(x_max_index, y_max, y_min, start_of_test, end_data, group, 
                     fig_name, 'stream comparison', xtick_labels)
                 y_min = 0
                 y_max = 0
-
-            if result_file:
-                group_results['Avg'] = ''
-                for index, row in group_results.iterrows():
-                    # grab start/end time for each event in new .csv file
-                    start = row['Start'] - start_data
-                    end = row['End'] - start_data
-                    seq_data = group_data.iloc[start:end]
-                    # Calculate average for each channel during sequence
-                    for column in group_results.columns[5:]:
-                        # calculate avg for each channel during event 
-                        group_results.loc[index, column] = round(np.mean(seq_data[column]), 2)
-
-                # Saves results .csv file for sensor group
-                group_results.to_csv(results_dir + test_name + '_' + group.replace(' ', '_')  + 'averages.csv')
-                print ('    Saving result file for ' + group)
-                print
