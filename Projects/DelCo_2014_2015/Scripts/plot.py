@@ -26,7 +26,7 @@ specific_name = 'Test_16_West_063014'
 specify_year = False
 specific_year = '2014'
 
-# Specify type 
+# Specify type
 specify_type = False
 specific_type = 'HOSE'
 
@@ -34,6 +34,26 @@ specific_type = 'HOSE'
 specify_struct = False
 specific_struct = 'West'
 
+<<<<<<< HEAD
+=======
+# Different file output options
+result_file = True         # Generate a .csv file with channel avgs for specified sensor groups
+all_channel_plot = True    # Plot each individual channel
+group_avg_plot = True      # Plot avgs of all channels in group
+# Plot BDP avgs from monitor experiments for SS, NF, WF application
+monitor_avgs_plot = False
+west_monitor_labels = ['Hose on, near target', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed',
+'Hose on, far target', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed']
+# monitor_avgs_plot_2015 = True
+# west_monitor_labels = ['Hose on, near target', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed',
+# 'Hose on, far target', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed']
+# Plot BDP avgs from handline experiments for SS, NF, WF application
+handline_avgs_plot = False
+west_handline_labels = ['Hose on, fixed', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed',
+'Hose on, sweeping', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed', 'Hose on, rotate CW', 'Stairwell door opened',
+'2nd floor, W door opened', 'Doors closed', 'Hose on, rotate CCW', 'Stairwell door opened', '2nd floor, W door opened', 'Doors closed',]
+
+>>>>>>> 1ed22eae5fc9be04bc40380a758441504a82d5ff
 # Plot mode: figure or video
 plot_mode = 'figure'
 
@@ -88,7 +108,7 @@ video_plots = collections.OrderedDict()
 # # Prints an error message and stops code
 # def error_message(message):
 #     lineno = inspect.currentframe().f_back.f_lineno
-#     print '[ERROR, line '+str(lineno)+']:'  
+#     print '[ERROR, line '+str(lineno)+']:'
 #     print '  ' + message
 #     sys.exit()
 
@@ -105,7 +125,7 @@ def check_name(test_name, test_year, test_type):
 
     # Skip if not specified structure
     if specify_struct:
-        if specific_struct == 'West': 
+        if specific_struct == 'West':
             if specific_struct not in test_name:
                 return(True)
         elif specific_struct == 'East':
@@ -113,7 +133,7 @@ def check_name(test_name, test_year, test_type):
                 return(True)
         else:
             error_message('Invalid name for specific_struct')
- 
+
     # Skip if not specified type of test
     if specify_type:
         if test_type != specific_type:
@@ -150,7 +170,7 @@ for f in os.listdir(data_dir):
             test_year = '2015'
 
         test_type = info['Test Type'][test_name]
-        
+
         if test_type == 'HOSE':
             continue
 
@@ -363,9 +383,64 @@ for f in os.listdir(data_dir):
                     video_plots[channel] = current_channel_data
                     plots_exist = True
 
+<<<<<<< HEAD
             # Skip plot quantity if there are no plots to show
             if plots_exist:
                 plots_exist = False
+=======
+            if test_type == 'HOSE':
+                if all_channel_plot:
+                    fig_name = hose_fig_dir + test_name + '_' + group.replace(' ', '_') + '.pdf'
+                    save_hose_plot(x_max_index, y_max, y_min, start_plot, end_data, group, fig_name, 'all channels')
+                    y_min = 0
+                    y_max = 0
+                    x_max_index = 0
+                if result_file or group_avg_plot:
+                    # add column for avg velocity of all channels in the group
+                    channel_avg = []
+                    for index, row in group_data.iterrows():
+                        channel_avg.append(np.mean(row[1:]))
+                    group_data['Avg'] = channel_avg
+                    group_results['Avg'] = ''
+                    for index, row in group_results.iterrows():
+                        # grab start/end time for each event in new .csv file
+                        start = row['Start']
+                        end = row['End']
+                        seq_data = group_data.iloc[start:end]
+
+                        # Calculate average for each channel during sequence
+                        for column in group_results.columns[5:]:
+                            # calculate avg for each channel during event
+                            group_results.loc[index, column] = round(np.mean(seq_data[column]), 2)
+
+                    if result_file:
+                        # Saves results .csv file for sensor group
+                        group_results.to_csv(results_dir + test_name + '_' + group.replace(' ', '_') + '_averages.csv')
+                        print ('  Saving ' + group.replace(' ', '_') + ' averages in result file')
+
+                    if group_avg_plot:
+                        plt.close('all')
+                        fig = plt.figure()
+                        fig_name = hose_fig_dir + test_name + '_' + group.replace(' ', '_') + '_avg.pdf'
+                        plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
+
+                        avg_vel = group_data['Avg'].iloc[start_plot:end_data]
+                        avg_vel = pd.rolling_mean(avg_vel, 5)
+                        avg_vel = avg_vel.fillna(method='bfill')
+
+                        y_max = max(avg_vel)
+                        y_min = min(avg_vel)
+                        x_max_index = group_data['Time'][avg_vel.idxmax(y_max)]-start_plot
+
+                        plt.plot(t, avg_vel,
+                            marker=next(plot_markers), markevery=int((end_data - start_plot)/10), mew=1.5, mec='none', ms=7, 
+                            lw=1.5, ls=line_style, label=group + ' Avg')
+
+                        save_hose_plot(x_max_index, y_max, y_min, start_plot, end_data, group, fig_name, 'group avgs')
+                        y_min = 0
+                        y_max = 0
+
+>>>>>>> 1ed22eae5fc9be04bc40380a758441504a82d5ff
             else:
                 continue
 
