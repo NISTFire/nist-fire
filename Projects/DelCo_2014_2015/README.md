@@ -37,3 +37,14 @@
 | 64 West  |  Cherry Road + delayed vent   | Uncoordinated    |  Straight, 150~gpm					| 3 samples + head forms |
 | 65 East  |  PPV Test 					   |                  |                                     | | 		
 | 66 East  |  Single C door, C fire		   | C Door 		  |  Wide, narrow, straight, 150~gpm	| |
+| 67 West  |  Cherry Road       		   | Sprinklered 	  |                                 	| |
+| 68 East  |  IR Window Test    		   |        		  |                                 	| |
+| 69 East  |  IR Window Test    		   |        		  |                                 	| |
+| 70 West  |  C side basement doors		   | Monitor Nozzle   |  Straight, Smooth bore          	| |
+| 71 East  |  IR Window Test    		   |        		  |                                 	| |
+| 72 East  |  IR Window Test    		   |        		  |                                 	| |
+| 73 BB    |                    		   | Deck Gun 		  |  400-500~gpm                    	| |
+| 74 West  |  Cherry Road + A window	   | C Door 		  |  Smooth bore, 190~gpm	            | |
+| 75 West  |  Second floor fire 		   | A window 		  |  Straight, 150~gpm              	| |
+| 76 East  |  IR Window Test    		   |        		  |                                 	| |
+| 77 West  |  Cherry Road + A window	   | C Doors, A window|  Wide, straight, 150~gpm	        | |
