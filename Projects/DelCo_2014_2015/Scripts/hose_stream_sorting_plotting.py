@@ -561,7 +561,7 @@ for f in os.listdir(data_dir):
                         else:
                             if stream == row['Stream']:
                                 current_time_btwn = start_seq-end_seq
-                                if time_btwn_seq[i] < current_time_btwn:    # new minimum time between seqs
+                                if time_btwn_seq[i] > current_time_btwn:    # new minimum time between seqs
                                     time_btwn_seq[i] = current_time_btwn
                                 end_seq = row['End']
                                 current_stream_times.extend([start_seq, end_seq])
