@@ -173,8 +173,7 @@ def sort_data(test_name, start_time, test_type):
                     start_seq = -1
                     continue
                 elif 'water off' in row[test_name].lower():
-                    row[test_name] = row[test_name].lower()
-                    if 'doors closed' in row[test_name]:
+                    if 'doors closed' in row[test_name].lower():
                         door_status = 'BC closed'
                     start_seq = -1
                     continue
@@ -182,19 +181,15 @@ def sort_data(test_name, start_time, test_type):
                 # Determine stream type, pattern/location
                 if 'straight stream' in row[test_name].lower():
                     stream = 'SS'
-                    row[test_name] = row[test_name].lower()
                     row[test_name] = row[test_name].replace('straight stream', stream)
                 elif 'narrow fog' in row[test_name].lower():
                     stream = 'NF'
-                    row[test_name] = row[test_name].lower()
                     row[test_name] = row[test_name].replace('narrow fog', stream)
                 elif 'wide fog' in row[test_name].lower():
                     stream = 'WF'
-                    row[test_name] = row[test_name].lower()
                     row[test_name] = row[test_name].replace('wide fog', stream)
                 elif 'smooth bore' in row[test_name].lower():
                     stream = 'SB'
-                    row[test_name] = row[test_name].lower()
                     row[test_name] = row[test_name].replace('smooth bore', stream)                
                 
                 # stores location, door status, pattern, and start time for next row
@@ -284,7 +279,7 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
         ax3.set_xticklabels(tick_labels, fontsize=8, ha='left')
         plt.xlim([0, end_time])
         # Increase figure size for plot labels at top
-        fig.set_size_inches(10, 6)
+        fig.set_size_inches(10, 8)
     except:
         pass
 
@@ -358,7 +353,10 @@ for f in os.listdir(data_dir):
         start_of_test = int(info['Start of Test'][test_name])
 
         # Offset data time to start of test
-        data['Time'] = data['Time'].values - start_of_test
+        new_times = data['Time'].values - start_of_test
+        data['Time'] = new_times
+        data = data.set_index('Time')
+        data['Time'] = new_times
 
         event_times, zero_time_ls = sort_data(test_name, start_of_test, test_type)
         end_data = event_times['End'].iloc[-1]
@@ -380,7 +378,7 @@ for f in os.listdir(data_dir):
             group_results = event_times
 
             # create empty df to fill with desired channel data
-            group_data = pd.DataFrame(data['Time'].iloc[0:end_data], columns = ['Time'])
+            group_data = pd.DataFrame(data['Time'].loc[0:end_data], columns = ['Time'])
 
             if all_channel_plot:
                 fig = plt.figure()
@@ -419,7 +417,7 @@ for f in os.listdir(data_dir):
                 i = 1
                 quantity = []
                 # convert voltages to velocities
-                for index, row in data.iloc[0:end_data].iterrows():
+                for index, row in data.loc[0:end_data].iterrows():
                     # check if zero voltage needs to be re-calculated
                     if (zero_time_ls[i] - 25) == row['Time']:
                         zero_start = int(row['Time'])
@@ -446,7 +444,7 @@ for f in os.listdir(data_dir):
                         y_min = min(ma_quantity)
 
                     plt.plot(group_data['Time'], ma_quantity, 
-                        marker=next(plot_markers), markevery=int(len(group_data['Time'])/10),
+                        marker=next(plot_markers), markevery=int(len(group_data['Time'])/20),
                         mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=channel)
 
             # calculate channel avg at each time step add to group_data df
@@ -496,8 +494,8 @@ for f in os.listdir(data_dir):
                     y_min = min(ma_quantity)
 
                 plt.plot(group_data['Time'], ma_quantity, 
-                    marker=next(plot_markers), markevery=int(len(group_data['Time']))/10, mew=1.5, mec='none', ms=7, 
-                    ls=line_style, lw=2, label=channel)
+                    marker=next(plot_markers), markevery=int(len(group_data['Time']))/20, mew=1.5, mec='none', ms=7, 
+                    ls=line_style, lw=2, label=group + ' Avg')
 
                 save_plot(x_max_index, y_max, y_min, start_of_test, end_data, group, fig_name, 'group avg', [])
                 y_min = 0
@@ -514,7 +512,7 @@ for f in os.listdir(data_dir):
                 secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
                 fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_stream_avgs.pdf'
                 
-                x_tick_labels = []
+                xtick_labels = []
                 if 'West' in test_name:
                     if test_year == '2014':
                         if test_type == 'monitor':
@@ -522,14 +520,14 @@ for f in os.listdir(data_dir):
                         elif test_type == 'handline':
                             variable_list = ['fixed', 'sweeping', 'rotate CW', 'rotate CCW']
                         for variable in variable_list:
-                            xtick_labels.extend('Hose on, ' + variable,'Stairwell door opened',
-                                '2nd floor, W door opened', 'Doors closed')
+                            xtick_labels.extend(['Hose on, ' + variable,'Stairwell door opened',
+                                '2nd floor, W door opened', 'Doors closed'])
                     else:
                         variable_list = ['near target', 'far target']
                         for variable in variable_list:
-                            xtick_labels.extend('Hose on, ' + variable, '2nd floor, W door opened', 'Water off',
-                                'Hose on, ' + variable, 'Water off', 'Hose on, ' + variable, 'Water off, doors closed')
-                    
+                            xtick_labels.extend(['Hose on, ' + variable, '2nd floor, W door opened', 'Water off',
+                                'Hose on, ' + variable, 'Water off', 'Hose on, ' + variable, 'Water off, doors closed'])
+
                     xlabel_times = []
                     stream_num = 1
                     stream_names = []
@@ -540,21 +538,21 @@ for f in os.listdir(data_dir):
                             end_seq = row['End']
                             stream = row['Stream']
                             stream_names.append(stream)
-                            xlabel_times.extend(start_seq, end_seq)
+                            xlabel_times.extend([start_seq, end_seq])
                             continue
 
                         if stream_num == 1:     # first stream pattern
                             if stream == row['Stream']:
                                 time_btwn_seq.append(start_seq-end_seq)
                                 end_seq = row['End']
-                                xlabel_times.extend(start_seq, end_seq)
+                                xlabel_times.extend([start_seq, end_seq])
                                 continue
                             else: # set up dataframe, move to next stream
                                 stream_times_setup = {stream:xlabel_times}
                                 stream_times = pd.DataFrame(stream_times_setup, columns = [stream])
                                 current_stream_times = []
                                 end_seq = row['End']
-                                current_stream_times.extend(start_seq, end_seq)
+                                current_stream_times.extend([start_seq, end_seq])
                                 stream = row['Stream']
                                 stream_names.append(stream)
                                 stream_num = stream_num + 1
@@ -566,13 +564,16 @@ for f in os.listdir(data_dir):
                                 if time_btwn_seq[i] < current_time_btwn:    # new minimum time between seqs
                                     time_btwn_seq[i] = current_time_btwn
                                 end_seq = row['End']
-                                current_stream_times.extend(start_seq, end_seq)
+                                current_stream_times.extend([start_seq, end_seq])
                                 i = i + 1
                             else:
+                            	print stream_times
+                            	print current_stream_times
+                            	sys.exit()
                                 stream_times[stream] = current_stream_times
                                 current_stream_times = []
                                 end_seq = row['End']
-                                current_stream_times.extend(start_seq, end_seq)
+                                current_stream_times.extend([start_seq, end_seq])
                                 stream = row['Stream']
                                 stream_names.append(stream)
                                 stream_num = stream_num + 1
@@ -609,7 +610,7 @@ for f in os.listdir(data_dir):
                         t = range(0, xlabel_times[-1])
 
                         plt.plot(t, ma_quantity, 
-                            marker=next(plot_markers), markevery=int(len(t))/10, 
+                            marker=next(plot_markers), markevery=int(len(t))/20, 
                             mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=column)
                 else:
                     error_message('Need to add code for East tests')
