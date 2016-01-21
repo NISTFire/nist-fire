@@ -42,35 +42,35 @@ skip_files = ['_times', '_reduced', '_results', 'description_', 'HOSE_D']
 
 result_file = True         # Generate a .csv file with channel avgs for specified sensor groups
 all_channel_plot = True    # Plot of individual channels in sensor group
-group_avg_plot = True      # Plot of channel avg for sensor group
-stream_compare_plot = True # Plot of channel avg for each stream tested during experiment
+group_avg_plot = True      # Plot avg of all channels for sensor group
+stream_avgs_plot = True    # Plot avg of all channels for each stream tested during experiment
 
-latex_table_code = False    # Print code to generate tables in LaTeX?
-if(latex_table_code):       # specify table properties (if applicable)
-    # Create lists for column titles for desired latex tables
-    streams = ['SS', 'NF', 'WF']
-    stream_ls = pd.Series(['\\textit{Straight}', '\\textit{Narrow Fog}', '\\textit{Wide Fog}'], index = streams)
+# latex_table_code = False    # Print code to generate tables in LaTeX?
+# if(latex_table_code):       # specify table properties (if applicable)
+#     # Create lists for column titles for desired latex tables
+#     streams = ['SS', 'NF', 'WF']
+#     stream_ls = pd.Series(['\\textit{Straight}', '\\textit{Narrow Fog}', '\\textit{Wide Fog}'], index = streams)
 
-    # West handline table
-    west_hand_caption = ('Average air velocity (m/s) through stairwell door with fully established flow path '
-        'for stream and application pattern combinations during Tests 18 and 19')
-    west_hand_label = 'table:west_hand_A10_avgs'
-    west_hand_columns = ['\\textbf{Stream}', '\\textbf{Fixed}', '\\textbf{Sweeping}', '\\textbf{Clockwise}', 
-        '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}']
+#     # West handline table
+#     west_hand_caption = ('Average air velocity (m/s) through stairwell door with fully established flow path '
+#         'for stream and application pattern combinations during Tests 18 and 19')
+#     west_hand_label = 'table:west_hand_A10_avgs'
+#     west_hand_columns = ['\\textbf{Stream}', '\\textbf{Fixed}', '\\textbf{Sweeping}', '\\textbf{Clockwise}', 
+#         '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}']
 
-    # West monitor table
-    west_mon_caption = ('Average air velocity (m/s) through stairwell door with fully established flow path '
-        'for stream and target location for all monitor tests')
-    west_mon_label = 'table:all_mon_vel_avgs'
-    west_mon_columns = ['\\textbf{Stream}', '\\textbf{Near}', '\\textbf{Far}', '\\textbf{Near}', '\\textbf{Far}', '\\textbf{Door AB}']
+#     # West monitor table
+#     west_mon_caption = ('Average air velocity (m/s) through stairwell door with fully established flow path '
+#         'for stream and target location for all monitor tests')
+#     west_mon_label = 'table:all_mon_vel_avgs'
+#     west_mon_columns = ['\\textbf{Stream}', '\\textbf{Near}', '\\textbf{Far}', '\\textbf{Near}', '\\textbf{Far}', '\\textbf{Door AB}']
 
-    # East handline table
-    east_hand_caption = ('Average air velocity (m/s) through A6 with established flow path for the stream and application pattern '
-        'combinations at each target (Room A and ceiling of Room B) during Test 34') 
-    east_hand_label = 'table:east_hand_A6_avgs'
-    east_hand_columns = ['\\textbf{Stream}', '\\textbf{Fixed}', '\\textbf{Clockwise}', 
-        '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}', '\\textbf{Fixed}', 
-        '\\textbf{Clockwise}', '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}']
+#     # East handline table
+#     east_hand_caption = ('Average air velocity (m/s) through A6 with established flow path for the stream and application pattern '
+#         'combinations at each target (Room A and ceiling of Room B) during Test 34') 
+#     east_hand_label = 'table:east_hand_A6_avgs'
+#     east_hand_columns = ['\\textbf{Stream}', '\\textbf{Fixed}', '\\textbf{Clockwise}', 
+#         '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}', '\\textbf{Fixed}', 
+#         '\\textbf{Clockwise}', '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}']
 
     # East monitor table
     # east monitor data currently included in west monitor table #
@@ -132,7 +132,7 @@ def check_name(test_name, test_year, test_type):
 def sort_data(test_name, start_time, test_type):
     if 'West' in test_name:
         # initialize lists and start_seq value
-        start_seq = 0
+        start_seq = -1
         door_status = 'All closed'
         streams_ls = []
         P_or_L_ls = []      
@@ -151,14 +151,14 @@ def sort_data(test_name, start_time, test_type):
 
         # gathers timing information from times file
         for index, row in all_times.iterrows():
-            if pd.isnull(row[test_name]):
+            if pd.isnull(row[test_name]) or index == 0:
                 continue
             else:
                 # if new sequence, add time to array to re-zero voltages
                 if ('Monitor on,' in row[test_name]) or ('Hose on,' in row[test_name]):
                     zero_time_ls.append(index-start_time)
 
-                if start_seq != 0:  # add information to event row
+                if start_seq != -1:  # add information to event row
                     end_seq = index-start_time
                     streams_ls.append(stream)
                     P_or_L_ls.append(P_or_L)
@@ -170,13 +170,13 @@ def sort_data(test_name, start_time, test_type):
                 if row[test_name] == '1st floor BC and stairwell doors closed':
                     door_status = 'All closed'
                     row[test_name] = 'Doors closed'
-                    start_seq = 0
+                    start_seq = -1
                     continue
                 elif 'water off' in row[test_name].lower():
                     row[test_name] = row[test_name].lower()
                     if 'doors closed' in row[test_name]:
                         door_status = 'BC closed'
-                    start_seq = 0
+                    start_seq = -1
                     continue
 
                 # Determine stream type, pattern/location
@@ -230,17 +230,16 @@ def sort_data(test_name, start_time, test_type):
                     door_status = 'Closed A'
 
                 start_seq = index-start_time
-
         group_set = {'Start': start_times_ls, 'End':end_times_ls, 'Stream':streams_ls, 
-            P_or_L_heading:P_or_L_ls,'Door':door_status_ls, 'zero times':zero_time_ls}
+        P_or_L_heading:P_or_L_ls,'Door':door_status_ls}
         group_results = pd.DataFrame(group_set, 
-            columns = ['Start', 'End', 'Stream', P_or_L_heading, 'Door', 'zero times'])
-        return group_results
+            columns = ['Start', 'End', 'Stream', P_or_L_heading, 'Door'])
+        return group_results, zero_time_ls
     else:
         print ('Need to write code for sorting East Tests')
         sys.exit()
 
-def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, plot_type, tick_labels):
+def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, plot_type, tick_info):
     plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
 
     ax1 = plt.gca()
@@ -271,17 +270,16 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
         # Add vertical lines and labels for timing information (if available)
         ax3 = ax1.twiny()
         ax3.set_xlim(ax1_xlims)
-        # Remove NaN items from event timeline
-        events = all_times[test_name].dropna()
-        # Ignore events that are commented starting with a pound sign
-        events = events[~events.str.startswith('#')]
-        tick_values = events.index.values - start_time
-        if plot_type != 'stream comparison':
+        if plot_type != 'stream avgs':
+            events = all_times[test_name].dropna()  # Grab event labels and remove NaN items
+            events = events[~events.str.startswith('#')]    # Ignore events that are commented starting with a pound sign
+            tick_loc = events.index.values - start_time
             tick_labels = events.values
         else:
-            tick_values = tick_values[0:(len(tick_labels)-1)]
-        [plt.axvline(_x, color='0.50', lw=1) for _x in tick_values]
-        ax3.set_xticks(tick_values)
+            tick_loc = tick_info[1]
+            tick_labels = tick_info[0]
+        [plt.axvline(_x, color='0.50', lw=1) for _x in tick_loc]
+        ax3.set_xticks(tick_loc)
         plt.setp(plt.xticks()[1], rotation=60)
         ax3.set_xticklabels(tick_labels, fontsize=8, ha='left')
         plt.xlim([0, end_time])
@@ -293,7 +291,7 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
     plt.gca().add_artist(ax1.legend(loc='lower right', fontsize=10, frameon = True))
 
     # Save plot to file
-    print ('  Saving plot of ' + plot_type + ' for ' + group)
+    print ('   Saving plot of ' + plot_type + ' for ' + group)
     plt.savefig(fig_name)
     plt.close('all')
 
@@ -336,6 +334,7 @@ for f in os.listdir(data_dir):
         else:   # Load exp. data file
             data = pd.read_csv(data_dir + f)
             data = data.set_index('TimeStamp(s)')
+            print
             print ('--- Loaded ' + test_name + ' ---')
 
         # Create group and channel lists
@@ -356,20 +355,26 @@ for f in os.listdir(data_dir):
         channel_groups = channel_list.groupby('Group Name')
 
         # Read in test times to offset plots 
-        start_of_test = info['Start of Test'][test_name]
+        start_of_test = int(info['Start of Test'][test_name])
 
         # Offset data time to start of test
         data['Time'] = data['Time'].values - start_of_test
 
-        event_times = sort_data(test_name, start_of_test, test_type)
-        zero_time_ls = event_times['zero times']
-        event_times = event_times.drop('zero times', axis=1)
+        event_times, zero_time_ls = sort_data(test_name, start_of_test, test_type)
         end_data = event_times['End'].iloc[-1]
+
+        if 'West' in test_name:
+            included_groups = ['BDP A10']
+        else:
+            error_message('Need to write east code')
 
         # List through sensor groups to analyze
         for group in channel_groups.groups:
             # Skip excluded groups listed in test description file
-            if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
+            # if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
+            #     continue
+
+            if any([substring in group for substring in included_groups]) == False:
                 continue
              
             group_results = event_times
@@ -404,7 +409,7 @@ for f in os.listdir(data_dir):
 
             for channel in channel_groups.get_group(group).index.values:
                 # Skip excluded channels listed in hose_info file
-                if any([substring in channel for substring in hose_info['Excluded Channels'][test_name].split('|')]):
+                if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
                     continue
 
                 # calculate initial zero voltage, create empty list for calculated velocities
@@ -432,7 +437,7 @@ for f in os.listdir(data_dir):
 
                 if all_channel_plot:        # plot individual channels
                     # check y min and max
-                    ma_quantity = pd.rolling_mean(quantity, 5)
+                    ma_quantity = pd.rolling_mean(group_data[channel], 5)
                     ma_quantity = ma_quantity.fillna(method='bfill')
                     if max(ma_quantity) > y_max:
                         y_max = max(ma_quantity)
@@ -461,9 +466,8 @@ for f in os.listdir(data_dir):
                         group_results.loc[index, column] = round(np.mean(seq_data[column]), 2)
 
                 # Saves results .csv file for sensor group
-                group_results.to_csv(results_dir + test_name + '_' + group.replace(' ', '_')  + 'averages.csv')
-                print ('    Saving result file for ' + group)
-                print
+                group_results.to_csv(results_dir + test_name + '_' + group.replace(' ', '_')  + '_averages.csv')
+                print ('   Saving result file for ' + group)
 
             if all_channel_plot:        # save plot of individual channels
                 fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '.pdf'
@@ -483,7 +487,7 @@ for f in os.listdir(data_dir):
                 fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_average.pdf'
 
                 # check y min and max
-                ma_quantity = pd.rolling_mean(channel_avg, 5)
+                ma_quantity = pd.rolling_mean(group_data['Avg'], 5)
                 ma_quantity = ma_quantity.fillna(method='bfill')
                 if max(ma_quantity) > y_max:
                     y_max = max(ma_quantity)
@@ -499,7 +503,7 @@ for f in os.listdir(data_dir):
                 y_min = 0
                 y_max = 0
 
-            if stream_compare_plot:     # plot and save avg of all channels during each stream
+            if stream_avgs_plot:     # plot and save avg of all channels during each stream
                 fig = plt.figure()
                 plt.rc('axes', color_cycle=tableau20)
                 plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
@@ -508,11 +512,11 @@ for f in os.listdir(data_dir):
                 line_style = '-'
                 secondary_axis_label = 'Velocity (mph)'
                 secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
-                fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_stream_comparison.pdf'
+                fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_stream_avgs.pdf'
                 
                 x_tick_labels = []
-                if test_year == '2014':
-                    if 'West' in test_name:
+                if 'West' in test_name:
+                    if test_year == '2014':
                         if test_type == 'monitor':
                             variable_list = ['near target', 'far target']
                         elif test_type == 'handline':
@@ -521,17 +525,15 @@ for f in os.listdir(data_dir):
                             xtick_labels.extend('Hose on, ' + variable,'Stairwell door opened',
                                 '2nd floor, W door opened', 'Doors closed')
                     else:
-                        error_message('Need to add code for East tests')
-                else:
-                    variable_list = ['near target', 'far target']
-                    for variable in variable_list:
-                        xtick_labels.extend('Hose on, ' + variable, '2nd floor, W door opened', 'Water off',
-                            'Hose on, ' + variable, 'Water off', 'Hose on, ' + variable, 'Water off, doors closed')
+                        variable_list = ['near target', 'far target']
+                        for variable in variable_list:
+                            xtick_labels.extend('Hose on, ' + variable, '2nd floor, W door opened', 'Water off',
+                                'Hose on, ' + variable, 'Water off', 'Hose on, ' + variable, 'Water off, doors closed')
+                    
                     xlabel_times = []
                     stream_num = 1
                     stream_names = []
                     time_btwn_seq = []
-
                     for index, row in group_results.iterrows():
                         start_seq = row['Start']
                         if index == 0:      # first row, set initial values
@@ -541,13 +543,13 @@ for f in os.listdir(data_dir):
                             xlabel_times.extend(start_seq, end_seq)
                             continue
 
-                        if stream_num == 1:
+                        if stream_num == 1:     # first stream pattern
                             if stream == row['Stream']:
-                                time_btwn_seq.append(start_seq - end_seq)
+                                time_btwn_seq.append(start_seq-end_seq)
                                 end_seq = row['End']
                                 xlabel_times.extend(start_seq, end_seq)
                                 continue
-                            else:
+                            else: # set up dataframe, move to next stream
                                 stream_times_setup = {stream:xlabel_times}
                                 stream_times = pd.DataFrame(stream_times_setup, columns = [stream])
                                 current_stream_times = []
@@ -576,9 +578,14 @@ for f in os.listdir(data_dir):
                                 stream_num = stream_num + 1
                                 i = 0                                   
 
+                    print stream_times
+                    tick_info = (xtick_labels, xlabel_times)
                     for column in stream_times.columns[:]:
                         stream_data = []
                         i = 0
+                        print column
+                        print ('Check and see what first column is')
+                        sys.exit()
                         for index, row in stream_times.iterrows():
                             if index % 2 == 0:
                                 start_loc = row[column]
@@ -589,12 +596,25 @@ for f in os.listdir(data_dir):
                                     end_loc = row[column] + time_btwn_seq[i]
                                 stream_data.extend(group_data['Avg'].iloc[start_loc:end_loc])
                                 i = i + 1
-                        t = range(0, len(stream_data))
-                        plt.plot(t, stream_data, 
-                            marker=next(plot_markers), markevery=int(len(group_data['Time']))/10, 
-                            mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=column)
 
-                save_plot(x_max_index, y_max, y_min, start_of_test, end_data, group, 
-                    fig_name, 'stream comparison', xtick_labels)
+                        # check y min and max
+                        stream_data = pd.Series(data = stream_data)
+                        ma_quantity = pd.rolling_mean(stream_data, 5)
+                        ma_quantity = ma_quantity.fillna(method='bfill')
+                        if max(ma_quantity) > y_max:
+                            y_max = max(ma_quantity)
+                            x_max_index = ma_quantity.idxmax(y_max)
+                        if min(ma_quantity) < y_min:
+                            y_min = min(ma_quantity)
+                        t = range(0, xlabel_times[-1])
+
+                        plt.plot(t, ma_quantity, 
+                            marker=next(plot_markers), markevery=int(len(t))/10, 
+                            mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=column)
+                else:
+                    error_message('Need to add code for East tests')
+
+                save_plot(x_max_index, y_max, y_min, start_of_test, xlabel_times[-1], group, 
+                    fig_name, 'stream avgs', tick_info)
                 y_min = 0
                 y_max = 0
