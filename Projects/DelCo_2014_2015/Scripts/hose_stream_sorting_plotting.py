@@ -22,7 +22,7 @@ specify_test = False
 specific_name = 'Test_16_West_063014'
 
 # Specify year
-specify_year = False
+specify_year = True
 specific_year = '2015'
 
 # Specify structure
@@ -34,15 +34,15 @@ specify_type = False
 specific_type = 'monitor'
 
 # Files to skip
-skip_files = ['_times', '_reduced', '_results', 'description_', 'HOSE_D']
+skip_files = ['_times', '_reduced', '_results', 'description_', 'hose_d', '_rh', '_burn', '_span']
 
 # =============================
 # = Specify files to generate =
 # =============================
 
 result_file = True         # Generate a .csv file with channel avgs for specified sensor groups
-all_channel_plot = True    # Plot of individual channels in sensor group
-group_avg_plot = True      # Plot avg of all channels for sensor group
+all_channel_plot = False    # Plot of individual channels in sensor group
+group_avg_plot = False     # Plot avg of all channels for sensor group
 stream_avgs_plot = True    # Plot avg of all channels for each stream tested during experiment
 
 # latex_table_code = False    # Print code to generate tables in LaTeX?
@@ -72,8 +72,8 @@ stream_avgs_plot = True    # Plot avg of all channels for each stream tested dur
 #         '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}', '\\textbf{Fixed}', 
 #         '\\textbf{Clockwise}', '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}']
 
-    # East monitor table
-    # east monitor data currently included in west monitor table #
+	# East monitor table
+	# east monitor data currently included in west monitor table #
 
 #  =======================
 #  = Directory Locations =
@@ -97,198 +97,215 @@ info = pd.read_csv(info_file, index_col=3)
 
 # Prints an error message and stops code
 def error_message(message):
-    lineno = inspect.currentframe().f_back.f_lineno
-    print '[ERROR, line '+str(lineno)+']:'  
-    print '  ' + message
-    sys.exit()
+	lineno = inspect.currentframe().f_back.f_lineno
+	print '[ERROR, line '+str(lineno)+']:'  
+	print '  ' + message
+	sys.exit()
 
 # checks if file should be skipped
 def check_name(test_name, test_year, test_type):
-    if specify_test:        # Skip if not specified test
-        if test_name != specific_name:
-            return(True)
+	if specify_test:        # Skip if not specified test
+		if test_name != specific_name:
+			return(True)
 
-    if specify_struct:      # Skip if not specified structure
-        if specific_struct == 'West': 
-            if specific_struct not in test_name:
-                return(True)
-        elif specific_struct == 'East':
-            if 'West' in test_name:
-                return(True)
-        else:
-            error_message('Invalid name for specific_struct')
+	if specify_struct:      # Skip if not specified structure
+		if specific_struct == 'West': 
+			if specific_struct not in test_name:
+				return(True)
+		elif specific_struct == 'East':
+			if 'West' in test_name:
+				return(True)
+		else:
+			error_message('Invalid name for specific_struct')
  
-    if specify_type:        # Skip if not specified type of test
-        if specific_type != test_type:
-            return(True)
+	if specify_type:        # Skip if not specified type of test
+		if specific_type != test_type:
+			return(True)
 
-    if specify_year:        # Skip if not specified test year
-        if test_year != specific_year:
-            return(True)
+	if specify_year:        # Skip if not specified test year
+		if test_year != specific_year:
+			return(True)
 
-    return(False)
+	return(False)
 
 # Divides hose stream data into different sequences
 def sort_data(test_name, start_time, test_type):
-    if 'West' in test_name:
-        # initialize lists and start_seq value
-        start_seq = -1
-        door_status = 'All closed'
-        streams_ls = []
-        P_or_L_ls = []      
-        start_times_ls = []
-        end_times_ls = []
-        door_status_ls = []
-        zero_time_ls = []
+	if 'West' in test_name:
+		# initialize lists and start_seq value
+		start_seq = -1
+		door_status = 'All closed'
+		streams_ls = []
+		P_or_L_ls = []      
+		start_times_ls = []
+		end_times_ls = []
+		door_status_ls = []
+		zero_time_ls = []
 
-        if test_type == 'handline':
-            P_or_L_heading = 'Pattern'
-        else:
-            P_or_L_heading = 'Location'
-            if 'Test_70' in test_name:
-                door_status = 'BC closed'
-                stream = 'SS'
+		if test_type == 'handline':
+			P_or_L_heading = 'Pattern'
+		else:
+			P_or_L_heading = 'Location'
+			if 'Test_70' in test_name:
+				door_status = 'BC closed'
+				stream = 'SS'
 
-        # gathers timing information from times file
-        for index, row in all_times.iterrows():
-            if pd.isnull(row[test_name]) or index == 0:
-                continue
-            else:
-                # if new sequence, add time to array to re-zero voltages
-                if ('Monitor on,' in row[test_name]) or ('Hose on,' in row[test_name]):
-                    zero_time_ls.append(index-start_time)
+		# gathers timing information from times file
+		for index, row in all_times.iterrows():
+			if pd.isnull(row[test_name]) or index == 0:
+				continue
+			else:
+				# if new sequence, add time to array to re-zero voltages
+				if ('Monitor on,' in row[test_name]) or ('Hose on,' in row[test_name]):
+					zero_time_ls.append(index-start_time)
 
-                if start_seq != -1:  # add information to event row
-                    end_seq = index-start_time
-                    streams_ls.append(stream)
-                    P_or_L_ls.append(P_or_L)
-                    start_times_ls.append(start_seq)
-                    end_times_ls.append(end_seq)
-                    door_status_ls.append(door_status)
+				if start_seq != -1:  # add information to event row
+					end_seq = index-start_time
+					streams_ls.append(stream)
+					P_or_L_ls.append(P_or_L)
+					start_times_ls.append(start_seq)
+					end_times_ls.append(end_seq)
+					door_status_ls.append(door_status)
 
-                # Check if sequence has ended
-                if row[test_name] == '1st floor BC and stairwell doors closed':
-                    door_status = 'All closed'
-                    row[test_name] = 'Doors closed'
-                    start_seq = -1
-                    continue
-                elif 'water off' in row[test_name].lower():
-                    if 'doors closed' in row[test_name].lower():
-                        door_status = 'BC closed'
-                    start_seq = -1
-                    continue
+				# Check if sequence has ended
+				if row[test_name] == '1st floor BC and stairwell doors closed':
+					door_status = 'All closed'
+					row[test_name] = 'Doors closed'
+					start_seq = -1
+					continue
+				elif 'water off' in row[test_name].lower():
+					if 'doors closed' in row[test_name].lower():
+						door_status = 'BC closed'
+					start_seq = -1
+					continue
 
-                # Determine stream type, pattern/location
-                if 'straight stream' in row[test_name].lower():
-                    stream = 'SS'
-                    row[test_name] = row[test_name].replace('straight stream', stream)
-                elif 'narrow fog' in row[test_name].lower():
-                    stream = 'NF'
-                    row[test_name] = row[test_name].replace('narrow fog', stream)
-                elif 'wide fog' in row[test_name].lower():
-                    stream = 'WF'
-                    row[test_name] = row[test_name].replace('wide fog', stream)
-                elif 'smooth bore' in row[test_name].lower():
-                    stream = 'SB'
-                    row[test_name] = row[test_name].replace('smooth bore', stream)                
-                
-                # stores location, door status, pattern, and start time for next row
-                if P_or_L_heading == 'Location':
-                    if 'near target' in row[test_name]:
-                        P_or_L = 'near'
-                        row[test_name] = row[test_name].replace('near target', 'near')
-                    elif 'far target' in row[test_name]:
-                        P_or_L = 'far'
-                        row[test_name] = row[test_name].replace('far target', 'far')
-                else:
-                    if 'fixed' in row[test_name].lower():
-                        P_or_L = 'fixed'
-                    elif 'sweeping' in row[test_name].lower():
-                        P_or_L = 'sweep'
-                    elif ' clockwise' in row[test_name].lower():
-                        P_or_L = 'CW'
-                        row[test_name] = row[test_name].replace('clockwise', P_or_L)
-                    elif 'counterclockwise' in row[test_name].lower():
-                        P_or_L = 'CCW'
-                        row[test_name] = row[test_name].replace('counterclockwise', P_or_L)
+				# Determine stream type, pattern/location
+				if 'straight stream' in row[test_name].lower():
+					stream = 'SS'
+					row[test_name] = row[test_name].replace('straight stream', stream)
+				elif 'narrow fog' in row[test_name].lower():
+					stream = 'NF'
+					row[test_name] = row[test_name].replace('narrow fog', stream)
+				elif 'wide fog' in row[test_name].lower():
+					stream = 'WF'
+					row[test_name] = row[test_name].replace('wide fog', stream)
+				elif 'smooth bore' in row[test_name].lower():
+					stream = 'SB'
+					row[test_name] = row[test_name].replace('smooth bore', stream)                
+				
+				# stores location, door status, pattern, and start time for next row
+				if P_or_L_heading == 'Location':
+					if 'near target' in row[test_name]:
+						P_or_L = 'near'
+						row[test_name] = row[test_name].replace('near target', 'near')
+					elif 'far target' in row[test_name]:
+						P_or_L = 'far'
+						row[test_name] = row[test_name].replace('far target', 'far')
+				else:
+					if 'fixed' in row[test_name].lower():
+						P_or_L = 'fixed'
+					elif 'sweeping' in row[test_name].lower():
+						P_or_L = 'sweep'
+					elif ' clockwise' in row[test_name].lower():
+						P_or_L = 'CW'
+						row[test_name] = row[test_name].replace('clockwise', P_or_L)
+					elif 'counterclockwise' in row[test_name].lower():
+						P_or_L = 'CCW'
+						row[test_name] = row[test_name].replace('counterclockwise', P_or_L)
 
-                if 'opened' in row[test_name]:
-                    if 'BC door' in row[test_name]:
-                        door_status = 'BC open'
-                    elif 'stairwell door' in row[test_name].lower():
-                        door_status = 'Stair open'
-                    elif 'A door' in row[test_name]:
-                        door_status = 'A open'
-                    else:
-                        error_message('Read "opened" from info file, no door found')
-                elif 'A door closed' in row[test_name]:
-                    door_status = 'Closed A'
+				if 'opened' in row[test_name]:
+					if 'BC door' in row[test_name]:
+						door_status = 'BC open'
+					elif 'stairwell door' in row[test_name].lower():
+						door_status = 'Stair open'
+					elif 'A door' in row[test_name]:
+						door_status = 'A open'
+					else:
+						error_message('Read "opened" from info file, no door found')
+				elif 'A door closed' in row[test_name]:
+					door_status = 'Closed A'
 
-                start_seq = index-start_time
-        group_set = {'Start': start_times_ls, 'End':end_times_ls, 'Stream':streams_ls, 
-        P_or_L_heading:P_or_L_ls,'Door':door_status_ls}
-        group_results = pd.DataFrame(group_set, 
-            columns = ['Start', 'End', 'Stream', P_or_L_heading, 'Door'])
-        return group_results, zero_time_ls
-    else:
-        print ('Need to write code for sorting East Tests')
-        sys.exit()
+				start_seq = index-start_time
+		group_set = {'Start': start_times_ls, 'End':end_times_ls, 'Stream':streams_ls, 
+		P_or_L_heading:P_or_L_ls,'Door':door_status_ls}
+		group_results = pd.DataFrame(group_set, 
+			columns = ['Start', 'End', 'Stream', P_or_L_heading, 'Door'])
+		return group_results, zero_time_ls
+	else:
+		print ('Need to write code for sorting East Tests')
+		sys.exit()
 
 def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, plot_type, tick_info):
-    plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
+	plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
 
-    ax1 = plt.gca()
-    ax1.set_xlim([0, end_time])
-    ax1.set_ylim(math.floor(y_min)-0.1, math.ceil(y_max)+0.1)
-    ax1.xaxis.set_major_locator(plt.MaxNLocator(8))
-    ax1_xlims = ax1.axis()[0:2]
-    # grid(True)
-    plt.axhline(0, color='0.50', lw=1)
-    ax1.set_xlabel('Time (s)', fontsize=20)
-    ax1.set_ylabel('Velocity (m/s)', fontsize=20)
-    y_tick_ls = np.arange(math.floor(y_min), math.ceil(1.18*y_max)+1, 1)
-    ax1.set_yticks(np.around(y_tick_ls,1))
-    plt.xticks(fontsize=16)
-    plt.yticks(fontsize=16)
+	ax1 = plt.gca()
+	ax1.set_xlim([0, end_time])
+	ax1.set_ylim(math.floor(y_min)-0.1, math.ceil(y_max)+0.1)
+	ax1.xaxis.set_major_locator(plt.MaxNLocator(8))
+	ax1_xlims = ax1.axis()[0:2]
+	# grid(True)
+	plt.axhline(0, color='0.50', lw=1)
+	ax1.set_xlabel('Time (s)', fontsize=20)
+	ax1.set_ylabel('Velocity (m/s)', fontsize=20)
+	y_tick_ls = np.arange(math.floor(y_min), math.ceil(1.18*y_max)+1, 1)
+	ax1.set_yticks(np.around(y_tick_ls,1))
+	plt.xticks(fontsize=16)
+	plt.yticks(fontsize=16)
 
-    ax2 = ax1.twinx()
-    ax2.set_ylabel('Velocity (mph)', fontsize=20)
-    ax2.set_ylim(math.floor(y_min)-0.1, math.ceil(y_max)+0.1)
-    ax2.set_yticks(y_tick_ls)
-    y_label_ls = np.array(y_tick_ls) * 2.23694
-    ax2.set_yticklabels(np.around(y_label_ls, 1))
-    plt.xticks(fontsize=16)
-    plt.yticks(fontsize=16)
+	ax2 = ax1.twinx()
+	ax2.set_ylabel('Velocity (mph)', fontsize=20)
+	ax2.set_ylim(math.floor(y_min)-0.1, math.ceil(y_max)+0.1)
+	ax2.set_yticks(y_tick_ls)
+	y_label_ls = np.array(y_tick_ls) * 2.23694
+	ax2.set_yticklabels(np.around(y_label_ls, 1))
+	plt.xticks(fontsize=16)
+	plt.yticks(fontsize=16)
 
-    # Add vertical lines for timing information (if available)
-    try:
-        # Add vertical lines and labels for timing information (if available)
-        ax3 = ax1.twiny()
-        ax3.set_xlim(ax1_xlims)
-        if plot_type != 'stream avgs':
-            events = all_times[test_name].dropna()  # Grab event labels and remove NaN items
-            events = events[~events.str.startswith('#')]    # Ignore events that are commented starting with a pound sign
-            tick_loc = events.index.values - start_time
-            tick_labels = events.values
-        else:
-            tick_loc = tick_info[1]
-            tick_labels = tick_info[0]
-        [plt.axvline(_x, color='0.50', lw=1) for _x in tick_loc]
-        ax3.set_xticks(tick_loc)
-        plt.setp(plt.xticks()[1], rotation=60)
-        ax3.set_xticklabels(tick_labels, fontsize=8, ha='left')
-        plt.xlim([0, end_time])
-        # Increase figure size for plot labels at top
-        fig.set_size_inches(10, 8)
-    except:
-        pass
+	# Add vertical lines for timing information (if available)
+	try:
+		# Add vertical lines and labels for timing information (if available)
+		ax3 = ax1.twiny()
+		ax3.set_xlim(ax1_xlims)
+		if plot_type != 'stream avgs':
+			events = all_times[test_name].dropna()  # Grab event labels and remove NaN items
+			events = events[~events.str.startswith('#')]    # Ignore events that are commented starting with a pound sign
+			tick_loc = events.index.values - start_time
+			tick_labels = events.values
+		else:
+			tick_loc = tick_info[1]
+			tick_labels = tick_info[0]
+		[plt.axvline(_x, color='0.50', lw=1) for _x in tick_loc]
+		ax3.set_xticks(tick_loc)
+		plt.setp(plt.xticks()[1], rotation=60)
+		ax3.set_xticklabels(tick_labels, fontsize=8, ha='left')
+		plt.xlim([0, end_time])
+		# Increase figure size for plot labels at top
+		fig.set_size_inches(10, 8)
+	except:
+		pass
 
-    plt.gca().add_artist(ax1.legend(loc='lower right', fontsize=10, frameon = True))
+	plt.gca().add_artist(ax1.legend(loc='lower right', fontsize=10, frameon = True))
 
-    # Save plot to file
-    print ('   Saving plot of ' + plot_type + ' for ' + group)
-    plt.savefig(fig_name)
-    plt.close('all')
+	# Save plot to file
+	print ('   Saving plot of ' + plot_type + ' for ' + group)
+	plt.savefig(fig_name)
+	plt.close('all')
+
+# Preset options for plots
+# Plot style - colors and markers
+# These are the "Tableau 20" colors as RGB.
+tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
+			 (44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
+			 (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
+			 (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
+			 (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
+
+# Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
+for i in range(len(tableau20)):
+	r, g, b = tableau20[i]
+	tableau20[i] = (r / 255., g / 255., b / 255.)
+
+y_max = 0
+y_min = 0
 
 #  ===============================
 #  = Loop through all data files =
@@ -299,323 +316,319 @@ conv_inch_h2o = 0.4
 conv_pascal = 248.8
 
 for f in os.listdir(data_dir):
-    if f.endswith('.csv'):
-        # Skip files with time information or reduced data files
-        if any([substring in f.lower() for substring in skip_files]):
-            continue
+	if f.endswith('.csv'):
+		# Skip files with time information or reduced data files
+		if any([substring in f.lower() for substring in skip_files]):
+			continue
 
-        # Strip test name from file name
-        test_name = f[:-4]
-        
-        # Skip if not a hose test or Test 20 (lost data)
-        if info['Test Type'][test_name] != 'HOSE' or test_name == 'Test_20_West_063014':
-            continue
+		# Strip test name from file name
+		test_name = f[:-4]
+		
+		# Skip if not a hose test or Test 20 (lost data)
+		if info['Test Type'][test_name] != 'HOSE' or test_name == 'Test_20_West_063014':
+			continue
 
-        # Determine test year and type
-        if int(info['Test Number'][test_name]) <= 63:
-            test_year = '2014'
-        else:
-            test_year = '2015'
+		# Determine test year and type
+		if int(info['Test Number'][test_name]) <= 63:
+			test_year = '2014'
+		else:
+			test_year = '2015'
 
-        if 'Monitor' in info['Test Description'][test_name]:
-            test_type = 'monitor'
-        elif 'Handline' in info['Test Description'][test_name]:
-            test_type = 'handline'
-        else:
-            error_message('Check "Test Description" in info file')
+		if 'Monitor' in info['Test Description'][test_name]:
+			test_type = 'monitor'
+		elif 'Handline' in info['Test Description'][test_name]:
+			test_type = 'handline'
+		else:
+			error_message('Check "Test Description" in info file')
 
-        if check_name(test_name, test_year, test_type):     # check if file should be skipped
-            continue
-        else:   # Load exp. data file
-            data = pd.read_csv(data_dir + f)
-            data = data.set_index('TimeStamp(s)')
-            print
-            print ('--- Loaded ' + test_name + ' ---')
+		if check_name(test_name, test_year, test_type):     # check if file should be skipped
+			continue
+		else:   # Load exp. data file
+			data = pd.read_csv(data_dir + f)
+			data = data.set_index('TimeStamp(s)')
+			print
+			print ('--- Loaded ' + test_name + ' ---')
 
-        # Create group and channel lists
-        if test_year == '2014':
-            if 'West' in test_name:
-                channel_list_file = '../DAQ_Files/DAQ_Files_2014/West_DelCo_DAQ_Channel_List.csv'
-            elif 'East' in test_name:
-                channel_list_file = '../DAQ_Files/DAQ_Files_2014/East_DelCo_DAQ_Channel_List.csv'
-            else:
-                channel_list_file = '../DAQ_Files/DAQ_Files_2014/Delco_DAQ_Channel_List.csv'
-        elif test_year == '2015':
-            if 'West' in test_name:
-                channel_list_file = '../DAQ_Files/DAQ_Files_2015/West_DelCo_DAQ_Channel_List.csv'
-            else:
-                channel_list_file = '../DAQ_Files/DAQ_Files_2015/East_DelCo_DAQ_Channel_List.csv'
-        channel_list = pd.read_csv(channel_list_file)
-        channel_list = channel_list.set_index('Device Name')
-        channel_groups = channel_list.groupby('Group Name')
+		# Create group and channel lists
+		if test_year == '2014':
+			if 'West' in test_name:
+				channel_list_file = '../DAQ_Files/DAQ_Files_2014/West_DelCo_DAQ_Channel_List.csv'
+			elif 'East' in test_name:
+				channel_list_file = '../DAQ_Files/DAQ_Files_2014/East_DelCo_DAQ_Channel_List.csv'
+			else:
+				channel_list_file = '../DAQ_Files/DAQ_Files_2014/Delco_DAQ_Channel_List.csv'
+		elif test_year == '2015':
+			if 'West' in test_name:
+				channel_list_file = '../DAQ_Files/DAQ_Files_2015/West_DelCo_DAQ_Channel_List.csv'
+			else:
+				channel_list_file = '../DAQ_Files/DAQ_Files_2015/East_DelCo_DAQ_Channel_List.csv'
+		channel_list = pd.read_csv(channel_list_file)
+		channel_list = channel_list.set_index('Device Name')
+		channel_groups = channel_list.groupby('Group Name')
 
-        # Read in test times to offset plots 
-        start_of_test = int(info['Start of Test'][test_name])
+		# Read in test times to offset plots 
+		start_of_test = int(info['Start of Test'][test_name])
 
-        # Offset data time to start of test
-        new_times = data['Time'].values - start_of_test
-        data['Time'] = new_times
-        data = data.set_index('Time')
-        data['Time'] = new_times
+		# Offset data time to start of test
+		new_times = data['Time'].values - start_of_test
+		data['Time'] = new_times
+		data = data.set_index('Time')
+		data['Time'] = new_times
 
-        event_times, zero_time_ls = sort_data(test_name, start_of_test, test_type)
-        end_data = event_times['End'].iloc[-1]
+		event_times, zero_time_ls = sort_data(test_name, start_of_test, test_type)
+		end_data = event_times['End'].iloc[-1]
 
-        if 'West' in test_name:
-            included_groups = ['BDP A10']
-        else:
-            error_message('Need to write east code')
+		if 'West' in test_name:
+			included_groups = ['BDP A10']
+		else:
+			error_message('Need to write east code')
 
-        # List through sensor groups to analyze
-        for group in channel_groups.groups:
-            # Skip excluded groups listed in test description file
-            # if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
-            #     continue
+		# List through sensor groups to analyze
+		for group in channel_groups.groups:
+			# Skip excluded groups listed in test description file
+			# if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
+			#     continue
 
-            if any([substring in group for substring in included_groups]) == False:
-                continue
-             
-            group_results = event_times
+			if any([substring in group for substring in included_groups]) == False:
+				continue
+			 
+			group_results = event_times
 
-            # create empty df to fill with desired channel data
-            group_data = pd.DataFrame(data['Time'].loc[0:end_data], columns = ['Time'])
+			# create empty df to fill with desired channel data
+			group_data = pd.DataFrame(data['Time'].loc[0:end_data], columns = ['Time'])
 
-            if all_channel_plot:
-                fig = plt.figure()
-                # Plot style - colors and markers
-                # These are the "Tableau 20" colors as RGB.
-                tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
-                             (44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
-                             (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
-                             (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
-                             (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
+			if all_channel_plot:
+				fig = plt.figure()
+				plt.rc('axes', color_cycle=tableau20)
+				plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
+				plt.ylabel('Velocity (m/s)', fontsize=20)
+				axis_scale = 'Y Scale BDP'
+				line_style = '-'
+				secondary_axis_label = 'Velocity (mph)'
+				secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
 
-                # Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
-                for i in range(len(tableau20)):
-                    r, g, b = tableau20[i]
-                    tableau20[i] = (r / 255., g / 255., b / 255.)
-                plt.rc('axes', color_cycle=tableau20)
-                plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
-                
-                plt.ylabel('Velocity (m/s)', fontsize=20)
-                axis_scale = 'Y Scale BDP'
-                line_style = '-'
-                secondary_axis_label = 'Velocity (mph)'
-                secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
-                y_max = 0
-                y_min = 0
+			for channel in channel_groups.get_group(group).index.values:
+				# Skip excluded channels listed in hose_info file
+				if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
+					continue
 
-            for channel in channel_groups.get_group(group).index.values:
-                # Skip excluded channels listed in hose_info file
-                if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
-                    continue
+				# calculate initial zero voltage, create empty list for calculated velocities
+				zero_start = zero_time_ls[0] - 25
+				zero_end = zero_start + 20
+				zero_voltage = np.mean(data[channel][zero_start:zero_end])
+				i = 1
+				quantity = []
+				# convert voltages to velocities
+				for index, row in data.loc[0:end_data].iterrows():
+					# check if zero voltage needs to be re-calculated
+					if (zero_time_ls[i] - 25) == row['Time']:
+						zero_start = int(row['Time'])
+						zero_end = zero_start + 20
+						zero_voltage = np.mean(data[channel][zero_start:zero_end])
+						# iterate i if additional zero voltages will be calculated
+						if i < (len(zero_time_ls)-1):
+							i += 1
+					pressure = conv_inch_h2o * conv_pascal * (row[channel] - zero_voltage)
+					quantity.append(0.0698 * np.sqrt(np.abs(pressure) * (row['TC_' + channel[4:]] + 273.15)) * np.sign(pressure))
+					
+				# add velocities to group_data df and add a column for channel to group_results df
+				group_data[channel] = quantity
+				group_results[channel] = ''
 
-                # calculate initial zero voltage, create empty list for calculated velocities
-                zero_start = zero_time_ls[0] - 25
-                zero_end = zero_start + 20
-                zero_voltage = np.mean(data[channel][zero_start:zero_end])
-                i = 1
-                quantity = []
-                # convert voltages to velocities
-                for index, row in data.loc[0:end_data].iterrows():
-                    # check if zero voltage needs to be re-calculated
-                    if (zero_time_ls[i] - 25) == row['Time']:
-                        zero_start = int(row['Time'])
-                        zero_end = zero_start + 20
-                        zero_voltage = np.mean(data[channel][zero_start:zero_end])
-                        # iterate i if additional zero voltages will be calculated
-                        if i < (len(zero_time_ls)-1):
-                            i += 1
-                    pressure = conv_inch_h2o * conv_pascal * (row[channel] - zero_voltage)
-                    quantity.append(0.0698 * np.sqrt(np.abs(pressure) * (row['TC_' + channel[4:]] + 273.15)) * np.sign(pressure))
-                    
-                # add velocities to group_data df and add a column for channel to group_results df
-                group_data[channel] = quantity
-                group_results[channel] = ''
+				if all_channel_plot:        # plot individual channels
+					# check y min and max
+					ma_quantity = pd.rolling_mean(group_data[channel], 5)
+					ma_quantity = ma_quantity.fillna(method='bfill')
+					if max(ma_quantity) > y_max:
+						y_max = max(ma_quantity)
+						x_max_index = group_data['Time'][ma_quantity.idxmax(y_max)]
+					if min(ma_quantity) < y_min:
+						y_min = min(ma_quantity)
 
-                if all_channel_plot:        # plot individual channels
-                    # check y min and max
-                    ma_quantity = pd.rolling_mean(group_data[channel], 5)
-                    ma_quantity = ma_quantity.fillna(method='bfill')
-                    if max(ma_quantity) > y_max:
-                        y_max = max(ma_quantity)
-                        x_max_index = group_data['Time'][ma_quantity.idxmax(y_max)]
-                    if min(ma_quantity) < y_min:
-                        y_min = min(ma_quantity)
+					plt.plot(group_data['Time'], ma_quantity, 
+						marker=next(plot_markers), markevery=int(len(group_data['Time'])/20),
+						mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=channel)
 
-                    plt.plot(group_data['Time'], ma_quantity, 
-                        marker=next(plot_markers), markevery=int(len(group_data['Time'])/20),
-                        mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=channel)
+			# calculate channel avg at each time step add to group_data df
+			channel_avg = []
+			for index, row in group_data.iterrows():
+				channel_avg.append(np.mean(row[1:]))
+			group_data['Avg'] = channel_avg   
 
-            # calculate channel avg at each time step add to group_data df
-            channel_avg = []
-            for index, row in group_data.iterrows():
-                channel_avg.append(np.mean(row[1:]))
-            group_data['Avg'] = channel_avg   
+			if result_file:     # create file with averages for each channel at each event listed in group_results
+				group_results['Avg'] = ''
+				for index, row in group_results.iterrows():
+					# create df for each event in new .csv file
+					seq_data = group_data.iloc[row['Start']:row['End']]
+					# Calculate average for each channel during sequence
+					for column in group_results.columns[5:]:
+						# calculate avg for each channel during event 
+						group_results.loc[index, column] = round(np.mean(seq_data[column]), 2)
 
-            if result_file:     # create file with averages for each channel at each event listed in group_results
-                group_results['Avg'] = ''
-                for index, row in group_results.iterrows():
-                    # create df for each event in new .csv file
-                    seq_data = group_data.iloc[row['Start']:row['End']]
-                    # Calculate average for each channel during sequence
-                    for column in group_results.columns[5:]:
-                        # calculate avg for each channel during event 
-                        group_results.loc[index, column] = round(np.mean(seq_data[column]), 2)
+				# Saves results .csv file for sensor group
+				group_results.to_csv(results_dir + test_name + '_' + group.replace(' ', '_')  + '_averages.csv')
+				print ('   Saving result file for ' + group)
 
-                # Saves results .csv file for sensor group
-                group_results.to_csv(results_dir + test_name + '_' + group.replace(' ', '_')  + '_averages.csv')
-                print ('   Saving result file for ' + group)
+			if all_channel_plot:        # save plot of individual channels
+				fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '.pdf'
+				save_plot(x_max_index, y_max, y_min, start_of_test, end_data, group, fig_name, 'all channels', [])
+				y_min = 0
+				y_max = 0
 
-            if all_channel_plot:        # save plot of individual channels
-                fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '.pdf'
-                save_plot(x_max_index, y_max, y_min, start_of_test, end_data, group, fig_name, 'all channels', [])
-                y_min = 0
-                y_max = 0
+			if group_avg_plot:      # plot and save avg of all channels in group
+				fig = plt.figure()
+				plt.rc('axes', color_cycle=tableau20)
+				plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
+				plt.ylabel('Velocity (m/s)', fontsize=20)
+				axis_scale = 'Y Scale BDP'
+				line_style = '-'
+				secondary_axis_label = 'Velocity (mph)'
+				secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
+				fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_average.pdf'
 
-            if group_avg_plot:      # plot and save avg of all channels in group
-                fig = plt.figure()
-                plt.rc('axes', color_cycle=tableau20)
-                plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
-                plt.ylabel('Velocity (m/s)', fontsize=20)
-                axis_scale = 'Y Scale BDP'
-                line_style = '-'
-                secondary_axis_label = 'Velocity (mph)'
-                secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
-                fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_average.pdf'
+				# check y min and max
+				ma_quantity = pd.rolling_mean(group_data['Avg'], 5)
+				ma_quantity = ma_quantity.fillna(method='bfill')
+				if max(ma_quantity) > y_max:
+					y_max = max(ma_quantity)
+					x_max_index = group_data['Time'][ma_quantity.idxmax(y_max)]
+				if min(ma_quantity) < y_min:
+					y_min = min(ma_quantity)
 
-                # check y min and max
-                ma_quantity = pd.rolling_mean(group_data['Avg'], 5)
-                ma_quantity = ma_quantity.fillna(method='bfill')
-                if max(ma_quantity) > y_max:
-                    y_max = max(ma_quantity)
-                    x_max_index = group_data['Time'][ma_quantity.idxmax(y_max)]
-                if min(ma_quantity) < y_min:
-                    y_min = min(ma_quantity)
+				plt.plot(group_data['Time'], ma_quantity, 
+					marker=next(plot_markers), markevery=int(len(group_data['Time']))/20, mew=1.5, mec='none', ms=7, 
+					ls=line_style, lw=2, label=group + ' Avg')
 
-                plt.plot(group_data['Time'], ma_quantity, 
-                    marker=next(plot_markers), markevery=int(len(group_data['Time']))/20, mew=1.5, mec='none', ms=7, 
-                    ls=line_style, lw=2, label=group + ' Avg')
+				save_plot(x_max_index, y_max, y_min, start_of_test, end_data, group, fig_name, 'group avg', [])
+				y_min = 0
+				y_max = 0
 
-                save_plot(x_max_index, y_max, y_min, start_of_test, end_data, group, fig_name, 'group avg', [])
-                y_min = 0
-                y_max = 0
+			if stream_avgs_plot:     # plot and save avg of all channels during each stream
+				fig = plt.figure()
+				plt.rc('axes', color_cycle=tableau20)
+				plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
+				plt.ylabel('Velocity (m/s)', fontsize=20)
+				axis_scale = 'Y Scale BDP'
+				line_style = '-'
+				secondary_axis_label = 'Velocity (mph)'
+				secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
+				fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_stream_avgs.pdf'
+				
+				xtick_labels = []
+				if 'West' in test_name:
+					if test_year == '2014':
+						if test_type == 'monitor':
+							variable_list = ['near target', 'far target']
+						elif test_type == 'handline':
+							variable_list = ['fixed', 'sweeping', 'rotate CW', 'rotate CCW']
+						for variable in variable_list:
+							xtick_labels.extend(['Hose on, ' + variable,'Stairwell door opened',
+								'2nd floor, W door opened', 'Doors closed'])
+					else:
+						variable_list = ['near target', 'far target']
+						for variable in variable_list:
+							xtick_labels.extend(['Hose on, ' + variable, '2nd floor, W door opened', 'Water off',
+								'Hose on, ' + variable, 'Water off', 'Hose on, ' + variable, 'Water off, doors closed'])
 
-            if stream_avgs_plot:     # plot and save avg of all channels during each stream
-                fig = plt.figure()
-                plt.rc('axes', color_cycle=tableau20)
-                plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
-                plt.ylabel('Velocity (m/s)', fontsize=20)
-                axis_scale = 'Y Scale BDP'
-                line_style = '-'
-                secondary_axis_label = 'Velocity (mph)'
-                secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
-                fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_stream_avgs.pdf'
-                
-                xtick_labels = []
-                if 'West' in test_name:
-                    if test_year == '2014':
-                        if test_type == 'monitor':
-                            variable_list = ['near target', 'far target']
-                        elif test_type == 'handline':
-                            variable_list = ['fixed', 'sweeping', 'rotate CW', 'rotate CCW']
-                        for variable in variable_list:
-                            xtick_labels.extend(['Hose on, ' + variable,'Stairwell door opened',
-                                '2nd floor, W door opened', 'Doors closed'])
-                    else:
-                        variable_list = ['near target', 'far target']
-                        for variable in variable_list:
-                            xtick_labels.extend(['Hose on, ' + variable, '2nd floor, W door opened', 'Water off',
-                                'Hose on, ' + variable, 'Water off', 'Hose on, ' + variable, 'Water off, doors closed'])
+					xlabel_times = []
+					stream_num = 1
+					stream_names = []
+					time_btwn_seq = []
+					for index, row in group_results.iterrows():
+						start_seq = row['Start']
+						if index == 0:      # first row, set initial values
+							end_seq = row['End']
+							stream = row['Stream']
+							stream_names.append(stream)
+							xlabel_times.extend([start_seq, end_seq])
+							continue
 
-                    xlabel_times = []
-                    stream_num = 1
-                    stream_names = []
-                    time_btwn_seq = []
-                    for index, row in group_results.iterrows():
-                        start_seq = row['Start']
-                        if index == 0:      # first row, set initial values
-                            end_seq = row['End']
-                            stream = row['Stream']
-                            stream_names.append(stream)
-                            xlabel_times.extend([start_seq, end_seq])
-                            continue
-
-                        if stream_num == 1:     # first stream pattern
-                            if stream == row['Stream']:
-                                time_btwn_seq.append(start_seq-end_seq)
-                                end_seq = row['End']
-                                xlabel_times.extend([start_seq, end_seq])
-                                continue
-                            else: # set up dataframe, move to next stream
-                                stream_times_setup = {stream:xlabel_times}
-                                stream_times = pd.DataFrame(stream_times_setup, columns = [stream])
-                                current_stream_times = []
-                                end_seq = row['End']
-                                current_stream_times.extend([start_seq, end_seq])
-                                stream = row['Stream']
-                                stream_names.append(stream)
-                                stream_num = stream_num + 1
-                                i = 0
-                                continue
-                        else:
-                            if stream == row['Stream']:
-                                current_time_btwn = start_seq-end_seq
-                                if time_btwn_seq[i] > current_time_btwn:    # new minimum time between seqs
-                                    time_btwn_seq[i] = current_time_btwn
-                                end_seq = row['End']
-                                current_stream_times.extend([start_seq, end_seq])
-                                i = i + 1
-                            else:
-                            	print stream_times
-                            	print current_stream_times
-                            	sys.exit()
-                                stream_times[stream] = current_stream_times
-                                current_stream_times = []
-                                end_seq = row['End']
-                                current_stream_times.extend([start_seq, end_seq])
-                                stream = row['Stream']
-                                stream_names.append(stream)
-                                stream_num = stream_num + 1
-                                i = 0                                   
-
-                    print stream_times
-                    tick_info = (xtick_labels, xlabel_times)
-                    for column in stream_times.columns[:]:
-                        stream_data = []
-                        i = 0
-                        print column
-                        print ('Check and see what first column is')
-                        sys.exit()
-                        for index, row in stream_times.iterrows():
-                            if index % 2 == 0:
-                                start_loc = row[column]
-                            else:
-                                if i > (len(time_btwn_seq)-1): 
-                                    end_loc = row[column]
-                                else:
-                                    end_loc = row[column] + time_btwn_seq[i]
-                                stream_data.extend(group_data['Avg'].iloc[start_loc:end_loc])
-                                i = i + 1
-
-                        # check y min and max
-                        stream_data = pd.Series(data = stream_data)
-                        ma_quantity = pd.rolling_mean(stream_data, 5)
-                        ma_quantity = ma_quantity.fillna(method='bfill')
-                        if max(ma_quantity) > y_max:
-                            y_max = max(ma_quantity)
-                            x_max_index = ma_quantity.idxmax(y_max)
-                        if min(ma_quantity) < y_min:
-                            y_min = min(ma_quantity)
-                        t = range(0, xlabel_times[-1])
-
-                        plt.plot(t, ma_quantity, 
-                            marker=next(plot_markers), markevery=int(len(t))/20, 
-                            mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=column)
-                else:
-                    error_message('Need to add code for East tests')
-
-                save_plot(x_max_index, y_max, y_min, start_of_test, xlabel_times[-1], group, 
-                    fig_name, 'stream avgs', tick_info)
-                y_min = 0
-                y_max = 0
+						if stream_num == 1:     # first stream pattern
+							if stream == row['Stream']:
+								time_btwn_seq.append(start_seq-end_seq)
+								end_seq = row['End']
+								xlabel_times.extend([start_seq, end_seq])
+								continue
+							else: # set up dataframe, move to next stream
+								stream_times_setup = {stream:xlabel_times}
+								stream_times = pd.DataFrame(stream_times_setup, columns = [stream])
+								current_stream_times = []
+								end_seq = row['End']
+								current_stream_times.extend([start_seq, end_seq])
+								stream = row['Stream']
+								stream_names.append(stream)
+								stream_num = stream_num + 1
+								i = 0
+								continue
+						else:
+							if stream == row['Stream']:
+								current_time_btwn = start_seq-end_seq
+								if time_btwn_seq[i] > current_time_btwn:    # new minimum time between seqs
+									time_btwn_seq[i] = current_time_btwn
+								end_seq = row['End']
+								current_stream_times.extend([start_seq, end_seq])
+								i = i + 1
+							else:
+								stream_times[stream] = current_stream_times
+								current_stream_times = []
+								end_seq = row['End']
+								current_stream_times.extend([start_seq, end_seq])
+								stream = row['Stream']
+								stream_names.append(stream)
+								stream_num = stream_num + 1
+								i = 0                                   
+					stream_times[stream] = current_stream_times
+					current_stream_times = []
+					end_seq = row['End']
+					current_stream_times.extend([start_seq, end_seq])
+					stream = row['Stream']
+					stream_names.append(stream)
+					stream_num = stream_num + 1
+					count = 1
+					updated_times = [0]
+					while count < (len(xlabel_times)):
+						if count % 2 == 0:
+							current_diff = time_btwn_seq[(count/2)-1]
+						else:
+							current_diff = xlabel_times[count]-xlabel_times[count-1]
+						next_time = updated_times[-1] + current_diff
+						if next_time != updated_times[-1]:
+							updated_times.append(next_time+1)
+						count = count+1
+					column_num = 0
+					for column in stream_times.columns[:]:
+						stream_data = []
+						i = 0
+						for index, row in stream_times.iterrows():
+							if index % 2 == 0:
+								start_loc = row[column]
+								continue
+							else:
+								if i > (len(time_btwn_seq)-1):        # last end time
+									end_loc = row[column]
+								else:       # in between times, add in time between seq
+									end_loc = row[column] + time_btwn_seq[i]
+									i = i + 1
+								stream_data.extend(group_data['Avg'].iloc[start_loc:end_loc])
+						# check y min and max
+						stream_data = pd.Series(data = stream_data)
+						ma_quantity = pd.rolling_mean(stream_data, 5)
+						ma_quantity = ma_quantity.fillna(method='bfill')
+						if max(ma_quantity) > y_max:
+							y_max = max(ma_quantity)
+							x_max_index = ma_quantity.idxmax(y_max)
+						if min(ma_quantity) < y_min:
+							y_min = min(ma_quantity)
+						t = range(0, len(ma_quantity))
+						plt.plot(t, ma_quantity, 
+							marker=next(plot_markers), markevery=int(len(t))/20, 
+							mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=column)
+						column_num = column_num + 1
+				else:
+					error_message('Need to add code for East tests')
+				updated_times[-1] = t[-1]+1
+				tick_info = (xtick_labels, updated_times)
+				save_plot(x_max_index, y_max, y_min, start_of_test, len(t), group, 
+					fig_name, 'stream avgs', tick_info)
+				y_min = 0
+				y_max = 0
