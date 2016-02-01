@@ -1,0 +1,132 @@
+\documentclass[12pt,oneside]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                                                 %
+% The mathematical style of these documents follows                                               %
+%                                                                                                 %
+% A. Thompson and B.N. Taylor. The NIST Guide for the Use of the International System of Units.   %
+%    NIST Special Publication 881, 2008.                                                          %
+%                                                                                                 %
+% http://www.nist.gov/pml/pubs/sp811/index.cfm                                                    %
+%                                                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{../../../../../Bibliography/commoncommands}
+
+% Rename chapter headings
+\renewcommand{\chaptername}{Section}
+\renewcommand{\bibname}{References}
+
+% Math shortcuts
+\renewcommand{\sb}[1]{_\mathrm{#1}}
+\renewcommand{\C}{\mbox{C}}
+\renewcommand{\H}{\mbox{H}}
+\renewcommand{\O}{\mbox{O}}
+\newcommand{\N}{\mbox{N}}
+
+% Center all figures
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\begin{document}
+
+\bibliographystyle{unsrt}
+\pagestyle{empty}
+
+\begin{minipage}[t][9in][s]{6.25in}
+
+\headerB{
+Overview of Fire Model Validation Experiments in Residential Scale Structures
+}
+
+\headerC{
+\flushright{
+Joseph Willi \\
+Kevin McGrattan \\
+Randall McDermott \\
+Craig Weinschenk \\
+{\em Fire Research Division \\
+Engineering Laboratory \\
+Gaithersburg, Maryland, USA} \\ }
+}
+
+\flushright{\today \\
+}
+
+\vfill
+
+\flushright{
+\includegraphics[width=2.in]{../../../../../Bibliography/nistident_flright_vec} \\[.3in]
+}
+
+\titlesigs
+
+\end{minipage}
+
+\newpage
+
+\frontmatter
+
+\pagestyle{plain}
+\pagenumbering{roman}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+\chapter{List of Acronyms}
+
+\begin{tabbing}
+\hspace{1.5in} \= \\
+FDS \> Fire Dynamics Simulator \\
+HGL \> Hot Gas Layer \\
+HRR \> Heat Release Rate \\
+HRRPUA \> Heat Release Rate per Unit Area \\
+NIST \> National Institute of Standards and Technology \\
+\end{tabbing}
+
+\mainmatter
+
+\chapter{Introduction}
+\label{chap:Introduction}
+
+\chapter{Experimental Setup}
+\label{chap:Experimental_Setup}
+
+\section{Experimental Structure}
+\label{sec:Experimental_Structure}
+
+\subsection{Construction}
+\label{sec:Construction}
+
+\section{Instrumentation}
+\label{sec:Instrumentation}
+
+\chapter{Experimental Procedure}
+\label{chap:Experimental_Procedure}
+
+\chapter{Acknowledgments}
+\label{chap:Acknowledgments}
+
+\bibliography{../../../Bibliography/FDS_refs,../../../Bibliography/FDS_general,references}
+
+\appendix
+
+\chapter{Appendix A}
+
+Placeholder
+
+
+\end{document}
