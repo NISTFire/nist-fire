@@ -13,6 +13,10 @@
 
 \input{../../../../../Bibliography/commoncommands}
 
+% Load Packages
+\usepackage{graphicx}
+\usepackage{placeins}
+
 % Rename chapter headings
 \renewcommand{\chaptername}{Section}
 \renewcommand{\bibname}{References}
@@ -116,6 +120,31 @@ NIST \> National Institute of Standards and Technology \\
 
 \chapter{Experimental Procedure}
 \label{chap:Experimental_Procedure}
+
+\begin{table}[!ht]
+\small
+\caption{East Structure experimental times (min:sec)}
+\begin{tabular}{lcccccccccc}
+ \toprule
+\begin{tabular}{@{}c@{}} \textbf{Test} \\ \textbf{Number} \end{tabular} & 
+\begin{tabular}{@{}c@{}} \textbf{Pilot} \\ \textbf{(Ignition)} \end{tabular} & 
+\multicolumn{2}{c}{\begin{tabular}{@{}c@{}} \textbf{Corner} \\ \textbf{Burner} \end{tabular}} & 
+\multicolumn{2}{c}{\begin{tabular}{@{}c@{}} \textbf{Middle} \\ \textbf{Burner} \end{tabular}} & 
+\multicolumn{2}{c}{\begin{tabular}{@{}c@{}} \textbf{Center} \\ \textbf{Burner} \end{tabular}} & 
+\begin{tabular}{@{}c@{}} \textbf{North Side,} \\ \textbf{West Double Door} \end{tabular} & 
+\begin{tabular}{@{}c@{}} \textbf{North Side,} \\ \textbf{East Double Door} \end{tabular} &
+\begin{tabular}{@{}c@{}} \textbf{South Side} \\ \textbf{Single Door} \end{tabular} &
+\begin{tabular}{@{}c@{}} \textbf{Roof Vent} \\ \textbf{Single Door} \end{tabular} 
+\\
+ & \textbf{On} & \textbf{On} & \textbf{Off} & \textbf{On} & \textbf{Off} & \textbf{On} & \textbf{Off} &
+ \textbf{Open} & \textbf{Open} & \textbf{Open}  \\
+\midrule
+4 & 0:00 & 0:20 & 17:20 & 3:20 & 15:20 & 6:20 & 13:20 & 7:20 & 9:20 & 10:20 \\
+\bottomrule
+\end{tabular}
+\label{table:east_exp_times}
+\end{table}
+\FloatBarrier
 
 \chapter{Acknowledgments}
 \label{chap:Acknowledgments}

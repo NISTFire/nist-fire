@@ -1,4 +1,4 @@
-&HEAD CHID='DelCo_2014', TITLE='DelCo 2014 Fire Tests, SVN $Revision$'  / 
+&HEAD CHID='DelCo_2014', TITLE='DelCo 2014 Fire Tests'/ 
 
 &MESH IJK=160,110,50, XB=-2.0,14.0,-2.0,9.0,0.0,5.0 / 
 
@@ -13,9 +13,10 @@
       CO_YIELD   = 0.028 / Average values for flexible PU foam (SFPE HB 4th ed.)
 
 &MATL ID            = 'GYPSUM'
-      CONDUCTIVITY  = 0.48
-      SPECIFIC_HEAT = 0.84
-      DENSITY       = 1440. /
+      FYI           = 'Wakili - Journal of Fire Sciences 2007' 
+      CONDUCTIVITY  = 0.28
+      SPECIFIC_HEAT = 1.00
+      DENSITY       = 810. /
 
 &MATL ID            = 'CONCRETE' 
       FYI           = 'NBSIR 88-3752'                                               
