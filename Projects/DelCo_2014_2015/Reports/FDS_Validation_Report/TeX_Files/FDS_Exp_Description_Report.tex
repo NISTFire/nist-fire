@@ -16,6 +16,7 @@
 % Load Packages
 \usepackage{graphicx}
 \usepackage{placeins}
+\usepackage{lscape}
 
 % Rename chapter headings
 \renewcommand{\chaptername}{Section}
@@ -121,30 +122,73 @@ NIST \> National Institute of Standards and Technology \\
 \chapter{Experimental Procedure}
 \label{chap:Experimental_Procedure}
 
+\section{East Structure}
+3 sets of 3 sequences: Tests 2-4; Test 5; Test 6
+
+Burners on $\rightarrow$ Ventilation changed by opening/closing doors or roof vent $\rightarrow$ Burners off
+
+\begin{landscape}
 \begin{table}[!ht]
-\small
-\caption{East Structure experimental times (min:sec)}
-\begin{tabular}{lcccccccccc}
+\caption{East Structure experimental event times (mm:ss)}
+\begin{tabular}{lcccccccccccccc}
  \toprule
-\begin{tabular}{@{}c@{}} \textbf{Test} \\ \textbf{Number} \end{tabular} & 
-\begin{tabular}{@{}c@{}} \textbf{Pilot} \\ \textbf{(Ignition)} \end{tabular} & 
-\multicolumn{2}{c}{\begin{tabular}{@{}c@{}} \textbf{Corner} \\ \textbf{Burner} \end{tabular}} & 
-\multicolumn{2}{c}{\begin{tabular}{@{}c@{}} \textbf{Middle} \\ \textbf{Burner} \end{tabular}} & 
-\multicolumn{2}{c}{\begin{tabular}{@{}c@{}} \textbf{Center} \\ \textbf{Burner} \end{tabular}} & 
-\begin{tabular}{@{}c@{}} \textbf{North Side,} \\ \textbf{West Double Door} \end{tabular} & 
-\begin{tabular}{@{}c@{}} \textbf{North Side,} \\ \textbf{East Double Door} \end{tabular} &
-\begin{tabular}{@{}c@{}} \textbf{South Side} \\ \textbf{Single Door} \end{tabular} &
-\begin{tabular}{@{}c@{}} \textbf{Roof Vent} \\ \textbf{Single Door} \end{tabular} 
+% \begin{tabular}{@{}l@{}} \textbf{Test} \\ \textbf{Number} \end{tabular} & 
+% \multicolumn{2}{c}{\begin{tabular}{@{}c@{}} \textbf{Corner} \\ \textbf{Burner} \end{tabular}} & 
+% \multicolumn{2}{c}{\begin{tabular}{@{}c@{}} \textbf{Middle} \\ \textbf{Burner} \end{tabular}} & 
+% \multicolumn{2}{c}{\begin{tabular}{@{}c@{}} \textbf{Center} \\ \textbf{Burner} \end{tabular}} & 
+% \begin{tabular}{@{}c@{}} \textbf{North Side,} \\ \textbf{West Double Door} \end{tabular} & 
+% \begin{tabular}{@{}c@{}} \textbf{North Side,} \\ \textbf{East Double Door} \end{tabular} &
+% \begin{tabular}{@{}c@{}} \textbf{South Side} \\ \textbf{Single Door} \end{tabular} &
+% \begin{tabular}{@{}c@{}} \textbf{Roof Vent} \\ \textbf{Single Door} \end{tabular}
+\textbf{Test} & 
+\multicolumn{2}{c}{\textbf{\underline{Corner Burner}}} & 
+\multicolumn{2}{c}{\textbf{\underline{Middle Burner}}} & 
+\multicolumn{2}{c}{\textbf{\underline{Center Burner}}} & 
+\multicolumn{2}{c}{\textbf{\underline{W Double Door}}} & 
+\multicolumn{2}{c}{\textbf{\underline{E Double Door}}} & 
+\multicolumn{2}{c}{\textbf{\underline{Single Door}}} & 
+\multicolumn{2}{c}{\textbf{\underline{Roof Vent}}}
 \\
- & \textbf{On} & \textbf{On} & \textbf{Off} & \textbf{On} & \textbf{Off} & \textbf{On} & \textbf{Off} &
- \textbf{Open} & \textbf{Open} & \textbf{Open}  \\
+\textbf{Number} & 
+\textbf{On} & \textbf{Off} & \textbf{On} & \textbf{Off} & \textbf{On} & \textbf{Off} & 
+\textbf{Close} & \textbf{Open} & \textbf{Close} & \textbf{Open} &
+\textbf{Close} & \textbf{Open} & \textbf{Close} & \textbf{Open}
+\\
 \midrule
-4 & 0:00 & 0:20 & 17:20 & 3:20 & 15:20 & 6:20 & 13:20 & 7:20 & 9:20 & 10:20 \\
+% Test 2
+2 & 0:20 & 16:20 & 3:20 & 14:20 & 6:20 & 12:20 & 
+N/A & 7:20 & N/A & 9:20 & N/A & 10:30 & N/A & N/A \\
+% Test 3
+3 & 0:20 & 17:20 & 3:20 & 15:20 & 6:20 & 13:20 & 
+N/A & 7:20 & N/A & 9:20 & N/A & 10:20 & N/A & N/A \\
+% Test 4
+4 & 0:20 & 17:20 & 3:20 & 15:20 & 6:20 & 13:20 & 
+N/A & 7:20 & N/A & 9:20 & N/A & 10:20 & N/A & N/A 
+\\ \multicolumn{15}{c}{ } \\
+% Test 5a
+5a & 0:15 & 9:55 & 0:30 & 9:35 & 0:45 & 9:15 & 
+N/A & 3:18 & N/A & 6:18 & N/A & N/A & 7:45 & 2:53 \\
+% Test 5b
+5b & 0:15 & 10:30 & 0:30 & 10:15 & 0:45 & 10:00 & 
+N/A & 3:45 & N/A & 5:15 & N/A & N/A & 8:30 & 2:15 \\
+% Test 5c
+5c & 0:15 & 9:45 & 0:30 & 9:30 & 0:45 & 9:15 & 
+N/A & 3:45 & N/A & 5:16 & N/A & N/A & 7:28 & 2:15
+\\ \multicolumn{15}{c}{ } \\
+% Test 6a
+6a & 0:15 & 9:55 & 0:30 & 9:35 & 0:45 & 9:15 & 
+N/A & 3:18 & N/A & N/A & N/A & N/A & N/A & 2:53 \\
+% Test 6b
+6b & 0:15 & 9:55 & 0:30 & 9:35 & 0:45 & 9:15 & 
+N/A & 3:18 & N/A & N/A & N/A & N/A & N/A & 2:53 \\
+% Test 6c
+6c & 0:15 & 9:55 & 0:30 & 9:35 & 0:45 & 9:15 & 
+N/A & 3:18 & N/A & N/A & N/A & N/A & N/A & 2:53 \\
 \bottomrule
 \end{tabular}
 \label{table:east_exp_times}
 \end{table}
-\FloatBarrier
+\end{landscape}
 
 \chapter{Acknowledgments}
 \label{chap:Acknowledgments}
