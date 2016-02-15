@@ -14,9 +14,7 @@
 \input{../../../../../Bibliography/commoncommands}
 
 % Load Packages
-\usepackage{graphicx}
 \usepackage{placeins}
-\usepackage{lscape}
 
 % Rename chapter headings
 \renewcommand{\chaptername}{Section}
@@ -104,6 +102,9 @@ NIST \> National Institute of Standards and Technology \\
 
 \mainmatter
 
+% ================
+% = Introduction =
+% ================
 \chapter{Introduction}
 \label{chap:Introduction}
 
@@ -119,27 +120,55 @@ The series of field experiments described in this report were conducted in two s
 
 \subsection{Construction}
 \label{sec:construction}
-Each test structure was built on a concrete slab as shown in Fig.~\ref{fig:struct_pics}. The structures were designed to simulate a single-story and a two-story residential structure. The first floor of each structure had an outer wall composed of interlocking concrete blocks with equal side lengths of 0.61 m (2 ft). The joints and gaps between the blocks were filled with high temperature insulation.
+Each test structure was built on a concrete slab as shown in Fig.~\ref{fig:struct_pics}. The East Structure was designed to simulate a single-story residential structure, and the West Structure was designed to simulate a two-story residential structure. The first floor of each structure had an outer wall composed of interlocking concrete blocks with equal side lengths of 0.61~m (2~ft). The joints and gaps between the blocks were filled with high temperature insulation.
 
 \begin{figure}[!ht]
-\includegraphics[width=6in]{../../Hose_Stream_Report/Pictures/east_structure}
-\\~\\
-\includegraphics[width=6in]{../../Hose_Stream_Report/Pictures/west_structure}
-\caption[North side of the East and West Structures.]{North side of the East (top) and West (bottom) Test Structures.}
-\label{fig:struct_pics}
+	\includegraphics[width=5.25in]{../../Hose_Stream_Report/Figures/Pictures/east_structure}
+	\\~\\
+	\includegraphics[width=5.25in]{../../Hose_Stream_Report/Figures/Pictures/west_structure}
+	\caption[North side of the East and West Structures.]{North side of the East (top) and West (bottom) Test Structures.}
+	\label{fig:struct_pics}
 \end{figure}
 
-The interior walls of the first floor of each structure were framed with steel studs and track. The studs were set to 0.40 m (16 in.) centers. The ceiling/floor support was composed of wood truss joist I-beams (TJIs) with a 299 mm (11.75 in.) depth. Each TJI was composed of laminated veneer lumber flanges with a cross section of 29 mm (1.13 in.) x 44 mm (1.75 in.) and an 11 mm (0.43 in.) thick oriented strand board web as shown in Fig.~\ref{fig:TJI}. Tongue and grove, 18.3 mm (0.72 in.) thick, oriented strand board was screwed to the top of the TJIs.
+The interior walls of the first floor of each structure were framed with steel studs set to 0.40~m (16~in) centers and track and \textit{were lined with 13~mm (0.5~in) thick cement board. The walls were composed of 16~mm (5/8~in) Type X gypsum board. Additionally, the ceiling was composed of two layers of 13~mm (0.5~in) thick cement board.}
+\FloatBarrier
+
+The first floor ceiling support of each structure was composed of wood truss joist I-beams (TJIs) with a 299~mm (11.75~in) depth. Each TJI was composed of laminated veneer lumber flanges with a cross section of 29~mm (1.13~in) x 44~mm (1.75~in) and an 11~mm (0.43~in) thick oriented strand board web as shown in Fig.~\ref{fig:TJI}. Tongue and grove, 18.3~mm (0.72~in) thick, oriented strand board was screwed to the top of the TJIs.
 
 \begin{figure}[!ht]
-\includegraphics[width=6in]{../../Hose_Stream_Report/Pictures/TJI_support}
-\caption[TJI-constructed ceiling/floor support of the West Structure.]{Ceiling and floor support of the West Structure composed of wood truss joist I-beams. View is of the east side of the structure.}
-\label{fig:TJI}
+	\includegraphics[width=6in]{../../Hose_Stream_Report/Figures/Pictures/TJI_support}
+	\caption[TJI-constructed ceiling support of the West Structure.]{First floor ceiling support of the West Structure composed of wood truss joist I-beams. View is of the southeast corner of the structure.}
+	\label{fig:TJI}
 \end{figure}
 \FloatBarrier
 
-\subsection{West Structure}
-\label{sec:West_descr}
+The second floor of the West Structure was built on the wood ceiling support described above and was connected to the first floor by a stairwell. The second story walls were wood framed with 51~mm (2~in) by 102~mm (4~in) studs set to 0.40~m (16~in) centers. The interior walls were protected by 16~mm (5/8~in) fire rated gypsum board, 16~mm (5/8~in) durarock board, and a second layer of 16~mm (5/8~in) fire rated gypsum board. The exterior walls were protected with 11~mm (7/16~in) oriented strand board and 8~mm (5/16~in) fiber cement lap siding.
+
+% Add info about roof vent in single story
+\subsection{Layout}
+\label{sec:layout}
+Dimensioned floor plans of the East and West Structures are presented in Figures~\ref{fig:east_dimensioned_plan}~and~\ref{fig:west_dimensioned_plan}, respectively.
+
+\begin{figure}[!ht]
+	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/East_Test_Structure_Dimensioned_Full}
+	\caption[Dimensioned floor plan of the East Structure.]{East Structure floor layout.}
+	\label{fig:east_dimensioned_plan}
+\end{figure}
+% make new floor plan with ceiling vent included
+
+\begin{figure}[!ht]
+	\includegraphics[width=\columnwidth]{../../Hose_Stream_Report/Figures/Floor_Plans/West_Structure_2nd_Floor_Dimensioned_Full}
+	\\~\\
+	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/West_Structure_1st_Floor_Dimensioned_Full}
+	\caption[Dimensioned floor plan of the first and second floors of the West Structure.]{Dimensioned floor plan of the second floor (top) and first floor (bottom) of the West Structure.}
+	\label{fig:west_dimensioned_plan}
+\end{figure}
+% make new 1st floor plan with rear door completely sealed off
+
+The interior dimensions of each structure were approximately 6.1~m (20~ft) wide, 11~m (36~ft) long and 2.4~m (8~ft) high. The stairs connecting the two floors of the West Structure started 1.6~m (5.25~ft) off the south wall with a width of 1.2~m (4~ft) off the east wall.
+
+The exterior doorways of each structure and the stairwell doorway on the second level of the West Structure all contained doors that were opened or closed at certain instances to change the ventilation patterns of the structure. All other doorways in the structures did not contain a door, so to close the doorway, a sheet of gypsum board was used to cover the opening and the doorway remained closed for the duration of the test procedure.
+\FloatBarrier
 
 \section{Instrumentation}
 \label{sec:Instrumentation}

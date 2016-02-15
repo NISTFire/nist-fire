@@ -82,7 +82,7 @@ stream_avgs_plot = True    # Plot avg of all channels for each stream tested dur
 # Location of directories
 data_dir = '../Experimental_Data/'      # Location of experimental data files
 results_dir = '../Results/'     # Location to save results files 
-fig_dir = '../Figures/Hose_Stream_Figures/'     # Location to save plots
+fig_dir = '../Reports/Hose_Stream_Report/Figures/Plots'     # Location to save plots
 all_times_file = '../Experimental_Data/All_Times.csv'       # Location of file with timing information
 info_file = '../Experimental_Data/Description_of_Experiments.csv'       # Location of test description file
 
