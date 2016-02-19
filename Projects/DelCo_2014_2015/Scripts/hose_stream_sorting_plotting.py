@@ -82,7 +82,7 @@ stream_avgs_plot = True    # Plot avg of all channels for each stream tested dur
 # Location of directories
 data_dir = '../Experimental_Data/'      # Location of experimental data files
 results_dir = '../Results/Hose_Stream/'     # Location to save results files 
-fig_dir = '../Reports/Hose_Stream_Report/Figures/Plots'     # Location to save plots
+fig_dir = '../Reports/Hose_Stream_Report/Figures/Plots/'     # Location to save plots
 all_times_file = '../Experimental_Data/All_Times.csv'       # Location of file with timing information
 info_file = '../Experimental_Data/Description_of_Experiments.csv'       # Location of test description file
 
@@ -276,10 +276,10 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 		[plt.axvline(_x, color='0.50', lw=1) for _x in tick_loc]
 		ax3.set_xticks(tick_loc)
 		plt.setp(plt.xticks()[1], rotation=60)
-		ax3.set_xticklabels(tick_labels, fontsize=8, ha='left')
+		ax3.set_xticklabels(tick_labels, fontsize=10, ha='left')
 		plt.xlim([0, end_time])
 		# Increase figure size for plot labels at top
-		fig.set_size_inches(10, 8)
+		fig.set_size_inches(8, 8)
 	except:
 		pass
 
@@ -451,23 +451,52 @@ for f in os.listdir(data_dir):
 
 			# calculate channel avg at each time step add to group_data df
 			channel_avg = []
+			std_dev = []
 			for index, row in group_data.iterrows():
 				channel_avg.append(np.mean(row[1:]))
-			group_data['Avg'] = channel_avg   
+			group_data['Avg'] = channel_avg  
 
 			if result_file:     # create file with averages for each channel at each event listed in group_results
 				group_results['Avg'] = ''
+				SS_near_data = []
+				SS_far_data = []
+				SB_near_data = []
+				SB_far_data = []
+
 				for index, row in group_results.iterrows():
 					# create df for each event in new .csv file
 					seq_data = group_data.iloc[row['Start']:row['End']]
+					if row['Door'] == 'BC open':
+						if row['Stream'] == 'SS':
+							if row['Location'] == 'near':
+								SS_near_data.append(seq_data['Avg'])
+							elif row['Location'] == 'far':
+								SS_far_data.append(seq_data['Avg'])
+							else:
+								error_message('Invalid location read')
+						elif row['Stream'] == 'SB':
+							if row['Location'] == 'near':
+								SB_near_data.append(seq_data['Avg'])
+							elif row['Location'] == 'far':
+								SB_far_data.append(seq_data['Avg'])
+							else:
+								error_message('Invalid location read')
+						else:
+							error_message('Invalid stream read')
+
 					# Calculate average for each channel during sequence
 					for column in group_results.columns[5:]:
 						# calculate avg for each channel during event 
-						group_results.loc[index, column] = round(np.mean(seq_data[column]), 2)
+						group_results.loc[index, column] = str(round(np.mean(seq_data[column]), 1)) + ' +- ' + str(round(np.std(seq_data[column]), 1))
+
 
 				# Saves results .csv file for sensor group
 				group_results.to_csv(results_dir + test_name + '_' + group.replace(' ', '_')  + '_averages.csv')
 				print ('   Saving result file for ' + group)
+				print 'SS Near: ' + str(round(np.mean(SS_near_data), 1)) + ' +- ' + str(round(np.std(SS_near_data), 1))
+				print 'SS Far: ' + str(round(np.mean(SS_far_data), 1)) + ' +- ' + str(round(np.std(SS_far_data), 1))
+				print 'SB Near: ' + str(round(np.mean(SB_near_data), 1)) + ' +- ' + str(round(np.std(SB_near_data), 1))
+				print 'SB Far: ' + str(round(np.mean(SB_far_data), 1)) + ' +- ' + str(round(np.std(SB_far_data), 1))
 
 			if all_channel_plot:        # save plot of individual channels
 				fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '.pdf'
