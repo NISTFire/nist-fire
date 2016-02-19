@@ -36,11 +36,64 @@
 
 \bibliographystyle{unsrt}
 \pagestyle{empty}
+\begin{minipage}[t][9in][s]{6.25in}
+
+\begin{flushright}
+\fontsize{20}{24}\selectfont
+\bf{NIST Technical Note XXXX}
+\end{flushright}
+
+\headerB{
+Overview of Fire Model Validation Experiments in Residential Scale Structures \\
+}
+
+\normalsize
+
+\headerC{
+{
+\flushright{
+Joseph Willi \\
+Kevin McGrattan \\
+Randall McDermott \\
+Craig Weinschenk \\
+
+\vspace*{2\baselineskip}
+
+\begingroup
+This publication is available free of charge from:
+\hypersetup{urlcolor=black}
+\href{http://dx.doi.org/10.6028/NIST.TN.XXXX}{http://dx.doi.org/10.6028/NIST.TN.XXXX}
+\endgroup
+}
+
+\vfill
+
+\flushright{
+
+\includegraphics[width=2.in]{../../../../../Bibliography/nistident_flright_vec} \\[.3in]
+}
+}
+}
+
+\end{minipage}
+
+\newpage
+\hspace{5in}
+\newpage
+
+\frontmatter
+
+\pagenumbering{roman}
 
 \begin{minipage}[t][9in][s]{6.25in}
 
+\begin{flushright}
+\fontsize{20}{24}\selectfont
+\bf{NIST Technical Note XXXX}
+\end{flushright}
+
 \headerB{
-Overview of Fire Model Validation Experiments in Residential Scale Structures
+Overview of Fire Model Validation Experiments in Residential Scale Structures \\
 }
 
 \headerC{
@@ -50,20 +103,57 @@ Kevin McGrattan \\
 Randall McDermott \\
 Craig Weinschenk \\
 {\em Fire Research Division \\
-Engineering Laboratory \\
-Gaithersburg, Maryland, USA} \\ }
-}
+Engineering Laboratory} \\
 
-\flushright{\today \\
-}
+\vspace*{2\baselineskip}
+
+\begingroup
+This publication is available free of charge from:
+\hypersetup{urlcolor=black}
+\href{http://dx.doi.org/10.6028/NIST.TN.XXXX}{http://dx.doi.org/10.6028/NIST.TN.XXXX} \\
+\endgroup
+
+\vspace*{2\baselineskip}
+February 2016}}
 
 \vfill
 
-\flushright{
-\includegraphics[width=2.in]{../../../../../Bibliography/nistident_flright_vec} \\[.3in]
-}
+\flushright{\includegraphics[width=1in]{../../../../../Bibliography/doc}}
 
 \titlesigs
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}[t][9in][s]{6.25in}
+
+\flushright{Certain commercial entities, equipment, or materials may be identified in this \\
+document in order to describe an experimental procedure or concept adequately. \\
+Such identification is not intended to imply recommendation or endorsement by the \\
+National Institute of Standards and Technology, nor is it intended to imply that the \\
+entities, materials, or equipment are necessarily the best available for the purpose. \\
+}
+
+\vspace{3in}
+
+\large
+\flushright{\bf National Institute of Standards and Technology Technical Note XXXX \\
+Natl.~Inst.~Stand.~Technol.~Tech.~Note~XX, \pageref{LastPage} pages (February 2016) \\
+% http://dx.doi.org/10.6028/NIST.TN.XXXX \\
+CODEN: NTNOEF }
+
+\vspace{0.2in}
+
+\begingroup
+{\bf This publication is available free of charge from:}
+\hypersetup{urlcolor=black}
+\href{http://dx.doi.org/10.6028/NIST.TN.1838}{\bf http://dx.doi.org/10.6028/NIST.TN.1838} \\
+\endgroup
+
+\vfill
+
+\hspace{1in}
 
 \end{minipage}
 
@@ -172,29 +262,30 @@ The exterior doorways of each structure and the stairwell doorway on the second 
 
 \section{Instrumentation}
 \label{sec:Instrumentation}
-The structures were instrumented for temperature, gas velocity, heat flux, and gas concentration measurements. Gas temperatures in the burn rooms were measured with bare-bead, Chromel-Alumel (type K) thermocouples. Additional single thermocouples were installed in conjunction with the bi-directional probes for gas velocity measurements. The single thermocouples were bare-bead, Chromel-Alumel (type K) thermocouples, with a 1.0~mm (0.04~in) nominal diameter. The thermocouple wire was protected with an 3.2~mm (0.125~in) diameter inconnel sheath. Schmidt-Boelter gauges were used to measure both total heat flux and radiant heat flux (radiometer). A radiometer is a total heat flux gauge with a zirconium plate to prevent contributions from convective heat transfer. Calibrated pumps pulled gas samples through a sample conditioning system to eliminate moisture in the sample. Then, the dry gas sample was piped to a series of gas analyzers and the concentrations of oxygen, carbon monoxide, and carbon dioxide were measured. A legend, which clarifies the instrumentation schematics discussed in the follow sections, is included in Fig.~\ref{fig:Instrumentation_Legend}.
+The structures were instrumented for temperature, gas velocity, heat flux, and gas concentration measurements. Gas temperatures in the burn rooms were measured with bare-bead, Chromel-Alumel (type K) thermocouples. Additional single thermocouples were installed in conjunction with the bi-directional probes for gas velocity measurements. The single thermocouples were bare-bead, Chromel-Alumel (type K) thermocouples with a 1.0~mm (0.04~in) nominal diameter. The thermocouple wire was protected with an 3.2~mm (0.125~in) diameter inconel sheath. Schmidt-Boelter gauges were used to measure both total heat flux and radiant heat flux (radiometer). A radiometer is a total heat flux gauge with a zirconium plate to prevent contributions from convective heat transfer. Calibrated pumps pulled gas samples through a sample conditioning system to eliminate moisture in the sample. Then, the dry gas sample was piped to a series of gas analyzers and the concentrations of oxygen, carbon monoxide, and carbon dioxide were measured. A legend, which clarifies the instrumentation schematics discussed in the follow sections, is included in Fig.~\ref{fig:Instrumentation_Legend}.
 
 % \begin{figure}[!ht]
 % 	\includegraphics[width=0.35\columnwidth]{../Figures/Floor_Plans/Legend}
 % 	\caption[Instrumentation Legend.]{Instrumentation Legend.}
 % 	\label{fig:Instrumentation_Legend}
 % \end{figure}
-% \FloatBarrier
 
-\subsection{East Structure}
-\label{sec:East_Instrumentation}
+Three propane burners, each with a square opening of side length 0.6~m (2~ft) 0.14~m (5.5~in) above the floor, were positioned 0.6~m (2~ft) from the south and west walls on the first floor of each structure and used as the fuel source in each experiment. Propane flowed at a known volumetric flow rate during the experiments.
+\FloatBarrier
+
+\subsubsection*{East Structure}
 The East Structure was instrumented with 5 bare-bead thermocouple arrays, 4 bi-directional probe plus solid thermocouple arrays, 5 total heat flux plus radiometer sensor pairs, and 2 gas sample inlet pipes at the locations shown in Fig.~\ref{fig:east_instrumentation}.
 
 \begin{figure}[!ht]
 	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/East_Structure_Dimensioned_Instrumentation}
 	\caption{Location of instrumentation in the East Structure.}
-	\label{fig:East_Instrumentation}
+	\label{fig:east_instrumentation}
 \end{figure}
 
 Each bare-bead thermocouple array was composed of 8 thermocouples. The top sensor was 0.03~m (1~in) below the ceiling and the remaining thermocouples were space 0.3~m (1~ft) apart with the bottom thermocouple being 2.13~m (7~ft) below the ceiling. The three bi-directional probe and solid thermocouple arrays located at the exterior doorways of the structure contained 8 probes centered in the doorway with the first probe 0.08~m (0.25~ft) below the soffit and the remaining probes at 0.34~m (1.1~ft), 0.61~m (2~ft), 0.88~m (2.9~ft), 1.15~m (3.7~ft), 1.42~m (4.7~ft), 1.68~m (5.5~ft), and 1.95~m (6.4~ft) below the soffit. The fourth bi-directional probe and solid thermocouple array was located at the roof vent and contained three probes \textit{centered between the east and west sides of the vent and spaced ?? apart between the north and south sides.} The total heat flux guage/radiometer pairs were set to be 0.15~m (0.5~ft) off the ground and aimed to view the ceiling. Gas concentrations were pulled through \textit{3.2~mm (0.125~in) diameter stainless steel tubing located 1.22~m (4~ft) above the floor.}
+\FloatBarrier
 
-\subsection{West Structure}
-\label{sec:West_Instrumentation}
+\subsubsection*{West Structure}
 The first floor of the West Structure was instrumented with 3 bare-bead thermocouple arrays, 3 bi-directional probe plus solid thermocouple arrays, and 1 gas sample inlet pipe, and the second floor was equipped with 3 bare-bead thermocouple arrays, 4 bi-directional probe plus solid thermocouple arrays, and 1 gas sample inlet pipe. The locations of the instrumentation in the West Structure is shown in Fig.~\ref{fig:west_instrumentation}.
 
 \begin{figure}[!ht]
@@ -206,13 +297,25 @@ The first floor of the West Structure was instrumented with 3 bare-bead thermoco
 \end{figure}
 
 The thermocouples in the bare-bead thermocouple arrays were spaced in the same manner as the arrays in the East Structure. The bi-directional probe and thermocouple arrays contained 8 probes with spacing identical to the arrays at the exterior doors of the East Structure. 3.2~mm (0.125~in) stainless steel tubing was located 1.22~m (4~ft) above the floor and used to pull gas samples from the environment. 
+\FloatBarrier
 
-\subsection{Propane Burners}
-\label{sec:Burners}
-Three propane burners, each with a 0.6 m X 0.6 m square opening 0.14 m above the floor, were used as the fuel source in every experiment described in this report. Propane flowed at a known volumetric flow rate during the experiments.
-
-\subsection{Uncertainty}
+\subsection{Measurement Uncertainty}
 \label{sec:Uncertainty}
+There are different components of uncertainty in the reported length, mass, temperature, heat flux, gas concentration, differential pressure, and gas velocity measurements. Uncertainties are grouped into two categories according to the method used to estimate them. Type A uncertainties are those which are evaluated by statistical methods, and Type B are those which are evaluated by other means~\cite{Taylor&Kuyatt:1994}. Type B analysis of systematic uncertainties involves estimating the upper (+a) and lower (-a) limits for the quantity in question such that the probability that the value would be in the interval ($\pm$a) is essentially 100\%. After estimating uncertainties by either Type A or B analysis, the uncertainties are combined in quadrature to yield the combined standard uncertainty. Then the combined standard uncertainty is multiplied by a coverage factor of two, which results in the expanded uncertainty with a 95\% confidence interval (2$\sigma$). For some of these components, such as the zero and calibration elements, uncertainties are derived from referenced instrument specifications. For other components, referenced research results and past experience with the instruments provided input in the uncertainty determination.
+
+Each length measurement was taken carefully. Length measurements such as the room dimensions, instrumentation array locations, and fire apparatus (e.g., nozzle, sprinkler, or fan) placement were made with a hand held laser measurement device which has an accuracy of $\pm$6.0~mm (0.25~in) over a range of 0.61~m (2.0~ft) to 15.3~m (50.0~ft)~\cite{StanleyTools}. However, conditions affecting the measurement, such as levelness of the device, yields an estimated uncertainty of $\pm$0.5\% for measurements in the 2.0~m (6.6~ft) to 10.0~m (32.8~ft) range. Steel measuring tapes with a resolution of $\pm$0.5~mm (0.02~in) were used to locate individual sensors within a measurement array and to measure and position the furniture. The steel measuring tapes were manufactured in compliance with NIST Manual 44, which specifies a tolerance of $\pm$1.6~mm (0.06~in) for 9.1~m (30~ft) tapes and $\pm$6.4~mm (0.25~in) for 30.5~m (100~ft) tapes~\cite{Butcher:2012}. Some issues, such as ``soft'' edges on the upholstered furniture, result in an estimated total expanded uncertainty of $\pm$1.0\%.
+
+The standard uncertainty in temperature of the thermocouple wire itself is $\pm$2.2$^{\circ}$C at $277^{\circ}$C and increases to $\pm$9.5$^{\circ}$C at $871^{\circ}$C as determined by the wire manufacturer~\cite{Omega:2004}. The variation of the temperature in the environment surrounding the thermocouple is known to be much greater than that of the wire uncertainty~\cite{Blevins:1999,Pitts:2003}. Small diameter thermocouples were used to limit the impact of radiative heating and cooling. The estimated total expanded uncertainty for temperature in these experiments is $\pm$15\%.
+
+In this study, total heat flux measurements were made with water-cooled Schimidt-Bolter gauges. The manufacturer reports a $\pm$3\% calibration expanded uncertainty for these devices~\cite{Medtherm:2003}. Results from an international study on total heat flux gauge calibration and response demonstrated that the uncertainty of a Schmidt-Boelter gauge is typically $\pm$8\%~\cite{Pitts:2006}.
+
+The gas measurement instruments and sampling system used in this series of experiments have demonstrated an expanded (k = 2) relative uncertainty of $\pm$1\% when compared with span gas volume fractions~\cite{Bundy:2007}. Given the non-uniformities and movement of the fire gas environment and the limited set of sampling points in these experiments, an estimated uncertainty of $\pm$12\% is associated with gas concentration measurements~\cite{Lock:1}.
+
+Differential pressure reading uncertainty components were derived from pressure transducer instrument specifications and previous experience with pressure transducers. The transducers were factory calibrated and the zero and span of each was checked in the laboratory prior to the experiments yielding an accuracy of $\pm$1\%~\cite{Setra:2002}. The total expanded uncertainty was estimated at 10\%.
+
+Bi-directional probes and single thermocouples were used to measure the velocity. The bi-directional probes used similar pressure transducers as those used for the differential pressure measurements discussed above. Single bare-bead Chromel-Alumel (type K) thermocouples with a 1.0~mm (0.04~in) nominal diameter were co-located with each probe. The thermocouple wire was protected with an 3.2~mm (0.125~in) diameter inconel sheath. A gas velocity measurement study examining the doorway flow of pre-flashover compartment fires yielded expanded uncertainty measurements ranging from $\pm$0.14 to $\pm$0.22 for bi-directional probes similar to the ones described here~\cite{Bryant:FSJ2009}. The total expanded uncertainty for gas velocity in these experiments was estimated to be $\pm$18\%.
+
+\textit{Gas meter flowrate error}
 
 % ==========================
 % = EXPERIMENTAL PROCEDURE =
@@ -224,13 +327,6 @@ A similar procedure was followed for all experiments described in this report. F
 \section{East Structure}
 \label{sec:East_exps}
 Three different test series (Test 4, Test 5, and Test 6) were conducted in the east structure. Each test series was composed of three experiments that used an identical procedure to change the ventilation pattern in the structure. The three procedures used during each test series are outlined in Figures~\ref{fig:Test_4_procedure}-\ref{fig:Test_6_procedure}.
-
-% \begin{figure}[!ht]
-% \includegraphics[width=6in]{../Drawings/East_Structure_Dimensioned}
-% \caption[Plan view of the East Structure.]{East Structure floor layout.}
-% \label{fig:Test_4_procedure}
-% \end{figure}
-% \FloatBarrier
 
 \begin{figure}[!ht]
 	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/East_Structure_Test_4}
@@ -311,7 +407,7 @@ N/A & 3:18 & N/A & N/A & N/A & N/A & N/A & 2:53 \\
 \chapter{Acknowledgments}
 \label{chap:Acknowledgments}
 
-\bibliography{../../../Bibliography/FDS_refs,../../../Bibliography/FDS_general,references}
+\bibliography{../../../../../Bibliography/FDS_refs,../../../../../Bibliography/FDS_general}
 
 \appendix
 
