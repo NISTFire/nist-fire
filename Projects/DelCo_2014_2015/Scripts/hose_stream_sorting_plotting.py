@@ -22,12 +22,12 @@ specify_test = False
 specific_name = 'Test_16_West_063014'
 
 # Specify year
-specify_year = True
+specify_year = False
 specific_year = '2015'
 
 # Specify structure
 specify_struct = True
-specific_struct = 'West'
+specific_struct = 'East'
 
 # Specify monitor or handline
 specify_type = False
@@ -40,7 +40,7 @@ skip_files = ['_times', '_reduced', '_results', 'description_', 'hose_d', '_rh',
 # = Specify files to generate =
 # =============================
 
-result_file = True         # Generate a .csv file with channel avgs for specified sensor groups
+result_file = True        # Generate a .csv file with channel avgs for specified sensor groups
 all_channel_plot = False    # Plot of individual channels in sensor group
 group_avg_plot = False     # Plot avg of all channels for sensor group
 stream_avgs_plot = True    # Plot avg of all channels for each stream tested during experiment
@@ -229,10 +229,74 @@ def sort_data(test_name, start_time, test_type):
 		P_or_L_heading:P_or_L_ls,'Door':door_status_ls}
 		group_results = pd.DataFrame(group_set, 
 			columns = ['Start', 'End', 'Stream', P_or_L_heading, 'Door'])
-		return group_results, zero_time_ls
 	else:
-		print ('Need to write code for sorting East Tests')
-		sys.exit()
+		# initialize lists and start_seq value
+		start_seq = -1
+		door_status = 'C'
+		streams_ls = []
+		patterns_ls = []		
+		start_times_ls = []
+		end_times_ls = []
+		location_ls = []
+		door_status_ls = []
+		zero_time_ls = []
+		
+		for index, row in all_times.iterrows():
+			if pd.isnull(row[test_name]) or index == 0:
+				continue
+			else:
+				# mark event start time or add event info to lists
+				if start_seq == -1:
+					zero_time_ls.append(index-start_time)
+				else:
+					end_seq = index-start_time
+					streams_ls.append(stream)
+					patterns_ls.append(pattern)
+					start_times_ls.append(start_seq)
+					end_times_ls.append(end_seq)
+					location_ls.append(location)
+					door_status_ls.append(door_status)
+
+				# Determine stream type, pattern, and target location
+				if 'straight stream' in row[test_name].lower():
+					stream = 'SS'
+					row[test_name] = row[test_name].replace('straight stream', stream)
+				elif 'narrow fog' in row[test_name].lower():
+					stream = 'NF'
+					row[test_name] = row[test_name].replace('narrow fog', stream)
+				elif 'wide fog' in row[test_name].lower():
+					stream = 'WF'
+					row[test_name] = row[test_name].replace('wide fog', stream)
+				
+				# stores location, door status, pattern, and start time for next row
+				if ' at ' in row[test_name]:
+					location = row[test_name].split(' at ')[1]
+
+				if 'door closed' in row[test_name]:
+					door_status = 'C'
+
+				if 'door opened' in row[test_name]:
+					door_status = 'O'
+					
+				if 'fixed' in row[test_name].lower():
+					pattern = 'fixed'
+				elif any('rotated right' in row[test_name]):
+					pattern = 'CW'
+					row[test_name] = row[test_name].replace('rotated right', pattern)
+				elif any('rotated left' in row[test_name]):
+					pattern = 'CCW'
+					row[test_name] = row[test_name].replace('rotated left', pattern)
+				
+				start_seq = index-start_time
+
+				if 'flow stopped' in row[test_name]:
+					start_seq = -1
+
+		group_set = {'Start': start_times_ls, 'End':end_times_ls, 'Stream':streams_ls, 'Pattern':patterns_ls,
+		'Location':location_ls, 'Door':door_status_ls}
+		group_results = pd.DataFrame(group_set, columns = ['Start', 'End', 'Stream', 'Pattern', 'Location', 'Door'])
+	
+	return group_results, zero_time_ls
 
 def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, plot_type, tick_info):
 	plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
@@ -290,14 +354,16 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 	plt.savefig(fig_name)
 	plt.close('all')
 
-# Preset options for plots
-# Plot style - colors and markers
-# These are the "Tableau 20" colors as RGB.
-tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
-			 (44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
-			 (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
-			 (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
-			 (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
+# # Preset options for plots
+# # Plot style - colors and markers
+# # These are the "Tableau 20" colors as RGB.
+# tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
+# 			 (44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
+# 			 (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
+# 			 (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
+# 			 (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
+
+tableau20 = [(174, 199, 232), (255, 187, 120), (152, 223, 138)]
 
 # Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
 for i in range(len(tableau20)):
@@ -381,7 +447,7 @@ for f in os.listdir(data_dir):
 		if 'West' in test_name:
 			included_groups = ['BDP A10']
 		else:
-			error_message('Need to write east code')
+			included_groups = ['BDP A6']
 
 		# List through sensor groups to analyze
 		for group in channel_groups.groups:
@@ -458,34 +524,38 @@ for f in os.listdir(data_dir):
 
 			if result_file:     # create file with averages for each channel at each event listed in group_results
 				group_results['Avg'] = ''
-				SS_near_data = []
-				SS_far_data = []
-				SB_near_data = []
-				SB_far_data = []
+				# SS_near_data = []
+				# SS_far_data = []
+				# SB_near_data = []
+				# SB_far_data = []
+				if 'West' in test_name:
+					col_start = 5
+				else:
+					col_start = 6
 
 				for index, row in group_results.iterrows():
 					# create df for each event in new .csv file
 					seq_data = group_data.iloc[row['Start']:row['End']]
-					if row['Door'] == 'BC open':
-						if row['Stream'] == 'SS':
-							if row['Location'] == 'near':
-								SS_near_data.append(seq_data['Avg'])
-							elif row['Location'] == 'far':
-								SS_far_data.append(seq_data['Avg'])
-							else:
-								error_message('Invalid location read')
-						elif row['Stream'] == 'SB':
-							if row['Location'] == 'near':
-								SB_near_data.append(seq_data['Avg'])
-							elif row['Location'] == 'far':
-								SB_far_data.append(seq_data['Avg'])
-							else:
-								error_message('Invalid location read')
-						else:
-							error_message('Invalid stream read')
+					# if row['Door'] == 'BC open':
+					# 	if row['Stream'] == 'SS':
+					# 		if row['Location'] == 'near':
+					# 			SS_near_data.append(seq_data['Avg'])
+					# 		elif row['Location'] == 'far':
+					# 			SS_far_data.append(seq_data['Avg'])
+					# 		else:
+					# 			error_message('Invalid location read')
+					# 	elif row['Stream'] == 'SB':
+					# 		if row['Location'] == 'near':
+					# 			SB_near_data.append(seq_data['Avg'])
+					# 		elif row['Location'] == 'far':
+					# 			SB_far_data.append(seq_data['Avg'])
+					# 		else:
+					# 			error_message('Invalid location read')
+					# 	else:
+					# 		error_message('Invalid stream read')
 
 					# Calculate average for each channel during sequence
-					for column in group_results.columns[5:]:
+					for column in group_results.columns[col_start:]:
 						# calculate avg for each channel during event 
 						group_results.loc[index, column] = str(round(np.mean(seq_data[column]), 1)) + ' +- ' + str(round(np.std(seq_data[column]), 1))
 
@@ -493,10 +563,10 @@ for f in os.listdir(data_dir):
 				# Saves results .csv file for sensor group
 				group_results.to_csv(results_dir + test_name + '_' + group.replace(' ', '_')  + '_averages.csv')
 				print ('   Saving result file for ' + group)
-				print 'SS Near: ' + str(round(np.mean(SS_near_data), 1)) + ' +- ' + str(round(np.std(SS_near_data), 1))
-				print 'SS Far: ' + str(round(np.mean(SS_far_data), 1)) + ' +- ' + str(round(np.std(SS_far_data), 1))
-				print 'SB Near: ' + str(round(np.mean(SB_near_data), 1)) + ' +- ' + str(round(np.std(SB_near_data), 1))
-				print 'SB Far: ' + str(round(np.mean(SB_far_data), 1)) + ' +- ' + str(round(np.std(SB_far_data), 1))
+				# print 'SS Near: ' + str(round(np.mean(SS_near_data), 1)) + ' +- ' + str(round(np.std(SS_near_data), 1))
+				# print 'SS Far: ' + str(round(np.mean(SS_far_data), 1)) + ' +- ' + str(round(np.std(SS_far_data), 1))
+				# print 'SB Near: ' + str(round(np.mean(SB_near_data), 1)) + ' +- ' + str(round(np.std(SB_near_data), 1))
+				# print 'SB Far: ' + str(round(np.mean(SB_far_data), 1)) + ' +- ' + str(round(np.std(SB_far_data), 1))
 
 			if all_channel_plot:        # save plot of individual channels
 				fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '.pdf'
@@ -533,6 +603,8 @@ for f in os.listdir(data_dir):
 				y_max = 0
 
 			if stream_avgs_plot:     # plot and save avg of all channels during each stream
+				y_min = 0
+				y_max = 0
 				fig = plt.figure()
 				plt.rc('axes', color_cycle=tableau20)
 				plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
@@ -551,13 +623,14 @@ for f in os.listdir(data_dir):
 						elif test_type == 'handline':
 							variable_list = ['fixed', 'sweeping', 'rotate CW', 'rotate CCW']
 						for variable in variable_list:
-							xtick_labels.extend(['Hose on, ' + variable,'Stairwell door opened',
-								'2nd floor, W door opened', 'Doors closed'])
+							xtick_labels.extend(['Water on, ' + variable, 'Stairwell door opened',
+								'2nd floor, W door opened', 'Water off, doors closed'])
 					else:
 						variable_list = ['near target', 'far target']
 						for variable in variable_list:
-							xtick_labels.extend(['Hose on, ' + variable, '2nd floor, W door opened', 'Water off',
-								'Hose on, ' + variable, 'Water off', 'Hose on, ' + variable, 'Water off, doors closed'])
+							xtick_labels.extend(['Water on, ' + variable, '2nd floor, W door opened', 'Water off',
+								'Water on, ' + variable, 'Water off', 
+								'Water on, ' + variable, 'Water off, doors closed'])
 
 					xlabel_times = []
 					stream_num = 1
@@ -654,8 +727,69 @@ for f in os.listdir(data_dir):
 							mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=column)
 						column_num = column_num + 1
 				else:
-					error_message('Need to add code for East tests')
+					if test_name[7] == 'A':
+						locations = ['Room B ceiling', 'S doorway in Room B']
+						patterns = ['Fixed', 'CW']
+						loop = 0
+						while (loop < 2):
+							if loop == 1:
+								patterns[1] = 'CCW'
+							for l in locations:
+								for p in patterns:
+									xtick_labels.append(p + ' at ' + l)
+							loop += 1
+						xtick_labels.append(' Water off')
+						updated_times = [0, 30, 60, 90, 120, 150, 180, 210, 240]
+					else:
+						xtick_labels = [' Water on, S doorway in Room B', ' Water flow stopped']
+						updated_times = [0, 60]
+					
+					SS_remain = True
+					NF_remain = True
+					WF_remain = True
+					while(SS_remain or NF_remain or WF_remain):
+						stream_data = []
+						if (SS_remain):
+							for index, row in group_results.iterrows():
+								if row['Door'] == 'O':
+									continue
+								if row['Stream'] == 'SS':
+									stream_data.extend(group_data['Avg'].iloc[int(row['Start']):int(row['End'])])
+							SS_remain = False
+							column = 'SS'
+						elif (NF_remain):
+							for index, row in group_results.iterrows():
+								if row['Door'] == 'O':
+									continue
+								if row['Stream'] == 'NF':
+									stream_data.extend(group_data['Avg'].iloc[int(row['Start']):int(row['End'])])
+							NF_remain = False
+							column = 'NF'
+						elif (WF_remain):
+							for index, row in group_results.iterrows():
+								if row['Door'] == 'O':
+									continue
+								if row['Stream'] == 'WF':
+									stream_data.extend(group_data['Avg'].iloc[int(row['Start']):int(row['End'])])
+							WF_remain = False
+							column = 'WF'
+						
+						# check y min and max
+						stream_data = pd.Series(data = stream_data, index=range(0, len(stream_data)))
+						ma_quantity = pd.rolling_mean(stream_data, 5)
+						ma_quantity = ma_quantity.fillna(method='bfill')
+						if max(ma_quantity) > y_max:
+							y_max = max(ma_quantity)
+							x_max_index = ma_quantity.idxmax(y_max)
+						if min(ma_quantity) < y_min:
+							y_min = min(ma_quantity)
+						t = range(0, len(ma_quantity))
+						plt.plot(t, ma_quantity, 
+							marker=next(plot_markers), markevery=int(len(t))/20, 
+							mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=column + ' A6 Avg')
+								 
 				updated_times[-1] = t[-1]+1
+
 				tick_info = (xtick_labels, updated_times)
 				save_plot(x_max_index, y_max, y_min, start_of_test, len(t), group, 
 					fig_name, 'stream avgs', tick_info)
