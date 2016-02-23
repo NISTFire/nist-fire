@@ -40,40 +40,10 @@ skip_files = ['_times', '_reduced', '_results', 'description_', 'hose_d', '_rh',
 # = Specify files to generate =
 # =============================
 
-result_file = True        # Generate a .csv file with channel avgs for specified sensor groups
+result_file = False       # Generate a .csv file with channel avgs for specified sensor groups
 all_channel_plot = False    # Plot of individual channels in sensor group
 group_avg_plot = False     # Plot avg of all channels for sensor group
 stream_avgs_plot = True    # Plot avg of all channels for each stream tested during experiment
-
-# latex_table_code = False    # Print code to generate tables in LaTeX?
-# if(latex_table_code):       # specify table properties (if applicable)
-#     # Create lists for column titles for desired latex tables
-#     streams = ['SS', 'NF', 'WF']
-#     stream_ls = pd.Series(['\\textit{Straight}', '\\textit{Narrow Fog}', '\\textit{Wide Fog}'], index = streams)
-
-#     # West handline table
-#     west_hand_caption = ('Average air velocity (m/s) through stairwell door with fully established flow path '
-#         'for stream and application pattern combinations during Tests 18 and 19')
-#     west_hand_label = 'table:west_hand_A10_avgs'
-#     west_hand_columns = ['\\textbf{Stream}', '\\textbf{Fixed}', '\\textbf{Sweeping}', '\\textbf{Clockwise}', 
-#         '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}']
-
-#     # West monitor table
-#     west_mon_caption = ('Average air velocity (m/s) through stairwell door with fully established flow path '
-#         'for stream and target location for all monitor tests')
-#     west_mon_label = 'table:all_mon_vel_avgs'
-#     west_mon_columns = ['\\textbf{Stream}', '\\textbf{Near}', '\\textbf{Far}', '\\textbf{Near}', '\\textbf{Far}', '\\textbf{Door AB}']
-
-#     # East handline table
-#     east_hand_caption = ('Average air velocity (m/s) through A6 with established flow path for the stream and application pattern '
-#         'combinations at each target (Room A and ceiling of Room B) during Test 34') 
-#     east_hand_label = 'table:east_hand_A6_avgs'
-#     east_hand_columns = ['\\textbf{Stream}', '\\textbf{Fixed}', '\\textbf{Clockwise}', 
-#         '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}', '\\textbf{Fixed}', 
-#         '\\textbf{Clockwise}', '\\begin{tabular}{@{}c@{}} \\textbf{Counter} \\\ \\textbf{Clockwise} \\\ \\end{tabular}']
-
-	# East monitor table
-	# east monitor data currently included in west monitor table #
 
 #  =======================
 #  = Directory Locations =
@@ -343,7 +313,10 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 		ax3.set_xticklabels(tick_labels, fontsize=10, ha='left')
 		plt.xlim([0, end_time])
 		# Increase figure size for plot labels at top
-		fig.set_size_inches(8, 8)
+		if plot_type == 'stream avgs':
+			fig.set_size_inches(8, 8)
+		else:
+			fig.set_size_inches(12,8)
 	except:
 		pass
 
@@ -354,16 +327,16 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 	plt.savefig(fig_name)
 	plt.close('all')
 
-# # Preset options for plots
-# # Plot style - colors and markers
-# # These are the "Tableau 20" colors as RGB.
-# tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
-# 			 (44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
-# 			 (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
-# 			 (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
-# 			 (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
+# Preset options for plots
+# Plot style - colors and markers
+# These are the "Tableau 20" colors as RGB.
+tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
+			 (44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
+			 (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
+			 (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
+			 (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
 
-tableau20 = [(174, 199, 232), (255, 187, 120), (152, 223, 138)]
+# tableau20 = [(174, 199, 232), (255, 187, 120), (152, 223, 138)]
 
 # Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
 for i in range(len(tableau20)):
@@ -461,7 +434,9 @@ for f in os.listdir(data_dir):
 			group_results = event_times
 
 			# create empty df to fill with desired channel data
-			group_data = pd.DataFrame(data['Time'].loc[0:end_data], columns = ['Time'])
+			group_data = pd.DataFrame(columns = ['Time'])
+			group_data = group_data.set_index('Time')
+			group_data['Time'] = data['Time'].loc[-10:end_data+10]
 
 			if all_channel_plot:
 				fig = plt.figure()
@@ -483,44 +458,42 @@ for f in os.listdir(data_dir):
 				zero_end = zero_start + 20
 				zero_voltage = np.mean(data[channel][zero_start:zero_end])
 				i = 1
-				quantity = []
+				group_data[channel] = ''
+				group_results[channel] = ''
+
 				# convert voltages to velocities
-				for index, row in data.loc[0:end_data].iterrows():
+				for index, row in group_data.iterrows():
 					# check if zero voltage needs to be re-calculated
-					if (zero_time_ls[i] - 25) == row['Time']:
+					if (zero_time_ls[i] - 25) == index:
 						zero_start = int(row['Time'])
 						zero_end = zero_start + 20
 						zero_voltage = np.mean(data[channel][zero_start:zero_end])
 						# iterate i if additional zero voltages will be calculated
 						if i < (len(zero_time_ls)-1):
 							i += 1
-					pressure = conv_inch_h2o * conv_pascal * (row[channel] - zero_voltage)
-					quantity.append(0.0698 * np.sqrt(np.abs(pressure) * (row['TC_' + channel[4:]] + 273.15)) * np.sign(pressure))
-					
-				# add velocities to group_data df and add a column for channel to group_results df
-				group_data[channel] = quantity
-				group_results[channel] = ''
+					pressure = conv_inch_h2o * conv_pascal * (data.loc[index, channel] - zero_voltage)
+					group_data.loc[index, channel] = 0.0698 * np.sqrt(np.abs(pressure) * (data.loc[index, 'TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
 
 				if all_channel_plot:        # plot individual channels
 					# check y min and max
 					ma_quantity = pd.rolling_mean(group_data[channel], 5)
 					ma_quantity = ma_quantity.fillna(method='bfill')
+					ma_quantity = ma_quantity.loc[0:end_data]
 					if max(ma_quantity) > y_max:
 						y_max = max(ma_quantity)
 						x_max_index = group_data['Time'][ma_quantity.idxmax(y_max)]
 					if min(ma_quantity) < y_min:
 						y_min = min(ma_quantity)
 
-					plt.plot(group_data['Time'], ma_quantity, 
+					plt.plot(ma_quantity.index.values, ma_quantity, 
 						marker=next(plot_markers), markevery=int(len(group_data['Time'])/20),
 						mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=channel)
 
 			# calculate channel avg at each time step add to group_data df
 			channel_avg = []
-			std_dev = []
 			for index, row in group_data.iterrows():
 				channel_avg.append(np.mean(row[1:]))
-			group_data['Avg'] = channel_avg  
+			group_data['Avg'] = channel_avg
 
 			if result_file:     # create file with averages for each channel at each event listed in group_results
 				group_results['Avg'] = ''
@@ -529,13 +502,14 @@ for f in os.listdir(data_dir):
 				# SB_near_data = []
 				# SB_far_data = []
 				if 'West' in test_name:
-					col_start = 5
+					first_col = 5		# West results includes either a pattern or a location column
 				else:
-					col_start = 6
+					first_col = 6		# East results include both a pattern and location column
 
 				for index, row in group_results.iterrows():
 					# create df for each event in new .csv file
-					seq_data = group_data.iloc[row['Start']:row['End']]
+					seq_data = group_data.loc[row['Start']:row['End']]
+
 					# if row['Door'] == 'BC open':
 					# 	if row['Stream'] == 'SS':
 					# 		if row['Location'] == 'near':
@@ -555,9 +529,10 @@ for f in os.listdir(data_dir):
 					# 		error_message('Invalid stream read')
 
 					# Calculate average for each channel during sequence
-					for column in group_results.columns[col_start:]:
+					for column in group_results.columns[first_col:]:
 						# calculate avg for each channel during event 
-						group_results.loc[index, column] = str(round(np.mean(seq_data[column]), 1)) + ' +- ' + str(round(np.std(seq_data[column]), 1))
+						group_results.loc[index, column] = round(np.mean(seq_data[column]), 1)
+						# group_results.loc[index, column] = str(round(np.mean(seq_data[column]), 1)) + ' +- ' + str(round(np.std(seq_data[column]), 1))
 
 
 				# Saves results .csv file for sensor group
@@ -573,6 +548,7 @@ for f in os.listdir(data_dir):
 				save_plot(x_max_index, y_max, y_min, start_of_test, end_data, group, fig_name, 'all channels', [])
 				y_min = 0
 				y_max = 0
+				sys.exit()
 
 			if group_avg_plot:      # plot and save avg of all channels in group
 				fig = plt.figure()
@@ -606,7 +582,7 @@ for f in os.listdir(data_dir):
 				y_min = 0
 				y_max = 0
 				fig = plt.figure()
-				plt.rc('axes', color_cycle=tableau20)
+				plt.rc('axes', color_cycle=[tableau20[1],tableau20[3],tableau20[5]])
 				plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
 				plt.ylabel('Velocity (m/s)', fontsize=20)
 				axis_scale = 'Y Scale BDP'
@@ -750,42 +726,74 @@ for f in os.listdir(data_dir):
 					while(SS_remain or NF_remain or WF_remain):
 						stream_data = []
 						if (SS_remain):
+							iteration = 1
 							for index, row in group_results.iterrows():
 								if row['Door'] == 'O':
 									continue
 								if row['Stream'] == 'SS':
-									stream_data.extend(group_data['Avg'].iloc[int(row['Start']):int(row['End'])])
+									seq_start = int(row['Start'])
+									seq_end = int(row['End'])
+									if iteration == 1:	# fill extra 3 for moving average
+										seq_start = seq_start-3
+									stream_data.extend(group_data['Avg'].loc[seq_start:seq_end])
+									iteration += 1
+							# fill extra 3 at end for moving average
+							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+3])
 							SS_remain = False
 							column = 'SS'
 						elif (NF_remain):
+							iteration = 1
 							for index, row in group_results.iterrows():
 								if row['Door'] == 'O':
 									continue
 								if row['Stream'] == 'NF':
-									stream_data.extend(group_data['Avg'].iloc[int(row['Start']):int(row['End'])])
+									seq_start = int(row['Start'])
+									seq_end = int(row['End'])
+									if iteration == 1:	# fill extra 3 for moving average
+										seq_start = seq_start-3
+									stream_data.extend(group_data['Avg'].loc[seq_start:seq_end])
+									iteration += 1
+							# fill extra 3 at end for moving average
+							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+3])
 							NF_remain = False
 							column = 'NF'
 						elif (WF_remain):
+							iteration = 1
 							for index, row in group_results.iterrows():
 								if row['Door'] == 'O':
 									continue
 								if row['Stream'] == 'WF':
-									stream_data.extend(group_data['Avg'].iloc[int(row['Start']):int(row['End'])])
+									seq_start = int(row['Start'])
+									seq_end = int(row['End'])
+									if iteration == 1:	# fill extra 3 for moving average
+										seq_start = seq_start-3
+									stream_data.extend(group_data['Avg'].loc[seq_start:seq_end])
+									iteration += 1
+							# fill extra 3 at end for moving average
+							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+3])
 							WF_remain = False
 							column = 'WF'
 						
 						# check y min and max
-						stream_data = pd.Series(data = stream_data, index=range(0, len(stream_data)))
-						ma_quantity = pd.rolling_mean(stream_data, 5)
+						stream_data = pd.Series(data = stream_data)
+						print stream_data
+						ma_quantity = pd.rolling_mean(stream_data, 5, center=True)
+						print ma_quantity
+						sys.exit()
 						ma_quantity = ma_quantity.fillna(method='bfill')
 						if max(ma_quantity) > y_max:
 							y_max = max(ma_quantity)
 							x_max_index = ma_quantity.idxmax(y_max)
 						if min(ma_quantity) < y_min:
 							y_min = min(ma_quantity)
+						# print type(ma_quantity)
+						# fill_value = pd.Series(ma_quantity.iloc[-1])
+						# ma_quantity.append(fill_value)
+						print ma_quantity
+						sys.exit()
 						t = range(0, len(ma_quantity))
 						plt.plot(t, ma_quantity, 
-							marker=next(plot_markers), markevery=int(len(t))/20, 
+							marker=next(plot_markers), markevery=int(len(t))/10, 
 							mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=column + ' A6 Avg')
 								 
 				updated_times[-1] = t[-1]+1
