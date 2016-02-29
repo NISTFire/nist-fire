@@ -22,12 +22,12 @@ specify_test = False
 specific_name = 'Test_16_West_063014'
 
 # Specify year
-specify_year = False
+specify_year = True
 specific_year = '2015'
 
 # Specify structure
 specify_struct = True
-specific_struct = 'East'
+specific_struct = 'West'
 
 # Specify monitor or handline
 specify_type = False
@@ -270,13 +270,14 @@ def sort_data(test_name, start_time, test_type):
 
 def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, plot_type, tick_info):
 	plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
-
+	if 'West' not in fig_name and plot_type == 'stream avgs':
+		end_time = end_time - 1
 	ax1 = plt.gca()
 	ax1.set_xlim([0, end_time])
 	ax1.set_ylim(math.floor(y_min)-0.1, math.ceil(y_max)+0.1)
 	ax1.xaxis.set_major_locator(plt.MaxNLocator(8))
 	ax1_xlims = ax1.axis()[0:2]
-	# grid(True)
+	grid(True)
 	plt.axhline(0, color='0.50', lw=1)
 	ax1.set_xlabel('Time (s)', fontsize=20)
 	ax1.set_ylabel('Velocity (m/s)', fontsize=20)
@@ -307,7 +308,11 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 		else:
 			tick_loc = tick_info[1]
 			tick_labels = tick_info[0]
-		[plt.axvline(_x, color='0.50', lw=1) for _x in tick_loc]
+		if 'West' in fig_name:
+			[plt.axvline(_x, color='0.50', lw=1) for _x in tick_loc[:-1]]	
+		else:		
+			[plt.axvline(_x, color='0.50', lw=1) for _x in tick_loc]
+			ax1.set_xticks(tick_loc)
 		ax3.set_xticks(tick_loc)
 		plt.setp(plt.xticks()[1], rotation=60)
 		ax3.set_xticklabels(tick_labels, fontsize=10, ha='left')
@@ -731,14 +736,14 @@ for f in os.listdir(data_dir):
 								if row['Door'] == 'O':
 									continue
 								if row['Stream'] == 'SS':
-									seq_start = int(row['Start'])
+									seq_start = int(row['Start'])+1
 									seq_end = int(row['End'])
 									if iteration == 1:	# fill extra 3 for moving average
 										seq_start = seq_start-3
 									stream_data.extend(group_data['Avg'].loc[seq_start:seq_end])
 									iteration += 1
 							# fill extra 3 at end for moving average
-							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+3])
+							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+4 ])
 							SS_remain = False
 							column = 'SS'
 						elif (NF_remain):
@@ -747,14 +752,14 @@ for f in os.listdir(data_dir):
 								if row['Door'] == 'O':
 									continue
 								if row['Stream'] == 'NF':
-									seq_start = int(row['Start'])
+									seq_start = int(row['Start'])+1
 									seq_end = int(row['End'])
 									if iteration == 1:	# fill extra 3 for moving average
 										seq_start = seq_start-3
 									stream_data.extend(group_data['Avg'].loc[seq_start:seq_end])
 									iteration += 1
 							# fill extra 3 at end for moving average
-							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+3])
+							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+4])
 							NF_remain = False
 							column = 'NF'
 						elif (WF_remain):
@@ -763,40 +768,35 @@ for f in os.listdir(data_dir):
 								if row['Door'] == 'O':
 									continue
 								if row['Stream'] == 'WF':
-									seq_start = int(row['Start'])
+									seq_start = int(row['Start'])+1
 									seq_end = int(row['End'])
 									if iteration == 1:	# fill extra 3 for moving average
 										seq_start = seq_start-3
 									stream_data.extend(group_data['Avg'].loc[seq_start:seq_end])
 									iteration += 1
 							# fill extra 3 at end for moving average
-							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+3])
+							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+4])
 							WF_remain = False
 							column = 'WF'
 						
 						# check y min and max
-						stream_data = pd.Series(data = stream_data)
-						print stream_data
+
+						stream_data = pd.Series(data = stream_data, index=range(-3, len(stream_data)-3))
 						ma_quantity = pd.rolling_mean(stream_data, 5, center=True)
-						print ma_quantity
-						sys.exit()
-						ma_quantity = ma_quantity.fillna(method='bfill')
+						ma_quantity = ma_quantity.dropna()
 						if max(ma_quantity) > y_max:
 							y_max = max(ma_quantity)
 							x_max_index = ma_quantity.idxmax(y_max)
 						if min(ma_quantity) < y_min:
 							y_min = min(ma_quantity)
-						# print type(ma_quantity)
-						# fill_value = pd.Series(ma_quantity.iloc[-1])
-						# ma_quantity.append(fill_value)
-						print ma_quantity
-						sys.exit()
-						t = range(0, len(ma_quantity))
-						plt.plot(t, ma_quantity, 
+
+						t = ma_quantity.index.values[1:updated_times[-1]+2]
+
+						plt.plot(t, ma_quantity.loc[1:updated_times[-1]+1], 
 							marker=next(plot_markers), markevery=int(len(t))/10, 
 							mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=column + ' A6 Avg')
 								 
-				updated_times[-1] = t[-1]+1
+				# updated_times[-1] = t[-1]+1
 
 				tick_info = (xtick_labels, updated_times)
 				save_plot(x_max_index, y_max, y_min, start_of_test, len(t), group, 
