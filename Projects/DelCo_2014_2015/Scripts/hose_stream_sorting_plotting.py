@@ -18,15 +18,15 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Specify name
-specify_test = False
+specify_test = True
 specific_name = 'Test_16_West_063014'
 
 # Specify year
-specify_year = True
+specify_year = False
 specific_year = '2015'
 
 # Specify structure
-specify_struct = True
+specify_struct = False
 specific_struct = 'West'
 
 # Specify monitor or handline
@@ -618,6 +618,8 @@ for f in os.listdir(data_dir):
 					stream_names = []
 					time_btwn_seq = []
 					for index, row in group_results.iterrows():
+						if row['Door'] == 'A open' or row['Door'] == 'Closed A':	# skips part of Test 16
+							continue
 						start_seq = row['Start']
 						if index == 0:      # first row, set initial values
 							end_seq = row['End']
@@ -669,6 +671,7 @@ for f in os.listdir(data_dir):
 					stream_num = stream_num + 1
 					count = 1
 					updated_times = [0]
+					# Find smallest time between each event and updated times for plot and labels
 					while count < (len(xlabel_times)):
 						if count % 2 == 0:
 							current_diff = time_btwn_seq[(count/2)-1]
@@ -676,7 +679,7 @@ for f in os.listdir(data_dir):
 							current_diff = xlabel_times[count]-xlabel_times[count-1]
 						next_time = updated_times[-1] + current_diff
 						if next_time != updated_times[-1]:
-							updated_times.append(next_time+1)
+							updated_times.append(next_time)
 						count = count+1
 					column_num = 0
 					for column in stream_times.columns[:]:
@@ -707,6 +710,7 @@ for f in os.listdir(data_dir):
 							marker=next(plot_markers), markevery=int(len(t))/20, 
 							mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=column)
 						column_num = column_num + 1
+
 				else:
 					if test_name[7] == 'A':
 						locations = ['Room B ceiling', 'S doorway in Room B']
@@ -743,7 +747,7 @@ for f in os.listdir(data_dir):
 									stream_data.extend(group_data['Avg'].loc[seq_start:seq_end])
 									iteration += 1
 							# fill extra 3 at end for moving average
-							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+4 ])
+							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+4])
 							SS_remain = False
 							column = 'SS'
 						elif (NF_remain):
