@@ -19,7 +19,7 @@ rcParams.update({'figure.autolayout': True})
 
 # Specify name
 specify_test = True
-specific_name = 'Test_16_West_063014'
+specific_name = 'Test_17_West_063014'
 
 # Specify year
 specify_year = False
@@ -34,7 +34,7 @@ specify_type = False
 specific_type = 'monitor'
 
 # Files to skip
-skip_files = ['_times', '_reduced', '_results', 'description_', 'hose_d', '_rh', '_burn', '_span']
+skip_files = ['_times', '_reduced', '_results', 'description_', 'hose_d', '_rh', '_burn', '_span', '_original']
 
 # =============================
 # = Specify files to generate =
@@ -267,6 +267,25 @@ def sort_data(test_name, start_time, test_type):
 		group_results = pd.DataFrame(group_set, columns = ['Start', 'End', 'Stream', 'Pattern', 'Location', 'Door'])
 	
 	return group_results, zero_time_ls
+
+def plot_stream_avgs(stream_data, updated_times, x_max_index, y_max, y_min, marker, color, plot_label):
+	stream_data = pd.Series(data = stream_data, index=range(-3, len(stream_data)-3))
+	ma_quantity = pd.rolling_mean(stream_data, 5, center=True)
+	ma_quantity = ma_quantity.dropna()
+	if max(ma_quantity) > y_max:
+		y_max = max(ma_quantity)
+		x_max_index = ma_quantity.idxmax(y_max)
+	if min(ma_quantity) < y_min:
+		y_min = min(ma_quantity)
+
+	t = ma_quantity.index.values[1:updated_times[-1]+2]
+
+	plt.plot(t, ma_quantity.loc[1:updated_times[-1]+1], 
+		ls = line_style, color = color, lw=2,
+		marker=marker, markevery=int(len(t))/10, 
+		mew=1.5, mec='none', ms=7, label=plot_label)
+
+	return x_max_index, y_max, y_min, t
 
 def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, plot_type, tick_info):
 	plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
@@ -586,9 +605,10 @@ for f in os.listdir(data_dir):
 			if stream_avgs_plot:     # plot and save avg of all channels during each stream
 				y_min = 0
 				y_max = 0
+				x_max_index = 0
 				fig = plt.figure()
-				plt.rc('axes', color_cycle=[tableau20[1],tableau20[3],tableau20[5]])
-				plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
+				SS_color, NF_color, WF_color, SB_color = tableau20[1], tableau20[3], tableau20[5], tableau20[7]
+				SS_mark, NF_mark, WF_mark, SB_mark = 's', 'o', '^', 'd'
 				plt.ylabel('Velocity (m/s)', fontsize=20)
 				axis_scale = 'Y Scale BDP'
 				line_style = '-'
@@ -597,6 +617,7 @@ for f in os.listdir(data_dir):
 				fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_stream_avgs.pdf'
 				
 				xtick_labels = []
+				test_streams = ['SS', 'NF', 'WF']
 				if 'West' in test_name:
 					if test_year == '2014':
 						if test_type == 'monitor':
@@ -607,6 +628,7 @@ for f in os.listdir(data_dir):
 							xtick_labels.extend(['Water on, ' + variable, 'Stairwell door opened',
 								'2nd floor, W door opened', 'Water off, doors closed'])
 					else:
+						test_streams = ['SS', 'SB']
 						variable_list = ['near target', 'far target']
 						for variable in variable_list:
 							xtick_labels.extend(['Water on, ' + variable, '2nd floor, W door opened', 'Water off',
@@ -682,34 +704,37 @@ for f in os.listdir(data_dir):
 							updated_times.append(next_time)
 						count = count+1
 					column_num = 0
-					for column in stream_times.columns[:]:
+					for column in test_streams:
 						stream_data = []
 						i = 0
 						for index, row in stream_times.iterrows():
 							if index % 2 == 0:
-								start_loc = row[column]
+								start_loc = row[column]+1
+								if index == 0:
+									start_loc = start_loc-3
 								continue
 							else:
 								if i > (len(time_btwn_seq)-1):        # last end time
-									end_loc = row[column]
+									end_loc = row[column]+4
 								else:       # in between times, add in time between seq
 									end_loc = row[column] + time_btwn_seq[i]
-									i = i + 1
-								stream_data.extend(group_data['Avg'].iloc[start_loc:end_loc])
-						# check y min and max
-						stream_data = pd.Series(data = stream_data)
-						ma_quantity = pd.rolling_mean(stream_data, 5)
-						ma_quantity = ma_quantity.fillna(method='bfill')
-						if max(ma_quantity) > y_max:
-							y_max = max(ma_quantity)
-							x_max_index = ma_quantity.idxmax(y_max)
-						if min(ma_quantity) < y_min:
-							y_min = min(ma_quantity)
-						t = range(0, len(ma_quantity))
-						plt.plot(t, ma_quantity, 
-							marker=next(plot_markers), markevery=int(len(t))/20, 
-							mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=column)
-						column_num = column_num + 1
+									# print start_loc, end_loc
+								i = i + 1
+								stream_data.extend(group_data['Avg'].loc[start_loc:end_loc])
+
+						plot_label = column + ' A10 Avg'
+						if column == 'SS':
+							color, marker = SS_color, SS_mark
+
+						elif column == 'NF':
+							color, marker = NF_color, NF_mark
+						elif column == 'WF':
+							color, marker = WF_color, WF_mark
+						elif column == 'SB':
+							color, marker = SB_color, SB_mark
+
+						x_max_index, y_max, y_min, t = plot_stream_avgs(stream_data, updated_times, 
+														x_max_index, y_max, y_min, marker, color, plot_label)
 
 				else:
 					if test_name[7] == 'A':
