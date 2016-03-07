@@ -407,6 +407,8 @@ for f in os.listdir(data_dir):
 		if check_name(test_name, test_year, test_type):     # check if file should be skipped
 			continue
 		else:   # Load exp. data file
+			if 'Test_17' in test_name:
+				f = test_name + '_original.csv'
 			data = pd.read_csv(data_dir + f)
 			data = data.set_index('TimeStamp(s)')
 			print
@@ -705,6 +707,16 @@ for f in os.listdir(data_dir):
 						count = count+1
 					column_num = 0
 					for column in test_streams:
+						plot_label = column + ' A10 Avg'
+						if column == 'SS':
+							color, marker = SS_color, SS_mark
+						elif column == 'NF':
+							color, marker = NF_color, NF_mark
+						elif column == 'WF':
+							color, marker = WF_color, WF_mark
+						elif column == 'SB':
+							color, marker = SB_color, SB_mark
+						
 						stream_data = []
 						i = 0
 						for index, row in stream_times.iterrows():
@@ -721,17 +733,6 @@ for f in os.listdir(data_dir):
 									# print start_loc, end_loc
 								i = i + 1
 								stream_data.extend(group_data['Avg'].loc[start_loc:end_loc])
-
-						plot_label = column + ' A10 Avg'
-						if column == 'SS':
-							color, marker = SS_color, SS_mark
-
-						elif column == 'NF':
-							color, marker = NF_color, NF_mark
-						elif column == 'WF':
-							color, marker = WF_color, WF_mark
-						elif column == 'SB':
-							color, marker = SB_color, SB_mark
 
 						x_max_index, y_max, y_min, t = plot_stream_avgs(stream_data, updated_times, 
 														x_max_index, y_max, y_min, marker, color, plot_label)
