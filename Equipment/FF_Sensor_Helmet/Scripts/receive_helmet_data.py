@@ -8,7 +8,7 @@ import argparse
 def callback(ch, method, properties, body):
     print '%r' % (body)
     with open(args.log_file, 'a+') as text_file:
-        text_file.write(body+'\n')
+        text_file.write(time.ctime()+','+body+'\n')
 
 # Parse command line arguments
 parser = argparse.ArgumentParser()

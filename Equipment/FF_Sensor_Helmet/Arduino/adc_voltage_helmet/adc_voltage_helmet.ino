@@ -3,6 +3,8 @@
 #include <Bridge.h>
 #include <YunServer.h>
 #include <YunClient.h>
+#include <Time.h>
+#include <TimeLib.h>
 
  Adafruit_ADS1115 ads;   /* Use this for the 16-bit version */
 //Adafruit_ADS1015 ads;  /* Use this for the 12-bit version */
