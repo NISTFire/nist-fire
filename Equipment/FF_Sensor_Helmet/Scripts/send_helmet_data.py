@@ -16,7 +16,8 @@ import math
 retry_timer = 30 # s
 total_time = 0 # s
 
-# Coefficients for ref voltage Type K TC range 0 to 1372C 
+# Coefficients to calculate V_ref using a T_ref for Type K TC range 0 to 1372C
+# http://www.keysight.com/upload/cmc_upload/All/5306OSKR-MXD-5501-040107_2.htm?&cc=US&lc=eng 
 T_ref = 25
 b0 = -1.7600413686*(10**-2)
 b1 = 3.8921204975*(10**-2)
@@ -69,22 +70,19 @@ def read_voltage(channel):
     response = urllib2.urlopen('http://localhost/arduino/adc/' + str(channel))
     voltage = response.read()
     response.close()
-    voltage = float(voltage)
-    return voltage
+    return float(voltage)
 
-def calculate_T(V):
+def calculate_T(V, T_ref):
     # Calculate temperature
     v_ref = (b0 + b1*T_ref + b2*T_ref**2 + b3*T_ref**3 + b4*T_ref**4 + 
     	b5*T_ref**5 + b6*T_ref**6 + b7*T_ref**7 + b8*T_ref**8 + b9*T_ref**9)
     V = V + float(v_ref)
-    T = c0+ c1*V + c2*V**2 + c3*V**3 + c4*V**4 + c5*V**5 + c6*V**6 + c7*V**7 + c8*V**8 + c9*V**9
-    T = round(float(T), 1)
-    return T
+    T = c0 + c1*V + c2*V**2 + c3*V**3 + c4*V**4 + c5*V**5 + c6*V**6 + c7*V**7 + c8*V**8 + c9*V**9
+    return int(T)
 
-def calculate_HF(voltage):
+def calculate_HF(voltage, zero_voltage):
     HF = (voltage-zero_voltage)*m + b
-    HF = round(float(HF), 2)
-    return HF
+    return round(float(HF), 1)
 
 # Attemps to connect to server and run data broadcast loop.
 # If it fails to connect to the broker, it will wait some time
@@ -103,23 +101,23 @@ while True:
             HF_voltage = read_voltage(2)
 
             # Calculate temperature, HF
-            T = calculate_T(T_voltage)
-            HF = calculate_HF(HF_voltage)
+            T = calculate_T(T_voltage, T_ref)
+            HF = calculate_HF(HF_voltage, zero_voltage)
 
             # Construct message for log
-            message = (time.ctime()+',%s,%d,%0.1f,%0.2f') % (args.logger_id, total_time, T, HF)
+            message = (time.ctime()+',%s,%d,%d,%0.1f') % (args.logger_id, total_time, T, HF)
             channel.basic_publish(exchange='logs', routing_key='', body=message)
             print 'Sent %r' % (message)
             with open(args.log_file, 'a+') as text_file:
                 text_file.write(message+'\n')
             total_time = total_time + 1
-            time.sleep(1)
+            time.sleep(0.40)
 
         connection.close()
     except:
         print 'No broker found. Retrying in 30 seconds...'
         # create empty lists for zero voltage and T_ref
-        if total_time < 60:
+        if total_time < 30:
         	HF_V_refs = []
         	T_refs = []
         	zero_sensors = True
@@ -130,8 +128,8 @@ while True:
             HF_voltage = read_voltage(2)
 
             # Calculate temperature, HF
-            T = calculate_T(T_voltage)
-            HF = calculate_HF(HF_voltage)
+            T = calculate_T(T_voltage, T_ref)
+            HF = calculate_HF(HF_voltage, zero_voltage)
 
             # append HF_voltage and T to corresponding lists (if applicable)
             if (zero_sensors):
@@ -143,9 +141,9 @@ while True:
             		zero_sensors = False
 
             # Construct message for log
-            message = (time.ctime()+',%s,%d,%0.1f,%0.2f') % (args.logger_id, total_time, T, HF)
+            message = (time.ctime()+',%s,%d,%d,%0.1f') % (args.logger_id, total_time, T, HF)
             with open(args.log_file, 'a+') as text_file:
                 text_file.write(message+'\n')
-            total_time = total_time + 1
+            # total_time = total_time + 1
             time.sleep(1)
             timer += 1
