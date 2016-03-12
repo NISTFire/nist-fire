@@ -54,13 +54,17 @@ renderer = p2.select(dict(type=GlyphRenderer))
 ds2 = renderer[0].data_source
 
 def update():
-	new_data = pd.read_csv('../Data/UL_Exp_5_031116.csv', index_col=0)
-	time_x = new_data.iloc[-60: , 1]
-	T_data = new_data.iloc[-60: , 2]
-	HF_data = new_data.iloc[-60: , 3]
+	new_data = pd.read_csv('../Data/UL_Exp_19_031216_arduino.csv')
+	time_x = new_data.iloc[ : , 1]
+	T_data = new_data.iloc[ : , 4]
+	HF_data = new_data.iloc[ : , 5]
+	# new_data = pd.read_csv('../Data/UL_Exp_5_031116_revised.csv')
+	# time_x = new_data.loc[ : , 'Plot Time']
+	# T_data = new_data.loc[ : , 'T old']
+	# HF_data = new_data.loc[ : , 'HF new']
 	# Update with latest HF and T readings
 	ds1.data["x"] = time_x
-	ds1.data["y"] = T_data + 6
+	ds1.data["y"] = T_data
 	ds1._dirty = True
 	# cursession().store_objects(ds1)
 	# push_session(ds1)

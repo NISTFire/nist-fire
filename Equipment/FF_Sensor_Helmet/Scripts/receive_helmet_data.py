@@ -4,7 +4,6 @@ import pika
 import time
 import argparse
 
-
 def callback(ch, method, properties, body):
     print '%r' % (body)
     with open(args.log_file, 'a+') as text_file:

@@ -9,12 +9,12 @@ import urllib2
 import math
 
 # User settings
-retry_timer = 30 # s
+retry_timer = 5 # s
 total_time = 0 # s
+calib_time = 30 # s
 
 # Coefficients to calculate V_ref using a T_ref for Type K TC range 0 to 1372C
 # http://www.keysight.com/upload/cmc_upload/All/5306OSKR-MXD-5501-040107_2.htm?&cc=US&lc=eng 
-T_ref = 25
 b0 = -1.7600413686*(10**-2)
 b1 = 3.8921204975*(10**-2)
 b2 = 1.8558770032*(10**-5)
@@ -39,17 +39,14 @@ c8 = 1.057734 * 10**-6
 c9 = -1.052755 * 10**-8 
 
 # Calculate coefficients for SBG
-zero_voltage = 0
-m = 3237.73867465
+m = 3.23773867465
 b = -0.00461250467989
-# m = 0.308857142857
-# b = 0.00142857142857
 # --- numpy is not supported by opkg on Yun, so calculate -----#
 # --- by copying and running following lines into another -----#
 # --- .py file to obtain the values for m and b ---------------#
 # import numpy as np
 # y = np.array([0.0, 4.0, 8.0, 12.0, 16.0, 20.0]) # HF in [kW/m^2]
-# x = np.array([0.0, 0.00124, 0.00247, 0.00371, 0.00494, 0.00618]) # voltage in [V]
+# x = np.array([0.0, 1.24, 2.47, 3.71, 4.94, 6.18]) # voltage in [mV]
 # z = np.polyfit(x, y, 1)
 # m = z[0]
 # b = z[1]
@@ -70,12 +67,17 @@ def read_voltage(channel):
     response.close()
     return float(voltage)
 
-def calculate_T(V, T_ref):
+def calculate_T(V):
+    if V > 1.0:
+        T_ref = 30
+    else:
+        T_ref = 20
     # Calculate temperature
     v_ref = (b0 + b1*T_ref + b2*T_ref**2 + b3*T_ref**3 + b4*T_ref**4 + 
-    	b5*T_ref**5 + b6*T_ref**6 + b7*T_ref**7 + b8*T_ref**8 + b9*T_ref**9)
-    V = V*1000 + v_ref
-    T = c0 + c1*V + c2*V**2 + c3*V**3 + c4*V**4 + c5*V**5 + c6*V**6 + c7*V**7 + c8*V**8 + c9*V**9
+        b5*T_ref**5 + b6*T_ref**6 + b7*T_ref**7 + b8*T_ref**8 + b9*T_ref**9)
+    V = V + v_ref
+    T = (c0 + c1*V + c2*V**2 + c3*V**3 + c4*V**4 + c5*V**5 + 
+        c6*V**6 + c7*V**7 + c8*V**8 + c9*V**9)
     return int(T)
 
 def calculate_HF(voltage, zero_voltage):
@@ -85,6 +87,18 @@ def calculate_HF(voltage, zero_voltage):
 # Attemps to connect to server and run data broadcast loop.
 # If it fails to connect to the broker, it will wait some time
 # and attempt to reconnect indefinitely.
+
+HF_V_refs = []
+T_ref = 20
+
+while(calib_time>total_time):
+    # Read voltages [mV] from ADC channel
+    HF_voltage = read_voltage(2)
+    HF_V_refs.append(HF_voltage)
+    time.sleep(1)
+    total_time = total_time + 1
+zero_voltage = round(float(sum(HF_V_refs)/len(HF_V_refs)), 3)
+# T_ref = float(sum(T_refs)/len(T_refs))
 
 while True:
     try:
@@ -99,47 +113,36 @@ while True:
             HF_voltage = read_voltage(2)
 
             # Calculate temperature, HF
-            T = calculate_T(T_voltage, T_ref)
+            T = calculate_T(T_voltage)
             HF = calculate_HF(HF_voltage, zero_voltage)
 
             # Construct message for log
-            message = ('%s,%d,%d,%0.1f') % (args.logger_id, total_time, T, HF)
+            message = ('%s,%d,%0.3f,%0.3f,%d,%0.1f') % (args.logger_id, 
+                total_time, T_voltage, HF_voltage, T, HF)
             channel.basic_publish(exchange='logs', routing_key='', body=message)
             print 'Sent %r' % (message)
             with open(args.log_file, 'a+') as text_file:
                 text_file.write(message+'\n')
             total_time = total_time + 1
-            time.sleep(0.40)
+            time.sleep(0.5)
 
         connection.close()
     except:
-        print 'No broker found. Retrying in 30 seconds...'
-        # create empty lists for zero voltage and T_ref
-        if total_time < 30:
-        	HF_V_refs = []
-        	T_refs = []
-        	zero_sensors = True
+        print 'No broker found. Retrying in '+str(retry_timer)+' seconds...'
         timer = 0
         while timer < retry_timer:
-            # Read voltages from ADC channel
+            # Read voltages [mV] from ADC channel
             T_voltage = read_voltage(1)
             HF_voltage = read_voltage(2)
 
             # Calculate temperature, HF
-            T = calculate_T(T_voltage, T_ref)
+            T = calculate_T(T_voltage)
             HF = calculate_HF(HF_voltage, zero_voltage)
 
-            # append HF_voltage and T to corresponding lists (if applicable)
-            if (zero_sensors):
-            	HF_V_refs.append(HF_voltage)
-            	T_refs.append(T)
-            	if timer == (retry_timer-1):
-            		zero_voltage = sum(HF_V_refs)/len(HF_V_refs)
-            		T_ref = sum(T_refs)/len(T_refs)
-            		zero_sensors = False
-
             # Construct message for log
-            message = (time.ctime()+',%s,%d,%d,%0.1f') % (args.logger_id, total_time, T, HF)
+            message = ('%s,%d,%0.3f,%0.3f,%d,%0.1f') % (args.logger_id, 
+                total_time, T_voltage, HF_voltage, T, HF)
+            print 'Sent %r' % (message)
             with open(args.log_file, 'a+') as text_file:
                 text_file.write(message+'\n')
             total_time = total_time + 1
