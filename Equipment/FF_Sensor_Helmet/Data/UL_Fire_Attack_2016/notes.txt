@@ -1,0 +1,40 @@
+##########################################
+# Notes about UL Fire Attack Experiments #
+##########################################
+
+~~~~~~~~~~~~~~~
+~~~ General ~~~
+~~~~~~~~~~~~~~~
+- This is the first set of experimental data collected wirelessly by sensor helmet
+	> Format of the data files isn't consistent (different columns for different files)
+	> Will eventually convert all to same format
+
+- Exp 5, 12, 19 have bad temperature readings (TC shorted out by shield's screw)
+
+- Can get specific exp setup/procedure info from UL
+
+~~~~~~~~~~~~~~~~~~~~
+~~~ Experiment 5 ~~~
+~~~~~~~~~~~~~~~~~~~~
+
+- First experiment, only saved converted T and HF which were converted incorrectly
+
+- Use ../../Scripts/convert_Exp_5.py to back-calculate raw HF voltage to calculate correct HF
+
+- The data file containing correct HF measurements is saved as UL_Exp_5_031116_revised.csv
+
+~~~~~~~~~~~~~~~~~~~~~
+~~~ Experiment 12 ~~~
+~~~~~~~~~~~~~~~~~~~~~
+
+- single data file is complete data set from SD card with no timestamps
+
+~~~~~~~~~~~~~~~~~~~~~
+~~~ Experiment 19 ~~~
+~~~~~~~~~~~~~~~~~~~~~	
+	
+- Max HF is from when Keith started to offgas
+
+- UL_Exp_19_031216_arduino.csv is complete data set from SD card with no timestamps, while
+	UL_Exp_19_031216.csv contains data that were sent over wifi during experiment along with timestamps
+

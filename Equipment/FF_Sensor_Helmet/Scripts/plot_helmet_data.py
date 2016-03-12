@@ -2,11 +2,17 @@
 import time
 import numpy as np
 import pandas as pd
+import argparse
 from bokeh.plotting import *
 from bokeh.plotting import figure,hplot,show,output_file,ColumnDataSource,output_server,curdoc
 from bokeh.models import HoverTool, LinearAxis, Range1d, GlyphRenderer
 from bokeh.client import push_session
-# from bokeh.embed import autoload_server
+
+# Parse command line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument('test_name', help='Name for test to be displayed on plot')
+parser.add_argument('data_file', help='Location of data file')
+args = parser.parse_args()
 
 # Bokeh options
 TOOLS="pan,box_zoom,wheel_zoom,reset,resize,save,hover"
@@ -17,7 +23,7 @@ time_x = np.array([])
 T_data = np.array([])
 HF_data = np.array([])
 
-p1 = figure(title='FF Helmet - Temperature', x_axis_label = 'Time (s)', y_axis_label = 'Temperature (°C)',
+p1 = figure(title=args.test_name+' - FF Helmet Temp', x_axis_label = 'Time (s)', y_axis_label = 'Temperature (°C)',
 	tools=TOOLS, plot_width=700, plot_height=500)
 p1.line(time_x, T_data, color="#dd0022", line_width = 4)
 # legend='Amb T')
@@ -29,7 +35,7 @@ p1.yaxis.axis_label_standoff = 10
 p1.title_text_font_size = '24pt'
 # p1.title_label_standoff = 20
 
-p2 = figure(title='FF Helmet - Heat Flux', x_axis_label = 'Time (s)', y_axis_label = 'Heat Flux (kW/m²)',
+p2 = figure(title=args.test_name+' - FF Helmet HF', x_axis_label = 'Time (s)', y_axis_label = 'Heat Flux (kW/m²)',
 	tools=TOOLS, plot_width=700, plot_height=500)
 p2.line(time_x, HF_data, color="#0000dd", line_width = 4, line_dash = 'dashed') 
 #legend='Heat Flux')
@@ -54,7 +60,7 @@ renderer = p2.select(dict(type=GlyphRenderer))
 ds2 = renderer[0].data_source
 
 def update():
-	new_data = pd.read_csv('../Data/UL_Exp_19_031216_arduino.csv')
+	new_data = pd.read_csv(args.log_file)
 	time_x = new_data.iloc[ : , 1]
 	T_data = new_data.iloc[ : , 4]
 	HF_data = new_data.iloc[ : , 5]
