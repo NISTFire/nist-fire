@@ -9,7 +9,7 @@ import urllib2
 import math
 
 # User settings
-retry_timer = 5 # s
+retry_timer = 30 # s
 total_time = 0 # s
 calib_time = 30 # s
 
@@ -67,14 +67,10 @@ def read_voltage(channel):
     response.close()
     return float(voltage)
 
-def calculate_T(V):
-    if V > 1.0:
-        T_ref = 30
-    else:
-        T_ref = 20
+def calculate_T(V, v_ref):
     # Calculate temperature
-    v_ref = (b0 + b1*T_ref + b2*T_ref**2 + b3*T_ref**3 + b4*T_ref**4 + 
-        b5*T_ref**5 + b6*T_ref**6 + b7*T_ref**7 + b8*T_ref**8 + b9*T_ref**9)
+    # v_ref = (b0 + b1*T_ref + b2*T_ref**2 + b3*T_ref**3 + b4*T_ref**4 + 
+    #     b5*T_ref**5 + b6*T_ref**6 + b7*T_ref**7 + b8*T_ref**8 + b9*T_ref**9)
     V = V + v_ref
     T = (c0 + c1*V + c2*V**2 + c3*V**3 + c4*V**4 + c5*V**5 + 
         c6*V**6 + c7*V**7 + c8*V**8 + c9*V**9)
@@ -84,13 +80,12 @@ def calculate_HF(voltage, zero_voltage):
     HF = (voltage-zero_voltage)*m + b
     return round(float(HF), 1)
 
-# Attemps to connect to server and run data broadcast loop.
-# If it fails to connect to the broker, it will wait some time
-# and attempt to reconnect indefinitely.
+# Calculate v_ref for TC, zero_voltage for SBG
+T_ref = 20
+v_ref = (b0 + b1*T_ref + b2*T_ref**2 + b3*T_ref**3 + b4*T_ref**4 + 
+    b5*T_ref**5 + b6*T_ref**6 + b7*T_ref**7 + b8*T_ref**8 + b9*T_ref**9)
 
 HF_V_refs = []
-T_ref = 20
-
 while(calib_time>total_time):
     # Read voltages [mV] from ADC channel
     HF_voltage = read_voltage(2)
@@ -98,7 +93,10 @@ while(calib_time>total_time):
     time.sleep(1)
     total_time = total_time + 1
 zero_voltage = round(float(sum(HF_V_refs)/len(HF_V_refs)), 3)
-# T_ref = float(sum(T_refs)/len(T_refs))
+
+# Attemps to connect to server and run data broadcast loop.
+# If it fails to connect to the broker, it will wait some time
+# and attempt to reconnect indefinitely.
 
 while True:
     try:
@@ -113,7 +111,7 @@ while True:
             HF_voltage = read_voltage(2)
 
             # Calculate temperature, HF
-            T = calculate_T(T_voltage)
+            T = calculate_T(T_voltage, v_ref)
             HF = calculate_HF(HF_voltage, zero_voltage)
 
             # Construct message for log
@@ -136,7 +134,7 @@ while True:
             HF_voltage = read_voltage(2)
 
             # Calculate temperature, HF
-            T = calculate_T(T_voltage)
+            T = calculate_T(T_voltage, v_ref)
             HF = calculate_HF(HF_voltage, zero_voltage)
 
             # Construct message for log
