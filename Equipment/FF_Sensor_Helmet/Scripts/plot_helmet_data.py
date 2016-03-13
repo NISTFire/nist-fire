@@ -66,7 +66,7 @@ ds2 = renderer[0].data_source
 def update():
 	new_data = pd.read_csv(args.data_file, index_col=0)
 	time_x = new_data.iloc[-60: , 1]
-	T_data = new_data.iloc[-60: , 4]
+	T_data = new_data.iloc[-60: , 4] + 6
 	HF_data = new_data.iloc[-60: , 5]
 	# new_data = pd.read_csv('../Data/UL_Exp_5_031116_revised.csv')
 	# time_x = new_data.loc[ : , 'Plot Time']

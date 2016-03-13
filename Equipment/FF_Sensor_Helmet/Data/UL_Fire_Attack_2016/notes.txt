@@ -38,6 +38,12 @@
 - UL_Exp_19_031216_arduino.csv is complete data set from SD card with no timestamps, while
 	UL_Exp_19_031216.csv contains data that were sent over wifi during experiment along with timestamps
 
+~~~~~~~~~~~~~~~~~~~~~
+~~~ Experiment 19 ~~~
+~~~~~~~~~~~~~~~~~~~~~	
+
+- Temperature reading ~6 degrees low at ambient
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~ Steps/Commands used to start live plotting ~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -50,17 +56,17 @@
 
 3. Once pack is on FF, start background data collection with following commands in specified 	terminals:
 	a) Grass Terminal:
-		python ../mnt/sda1/Scripts/send_helmet_data.py 172.20.10.10 ArduinoHelmet1 ../mnt/sda1/Data/UL_Fire_Attack_2016/UL_Exp_XX_031316.csv
+		python ../mnt/sda1/Scripts/send_helmet_data.py 172.20.10.10 ArduinoHelmet1 ../mnt/sda1/Data/UL_Fire_Attack_2016/UL_Exp_7_031316.csv
 	b) Ocean Terminal:
-		python receive_helmet_data.py 172.20.10.10 ../Data/UL_Fire_Attack_2016/UL_Exp_XX_031316.csv
+		python receive_helmet_data.py 172.20.10.10 ../Data/UL_Fire_Attack_2016/UL_Exp_7_031316.csv
 	c) Solid Colors Terminal:
-		python plot_helmet_data.py Experiment_XX ../Data/UL_Fire_Attack_2016/UL_Exp_XX_031316.csv
+		python plot_helmet_data.py Experiment_7 ../Data/UL_Fire_Attack_2016/UL_Exp_7_031316.csv
 
 4. Full screen plot
 
 5. After data are collected, copy arduino data to local machine:
 	a) Ocean Terminal:
-		scp root@arduinohelmet1.local:/mnt/sda1/Data/UL_Fire_Attack_2016/UL_Exp_XX_031316.csv ../Data/UL_Fire_Attack_2016/UL_Exp_XX_031316.csv
+		scp root@arduinohelmet1.local:/mnt/sda1/Data/UL_Fire_Attack_2016/UL_Exp_XX_031316.csv ../Data/UL_Fire_Attack_2016/UL_Exp_7_031316.csv
 
 
 
