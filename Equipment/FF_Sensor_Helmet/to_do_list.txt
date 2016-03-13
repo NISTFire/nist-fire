@@ -1,0 +1,23 @@
+###### Sensor Helmet Tasks ######
+
+- zero voltage/T_ref 
+
+- secondary axis for T/review bokeh documentation
+
+- fix arduino timestamp
+
+- write bash script to configure codes with correct ip addresses/file name/other set up 		necessary things to start data logging (see notes in UL_Fire_Attack_2016 dir)
+
+- systematic way of removing data from arduino and saving on local machine (goes along with 	Bokeh plot)
+
+- create section in equipment guide specific to sensor helmet & real-time plotting
+
+- resolve connectivity issues --> set up own wifi network and repeaters
+
+- change out TC, possibly add humidity sensor 
+
+- consider redesigning water reservoir/cooling and data lines
+
+- setting up bokeh server to publish to website such that anyone can view real time plotting
+
+- make 2nd helmet with other HF gauge
