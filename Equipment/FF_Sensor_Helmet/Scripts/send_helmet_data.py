@@ -81,14 +81,9 @@ def calculate_HF(voltage, zero_voltage):
     return round(float(HF), 1)
 
 # Calculate v_ref for TC, zero_voltage for SBG
-T_ref_20 = 20
-v_ref_20 = (b0 + b1*T_ref_20 + b2*T_ref_20**2 + b3*T_ref_20**3 + b4*T_ref_20**4 + 
+T_ref = 20
+v_ref = (b0 + b1*T_ref_20 + b2*T_ref_20**2 + b3*T_ref_20**3 + b4*T_ref_20**4 + 
     b5*T_ref_20**5 + b6*T_ref_20**6 + b7*T_ref_20**7 + b8*T_ref_20**8 + b9*T_ref_20**9)
-T_ref_30 = 30
-v_ref_30 = (b0 + b1*T_ref_30 + b2*T_ref_30**2 + b3*T_ref_30**3 + b4*T_ref_30**4 + 
-    b5*T_ref_30**5 + b6*T_ref_30**6 + b7*T_ref_30**7 + b8*T_ref_30**8 + b9*T_ref_30**9)
-
-v_ref = T_ref_20
 
 HF_V_refs = []
 while(calib_time>total_time):
@@ -119,11 +114,6 @@ while True:
             T = calculate_T(T_voltage, v_ref)
             HF = calculate_HF(HF_voltage, zero_voltage)
 
-            if T > 75:
-                v_ref = v_ref_30
-            else:
-                v_ref = v_ref_20
-
             # Construct message for log
             message = ('%s,%d,%0.3f,%0.3f,%d,%0.1f') % (args.logger_id, 
                 total_time, T_voltage, HF_voltage, T, HF)
@@ -151,7 +141,7 @@ while True:
                 v_ref = v_ref_30
             else:
                 v_ref = v_ref_20
-                
+
             # Construct message for log
             message = ('%s,%d,%0.3f,%0.3f,%d,%0.1f') % (args.logger_id, 
                 total_time, T_voltage, HF_voltage, T, HF)
