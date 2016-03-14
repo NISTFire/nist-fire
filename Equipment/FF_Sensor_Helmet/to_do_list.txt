@@ -1,6 +1,8 @@
 ###### Sensor Helmet Tasks ######
 
-- zero voltage/T_ref 
+- Heavy duty case for macbook
+
+- change out TC, add T_ref and humidity sensors
 
 - secondary axis for T/review bokeh documentation
 
