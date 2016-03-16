@@ -211,9 +211,9 @@ The series of field experiments described in this report were conducted in two s
 Each test structure was built on a concrete slab as shown in Fig.~\ref{fig:struct_pics}. The East Structure was designed to simulate a single-story residential structure, and the West Structure was designed to simulate a two-story residential structure. The first floor of each structure had an outer wall composed of interlocking concrete blocks with equal side lengths of 0.61~m (2~ft). The joints and gaps between the blocks were filled with high temperature insulation.
 
 \begin{figure}[!ht]
-	\includegraphics[width=5.25in]{../../Hose_Stream_Report/Figures/Pictures/east_structure}
+	\includegraphics[width=5.25in]{../../Hose_Stream_Tests/Figures/Pictures/east_structure}
 	\\~\\
-	\includegraphics[width=5.25in]{../../Hose_Stream_Report/Figures/Pictures/west_structure}
+	\includegraphics[width=5.25in]{../../Hose_Stream_Tests/Figures/Pictures/west_structure}
 	\caption[North side of the East and West Structures.]{North side of the East (top) and West (bottom) test structures.}
 	\label{fig:struct_pics}
 \end{figure}
@@ -224,11 +224,13 @@ The interior walls of the first floor of each structure were framed with steel s
 The first floor ceiling support of each structure was composed of wood truss joist I-beams (TJIs) with a 0.30~m (11.75~in) depth. Each TJI was composed of laminated veneer lumber flanges with a cross section of 29~mm (1.125~in) x 44~mm (1.75~in) and an 11~mm (0.43~in) thick oriented strand board web as shown in Fig.~\ref{fig:TJI}. Tongue and grove, 18.3~mm (0.72~in) thick, oriented strand board was screwed to the top of the TJIs.
 
 \begin{figure}[!ht]
-	\includegraphics[width=6in]{../../Hose_Stream_Report/Figures/Pictures/TJI_support}
+	\includegraphics[width=6in]{../../Hose_Stream_Tests/Figures/Pictures/TJI_support}
 	\caption[Ceiling support of the West Structure.]{First floor ceiling support of the West Structure composed of wood truss joist I-beams. View is of the southeast corner of the structure.}
 	\label{fig:TJI}
 \end{figure}
 \FloatBarrier
+
+%SIG FIGS ON DIMENSIONS - ROUND COMMON DECIMALS? Example: 0.625 -> 0.6; 0.75 -> 0.8? They could also be changed to fractions
 
 The second floor of the West Structure was built on the wood ceiling support described above and was connected to the first floor by a stairwell. The second story walls were wood framed with 51~mm (2~in) by 102~mm (4~in) studs set to 0.40~m (16~in) centers. The interior walls were protected by 16~mm (0.625~in) fire rated gypsum board, 16~mm (0.625~in) durarock board, and a second layer of 16~mm (0.625~in) fire rated gypsum board. The exterior walls were protected with 11~mm (0.44~in) oriented strand board and 8~mm (0.31~in) fiber cement lap siding.
 
@@ -250,7 +252,7 @@ Dimensioned floor plans of the East and West Structures are presented in Figures
 	\label{fig:west_dimensioned_plan}
 \end{figure}
 
-The interior dimensions of each structure were approximately 6.1~m (20~ft) wide, 11~m (36~ft) long, and 2.4~m (8~ft) high. The stairs connecting the two floors of the West Structure started 1.6~m (5.25~ft) off the south wall with a width of 1.2~m (4~ft) off the east wall and a 0.18~m (7.25~in) rise and 0.19~m (7.5~in) rise. The exterior doors of both structures, the stairwell door on the second level of the West Structure, and a square roof vent with side length 1.2~m (4~ft) and a depth of 0.32~m (12.75~in) were opened and closed at certain instances during experiments to change the ventilation patterns within the structures.
+The interior dimensions of each structure were approximately 6.1~m (20~ft) wide, 11~m (36~ft) long, and 2.4~m (8~ft) high. The stairs connecting the two floors of the West Structure started 1.6~m (5.25~ft) off the south wall with a width of 1.2~m (4~ft) off the east wall and a 0.18~m (7.25~in) rise and 0.19~m (7.5~in) rise. The exterior doors of both structures, the stairwell door on the second level of the West Structure, and the square roof vent of the East Structure with side length 1.2~m (4~ft) and a depth of 0.32~m (12.75~in) were opened and closed at certain instances during experiments to change the ventilation patterns within the structures.
 \FloatBarrier
 
 \section{Instrumentation}
@@ -263,7 +265,15 @@ The structures were instrumented for temperature, gas velocity, heat flux, and g
 	\label{fig:Instrumentation_Legend}
 \end{figure}
 
-Three propane burners, each with a square opening of side length 0.6~m (2~ft) located 0.14~m (5.5~in) above the floor, were positioned 0.6~m (2~ft) from the south and west walls on the first floor of each structure and used as the fuel source in each experiment. Propane was supplied to the burners at a measured flow rate during all experiments.
+Three propane burners, pictured in Fig.~\ref{fig:burners}, were used as the fuel source in each experiment. Each burner had a square opening of side length 0.6~m (2~ft) located 0.14~m (5.5~in) above the floor and were positioned 0.6~m (2~ft) from the south and west walls on the first floor of each structure. Propane was supplied to the burners at a measured flow rate during all experiments.
+% INCLUDE HRR CALCULATIONS HERE
+
+\begin{figure}[!ht]
+	\includegraphics[width=0.9\columnwidth]{../Figures/Pictures/burners}
+	\caption[Three propane burners.]{Three propane burners used as the fuel source for the experiments at a position of 0.6~m (2~ft) off the south and west walls of the East Structure.}
+	\label{fig:burners}
+\end{figure}
+
 \FloatBarrier
 
 \subsection{East Structure}
@@ -276,7 +286,7 @@ The East Structure was instrumented with five bare-bead thermocouple arrays, fou
 \end{figure}
 \FloatBarrier
 
-Each bare-bead thermocouple array was composed of eight thermocouples. Three bi-directional probe and solid thermocouple arrays, such as that presented in Fig.~\ref{fig:BDP_arrays}, were centered in each exterior doorway of the structure and contained eight probes. The fourth bi-directional probe plus solid thermocouple array was located at the opening of the roof vent and contained three probes located approximately 0.30~m (1~ft), 0.61~m (2~ft), and 0.91~m (3~ft) off the north wall of the vent and centered between the east and west sides of the vent as pictured in Fig.~\ref{fig:BDP_arrays}. The total heat flux guage/radiometer pairs were set to be aimed to view the ceiling. Gas concentrations were pulled through 9.5~mm (0.375~in) diameter stainless steel tubing. The height of each individual sensor in the sensor arrays are listed in the channel list found in Table~\ref{table:east_channel_list}.   
+Each bare-bead thermocouple array was composed of eight thermocouples. Three bi-directional probe and solid thermocouple arrays were centered in each exterior doorway of the structure and contained eight probes as shown in Fig.~\ref{fig:BDP_arrays}. The fourth bi-directional probe, also presented in Fig.~\ref{fig:BDP_arrays}, plus solid thermocouple array was located at the opening of the roof vent and contained three probes located approximately 0.30~m (1~ft), 0.61~m (2~ft), and 0.91~m (3~ft) off the north wall of the vent and centered between the east and west sides of the vent. The total heat flux gauge/radiometer pairs were set to be aimed to view the ceiling. Gas concentrations were pulled through 9.5~mm (0.375~in) diameter stainless steel tubing. The height of each individual sensor in the sensor arrays are listed in the channel list found in Table~\ref{table:east_channel_list}.   
 
 \begin{figure}[!ht]
 	\includegraphics[width=0.45\columnwidth]{../Figures/Pictures/doorway_BDPs}
@@ -439,7 +449,7 @@ Each bare-bead thermocouple array was composed of eight thermocouples. Three bi-
 \clearpage
 
 \subsection{West Structure}
-The first floor of the West Structure was instrumented with three bare-bead thermocouple arrays, three bi-directional probe plus solid thermocouple arrays, and one gas sample inlet pipe, and the second floor was equipped with three bare-bead thermocouple arrays, four bi-directional probe plus solid thermocouple arrays, and one gas sample inlet pipe. The locations of the instrumentation in the West Structure is shown in Fig.~\ref{fig:west_instrumentation}.
+The first floor of the West Structure was instrumented with three bare-bead thermocouple arrays, two bi-directional probe plus solid thermocouple arrays, and one gas sample inlet pipe. The second floor was equipped with three bare-bead thermocouple arrays, four bi-directional probe plus solid thermocouple arrays, two total heat flux sensor pairs (one facing horizontal and one facing vertical), and one gas sample inlet pipe. The location of the instrumentation in the West Structure is shown in Fig.~\ref{fig:west_instrumentation}.
 
 \begin{figure}[!ht]
 	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/West_Structure_2nd_Floor_Dimensioned_Instrumentation}
@@ -449,7 +459,7 @@ The first floor of the West Structure was instrumented with three bare-bead ther
 	\label{fig:west_instrumentation}
 \end{figure}
 
-The thermocouples in the bare-bead thermocouple arrays were spaced in the same manner as the arrays in the East Structure. The bi-directional probe and thermocouple arrays contained 8 probes with spacing identical to the arrays at the exterior doors of the East Structure. Gas concentrations were pulled through 9.5~mm (0.375~in) diameter stainless steel tubing located 1.2~m (4~ft) above the floor.
+Every thermocouple array contained eight bare-bead thermocouples, each bi-directional probe and solid thermocouple array contained 8 probes, and gas concentrations were pulled through 9.5~mm (0.375~in) diameter stainless steel tubing located 1.2~m (4~ft) above the floor.
 \clearpage
 
 \begin{longtable}[c]{c|lll}
@@ -666,6 +676,14 @@ The thermocouples in the bare-bead thermocouple arrays were spaced in the same m
  & BDP\_A14\_6 & 1.52~m below soffit  & Velocity \\
  & BDP\_A14\_7 & 1.83~m below soffit  & Velocity \\
  & BDP\_A14\_8 & 2.13~m below soffit  & Velocity \\
+\midrule
+\multirow{2}{*}{\large{\textbf{A16}}}
+ & HF\_2\_H	  & 1~m above floor, facing doorway (horizontal)      & Total heat flux \\
+ & HF\_2\_V   & 1~m above floor, facing ceiling (vertical)        & Total heat flux \\
+\midrule
+\multirow{2}{*}{\large{\textbf{A17}}}
+ & HF\_1\_H	  & 1~m above floor, facing doorway (horizontal)      & Total heat flux \\
+ & HF\_1\_V	  & 1~m above floor, facing ceiling (vertical)        & Total heat flux \\
 \bottomrule
 \end{longtable}
 \clearpage
