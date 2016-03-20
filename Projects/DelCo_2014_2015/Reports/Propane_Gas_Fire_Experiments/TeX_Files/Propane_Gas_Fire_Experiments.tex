@@ -286,7 +286,7 @@ The East Structure was instrumented with five bare-bead thermocouple arrays, fou
 \end{figure}
 \FloatBarrier
 
-Each bare-bead thermocouple array was composed of eight thermocouples. Three bi-directional probe and solid thermocouple arrays were centered in each exterior doorway of the structure and contained eight probes as shown in Fig.~\ref{fig:BDP_arrays}. The fourth bi-directional probe, also presented in Fig.~\ref{fig:BDP_arrays}, plus solid thermocouple array was located at the opening of the roof vent and contained three probes located approximately 0.30~m (1~ft), 0.61~m (2~ft), and 0.91~m (3~ft) off the north wall of the vent and centered between the east and west sides of the vent. The total heat flux gauge/radiometer pairs were set to be aimed to view the ceiling. Gas concentrations were pulled through 9.5~mm (0.375~in) diameter stainless steel tubing. The height of each individual sensor in the sensor arrays are listed in the channel list found in Table~\ref{table:east_channel_list}.   
+Each bare-bead thermocouple array was composed of eight thermocouples. Three bi-directional probe and solid thermocouple arrays were centered in each exterior doorway of the structure and contained eight probes as shown in Fig.~\ref{fig:BDP_arrays}. The fourth bi-directional probe and solid thermocouple array, also presented in Fig.~\ref{fig:BDP_arrays}, was located at the opening of the roof vent 0.32~m (12.75 in) above the room ceiling and contained three probes centered between the east and west sides of the vent. The position of each probe and thermocouple pair relative to the south wall of the vent are listed in Table~\ref{table:east_channel_list}. The total heat flux gauge/radiometer pairs were set to be aimed to view the ceiling. Gas concentrations were pulled through 9.5~mm (0.375~in) diameter stainless steel tubing. The height of each individual sensor in the sensor arrays are listed in the channel list found in Table~\ref{table:east_channel_list}.   
 
 \begin{figure}[!ht]
 	\includegraphics[width=0.45\columnwidth]{../Figures/Pictures/doorway_BDPs}
@@ -440,10 +440,14 @@ Each bare-bead thermocouple array was composed of eight thermocouples. Three bi-
  & BDP\_A9\_7 & 1.83~m below soffit  & Velocity \\
  & BDP\_A9\_8 & 2.13~m below soffit  & Velocity \\
 \midrule
-\multirow{3}{*}{\large{\textbf{A10}}}
- & BDP\_A10\_1 & 0.32~m above ceiling & Velocity \\
- & BDP\_A10\_2 & 0.32~m above ceiling & Velocity \\
- & BDP\_A10\_3 & 0.32~m above ceiling & Velocity \\
+\multirow{6}{*}{\large{\textbf{A10}}}
+ & TC\_A10\_1 & 0.91~m from S side of vent & Temperature \\
+ & TC\_A10\_2 & 0.61~m from S side of vent & Temperature \\
+ & TC\_A10\_3 & 0.30~m from S side of vent & Temperature \\
+\cline{2-4}
+ & BDP\_A10\_1 & 0.91~m from S side of vent & Velocity \\
+ & BDP\_A10\_2 & 0.61~m from S side of vent & Velocity \\
+ & BDP\_A10\_3 & 0.30~m from S side of vent & Velocity \\
 \bottomrule
 \end{longtable}
 \clearpage
@@ -677,16 +681,17 @@ Every thermocouple array contained eight bare-bead thermocouples, each bi-direct
  & BDP\_A14\_7 & 1.83~m below soffit  & Velocity \\
  & BDP\_A14\_8 & 2.13~m below soffit  & Velocity \\
 \midrule
-\multirow{2}{*}{\large{\textbf{A16}}}
- & HF\_2\_H	  & 1~m above floor, facing doorway (horizontal)      & Total heat flux \\
- & HF\_2\_V   & 1~m above floor, facing ceiling (vertical)        & Total heat flux \\
+\multirow{3}{*}{\large{\textbf{A16}}}
+ & HF\_2\_H	  & \begin{tabular}{l} 1~m above floor, \\ facing doorway (horizontal) \end{tabular} & Total heat flux \\
+ & HF\_2\_V   & \begin{tabular}{l} 1~m above floor, \\ facing ceiling (vertical) \end{tabular} 	   & Total heat flux \\
 \midrule
-\multirow{2}{*}{\large{\textbf{A17}}}
- & HF\_1\_H	  & 1~m above floor, facing doorway (horizontal)      & Total heat flux \\
- & HF\_1\_V	  & 1~m above floor, facing ceiling (vertical)        & Total heat flux \\
+\multirow{3}{*}{\large{\textbf{A17}}}
+ & HF\_1\_H	  & \begin{tabular}{l} 1~m above floor, \\ facing doorway (horizontal) \end{tabular} & Total heat flux \\
+ & HF\_1\_V	  & \begin{tabular}{l} 1~m above floor, \\ facing ceiling (vertical) \end{tabular} 	   & Total heat flux \\
 \bottomrule
 \end{longtable}
 \clearpage
+% FIX 'CHANNEL LOCATION' CENTERING FOR A16/17 
 
 \subsection{Measurement Uncertainty}
 \label{sec:Uncertainty}
@@ -723,21 +728,59 @@ A similar procedure was followed for all experiments described in this report. F
 \label{sec:east_procedure}
 Four different tests---Test 2, Test 3, Test 4, and Test 5---were conducted in the East Structure. Each series was composed of three experiments that used an identical procedure to change the ventilation in the structure. The experiments conducted during Series 4 followed a procedure in which each exterior door was opened to change the ventilation pattern. During the experiments in Series 5, each double door was opened and the roof vent was opened and closed. Both the roof vent and west double door were opened during each experiment in Series 6. Figs.~\ref{fig:east_test_4}--\ref{fig:east_test_6} include a schematic and additional details about the procedures used for the experiments during Series 4--6.
 
+% \begin{table}[!ht]
+% \caption{Event times for Tests 2-4}
+% \begin{tabular}{lccc}
+% \toprule
+%  & \multicolumn{3}{c}{\textbf{\underline{Event Time (mm:ss)}}} \\
+% \textbf{Event} 				& \textbf{Test 2} & \textbf{Test 3} & \textbf{Test 4} \\
+% \midrule
+% Corner burner on 			& 	21:00		  &		4:00		&		4:00	  \\
+% Middle burner on 			&   24:00		  &		7:00		&		7:00	  \\
+% Center burner on 			&   27:00		  &	   10:00		&	   10:00	  \\
+% West double door opened 	&   28:00		  &    11:00		&	   11:00	  \\
+% East double door opened 	&   30:00		  &    13:00		&	   13:00	  \\
+% South exterior door opened 	&   31:00		  &    14:00		&	   14:00	  \\
+% Center burner off 			&   33:00		  &    17:00		&	   17:00	  \\
+% Middle burner off 			&   35:00		  &    19:00		&	   19:00	  \\
+% Corner burner off 			&   37:00		  &    21:00		&	   21:00	  \\
+% \bottomrule
+% \end{tabular}
+% \label{table:Tests_2-4_times}
+% \end{table}
+% RAN FAN AFTER BURNER WAS OFF, BUT DIDN'T INCLUDE BECAUSE BURNERS WERE OFF
+
 \begin{figure}[!ht]
 \begin{minipage}[b]{0.8\columnwidth}
 	\begin{flushleft}
 	\small
-	\begin{tabular}[b]{cc}
- 	\toprule
- 	\textbf{Number} & \textbf{Event Description} \\
- 	\midrule
- 	1-3  & Burners ignited \\
- 	4	 & West double door opened \\
- 	5 	 & East double door opened \\
- 	6	 & South exterior door opened \\
- 	7-9  & Burners extinguished \\
-	\bottomrule
-	\end{tabular}
+	\begin{tabular}{lccc}
+\multicolumn{4}{c}{\normalsize Event Times (mm:ss) for Test Data File} \\
+\toprule
+\multicolumn{1}{c}{\textbf{Event}} & \textbf{Test 2} & \textbf{Test 3} & \textbf{Test 4} \\
+\midrule
+(1) Corner burner on 			& 	21:00		  &		4:00		&		4:00	  \\
+(2) Middle burner on 			&   24:00		  &		7:00		&		7:00	  \\
+(3) Center burner on 			&   27:00		  &	   10:00		&	   10:00	  \\
+(4) West double door opened 	&   28:00		  &    11:00		&	   11:00	  \\
+(5) East double door opened 	&   30:00		  &    13:00		&	   13:00	  \\
+(6) South exterior door opened 	&   31:00		  &    14:00		&	   14:00	  \\
+(7) Center burner off 			&   33:00		  &    17:00		&	   17:00	  \\
+(8) Middle burner off 			&   35:00		  &    19:00		&	   19:00	  \\
+(9) Corner burner off 			&   37:00		  &    21:00		&	   21:00	  \\
+\bottomrule
+\end{tabular}
+	% \begin{tabular}[b]{cc}
+ % 	\toprule
+ % 	\textbf{Number} & \textbf{Event Description} \\
+ % 	\midrule
+ % 	1-3  & Burners ignited \\
+ % 	4	 & West double door opened \\
+ % 	5 	 & East double door opened \\
+ % 	6	 & South exterior door opened \\
+ % 	7-9  & Burners extinguished \\
+	% \bottomrule
+	% \end{tabular}
 	\end{flushleft}
 \end{minipage}
 \begin{minipage}[b]{0.9\columnwidth}
@@ -745,26 +788,52 @@ Four different tests---Test 2, Test 3, Test 4, and Test 5---were conducted in th
 	\centering
 	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/East_Structure_Test_4}
 \end{minipage}
-\caption{Test Series 4 layout and sequence of events.}
-\label{fig:east_test_4}
+\caption{Test 2-4 layout and sequence of events.}
+\label{fig:Tests_2-4_layout}
 \end{figure}
 
 \begin{figure}[!ht]
 \begin{minipage}[b]{0.8\columnwidth}
 	\begin{flushleft}
 	\small
-	\begin{tabular}[b]{cc}
- 	\toprule
- 	\textbf{Number} & \textbf{Event Description} \\
- 	\midrule
- 	1-3  & Burners ignited \\
- 	4	 & Roof vent opened \\
- 	5 	 & West double door opened \\
- 	6 	 & East double door opened \\	
- 	7	 & Roof vent closed \\
- 	8-10  & Burners extinguished \\
-	\bottomrule
-	\end{tabular}
+\begin{figure}[!ht]
+\begin{minipage}[b]{0.8\columnwidth}
+	\begin{flushleft}
+	\small
+	\begin{tabular}{lccc}
+\multicolumn{4}{c}{\normalsize Event Times (mm:ss) for Test Data File} \\
+\toprule
+\multicolumn{1}{c}{\textbf{Event}} & \textbf{Test 2} & \textbf{Test 3} & \textbf{Test 4} \\
+\midrule
+(1) Corner burner on 			& 	14:00		  &	   34:30		&	   54:30	\\
+(2) Middle burner on 			&   14:15		  &	   34:45		&	   54:45	\\
+(3) Center burner on 			&   14:30		  &	   35:00		&	   55:00	\\
+(4) Roof vent opened 			&   16:38		  &    36:30		&	   56:30	\\
+(5) West double door opened 	&	17:03		  &	   38:00 		&	   58:00 	\\
+(6) East double door opened 	&   20:03		  &    39:30		&	   59:31	\\
+(7) Roof vent closed		 	&   21:30		  &    42:45		&	   61:43	\\
+(7) Center burner off 			&   23:00		  &    44:15		&	   63:30	\\
+(8) Middle burner off 			&   23:20		  &    44:30		&	   63:45	\\
+(9) Corner burner off 			&   23:40		  &    44:45		&	   64:00	\\
+(10) Roof vent opened			& 	26:05 		  &	   45:30		&	   65:30	\\
+(11) East double door closed	& 	33:17 		  &	   52:38		&	   N/A	\\
+(12) West double door closed	& 	33:30 		  &	   52:55		&	   N/A	\\
+(13) Roof vent closed		 	&   33:45		  &    53:54		&	   N/A	\\
+\bottomrule
+\end{tabular}
+
+	% \begin{tabular}[b]{cc}
+ % 	\toprule
+ % 	\textbf{Number} & \textbf{Event Description} \\
+ % 	\midrule
+ % 	1-3  & Burners ignited \\
+ % 	4	 & Roof vent opened \\
+ % 	5 	 & West double door opened \\
+ % 	6 	 & East double door opened \\	
+ % 	7	 & Roof vent closed \\
+ % 	8-10  & Burners extinguished \\
+	% \bottomrule
+	% \end{tabular}
 	\end{flushleft}
 \end{minipage}
 \begin{minipage}[b]{0.9\columnwidth}
