@@ -19,7 +19,7 @@ def mtext(p, x, y, textstr):
 
 # Choose Test Number
 
-current_test = 'Test_50_West_071615'
+current_test = 'Test_41_West_061415'
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'
@@ -28,8 +28,8 @@ data_dir = '../Experimental_Data/'
 all_times_file = '../Experimental_Data/All_Times.csv'
 
 # Location of scaling conversion files
-scaling_file_west = '../DAQ_Files/West_DelCo_DAQ_Channel_List.csv'
-scaling_file_east = '../DAQ_Files/East_DelCo_DAQ_Channel_List.csv'
+scaling_file_west = '../DAQ_Files/DAQ_Files_2015/West_DelCo_DAQ_Channel_List.csv'
+scaling_file_east = '../DAQ_Files/DAQ_Files_2015/East_DelCo_DAQ_Channel_List.csv'
 
 # Location of test description file
 info_file = '../Experimental_Data/Description_of_Experiments.csv'
@@ -112,28 +112,42 @@ for f in os.listdir(data_dir):
 			# Skip excluded groups listed in test description file
 			if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
 				continue
-			if 'TC A17' == group:
-				axis_scale = 'Y Scale TC'
+			if 'TC A17' == group or 'Heat Flux' == group:
+				if 'TC A17' == group:
+					axis_scale = 'Y Scale TC'
+				else:
+					axis_scale = 'Y Scale HF'
 				output_file(save_dir + test_name + '_' + group.replace(' ', '_') + '.html')
-				p=figure(tools=TOOLS, title = test_name+': '+group, x_axis_label = 'Time (s)', y_axis_label = 'Temperature (C)',plot_width=1000,plot_height=600,
+				p=figure(tools=TOOLS, title = test_name+': '+group, x_axis_label = 'Time (s)',y_axis_label = group,plot_width=1000,plot_height=600,
 					x_range=(0, end_of_test - start_of_test),y_range=(0, np.float(info[axis_scale][test_name])))
 				i=0
 				for channel in channel_groups.get_group(group).index.values:
 					# Skip excluded channels listed in test description file
 					if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
 						continue
+					if 'TC A17' == group:
+						hover_value = 'Temperature'
+						current_channel_data = data[channel_list['Device Name'][channel]]
+					elif 'Heat Flux' == group:
+						current_channel_data = data[channel_list['Device Name'][channel]]
+						calibration_slope = float(channel_list['Calibration Slope'][channel])
+						calibration_intercept = float(channel_list['Calibration Intercept'][channel])
+						zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
+						current_channel_data = (current_channel_data - zero_voltage) * calibration_slope + calibration_intercept
+						if ' H' in channel or 'HF' in channel or 'Heat Flux' in channel:
+						    line_style = '-'
+						elif ' V' in channel or 'RAD' in channel or 'Radiometer' in channel:
+						    line_style = '--'
+						hover_value = 'Heat Flux'
 					# Scale channel and set plot options depending on quantity
-					current_channel_data = data[channel_list['Device Name'][channel]]
-					calibration_slope = float(channel_list['Calibration Slope'][channel])
-					calibration_intercept = float(channel_list['Calibration Intercept'][channel])
 					x=data['Time']
 					y=current_channel_data
 					channel_label= np.tile(channel[:-5], [len(x),1])
 					source = ColumnDataSource({'channels': channel_label})
 					p.line(x, y, source=source,legend=channel,line_width=4,color=colors[i])
 					hover = p.select(dict(type=HoverTool))
-					hover.tooltips = [('Time','$x{000}'), ('Temperature','$y{000}'),('Channel','@channels')]
-					p.legend.orientation = "top_left"
+					hover.tooltips = [('Time','$x{000}'), (hover_value,'$y{000}'),('Channel','@channels')]
+					p.legend.location = "top_left"
 					try:
 					# Add vertical lines and labels for timing information (if available)
 						events = all_times[test_name].dropna()
@@ -146,4 +160,5 @@ for f in os.listdir(data_dir):
 						pass
 					i=i+1
 				show(p)
-
+			else:
+				continue
