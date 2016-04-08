@@ -44,12 +44,11 @@ elif compensated:
 	int_dial_width = 15
 	int_dial_height = 31
 
+# create df to store values
 int_df_headers = ['label']
 for pixID in range(0, int_dial_width*int_dial_height): 
 	int_df_headers.append('pixel'+str(pixID))
 int_img_df = pd.DataFrame(columns=int_df_headers)
-
-img_values_ls = []
 
 # for f in os.listdir(image_dir):	# testing out code with captured screenshots
 # 	if f.endswith('.png'):
@@ -83,7 +82,7 @@ for f in os.listdir(video_dir):	# actually generating training data
 		video_start = info['Video Start'][test_name].split(':')
 		video_end = [int(video_start[0])+test_duration[0], int(video_start[1])+test_duration[1]]
 		video_start_ms = (int(video_start[0])*60+int(video_start[1]))*1000
-		video_end_ms = (video_end[0]*60+video_end[1])*1000
+		video_end_ms = (video_end[0]*60+video_end[1])*1000	
 
 		while(True):
 			# read entire frame as image
@@ -108,10 +107,11 @@ for f in os.listdir(video_dir):	# actually generating training data
 				# cv2.waitKey(0)
 				# pylab.imshow(dial_img)
 				# plt.show()
+				
+				h,w,l = dial_img.shape
 
 				if compensated:
 					# resize image of dial (if necessary)
-					h,w = dial_img.shape[:2]
 					if dial_ID == 0:
 						min_width = frac_dial_width
 						min_height = frac_dial_height
@@ -148,19 +148,20 @@ for f in os.listdir(video_dir):	# actually generating training data
 							print '[ERROR] resize exceeded 5 iterations'
 							sys.exit()
 
-					print w,'x', h
-
-
-				# convert image to ls of RGB values for each pixel and store in df
-
-				# rotate image (if compensated picture and display
-				if uncompensated:
-					dial_img_visible = dial_img
-				else:
 					center = (w/2, h/2)
 					M = cv2.getRotationMatrix2D(center, rotation_angle, 1.0) # (1.0 = scaling factor)
 					dial_img_visible = cv2.warpAffine(dial_img, M, (w,h))
-				cv2.imshow('figure',dial_img_visible)
+
+				# rotate image (if compensated) to view picture
+				else:
+					if h==int_dial_height and w==int_dial_width:
+						dial_img_visible = dial_img
+					else:
+						print 'pixel length and/or width is incorrect'
+						break
+				
+				# display image
+				cv2.imshow('figure', dial_img_visible)
 				plt.show(block=False)
 
 				# Read value from user's input, add to list 
@@ -187,7 +188,6 @@ for f in os.listdir(video_dir):	# actually generating training data
 								i+=1
 						
 						float(img_value)
-						img_values_ls.append(img_value)
 						loop = False
 
 					except ValueError:
@@ -216,7 +216,7 @@ for f in os.listdir(video_dir):	# actually generating training data
 
 									float(corrected_value)
 									try:
-										img_values_ls[-1] = corrected_value
+										int_img_df.iloc[-1, 0] = corrected_value
 									except IndexError:
 										print 'No previous image exists'
 
@@ -230,10 +230,13 @@ for f in os.listdir(video_dir):	# actually generating training data
 								'input should be a single digit or float of format X.X')
 				plt.close()
 				dial_ID += 1
-			print img_values_ls
-			sys.exit()
-# save training data files for int/frac dial images 
-print img_values_ls
+
+				pixel_data = np.multiply(dial_img, 1.0 / 255.0)
+				# reshape into an array with height 1 so it can fit in single row 
+				pixel_data = pixel_data.reshape(h*w, 1, l)
+				new_row = pd.Series([img_value, pixel_data.tolist()], index=int_df_headers)
+				sys.exit()
+
 # group_results.to_csv(results_dir + test_name + '_' + group.replace(' ', '_')  + '_averages.csv')
 # 				print ('   Saving result file for ' + group)
 
