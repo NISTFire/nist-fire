@@ -17,7 +17,7 @@ rcParams.update({'figure.autolayout': True})
 #  =================
 
 # Choose Test Number
-current_test = 'Test_8_04212015'
+current_test = 'Test_2_04202015'
 
 # Plot mode: figure or video
 plot_mode = 'figure'
@@ -101,7 +101,6 @@ for f in os.listdir(data_dir):
             if int(test_name[5:-9]) < 7:
                 channel_list_file = scaling_file_day2
             else:
-                print ('here')
                 channel_list_file = scaling_file_day2_2
         channel_list = pd.read_csv(channel_list_file)
         channel_list = channel_list.set_index('Channel Name')
@@ -193,11 +192,23 @@ for f in os.listdir(data_dir):
                 if channel_list['Measurement Type'][channel] == 'Velocity':
                     conv_inch_h2o = 0.4
                     conv_pascal = 124.54
-                    zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
+                    if test_name[5:-9] == '2' and 'BDP Stairwell Door 0.46 m BS' in channel:
+                        zero_voltage = np.mean(current_channel_data[836:1000])
+                    else:
+                        zero_voltage = np.mean(current_channel_data[0:pre_test_time])  # Get zero voltage from pre-test data
                     pressure = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Convert voltage to pascals
                     # Calculate velocity
                     current_channel_data = 0.0698 * np.sqrt(np.abs(pressure) *
                                                             (data[channel_list['Device Name']['TC ' + channel[4:]]] + 273.15)) * np.sign(pressure)
+                    if test_name[5:-9] == '1' and 'BDP D Side Garage Door' in group:
+                        current_channel_data=-1*current_channel_data
+                    if test_name[5:-9] == '2' and 'BDP Stairwell Door' in group:
+                        current_channel_data=-1*current_channel_data
+                    if test_name[5:-9] == '5' and 'BDP Frontdoor' in group:
+                        current_channel_data=-1*current_channel_data
+                    if test_name[5:-9] == '6' and 'BDP Bedroom 4 Door 0.76 m BS' in channel:
+                        current_channel_data=-1*current_channel_data
+
                     plt.ylabel('Velocity (m/s)', fontsize=20)
                     line_style = '-'
                     axis_scale = 'Y Scale BDP'
@@ -234,10 +245,9 @@ for f in os.listdir(data_dir):
                 if channel_list['Measurement Type'][channel] == 'Gas':
                     zero_voltage = np.mean(current_channel_data[0:pre_test_time])
                     if 'Carbon ' in channel:
-                        current_channel_data = (current_channel_data-zero_voltage) * calibration_slope + calibration_intercept
+                        current_channel_data = (current_channel_datac) * calibration_slope + calibration_intercept
                     else:
-                        calibration_slope = 20.95/(zero_voltage-1.)
-                        current_channel_data = (current_channel_data-1.) * calibration_slope
+                        current_channel_data = (current_channel_data) * calibration_slope
                     plt.ylabel('Concentration (%)', fontsize=20)
                     line_style = '-'
                     axis_scale = 'Y Scale GAS'
@@ -322,8 +332,12 @@ for f in os.listdir(data_dir):
                     fig.set_size_inches(10, 6)
                 except:
                     pass
-
-                plt.legend(handles1, labels1, loc='upper left', fontsize=8, handlelength=3)
+                if test_name[5:-9] == '5' and 'Pressure' in group:
+                    plt.legend(handles1, labels1, loc='upper right', fontsize=8, handlelength=3)
+                elif test_name[5:-9] == '3b' and 'TC' in group:
+                    plt.legend(handles1, labels1, loc='upper right', fontsize=8, handlelength=3)               
+                else:
+                    plt.legend(handles1, labels1, loc='upper left', fontsize=8, handlelength=3)
 
                 # Save plot to file
                 print ('Plotting', group)
