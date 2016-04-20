@@ -134,6 +134,13 @@ National Institute of Standards and Technology, nor is it intended to imply that
 entities, materials, or equipment are necessarily the best available for the purpose. \\
 }
 
+\vspace{0.2in}
+
+\Flushright{Regarding Non-Metric Units: The policy of the National Institute of Standards and Technology is to
+use metric units in all its published materials. To aid the understanding of this report, in most cases,
+measurements are reported in both metric and U.S. customary units. There are instances in this study where only the U.S. customary units are used as they relate to specific equipment or common fire service vernacular}
+
+
 \vspace{3in}
 
 \large
@@ -184,6 +191,7 @@ CODEN: NTNOEF }
 \hspace{1.5in} \= \\
 ESTC \> Delaware County Emergency Services Training Center \\
 NIST \> National Institute of Standards and Technology \\
+UL FSRI \> Underwriters Laboratories Firefighter Safety Research Institute
 \end{tabbing}
 
 \newpage
@@ -209,17 +217,17 @@ NIST \> National Institute of Standards and Technology \\
 \label{sec:background}
 % More hose stream studies and explanations
 
-One of the objectives of the Fire Research Division at the National Institute of Standards and Technology (NIST) is to improve the safety and effectiveness of firefighters through improved knowledge of fire behavior and how different firefighting tactics affect the fire environment. NIST has conducted a significant amount of research examining how ventilation affects the growth and spread of fire within structures and how the air flow to the fire may be controlled to limit or delay the growth of the fire~\cite{madrzykowski2009fire,kerber2009fire}. The studies have resulted in guidance to the fire service regarding ventilation tactics. However, ventilation tactics alone will not result in the complete extinguishment of the fire; fire suppression with hose streams is also needed.
+One of the objectives of the Fire Research Division at the National Institute of Standards and Technology (NIST) is to improve the safety and effectiveness of firefighters through improved knowledge of fire behavior and examine how different firefighting tactics affect the fire environment. NIST and UL FSRI have conducted a significant amount of research examining how ventilation affects the growth and spread of fire within structures and how the air flow to the fire may be controlled to limit or delay the growth of the fire~\cite{madrzykowski2009fire,kerber2009fire}. The studies have resulted in guidance to the fire service regarding ventilation tactics. However, ventilation tactics alone will not result in the extinguishment of the fire; fire suppression with hose streams is also needed.
 
-Fire suppression tactics using hose streams also affect the ventilation in a structure and can impact the movement of smoke and heat through a structure as vents are made to advance the hose line or if ventilation inducing handline tactics are in practice. Additional research addressing the coordination of suppression tactics and the impact on ventilation is needed to complete recommendations on fire control tactics to appropriate standards, education, and training documents.
+Fire suppression tactics using hose streams also affect the ventilation in a structure and may impact the movement of smoke and heat through a structure.  As vents are made to advance the hose line or if ventilation inducing handline tactics are in practice, hoselane impacts on venmtilation may be even more significant. Additional research addressing the coordination of suppression tactics and the impact on ventilation is needed to complete recommendations on fire control tactics to appropriate standards, education, and training documents.
 
-There exists a multitude of different tools, methods, and techniques used to apply water for fire suppression using hose streams. A common type of nozzle that is used to apply water during fire suppression in residential structures is a fog nozzle. Most fog nozzles contain an adjustable tip that can be rotated to produce different stream patterns and are therefore often referred to as combination nozzles. The types of streams produced by a fog nozzle are often divided into three categories based on the angle of the stream with respect to the nozzle: a straight stream typically produces an angle less than 15\SI{}{\degree}, a narrow fog stream produces an angle between 15\SI{}{\degree} and 45\SI{}{\degree}, and a wide fog stream produces an angle between 45\SI{}{\degree} to 80\SI{}{\degree}~\cite{IFSTA:Essentials_of_FF} \textit{(cited 5th edition because that's where I got this info from, I'm assuming I can change it to 6th?)}. Increasing the angle of the stream allows for a larger area to be covered by water, thus exposing a larger water droplet surface area for heat absorption. However, increasing the angle decreases the distance reached by the stream and its penetration power and increases the potential to disrupt thermal layering. 
+There exists a multitude of different tools, methods, and techniques used to apply water for fire suppression using hose streams. A common type of nozzle that is used to apply water during fire suppression in residential structures is an adjustable-pattern spray nozzle, commonly referred to as a combination nozzle~\cite{NFPA1964}. Most combination nozzles contain an adjustable tip that can be rotated to produce different stream patterns. The types of streams produced by a combination nozzle are often divided into three categories based on the angle of the stream with respect to the nozzle: a straight stream typically produces an angle less than 15\SI{}{\degree}, a narrow fog stream produces an angle between 15\SI{}{\degree} and 45\SI{}{\degree}, and a wide fog stream produces an angle between 45\SI{}{\degree} to 80\SI{}{\degree}~\cite{IFSTA:Essentials_of_FF} \textit{(cited 5th edition because that's where I got this info from, I'm assuming I can change it to 6th?)}. Increasing the angle of the stream allows for a larger area to be covered by the water spray.  However, increasing the angle decreases the distance reached by the stream and its penetration power. 
 %\textit{Essentials of Fire Fighting} defines 
 %https://docs.google.com/presentation/d/1hZ5DZhYXxCkcIEHNZKumH48b_Q53iM2D7asXkMYlVMM/embed?hl=en&size=l&slide=id.p39
 
 %http://www.tft.com/literature/library/files/bfa.pdf
 %Keith Royer, "Water for Fire Fighting", (Engineering Extension Service, Iowa State University, Ames, Iowa) p. 6 
-In addition to the type of stream pattern used, the method used to apply the hose stream can also vary. For example, Royer suggests using a clockwise rotation instead of a counterclockwise application pattern for the following reasons~\cite{Royer:ISU}:
+In addition to the type of stream pattern used, the method used to apply the hose stream can also vary. For example, Royer suggested using a clockwise rotation instead of a counterclockwise application pattern for the following reasons~\cite{Royer:ISU}:
 \begin{enumerate} 
 	\item Clockwise rotation drives most of the heated gases, smoke, and flames away from the nozzle. Counterclockwise rotation does just the opposite.
 	\item Steam formed by the clockwise rotation has a violent rolling action. Counterclockwise rotation produces steam with an inactive and lazy action.
@@ -228,11 +236,11 @@ In addition to the type of stream pattern used, the method used to apply the hos
 
 \section{Objectives}
 \label{sec:objectives}
-This report is concerned with examining the impact of hose stream and application pattern selection on air movement inside a residential structure. Numerous experiments containing different flow path configurations were conducted to study the impact of hose stream and water application selection on ventilation in a structure. More specifically, the experiments were conducted to fulfill the following objectives:
+This report is concerned with examining the impact of hose stream and application pattern, or nozzle motion, selection on air movement inside a full scale test sturctures built to represent residential sized structures. Numerous experiments containing different flow path configurations were conducted to study the impact of hose stream and water application selection on ventilation in a structure. More specifically, the experiments were conducted to fulfill the following objectives:
 \begin{enumerate}
-	\item Determine which hose stream patterns cause significant air movement in a structure 
-	\item Determine the amount of air movement induced by different stream patterns
-	\item Determine the impact of different stream application patterns on the ventilation in a structure
+	\item Determine which hose stream patterns and application patterns cause significant air movement in a structure 
+	\item Determine the amount of air movement induced by different hose streams and application patterns
+	
 \end{enumerate}
 Four types of hose streams and four different water application patterns were studied throughout the experiments described in this report. Three types of hose stream patterns using a combination nozzle were studied: straight stream, narrow fog stream, and wide fog stream patterns. Water was flowed into the structure by having the hose in a static, or fixed, position, by moving the hose line left-to-right across the room in a sweeping motion, and by rotating the hose line in both the clockwise and counterclockwise directions. Additionally, a set of experiments comparing the impact of a straight stream from a combination nozzle and a solid stream from a smooth bore nozzle on air flows in a structure was conducted. Images of the four types of hose streams are presented in Fig.~\ref{fig:hose_streams}.
 
@@ -273,7 +281,7 @@ To study the impact of different hose stream and application pattern selections 
 
 \section{Experimental Setup}
 \label{sec:exp_setup}
-The series of field experiments described in this report were conducted in two structures of similar design located at the Delaware County Emergency Services Training Center (ESTC) in Sharon Hill, PA. Sensors were installed throughout the residential-sized test structures to measure air velocity during the water flow experiments.  
+The series of field experiments described in this report were conducted in two structures of similar design located at the Delaware County Emergency Services Training Center (ESTC) in Sharon Hill, PA. Differential pressure and temperature sensors were installed at ventilation points throughout the residential-sized test structures to determine air velocity during the water flow experiments.  
 
 \subsection{Test Structures}
 \label{sec:test_structs}
@@ -302,9 +310,10 @@ The first floor ceiling support of each structure was composed of wood truss joi
 \end{figure}
 \FloatBarrier
 
-The second floor of the West Structure was built on the wood ceiling support described above and was connected to the first floor by a stairwell. The second story walls were wood framed with 51~mm (2~in) by 102~mm (4~in) studs set to 0.40~m (16~in) centers. The interior walls were protected by 16~mm (0.625~in) fire rated gypsum board, 16~mm (0.625~in) durarock board, and a second layer of 16~mm (0.625~in) fire rated gypsum board. The exterior walls were protected with 11~mm (0.44~in) oriented strand board and 8~mm (0.31~in) fiber cement lap siding.
+The second floor of the West Structure was built on the wood ceiling support described above and was connected to the first floor by a stairwell. The second story walls were wood framed with nominal 51~mm (2~in) by 102~mm (4~in) studs set to 0.40~m (16~in) centers. The interior walls were protected by 16~mm (0.63~in) fire rated gypsum board, 16~mm (0.63~in) durarock board, and a second layer of 16~mm (0.625~in) fire rated gypsum board. The exterior walls were protected with 11~mm (0.44~in) oriented strand board and 8~mm (0.31~in) fiber cement lap siding.
 
 \textit{Should the english units be in fractions instead of decimals? For example, 0.625 --> 5/8. And if decimals, should they all be rounded to same place?}
+\textit{check dimensions in Fig 2.4, are they consistant with text.  Upstairs is slightly larger and downstairs?}
 
 \subsubsection{Layout}
 \label{sec:layout}
@@ -331,9 +340,11 @@ The exterior doorways of each structure and the stairwell doorway on the second 
 
 \subsection{Instrumentation}
 \label{sec:instrumentation}
-A discussion of uncertainties for each type of measurement in this report can be found in Section~\ref{sec:uncertainty}. For every experiment, gas velocity at an interior doorway was measured using differential pressure transducers connected to bi-directional velocity probes~\cite{McCaffrey:Combustion_and_Flame}. An array of six bi-directional probes located at the northeast interior doorway of the East Structure is pictured below in Fig.~\ref{fig:BDPs}. A single thermocouple was attached to each bi-directional probes to measure the temperature to be used in conjunction with the pressure measurement to derive velocity. Every thermocouple attached to the bi-directional probes was exposed-bead, Chromel-Alumel (type K) with a 1.0~mm (0.04 in) diameter. Starting with the exposed bead, the thermocouple wire was sheathed in a 3.2~mm (0.13 in) diameter Inconel shield that was 0.76~m (2.5~ft) in length. 
+ For every experiment, gas velocity at an interior doorway was calculated using differential pressure transducers connected to bi-directional velocity probes~\cite{McCaffrey:Combustion_and_Flame}. An array of six bi-directional probes located at the northeast interior doorway of the East Structure is pictured below in Fig.~\ref{fig:BDPs}. A single thermocouple was attached to each bi-directional probes to measure the gas temperature to be used in conjunction with the pressure measurement to derive velocity. Every thermocouple attached to the bi-directional probes was exposed-bead, Chromel-Alumel (type K) with a 1.0~mm (0.04 in) diameter. Starting with the exposed bead, the thermocouple wire was sheathed in a 3.2~mm (0.13 in) diameter Inconel shield that was 0.76~m (2.5~ft) in length. 
 
-The approximate locations of the bi-directional probes used to measure air velocity are annotated in the plan views of the East Structure and West Structure experimental setups (Fig.~\ref{fig:east_setup}--\ref{fig:flow_path_2}) found in Section~\ref{sec:exp_procedure}. To minimize potential measurement errors due to external environmental conditions (i.e., wind), only velocity data measured by bi-directional probes located at interior doorways are considered in this report. The set of bi-directional probes at the northeast interior doorway of the East Structure, denoted as ``A6", contained six probes located at distances of 0.30~m (1.0~ft), 0.60~m (2.0~ft), 0.90~m (3.0~ft), 1.20~m (3.9~ft), 1.50~m (4.9~ft), and 1.80~m (5.9~ft) below the soffit of the doorway. The set of bi-directional probes at the interior doorway in the West Structure, denoted as ``A10", contained eight probes located at distances of 0.08~m (0.25~ft), 0.34~m (1.1~ft), 0.61~m (2.0~ft), 0.88~m (2.9~ft), 1.15~m (3.7~ft), 1.42~m (4.7~ft), 1.68~m (5.5~ft), and 1.95~m (6.4~ft) below the soffit of the corresponding doorway.
+The approximate locations of the bi-directional probes are annotated in the plan views of the East Structure and West Structure experimental setups (Fig.~\ref{fig:east_setup}--\ref{fig:flow_path_2}) found in Section~\ref{sec:exp_procedure}. To minimize potential measurement errors due to external environmental conditions (i.e., wind), only velocity data measured by bi-directional probes located at interior doorways are considered in this report. The set of bi-directional probes at the northeast interior doorway of the East Structure, denoted as ``A6", contained six probes located at distances of 0.30~m (1.0~ft), 0.60~m (2.0~ft), 0.90~m (3.0~ft), 1.20~m (3.9~ft), 1.50~m (4.9~ft), and 1.80~m (5.9~ft) below the soffit of the doorway. The set of bi-directional probes at the interior doorway in the West Structure, denoted as ``A10", contained eight probes located at distances of 0.08~m (0.25~ft), 0.34~m (1.1~ft), 0.61~m (2.0~ft), 0.88~m (2.9~ft), 1.15~m (3.7~ft), 1.42~m (4.7~ft), 1.68~m (5.5~ft), and 1.95~m (6.4~ft) below the soffit of the corresponding doorway.
+
+A discussion of uncertainties for each type of measurement in this report can be found in Section~\ref{sec:uncertainty}.
 
 \begin{figure}[!ht]
 	\includegraphics[width=3.5in]{../Figures/Pictures/BDPs_east}
@@ -363,7 +374,7 @@ Water flow rate was measured with a pressure and flow meter combination shown in
 \label{sec:exp_procedure}
 Every experiment discussed in this report involved discharging water at a set flow rate from a combination nozzle in a straight, narrow fog, or wide fog stream pattern or from a smooth bore nozzle in a solid stream pattern. Specific doors were opened or closed before and/or during the experiments to change the ventilation in the structure. 
 
-A total of seven tests were conducted to study the impact of different hose stream and application patterns on gas movement in a structure; three used a combination nozzle attached to a monitor to flow water at approximately 120~GPM, three used a combination nozzle attached directly to a hoseline to flow water at approximately 120~GPM (Fig.~\ref{fig:monitor+handline}), and one used combination and smooth bore nozzles attached to a monitor to flow water at approximately 180~GPM. Experiments that used a monitor to flow water always applied the stream in a fixed position and thus were focused on changing the location of water application in addition to the stream pattern, while the experiments that used a combination nozzle attached directly to a hoseline to flow water focused on varying the pattern in which water was applied in addition to the stream pattern.
+A total of seven scenarios were conducted to study the impact of different hose stream and application patterns on gas movement in a structure; three used a combination nozzle attached to a monitor to flow water at approximately 120~GPM, three used a combination nozzle attached directly to a hoseline to flow water at approximately 120~GPM (Fig.~\ref{fig:monitor+handline}), and one used combination and smooth bore nozzles attached to a monitor to flow water at approximately 180~GPM. Experiments that used a monitor to flow water always applied the stream in a fixed position and thus were focused on changing the location of water application in addition to the stream pattern, while the experiments that used a combination nozzle attached directly to a manual hoseline  to flow water focused on varying the pattern in which water was applied in addition to the stream pattern.
 
 \textit{Should I present flow rates in GPM only, or LPM (GPM)? What about the tables? As of now, GPM is used, but that goes against the rule of keeping the type of units consistent in a table. Same goes for ``1.75 in'' handline.}
 \begin{figure}[!ht]
@@ -397,7 +408,7 @@ The main difference between the two layouts used for the West Structure experime
 	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/Specific_Tests/West_Hose_Test_2nd_Floor_Annotated}
 	\\~\\
 	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/Specific_Tests/West_Hose_Test_18_1st_Floor_Annotated}
-	\caption[Plan view of the West Structure setup for Tests 16 and 18.]{Plan view of the second floor (top) and first floor (bottom) setup in the West Structure for Tests 16 and 18. The approximate location of water flow (nozzle graphic), the direction of the established flow path (red line), and the approximate location of bi-directional probe array A10 (blue square). The stairwell door and north side, west double door on the second floor were opened and closed at certain instances during the tests; the flow path was considered fully established when both doors were in the opened position.}
+	\caption[Plan view of the West Structure setup for Tests 16 and 18.]{Plan view of the second floor (top) and first floor (bottom) setup in the West Structure for Tests 16 and 18. The approximate location of water flow (nozzle graphic), the direction of the established flow path (red line), and the approximate location of bi-directional probe array A10 (blue square). The stairwell door and north side, west double door on the second floor were opened and closed at certain instances during the tests; the flow path was considered fully established when both first and second floor doors were in the opened position.}
 	\label{fig:flow_path_1}
 \end{figure}
 
@@ -405,14 +416,14 @@ The main difference between the two layouts used for the West Structure experime
 	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/Specific_Tests/West_Hose_Test_2nd_Floor_Annotated}
 	\\~\\
 	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/Specific_Tests/West_Hose_Test_19_1st_Floor_Annotated}
-	\caption[Plan view of the West Structure setup for Tests 17 and 19.]{Plan view of the second floor (top) and first floor (bottom) setup in the West Structure for Tests 17 and 19. The approximate location of water flow (nozzle graphic), the direction of the established flow path (red line), and the approximate location of bi-directional probe array A10 (blue square). The stairwell door and north side, west double door on the second floor were opened and closed at certain instances during the tests; the flow path was considered fully established when both doors were in the opened position.}
+	\caption[Plan view of the West Structure setup for Tests 17 and 19.]{Plan view of the second floor (top) and first floor (bottom) setup in the West Structure for Tests 17 and 19. The approximate location of water flow (nozzle graphic), the direction of the established flow path (red line), and the approximate location of bi-directional probe array A10 (blue square). The stairwell door and north side, west double door on the second floor were opened and closed at certain instances during the tests; the flow path was considered fully established when both first and second floor doors were in the opened position.}
 	\label{fig:flow_path_2}
 \end{figure}
 \FloatBarrier
 
 \subsection{Monitor Experiments}
 \label{sec:monitor_procedure}
-Three different tests were conducted using a monitor equipped with a combination nozzle to flow water at 120~GPM in a straight stream, narrow fog stream, and wide fog stream pattern. One test, Test 33, occurred in the East Structure, and the two other tests, Tests 16 and 17, occurred in the West Structure. A fourth test, Test 70, was conducted in the West Structure and used a combination nozzle and a smooth bore nozzle attached to a monitor to flow water at 180~GPM in a straight stream and solid stream, respectively. Because monitors are designed to flow water from a set position, water was always applied in a fixed position during the monitor experiments. Thus, the monitor experiments primarily focused on the impact of different hose stream patterns on air movement in a structure.
+Four different scenarios were conducted using a monitor equipped with a combination nozzle to flow water at 120~GPM in a straight stream, narrow fog stream, and wide fog stream pattern. One test, Test 33, occurred in the East Structure, and the two other tests, Tests 16 and 17, occurred in the West Structure. A fourth test, Test 70, was conducted in the West Structure and used a combination nozzle and a smooth bore nozzle attached to a monitor to flow water at 180~GPM in a straight stream and solid stream, respectively. The monitors were set to flow water from a fixed position.  Water was always applied in a fixed position during the monitor experiments. Thus, the monitor experiments primarily focused on the impact of different hose stream patterns on air movement in a structure and provided a baseline to compare the impact of the motion of the nozzle on the air movement through the stucture.
 
 Test 33 utilized a monitor equipped with a combination nozzle to flow water from Room C of the East Structure to the area above the doorway on the south wall of Room B (Fig.~\ref{fig:test_33_pic}). A plan view of the structure's layout annotated with the approximate location of the bi-directional probe array used to measure gas velocity through an interior doorway (A6) and the general direction of the fully established flow path for Test 33 can be found in Fig.~\ref{fig:east_setup}. The procedure for Test 33 was the simplest of all the test procedures. First, water was flowed in a straight stream pattern for 30 seconds, then the stream was changed to a narrow fog for 30 seconds, and finally to a wide fog stream for 30 seconds. The procedure was repeated an additional time.
 
@@ -501,7 +512,7 @@ Test 34 utilized a 1.75~in handline equipped with a combination nozzle to flow w
 \end{figure}
 
 % Where was the handline aimed? Add flow chart? %
-Tests 18 and 19 followed identical procedures that involved using a 1.75~in handline equipped with a combination nozzle to flow water from the north side double doors of the West Structure into the first floor room. The water stream was aimed at the south side wall of the first floor during the experiments. The difference between Tests 18 and 19 is that Test 18 contained the flow path configuration presented in Fig.~\ref{fig:flow_path_1}, while Test 19 contained the flow path configuration presented in Fig.~\ref{fig:flow_path_2}. Each test began by using a straight stream to flow water in a fixed position. After 60 seconds of water flow, the stairwell door was opened. One minute later, the north side, west double door on the second floor was opened, and water continued to flow for 60 seconds. Next, the water flow was stopped, the two doors were closed, and the process was repeated three additional times for the sweeping, clockwise, and counterclockwise application patterns. This entire procedure was repeated using narrow fog and wide fog streams. Fig.~\ref{fig:test_18_pic} contains an image of a straight stream pattern being applied during Test 18 with the flow path fully established.
+Tests 18 and 19 followed identical procedures that involved using a 1.75~in handline equipped with a combination nozzle to flow water from the north side double doors of the West Structure into the first floor room. The water stream was aimed at the south side wall of the first floor during the experiments. The difference between Tests 18 and 19 is that Test 18 contained the flow path configuration presented in Fig.~\ref{fig:flow_path_1}, while Test 19 contained the flow path configuration presented in Fig.~\ref{fig:flow_path_2}. Each test began by using a straight stream to flow water in a fixed,horizontal position. After 60 seconds of water flow, the stairwell door was opened. One minute later, the north side, west double door on the second floor was opened, and water continued to flow for 60 seconds. Next, the water flow was stopped, the two doors were closed, and the process was repeated three additional times for the sweeping the ceiling, clockwise, and counterclockwise application patterns. This entire procedure was repeated using narrow fog and wide fog streams. Fig.~\ref{fig:test_18_pic} contains an image of a straight stream pattern being applied during Test 18 with the flow path fully established.
 
 \begin{figure}[!ht]
 	\includegraphics[width=4.25in]{../Figures/Pictures/Test_18}
@@ -662,6 +673,14 @@ Overall, the water flow experiments discussed in this report reveal that hose st
 % ====================
 \chapter{Acknowledgments}
 \label{chap:acknowledgments}
+
+The authors would like to thank Roy McLane, Kristopher Overholt, Nicholas Dow, and Jay MCElroy from NIST for their contributions in preparing and conducting these experiments.  These experiments could not have been conducted without them.  
+
+The Delaware County Emergency Services Training Center provided the location and logistical support for these experiments.  The Delaware county team was under the direction of Kerby Kerber.  For construction and test support the team included: Joe Bingham, Dave Wright, Dave Nercesian (small engine repair), Mike Gura, Scott Wiercinski, Bill Fields (Fields Fire Protection).  We also thank the dedicated team of fire instructors and firefighters that supported these experiments; Brian Righter (Rudy), John McGowan, Matthew Poissant, John Frey, Brian Embert, Raymond Keller III, Mike Bramble, Edward McBride, Mark Morrissey, Bill Norris, and Matt LeTourneau.
+
+Thank you for assisting NIST in generating data that will assist the fire service in making tactical choices.
+
+
 
 \bibliography{../../../../../Bibliography/FDS_general}
 
