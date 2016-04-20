@@ -8,9 +8,9 @@
 
 - fix arduino timestamp
 
-- write bash script to configure codes with correct ip addresses/file name/other set up 		necessary things to start data logging (see notes in UL_Fire_Attack_2016 dir)
+- write bash script to configure codes with correct ip addresses/file name/other set up necessary things to start data logging (see notes in UL_Fire_Attack_2016 dir)
 
-- systematic way of removing data from arduino and saving on local machine (goes along with 	Bokeh plot)
+- systematic way of removing data from arduino and saving on local machine (goes along with Bokeh plot)
 
 - create section in equipment guide specific to sensor helmet & real-time plotting
 
