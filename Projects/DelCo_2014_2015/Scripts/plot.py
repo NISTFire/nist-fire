@@ -23,12 +23,12 @@ specify_test = False
 specific_name = 'Test_16_West_063014'
 
 # Specify year
-specify_year = False
+specify_year = True
 specific_year = '2014'
 
 # Specify type
-specify_type = False
-specific_type = 'HOSE'
+specify_type = True
+specific_type = 'GAS'
 
 # Specify structure
 specify_struct = False
