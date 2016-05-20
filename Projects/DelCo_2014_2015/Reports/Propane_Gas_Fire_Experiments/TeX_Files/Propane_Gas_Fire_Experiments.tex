@@ -807,13 +807,13 @@ Test 6 - Seq. 3		& 263 & 526	& 714 & N/A & N/A \\
 	~(5)~ West double door opened 	&	17:03		  &	   38:00 		&	   58:00 	\\
 	~(6)~ East double door opened 	&   20:03		  &    39:30		&	   59:31	\\
 	~(7)~ Roof vent closed		 	&   21:30		  &    42:45		&	   61:43	\\
-	~(7)~ Center burner off 		&   23:00		  &    44:15		&	   63:30	\\
-	~(8)~ Middle burner off 		&   23:20		  &    44:30		&	   63:45	\\
-	~(9)~ Corner burner off 		&   23:40		  &    44:45		&	   64:00	\\
-	(10) Roof vent opened			& 	26:05 		  &	   45:30		&	   65:30	\\
-	(11) East double door closed	& 	33:17 		  &	   52:38		&	   N/A		\\
-	(12) West double door closed	& 	33:30 		  &	   52:55		&	   N/A		\\
-	(13) Roof vent closed		 	&   33:45		  &    53:54		&	   N/A		\\
+	~(8)~ Center burner off 		&   23:00		  &    44:15		&	   63:30	\\
+	~(9)~ Middle burner off 		&   23:20		  &    44:30		&	   63:45	\\
+	(10)  Corner burner off 		&   23:40		  &    44:45		&	   64:00	\\
+	(11) Roof vent opened			& 	26:05 		  &	   45:30		&	   65:30	\\
+	(12) East double door closed	& 	33:17 		  &	   52:38		&	   N/A		\\
+	(13) West double door closed	& 	33:30 		  &	   52:55		&	   N/A		\\
+	(14) Roof vent closed		 	&   33:45		  &    53:54		&	   N/A		\\
 	\bottomrule
 	\end{tabular}
 	\end{flushleft}
@@ -899,19 +899,20 @@ Test 25				& 	  N/A		 	&      N/A			&     	785 	  \\
 	\toprule
 	\multicolumn{1}{c}{\textbf{Event}} 			& \textbf{Test 22}	& \textbf{Test 23} \\
 	\midrule
-	~(1)~  Corner burner on 					& 	9:05 			&	 3:45		\\
-	~(2)~  Middle burner on 					&   8:45	  		&	 3:55		\\
-	~(3)~  Center burner on 					&   8:15	  		&	 4:04		\\
-	~(4)~  2nd floor west double door opened 	&   11:30	  		&    6:00		\\
-	~(5)~  1st floor west double door opened 	&	13:30	  		&    8:02 	 	\\
-	~(6)~  1st floor east double door opened 	&   15:45		  	&    10:00		\\
-	~(7)~  2nd floor east double door opened	&   18:00		  	&    12:08		\\
-	~(8)~  PPV fan on 							&   19:10		  	&    14:01		\\
-	~(9)~  PPV fan off              			&   21:34		  	&    16:30		\\
-	(10) All burners off 						&   22:00		  	&    17:00		\\
-	(11) 2nd floor south exterior door opened 	&   23:19		  	&    18:01		\\
-	(12) PPV fan on 	 						&   26:00		  	&    19:30		\\
-	(13) 2nd floor south exterior door closed   &   27:56		  	&    N/A		\\
+	% ~(1)~  Corner burner on 					& 	9:05 			&	 3:45		\\
+	% ~(2)~  Middle burner on 					&   8:45	  		&	 3:55		\\
+	% ~(3)~  Center burner on 					&   8:15	  		&	 4:04		\\
+	~(1)~  All burners on 						&   8:15	  		&	 3:45		\\
+	~(2)~  2nd floor west double door opened 	&   11:30	  		&    6:00		\\
+	~(3)~  1st floor west double door opened 	&	13:30	  		&    8:02 	 	\\
+	~(4)~  1st floor east double door opened 	&   15:45		  	&    10:00		\\
+	~(5)~  2nd floor east double door opened	&   18:00		  	&    12:08		\\
+	~(6)~  PPV fan on 							&   19:10		  	&    14:01		\\
+	~(7)~  PPV fan off              			&   21:34		  	&    16:30		\\
+	~(8)~  All burners off 						&   22:00		  	&    17:00		\\
+	~(9)~  2nd floor south exterior door opened &   23:19		  	&    18:01		\\
+	(10) PPV fan on 	 						&   26:00		  	&    19:30		\\
+	(11) 2nd floor south exterior door closed   &   27:56		  	&    N/A		\\
 	\bottomrule
 	\end{tabular}
 	\end{flushleft}
@@ -919,8 +920,8 @@ Test 25				& 	  N/A		 	&      N/A			&     	785 	  \\
 \begin{minipage}[b]{0.9\columnwidth}
 	\vspace{15pt}
 	\centering
-	\includegraphics[width=0.84\columnwidth]{../Figures/Floor_Plans/West_Structure_2nd_Floor_Test_22}
-	\includegraphics[width=0.84\columnwidth]{../Figures/Floor_Plans/West_Structure_1st_Floor_Test_22}
+	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/West_Structure_2nd_Floor_Test_22}
+	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/West_Structure_1st_Floor_Test_22}
 \end{minipage}
 \caption{Tests 22--23 layout and event times.}
 \label{fig:west_test_22}
@@ -935,16 +936,17 @@ Test 25				& 	  N/A		 	&      N/A			&     	785 	  \\
 	\toprule
 	\multicolumn{1}{c}{\textbf{Event}} 			& \textbf{Test 24}	& \textbf{Test 25} \\
 	\midrule
-	~(1)~ Corner burner on 						& 	2:30 			&	 2:00		\\
-	~(2)~ Middle burner on 						&   2:45	  		&	 2:00		\\
-	~(3)~ Center burner on 						&   3:00	  		&	 2:00		\\
-	~(4)~ Interior stairwell door opened 		&   5:00	  		&    4:00		\\
-	~(5)~ 1st floor west double door opened 	&	7:00	  		&    6:11 	 	\\
-	~(6)~ 2nd floor west double door opened 	&   9:00		  	&    8:00		\\
-	~(7)~ 2nd floor south exterior door opened	&   11:00		  	&    10:00		\\
-	~(8)~ PPV fan on 							&   13:00		  	&    12:00 		\\
-	~(9)~ All burners off 						&   15:00		  	&    14:00		\\
-	(10) 2nd floor east double door opened 		&   17:15		  	&    16:00		\\
+	% ~(1)~ Corner burner on 					& 	2:30 			&	 2:00		\\
+	% ~(2)~ Middle burner on 					&   2:45	  		&	 2:00		\\
+	% ~(3)~ Center burner on 					&   3:00	  		&	 2:00		\\
+	~(1)~ All burners on 						&   2:30	  		&	 2:00		\\
+	~(2)~ Interior stairwell door opened 		&   5:00	  		&    4:00		\\
+	~(3)~ 1st floor west double door opened 	&	7:00	  		&    6:11 	 	\\
+	~(4)~ 2nd floor west double door opened 	&   9:00		  	&    8:00		\\
+	~(5)~ 2nd floor south exterior door opened	&   11:00		  	&    10:00		\\
+	~(6)~ PPV fan on 							&   13:00		  	&    12:00 		\\
+	~(7)~ All burners off 						&   15:00		  	&    14:00		\\
+	~(8)~ 2nd floor east double door opened 	&   17:15		  	&    16:00		\\
 	\bottomrule
 	\end{tabular}
 	\end{flushleft}
@@ -952,8 +954,8 @@ Test 25				& 	  N/A		 	&      N/A			&     	785 	  \\
 \begin{minipage}[b]{0.9\columnwidth}
 	\vspace{15pt}
 	\centering
-	\includegraphics[width=0.94\columnwidth]{../Figures/Floor_Plans/West_Structure_2nd_Floor_Test_24}
-	\includegraphics[width=0.94\columnwidth]{../Figures/Floor_Plans/West_Structure_1st_Floor_Test_24}
+	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/West_Structure_2nd_Floor_Test_24}
+	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/West_Structure_1st_Floor_Test_24}
 \end{minipage}
 \caption{Tests 24--25 layout and event times.}
 \label{fig:west_test_24}
