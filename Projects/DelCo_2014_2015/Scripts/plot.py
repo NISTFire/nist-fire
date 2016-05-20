@@ -23,12 +23,12 @@ specify_test = False
 specific_name = 'Test_16_West_063014'
 
 # Specify year
-specify_year = True
+specify_year = False
 specific_year = '2014'
 
 # Specify type
 specify_type = True
-specific_type = 'GAS'
+specific_type = 'HOSE'
 
 # Specify structure
 specify_struct = False
@@ -150,9 +150,9 @@ for f in os.listdir(data_dir):
             test_year = '2015'
 
         test_type = info['Test Type'][test_name]
-
-        if test_type == 'HOSE':
-            continue
+        
+        # if test_type == 'HOSE':
+        #     continue
 
         if check_name(test_name, test_year, test_type):     # check if file should be skipped
             continue
