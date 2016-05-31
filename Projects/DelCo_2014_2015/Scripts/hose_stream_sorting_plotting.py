@@ -19,7 +19,7 @@ rcParams.update({'figure.autolayout': True})
 
 # Specify name
 specify_test = True
-specific_name = 'Test_16_West_063014'
+specific_name = 'Test_17_West_063014'
 
 # Specify year
 specify_year = False
@@ -40,10 +40,10 @@ skip_files = ['_times', '_reduced', '_results', 'description_', 'hose_d', '_rh',
 # = Specify files to generate =
 # =============================
 
-result_file = False       # Generate a .csv file with channel avgs for specified sensor groups
+result_file = True       # Generate a .csv file with channel avgs for specified sensor groups
 all_channel_plot = False    # Plot of individual channels in sensor group
 group_avg_plot = False     # Plot avg of all channels for sensor group
-stream_avgs_plot = True    # Plot avg of all channels for each stream tested during experiment
+stream_avgs_plot = False    # Plot avg of all channels for each stream tested during experiment
 
 #  =======================
 #  = Directory Locations =
@@ -195,6 +195,7 @@ def sort_data(test_name, start_time, test_type):
 					door_status = 'Closed A'
 
 				start_seq = index-start_time
+
 		group_set = {'Start': start_times_ls, 'End':end_times_ls, 'Stream':streams_ls, 
 		P_or_L_heading:P_or_L_ls,'Door':door_status_ls}
 		group_results = pd.DataFrame(group_set, 
@@ -305,7 +306,7 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 	plt.xticks(fontsize=16)
 	plt.yticks(fontsize=16)
 	# plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
-	
+
 	ax2 = ax1.twinx()
 	ax2.set_ylabel('Velocity (mph)', fontsize=20)
 	ax2.set_ylim(math.floor(y_min)-0.1, math.ceil(y_max)+0.1)
@@ -408,8 +409,8 @@ for f in os.listdir(data_dir):
 		if check_name(test_name, test_year, test_type):     # check if file should be skipped
 			continue
 		else:   # Load exp. data file
-			if 'Test_17' in test_name:
-				f = test_name + '_original.csv'
+			# if 'Test_17_' in test_name:
+			# 	f = test_name + '_original.csv'
 			data = pd.read_csv(data_dir + f)
 			data = data.set_index('TimeStamp(s)')
 			print
@@ -518,12 +519,17 @@ for f in os.listdir(data_dir):
 
 			# calculate channel avg at each time step add to group_data df
 			channel_avg = []
+			channel_avg_mph = []
 			for index, row in group_data.iterrows():
-				channel_avg.append(np.mean(row[1:]))
+				avg = np.mean(row[1:])
+				channel_avg.append(avg)
+				channel_avg_mph.append(avg*2.23694)
 			group_data['Avg'] = channel_avg
+			group_data['Avg (mph)'] = channel_avg_mph
 
 			if result_file:     # create file with averages for each channel at each event listed in group_results
 				group_results['Avg'] = ''
+				group_results['Avg (mph)'] = ''
 				# SS_near_data = []
 				# SS_far_data = []
 				# SB_near_data = []
@@ -535,7 +541,7 @@ for f in os.listdir(data_dir):
 
 				for index, row in group_results.iterrows():
 					# create df for each event in new .csv file
-					seq_data = group_data.loc[row['Start']:row['End']]
+					seq_data = group_data.loc[row['Start']+3:row['End']-3]
 
 					# if row['Door'] == 'BC open':
 					# 	if row['Stream'] == 'SS':
@@ -557,8 +563,16 @@ for f in os.listdir(data_dir):
 
 					# Calculate average for each channel during sequence
 					for column in group_results.columns[first_col:]:
+						seq_avg = np.mean(seq_data[column])
+						seq_plus_minus = abs(seq_avg)*0.18
+						if seq_plus_minus < 0.05:
+							seq_plus_minus = round(seq_plus_minus, 2)
+						else:
+							seq_plus_minus = round(seq_plus_minus, 1)
+
 						# calculate avg for each channel during event 
-						group_results.loc[index, column] = round(np.mean(seq_data[column]), 1)
+						group_results.loc[index, column] = str(round(seq_avg, 1))+'(+/-)'+str(seq_plus_minus)
+
 						# group_results.loc[index, column] = str(round(np.mean(seq_data[column]), 1)) + ' +- ' + str(round(np.std(seq_data[column]), 1))
 
 
