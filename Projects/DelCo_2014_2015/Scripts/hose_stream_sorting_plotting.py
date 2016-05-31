@@ -19,7 +19,7 @@ rcParams.update({'figure.autolayout': True})
 
 # Specify name
 specify_test = True
-specific_name = 'Test_17_West_063014'
+specific_name = 'Test_16_West_063014'
 
 # Specify year
 specify_year = False
@@ -52,7 +52,7 @@ stream_avgs_plot = True    # Plot avg of all channels for each stream tested dur
 # Location of directories
 data_dir = '../Experimental_Data/'      # Location of experimental data files
 results_dir = '../Results/Hose_Stream/'     # Location to save results files 
-fig_dir = '../Reports/Hose_Stream_Report/Figures/Plots/'     # Location to save plots
+fig_dir = '../Reports/Hose_Stream_Tests/Figures/Plots/'     # Location to save plots
 all_times_file = '../Experimental_Data/All_Times.csv'       # Location of file with timing information
 info_file = '../Experimental_Data/Description_of_Experiments.csv'       # Location of test description file
 
@@ -288,10 +288,10 @@ def plot_stream_avgs(stream_data, updated_times, x_max_index, y_max, y_min, mark
 	return x_max_index, y_max, y_min, t
 
 def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, plot_type, tick_info):
-	plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
 	if 'West' not in fig_name and plot_type == 'stream avgs':
 		end_time = end_time - 1
 	ax1 = plt.gca()
+	handles1, labels1 = ax1.get_legend_handles_labels()
 	ax1.set_xlim([0, end_time])
 	ax1.set_ylim(math.floor(y_min)-0.1, math.ceil(y_max)+0.1)
 	ax1.xaxis.set_major_locator(plt.MaxNLocator(8))
@@ -304,7 +304,8 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 	ax1.set_yticks(np.around(y_tick_ls,1))
 	plt.xticks(fontsize=16)
 	plt.yticks(fontsize=16)
-
+	# plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
+	
 	ax2 = ax1.twinx()
 	ax2.set_ylabel('Velocity (mph)', fontsize=20)
 	ax2.set_ylim(math.floor(y_min)-0.1, math.ceil(y_max)+0.1)
@@ -313,7 +314,7 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 	ax2.set_yticklabels(np.around(y_label_ls, 1))
 	plt.xticks(fontsize=16)
 	plt.yticks(fontsize=16)
-
+	plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
 	# Add vertical lines for timing information (if available)
 	try:
 		# Add vertical lines and labels for timing information (if available)
@@ -344,8 +345,8 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 	except:
 		pass
 
-	plt.gca().add_artist(ax1.legend(loc='lower right', fontsize=10, frameon = True))
-
+	plt.legend(handles1, labels1, loc='lower right', fontsize=10, frameon = True)
+	# plt.gca().add_artist(ax1.legend(loc='lower right', fontsize=10, frameon = True))
 	# Save plot to file
 	print ('   Saving plot of ' + plot_type + ' for ' + group)
 	plt.savefig(fig_name)
@@ -712,6 +713,12 @@ for f in os.listdir(data_dir):
 							color, marker = SS_color, SS_mark
 						elif column == 'NF':
 							color, marker = NF_color, NF_mark
+							# reverse NF timings for Test 16
+							if test_name == 'Test_16_West_063014':
+								new_order_NF = []
+								new_order_NF.extend(stream_times['NF'].iloc[6:])
+								new_order_NF.extend(stream_times['NF'].iloc[:6])
+								stream_times['NF'] = new_order_NF
 						elif column == 'WF':
 							color, marker = WF_color, WF_mark
 						elif column == 'SB':
@@ -719,6 +726,7 @@ for f in os.listdir(data_dir):
 						
 						stream_data = []
 						i = 0
+
 						for index, row in stream_times.iterrows():
 							if index % 2 == 0:
 								start_loc = row[column]+1
