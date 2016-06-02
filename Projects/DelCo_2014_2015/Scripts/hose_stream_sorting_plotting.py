@@ -11,23 +11,24 @@ from itertools import cycle
 
 from matplotlib import rcParams
 rcParams.update({'figure.autolayout': True})
-
+rcParams['xtick.major.pad']='6'
+rcParams['ytick.major.pad']='6'
 
 #  =================
 #  = Specify files =
 #  =================
 
 # Specify name
-specify_test = True
-specific_name = 'Test_17_West_063014'
+specify_test = False
+specific_name = 'Test_70_West_101215'
 
 # Specify year
 specify_year = False
 specific_year = '2015'
 
 # Specify structure
-specify_struct = False
-specific_struct = 'West'
+specify_struct = True
+specific_struct = 'East'
 
 # Specify monitor or handline
 specify_type = False
@@ -40,10 +41,10 @@ skip_files = ['_times', '_reduced', '_results', 'description_', 'hose_d', '_rh',
 # = Specify files to generate =
 # =============================
 
-result_file = True       # Generate a .csv file with channel avgs for specified sensor groups
+result_file = False       # Generate a .csv file with channel avgs for specified sensor groups
 all_channel_plot = False    # Plot of individual channels in sensor group
 group_avg_plot = False     # Plot avg of all channels for sensor group
-stream_avgs_plot = False    # Plot avg of all channels for each stream tested during experiment
+stream_avgs_plot = True    # Plot avg of all channels for each stream tested during experiment
 
 #  =======================
 #  = Directory Locations =
@@ -291,31 +292,44 @@ def plot_stream_avgs(stream_data, updated_times, x_max_index, y_max, y_min, mark
 def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, plot_type, tick_info):
 	if 'West' not in fig_name and plot_type == 'stream avgs':
 		end_time = end_time - 1
+		ylim_min = y_min - 0.7	
+	else:
+		ylim_min = y_min - 0.4
+
 	ax1 = plt.gca()
 	handles1, labels1 = ax1.get_legend_handles_labels()
 	ax1.set_xlim([0, end_time])
-	ax1.set_ylim(math.floor(y_min)-0.1, math.ceil(y_max)+0.1)
+	ax1.set_ylim(ylim_min, 1.18*y_max+0.1)
 	ax1.xaxis.set_major_locator(plt.MaxNLocator(8))
 	ax1_xlims = ax1.axis()[0:2]
 	grid(True)
 	plt.axhline(0, color='0.50', lw=1)
 	ax1.set_xlabel('Time (s)', fontsize=20)
 	ax1.set_ylabel('Velocity (m/s)', fontsize=20)
-	y_tick_ls = np.arange(math.floor(y_min), math.ceil(1.18*y_max)+1, 1)
-	ax1.set_yticks(np.around(y_tick_ls,1))
+	if abs(math.floor(y_min))-abs(y_min) < 0.5:
+		min_y_tick = math.floor(y_min)
+	else: 
+		min_y_tick = math.ceil(y_min)
+	y_tick_ls = np.arange(min_y_tick, math.ceil(1.18*y_max+0.1), 1)
+	if len(y_tick_ls) < 4:
+		y_tick_ls = np.arange(min_y_tick, math.ceil(1.18*y_max+0.1), 0.5)
+	ax1.set_yticks(y_tick_ls)
+	ax1.set_yticklabels(np.around(y_tick_ls,1))
 	plt.xticks(fontsize=16)
 	plt.yticks(fontsize=16)
-	# plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
 
 	ax2 = ax1.twinx()
 	ax2.set_ylabel('Velocity (mph)', fontsize=20)
-	ax2.set_ylim(math.floor(y_min)-0.1, math.ceil(y_max)+0.1)
+	ax2.set_ylim(ylim_min, 1.18*y_max+0.1)
 	ax2.set_yticks(y_tick_ls)
 	y_label_ls = np.array(y_tick_ls) * 2.23694
 	ax2.set_yticklabels(np.around(y_label_ls, 1))
 	plt.xticks(fontsize=16)
 	plt.yticks(fontsize=16)
-	plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
+
+	ax1.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
+	ax1.plot(x_max_index, y_max, 'k.')
+
 	# Add vertical lines for timing information (if available)
 	try:
 		# Add vertical lines and labels for timing information (if available)
@@ -331,7 +345,14 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 			tick_labels = tick_info[0]
 		if 'West' in fig_name:
 			[plt.axvline(_x, color='0.50', lw=1) for _x in tick_loc[:-1]]	
-		else:		
+		else:
+			if tick_labels[1] == ' Break in time':
+				tick_labels = [tick_labels[0], tick_labels[2]]
+				# y_coords = [math.floor(y_min)-0.1, math.ceil(y_max)+0.1]
+				# left_line_xcoords = [28, 29]
+				# right_line_xcoords = [30, 31]
+				# plt.plot(left_line_xcoords, y_coords, color='0.5', ls='-', lw=1)
+				# plt.plot(right_line_xcoords, y_coords, color='0.5', ls='-', lw=1)
 			[plt.axvline(_x, color='0.50', lw=1) for _x in tick_loc]
 			ax1.set_xticks(tick_loc)
 		ax3.set_xticks(tick_loc)
@@ -341,6 +362,7 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 		# Increase figure size for plot labels at top
 		if plot_type == 'stream avgs':
 			fig.set_size_inches(8, 8)
+			print 'reached resizing'
 		else:
 			fig.set_size_inches(12,8)
 	except:
@@ -393,6 +415,9 @@ for f in os.listdir(data_dir):
 		if info['Test Type'][test_name] != 'HOSE' or test_name == 'Test_20_West_063014':
 			continue
 
+		if 'Test_17b_' in test_name:
+			continue
+
 		# Determine test year and type
 		if int(info['Test Number'][test_name]) <= 63:
 			test_year = '2014'
@@ -409,8 +434,8 @@ for f in os.listdir(data_dir):
 		if check_name(test_name, test_year, test_type):     # check if file should be skipped
 			continue
 		else:   # Load exp. data file
-			# if 'Test_17_' in test_name:
-			# 	f = test_name + '_original.csv'
+			if 'Test_17_' in test_name:
+				f = test_name + '_original.csv'
 			data = pd.read_csv(data_dir + f)
 			data = data.set_index('TimeStamp(s)')
 			print
@@ -579,10 +604,7 @@ for f in os.listdir(data_dir):
 				# Saves results .csv file for sensor group
 				group_results.to_csv(results_dir + test_name + '_' + group.replace(' ', '_')  + '_averages.csv')
 				print ('   Saving result file for ' + group)
-				# print 'SS Near: ' + str(round(np.mean(SS_near_data), 1)) + ' +- ' + str(round(np.std(SS_near_data), 1))
-				# print 'SS Far: ' + str(round(np.mean(SS_far_data), 1)) + ' +- ' + str(round(np.std(SS_far_data), 1))
-				# print 'SB Near: ' + str(round(np.mean(SB_near_data), 1)) + ' +- ' + str(round(np.std(SB_near_data), 1))
-				# print 'SB Far: ' + str(round(np.mean(SB_far_data), 1)) + ' +- ' + str(round(np.std(SB_far_data), 1))
+				
 
 			if all_channel_plot:        # save plot of individual channels
 				fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '.pdf'
@@ -774,7 +796,8 @@ for f in os.listdir(data_dir):
 						xtick_labels.append(' Water off')
 						updated_times = [0, 30, 60, 90, 120, 150, 180, 210, 240]
 					else:
-						xtick_labels = [' Water on, S doorway in Room B', ' Water flow stopped']
+						xtick_labels = [' Water on, S doorway in Room B', ' Break in time', 
+						' Water flow stopped']
 						updated_times = [0, 60]
 					
 					SS_remain = True
@@ -798,6 +821,7 @@ for f in os.listdir(data_dir):
 							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+4])
 							SS_remain = False
 							column = 'SS'
+							color, marker = SS_color, SS_mark
 						elif (NF_remain):
 							iteration = 1
 							for index, row in group_results.iterrows():
@@ -814,6 +838,7 @@ for f in os.listdir(data_dir):
 							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+4])
 							NF_remain = False
 							column = 'NF'
+							color, marker = NF_color, NF_mark
 						elif (WF_remain):
 							iteration = 1
 							for index, row in group_results.iterrows():
@@ -830,10 +855,12 @@ for f in os.listdir(data_dir):
 							stream_data.extend(group_data['Avg'].loc[seq_end:seq_end+4])
 							WF_remain = False
 							column = 'WF'
+							color, marker = WF_color, WF_mark
 						
 						# check y min and max
 
 						stream_data = pd.Series(data = stream_data, index=range(-3, len(stream_data)-3))
+
 						ma_quantity = pd.rolling_mean(stream_data, 5, center=True)
 						ma_quantity = ma_quantity.dropna()
 						if max(ma_quantity) > y_max:
@@ -841,11 +868,13 @@ for f in os.listdir(data_dir):
 							x_max_index = ma_quantity.idxmax(y_max)
 						if min(ma_quantity) < y_min:
 							y_min = min(ma_quantity)
+						# print ma_quantity
+						# sys.exit()
 
 						t = ma_quantity.index.values[1:updated_times[-1]+2]
 
 						plt.plot(t, ma_quantity.loc[1:updated_times[-1]+1], 
-							marker=next(plot_markers), markevery=int(len(t))/10, 
+							marker=marker, color=color, markevery=int(len(t))/10, 
 							mew=1.5, mec='none', ms=7, ls=line_style, lw=2, label=column + ' A6 Avg')
 								 
 				# updated_times[-1] = t[-1]+1

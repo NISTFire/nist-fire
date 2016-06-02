@@ -356,11 +356,14 @@ A discussion of uncertainties for each type of measurement in this report can be
 \label{sec:uncertainty}
 There are different components of uncertainty in the length, differential pressure, flow rate, and gas velocity reported here. Uncertainties are grouped into two categories according to the method used to estimate them. Type A uncertainties are those which are evaluated by statistical methods, and Type B are those which are evaluated by other means~\cite{Taylor&Kuyatt:1994}. Type B analysis of systematic uncertainties involves estimating the upper (+a) and lower (-a) limits for the quantity in question such that the probability that the value would be in the interval ($\pm$a) is essentially 100\%. After estimating uncertainties by either Type A or B analysis, the uncertainties are combined in quadrature to yield the combined standard uncertainty. Then, the combined standard uncertainty is multiplied by a coverage factor of two, which results in the expanded uncertainty with a 95\% confidence interval (2$\sigma$). For some of these components, such as the zero and calibration elements, uncertainties are derived from referenced instrument specifications. For other components, referenced research results and past experience with the instruments provided input in the uncertainty determination. 
 
+\subsubsection{Length Measurements}
 Each length measurement was taken carefully. Length measurements such as the room dimensions, instrumentation array locations, and fire apparatus (e.g., nozzle, sprinkler, or fan) placement were made with a hand held laser measurement device which has an accuracy of $\pm$6.0~mm (0.25~in) over a range of 0.61~m (2.0~ft) to 15.3~m (50.0~ft)~\cite{StanleyTools}.  However, conditions affecting the measurement, such as levelness of the device, yields an estimated uncertainty of $\pm$0.5\% for measurements in the 2.0~m (6.6~ft) to 10.0~m (32.8~ft) range. Steel measuring tapes with a resolution of $\pm$0.5~mm (0.02~in) were used to locate individual sensors within a measurement array and to measure and position the furniture. The steel measuring tapes were manufactured in compliance with NIST Manual 44, which specifies a tolerance of $\pm$1.6~mm (0.06~in) for 9.1~m (30~ft) tapes and $\pm$6.4~mm (0.25~in) for 30.5~m (100~ft) tapes~\cite{Butcher:2012}. Some issues, such as ``soft'' edges on the upholstered furniture, result in an estimated total expanded uncertainty of $\pm$1.0\%.
 
+\subsubsection{Bi-Directional Probes}
 Bi-directional probes with pressure transducers and single thermocouples were used to measure the gas velocity. Bare-bead, type K thermocouples were co-located with the probe. A gas velocity measurement study examining the doorway flow of pre-flashover compartment fires yielded expanded uncertainty measurements ranging from $\pm0.14$ to $\pm0.22$ for bi-directional probes of similar design~\cite{Bryant:FSJ2009}. The total expanded uncertainty for gas velocity in these experiments is estimated to be $\pm18$\%.   
 
-Water flow rate was measured with a pressure and flow meter combination shown in Fig.~\ref{fig:flow_meter}. The meter consists of a section of 63.5~mm (2.5~in) cast aluminum pipe with a 0--4.1 MPa (0--600 psi) pressure transducer and a paddlewheel type flow sensor with a range of 0 to 4800~lpm (1250~gpm). The pressure transducer and paddlewheel both connect to the battery operated control box where the pressure transducer voltage is converted to a pressure and the paddlewheel pulse count is converted to a volumetric flow rate. The manufacturer reports a $\pm5$\% calibration expanded uncertainty for the flow sensor and $\pm3$\% for the pressure sensor~\cite{Akron:2009}. The pressure transducer was calibrated with a known analog pressure gauge. The flow meter was calibrated by capturing water over time and measuring that mass of water to determine the flow rate. The total expanded uncertainty was estimated at $\pm10$\%. 
+\subsubsection{Water Flow Rate}
+Water flow rate was measured with a pressure and flow meter combination shown in Fig.~\ref{fig:flow_meter}. The meter consists of a section of 63.5~mm (2.5~in) cast aluminum pipe with a 0--4.1~MPa (0--600~psi) pressure transducer and a paddlewheel type flow sensor with a range of 0 to 4800~lpm (1250~gpm). The pressure transducer and paddlewheel both connect to the battery operated control box where the pressure transducer voltage is converted to a pressure and the paddlewheel pulse count is converted to a volumetric flow rate. The manufacturer reports a $\pm5$\% calibration expanded uncertainty for the flow sensor and $\pm3$\% for the pressure sensor~\cite{Akron:2009}. The pressure transducer was calibrated with a known analog pressure gauge. The flow meter was calibrated by capturing water over time and measuring that mass of water to determine the flow rate. The total expanded uncertainty was estimated at $\pm10$\%. 
 
 \begin{figure}[!ht]
 	\includegraphics[width=4in]{../Figures/Pictures/flow_meter}
@@ -391,9 +394,9 @@ A total of seven experiments were conducted to study the impact of different hos
 \end{figure}
 \FloatBarrier
 
-Three different structure layouts were used for the seven experiments. Tests 1 and 5 were conducted in the Single Story Structure and used the layout shown in Fig.~\ref{fig:east_setup}. Test 1 used a monitor and combination nozzle to flow water, and Test 5 used a combination nozzle attached directly to a handline to flow water.
+Three different structure layouts were used for the seven experiments. Tests~1 and 5 were conducted in the Single Story Structure and used the layout shown in Fig.~\ref{fig:east_setup}. Test~1 used a monitor and combination nozzle to flow water, and Test~5 used a combination nozzle attached directly to a handline to flow water.
 
-Two different layouts were used for experiments conducted in the Two Story Structure. The main difference between the two layouts was the position of the south side door on the first level. Tests 2 and 6 used a configuration with the door opened (Fig.~\ref{fig:flow_path_1}), while Tests 3, 4, and 7 used a configuration with the door closed (Fig.~\ref{fig:flow_path_2}). Tests 2 and 3 used a combination nozzle attached to a monitor to flow water; Tests 6 and 7 used a combination nozzle attached directly to a handline to flow water; and Test 4 used both a combination nozzle and a 1~in tip smooth bore nozzle attached to a monitor to flow water in a straight and solid stream, respectively. 
+Two different layouts were used for experiments conducted in the Two Story Structure. The main difference between the two layouts was the position of the south side door on the first level. Tests~2 and 6 used a configuration with the door opened (Fig.~\ref{fig:flow_path_1}), while Tests~3, 4, and 7 used a configuration with the door closed (Fig.~\ref{fig:flow_path_2}). Tests~2 and 3 used a combination nozzle attached to a monitor to flow water; Tests~6 and 7 used a combination nozzle attached directly to a handline to flow water; and Test~4 used both a combination nozzle and a 1~in tip smooth bore nozzle attached to a monitor to flow water in a straight and solid stream, respectively. 
 
 \begin{figure}[!ht]
 	\includegraphics[width=\columnwidth]{../Figures/Floor_Plans/Specific_Tests/East_Hose_Test_Annotated}
@@ -423,6 +426,7 @@ Two different layouts were used for experiments conducted in the Two Story Struc
 \label{sec:monitor_procedure}
 Three experiments, Tests~1--3, used a monitor equipped with a combination nozzle to flow water at 120~gpm in a straight stream, narrow fog stream, and wide fog stream. Test~1 occurred in the Single Story Structure, and Tests~2 and 3 occurred in the Two Story Structure. A fourth experiment, Test~4, was conducted in the Two Story Structure and used a combination nozzle and a smooth bore nozzle attached to a monitor to flow water at 180~gpm in a straight stream and solid stream, respectively. The monitor was always set to flow water from a fixed position. Thus, the monitor experiments primarily focused on the impact of different hose stream patterns on air movement in a structure and provided a baseline to compare the impact of the motion of the nozzle on the air movement through the structure.
 
+\subsubsection{Test 1}
 Test~1 utilized a monitor equipped with a combination nozzle to flow water from Room~C of the Single Story Structure to the area above the doorway on the south wall of Room~B (Fig.~\ref{fig:test_1_pic}). A plan view of the structure's layout during Test~1 can be found in Fig.~\ref{fig:east_setup}. The figure highlights the general direction of the established flow path along with the approximate location of A6, the bi-directional probe array used to measure gas velocity through the northeast interior doorway. The procedure for Test~1 was the simplest of all the test procedures. First, water was flowed in a straight stream for 30 seconds, then the stream was changed to a narrow fog for 30 seconds, and finally the stream was changed to a wide fog for 30 seconds. The procedure was repeated an additional time.
 
 \begin{figure}[!ht]
@@ -435,6 +439,7 @@ Test~1 utilized a monitor equipped with a combination nozzle to flow water from 
 	\label{fig:test_1_pic}
 \end{figure}
 
+\subsubsection{Tests 2 \& 3}
 Tests 2 and 3 followed identical procedures that involved using a monitor equipped with a combination nozzle to flow water from the north side double doors to the interior ceiling on the first floor of the Two Story Structure. The nozzle was aimed at two targets during the series: a ``near'' target located approximately 1.8~m (6~ft) from the interior side of the north wall and a ``far'' target located approximately 3.7~m (12~ft) from the interior side of the north wall. The procedure for each test began by flowing water in a straight stream pattern at the far target for 60 seconds. After 60 seconds of water flow, the stairwell door was opened. One minute later, the west double door on the north side of the second floor was opened, and water continued to flow for 60 seconds. Next, the water flow was stopped, the two doors were closed, and the procedure was repeated with the monitor aimed at the near target. This entire process was repeated using the narrow fog and wide fog streams. Fig.~\ref{fig:test_2_3_pic} contains images of each type of hose stream aimed at the near and far targets.
 
 \begin{figure}[!ht]
@@ -474,6 +479,7 @@ Tests 2 and 3 followed identical procedures that involved using a monitor equipp
 \end{figure}
 \FloatBarrier
 
+\subsubsection{Test 4}
 Test 4 studied the differences in air movement caused by a solid stream from a smooth bore nozzle with a 1~in tip and straight stream from a combination nozzle attached to a monitor aimed at the same targets used during Tests 2 and 3. The stairwell door was opened for the entire experiment. The test began by flowing water in a straight stream from a combination nozzle aimed at the near target. Then, the west double door on the second floor was opened. After 60 more seconds of flow, the nozzle was closed to stop water flow for 30 seconds. The nozzle was opened for 60 seconds and then closed for 30 seconds two additional times. Next, the monitor was aimed at the far target, and the procedure was repeated. This entire process was repeated for the solid stream from the smooth bore nozzle. Fig.~\ref{fig:test_4_pic} contains images of the straight stream from the combination nozzle and solid stream from the 1~in tip of the smooth bore nozzle during Test 4.
 
 \begin{figure}[!ht]
@@ -496,6 +502,7 @@ Test 4 studied the differences in air movement caused by a solid stream from a s
 \label{sec:handline_procedure}
 Three experiments were conducted using a 1.75~in handline with a combination nozzle to flow water in a straight stream, narrow fog stream, and wide fog stream. One test, Test 5, occurred in the Single Story Structure, and the remaining tests, Tests 6 and 7, occurred in the Two Story Structure. All three tests primarily focused on the impact of different hose stream and water application pattern selections on air movement in a structure. 
 
+\subsubsection{Test 5}
 Test 5 utilized a 1.75~in handline equipped with a combination nozzle to flow water from Room C of the Single Story Structure into Room B (Fig.~\ref{fig:test_5_pic}). The layout of the structure was identical to the layout for Test 1, described above in Section~\ref{sec:monitor_procedure} and presented in Fig.~\ref{fig:east_setup}. The procedure for Test 5 began by flowing water in a straight stream aimed at the ceiling of Room B for 30 seconds in a fixed position. After 30 seconds, the nozzle was rotated in the clockwise direction for 30 seconds. Then, the nozzle was aimed at the south doorway of Room B, and water was applied for 30 seconds in a fixed position followed by 30 seconds in a clockwise pattern. The procedure was repeated using a narrow fog stream and a wide fog stream. This entire process was repeated for the streams being applied in the fixed and counterclockwise patterns.
 
 \begin{figure}[!ht]
@@ -508,6 +515,7 @@ Test 5 utilized a 1.75~in handline equipped with a combination nozzle to flow wa
 	\label{fig:test_5_pic}
 \end{figure}
 
+\subsubsection{Tests 6 \& 7}
 Tests 6 and 7 followed identical procedures that involved using a 1.75~in handline equipped with a combination nozzle to flow water from the north side double doors of the Two Story Structure into the first floor room. The water stream was aimed at the south side wall of the first floor during the experiments. Test 6 contained the flow path configuration presented in Fig.~\ref{fig:flow_path_1}, and Test 7 contained the flow path configuration presented in Fig.~\ref{fig:flow_path_2}. Each experiment began by using a straight stream to flow water in a fixed, horizontal position. After 60 seconds of water flow, the stairwell door was opened. One minute later, the west double door on the north side of the second floor was opened, and water continued to flow for 60 seconds. Next, the water flow was stopped, the two doors were closed, and the procedure was repeated three additional times for the sweeping (back and forth, left-to-right), clockwise, and counterclockwise application patterns. This entire process was repeated using narrow fog and wide fog streams. Fig.~\ref{fig:test_6_pic} contains an image of a straight stream pattern being applied during Test 6 with the flow path fully established.
 
 \begin{figure}[!ht]
@@ -618,7 +626,7 @@ Looking at the table and figures, a number of trends can be observed. For exampl
 
 \section{Handline Experiments}
 \label{sec:handline_results}
-Fig.~\ref{fig:Test_6_BDP_A10_Avg_All} contains a plot of the average gas velocity measured by the bi-directional probes in the array at the interior stairwell door (A10) for the straight stream, narrow fog stream, and wide fog stream being applied in a fixed position, a sweeping pattern (back and forth, left-to-right), a clockwise rotation, and a counterclockwise rotation during Test 6. Similar plots of the average measured velocity through the interior doorway for Tests 5 and 7 are presented in Appendix~\ref{chap:handline_plots}. Additionally, Tables~\ref{table:east_hand_A6_avgs}~and~\ref{table:west_hand_A10_avgs} list the average velocity measured by the bi-directional probes in A10 when the flow path was fully established for each hose stream and application pattern combination studied during Test 5 and Tests 6 and 7, respectively.
+Fig.~\ref{fig:Test_6_BDP_A10_Avg_All} contains a plot of the average gas velocity measured by the bi-directional probes in the array at the interior stairwell door (A10) for the straight stream, narrow fog stream, and wide fog stream being applied in a fixed position, a sweeping pattern (back and forth, left-to-right), a clockwise rotation, and a counterclockwise rotation during Test 6. Similar plots of the average measured velocity through the interior doorway for Tests 5 and 7 are presented in Appendix~\ref{chap:handline_plots}. Additionally, Tables~\ref{table:east_hand_A6_avgs}~and~\ref{table:west_hand_A10_avgs} list the average velocity measured by the bi-directional probes in A10 when the flow path was fully established for each hose stream and application pattern combination studied during Test 5 and Tests 6--7, respectively.
 
 \begin{figure}[!ht]
 	\includegraphics[width=\columnwidth]{../Figures/Plots/Test_18_West_063014_BDP_A10_stream_avgs}
@@ -686,7 +694,7 @@ With the exception of the narrow fog stream in the fixed position during Test 6,
 \chapter{Summary}
 \label{chap:summary}
 
-A total of eight experiments were conducted to study the impact of different hose stream and application pattern combinations on air movement within residential scale structures. 
+A total of seven experiments were conducted to study the impact of different hose stream and application pattern combinations on air movement within residential scale structures. 
 
 Three experiments studied the differences between a straight stream, narrow fog stream, and wide fog stream emitted from a combination nozzle attached to a monitor aimed at specific locations in a structure for different ventilation configurations. For each of the three experiments, the average air velocity through the interior doorway while the flow path was fully established was greatest for the wide fog stream no matter the location and ventilation pattern within the structure. The magnitude of the average air velocity through the interior doorway while the flow path was fully established for the narrow fog stream was always equal to or greater than the magnitude of the average air velocity for the straight stream. Additionally, a fourth experiment using a monitor was conducted in which a straight stream from a combination nozzle was compared to a solid stream from a smooth bore nozzle with a 1~in tip aimed at a specified location for 60 seconds with a fully established flow path. The streams were compared for six different 60 seconds periods during which the flow path was fully established: three times each for the monitor aimed at two locations. The results from the four monitor experiments suggest a wide fog stream impacts air movement within a structure the most out of any of the tested streams, followed by the narrow fog stream, and then the straight stream and solid stream from a smooth bore nozzle, which both caused approximately the same amount of air movement through the structure.
 
@@ -700,7 +708,7 @@ Overall, the water flow experiments discussed in this report reveal that hose st
 \chapter{Acknowledgments}
 \label{chap:acknowledgments}
 
-The authors would like to thank Roy McLane, Kristopher Overholt, Nicholas Dow, and Jay MCElroy from NIST for their contributions in preparing and conducting these experiments. These experiments could not have been conducted without them.  
+The authors would like to thank Roy McLane, Kristopher Overholt, Keith Stakes, Nicholas Dow, and Jay MCElroy from NIST for their contributions in preparing and conducting these experiments. These experiments could not have been conducted without them.  
 
 The Delaware County Emergency Services Training Center provided the location and logistical support for these experiments.  The Delaware county team was under the direction of Kerby Kerber.  For construction and test support the team included: Joe Bingham, Dave Wright, Dave Nercesian (small engine repair), Mike Gura, Scott Wiercinski, Bill Fields (Fields Fire Protection).  We also thank the dedicated team of fire instructors and firefighters that supported these experiments; Brian Righter (Rudy), John McGowan, Matthew Poissant, John Frey, Brian Embert, Raymond Keller III, Mike Bramble, Edward McBride, Mark Morrissey, Bill Norris, and Matt LeTourneau.
 
@@ -720,6 +728,7 @@ Thank you for assisting NIST in generating data that will assist the fire servic
 	\label{fig:Test_1_BDP_A6_Avg_All}
 \end{figure}
 \FloatBarrier
+% Streams were flowed during two 30 second, nonconsecutive periods, but plotted back-to-back for simplicity. See Section 2.2.1 for more details about the procedure
 
 \begin{figure}[!ht]
 	\includegraphics[width=\columnwidth]{../Figures/Plots/Test_17_West_063014_BDP_A10_stream_avgs}
