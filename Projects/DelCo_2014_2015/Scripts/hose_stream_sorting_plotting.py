@@ -20,15 +20,15 @@ rcParams['ytick.major.pad']='6'
 
 # Specify name
 specify_test = False
-specific_name = 'Test_70_West_101215'
+specific_name = 'HOSE_IXXAXX'
 
 # Specify year
 specify_year = False
-specific_year = '2015'
+specific_year = '2014'
 
 # Specify structure
 specify_struct = True
-specific_struct = 'East'
+specific_struct = 'West'
 
 # Specify monitor or handline
 specify_type = False
@@ -42,9 +42,10 @@ skip_files = ['_times', '_reduced', '_results', 'description_', 'hose_d', '_rh',
 # =============================
 
 result_file = False       # Generate a .csv file with channel avgs for specified sensor groups
+print_results = True
 all_channel_plot = False    # Plot of individual channels in sensor group
 group_avg_plot = False     # Plot avg of all channels for sensor group
-stream_avgs_plot = True    # Plot avg of all channels for each stream tested during experiment
+stream_avgs_plot = False   # Plot avg of all channels for each stream tested during experiment
 
 #  =======================
 #  = Directory Locations =
@@ -319,6 +320,7 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 	plt.yticks(fontsize=16)
 
 	ax2 = ax1.twinx()
+	ax2.set_xlim([0, end_time])
 	ax2.set_ylabel('Velocity (mph)', fontsize=20)
 	ax2.set_ylim(ylim_min, 1.18*y_max+0.1)
 	ax2.set_yticks(y_tick_ls)
@@ -327,8 +329,8 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 	plt.xticks(fontsize=16)
 	plt.yticks(fontsize=16)
 
-	ax1.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
-	ax1.plot(x_max_index, y_max, 'k.')
+	plt.errorbar(x_max_index, y_max, yerr=(.18)*y_max, ecolor='k')
+	plt.plot(x_max_index, y_max, 'k.')
 
 	# Add vertical lines for timing information (if available)
 	try:
@@ -348,11 +350,11 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 		else:
 			if tick_labels[1] == ' Break in time':
 				tick_labels = [tick_labels[0], tick_labels[2]]
-				# y_coords = [math.floor(y_min)-0.1, math.ceil(y_max)+0.1]
-				# left_line_xcoords = [28, 29]
-				# right_line_xcoords = [30, 31]
-				# plt.plot(left_line_xcoords, y_coords, color='0.5', ls='-', lw=1)
-				# plt.plot(right_line_xcoords, y_coords, color='0.5', ls='-', lw=1)
+				y_coords = [ylim_min, y_max*1.18+0.1]
+				left_line_xcoords = [26, 29]
+				right_line_xcoords = [30, 33]
+				plt.plot(left_line_xcoords, y_coords, color='0.5', ls='-', lw=1)
+				plt.plot(right_line_xcoords, y_coords, color='0.5', ls='-', lw=1)
 			[plt.axvline(_x, color='0.50', lw=1) for _x in tick_loc]
 			ax1.set_xticks(tick_loc)
 		ax3.set_xticks(tick_loc)
@@ -362,7 +364,6 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 		# Increase figure size for plot labels at top
 		if plot_type == 'stream avgs':
 			fig.set_size_inches(8, 8)
-			print 'reached resizing'
 		else:
 			fig.set_size_inches(12,8)
 	except:
@@ -434,8 +435,8 @@ for f in os.listdir(data_dir):
 		if check_name(test_name, test_year, test_type):     # check if file should be skipped
 			continue
 		else:   # Load exp. data file
-			if 'Test_17_' in test_name:
-				f = test_name + '_original.csv'
+			# if 'Test_17_' in test_name:
+			# 	f = test_name + '_original.csv'
 			data = pd.read_csv(data_dir + f)
 			data = data.set_index('TimeStamp(s)')
 			print
@@ -496,10 +497,8 @@ for f in os.listdir(data_dir):
 				plt.rc('axes', color_cycle=tableau20)
 				plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
 				plt.ylabel('Velocity (m/s)', fontsize=20)
-				axis_scale = 'Y Scale BDP'
 				line_style = '-'
 				secondary_axis_label = 'Velocity (mph)'
-				secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
 
 			for channel in channel_groups.get_group(group).index.values:
 				# Skip excluded channels listed in hose_info file
@@ -520,7 +519,7 @@ for f in os.listdir(data_dir):
 					if (zero_time_ls[i] - 25) == index:
 						zero_start = int(row['Time'])
 						zero_end = zero_start + 20
-						zero_voltage = np.mean(data[channel][zero_start:zero_end])
+						zero_voltage = np.mean(data[channel].loc[zero_start:zero_end])
 						# iterate i if additional zero voltages will be calculated
 						if i < (len(zero_time_ls)-1):
 							i += 1
@@ -600,10 +599,53 @@ for f in os.listdir(data_dir):
 
 						# group_results.loc[index, column] = str(round(np.mean(seq_data[column]), 1)) + ' +- ' + str(round(np.std(seq_data[column]), 1))
 
+			if print_results:     # prints avg velocity values for tables in report
+				if 'West' in test_name:
+					last_col = 5		# West results includes either a pattern or a location column
+					if test_type == 'handline':
+						P_or_L = 'Pattern'
+					else:
+						P_or_L = 'Location'
+				else:
+					last_col = 6		# East results include both a pattern and location column
+					P_or_L = 'both'
 
-				# Saves results .csv file for sensor group
-				group_results.to_csv(results_dir + test_name + '_' + group.replace(' ', '_')  + '_averages.csv')
-				print ('   Saving result file for ' + group)
+				seq_info = group_results.iloc[:, :last_col]
+				streams = seq_info.groupby('Stream')
+				for stream in streams.groups:
+					print stream + ':'
+					print '---'
+					stream_seq_info = streams.get_group(stream)
+					if P_or_L == 'both':
+						continue
+					else:
+						PorL_options = stream_seq_info.groupby(P_or_L)
+						for option in PorL_options.groups:
+							print '		----'
+							print '		' + option
+							print '		----'
+							PorL_seq_info = PorL_options.get_group(option)
+							m_per_s_data = []
+							mph_data = []
+							for index, row in PorL_seq_info.iterrows():
+								if row['Door'] == 'BC open':
+									m_per_s_data.append(group_data['Avg'].loc[row['Start']+3:row['End']-3])
+									mph_data.append(group_data['Avg (mph)'].loc[row['Start']+3:row['End']-3])
+							
+							avg_m_per_s = np.mean(m_per_s_data)
+							if abs(avg_m_per_s*0.18) < 0.05:
+								round_place = 2
+							else:
+								round_place = 1
+							print '		m/s 	' + str(round(avg_m_per_s, 1)) + ' (+/-)' + str(round(abs(avg_m_per_s)*0.18, round_place))
+							
+							avg_mph = np.mean(mph_data)
+							if abs(avg_mph*0.18) < 0.05:
+								round_place = 2
+							else:
+								round_place = 1
+							print '		mph 	' + str(round(avg_mph, 1)) + ' (+/-)' + str(round(abs(avg_mph)*0.18, round_place))
+				print
 				
 
 			if all_channel_plot:        # save plot of individual channels
@@ -618,10 +660,8 @@ for f in os.listdir(data_dir):
 				plt.rc('axes', color_cycle=tableau20)
 				plot_markers = cycle(['s', 'o', '^', 'd', 'h', 'p','v','8','D','*','<','>','H'])
 				plt.ylabel('Velocity (m/s)', fontsize=20)
-				axis_scale = 'Y Scale BDP'
 				line_style = '-'
 				secondary_axis_label = 'Velocity (mph)'
-				secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
 				fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_average.pdf'
 
 				# check y min and max
@@ -649,10 +689,9 @@ for f in os.listdir(data_dir):
 				SS_color, NF_color, WF_color, SB_color = tableau20[1], tableau20[3], tableau20[5], tableau20[7]
 				SS_mark, NF_mark, WF_mark, SB_mark = 's', 'o', '^', 'd'
 				plt.ylabel('Velocity (m/s)', fontsize=20)
-				axis_scale = 'Y Scale BDP'
 				line_style = '-'
 				secondary_axis_label = 'Velocity (mph)'
-				secondary_axis_scale = np.float(info[axis_scale][test_name]) * 2.23694
+				
 				fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '_stream_avgs.pdf'
 				
 				xtick_labels = []
