@@ -19,16 +19,16 @@ rcParams['ytick.major.pad']='6'
 #  =================
 
 # Specify name
-specify_test = False
-specific_name = 'HOSE_IXXAXX'
+specify_test = True
+specific_name = 'Test_70_West_101215'
 
 # Specify year
 specify_year = False
 specific_year = '2014'
 
 # Specify structure
-specify_struct = True
-specific_struct = 'West'
+specify_struct = False
+specific_struct = 'East'
 
 # Specify monitor or handline
 specify_type = False
@@ -42,10 +42,10 @@ skip_files = ['_times', '_reduced', '_results', 'description_', 'hose_d', '_rh',
 # =============================
 
 result_file = False       # Generate a .csv file with channel avgs for specified sensor groups
-print_results = True
+print_results = False		# print average values for tables in report
 all_channel_plot = False    # Plot of individual channels in sensor group
 group_avg_plot = False     # Plot avg of all channels for sensor group
-stream_avgs_plot = False   # Plot avg of all channels for each stream tested during experiment
+stream_avgs_plot = True   # Plot avg of all channels for each stream tested during experiment
 
 #  =======================
 #  = Directory Locations =
@@ -613,11 +613,65 @@ for f in os.listdir(data_dir):
 				seq_info = group_results.iloc[:, :last_col]
 				streams = seq_info.groupby('Stream')
 				for stream in streams.groups:
+					print '---'
 					print stream + ':'
 					print '---'
 					stream_seq_info = streams.get_group(stream)
 					if P_or_L == 'both':
-						continue
+						if test_name[7] == 'A':
+							locations = stream_seq_info.groupby('Location')
+							for location in locations.groups:
+								print '		----'
+								print '		' + location
+								print '		----'
+								location_seq_info = locations.get_group(location)								
+								patterns = location_seq_info.groupby('Pattern')
+								for pattern in patterns.groups:
+									pattern_seq_info = patterns.get_group(pattern)
+									print '			----'
+									print '			' + pattern
+									print '			----'
+									m_per_s_data = []
+									mph_data = []
+									for index, row in pattern_seq_info.iterrows():
+										m_per_s_data.append(group_data['Avg'].loc[row['Start']+3:row['End']-3])
+										mph_data.append(group_data['Avg (mph)'].loc[row['Start']+3:row['End']-3])
+									
+									avg_m_per_s = np.mean(m_per_s_data)
+									if abs(avg_m_per_s*0.18) < 0.05:
+										round_place = 2
+									else:
+										round_place = 1
+									print '			m/s 	' + str(round(avg_m_per_s, 1)) + ' (+/-)' + str(round(abs(avg_m_per_s)*0.18, round_place))
+									
+									avg_mph = np.mean(mph_data)
+									if abs(avg_mph*0.18) < 0.05:
+										round_place = 2
+									else:
+										round_place = 1
+									print '			mph 	' + str(round(avg_mph, 1)) + ' (+/-)' + str(round(abs(avg_mph)*0.18, round_place))
+						else:
+							m_per_s_data = []
+							mph_data = []	
+							for index, row in stream_seq_info.iterrows():							
+								if row['Door'] == 'C':
+									m_per_s_data.append(group_data['Avg'].loc[row['Start']+3:row['End']-3])
+									mph_data.append(group_data['Avg (mph)'].loc[row['Start']+3:row['End']-3])
+									
+							avg_m_per_s = np.mean(m_per_s_data)
+							if abs(avg_m_per_s*0.18) < 0.05:
+								round_place = 2
+							else:
+								round_place = 1
+							print '			m/s 	' + str(round(avg_m_per_s, 1)) + ' (+/-)' + str(round(abs(avg_m_per_s)*0.18, round_place))
+							
+							avg_mph = np.mean(mph_data)
+							if abs(avg_mph*0.18) < 0.05:
+								round_place = 2
+							else:
+								round_place = 1
+							print '			mph 	' + str(round(avg_mph, 1)) + ' (+/-)' + str(round(abs(avg_mph)*0.18, round_place))
+					
 					else:
 						PorL_options = stream_seq_info.groupby(P_or_L)
 						for option in PorL_options.groups:
