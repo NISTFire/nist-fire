@@ -20,7 +20,7 @@ rcParams['ytick.major.pad']='6'
 
 # Specify name
 specify_test = True
-specific_name = 'Test_70_West_101215'
+specific_name = 'HOSE_IXXAXX'
 
 # Specify year
 specify_year = False
@@ -283,10 +283,19 @@ def plot_stream_avgs(stream_data, updated_times, x_max_index, y_max, y_min, mark
 
 	t = ma_quantity.index.values[1:updated_times[-1]+2]
 
+
 	plt.plot(t, ma_quantity.loc[1:updated_times[-1]+1], 
 		ls = line_style, color = color, lw=2,
 		marker=marker, markevery=int(len(t))/10, 
 		mew=1.5, mec='none', ms=7, label=plot_label)
+
+	if 'Test_70' in test_name and 'SS' in plot_label:
+		annotate_range = ma_quantity.loc[260:320]
+		y_annotate = max(ma_quantity.loc[260:320])
+		x_annotate = annotate_range.idxmax(y_annotate)
+
+		plt.annotate('  Door\nopened$^*$', xy=(x_annotate, y_annotate), xytext=(x_annotate-33, y_annotate+0.4),
+			arrowprops=dict(facecolor='black', shrink=0.05, width=2, headwidth=8))
 
 	return x_max_index, y_max, y_min, t
 
@@ -305,7 +314,15 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 	ax1_xlims = ax1.axis()[0:2]
 	grid(True)
 	plt.axhline(0, color='0.50', lw=1)
-	ax1.set_xlabel('Time (s)', fontsize=20)
+	if plot_type == 'stream avgs':
+		if 'Test_70' in fig_name:
+			ax1.set_xlabel('Time (s)\n', fontsize=20)
+		elif 'HOSE_IXXAXX' in fig_name:
+			ax1.set_xlabel('Time (s)\n\n', fontsize=20)
+		else:
+			ax1.set_xlabel('Time (s)', fontsize=20)
+	else:
+		ax1.set_xlabel('Time (s)', fontsize=20)
 	ax1.set_ylabel('Velocity (m/s)', fontsize=20)
 	if abs(math.floor(y_min))-abs(y_min) < 0.5:
 		min_y_tick = math.floor(y_min)
@@ -314,8 +331,16 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 	y_tick_ls = np.arange(min_y_tick, math.ceil(1.18*y_max+0.1), 1)
 	if len(y_tick_ls) < 4:
 		y_tick_ls = np.arange(min_y_tick, math.ceil(1.18*y_max+0.1), 0.5)
+	i = 0
+	# hack way of rounding y_ticks so "-0.0" doesn't get marked as a label
+	for y in y_tick_ls:
+		if round(y, 1) == -0.0:
+			y_tick_ls[i] = 0.0
+		else:
+			y_tick_ls[i] = round(y, 1)
+		i += 1
 	ax1.set_yticks(y_tick_ls)
-	ax1.set_yticklabels(np.around(y_tick_ls,1))
+	ax1.set_yticklabels(y_tick_ls)
 	plt.xticks(fontsize=16)
 	plt.yticks(fontsize=16)
 
@@ -351,10 +376,18 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 			if tick_labels[1] == ' Break in time':
 				tick_labels = [tick_labels[0], tick_labels[2]]
 				y_coords = [ylim_min, y_max*1.18+0.1]
-				left_line_xcoords = [26, 29]
-				right_line_xcoords = [30, 33]
-				plt.plot(left_line_xcoords, y_coords, color='0.5', ls='-', lw=1)
-				plt.plot(right_line_xcoords, y_coords, color='0.5', ls='-', lw=1)
+				# left_line_xcoords = [26, 29]
+				# right_line_xcoords = [30, 33]
+				# plt.plot(left_line_xcoords, y_coords, color='0.5', ls='-', lw=1)
+				# plt.plot(right_line_xcoords, y_coords, color='0.5', ls='-', lw=1)
+				# plt.axvline(27, color='0.50')
+				plt.fill_between([27, 33], [y_max*1.18+0.1, y_max*1.18+0.1], [ylim_min, ylim_min],
+					facecolor='gray', linewidth=2, alpha=0.5)
+				plt.annotate(' ', 
+					xy=(30, y_max*1.09), xytext=(28, y_max*1.18+0.25),
+					arrowprops=dict(facecolor='black', shrink=0.05, width=1, headwidth=3))
+				plt.figtext(0.35, 0.735, 
+					'   Each plot is of data from\ntwo separate 30 sec periods$^*$', size='smaller')
 			[plt.axvline(_x, color='0.50', lw=1) for _x in tick_loc]
 			ax1.set_xticks(tick_loc)
 		ax3.set_xticks(tick_loc)
@@ -363,6 +396,16 @@ def save_plot(x_max_index, y_max, y_min, start_time, end_time, group, fig_name, 
 		plt.xlim([0, end_time])
 		# Increase figure size for plot labels at top
 		if plot_type == 'stream avgs':
+			if 'Test_70' in fig_name:
+				plt.figtext(0.09, 0.025, 
+					'$^*$Increase is result of opening then closing the second story, west double door', 
+					fontstyle='italic')
+			elif 'HOSE_IXXAXX' in fig_name:
+				plt.figtext(0.09, 0.025, 
+					'$^*$The drop in the shaded region for each plot is a result of the fact that data from two\n' +
+					'  nonconsecutive 30 second periods during Test 1 are plotted here as a single data set\n'+ 
+					'  for simplicity. See Section 2.2.1 for more details about the procedure.',
+					fontstyle='italic', size = 'smaller')
 			fig.set_size_inches(8, 8)
 		else:
 			fig.set_size_inches(12,8)
