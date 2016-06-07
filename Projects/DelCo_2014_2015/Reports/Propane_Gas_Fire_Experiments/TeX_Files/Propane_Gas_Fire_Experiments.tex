@@ -510,25 +510,6 @@ Every thermocouple array contained eight bare-bead thermocouples, each bi-direct
  & TC\_A3\_7  & 1.83~m below ceiling & Temperature \\
  & TC\_A3\_8  & 2.13~m below ceiling & Temperature \\
  \midrule
-% \multirow{16}{*}{\large{\textbf{A4}}}
-%  & TC\_A4\_1  & 0.03~m below soffit  & Temperature \\
-%  & TC\_A4\_2  & 0.30~m below soffit  & Temperature \\
-%  & TC\_A4\_3  & 0.61~m below soffit  & Temperature \\
-%  & TC\_A4\_4  & 0.91~m below soffit  & Temperature \\
-%  & TC\_A4\_5  & 1.22~m below soffit  & Temperature \\
-%  & TC\_A4\_6  & 1.52~m below soffit  & Temperature \\
-%  & TC\_A4\_7  & 1.83~m below soffit  & Temperature \\
-%  & TC\_A4\_8  & 2.13~m below soffit  & Temperature \\
-% \cline{2-4}
-%  & BDP\_A4\_1 & 0.03~m below soffit  & Velocity \\
-%  & BDP\_A4\_2 & 0.30~m below soffit  & Velocity \\
-%  & BDP\_A4\_3 & 0.61~m below soffit  & Velocity \\
-%  & BDP\_A4\_4 & 0.91~m below soffit  & Velocity \\
-%  & BDP\_A4\_5 & 1.22~m below soffit  & Velocity \\
-%  & BDP\_A4\_6 & 1.52~m below soffit  & Velocity \\
-%  & BDP\_A4\_7 & 1.83~m below soffit  & Velocity \\
-%  & BDP\_A4\_8 & 2.13~m below soffit  & Velocity \\
-% \midrule
 \multirow{16}{*}{\large{\textbf{A5}}}
  & TC\_A5\_1  & 0.03~m below soffit  & Temperature \\
  & TC\_A5\_2  & 0.30~m below soffit  & Temperature \\
@@ -695,28 +676,28 @@ Every thermocouple array contained eight bare-bead thermocouples, each bi-direct
 
 \subsection{Measurement Uncertainty}
 \label{sec:Uncertainty}
-There are different components of uncertainty in the reported length, mass, temperature, heat flux, gas concentration, differential pressure, gas velocity, and heat release rate measurements. Uncertainties are grouped into two categories according to the method used to estimate them. Type A uncertainties are those which are evaluated by statistical methods, and Type B are those which are evaluated by other means~\cite{Taylor&Kuyatt:1994}. Type B analysis of systematic uncertainties involves estimating the upper (+a) and lower (-a) limits for the quantity in question such that the probability that the value would be in the interval ($\pm$a) is essentially 100\%. After estimating uncertainties by either Type A or B analysis, the uncertainties are combined in quadrature to yield the combined standard uncertainty. Then, the combined standard uncertainty is multiplied by a coverage factor of two, which results in the expanded uncertainty with a 95\% confidence interval (2$\sigma$). For some of these components, such as the zero and calibration elements, uncertainties are derived from referenced instrument specifications. For other components, referenced research results and past experience with the instruments provided input in the uncertainty determination.
+There are different components of uncertainty in the reported length, mass, temperature, heat flux, gas concentration, differential pressure, gas velocity, and heat release rate measurements. Uncertainties are grouped into two categories according to the method used to estimate them. Type A uncertainties are those which are evaluated by statistical methods, and Type B are those which are evaluated by other means~\cite{Taylor&Kuyatt:1994}. Type B analysis of systematic uncertainties involves estimating the upper (+a) and lower (-a) limits for the quantity in question such that the probability that the value would be in the interval ($\pm$a) is essentially 100~\%. After estimating uncertainties by either Type A or B analysis, the uncertainties are combined in quadrature to yield the combined standard uncertainty. Then, the combined standard uncertainty is multiplied by a coverage factor of two, which results in the expanded uncertainty with a 95~\% confidence interval (2$\sigma$). For some of these components, such as the zero and calibration elements, uncertainties are derived from referenced instrument specifications. For other components, referenced research results and past experience with the instruments provided input in the uncertainty determination.
 
 \subsubsection{Compartment Dimensions}
-Each length measurement was taken carefully. Length measurements such as the room dimensions and instrumentation array locations were made with a hand held laser measurement device, which has an accuracy of $\pm$6.0~mm (0.25~in) over a range of 0.61~m (2.0~ft) to 15.3~m (50.0~ft)~\cite{StanleyTools}. However, conditions affecting the measurement, such as levelness of the device, yields an estimated uncertainty of $\pm$0.5\% for measurements in the 2.0~m (6.6~ft) to 10.0~m (32.8~ft) range. Steel measuring tapes with a resolution of $\pm$0.5~mm (0.02~in) were used to locate individual sensors within a measurement array and to measure and position the furniture. The steel measuring tapes were manufactured in compliance with NIST Manual 44, which specifies a tolerance of $\pm$1.6~mm (0.06~in) for 9.1~m (30~ft) tapes and $\pm$6.4~mm (0.25~in) for 30.5~m (100~ft) tapes~\cite{Butcher:2012}. Some issues, such as ``soft'' edges on the upholstered furniture, result in an estimated total expanded uncertainty of $\pm$1.0\%.
+Each length measurement was taken carefully. Length measurements such as the room dimensions and instrumentation array locations were made with a hand held laser measurement device, which has an accuracy of $\pm$6.0~mm (0.25~in) over a range of 0.61~m (2.0~ft) to 15.3~m (50.0~ft)~\cite{StanleyTools}. However, conditions affecting the measurement, such as levelness of the device, yields an estimated uncertainty of $\pm$0.5~\% for measurements in the 2.0~m (6.6~ft) to 10.0~m (32.8~ft) range. Steel measuring tapes with a resolution of $\pm$0.5~mm (0.02~in) were used to locate individual sensors within a measurement array and to measure and position the furniture. The steel measuring tapes were manufactured in compliance with NIST Manual 44, which specifies a tolerance of $\pm$1.6~mm (0.06~in) for 9.1~m (30~ft) tapes and $\pm$6.4~mm (0.25~in) for 30.5~m (100~ft) tapes~\cite{Butcher:2012}. Some issues, such as ``soft'' edges on the upholstered furniture, result in an estimated total expanded uncertainty of $\pm$1.0~\%.
 
 \subsubsection{Thermocouples}
-The standard uncertainty in the temperature of the thermocouple wire itself is $\pm$2.2$^{\circ}$C at $277^{\circ}$C and increases to $\pm$9.5$^{\circ}$C at $871^{\circ}$C as determined by the wire manufacturer~\cite{Omega:2004}. The variation of the temperature in the environment surrounding the thermocouple is known to be much greater than that of the wire uncertainty~\cite{Blevins:1999,Pitts:2003}. Small diameter thermocouples were used to limit the impact of radiative heating and cooling. The estimated total expanded uncertainty for temperature in these experiments is $\pm$15\%.
+The standard uncertainty in the temperature of the thermocouple wire itself is $\pm$2.2$~^{\circ}$C at $277~^{\circ}$C and increases to $\pm$9.5$~^{\circ}$C at $871~^{\circ}$C as determined by the wire manufacturer~\cite{Omega:2004}. The variation of the temperature in the environment surrounding the thermocouple is known to be much greater than that of the wire uncertainty~\cite{Blevins:1999,Pitts:2003}. Small diameter thermocouples were used to limit the impact of radiative heating and cooling. The estimated total expanded uncertainty for temperature in these experiments is $\pm$15~\%.
 
 \subsubsection{Heat Flux Gauges}
-Total heat flux measurements were made with water-cooled Schimidt-Bolter gauges. The manufacturer reports a $\pm$3\% calibration expanded uncertainty for these devices~\cite{Medtherm:2003}. Results from an international study on total heat flux gauge calibration and response demonstrated that the uncertainty of a Schmidt-Boelter gauge is typically $\pm$8\%~\cite{Pitts:2006}.
+Total heat flux measurements were made with water-cooled Schimidt-Bolter gauges. The manufacturer reports a $\pm$3~\% calibration expanded uncertainty for these devices~\cite{Medtherm:2003}. Results from an international study on total heat flux gauge calibration and response demonstrated that the uncertainty of a Schmidt-Boelter gauge is typically $\pm$8~\%~\cite{Pitts:2006}.
 
 \subsubsection{Gas Sampling}
-The gas measurement instruments and sampling system used in this series of experiments have demonstrated an expanded (k = 2) relative uncertainty of $\pm$1\% when compared with span gas volume fractions~\cite{Bundy:2007}. Given the non-uniformities and movement of the fire gas environment and the limited set of sampling points in these experiments, an estimated uncertainty of $\pm$12\% is associated with gas concentration measurements~\cite{Lock:1}.
+The gas measurement instruments and sampling system used in this series of experiments have demonstrated an expanded (k = 2) relative uncertainty of $\pm$1~\% when compared with span gas volume fractions~\cite{Bundy:2007}. Given the non-uniformities and movement of the fire gas environment and the limited set of sampling points in these experiments, an estimated uncertainty of $\pm$12~\% is associated with gas concentration measurements~\cite{Lock:1}.
 
 \subsubsection{Pressure Transducers}
-Differential pressure reading uncertainty components were derived from pressure transducer instrument specifications and previous experience with pressure transducers. The transducers were factory calibrated and the zero and span of each was checked in the laboratory prior to the experiments yielding an accuracy of $\pm$1\%~\cite{Setra:2002}. The total expanded uncertainty was estimated at 10\%.
+Differential pressure reading uncertainty components were derived from pressure transducer instrument specifications and previous experience with pressure transducers. The transducers were factory calibrated and the zero and span of each was checked in the laboratory prior to the experiments yielding an accuracy of $\pm$1~\%~\cite{Setra:2002}. The total expanded uncertainty was estimated at 10~\%.
 
 \subsubsection{Bi-Directional Probes}
-Bi-directional probes and single thermocouples were used to measure the velocity. The bi-directional probes used similar pressure transducers as those used for the differential pressure measurements discussed above. A single bare-bead Chromel-Alumel (type K) thermocouple with a 1.0~mm (0.04~in) nominal diameter was co-located with each probe. The thermocouple wire was protected with a 3.2~mm (0.13~in) diameter inconel sheath. A gas velocity measurement study examining the doorway flow of pre-flashover compartment fires yielded expanded uncertainty measurements ranging from $\pm$0.14 to $\pm$0.22 for bi-directional probes similar to the ones described here~\cite{Bryant:FSJ2009}. The total expanded uncertainty for gas velocity in these experiments was estimated to be $\pm$18\%.
+Bi-directional probes and single thermocouples were used to measure the velocity. The bi-directional probes used similar pressure transducers as those used for the differential pressure measurements discussed above. A single bare-bead Chromel-Alumel (type K) thermocouple with a 1.0~mm (0.04~in) nominal diameter was co-located with each probe. The thermocouple wire was protected with a 3.2~mm (0.13~in) diameter inconel sheath. A gas velocity measurement study examining the doorway flow of pre-flashover compartment fires yielded expanded uncertainty measurements ranging from $\pm$0.14 to $\pm$0.22 for bi-directional probes similar to the ones described here~\cite{Bryant:FSJ2009}. The total expanded uncertainty for gas velocity in these experiments was estimated to be $\pm$18~\%.
 
 \subsubsection{Heat Release Rate}
-A rotary type gas meter was used to measure the volume of propane provided to the gas burners. The manufacturer quantifies the maximum error as $\pm$2\%~\cite{Romet:2014}. The measurement was used in conjunction with the heat of combustion of propane to calculate the heat release rate of the fire. The total expanded uncertainty for the heat release rate obtained from this method was estimated to be $\pm??$\%. ***\textit{Still need to finish reviewing literature about HRR uncertainty and add description here about calculation and uncertainty estimate.}*** 
+A rotary type gas meter was used to measure the volume of propane provided to the gas burners. The manufacturer quantifies the maximum error as $\pm$2~\%~\cite{Romet:2014}. The measurement was used in conjunction with the heat of combustion of propane to calculate the heat release rate of the fire. The total expanded uncertainty for the heat release rate obtained from this method was estimated to be $\pm15$~\%. ***\textit{Still need to finish reviewing literature about HRR uncertainty and add description here about calculation and uncertainty estimate.}*** 
 
 \clearpage
 
@@ -729,7 +710,7 @@ A similar procedure was followed for all experiments described in this report. F
 
 \section{East Structure Tests}
 \label{sec:east_procedure}
-Five different tests, Tests 2--6, were conducted in the East Structure.  Table~\ref{table:HRR_East} lists the heat release rates for each experiment. The time between the ignition of each gas burner for Tests~2--4 was on the order of minutes, while the time between the ignition of each gas burner for Tests~5 and 6 was on the order of seconds. Thus, for Tests~2--4, heat release rates are reported for each time period between a burner being turned on or off, and a single heat release rate for when all burners were ignited is reported for Tests~5 and 6.
+Five different tests, Tests 2--6, were conducted in the East Structure. Table~\ref{table:HRR_East} lists the heat release rates for each experiment. The time between the ignition of each gas burner for Tests~2--4 was on the order of minutes, while the time between the ignition of each gas burner for Tests~5 and 6 was on the order of seconds. Thus, for Tests~2--4, heat release rates are reported for each time period between a burner being turned on or off, and a single heat release rate for when all burners were ignited is reported for Tests~5 and 6.
 
 Tests~2--4 followed an identical order of events. Fig.~\ref{fig:Tests_2-4_layout} includes a floor plan schematic and table of event times corresponding to the data files for each test. A 61~cm (24~in) diameter PPV fan located 1.6~m (5.2~ft) away from the south exterior door was aimed at the center of the doorway and used during Tests~2--4. During these experiments, the south exterior door was not able to completely close due to an obstruction caused by the hoses used to transport propane to the burners. So, when the south door was in the ``closed'' position, a 133~mm (5.25~in) opening was present between the door and its frame. For all other experiments, however, the south exterior door was not used and the doorway remained closed for the entirety of the test. To fully close the doorway during these tests, the hinged door was removed and gypsum board was used to cover the doorway.
 
@@ -746,20 +727,33 @@ The procedures for Test~5 and Test~6 are outlined in Fig.~\ref{fig:east_test_5} 
 					& 	\begin{tabular}{c} Center \\ Burner Off \end{tabular}
 					&   \begin{tabular}{c} Middle \\ Burner Off \end{tabular} \\
  \midrule
-Test 2 				& 338 & 651	& 901 & 634 & 330 \\
-Test 3 				& 326 & 650	& 905 & 631 & 326 \\
-Test 4				& 351 & 654	& 952 & 652 & 337 \\
+% Original Values
+% Test 2 				& 338 & 651	& 901 & 634 & 330 \\
+% Test 3 				& 326 & 650	& 905 & 631 & 326 \\
+% Test 4				& 351 & 654	& 952 & 652 & 337 \\
+% Rounded Values
+Test 2 				& 340 & 650	& 900 & 630 & 330 \\
+Test 3 				& 330 & 650	& 910 & 630 & 330 \\
+Test 4				& 350 & 650	& 950 & 650 & 337 \\
 \midrule
  & \multicolumn{2}{c}{\textbf{Heat Release Rate (kW)}} & \multicolumn{3}{c}{} \\
 \textbf{Test} 		& \multicolumn{2}{c}{All Burners On} 
 & \multicolumn{3}{c}{} \\
 \midrule
-Test 5 - Seq. 1		& \multicolumn{2}{c}{725} & \multicolumn{3}{c}{} \\
-Test 5 - Seq. 2		& \multicolumn{2}{c}{728} & \multicolumn{3}{c}{} \\
-Test 5 - Seq. 3		& \multicolumn{2}{c}{723} & \multicolumn{3}{c}{} \\
-Test 6 - Seq. 1		& \multicolumn{2}{c}{722} & \multicolumn{3}{c}{} \\
-Test 6 - Seq. 2		& \multicolumn{2}{c}{721} & \multicolumn{3}{c}{} \\
-Test 6 - Seq. 3		& \multicolumn{2}{c}{714} & \multicolumn{3}{c}{} \\
+% Original Values
+% Test 5 - Seq. 1		& \multicolumn{2}{c}{725} & \multicolumn{3}{c}{} \\
+% Test 5 - Seq. 2		& \multicolumn{2}{c}{728} & \multicolumn{3}{c}{} \\
+% Test 5 - Seq. 3		& \multicolumn{2}{c}{723} & \multicolumn{3}{c}{} \\
+% Test 6 - Seq. 1		& \multicolumn{2}{c}{722} & \multicolumn{3}{c}{} \\
+% Test 6 - Seq. 2		& \multicolumn{2}{c}{721} & \multicolumn{3}{c}{} \\
+% Test 6 - Seq. 3		& \multicolumn{2}{c}{714} & \multicolumn{3}{c}{} \\
+% Rounded Values
+Test 5 - Seq. 1		& \multicolumn{2}{c}{730} & \multicolumn{3}{c}{} \\
+Test 5 - Seq. 2		& \multicolumn{2}{c}{730} & \multicolumn{3}{c}{} \\
+Test 5 - Seq. 3		& \multicolumn{2}{c}{720} & \multicolumn{3}{c}{} \\
+Test 6 - Seq. 1		& \multicolumn{2}{c}{720} & \multicolumn{3}{c}{} \\
+Test 6 - Seq. 2		& \multicolumn{2}{c}{720} & \multicolumn{3}{c}{} \\
+Test 6 - Seq. 3		& \multicolumn{2}{c}{710} & \multicolumn{3}{c}{} \\
 \bottomrule
 \end{tabular}
 \label{table:HRR_East}
@@ -805,6 +799,7 @@ Test 6 - Seq. 3		& \multicolumn{2}{c}{714} & \multicolumn{3}{c}{} \\
 	\toprule
 	\multicolumn{1}{c}{\textbf{Event}} & \textbf{Seq. 1} & \textbf{Seq. 2} & \textbf{Seq. 3} \\
 	\midrule
+	% Old table layout --- will delete soon
 	% Some door(s) opened before test start according to notes, no sign from data/limited videos
 	% ~(1)~ Corner burner on 			& 	14:00		  &	   34:30		&	   54:30	\\
 	% ~(2)~ Middle burner on 			&   14:15		  &	   34:45		&	   54:45	\\
@@ -843,6 +838,7 @@ Test 6 - Seq. 3		& \multicolumn{2}{c}{714} & \multicolumn{3}{c}{} \\
 	\toprule
 	\multicolumn{1}{c}{\textbf{Event}} & \textbf{Seq. 1} & \textbf{Seq. 2} & \textbf{Seq. 3} \\
 	\midrule
+	% Old table layout --- will delete soon
 	% ~(1)~  Corner burner on 		&	3:15	&	12:45	&	21:15	\\
 	% ~(2)~  Middle burner on 		&	3:30	&	13:00	&	21:30	\\
 	% ~(3)~  Center burner on 		&	3:45	&	13:15	&	21:45	\\
@@ -882,10 +878,16 @@ Four different tests, Tests~22--25, were conducted in the West Structure. Table~
 					& 	\textbf{Heat Release Rate (kW)}	\\
 \textbf{Test}		& All burners on \\
  \midrule
-Test 22				&     	764 	  \\
-Test 23				&     	789 	  \\
-Test 24				& 	    789 	  \\
-Test 25				&     	786 	  \\
+% Original Values
+% Test 22				&     	764 	  \\
+% Test 23				&     	789 	  \\
+% Test 24				& 	    789 	  \\
+% Test 25				&     	786 	  \\
+% Rounded Values
+Test 22				&     	760 	  \\
+Test 23				&     	790 	  \\
+Test 24				& 	    790 	  \\
+Test 25				&     	790 	  \\
 \bottomrule
 \end{tabular}
 \label{table:HRR_West}
@@ -901,6 +903,7 @@ Tests~22 and 23 followed an identical procedure to change the ventilation. Fig.~
 	\toprule
 	\multicolumn{1}{c}{\textbf{Event}} 			& \textbf{Test 22}	& \textbf{Test 23} \\
 	\midrule
+	% Old table layout --- will delete soon
 	% ~(1)~  Corner burner on 					& 	9:05 			&	 3:45		\\
 	% ~(2)~  Middle burner on 					&   8:45	  		&	 3:55		\\
 	% ~(3)~  Center burner on 					&   8:15	  		&	 4:04		\\
@@ -937,6 +940,7 @@ Tests~22 and 23 followed an identical procedure to change the ventilation. Fig.~
 	\toprule
 	\multicolumn{1}{c}{\textbf{Event}} 			& \textbf{Test 24}	& \textbf{Test 25} \\
 	\midrule
+	% Old table layout --- will delete soon
 	% ~(1)~ Corner burner on 					& 	2:30 			&	 2:00		\\
 	% ~(2)~ Middle burner on 					&   2:45	  		&	 2:00		\\
 	% ~(3)~ Center burner on 					&   3:00	  		&	 2:00		\\
