@@ -682,7 +682,7 @@ There are different components of uncertainty in the reported length, mass, temp
 Each length measurement was taken carefully. Length measurements such as the room dimensions and instrumentation array locations were made with a hand held laser measurement device, which has an accuracy of $\pm$6.0~mm (0.25~in) over a range of 0.61~m (2.0~ft) to 15.3~m (50.0~ft)~\cite{StanleyTools}. However, conditions affecting the measurement, such as levelness of the device, yields an estimated uncertainty of $\pm$0.5~\% for measurements in the 2.0~m (6.6~ft) to 10.0~m (32.8~ft) range. Steel measuring tapes with a resolution of $\pm$0.5~mm (0.02~in) were used to locate individual sensors within a measurement array and to measure and position the furniture. The steel measuring tapes were manufactured in compliance with NIST Manual 44, which specifies a tolerance of $\pm$1.6~mm (0.06~in) for 9.1~m (30~ft) tapes and $\pm$6.4~mm (0.25~in) for 30.5~m (100~ft) tapes~\cite{Butcher:2012}. Some issues, such as ``soft'' edges on the upholstered furniture, result in an estimated total expanded uncertainty of $\pm$1.0~\%.
 
 \subsubsection{Thermocouples}
-The standard uncertainty in the temperature of the thermocouple wire itself is $\pm$2.2$~^{\circ}$C at $277~^{\circ}$C and increases to $\pm$9.5$~^{\circ}$C at $871~^{\circ}$C as determined by the wire manufacturer~\cite{Omega:2004}. The variation of the temperature in the environment surrounding the thermocouple is known to be much greater than that of the wire uncertainty~\cite{Blevins:1999,Pitts:2003}. Small diameter thermocouples were used to limit the impact of radiative heating and cooling. The estimated total expanded uncertainty for temperature in these experiments is $\pm$15~\%.
+The standard uncertainty in the temperature of the thermocouple wire itself is $\pm$2.2$~^{\circ}$C at $277~^{\circ}$C and increases to $\pm$9.5$~^{\circ}$C at $871~^{\circ}$C as determined by the wire manufacturer~\cite{Omega:2004}. The variation of the temperature in the environment surrounding the thermocouple is known to be much greater than that of the wire uncertainty~\cite{Pitts:2003}. Blevins found that the percent error in the measured upper layer temperature for a 1~mm bare-bead thermocouple is bounded by a maximum of 20~\%~\cite{Blevins:1999}. Small diameter thermocouples were used to limit the impact of radiative heating and cooling. The estimated total expanded uncertainty for temperature in these experiments is $\pm$15~\%. ***\textit{Still need to finish reviewing literature about TC uncertainty and add list of components of standard uncertainty along with description about uncertainty estimate.}*** 
 
 \subsubsection{Heat Flux Gauges}
 Total heat flux measurements were made with water-cooled Schimidt-Bolter gauges. The manufacturer reports a $\pm$3~\% calibration expanded uncertainty for these devices~\cite{Medtherm:2003}. Results from an international study on total heat flux gauge calibration and response demonstrated that the uncertainty of a Schmidt-Boelter gauge is typically $\pm$8~\%~\cite{Pitts:2006}.
@@ -763,21 +763,20 @@ Test 6 - Seq. 3		& \multicolumn{2}{c}{710} & \multicolumn{3}{c}{} \\
 \begin{minipage}[b]{0.8\columnwidth}
 	\begin{flushleft}
 	\begin{tabular}{lccc}
-	\multicolumn{4}{c}{\normalsize Event Times (mm:ss) for Tests~2--4 Data Files} \\
+	\multicolumn{4}{c}{\normalsize Event Times (s) for Tests~2--4 Data Files} \\
 	\toprule
-	\multicolumn{1}{c}{\textbf{Event}} & \textbf{Test 2} & \textbf{Test 3} & \textbf{Test 4} \\
+	\multicolumn{1}{c}{\textbf{Event}} 	& \textbf{Test 2} & \textbf{Test 3} & \textbf{Test 4} \\
 	\midrule
-	~(1)~ Corner burner on 				& 	21:00		  &		4:00		&		4:00	  \\
-	~(2)~ Middle burner on 				&   24:00		  &		7:00		&		7:00	  \\
-	~(3)~ Center burner on 				&   27:00		  &	   10:00		&	   10:00	  \\
-	~(4)~ West double door opened 		&   28:00		  &    11:00		&	   11:00	  \\
-	~(5)~ East double door opened 		&   30:00		  &    13:00		&	   13:00	  \\
-	~(6)~ South exterior door opened 	&   31:00		  &    14:00		&	   14:00	  \\
-	~(7)~ Center burner off				&   33:00		  &    17:00		&	   17:00	  \\
-	~(8)~ Middle burner off				&   35:00		  &    19:00		&	   19:00	  \\
-	~(9)~ Corner burner off				&   37:00		  &    21:00		&	   21:00	  \\
-	(10) PPV fan on 					& 	42:01		  &    26:00		&  	   26:00	  \\	
-	(11) PPV fan off 					& 	52:30 		  &    N/A  		&  	   N/A        \\
+	~(1)~ Corner burner on 				& 	0		  	  &	 	0			&		0		  \\
+	~(2)~ Middle burner on 				&   180			  &		180			&		180		  \\
+	~(3)~ Center burner on 				&   360			  &	   	360			&	   	360		  \\
+	~(4)~ West double door opened 		&   420			  &    	420			&	   	420		  \\
+	~(5)~ East double door opened 		&   540			  &    	540			&	   	540		  \\
+	~(6)~ South exterior door opened 	&   600			  &    	600			&	   	600		  \\
+	~(7)~ Center burner off				&   720			  &    	780			&	   	780		  \\
+	~(8)~ Middle burner off				&   840			  &    	900			&	   	900		  \\
+	~(9)~ Corner burner off				&   960			  &    	1020		&	   	1020	  \\
+	(10) PPV fan on 					& 	1260		  &    	1320		&  	   	1320	  \\	
 	\bottomrule
 	\end{tabular}
 	\end{flushleft}
@@ -795,28 +794,20 @@ Test 6 - Seq. 3		& \multicolumn{2}{c}{710} & \multicolumn{3}{c}{} \\
 \begin{minipage}[b]{0.8\columnwidth}
 	\begin{flushleft}
 	\begin{tabular}{lccc}
-	\multicolumn{4}{c}{\normalsize Event Times (mm:ss) for Test~5 Data File} \\
+	\multicolumn{4}{c}{\normalsize Event Times (s) for Test~5 Data File} \\
 	\toprule
-	\multicolumn{1}{c}{\textbf{Event}} & \textbf{Seq. 1} & \textbf{Seq. 2} & \textbf{Seq. 3} \\
+	\multicolumn{1}{c}{\textbf{Event}} 	& \textbf{Seq. 1} & \textbf{Seq. 2} & \textbf{Seq. 3} \\
 	\midrule
-	% Old table layout --- will delete soon
-	% Some door(s) opened before test start according to notes, no sign from data/limited videos
-	% ~(1)~ Corner burner on 			& 	14:00		  &	   34:30		&	   54:30	\\
-	% ~(2)~ Middle burner on 			&   14:15		  &	   34:45		&	   54:45	\\
-	% ~(3)~ Center burner on 			&   14:30		  &	   35:00		&	   55:00	\\
-	% ~(6)~ Center burner off 		&   23:00		  &    44:15		&	   63:30	\\
-	% ~(7)~ Middle burner off 		&   23:20		  &    44:30		&	   63:45	\\
-	% ~(8)~ Corner burner off 		&   23:40		  &    44:45		&	   64:00	\\
-	~(1)~ All burners on 			& 	14:00		  &	   34:30		&	   54:30	\\
-	~(2)~ Roof vent opened 			&   16:38		  &    36:30		&	   56:30	\\
-	~(3)~ West double door opened 	&	17:03		  &	   38:00 		&	   58:00 	\\
-	~(4)~ East double door opened 	&   20:03		  &    39:30		&	   59:31	\\
-	~(5)~ Roof vent closed		 	&   21:30		  &    42:45		&	   61:43	\\
-	~(6)~ All burners off 			&   23:40		  &    44:45		&	   64:00	\\
-	~(7)~ Roof vent opened			& 	26:05 		  &	   45:30		&	   65:30	\\
-	~(8)~ East double door closed	& 	33:17 		  &	   52:38		&	   N/A		\\
-	~(9)~ West double door closed	& 	33:30 		  &	   52:55		&	   N/A		\\
-	(10) Roof vent closed		 	&   33:45		  &    53:54		&	   N/A		\\
+	~(1)~ All burners on 				& 	0			  &	   1230			&	   2430		\\
+	~(2)~ Roof vent opened 				&   128			  &    1320			&	   2520		\\
+	~(3)~ West double door opened 		&	153			  &	   1410	 		&	   2610 	\\
+	~(4)~ East double door opened 		&   333			  &    1500			&	   2700		\\
+	~(5)~ Roof vent closed		 		&   420			  &    1695			&	   2833		\\
+	~(6)~ All burners off 				&   550			  &    1815			&	   2970		\\
+	~(7)~ Roof vent opened				& 	695 		  &	   1860			&	   3060		\\
+	~(8)~ East double door closed		& 	1127 		  &	   2288			&	   N/A		\\
+	~(9)~ West double door closed		& 	1140 		  &	   2305			&	   N/A		\\
+	(10) Roof vent closed		 		&   1155		  &    2364			&	   N/A		\\
 	\bottomrule
 	\end{tabular}
 	\end{flushleft}
@@ -834,25 +825,18 @@ Test 6 - Seq. 3		& \multicolumn{2}{c}{710} & \multicolumn{3}{c}{} \\
 \begin{minipage}[b]{0.8\columnwidth}
 	\begin{flushleft}
 	\begin{tabular}{lccc}
-	\multicolumn{4}{c}{\normalsize Event Times (mm:ss) for Test~6 Data File} \\
+	\multicolumn{4}{c}{\normalsize Event Times (s) for Test~6 Data File} \\
 	\toprule
-	\multicolumn{1}{c}{\textbf{Event}} & \textbf{Seq. 1} & \textbf{Seq. 2} & \textbf{Seq. 3} \\
+	\multicolumn{1}{c}{\textbf{Event}} 	& \textbf{Seq. 1}	& \textbf{Seq. 2} 	& \textbf{Seq. 3} 	\\
 	\midrule
-	% Old table layout --- will delete soon
-	% ~(1)~  Corner burner on 		&	3:15	&	12:45	&	21:15	\\
-	% ~(2)~  Middle burner on 		&	3:30	&	13:00	&	21:30	\\
-	% ~(3)~  Center burner on 		&	3:45	&	13:15	&	21:45	\\
-	% ~(4)~ Center burner off 		&	8:15	&   17:15	&	\multirow{3}{*}{Gas killed at truck (26:15)} \\
-	% ~(5)~ Middle burner off		&	8:30	&   17:30	&	\\
-	% ~(6)~ Corner burner off 		&	8:45	&   17:45	&	\\
-	~(1)~ All burners on 			&	3:15	&	12:45	&	21:45	\\
-	~(2)~ West double door opened 	&	5:15	&   14:45	&	23:15	\\
-	~(3)~ Roof vent opened 		    &	6:45	&	15:45 	&	24:45 	\\
-	~(4)~ All burners off 			&	8:45	&   17:45	&	26:15	\\
-	~(5)~ East double door opened	&	9:30	&   18:30	&	27:25	\\
-	~(6)~ Roof vent closed 			&	11:35	&   20:41	&	N/A		\\
-	~(7)~ East double door closed	&	12:02 	&	20:11	&	N/A 	\\
-	~(8)~  West double door closed	&	12:18 	&	20:24	&	N/A		\\
+	~(1)~ All burners on 				&	0				&	570				&	1080			\\
+	~(2)~ West double door opened 		&	90				&   660				&	1170			\\
+	~(3)~ Roof vent opened 		    	&	180				&	720 			& 	1260 			\\
+	~(4)~ All burners off 				&	300				&   840				&	1350			\\
+	~(5)~ East double door opened		&	345				&   885				&	1420			\\
+	~(6)~ Roof vent closed 				&	470				&   1016			&	N/A				\\
+	~(7)~ East double door closed		&	497 			&	986				&	N/A 			\\
+	~(8)~  West double door closed		&	513 			&	999				&	N/A				\\
 	\bottomrule
 	\end{tabular}
 	\end{flushleft}
@@ -899,25 +883,21 @@ Tests~22 and 23 followed an identical procedure to change the ventilation. Fig.~
 \begin{minipage}[b]{0.8\columnwidth}
 	\begin{flushleft}
 	\begin{tabular}{lcc}
-	\multicolumn{3}{c}{Event Times (mm:ss) for Tests~22--23 Data Files} \\
+	\multicolumn{3}{c}{Event Times (s) for Tests~22--23 Data Files} \\
 	\toprule
 	\multicolumn{1}{c}{\textbf{Event}} 			& \textbf{Test 22}	& \textbf{Test 23} \\
 	\midrule
-	% Old table layout --- will delete soon
-	% ~(1)~  Corner burner on 					& 	9:05 			&	 3:45		\\
-	% ~(2)~  Middle burner on 					&   8:45	  		&	 3:55		\\
-	% ~(3)~  Center burner on 					&   8:15	  		&	 4:04		\\
-	~(1)~  All burners on 						&   8:15	  		&	 3:45		\\
-	~(2)~  2nd floor west double door opened 	&   11:30	  		&    6:00		\\
-	~(3)~  1st floor west double door opened 	&	13:30	  		&    8:02 	 	\\
-	~(4)~  1st floor east double door opened 	&   15:45		  	&    10:00		\\
-	~(5)~  2nd floor east double door opened	&   18:00		  	&    12:08		\\
-	~(6)~  PPV fan on 							&   19:10		  	&    14:01		\\
-	~(7)~  PPV fan off              			&   21:34		  	&    16:30		\\
-	~(8)~  All burners off 						&   22:00		  	&    17:00		\\
-	~(9)~  2nd floor south exterior door opened &   23:19		  	&    18:01		\\
-	(10) PPV fan on 	 						&   26:00		  	&    19:30		\\
-	(11) 2nd floor south exterior door closed   &   27:56		  	&    N/A		\\
+	~(1)~  All burners on 						&   0	  			&	 0			\\
+	~(2)~  2nd floor west double door opened 	&   127		  		&    116		\\
+	~(3)~  1st floor west double door opened 	&	247		  		&    238 	 	\\
+	~(4)~  1st floor east double door opened 	&   382			  	&    356		\\
+	~(5)~  2nd floor east double door opened	&   517			  	&    484		\\
+	~(6)~  PPV fan on 							&   587			  	&    596		\\
+	~(7)~  PPV fan off              			&   731			  	&    746		\\
+	~(8)~  All burners off 						&   757			  	&    776		\\
+	~(9)~  2nd floor south exterior door opened &   836			  	&    836		\\
+	(10) PPV fan on 	 						&   997			  	&    926		\\
+	(11) 2nd floor south exterior door closed   &   1113		  	&    N/A		\\
 	\bottomrule
 	\end{tabular}
 	\end{flushleft}
@@ -936,22 +916,18 @@ Tests~22 and 23 followed an identical procedure to change the ventilation. Fig.~
 \begin{minipage}[b]{0.8\columnwidth}
 	\begin{flushleft}
 	\begin{tabular}{lcc}
-	\multicolumn{3}{c}{Event Times (mm:ss) for Tests 24--25 Data Files} \\
+	\multicolumn{3}{c}{Event Times (s) for Tests 24--25 Data Files} \\
 	\toprule
 	\multicolumn{1}{c}{\textbf{Event}} 			& \textbf{Test 24}	& \textbf{Test 25} \\
 	\midrule
-	% Old table layout --- will delete soon
-	% ~(1)~ Corner burner on 					& 	2:30 			&	 2:00		\\
-	% ~(2)~ Middle burner on 					&   2:45	  		&	 2:00		\\
-	% ~(3)~ Center burner on 					&   3:00	  		&	 2:00		\\
-	~(1)~ All burners on 						&   2:30	  		&	 2:00		\\
-	~(2)~ Interior stairwell door opened 		&   5:00	  		&    4:00		\\
-	~(3)~ 1st floor west double door opened 	&	7:00	  		&    6:11 	 	\\
-	~(4)~ 2nd floor west double door opened 	&   9:00		  	&    8:00		\\
-	~(5)~ 2nd floor south exterior door opened	&   11:00		  	&    10:00		\\
-	~(6)~ PPV fan on 							&   13:00		  	&    12:00 		\\
-	~(7)~ All burners off 						&   15:00		  	&    14:00		\\
-	~(8)~ 2nd floor east double door opened 	&   17:15		  	&    16:00		\\
+	~(1)~ All burners on 						&   0		  		&	 0			\\
+	~(2)~ Interior stairwell door opened 		&   120		  		&    110		\\
+	~(3)~ 1st floor west double door opened 	&	240		  		&    241 	 	\\
+	~(4)~ 2nd floor west double door opened 	&   360			  	&    350		\\
+	~(5)~ 2nd floor south exterior door opened	&   480			  	&    470		\\
+	~(6)~ PPV fan on 							&   600			  	&    590 		\\
+	~(7)~ All burners off 						&   720 		  	&    710		\\
+	~(8)~ 2nd floor east double door opened 	&   855			  	&    830		\\
 	\bottomrule
 	\end{tabular}
 	\end{flushleft}

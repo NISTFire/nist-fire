@@ -28,11 +28,16 @@ specific_year = '2014'
 
 # Specify type
 specify_type = True
-specific_type = 'HOSE'
+specific_type = 'GAS'
 
 # Specify structure
 specify_struct = False
 specific_struct = 'West'
+
+# Specify if creating data sets
+#  for gas burner exp. report
+burner_report = True
+burner_data = '../Reports/Propane_Gas_Fire_Experiments/Data/'
 
 # Plot mode: figure or video
 plot_mode = 'figure'
@@ -150,19 +155,42 @@ for f in os.listdir(data_dir):
             test_year = '2015'
 
         test_type = info['Test Type'][test_name]
-        
-        # if test_type == 'HOSE':
-        #     continue
+
+        if burner_report:
+            try:
+                if 'Propane fire' not in info['Test Description'][test_name]:
+                    continue
+            except TypeError:
+                continue
 
         if check_name(test_name, test_year, test_type):     # check if file should be skipped
             continue
-
         else:   # Load exp. data file
             data = pd.read_csv(data_dir + f)
             data = data.set_index('TimeStamp(s)')
             print ('--- Loaded ' + test_name + ' ---')
 
-        # Read in test times to offset plots
+        # Read in test times to offset plots.
+        if burner_report:
+            if 'West' in test_name:     # ignore first 2 time entries
+                events = all_times[test_name].dropna()[2:]
+            else:      
+                if 'Test_5_' in test_name or 'Test_6_' in test_name:
+                    events = all_times[test_name].dropna()[3:]
+                else:
+                    events = all_times[test_name].dropna()[1:]
+            offset_time = events.index.values[0]
+            new_times = events.index.values - int(offset_time)
+            events = pd.Series(events.values, index=new_times)
+            print events
+            print
+            data['Time'] = data['Time'].values - offset_time
+            reduced_data = data.drop('Time', axis=1)
+            reduced_data.insert(0, 'Time', data['Time'])
+            reduced_data = reduced_data.set_index('Time')
+            reduced_data = reduced_data.loc[-60:, :]
+            reduced_data.to_csv(burner_data + test_name + '.csv')
+            continue
         start_of_test = info['Start of Test'][test_name]
         end_of_test = info['End of Test'][test_name]
 
