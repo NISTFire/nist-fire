@@ -188,7 +188,21 @@ for f in os.listdir(data_dir):
             reduced_data = data.drop('Time', axis=1)
             reduced_data.insert(0, 'Time', data['Time'])
             reduced_data = reduced_data.set_index('Time')
-            reduced_data = reduced_data.loc[-60:, :]
+            units = []
+            for heading in reduced_data.columns.values:
+                if 'TC_' in heading:
+                    units.append('C')
+                elif 'BDP_' in heading:
+                    units.append('m/s')
+                elif 'RAD_' in heading or 'HF_' in heading:
+                    units.append('kW/m2')
+                elif 'CO_' in heading or 'O2_' in heading or 'CO2_' in heading:
+                    units.append('mol/mol')
+                else:
+                    print 'No units found for value ' + heading
+                    sys.exit()
+            reduced_data = reduced_data.loc[-61:, :]
+            reduced_data.loc[-61, : ] = units
             reduced_data.to_csv(burner_data + test_name + '.csv')
             continue
         start_of_test = info['Start of Test'][test_name]
