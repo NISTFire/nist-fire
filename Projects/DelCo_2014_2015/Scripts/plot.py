@@ -170,53 +170,6 @@ for f in os.listdir(data_dir):
             data = data.set_index('TimeStamp(s)')
             print ('--- Loaded ' + test_name + ' ---')
 
-        # Read in test times to offset plots.
-        if burner_report:
-            if 'West' in test_name:     # ignore first 2 time entries
-                events = all_times[test_name].dropna()[2:]
-            else:      
-                if 'Test_5_' in test_name or 'Test_6_' in test_name:
-                    events = all_times[test_name].dropna()[3:]
-                else:
-                    events = all_times[test_name].dropna()[1:]
-            offset_time = events.index.values[0]
-            new_times = events.index.values - int(offset_time)
-            events = pd.Series(events.values, index=new_times)
-            print events
-            print
-            data['Time'] = data['Time'].values - offset_time
-            reduced_data = data.drop('Time', axis=1)
-            reduced_data.insert(0, 'Time', data['Time'])
-            reduced_data = reduced_data.set_index('Time')
-            units = []
-            for heading in reduced_data.columns.values:
-                if 'TC_' in heading:
-                    units.append('C')
-                elif 'BDP_' in heading:
-                    units.append('m/s')
-                elif 'RAD_' in heading or 'HF_' in heading:
-                    units.append('kW/m2')
-                elif 'CO_' in heading or 'O2_' in heading or 'CO2_' in heading:
-                    units.append('mol/mol')
-                else:
-                    print 'No units found for value ' + heading
-                    sys.exit()
-            reduced_data = reduced_data.loc[-61:, :]
-            reduced_data.loc[-61, : ] = units
-            reduced_data.to_csv(burner_data + test_name + '.csv')
-            continue
-        start_of_test = info['Start of Test'][test_name]
-        end_of_test = info['End of Test'][test_name]
-
-        # Offset data time to start of test
-        data['Time'] = data['Time'].values - start_of_test
-
-        data_copy = data.drop('Time', axis=1)
-        data_copy = pd.rolling_mean(data_copy, data_time_averaging_window, center=True)
-        data_copy.insert(0, 'Time', data['Time'])
-        data_copy = data_copy.dropna()
-        data = data_copy
-
         # Create group and channel lists
         if test_year == '2014':
             if 'West' in test_name:
@@ -233,6 +186,130 @@ for f in os.listdir(data_dir):
         channel_list = pd.read_csv(channel_list_file)
         channel_list = channel_list.set_index('Device Name')
         channel_groups = channel_list.groupby('Group Name')
+
+        # Read in test times to offset plots.
+        if burner_report:
+            if 'West' in test_name:     # ignore first 2 time entries
+                events = all_times[test_name].dropna()[2:]
+            else:      
+                if 'Test_5_' in test_name or 'Test_6_' in test_name:
+                    events = all_times[test_name].dropna()[3:]
+                else:
+                    events = all_times[test_name].dropna()[1:]
+            offset_time = events.index.values[0]
+            new_times = events.index.values - int(offset_time)
+            events = pd.Series(events.values, index=new_times)
+            # print events
+            # print
+            data['Time'] = data['Time'].values - offset_time
+            reduced_data = data.drop('Time', axis=1)
+            reduced_data.insert(0, 'Time', data['Time'])
+            reduced_data = reduced_data.set_index('Time')
+            reduced_data = reduced_data.loc[-61:, :]
+
+            # Process data for each quantity group
+            for group in channel_groups.groups:
+                # Skip excluded groups listed in test description file
+                if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
+                    continue
+                
+                for channel in channel_groups.get_group(group).index.values:            
+                    # Skip plot quantity if channel name is blank
+                    if pd.isnull(channel):
+                        continue
+
+                    # Skip excluded channels listed in test description file
+                    if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
+                        continue   
+
+                    # Scale channel depending on quantity
+                    current_channel_data = reduced_data[channel]
+                    calibration_slope = float(channel_list['Calibration Slope'][channel])
+                    calibration_intercept = float(channel_list['Calibration Intercept'][channel])
+                    # Temperature
+                    if channel_list['Measurement Type'][channel] == 'Temperature':
+                        current_channel_data = current_channel_data * calibration_slope + calibration_intercept
+                    # Velocity
+                    elif channel_list['Measurement Type'][channel] == 'Velocity':
+                        conv_inch_h2o = 0.4
+                        conv_pascal = 248.8
+                        zero_voltage = np.mean(current_channel_data[-61:-1])  # Get zero voltage from pre-test data
+                        pressure = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Convert voltage to pascals
+                        if int(info['Test Number'][test_name]) >= 91 and 'East' in test_name and 'BDP A7' in group:
+                            current_channel_data = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)
+                        else:
+                            current_channel_data = 0.0698 * np.sqrt(np.abs(pressure) * (reduced_data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
+                    # Heat Flux
+                    elif channel_list['Measurement Type'][channel] == 'Heat Flux':
+                        zero_voltage = np.mean(current_channel_data[-61:-1])  # Get zero voltage from pre-test data
+                        current_channel_data = (current_channel_data - zero_voltage) * calibration_slope + calibration_intercept
+                    # Pressure
+                    elif channel_list['Measurement Type'][channel] == 'Pressure':
+                        conv_inch_h2o = 0.4
+                        conv_pascal = 248.8
+                        zero_voltage = np.mean(current_channel_data[-61:-1])  # Convert voltage to pascals
+                        current_channel_data = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Get zero voltage from pre-test data
+                    # Gas
+                    elif channel_list['Measurement Type'][channel] == 'Gas':
+                        if test_year == '2015':
+                            zero_voltage = np.mean(current_channel_data[-61:-1])
+                            if int(test_name[5:-12]) >= 45:
+                                if 'Carbon Dioxide ' in channel:
+                                    current_channel_data = (current_channel_data-zero_voltage) * 10/(5.-zero_voltage)
+                                elif 'Carbon Monoxide ' in channel:
+                                    current_channel_data = (current_channel_data-zero_voltage) * 5.0/(5.-zero_voltage)
+                                else:
+                                    calibration_slope = 20.9/(zero_voltage-1.)
+                                    current_channel_data = current_channel_data * 4.18 * 1.2
+                            else:
+                                if 'Carbon ' in channel:
+                                    current_channel_data = (current_channel_data-zero_voltage) * calibration_slope + calibration_intercept
+                                else:
+                                    calibration_slope = 20.95/(zero_voltage-1.)
+                                    current_channel_data = (current_channel_data-1.) * calibration_slope
+                        elif test_year == '2014':
+                            current_channel_data = current_channel_data * calibration_slope + calibration_intercept
+                    # Hose
+                    elif channel_list['Measurement Type'][channel] == 'Hose':
+                        # Skip data other than sensors on 2.5 inch hoseline
+                        if '2p5' not in channel:
+                            continue
+                        current_channel_data = current_channel_data * calibration_slope + calibration_intercept
+                    
+                    # Save converted channel data back to exp. dataframe
+                    reduced_data[channel] = current_channel_data
+            
+            units = []
+            for heading in reduced_data.columns.values:
+                if 'TC_' in heading:
+                    units.append('C')
+                elif 'BDP_' in heading:
+                    units.append('m/s')
+                elif 'RAD_' in heading or 'HF_' in heading:
+                    units.append('kW/m2')
+                elif 'CO_' in heading or 'O2_' in heading or 'CO2_' in heading:
+                    units.append('mol/mol')
+                else:
+                    print 'No units found for value ' + heading
+                    sys.exit()
+
+            reduced_data.loc[-61, : ] = units
+            reduced_data.to_csv(burner_data + test_name + '.csv')
+            print 'Saved data set for ' + test_name
+            print 
+            continue
+
+        start_of_test = info['Start of Test'][test_name]
+        end_of_test = info['End of Test'][test_name]
+
+        # Offset data time to start of test
+        data['Time'] = data['Time'].values - start_of_test
+
+        data_copy = data.drop('Time', axis=1)
+        data_copy = pd.rolling_mean(data_copy, data_time_averaging_window, center=True)
+        data_copy.insert(0, 'Time', data['Time'])
+        data_copy = data_copy.dropna()
+        data = data_copy
 
         #  ============
         #  = Plotting =
