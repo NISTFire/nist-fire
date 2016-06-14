@@ -37,12 +37,12 @@ Test Number,Test Type,Old Test Key,New Test Key,Start of Test,End of Test,Test D
 36,FIRE,FIRE_NCONN,FIRE_FA2S1C1NCX1_1,90,2000,,None,None,None,20,200,1500,None,25,None,None,None,None,30
 37,FIRE,FIRE_NCONN,FIRE_FA2S1C1NCX1_2,480,2700,,None,None,None,20,200,1500,None,25,None,None,None,None,30
 38,FIRE,FIRE_NCONN,FIRE_FA2S1C1NCX1_3,240,2700,,None,None,None,20,200,1500,None,25,None,None,None,None,30
-39,GAS,Test_1_East_062514,Test_1_East_062514,0,450,Wind and door test only,None,None,None,20,200,1500,300,None,None,None,None,None,30
-40,GAS,Test_2_East_062514,Test_2_East_062514,0,3310,"Propane fire w/ doors, Replicate 1",None,None,None,20,200,800,300,25,None,None,None,None,30
-41,GAS,Test_3_East_062514,Test_3_East_062514,0,2160,"Propane fire w/ doors, Replicate 2",None,None,None,20,200,800,300,25,None,None,None,None,30
-42,GAS,Test_4_East_062514,Test_4_East_062514,0,1976,"Propane fire w/ doors, Replicate 3",None,None,None,20,200,850,300,25,None,None,None,None,30
-43,GAS,Test_5_East_062614,Test_5_East_062614,0,4140,"Propane fire w/ ceiling vent/door, 3 tests",None,None,None,20,200,900,300,25,None,None,None,None,30
-44,GAS,Test_6_East_062614,Test_6_East_062614,0,1941,"Propane fire w/ door/ceiling vent, 3 tests",None,None,None,20,200,850,300,25,None,None,None,None,30
+39,GAS,Test_1_East_062514,Test_1_East_062514,0,450,Wind and door test only,None,None,None,10,200,1500,300,None,None,None,None,None,30
+40,GAS,Test_2_East_062514,Test_2_East_062514,0,3310,"Propane fire w/ doors, Replicate 1",TC Helmet|TC Ignition|TC A6|TC A10|BDP A6|BDP A10,HF_A2|RAD_A2,None,10,10,800,300,25,None,None,None,None,30
+41,GAS,Test_3_East_062514,Test_3_East_062514,0,2160,"Propane fire w/ doors, Replicate 2",TC Helmet|TC Ignition|TC A6|TC A10|BDP A6|BDP A10,HF_A2|RAD_A2,None,10,10,800,300,25,None,None,None,None,30
+42,GAS,Test_4_East_062514,Test_4_East_062514,0,1976,"Propane fire w/ doors, Replicate 3",TC Helmet|TC Ignition|TC A6|TC A10|BDP A6|BDP A10,HF_A2|RAD_A2,None,10,10,850,300,25,None,None,None,None,30
+43,GAS,Test_5_East_062614,Test_5_East_062614,0,4140,"Propane fire w/ ceiling vent/door, 3 tests",TC Helmet|TC Ignition|TC A6|TC A7|BDP A6|BDP A7,HF_A2|RAD_A2,None,10,10,900,300,25,None,None,None,None,30
+44,GAS,Test_6_East_062614,Test_6_East_062614,0,1941,"Propane fire w/ door/ceiling vent, 3 tests",TC Helmet|TC Ignition|TC A6|TC A7|BDP A6|BDP A7,HF_A2|RAD_A2,None,10,10,850,300,25,None,None,None,None,30
 45,GAS,Test_7_East_062714,Test_7_East_062714,0,542,Cold flow U-shape setup,None,None,None,20,200,1500,300,None,None,None,None,None,30
 46,GAS,Test_8_East_062714,Test_8_East_062714,0,1490,"Hot flow U-shape setup, no targets",None,None,None,20,200,1500,300,None,None,None,None,None,30
 47,GAS,Test_9_East_062714,Test_9_East_062714,0,356,"Hot flow U-shape setup, targets (plastic helmet and fabric)",None,None,None,20,200,1500,300,None,None,None,None,None,30
@@ -61,10 +61,10 @@ Test Number,Test Type,Old Test Key,New Test Key,Start of Test,End of Test,Test D
 58,HOSE,Test_19_West_063014,Test_19_West_063014,60,2953,Handline,TC A13|TC A14|TC A16|TC A17|TC A18|BDP A18|TC A19,None,None,5,200,1500,300,None,120,None,None,None,30
 59,HOSE,Test_20_West_063014,Test_20_West_063014,0,5,"Hose Test, lost data",TC A13|TC A14|TC A16|TC A17|TC A18|BDP A18|TC A19,None,None,20,200,1500,300,None,None,None,None,None,30
 60,FIRE,Test_21_East_070114,Test_21_East_070114,0,1750,"Fire Test, full fuel load",None,None,None,20,200,1500,300,25,None,None,None,None,30
-59,GAS,Test_22_West_070214,Test_22_West_070214,0,1950,Propane fire,TC A16|TC A17|TC A18|BDP A18|TC A19,None,None,20,200,550,300,25,None,None,None,None,30
-59,GAS,Test_23_West_070214,Test_23_West_070214,0,1246,Propane fire,TC A16|TC A17|TC A18|BDP A18|TC A19,None,None,20,200,600,300,25,None,None,None,None,30
-59,GAS,Test_24_West_070214,Test_24_West_070214,0,1326,Propane fire,TC A16|TC A17|TC A18|BDP A18|TC A19,None,None,20,200,550,300,25,None,None,None,None,30
-59,GAS,Test_25_West_070214,Test_25_West_070214,0,1080,Propane fire,TC A16|TC A17|TC A18|BDP A18|TC A19,None,None,20,200,550,300,25,None,None,None,None,32
+59,GAS,Test_22_West_070214,Test_22_West_070214,0,1950,Propane fire,Ignition|TC A16|TC A17|TC A18|BDP A18|TC A19|TC A4|BDP A4|TC Helmet|BDP A15|BDP A12|TC A15|TC A12,HF_3_V|HF_3_H|BDP_A5_4|BDP_A5_5|BDP_A6_6,None,10,10,550,300,25,None,None,None,None,30
+59,GAS,Test_23_West_070214,Test_23_West_070214,0,1246,Propane fire,Ignition|TC A16|TC A17|TC A18|BDP A18|TC A19|TC A4|BDP A4|TC Helmet|BDP A15|BDP A12|TC A15|TC A12,HF_3_V|HF_3_H|BDP_A5_4|BDP_A6_6,None,10,10,600,300,25,None,None,None,None,30
+59,GAS,Test_24_West_070214,Test_24_West_070214,0,1326,Propane fire,Ignition|TC A16|TC A17|TC A18|BDP A18|TC A19|TC A4|BDP A4|TC Helmet|BDP A15|BDP A12|TC A15|TC A12,HF_3_V|HF_3_H|BDP_A5_4|BDP_A6_6,None,10,10,550,300,25,None,None,None,None,30
+59,GAS,Test_25_West_070214,Test_25_West_070214,0,1080,Propane fire,Ignition|TC A16|TC A17|TC A18|BDP A18|TC A19|TC A4|BDP A4|TC Helmet|BDP A15|BDP A12|TC A15|TC A12,HF_3_V|HF_3_H|BDP_A5_4|BDP_A6_6,None,10,10,550,300,25,None,None,None,None,32
 60,FIRE,Test_26_East_070714,Test_26_East_070714,0,1089,Fire test,None,None,None,20,200,1500,300,25,None,None,None,None,32
 61,FIRE,Test_27_West_070814,Test_27_West_070814,0,1518,Fire test,TC A16|TC A17|TC A18|BDP A18|TC A19,None,None,20,200,1500,300,25,None,None,None,None,32
 62,FIRE,Test_28_East_070814,Test_28_East_070814,0,2468,Fire test,None,None,None,20,200,1500,300,25,None,None,None,None,32

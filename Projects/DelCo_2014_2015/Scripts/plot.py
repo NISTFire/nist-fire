@@ -206,28 +206,29 @@ for f in os.listdir(data_dir):
             reduced_data.insert(0, 'Time', data['Time'])
             reduced_data = reduced_data.set_index('Time')
             reduced_data = reduced_data.loc[-61:, :]
+            final_reduced_data = pd.DataFrame(index=reduced_data.index)
 
             # Process data for each quantity group
             for group in channel_groups.groups:
                 # Skip excluded groups listed in test description file
                 if any([substring in group for substring in info['Excluded Groups'][test_name].split('|')]):
                     continue
-                
+
                 for channel in channel_groups.get_group(group).index.values:            
                     # Skip plot quantity if channel name is blank
                     if pd.isnull(channel):
-                        continue
-
-                    # Skip excluded channels listed in test description file
-                    if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
-                        continue   
+                        continue 
 
                     # Scale channel depending on quantity
                     current_channel_data = reduced_data[channel]
                     calibration_slope = float(channel_list['Calibration Slope'][channel])
                     calibration_intercept = float(channel_list['Calibration Intercept'][channel])
+                    
+                    # Skip excluded channels listed in test description file
+                    if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
+                        current_channel_data = current_channel_data.replace(to_replace=current_channel_data, value='NaN')
                     # Temperature
-                    if channel_list['Measurement Type'][channel] == 'Temperature':
+                    elif channel_list['Measurement Type'][channel] == 'Temperature':
                         current_channel_data = current_channel_data * calibration_slope + calibration_intercept
                     # Velocity
                     elif channel_list['Measurement Type'][channel] == 'Velocity':
@@ -277,10 +278,10 @@ for f in os.listdir(data_dir):
                         current_channel_data = current_channel_data * calibration_slope + calibration_intercept
                     
                     # Save converted channel data back to exp. dataframe
-                    reduced_data[channel] = current_channel_data
+                    final_reduced_data[channel] = current_channel_data
             
             units = []
-            for heading in reduced_data.columns.values:
+            for heading in final_reduced_data.columns.values:
                 if 'TC_' in heading:
                     units.append('C')
                 elif 'BDP_' in heading:
@@ -293,8 +294,8 @@ for f in os.listdir(data_dir):
                     print 'No units found for value ' + heading
                     sys.exit()
 
-            reduced_data.loc[-61, : ] = units
-            reduced_data.to_csv(burner_data + test_name + '.csv')
+            final_reduced_data.loc[-61, : ] = units
+            final_reduced_data.to_csv(burner_data + test_name + '.csv')
             print 'Saved data set for ' + test_name
             print 
             continue
@@ -441,7 +442,7 @@ for f in os.listdir(data_dir):
                                 calibration_slope = 20.95/(zero_voltage-1.)
                                 current_channel_data = (current_channel_data-1.) * calibration_slope
                     elif test_year == '2014':
-                        quantity = current_channel_data * calibration_slope + calibration_intercept
+                        current_channel_data = current_channel_data * calibration_slope + calibration_intercept
                     plt.ylabel('Concentration (%)', fontsize=20)
                     line_style = '-'
                     axis_scale = 'Y Scale GAS'

@@ -1,1 +1,130 @@
-Panel,Channel,Device Name,Calibration Slope,Calibration Intercept,Channel Name,Group Name,Measurement TypeSC1Mod2,0,TC_A1_1,1,0,TC 1 0.03 m BC East,TC A1,TemperatureSC1Mod2,1,TC_A1_2,1,0,TC 1 0.30 m BC East,TC A1,TemperatureSC1Mod2,2,TC_A1_3,1,0,TC 1 0.61 m BC East,TC A1,TemperatureSC1Mod2,3,TC_A1_4,1,0,TC 1 0.91 m BC East,TC A1,TemperatureSC1Mod2,4,TC_A1_5,1,0,TC 1 1.22 m BC East,TC A1,TemperatureSC1Mod2,5,TC_A1_6,1,0,TC 1 1.52 m BC East,TC A1,TemperatureSC1Mod2,6,TC_A1_7,1,0,TC 1 1.83 m BC East,TC A1,TemperatureSC1Mod2,7,TC_A1_8,1,0,TC 1 2.13 m BC East,TC A1,TemperatureSC1Mod2,8,TC_A2_1,1,0,TC 2 0.03 m BC East,TC A2,TemperatureSC1Mod2,9,TC_A2_2,1,0,TC 2 0.30 m BC East,TC A2,TemperatureSC1Mod2,10,TC_A2_3,1,0,TC 2 0.61 m BC East,TC A2,TemperatureSC1Mod2,11,TC_A2_4,1,0,TC 2 0.91 m BC East,TC A2,TemperatureSC1Mod2,12,TC_A2_5,1,0,TC 2 1.22 m BC East,TC A2,TemperatureSC1Mod2,13,TC_A2_6,1,0,TC 2 1.52 m BC East,TC A2,TemperatureSC1Mod2,14,TC_A2_7,1,0,TC 2 1.83 m BC East,TC A2,TemperatureSC1Mod2,15,TC_A2_8,1,0,TC 2 2.13 m BC East,TC A2,TemperatureSC1Mod2,16,TC_A4_1,1,0,TC 4 0.03 m BC East,TC A4,TemperatureSC1Mod2,17,TC_A4_2,1,0,TC 4 0.30 m BC East,TC A4,TemperatureSC1Mod2,18,TC_A4_3,1,0,TC 4 0.61 m BC East,TC A4,TemperatureSC1Mod2,19,TC_A4_4,1,0,TC 4 0.91 m BC East,TC A4,TemperatureSC1Mod2,20,TC_A4_5,1,0,TC 4 1.22 m BC East,TC A4,TemperatureSC1Mod2,21,TC_A4_6,1,0,TC 4 1.52 m BC East,TC A4,TemperatureSC1Mod2,22,TC_A4_7,1,0,TC 4 1.83 m BC East,TC A4,TemperatureSC1Mod2,23,TC_A4_8,1,0,TC 4 2.13 m BC East,TC A4,TemperatureSC1Mod2,24,TC_A5_1,1,0,TC 5 0.03 m BC East,TC A5,TemperatureSC1Mod2,25,TC_A5_2,1,0,TC 5 0.30 m BC East,TC A5,TemperatureSC1Mod2,26,TC_A5_3,1,0,TC 5 0.61 m BC East,TC A5,TemperatureSC1Mod2,27,TC_A5_4,1,0,TC 5 0.91 m BC East,TC A5,TemperatureSC1Mod2,28,TC_A5_5,1,0,TC 5 1.22 m BC East,TC A5,TemperatureSC1Mod2,29,TC_A5_6,1,0,TC 5 1.52 m BC East,TC A5,TemperatureSC1Mod2,30,TC_A5_7,1,0,TC 5 1.83 m BC East,TC A5,TemperatureSC1Mod2,31,TC_A5_8,1,0,TC 5 2.13 m BC East,TC A5,TemperatureSC1Mod3,0,TC_A3_1,1,0,TC 3 0.03 m BC East,TC A3,TemperatureSC1Mod3,1,TC_A3_2,1,0,TC 3 0.30 m BC East,TC A3,TemperatureSC1Mod3,2,TC_A3_3,1,0,TC 3 0.61 m BC East,TC A3,TemperatureSC1Mod3,3,TC_A3_4,1,0,TC 3 0.91 m BC East,TC A3,TemperatureSC1Mod3,4,TC_A3_5,1,0,TC 3 1.22 m BC East,TC A3,TemperatureSC1Mod3,5,TC_A3_6,1,0,TC 3 1.52 m BC East,TC A3,TemperatureSC1Mod3,6,TC_A3_7,1,0,TC 3 1.83 m BC East,TC A3,TemperatureSC1Mod3,7,TC_A3_8,1,0,TC 3 2.13 m BC East,TC A3,TemperatureSC1Mod3,8,TC_A6_1,1,0,TC 6 0.30 m BS East,TC A6,TemperatureSC1Mod3,9,TC_A6_2,1,0,TC 6 0.60 m BS East,TC A6,TemperatureSC1Mod3,10,TC_A6_3,1,0,TC 6 0.90 m BS East,TC A6,TemperatureSC1Mod3,11,TC_A6_4,1,0,TC 6 1.20 m BS East,TC A6,TemperatureSC1Mod3,12,TC_A6_5,1,0,TC 6 1.50 m BS East,TC A6,TemperatureSC1Mod3,13,TC_A6_6,1,0,TC 6 1.80 m BS East,TC A6,TemperatureSC1Mod3,14,TC_A10_1,1,0,TC 10 1 East,TC A10,TemperatureSC1Mod3,15,TC_A10_2,1,0,TC 10 2 East,TC A10,TemperatureSC1Mod3,16,TC_A10_3,1,0,TC 10 3 East,TC A10,TemperatureSC1Mod3,17,TC_Ignition,1,,TC Ignition East East,TC Ignition,TemperatureSC1Mod3,18,TC_A7_1,1,0,TC 7 0.08 m BS East,TC A7,TemperatureSC1Mod3,19,TC_A7_2,1,0,TC 7 0.34 m BS East,TC A7,TemperatureSC1Mod3,20,TC_A7_3,1,0,TC 7 0.61 m BS East,TC A7,TemperatureSC1Mod3,21,TC_A7_4,1,0,TC 7 0.88 m BS East,TC A7,TemperatureSC1Mod3,22,TC_A7_5,1,0,TC 7 1.15 m BS East,TC A7,TemperatureSC1Mod3,23,TC_A7_6,1,0,TC 7 1.42 m BS East,TC A7,TemperatureSC1Mod3,24,TC_A7_7,1,0,TC 7 1.68 m BS East,TC A7,TemperatureSC1Mod3,25,TC_A7_8,1,0,TC 7 1.95 m BS East,TC A7,TemperatureSC1Mod3,26,TC_Helmet_1,1,0,TC Helmet 1 East,TC Helmet,TemperatureSC1Mod3,27,TC_Helmet_2,1,0,TC Helmet 2 East,TC Helmet,TemperatureSC1Mod3,28,TC_Helmet_3,1,0,TC Helmet 3 East,TC Helmet,TemperatureSC1Mod3,29,TC_Helmet_4,1,0,TC Helmet 4 East,TC Helmet,TemperatureSC1Mod3,30,TC_Helmet_5,1,0,TC Helmet 5 East,TC Helmet,TemperatureSC1Mod3,31,TC_Helmet_6,1,0,TC Helmet 6 East,TC Helmet,TemperatureSC1Mod4,0,TC_A8_1,1,0,TC 8 0.08 m BS East,TC A8,TemperatureSC1Mod4,1,TC_A8_2,1,0,TC 8 0.34 m BS East,TC A8,TemperatureSC1Mod4,2,TC_A8_3,1,0,TC 8 0.61 m BS East,TC A8,TemperatureSC1Mod4,3,TC_A8_4,1,0,TC 8 0.88 m BS East,TC A8,TemperatureSC1Mod4,4,TC_A8_5,1,0,TC 8 1.15 m BS East,TC A8,TemperatureSC1Mod4,5,TC_A8_6,1,0,TC 8 1.42 m BS East,TC A8,TemperatureSC1Mod4,6,TC_A8_7,1,0,TC 8 1.68 m BS East,TC A8,TemperatureSC1Mod4,7,TC_A8_8,1,0,TC 8 1.95 m BS East,TC A8,TemperatureSC1Mod4,8,TC_A9_1,1,0,TC 9 0.08 m BS East,TC A9,TemperatureSC1Mod4,9,TC_A9_2,1,0,TC 9 0.34 m BS East,TC A9,TemperatureSC1Mod4,10,TC_A9_3,1,0,TC 9 0.61 m BS East,TC A9,TemperatureSC1Mod4,11,TC_A9_4,1,0,TC 9 0.88 m BS East,TC A9,TemperatureSC1Mod4,12,TC_A9_5,1,0,TC 9 1.15 m BS East,TC A9,TemperatureSC1Mod4,13,TC_A9_6,1,0,TC 9 1.42 m BS East,TC A9,TemperatureSC1Mod4,14,TC_A9_7,1,0,TC 9 1.68 m BS East,TC A9,TemperatureSC1Mod4,15,TC_A9_8,1,0,TC 9 1.95 m BS East,TC A9,TemperatureSC1Mod4,16,BDP_A7_1,99.52,-248.8,BDP 7 0.08 m BS East,BDP A7,VelocitySC1Mod4,17,BDP_A7_2,99.52,-248.8,BDP 7 0.34 m BS East,BDP A7,VelocitySC1Mod4,18,BDP_A7_3,99.52,-248.8,BDP 7 0.61 m BS East,BDP A7,VelocitySC1Mod4,19,BDP_A7_4,99.52,-248.8,BDP 7 0.88 m BS East,BDP A7,VelocitySC1Mod4,20,BDP_A7_5,99.52,-248.8,BDP 7 1.15 m BS East,BDP A7,VelocitySC1Mod4,21,BDP_A7_6,99.52,-248.8,BDP 7 1.42 m BS East,BDP A7,VelocitySC1Mod4,22,BDP_A7_7,99.52,-248.8,BDP 7 1.68 m BS East,BDP A7,VelocitySC1Mod4,23,BDP_A7_8,99.52,-248.8,BDP 7 1.95 m BS East,BDP A7,VelocitySC1Mod4,24,BDP_A8_1,99.52,-248.8,BDP 8 0.08 m BS East,BDP A8,VelocitySC1Mod4,25,BDP_A8_2,99.52,-248.8,BDP 8 0.34 m BS East,BDP A8,VelocitySC1Mod4,26,BDP_A8_3,99.52,-248.8,BDP 8 0.61 m BS East,BDP A8,VelocitySC1Mod4,27,BDP_A8_4,99.52,-248.8,BDP 8 0.88 m BS East,BDP A8,VelocitySC1Mod4,28,BDP_A8_5,99.52,-248.8,BDP 8 1.15 m BS East,BDP A8,VelocitySC1Mod4,29,BDP_A8_6,99.52,-248.8,BDP 8 1.42 m BS East,BDP A8,VelocitySC1Mod4,30,BDP_A8_7,99.52,-248.8,BDP 8 1.68 m BS East,BDP A8,VelocitySC1Mod4,31,BDP_A8_8,99.52,-248.8,BDP 8 1.95 m BS East,BDP A8,VelocitySC1Mod5,0,BDP_A6_1,99.52,-248.8,BDP 6 0.30 m BS East,BDP A6,VelocitySC1Mod5,1,BDP_A6_2,99.52,-248.8,BDP 6 0.60 m BS East,BDP A6,VelocitySC1Mod5,2,BDP_A6_3,99.52,-248.8,BDP 6 0.90 m BS East,BDP A6,VelocitySC1Mod5,3,BDP_A6_4,99.52,-248.8,BDP 6 1.20 m BS East,BDP A6,VelocitySC1Mod5,4,BDP_A6_5,99.52,-248.8,BDP 6 1.50 m BS East,BDP A6,VelocitySC1Mod5,5,BDP_A6_6,99.52,-248.8,BDP 6 1.80 m BS East,BDP A6,VelocitySC1Mod5,6,BDP_A9_1,99.52,-248.8,BDP 9 0.08 m BS East,BDP A9,VelocitySC1Mod5,7,BDP_A9_2,99.52,-248.8,BDP 9 0.34 m BS East,BDP A9,VelocitySC1Mod5,8,BDP_A9_3,99.52,-248.8,BDP 9 0.61 m BS East,BDP A9,VelocitySC1Mod5,9,BDP_A9_4,99.52,-248.8,BDP 9 0.88 m BS East,BDP A9,VelocitySC1Mod5,10,BDP_A9_5,99.52,-248.8,BDP 9 1.15 m BS East,BDP A9,VelocitySC1Mod5,11,BDP_A9_6,99.52,-248.8,BDP 9 1.42 m BS East,BDP A9,VelocitySC1Mod5,12,BDP_A9_7,99.52,-248.8,BDP 9 1.68 m BS East,BDP A9,VelocitySC1Mod5,13,BDP_A9_8,99.52,-248.8,BDP 9 1.95 m BS East,BDP A9,VelocitySC1Mod5,14,BDP_A10_1,99.52,-248.8,BDP 10 1 East,BDP A10,VelocitySC1Mod5,15,BDP_A10_2,99.52,-248.8,BDP 10 2 East,BDP A10,VelocitySC1Mod5,16,BDP_A10_3,99.52,-248.8,BDP 10 3 East,BDP A10,VelocitySC1Mod5,17,HF_A1,10964.91,0,Heat Flux 1 0.15 m AF East,Heat Flux,Heat FluxSC1Mod5,18,RAD_A1,12220.91,0,Radiometer 1 0.15 m AF East,Heat Flux,Heat FluxSC1Mod5,19,HF_A2,11210.76,0,Heat Flux 2 0.15 m AF East,Heat Flux,Heat FluxSC1Mod5,20,RAD_A2,11350.74,0,Radiometer 2 0.15 m AF East,Heat Flux,Heat FluxSC1Mod5,21,HF_A3,5537.1,0,Heat Flux 3 0.15 m AF East,Heat Flux,Heat FluxSC1Mod5,22,RAD_A3,11350.74,0,Radiometer 3 0.15 m AF East,Heat Flux,Heat FluxSC1Mod5,23,HF_A4,6613.76,0,Heat Flux 4 0.15 m AF East,Heat Flux,Heat FluxSC1Mod5,24,RAD_A4,5274.26,0,Radiometer 4 0.15 m AF East,Heat Flux,Heat FluxSC1Mod5,25,HF_A5,2976.19,0,Heat Flux 4 0.15 m AF East,Heat Flux,Heat FluxSC1Mod5,26,RAD_A5,6242.2,0,Radiometer 4 0.15 m AF East,Heat Flux,Heat FluxSC1Mod9,17,CO_A,1,0,CO Gas Analyzer A,Gas,GasSC1Mod9,18,CO2_A,2,0,CO2 Gas Analyzer A,Gas,GasSC1Mod9,19,O2_A,20,0,O2 Gas Analyzer A,Gas,GasSC1Mod9,20,CO_B,1,0,CO Gas Analyzer B,Gas,GasSC1Mod9,21,CO2_B,2,0,CO2 Gas Analyzer B,Gas,GasSC1Mod9,22,O2_B,20,0,O2 Gas Analyzer B,Gas,Gas
+Panel,Channel,Device Name,Calibration Slope,Calibration Intercept,Channel Name,Group Name,Measurement Type
+SC1Mod2,0,TC_A1_1,1,0,TC 1 0.03 m BC East,TC A1,Temperature
+SC1Mod2,1,TC_A1_2,1,0,TC 1 0.30 m BC East,TC A1,Temperature
+SC1Mod2,2,TC_A1_3,1,0,TC 1 0.61 m BC East,TC A1,Temperature
+SC1Mod2,3,TC_A1_4,1,0,TC 1 0.91 m BC East,TC A1,Temperature
+SC1Mod2,4,TC_A1_5,1,0,TC 1 1.22 m BC East,TC A1,Temperature
+SC1Mod2,5,TC_A1_6,1,0,TC 1 1.52 m BC East,TC A1,Temperature
+SC1Mod2,6,TC_A1_7,1,0,TC 1 1.83 m BC East,TC A1,Temperature
+SC1Mod2,7,TC_A1_8,1,0,TC 1 2.13 m BC East,TC A1,Temperature
+SC1Mod2,8,TC_A2_1,1,0,TC 2 0.03 m BC East,TC A2,Temperature
+SC1Mod2,9,TC_A2_2,1,0,TC 2 0.30 m BC East,TC A2,Temperature
+SC1Mod2,10,TC_A2_3,1,0,TC 2 0.61 m BC East,TC A2,Temperature
+SC1Mod2,11,TC_A2_4,1,0,TC 2 0.91 m BC East,TC A2,Temperature
+SC1Mod2,12,TC_A2_5,1,0,TC 2 1.22 m BC East,TC A2,Temperature
+SC1Mod2,13,TC_A2_6,1,0,TC 2 1.52 m BC East,TC A2,Temperature
+SC1Mod2,14,TC_A2_7,1,0,TC 2 1.83 m BC East,TC A2,Temperature
+SC1Mod2,15,TC_A2_8,1,0,TC 2 2.13 m BC East,TC A2,Temperature
+SC1Mod2,16,TC_A4_1,1,0,TC 4 0.03 m BC East,TC A4,Temperature
+SC1Mod2,17,TC_A4_2,1,0,TC 4 0.30 m BC East,TC A4,Temperature
+SC1Mod2,18,TC_A4_3,1,0,TC 4 0.61 m BC East,TC A4,Temperature
+SC1Mod2,19,TC_A4_4,1,0,TC 4 0.91 m BC East,TC A4,Temperature
+SC1Mod2,20,TC_A4_5,1,0,TC 4 1.22 m BC East,TC A4,Temperature
+SC1Mod2,21,TC_A4_6,1,0,TC 4 1.52 m BC East,TC A4,Temperature
+SC1Mod2,22,TC_A4_7,1,0,TC 4 1.83 m BC East,TC A4,Temperature
+SC1Mod2,23,TC_A4_8,1,0,TC 4 2.13 m BC East,TC A4,Temperature
+SC1Mod2,24,TC_A5_1,1,0,TC 5 0.03 m BC East,TC A5,Temperature
+SC1Mod2,25,TC_A5_2,1,0,TC 5 0.30 m BC East,TC A5,Temperature
+SC1Mod2,26,TC_A5_3,1,0,TC 5 0.61 m BC East,TC A5,Temperature
+SC1Mod2,27,TC_A5_4,1,0,TC 5 0.91 m BC East,TC A5,Temperature
+SC1Mod2,28,TC_A5_5,1,0,TC 5 1.22 m BC East,TC A5,Temperature
+SC1Mod2,29,TC_A5_6,1,0,TC 5 1.52 m BC East,TC A5,Temperature
+SC1Mod2,30,TC_A5_7,1,0,TC 5 1.83 m BC East,TC A5,Temperature
+SC1Mod2,31,TC_A5_8,1,0,TC 5 2.13 m BC East,TC A5,Temperature
+SC1Mod3,0,TC_A3_1,1,0,TC 3 0.03 m BC East,TC A3,Temperature
+SC1Mod3,1,TC_A3_2,1,0,TC 3 0.30 m BC East,TC A3,Temperature
+SC1Mod3,2,TC_A3_3,1,0,TC 3 0.61 m BC East,TC A3,Temperature
+SC1Mod3,3,TC_A3_4,1,0,TC 3 0.91 m BC East,TC A3,Temperature
+SC1Mod3,4,TC_A3_5,1,0,TC 3 1.22 m BC East,TC A3,Temperature
+SC1Mod3,5,TC_A3_6,1,0,TC 3 1.52 m BC East,TC A3,Temperature
+SC1Mod3,6,TC_A3_7,1,0,TC 3 1.83 m BC East,TC A3,Temperature
+SC1Mod3,7,TC_A3_8,1,0,TC 3 2.13 m BC East,TC A3,Temperature
+SC1Mod3,8,TC_A6_1,1,0,TC 6 0.30 m BS East,TC A6,Temperature
+SC1Mod3,9,TC_A6_2,1,0,TC 6 0.60 m BS East,TC A6,Temperature
+SC1Mod3,10,TC_A6_3,1,0,TC 6 0.90 m BS East,TC A6,Temperature
+SC1Mod3,11,TC_A6_4,1,0,TC 6 1.20 m BS East,TC A6,Temperature
+SC1Mod3,12,TC_A6_5,1,0,TC 6 1.50 m BS East,TC A6,Temperature
+SC1Mod3,13,TC_A6_6,1,0,TC 6 1.80 m BS East,TC A6,Temperature
+SC1Mod3,14,TC_A10_1,1,0,TC 10 1 East,TC A10,Temperature
+SC1Mod3,15,TC_A10_2,1,0,TC 10 2 East,TC A10,Temperature
+SC1Mod3,16,TC_A10_3,1,0,TC 10 3 East,TC A10,Temperature
+SC1Mod3,17,TC_Ignition,1,,TC Ignition East East,TC Ignition,Temperature
+SC1Mod3,18,TC_A7_1,1,0,TC 7 0.08 m BS East,TC A7,Temperature
+SC1Mod3,19,TC_A7_2,1,0,TC 7 0.34 m BS East,TC A7,Temperature
+SC1Mod3,20,TC_A7_3,1,0,TC 7 0.61 m BS East,TC A7,Temperature
+SC1Mod3,21,TC_A7_4,1,0,TC 7 0.88 m BS East,TC A7,Temperature
+SC1Mod3,22,TC_A7_5,1,0,TC 7 1.15 m BS East,TC A7,Temperature
+SC1Mod3,23,TC_A7_6,1,0,TC 7 1.42 m BS East,TC A7,Temperature
+SC1Mod3,24,TC_A7_7,1,0,TC 7 1.68 m BS East,TC A7,Temperature
+SC1Mod3,25,TC_A7_8,1,0,TC 7 1.95 m BS East,TC A7,Temperature
+SC1Mod3,26,TC_Helmet_1,1,0,TC Helmet 1 East,TC Helmet,Temperature
+SC1Mod3,27,TC_Helmet_2,1,0,TC Helmet 2 East,TC Helmet,Temperature
+SC1Mod3,28,TC_Helmet_3,1,0,TC Helmet 3 East,TC Helmet,Temperature
+SC1Mod3,29,TC_Helmet_4,1,0,TC Helmet 4 East,TC Helmet,Temperature
+SC1Mod3,30,TC_Helmet_5,1,0,TC Helmet 5 East,TC Helmet,Temperature
+SC1Mod3,31,TC_Helmet_6,1,0,TC Helmet 6 East,TC Helmet,Temperature
+SC1Mod4,0,TC_A8_1,1,0,TC 8 0.08 m BS East,TC A8,Temperature
+SC1Mod4,1,TC_A8_2,1,0,TC 8 0.34 m BS East,TC A8,Temperature
+SC1Mod4,2,TC_A8_3,1,0,TC 8 0.61 m BS East,TC A8,Temperature
+SC1Mod4,3,TC_A8_4,1,0,TC 8 0.88 m BS East,TC A8,Temperature
+SC1Mod4,4,TC_A8_5,1,0,TC 8 1.15 m BS East,TC A8,Temperature
+SC1Mod4,5,TC_A8_6,1,0,TC 8 1.42 m BS East,TC A8,Temperature
+SC1Mod4,6,TC_A8_7,1,0,TC 8 1.68 m BS East,TC A8,Temperature
+SC1Mod4,7,TC_A8_8,1,0,TC 8 1.95 m BS East,TC A8,Temperature
+SC1Mod4,8,TC_A9_1,1,0,TC 9 0.08 m BS East,TC A9,Temperature
+SC1Mod4,9,TC_A9_2,1,0,TC 9 0.34 m BS East,TC A9,Temperature
+SC1Mod4,10,TC_A9_3,1,0,TC 9 0.61 m BS East,TC A9,Temperature
+SC1Mod4,11,TC_A9_4,1,0,TC 9 0.88 m BS East,TC A9,Temperature
+SC1Mod4,12,TC_A9_5,1,0,TC 9 1.15 m BS East,TC A9,Temperature
+SC1Mod4,13,TC_A9_6,1,0,TC 9 1.42 m BS East,TC A9,Temperature
+SC1Mod4,14,TC_A9_7,1,0,TC 9 1.68 m BS East,TC A9,Temperature
+SC1Mod4,15,TC_A9_8,1,0,TC 9 1.95 m BS East,TC A9,Temperature
+SC1Mod4,16,BDP_A7_1,99.52,-248.8,BDP 7 0.08 m BS East,BDP A7,Velocity
+SC1Mod4,17,BDP_A7_2,99.52,-248.8,BDP 7 0.34 m BS East,BDP A7,Velocity
+SC1Mod4,18,BDP_A7_3,99.52,-248.8,BDP 7 0.61 m BS East,BDP A7,Velocity
+SC1Mod4,19,BDP_A7_4,99.52,-248.8,BDP 7 0.88 m BS East,BDP A7,Velocity
+SC1Mod4,20,BDP_A7_5,99.52,-248.8,BDP 7 1.15 m BS East,BDP A7,Velocity
+SC1Mod4,21,BDP_A7_6,99.52,-248.8,BDP 7 1.42 m BS East,BDP A7,Velocity
+SC1Mod4,22,BDP_A7_7,99.52,-248.8,BDP 7 1.68 m BS East,BDP A7,Velocity
+SC1Mod4,23,BDP_A7_8,99.52,-248.8,BDP 7 1.95 m BS East,BDP A7,Velocity
+SC1Mod4,24,BDP_A8_1,99.52,-248.8,BDP 8 0.08 m BS East,BDP A8,Velocity
+SC1Mod4,25,BDP_A8_2,99.52,-248.8,BDP 8 0.34 m BS East,BDP A8,Velocity
+SC1Mod4,26,BDP_A8_3,99.52,-248.8,BDP 8 0.61 m BS East,BDP A8,Velocity
+SC1Mod4,27,BDP_A8_4,99.52,-248.8,BDP 8 0.88 m BS East,BDP A8,Velocity
+SC1Mod4,28,BDP_A8_5,99.52,-248.8,BDP 8 1.15 m BS East,BDP A8,Velocity
+SC1Mod4,29,BDP_A8_6,99.52,-248.8,BDP 8 1.42 m BS East,BDP A8,Velocity
+SC1Mod4,30,BDP_A8_7,99.52,-248.8,BDP 8 1.68 m BS East,BDP A8,Velocity
+SC1Mod4,31,BDP_A8_8,99.52,-248.8,BDP 8 1.95 m BS East,BDP A8,Velocity
+SC1Mod5,0,BDP_A6_1,99.52,-248.8,BDP 6 0.30 m BS East,BDP A6,Velocity
+SC1Mod5,1,BDP_A6_2,99.52,-248.8,BDP 6 0.60 m BS East,BDP A6,Velocity
+SC1Mod5,2,BDP_A6_3,99.52,-248.8,BDP 6 0.90 m BS East,BDP A6,Velocity
+SC1Mod5,3,BDP_A6_4,99.52,-248.8,BDP 6 1.20 m BS East,BDP A6,Velocity
+SC1Mod5,4,BDP_A6_5,99.52,-248.8,BDP 6 1.50 m BS East,BDP A6,Velocity
+SC1Mod5,5,BDP_A6_6,99.52,-248.8,BDP 6 1.80 m BS East,BDP A6,Velocity
+SC1Mod5,6,BDP_A9_1,99.52,-248.8,BDP 9 0.08 m BS East,BDP A9,Velocity
+SC1Mod5,7,BDP_A9_2,99.52,-248.8,BDP 9 0.34 m BS East,BDP A9,Velocity
+SC1Mod5,8,BDP_A9_3,99.52,-248.8,BDP 9 0.61 m BS East,BDP A9,Velocity
+SC1Mod5,9,BDP_A9_4,99.52,-248.8,BDP 9 0.88 m BS East,BDP A9,Velocity
+SC1Mod5,10,BDP_A9_5,99.52,-248.8,BDP 9 1.15 m BS East,BDP A9,Velocity
+SC1Mod5,11,BDP_A9_6,99.52,-248.8,BDP 9 1.42 m BS East,BDP A9,Velocity
+SC1Mod5,12,BDP_A9_7,99.52,-248.8,BDP 9 1.68 m BS East,BDP A9,Velocity
+SC1Mod5,13,BDP_A9_8,99.52,-248.8,BDP 9 1.95 m BS East,BDP A9,Velocity
+SC1Mod5,14,BDP_A10_1,99.52,-248.8,BDP 10 1 East,BDP A10,Velocity
+SC1Mod5,15,BDP_A10_2,99.52,-248.8,BDP 10 2 East,BDP A10,Velocity
+SC1Mod5,16,BDP_A10_3,99.52,-248.8,BDP 10 3 East,BDP A10,Velocity
+SC1Mod5,17,HF_A1,10964.91,0,Heat Flux 1 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod5,18,RAD_A1,12220.91,0,Radiometer 1 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod5,19,HF_A2,11210.76,0,Heat Flux 2 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod5,20,RAD_A2,11350.74,0,Radiometer 2 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod5,21,HF_A3,5537.1,0,Heat Flux 3 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod5,22,RAD_A3,11350.74,0,Radiometer 3 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod5,23,HF_A4,6613.76,0,Heat Flux 4 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod5,24,RAD_A4,5274.26,0,Radiometer 4 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod5,25,HF_A5,2976.19,0,Heat Flux 5 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod5,26,RAD_A5,6242.2,0,Radiometer 5 0.15 m AF East,Heat Flux,Heat Flux
+SC1Mod9,17,CO_A,1,0,CO Gas Analyzer A,Gas,Gas
+SC1Mod9,18,CO2_A,2,0,CO2 Gas Analyzer A,Gas,Gas
+SC1Mod9,19,O2_A,20,0,O2 Gas Analyzer A,Gas,Gas
+SC1Mod9,20,CO_B,1,0,CO Gas Analyzer B,Gas,Gas
+SC1Mod9,21,CO2_B,2,0,CO2 Gas Analyzer B,Gas,Gas
+SC1Mod9,22,O2_B,20,0,O2 Gas Analyzer B,Gas,Gas
