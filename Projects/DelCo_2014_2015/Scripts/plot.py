@@ -289,7 +289,7 @@ for f in os.listdir(data_dir):
                 elif 'RAD_' in heading or 'HF_' in heading:
                     units.append('kW/m2')
                 elif 'CO_' in heading or 'O2_' in heading or 'CO2_' in heading:
-                    units.append('mol/mol')
+                    units.append('%')
                 else:
                     print 'No units found for value ' + heading
                     sys.exit()
