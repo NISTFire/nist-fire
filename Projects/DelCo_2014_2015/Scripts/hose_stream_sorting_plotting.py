@@ -19,16 +19,16 @@ rcParams['ytick.major.pad']='6'
 #  =================
 
 # Specify name
-specify_test = True
+specify_test = False
 specific_name = 'HOSE_IXXAXX'
 
 # Specify year
-specify_year = False
+specify_year = True
 specific_year = '2014'
 
 # Specify structure
-specify_struct = False
-specific_struct = 'East'
+specify_struct = True
+specific_struct = 'West'
 
 # Specify monitor or handline
 specify_type = False
@@ -41,11 +41,11 @@ skip_files = ['_times', '_reduced', '_results', 'description_', 'hose_d', '_rh',
 # = Specify files to generate =
 # =============================
 
-result_file = False       # Generate a .csv file with channel avgs for specified sensor groups
-print_results = False		# print average values for tables in report
+result_file = True       # Generate a .csv file with channel avgs for specified sensor groups
+print_results = True		# print average values for tables in report
 all_channel_plot = False    # Plot of individual channels in sensor group
 group_avg_plot = False     # Plot avg of all channels for sensor group
-stream_avgs_plot = True   # Plot avg of all channels for each stream tested during experiment
+stream_avgs_plot = False   # Plot avg of all channels for each stream tested during experiment
 
 #  =======================
 #  = Directory Locations =
