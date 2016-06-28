@@ -24,6 +24,9 @@ HRR_df_headers = ['Test', '1 Burner Start', '2 Burners Start',
 HRR_df = pd.read_csv(results_dir+'calculated_HRRs.csv', index_col=0)
 skip_tests = []
 for test in HRR_df['Test']:
+	test = test[:7]
+	if test[-1] == ' ':
+		test = test[:-1]
 	skip_tests.append(test)
 
 inHg_to_psi = 0.491154
@@ -372,7 +375,7 @@ for f in os.listdir(raw_video_dir):
 					print
 					print 'Start/stop for '+str(i-2)+' of 3 burners off'
 
-				if end_time-start_time > 10000:
+				if end_time-start_time > 30000:
 					# offset times by 3 seconds to ensure only the flow rate during the current seq is calculated
 					start_time = start_time+3000
 					end_time = end_time-3000
@@ -474,8 +477,9 @@ for f in os.listdir(raw_video_dir):
 						start_weather_index = generate_timestamp(start_time, video_time_diff, hh_mm_ss)
 						end_weather_index = generate_timestamp(end_time, video_time_diff, hh_mm_ss)
 						
-						T_atm_seq_data = T_atm_data.loc[start_weather_index:end_weather_index]
-						T_atm = np.mean(T_atm_seq_data)
+						# T_atm_seq_data = T_atm_data.loc[start_weather_index:end_weather_index]
+						# T_atm = np.mean(T_atm_seq_data)
+						T_atm = 100.0
 						T_adjust = 1.0-((T_atm-60)/500.0)	# adjustment is 1% reduction/increase per 5 °F above/below 60 °F
 
 						p_atm_seq_data = p_atm_data.loc[start_weather_index:end_weather_index]

@@ -191,21 +191,25 @@ for f in os.listdir(data_dir):
         if burner_report:
             if 'West' in test_name:     # ignore first 2 time entries
                 events = all_times[test_name].dropna()[2:]
+                gasA_lag_time = 12   # [s]; gas analyzer A lag time for west burner tests
+                gasB_lag_time = 12   # [s]; gas analyzer B lag time for west burner tests
             else:      
                 if 'Test_5_' in test_name or 'Test_6_' in test_name:
                     events = all_times[test_name].dropna()[3:]
                 else:
                     events = all_times[test_name].dropna()[1:]
+                gasA_lag_time = 12   # [s]; gas analyzer A lag time for east burner tests
+                gasB_lag_time = 35   # [s]; gas analyzer B lag time for east burner tests
             offset_time = events.index.values[0]
             new_times = events.index.values - int(offset_time)
             events = pd.Series(events.values, index=new_times)
             # print events
             # print
             data['Time'] = data['Time'].values - offset_time
-            reduced_data = data.drop('Time', axis=1)
-            reduced_data.insert(0, 'Time', data['Time'])
-            reduced_data = reduced_data.set_index('Time')
-            reduced_data = reduced_data.loc[-61:, :]
+            corrected_data = data.drop('Time', axis=1)
+            corrected_data.insert(0, 'Time', data['Time'])
+            corrected_data = corrected_data.set_index('Time')
+            reduced_data = corrected_data.loc[-61:, :]
             final_reduced_data = pd.DataFrame(index=reduced_data.index)
 
             # Process data for each quantity group
@@ -252,8 +256,18 @@ for f in os.listdir(data_dir):
                         current_channel_data = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Get zero voltage from pre-test data
                     # Gas
                     elif channel_list['Measurement Type'][channel] == 'Gas':
+                        if channel[-1] == 'A':
+                            shift_data = gasA_lag_time
+                        elif channel[-1] == 'B':
+                            shift_data = gasB_lag_time
+                        else:
+                            print '[ERROR] Neither A nor B read from Gas channel '+ channel
+                            sys.exit()
+                        # Create list of data shifted according to analyzer lag time and calculate zero voltage
+                        current_channel_data = current_channel_data.loc[-61+shift_data:].values
+                        zero_voltage = np.mean(current_channel_data[0:61])
+
                         if test_year == '2015':
-                            zero_voltage = np.mean(current_channel_data[-61:-1])
                             if int(test_name[5:-12]) >= 45:
                                 if 'Carbon Dioxide ' in channel:
                                     current_channel_data = (current_channel_data-zero_voltage) * 10/(5.-zero_voltage)
@@ -269,7 +283,12 @@ for f in os.listdir(data_dir):
                                     calibration_slope = 20.95/(zero_voltage-1.)
                                     current_channel_data = (current_channel_data-1.) * calibration_slope
                         elif test_year == '2014':
-                            current_channel_data = current_channel_data * calibration_slope + calibration_intercept
+                            current_channel_data = (current_channel_data)*calibration_slope + calibration_intercept
+                    
+                        final_reduced_data[channel] = ''
+                        final_reduced_data[channel].iloc[0:-shift_data] = current_channel_data
+                        final_reduced_data[channel] = final_reduced_data[channel].replace(to_replace='', value='NaN')
+                        continue
                     # Hose
                     elif channel_list['Measurement Type'][channel] == 'Hose':
                         # Skip data other than sensors on 2.5 inch hoseline
@@ -279,6 +298,7 @@ for f in os.listdir(data_dir):
                     
                     # Save converted channel data back to exp. dataframe
                     final_reduced_data[channel] = current_channel_data
+
             
             units = []
             for heading in final_reduced_data.columns.values:

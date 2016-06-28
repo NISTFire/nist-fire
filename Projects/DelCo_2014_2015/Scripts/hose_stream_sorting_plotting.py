@@ -23,11 +23,11 @@ specify_test = False
 specific_name = 'HOSE_IXXAXX'
 
 # Specify year
-specify_year = True
+specify_year = False
 specific_year = '2014'
 
 # Specify structure
-specify_struct = True
+specify_struct = False
 specific_struct = 'West'
 
 # Specify monitor or handline
@@ -446,6 +446,11 @@ y_min = 0
 conv_inch_h2o = 0.4
 conv_pascal = 248.8
 
+# Door area used to calculate air flow
+west_area = 0.8128*2.032
+east_area = 0.9144*2.032
+m3s_to_cfm = 2118.880003
+
 for f in os.listdir(data_dir):
 	if f.endswith('.csv'):
 		# Skip files with time information or reduced data files
@@ -454,12 +459,9 @@ for f in os.listdir(data_dir):
 
 		# Strip test name from file name
 		test_name = f[:-4]
-		
-		# Skip if not a hose test or Test 20 (lost data)
-		if info['Test Type'][test_name] != 'HOSE' or test_name == 'Test_20_West_063014':
-			continue
 
-		if 'Test_17b_' in test_name:
+		# Skip if not a hose test or Test 20 (lost data)
+		if info['Test Type'][test_name] != 'HOSE' or test_name == 'Test_20_West_063014' or 'Test_17b_' in test_name:
 			continue
 
 		# Determine test year and type
@@ -485,10 +487,12 @@ for f in os.listdir(data_dir):
 			print
 			print ('--- Loaded ' + test_name + ' ---')
 
+		area = east_area
 		# Create group and channel lists
 		if test_year == '2014':
 			if 'West' in test_name:
 				channel_list_file = '../DAQ_Files/DAQ_Files_2014/West_DelCo_DAQ_Channel_List.csv'
+				area = west_area
 			elif 'East' in test_name:
 				channel_list_file = '../DAQ_Files/DAQ_Files_2014/East_DelCo_DAQ_Channel_List.csv'
 			else:
@@ -496,6 +500,7 @@ for f in os.listdir(data_dir):
 		elif test_year == '2015':
 			if 'West' in test_name:
 				channel_list_file = '../DAQ_Files/DAQ_Files_2015/West_DelCo_DAQ_Channel_List.csv'
+				area = west_area
 			else:
 				channel_list_file = '../DAQ_Files/DAQ_Files_2015/East_DelCo_DAQ_Channel_List.csv'
 		channel_list = pd.read_csv(channel_list_file)
@@ -693,6 +698,12 @@ for f in os.listdir(data_dir):
 									else:
 										round_place = 1
 									print '			mph 	' + str(round(avg_mph, 1)) + ' (+/-)' + str(round(abs(avg_mph)*0.18, round_place))
+
+									flow_rate = avg_m_per_s*area
+									print
+									print '		m3/s    ' + str(round(flow_rate,1)) + ' (+/-)' + str(round(abs(flow_rate)*0.18, round_place))
+									print '		cfm     ' + str(round(flow_rate*m3s_to_cfm,1)) + ' (+/-)' + str(round(abs(m3s_to_cfm*flow_rate)*0.18, round_place))
+									print
 						else:
 							m_per_s_data = []
 							mph_data = []	
@@ -714,7 +725,12 @@ for f in os.listdir(data_dir):
 							else:
 								round_place = 1
 							print '			mph 	' + str(round(avg_mph, 1)) + ' (+/-)' + str(round(abs(avg_mph)*0.18, round_place))
-					
+							
+							flow_rate = avg_m_per_s*area
+							print
+							print '		m3/s    ' + str(round(flow_rate,1)) + ' (+/-)' + str(round(abs(flow_rate)*0.18, round_place))
+							print '		cfm     ' + str(round(flow_rate*m3s_to_cfm,1)) + ' (+/-)' + str(round(abs(m3s_to_cfm*flow_rate)*0.18, round_place))
+							print
 					else:
 						PorL_options = stream_seq_info.groupby(P_or_L)
 						for option in PorL_options.groups:
@@ -735,15 +751,20 @@ for f in os.listdir(data_dir):
 							else:
 								round_place = 1
 							print '		m/s 	' + str(round(avg_m_per_s, 1)) + ' (+/-)' + str(round(abs(avg_m_per_s)*0.18, round_place))
-							
+
 							avg_mph = np.mean(mph_data)
 							if abs(avg_mph*0.18) < 0.05:
 								round_place = 2
 							else:
 								round_place = 1
 							print '		mph 	' + str(round(avg_mph, 1)) + ' (+/-)' + str(round(abs(avg_mph)*0.18, round_place))
+
+							flow_rate = avg_m_per_s*area
+							print
+							print '		m3/s    ' + str(round(flow_rate,1)) + ' (+/-)' + str(round(abs(flow_rate)*0.18, round_place))
+							print '		cfm     ' + str(round(flow_rate*m3s_to_cfm,1)) + ' (+/-)' + str(round(abs(m3s_to_cfm*flow_rate)*0.18, round_place))
+							print
 				print
-				
 
 			if all_channel_plot:        # save plot of individual channels
 				fig_name = fig_dir + test_name + '_' + group.replace(' ', '_') + '.pdf'
