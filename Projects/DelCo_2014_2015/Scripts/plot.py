@@ -20,7 +20,7 @@ rcParams.update({'figure.autolayout': True})
 
 # Specify name
 specify_test = False
-specific_name = 'Test_16_West_063014'
+specific_name = 'Test_5_East_062614'
 
 # Specify year
 specify_year = False
@@ -265,35 +265,13 @@ for f in os.listdir(data_dir):
                             sys.exit()
                         # Create list of data shifted according to analyzer lag time and calculate zero voltage
                         current_channel_data = current_channel_data.loc[-61+shift_data:].values
-                        zero_voltage = np.mean(current_channel_data[0:61])
+                        zero_voltage = np.mean(corrected_data[channel].loc[-120+shift_data:-60+shift_data])
 
-                        # if test_year == '2015':
-                        #     if int(test_name[5:-12]) >= 45:
-                        #         if 'Carbon Dioxide ' in channel:
-                        #             current_channel_data = (current_channel_data-zero_voltage) * 10/(5.-zero_voltage)
-                        #         elif 'Carbon Monoxide ' in channel:
-                        #             current_channel_data = (current_channel_data-zero_voltage) * 5.0/(5.-zero_voltage)
-                        #         else:
-                        #             calibration_slope = 20.9/(zero_voltage-1.)
-                        #             current_channel_data = current_channel_data * 4.18 * 1.2
-                        #     else:
-                        #         if 'Carbon ' in channel:
-                        #             current_channel_data = (current_channel_data-zero_voltage) * calibration_slope + calibration_intercept
-                        #         else:
-                        #             calibration_slope = 20.95/(zero_voltage-1.)
-                        #             current_channel_data = (current_channel_data-1.) * calibration_slope
-                        
                         if 'CO' in channel:
                             current_channel_data = (current_channel_data-zero_voltage)*calibration_slope + calibration_intercept
-                        # if 'CO2_' in channel:
-                        #     current_channel_data = (current_channel_data-zero_voltage) * 10/(5.-zero_voltage)
-                        # elif 'CO_' in channel:
-                        #     current_channel_data = (current_channel_data-zero_voltage) * 5.0/(5.-zero_voltage)
                         else:
-                            # calibration_slope = 20.95/(zero_voltage)
-                            # current_channel_data = (current_channel_data-1.) * calibration_slope
                             zero_voltage = zero_voltage-1.
-                            current_channel_data = (current_channel_data-zero_voltage)*calibration_slope + calibration_intercept
+                            current_channel_data = (current_channel_data-zero_voltage)*20.95 + calibration_intercept
                         final_reduced_data[channel] = ''
                         final_reduced_data[channel].iloc[0:-shift_data] = current_channel_data
                         final_reduced_data[channel] = final_reduced_data[channel].replace(to_replace='', value='NaN')
