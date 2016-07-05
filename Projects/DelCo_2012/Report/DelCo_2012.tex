@@ -12,7 +12,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{../../../Bibliography/commoncommands}
-
+\usepackage[space]{grffile}
 % Rename chapter headings
 \renewcommand{\chaptername}{Section}
 \renewcommand{\bibname}{References}
@@ -572,9 +572,22 @@ In June 2015 two stacks of pallets were added to the fuel load which consisted o
 \section{Spray Density}
 \label{sec:Spray_Density}
 
-Spray density experiments were conducted by placing 0.23~m$^2$ (2.5~ft$^2$) interlocking collector bins across the floor surface area of the burn rooms within each structure. The buildings were sheathed in plastic for the spray density tests to protect and preserve as much of the structure as possible before any fire suppression tests were conducted. Water flowed for a specified duration and upon completion the bins were removed from the structure. Each bin was then weighed to quantify the impact of nozzle location and spray pattern. Thirty-three spray density tests were conducted; 21 were in the burn building for the gas cooling tests and 12 were in the concrete structure for the suppression experiments. The flow rate for each test was 120~gpm for water and 120~gpm plus 60~cfm for CAF. Tables\ref{tab:spray_density_tests} and \ref{tab:spray_density_tests2} provide an overview of each experiment. In the table, GC stands for the gas cooling experiments while SE stands for the suppression experiments. For all of the experiments, 100~ft (30~m) of 1~3/4~inch hoseline connected to a Blitz Fire monitor with a Metro 1 nozzle was used.
+Spray density experiments were conducted by placing 0.23~m$^2$ (2.5~ft$^2$) interlocking collector bins across the floor surface area of the burn rooms within each structure (cf. Fig~\ref{fig:water_buckets}). The buildings were sheathed in plastic for the spray density tests to protect and preserve as much of the structure as possible before any fire suppression tests were conducted. Water flowed for a specified duration and upon completion the bins were removed from the structure. Each bin was then weighed to quantify the impact of nozzle location and spray pattern. Thirty-three spray density tests were conducted; 21 were in the burn building for the gas cooling tests and 12 were in the concrete structure for the suppression experiments. The flow rate for each test was 120~gpm for water and 120~gpm plus 60~cfm for CAF. Tables\ref{tab:spray_density_tests} and \ref{tab:spray_density_tests2} provide an overview of each experiment. In the table, GC stands for the gas cooling experiments while SE stands for the suppression experiments. For all of the experiments, 100~ft (30~m) of 1~3/4~inch hoseline connected to a Blitz Fire monitor with a Metro 1 nozzle was used.
 
-For the gas cooling tests, Table~\ref{tab:spray_density_tests}, the mid position had center line of the stream aimed at 2.44~m (8~ft) south of the North wall and 2.13~m (7~ft) west of the East wall in the concrete burn building. The back position had the center line of the stream aimed at 3.36~m (11~ft) south of the North wall and 2.13~m west (7~ft) of the East wall in the concrete burn building.
+\begin{figure}[!ht]
+	\includegraphics[width=.5\columnwidth]{../Figures/Pictures/Water Tests Bins.png}
+	\caption{Interlocking collecting bins used to capture suppression agent during spray density tests.}
+	\label{fig:water_buckets}
+\end{figure}
+
+For the spray density tests, Table~\ref{tab:spray_density_tests}, the mid position had center line of the stream aimed at 2.44~m (8~ft) south of the North wall and 2.13~m (7~ft) west of the East wall in the concrete burn building.  The back position had the center line of the stream aimed at 3.36~m (11~ft) south of the North wall and 2.13~m west (7~ft) of the East wall in the concrete burn building. Figure~\ref{fig:stream_position} shows the streams from the monitor nozzle for the middle and back positions respectively.
+
+\begin{figure}[!ht]
+	\includegraphics[width=.4\columnwidth]{../Figures/Pictures/Straight_Mid_BB}
+	\includegraphics[width=.4\columnwidth]{../Figures/Pictures/Straight_Back_BB}
+	\caption{Stream positions mid(left) and back (right) during spray density tests.}
+	\label{fig:stream_position}
+\end{figure}
 
 \begin{table}[!ht]
 \footnotesize
@@ -805,8 +818,8 @@ Test $\#$  & Name	& Stream			& Flow Rate		& Fuel           & Ventilation     \\
 \midrule
  1 & CAF~1    &  30$^{\circ}$ Fog   &  120~gpm/60~cfm   & Furniture      & Door            \\
  2 & Water~1  &  30$^{\circ}$ Fog  	&  120~gpm    		& Furniture      & Door            \\
- 3 & CAF~2    &  7/8'' Solid Stream &  120~gpm/60~cfm   & Furniture      & Door            \\
- 4 & Water~2  &  7/8'' Solid Stream &  120~gpm    		& Furniture      & Door            \\
+ 3 & CAF~2    &  Solid Stream       &  120~gpm/60~cfm   & Furniture      & Door            \\
+ 4 & Water~2  &  Solid Stream       &  120~gpm    		& Furniture      & Door            \\
  5 & Water~3  &  30$^{\circ}$ Fog  	&  120~gpm    		& Furniture      & Door + Window   \\
  6 & CAF~3    &  30$^{\circ}$ Fog   &  120~gpm/60~cfm   & Furniture      & Door + Window   \\
  7 & Water~4  &  30$^{\circ}$ Fog  	&  120~gpm    		& Furniture      & Door + Window   \\
@@ -897,7 +910,7 @@ Test $\#$  & Name	& Stream			& Flow Rate		& Fuel                    & Ventilatio
  40c & Water~8   &  Straight Stream     &  120~gpm          & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
  41a & Class A~1 &  Straight Stream  	&  120~gpm		    & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
  41b & CAF~9a    &  1 3/8'' Ball    	&  120~gpm		    & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
- 41c & CAF~9b    &  7/8'' Solid Stream  &  120~gpm		    & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
+ 41c & CAF~9b    &  Solid Stream        &  120~gpm		    & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
 \bottomrule[1.25pt]
 \end{tabular}\par
 \end{table}
@@ -940,14 +953,29 @@ The most widely used of the water-based agents are the foams used on Class B (li
 
 The gas cooling experiments were designed to measure the ability of water streams and CAF streams to cool a hot gas layer with a minimum temperature of 250~$^{\circ}$C (482~$^{\circ}$F) at positions 1.83~m (6~ft) below the ceiling. During the planning of the experiments, some firefighters thought that the excellent heat absorbing capacity of plain water would exceed the heat absorbing capabilities of CAFS, since the injected air, air being a great insulator, would interfere and result in less cooling. It was the belief that the reduced gas cooling capabilities of CAF may have lead to firefighter injuries during interior fire attacks. Other firefighters thought that the bubble structure would provide the same mass flowrate of water with more surface area, which would enable a faster heat transfer rate and therefore, improve the cooling of the hot gas layer. There were also thoughts that the CAFS would coat the ceiling and eliminate energy feedback from the ceiling to the hot gas layer, thereby providing enhanced cooling.
 
-In each gas cooling experiment, the same mass flow rate of water was used for both the plain water stream and the CAF stream. Typically the volumetric flow rate of water was 7.57~L/s (120~gpm). The density of water is 1000~kg/m$^3$ (8.3~lb/gal), therefore the mass flow rate was 7.57~kg/s (16.7~lb/s). The average time of flow was 15~s, therefore a total of 114~kg (251~lb) of water was introduced into each gas cooling experiment. When a CAF stream was used it contained 0.3\% foam concentration by volume, check density of foam concentrate   point being mostly water.  Also calc the mass of air in the stream.
+In each gas cooling experiment, the same mass flow rate of water was used for both the plain water stream and the CAF stream. Typically the volumetric flow rate of water was 7.57~L/s (120~gpm). The density of water is 1000~kg/m$^3$ (8.3~lb/gal), therefore the mass flow rate was 7.57~kg/s (16.7~lb/s). The average time of flow was 15~s, therefore a total of 114~kg (251~lb) of water was introduced into each gas cooling experiment. {\bf When a CAF stream was used it contained 0.3\% foam concentration by volume, check density of foam concentrate   point being mostly water.  Also calc the mass of air in the stream.}
 
-Compare flow rate with coverage estimates Iowa/NFA formulas. 
-
-Under the conditions of a residential scale room and contents fire it should be no surprise that the results are similar, the mass of water introduced into the hot gas layer is doing the work.  Air filled bubbles in the CAFS stream had no discernible impact in these experiments.
+Under the conditions of a residential scale room and contents fire it should be no surprise that the results are similar, the mass of water introduced into the hot gas layer is doing the work. Air filled bubbles in the CAFS stream had no discernible impact in these experiments.
 
 \section{Fire Suppression}
 \label{sec:Fire_Suppression_discussion}
+
+Currently, the fire service uses fire flow formulas to estimate the flow rate of water needed to control a structure fire. The formulas will be presented below and then the results from the studies presented above will be compared with the calculated fire flows.
+
+\subsection{Iowa State Univeristy Fire Flow Formula (1963)~\cite{NFPA}}
+The Iowa Formula for determining the required fire flow for a given structure was developed, by Keith Royer and Bill Nelson, based on theoretical heat absorption capabilities of water. The required fire flow in gpm is equal to the volume of the fire compartment (in cubic feet) divided by 100:
+\begin{equation}\label{eq:isu_form}
+\dot{Q} = V / 100
+\end{equation}
+Due to inefficiencies in applying the water, some feel that the fire flow value from the Iowa State University formula should be multiplied by a factor of two to four~\cite{NFPA}. Applying the Iowa State University formula based on floor area yields an application density of 3.3~Lpm/m$^2$ (0.08~gpm/ft$^2$) for ceiling heights of 2.44~m (8~ft) or 4.1~Lpm/m$^2$ (0.10~gpm/ft$^2$) for ceiling heights of 3.05~m (10~ft). 
+
+\subsection{National Fire Academy (1884)~\cite{Klaene:1}}
+The National Fire Academy (NFA) developed a formula based on a study of fire flows, which were successful in controlling a large number of working fires~\cite{Klaene:1}. This formula sets the required fire flow, in gpm, equal to the floor area (in square feet) divided by 3.
+\begin{equation}\label{eq:nfa_form}
+\dot{Q} = A / 3
+\end{equation}
+Applying the NFA formula based on floor area yields an application density of 13.6~Lpm/m$^2$ (0.33~gpm/ft$^2$).
+
 
 static nozzle lines all performed the same.
 
@@ -961,7 +989,9 @@ movement, sweeping nozzle, etc -- more efficient cooling / more effective that t
 
 The authors would like to thank Roy McLane (currently with Thermal Fabrication), Kristopher Overholt (currently with Continuum Analytics), Keith Stakes (currently with UL FSRI), Adam Barowy (currently with UL), Kelly Opert (currently with UL) and Jay McElroy (retired) from NIST for their contributions in preparing and conducting these experiments. These experiments could not have been conducted without them. 
 
-Thank you to Chief Scott Goldstein and former Chief Steven Lohr of the Montgomery County (MD) Department of Fire and Rescue Service for their support of this study.  Special appreciation goes to the MCFRS staff that participated in the experiments:    Alan Butsch, Daniel Hudson,  Michael Johns, Steven Neubauer, Sean Regan, Chris Reilly, Bryan Rojtas, Ralph “Dewey” Thomas,  and Douglas Wallace.
+The NIST team would like to thank Casey Grant from the Fire Protection Research Foundation and the members of the project technical panel especially John Culbertson, Director, Montana State University Fire Services Training School and Homer Robertson, Deputy Chief, Fort Worth Fire Department.
+
+Thank you to Chief Scott Goldstein and former Chief Steven Lohr of the Montgomery County (MD) Department of Fire and Rescue Service for their support of this study. The authors would also like to thank the Montgomery County (MD) firefighters that supported the experiments: Bryan Rojtas, Chris Reilly, Sean Regan, Alan Butsch, Ralph Thomas, Daniel Hudson, Michael Johns, and Douglas Wallace. 
 
 The NIST team would like to thank Casey Grant from the Fire Protection Research Foundation and the members of the project technical panel especially John Culbertson, Director, Montana State University Fire Services Training School and Homer Robertson, Deputy Chief, Fort Worth Fire Department.  
 
