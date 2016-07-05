@@ -27,7 +27,7 @@ hf_array = [0.2,0.4,0.6,0.8,1.0,1.2]
 # Load exp. timings and description file
 info = pd.read_csv(info_file,header=0, index_col=0)
 # Skip files
-skip_files = ['description_','nctw_']
+skip_files = ['description_','nctw_','iwgb_']
 
 sample_rate = 1.
 sample_length = int(math.ceil(15./sample_rate))
@@ -46,11 +46,11 @@ for f in os.listdir(data_dir):
 
 		# Strip test name from file name
 		test_name = f[:-4]
-		print 'Test ' + test_name
+		print ('Test ' + test_name)
 
 		# Skip replicate files
 		if info['Skip'][test_name] == 'Yes':
-			print 'Replicate test skipped'
+			print ('Replicate test skipped')
 			continue
 
 		# Load first replicate of exp. data files

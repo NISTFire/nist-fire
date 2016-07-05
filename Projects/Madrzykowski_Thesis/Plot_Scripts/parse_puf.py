@@ -47,11 +47,11 @@ for f in os.listdir(data_dir):
 
 		# Strip test name from file name
 		test_name = f[:-4]
-		print 'Test ' + test_name
+		print ('Test ' + test_name)
 
 		# Skip replicate files
 		if info['Skip'][test_name] == 'Yes':
-			print 'Replicate test skipped'
+			print ('Replicate test skipped')
 			continue
 
 		# Load first replicate of exp. data files

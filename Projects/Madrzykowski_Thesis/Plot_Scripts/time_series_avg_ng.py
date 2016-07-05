@@ -9,7 +9,7 @@ import math
 import string
 
 from matplotlib import rcParams
-rcParams.update({'figure.autolayout': True})
+# rcParams.update({'figure.autolayout': True})
 
 # Location of files
 data_dir = '../Experimental_Data/TWNG/'
@@ -28,19 +28,29 @@ skip_files = ['description_','nctw_']
 #  =========================
 #  = Reading in Data Files =
 #  =========================
+colors = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
+             (44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
+             (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
+             (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
+             (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
+
+# Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
+for i in range(len(colors)):
+    r, g, b = colors[i]
+    colors[i] = (r / 255., g / 255., b / 255.)
 
 markers = ['s', '*', '^', 'o', '<', '>', '8', 'h','d','x','p','v','H', 'D', '1', '2', '3', '4', '|']
-colors=['r', 'b', 'g', 'c', 'm', 'grey', 'y','#cc5500', '#228b22','#f4a460','#4c177d','firebrick', 'mediumblue', 'darkgreen', 'cadetblue', 'indigo', 'crimson', 'gold']
-label_plume = ['TC Plume 0.4m','TC Plume 0.6m','TC Plume 0.8m','TC Plume 1.0m','TC Plume 1.2m','TC Plume 1.4m',
-			'TC Plume 1.6m','TC Plume 1.8m','TC Plume 2.0m','TC Plume 2.2m','TC Plume 2.4m']
-label_surf_cen = ['TC Front Center 0.2m','TC Front Center 0.4m','TC Front Center 0.6m','TC Front Center 0.8m','TC Front Center 1.0m',
-					'TC Front Center 1.2m','TC Front Center 1.4m','TC Front Center 1.6m','TC Front Center 1.8m','TC Front Center 2.0m','TC Front Center 2.2m']
-label_surf_off = ['TC Front Edge 0.2m','TC Front Edge 0.4m','TC Front Edge 0.6m','TC Front Edge 0.8m','TC Front Edge 1.0m',
-					'TC Front Edge 1.2m','TC Front Edge 1.4m','TC Front Edge 1.6m','TC Front Edge 1.8m','TC Front Edge 2.0m','TC Front Edge 2.2m']
-label_back_cen = ['TC Back Center 0.2m','TC Back Center 0.4m','TC Back Center 0.6m','TC Back Center 0.8m','TC Back Center 1.0m',
-					'TC Back Center 1.2m','TC Back Center 1.4m','TC Back Center 1.6m','TC Back Center 1.8m','TC Back Center 2.0m','TC Back Center 2.2m']
-label_hf_cen = ['HF Center 0.2m','HF Center 0.4m','HF Center 0.6m','HF Center 0.8m','HF Center 1.0m','HF Center 1.2m']
-label_hf_off = ['HF Edge 0.2m','HF Edge 0.4m','HF Edge 0.6m','HF Edge 0.8m','HF Edge 1.0m','HF Edge 1.2m']
+# colors=['r', 'b', 'g', 'c', 'm', 'grey', 'y','#cc5500', '#228b22','#f4a460','#4c177d','firebrick', 'mediumblue', 'darkgreen', 'cadetblue', 'indigo', 'crimson', 'gold']
+label_plume = ['Plume 0.4m','Plume 0.6m','Plume 0.8m','Plume 1.0m','Plume 1.2m','Plume 1.4m',
+			'Plume 1.6m','Plume 1.8m','Plume 2.0m','Plume 2.2m','Plume 2.4m']
+label_surf_cen = ['Front Center 0.2m','Front Center 0.4m','Front Center 0.6m','Front Center 0.8m','Front Center 1.0m',
+					'Front Center 1.2m','Front Center 1.4m','Front Center 1.6m','Front Center 1.8m','Front Center 2.0m','Front Center 2.2m']
+label_surf_off = ['Front Edge 0.2m','Front Edge 0.4m','Front Edge 0.6m','Front Edge 0.8m','Front Edge 1.0m',
+					'Front Edge 1.2m','Front Edge 1.4m','Front Edge 1.6m','Front Edge 1.8m','Front Edge 2.0m','Front Edge 2.2m']
+label_back_cen = ['Back Center 0.2m','Back Center 0.4m','Back Center 0.6m','Back Center 0.8m','Back Center 1.0m',
+					'Back Center 1.2m','Back Center 1.4m','Back Center 1.6m','Back Center 1.8m','Back Center 2.0m','Back Center 2.2m']
+label_hf_cen = ['Center 0.2m','Center 0.4m','Center 0.6m','Center 0.8m','Center 1.0m','Center 1.2m']
+label_hf_off = ['Edge 0.2m','Edge 0.4m','Edge 0.6m','Edge 0.8m','Edge 1.0m','Edge 1.2m']
 
 for f in os.listdir(data_dir):
 	if f.endswith('.csv'):
@@ -51,11 +61,11 @@ for f in os.listdir(data_dir):
 
 		# Strip test name from file name
 		test_name = f[:-4]
-		print 'Test ' + test_name
+		print ('Test ' + test_name)
 
 		# Skip replicate files
 		if info['Skip'][test_name] == 'Yes':
-			print 'Replicate test skipped'
+			print ('Replicate test skipped')
 			continue
 		# Time sample rate
 		time_sample = 1
@@ -77,7 +87,7 @@ for f in os.listdir(data_dir):
 				array = '_TC_Plume_Avg'
 				num_array = 12
 				shape_offset = 1
-				ymax,xmax = 1000,500
+				ymax,xmax = 1000,300
 				mean_length=1
 				ylabel('Temperature ($^{\circ}$C)', fontsize=20)
 			elif 'TC Surface Center' in group:
@@ -85,7 +95,7 @@ for f in os.listdir(data_dir):
 				array = '_TC_Surface_Center_Avg'
 				num_array = 11
 				shape_offset = 0
-				ymax,xmax = 500,600
+				ymax,xmax = 500,300
 				mean_length=1
 				ylabel('Temperature ($^{\circ}$C)', fontsize=20)
 			elif 'TC Surface Offset' in group:
@@ -93,7 +103,7 @@ for f in os.listdir(data_dir):
 				array = '_TC_Surface_Offset_Avg'
 				num_array = 10
 				shape_offset = 0
-				ymax,xmax = 300,600
+				ymax,xmax = 300,300
 				mean_length=1
 				ylabel('Temperature ($^{\circ}$C)', fontsize=20)
 			elif 'TC Back Center' in group:
@@ -101,7 +111,7 @@ for f in os.listdir(data_dir):
 				array = '_TC_Back_Center_Avg'
 				num_array = 11
 				shape_offset = 0
-				ymax,xmax = 120,600
+				ymax,xmax = 120,300
 				mean_length=1
 				ylabel('Temperature ($^{\circ}$C)', fontsize=20)
 			elif 'HF Center' in group:
@@ -138,8 +148,11 @@ for f in os.listdir(data_dir):
 			xlabel('Time (s)', fontsize=20)
 			xticks(fontsize=16)
 			yticks(fontsize=16)
-			legend(numpoints=1,loc=1,ncol=1,fontsize=16)
 			axis([0, xmax, 0, ymax])
+			box = ax1.get_position()
+			ax1.set_position([box.x0, box.y0, box.width * 0.7, box.height])
+			ax1.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+			# legend(numpoints=1,loc=1,ncol=1,fontsize=16)
 			grid(True)
 			savefig(plot_dir + test_name[9:] + array + '.pdf',format='pdf')
 			close()
