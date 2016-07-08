@@ -917,14 +917,14 @@ There were 7 suppression tests conducted in the two story purpose-built structur
 \toprule[1.5pt]
 Test $\#$  & Name	& Stream			& Flow Rate		& Fuel                    & Ventilation  \\
 \midrule
- 38  & CAF~7     &  Straight Stream  	&  120~gpm/60~cfm   & Furniture           & Basement Doors, 1st Floor Door \\
- 39  & Water~7   &  Straight Stream  	&  120~gpm    		& Furniture           & Basement Doors, 1st Floor Door \\
- 40a & CAF~8a    &  Straight Stream  	&  120~gpm/60~cfm   & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
- 40b & CAF~8b    &  Straight Stream  	&  120~gpm/60~cfm   & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
- 40c & Water~8   &  Straight Stream     &  120~gpm          & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
- 41a & Class A~1 &  Straight Stream  	&  120~gpm		    & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
- 41b & CAF~9a    &  1 3/8'' Ball    	&  120~gpm		    & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
- 41c & CAF~9b    &  Solid Stream        &  120~gpm		    & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
+ 13  & CAF~7     &  Straight Stream  	&  120~gpm/60~cfm   & Furniture           & Basement Doors, 1st Floor Door \\
+ 14  & Water~7   &  Straight Stream  	&  120~gpm    		& Furniture           & Basement Doors, 1st Floor Door \\
+ 15  & CAF~8a    &  Straight Stream  	&  120~gpm/60~cfm   & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
+ 16  & CAF~8b    &  Straight Stream  	&  120~gpm/60~cfm   & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
+ 17  & Water~8   &  Straight Stream     &  120~gpm          & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
+ 18  & Class A~1 &  Straight Stream  	&  120~gpm		    & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
+ 19  & CAF~9a    &  1 3/8'' Ball    	&  120~gpm		    & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
+ 20  & CAF~9b    &  Solid Stream        &  120~gpm		    & Furniture + Pallet  & Basement Doors, 1st Floor Door \\
 \bottomrule[1.25pt]
 \end{tabular}\par
 \end{table}
@@ -967,9 +967,12 @@ One of the most widely used of the water-based agents are the foams used on Clas
 
 The gas cooling experiments were designed to measure the ability of water streams and CAF streams to cool a hot gas layer with a minimum temperature of 250~$^{\circ}$C (482~$^{\circ}$F) at positions 1.83~m (6~ft) below the ceiling. During the planning of the experiments, some workshop attendees thought that the excellent heat absorbing capacity of plain water would exceed the heat absorbing capabilities of CAFS, since the injected air, air being a great insulator, would interfere and result in less cooling. It was the belief that the reduced gas cooling capabilities of CAF may have led to firefighter injuries during interior fire attacks. Other firefighters thought that the bubble structure would provide the same mass flowrate of water with more surface area, which would enable a faster heat transfer rate and therefore, improve the cooling of the hot gas layer. There were also thoughts that the CAFS would coat the ceiling and eliminate energy feedback from the ceiling to the hot gas layer, thereby providing enhanced cooling.
 
-In each gas cooling experiment, the same mass flow rate of water was used for both the plain water stream and the CAF stream. Typically the volumetric flow rate of water was 7.57~L/s (120~gpm). The density of water is 1000~kg/m$^3$ (8.3~lb/gal), therefore the mass flow rate was 7.57~kg/s (16.7~lb/s). The average time of flow was 15~s, therefore a total of 114~kg (251~lb) of water was introduced into each gas cooling experiment. {\bf When a CAF stream was used it contained 0.3\% foam concentration by volume, check density of foam concentrate   point being mostly water.  Also calc the mass of air in the stream.}
+In each gas cooling experiment, the same mass flow rate of water was used for both the plain water stream and the CAF stream. Typically the volumetric flow rate of water was 7.57~L/s (120~gpm). The density of water is 1000~kg/m$^3$ (8.3~lb/gal), therefore the mass flow rate was 7.57~kg/s (16.7~lb/s). The average time of flow was 15~s, therefore a total of 114~kg (251~lb) of water was introduced into each gas cooling experiment.  
 
-Under the conditions of a residential scale room and contents fire it should be no surprise that the results are similar, the mass of water introduced into the hot gas layer is doing the work. Air filled bubbles in the CAFS stream had no discernible impact in these experiments.
+When a CAF stream was used it contained 0.3\% foam concentration by volume, the density of the foam concentrate is 1055~kg/m$^3$ (8.8~lb/gal), for a 15~s flow time, 3.6~kg (8.0 lb) of concentrate was used.  In addition to the foam concentrate mixed with the water in the CAF stream is compressed air. The volume of air injected into the foam solution is 0.03~m$^3$/s (60~cfm).  The density of the compressed air in the range of 100 to 150~psig, would be between 8.9~kg/m$^3$ (0.6 lb/ft$^3$) and 12.8~kg/m$^3$ (0.8 lb/ft$^3$). So a 15~s CAF flow would contain approximately 4.0~kg (8.8 lb) to 9.5~kg (21.0 lb) of air.  Comparing the mass flows, and using the air mass based on the higher pressure, water still makes up more than 90~\% of the mass of the CAF stream.  
+
+Under the given conditions of a residential scale room and the mass of water introduced into the hot gas layer, it should be no suprised that the water is doing the work. Air filled bubbles in the CAFS stream had no discernible impact in these experiments.
+At the same time there was no measurable negative effect of the air bubbles with regard to gas cooling.  
 
 \section{Fire Suppression}
 \label{sec:Fire_Suppression_discussion}
@@ -977,18 +980,23 @@ Under the conditions of a residential scale room and contents fire it should be 
 Currently, the fire service uses fire flow formulas to estimate the flow rate of water needed to control a structure fire. The formulas will be presented below and then the results from the studies presented above will be compared with the calculated fire flows.
 
 \subsection{Iowa State Univeristy Fire Flow Formula (1963)~\cite{NFPA}}
-The Iowa Formula for determining the required fire flow for a given structure was developed, by Keith Royer and Bill Nelson, based on theoretical heat absorption capabilities of water. The required fire flow in gpm is equal to the volume of the fire compartment (in cubic feet) divided by 100:
+The Iowa Formula for determining the required fire flowrate for a given structure was developed, by Keith Royer and Bill Nelson, based on theoretical heat absorption capabilities of water. The required fire flowrate in gpm is equal to the volume of the fire compartment (in cubic feet) divided by 100:
 \begin{equation}\label{eq:isu_form}
-\dot{Q} = V / 100
+\required fire flowrate = Volume / 100
 \end{equation}
-Due to inefficiencies in applying the water, some feel that the fire flow value from the Iowa State University formula should be multiplied by a factor of two to four~\cite{NFPA}. Applying the Iowa State University formula based on floor area yields an application density of 3.3~Lpm/m$^2$ (0.08~gpm/ft$^2$) for ceiling heights of 2.44~m (8~ft) or 4.1~Lpm/m$^2$ (0.10~gpm/ft$^2$) for ceiling heights of 3.05~m (10~ft). 
+Due to inefficiencies in applying the water, some feel that the fire flow value from the Iowa State University formula should be multiplied by a factor of two to four~\cite{NFPA}. Applying the  based on floor area yields an application density of 3.3~Lpm/m$^2$ (0.08~gpm/ft$^2$) for ceiling heights of 2.44~m (8~ft) or 4.1~Lpm/m$^2$ (0.10~gpm/ft$^2$) for ceiling heights of 3.05~m (10~ft). Our fire rooms ranged in floor area from approximately 66~m$^3$ (2330~ft$^3$) to 125~m$^3$ (4410~ft$^3$).  Therefore our required flowrate for the fire room in the single story structure based on the Iowa State University formula would be approximately 87~Lpm (23~gpm).  The required flowrate for the fire room in the lower level of the two story would be approximately 168~Lpm (44~gpm).
+
 
 \subsection{National Fire Academy (1884)~\cite{Klaene:1}}
 The National Fire Academy (NFA) developed a formula based on a study of fire flows, which were successful in controlling a large number of working fires~\cite{Klaene:1}. This formula sets the required fire flow, in gpm, equal to the floor area (in square feet) divided by 3.
 \begin{equation}\label{eq:nfa_form}
-\dot{Q} = A / 3
+\required fire flowrate = Area / 3
 \end{equation}
-Applying the NFA formula based on floor area yields an application density of 13.6~Lpm/m$^2$ (0.33~gpm/ft$^2$).
+
+Our fire rooms ranged in floor area from approximately 27~$m^2$ (291~$ft^2$) to 51.4~$m^2$ (553~$ft^2$).
+Applying the NFA formula based on floor area yields an required flowrate for the single story fire room of 369~Lpm (97~gpm).  The required flowrate for the fire room in the lower level of the two story would be approximately 700~Lpm (184~gpm).
+
+The flowrate used for these experiments were sufficent to quickly cool the hot gas layer and suppress each of the fires.  
 
 
 static nozzle lines all performed the same.
