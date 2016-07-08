@@ -710,9 +710,33 @@ There were three thermocouple arrays in the gas cooling room (adjacent to the bu
 
 \clearpage
 
-To better quantify the effectiveness of the suppression agents (CAF, water), the maximum temperature differences associated with each gas cooling event for each agent from the three thermocouple trees were analyzed. Figure~\ref{fig:combined_all} compares the temperature differences at each thermocouple position (via a scatterplot) for 30 of the 88 experiments, 15 water and 15 CAF, which were directly comparable.  These experiments included solid stream, straight streams, and narrow fog streams at both nozzle positions.  While the total number of experiments was 88, there where a number of experiments that were performed which did not have a directly comparable experiments between water and CAF.  For example a set of 12 Class A solutions experiments were conducted.  Gas cooling experiments were conducted with water applied on a wide fog nozzle setting, no significant differences were noted so a comparable series with wide fog CAF was not conducted.  Similarly larger water flows were examined but 120 gpm was the maximum water flow that could be generated with the CAFS, so those experiments are not included in this comparison.  The Mitchell report does include all of the data for the 88 experiments \cite{Mitchell:1}    
+To better quantify the effectiveness of the suppression agents (CAF, water), the maximum temperature differences associated with each gas cooling event for each agent from the three thermocouple trees were analyzed. Figure~\ref{fig:combined_all} compares the temperature differences at each thermocouple position (via a scatterplot) for 30 of the 88 experiments.  The 30 experiments are actually pairs of experiments, 15 water and 15 CAF, which were directly comparable, see Table~\ref{tab:Gas_Cooling_Descriptions}.  These experiments included solid stream, straight streams, and narrow fog streams at both nozzle positions.  While the total number of experiments was 88, there where a number of experiments that were performed which did not have a directly comparable experiments between water and CAF.  For example a set of 12 Class A solutions experiments were conducted.  Gas cooling experiments were conducted with water applied on a wide fog nozzle setting, no significant differences were noted so a comparable series with wide fog CAF was not conducted.  Similarly larger water flows were examined but 120 gpm was the maximum water flow that could be generated with the CAFS, so those experiments are not included in this comparison.  The Mitchell report does include all of the data for the 88 experiments \cite{Mitchell:1}    
    
-\textbf{Craig - the table of 30 could go here and the R squared paragraph could go with the first discussion of the red line below}
+\begin{table}[!ht]
+\centering
+\caption{Gas Cooling Comparison Test Descriptions}\label{tab:Gas_Cooling_Descriptions}
+\begin{tabular}{clll}
+\toprule[1.5pt]
+Water Test $\#$  & CAF Test  $\#$	& Stream			  & Position  \\
+\midrule
+ 2               & 6                &  Solid Stream       &  Middle   \\
+ 3               & 7                &  Solid Stream       &  Middle   \\
+ 4               & 10               &  Solid Stream       &  Middle   \\
+ 9               & 11               &  Solid Stream       &  Middle   \\
+ 17              & 52               &  Solid Stream       &  Middle   \\
+ 18              & 53               &  Solid Stream       &  Middle   \\
+ 19              & 54               &  Solid Stream       &  Middle   \\
+ 16              & 45               &  Straight Stream    &  Middle   \\
+ 20              & 46               &  Straight Stream    &  Middle   \\
+ 21              & 47               &  Straight Stream    &  Middle   \\
+ 22              & 48               &  Straight Stream    &  Middle   \\
+ 41              & 50               &  Straight Stream    &  Middle   \\
+ 29              & 12               &  Straight Stream    &  Full Back   \\
+ 33              & 13               &  30$^{\circ}$ Fog   &  Full Back   \\
+ 34              & 14               &  30$^{\circ}$ Fog   &  Full Back   \\
+\bottomrule[1.25pt]
+\end{tabular}\par
+\end{table}
 
 
 \begin{figure}[!ht]
@@ -722,6 +746,8 @@ To better quantify the effectiveness of the suppression agents (CAF, water), the
 \end{figure}
 
 The circles in Fig.~\ref{fig:combined_all} are the maximum temperature differences for each measurement point for all the replicate cooling events. If water and CAFS have the exact same temperature differences, all of the points would fall along solid black line in the figure. Circles that vary from that line represent measurements where either water (above) or CAF (below) cooled more significantly than the other agent. The gray area surrounding the solid black line, represents measurement uncertainty (\ref{subsec:Uncertainty}). For data that fall within this area, there is an inability to determine which agent was more or less effective than the other. The red dashed line is the line the describes the data by minimizing the differences between the two suppression agents through a linear approximation of the data. Since this line falls above the gray area for the comparison, water shows a better ability to cool gas under the same test criteria as CAF.
+
+The quality of the fit of the red dashed line to the scatter in gas cooling data is represented by the coefficient of determination (R$^2$ on Fig.~\ref{fig:combined_all}). The coefficient of determination provides a way to quantify how significant the variation of the data is compared the the least squared error line. Here, the higher the value of R$^2$, the better the ordinary least square line describes the relationship between water and CAF temperature difference comparisons. 
 
 The data can be separated to examine the impact of nozzle position (back or middle position) on the ability to cool gases for each of the suppression agents. Figures~\ref{fig:CAFS_Water_mid} and \ref{fig:CAFS_Water_full} show the cooling comparison for 12 pairs of experiments in the back position and 3 pairs of experiments in the middle position respectively.
 
@@ -823,7 +849,7 @@ The thermocouple array data can also also be decomposed as a function of nozzle 
 \subsubsection*{Single Story Structure}
 \label{sec:fire_supp_single}
 
-There were 12 suppression tests conducted in the single story purpose-built concrete structure. Four of the tests used a wood pallet fuel load (Section~\ref{sec:fire_suppression_pallet_fuel}) and the remaining tests used a fuel load comprised of typical household furnishings that included wooden wall paneling, two sofas, two overstuffed chairs, carpet, and padding (Section~\ref{sec:fire_suppression_furniture_fuel}). Ignition occurred in the rear of the single story structures and the available ventilation was through the front doorway and for several tests a rear window was opened to provide additional ventilation (see Table~\ref{tab:Test_Descriptions}). The fires were intended to replicate room and contents fires typically seen within residential structures. Hose lines were pre-deployed with fixed nozzles set in two locations: one in the hallway on the approach to the burn room (hallway nozzle) and one just inside the burn room to the right side of the hallway (room nozzle). Each nozzle flowed 15~s of water or compressed air foam depending on the test. The hallway nozzle was intended to simulate a crew advancing into a structure towards the burn room. Suppression from this location would be in the form of gas cooling as the stream was not aimed at the seat of the fire (indirect interior attack). The room nozzle was intended to simulate a crew which had advanced into a structure, entered the fire room, positioned just to the side of the entry door, and began suppression on the seat of the fire (direct interior attack). Table~\ref{tab:Test_Descriptions} provides an overview of the suppression tests conducted.
+There were 12 suppression tests conducted in the single story purpose-built concrete structure. Eight of the experiments used a fuel load comprised of typical household furnishings that included wooden wall paneling, two sofas, two overstuffed chairs, carpet, and padding (Section~\ref{sec:fire_suppression_furniture_fuel}). The other four experiments used wood pallet fuel load in a space with the ceiling and walls composed of wood based materials (Section~\ref{sec:fire_suppression_pallet_fuel}). Ignition occurred in the rear of the single story structures and the available ventilation was through the front doorway and for eight of the experiments a rear window was "opened" to provide additional ventilation (see Table~\ref{tab:Test_Descriptions}). The fires were intended to replicate post-flashover residential room and contents fires. Hose lines were pre-deployed with fixed nozzles set in two locations: one in the hallway on the approach to the burn room (hallway nozzle) and one just inside the burn room to the right side of the hallway (room nozzle). Each nozzle flowed 15~s of water or compressed air foam depending on the test. The hallway nozzle was intended to simulate a crew advancing into a structure towards the burn room. Suppression from this location would be in the form of gas cooling as the stream was not aimed at the seat of the fire (indirect interior attack).  After the hallway nozzle was shutdown, there was a 15~s time period to simulate the crew advancing into the doorway of the fire room. The room nozzle was positioned just to the side of the entry door.  It was also opened and flowed for approximately 15~s. The room nozzles was aimed in the direction of the seat of the fire (direct interior attack). Table~\ref{tab:Test_Descriptions} provides an overview of the suppression tests conducted.
 
 \begin{table}[!ht]
 \centering
@@ -848,7 +874,10 @@ Test $\#$  & Name	& Stream			& Flow Rate		& Fuel           & Ventilation     \\
 \end{tabular}\par
 \end{table}
 
-Table~\ref{tab:Test_Results} provides the impact of the two nozzle applications for the water and CAF tests. The table provides change in temperature 0.3~m (1~ft) below the ceiling and 0.3~m (1~ft) above the floor as well as change in heat flux 0.15~m (6~in) above the floor at the measurement location closest to the fire. These values reported in the table are immediately before and after the 15~s application period to assess the application agent, stream, and location on interior conditions.
+Table~\ref{tab:Test_Results} provides the impact of the two nozzle applications for the water and CAF tests. The table provides change in temperature 0.3~m (1~ft) below the ceiling and 0.3~m (1~ft) above the floor as well as change in heat flux 0.15~m (6~in) above the floor at the measurement location closest to the fire. These values reported in the table are immediately before and after the 15~s application period to assess the application agent, stream, and location on interior conditions.  Remeber that there was a 15~s gap between the hallway nozzle flow and the fire room nozzle flow.  As a result you can see the amount of temperature change during the period in between nozzle flows by comparing the temperature at the end of the hallway flow period with the temperature at the beginning of the room flow period.
+
+
+
 
 \begin{table}[!ht]
 \centering
@@ -982,7 +1011,7 @@ Currently, the fire service uses fire flow formulas to estimate the flow rate of
 \subsection{Iowa State Univeristy Fire Flow Formula (1963)~\cite{NFPA}}
 The Iowa Formula for determining the required fire flowrate for a given structure was developed, by Keith Royer and Bill Nelson, based on theoretical heat absorption capabilities of water. The required fire flowrate in gpm is equal to the volume of the fire compartment (in cubic feet) divided by 100:
 \begin{equation}\label{eq:isu_form}
-\required fire flowrate = Volume / 100
+required fire flowrate = Volume / 100
 \end{equation}
 Due to inefficiencies in applying the water, some feel that the fire flow value from the Iowa State University formula should be multiplied by a factor of two to four~\cite{NFPA}. Applying the  based on floor area yields an application density of 3.3~Lpm/m$^2$ (0.08~gpm/ft$^2$) for ceiling heights of 2.44~m (8~ft) or 4.1~Lpm/m$^2$ (0.10~gpm/ft$^2$) for ceiling heights of 3.05~m (10~ft). Our fire rooms ranged in floor area from approximately 66~m$^3$ (2330~ft$^3$) to 125~m$^3$ (4410~ft$^3$).  Therefore our required flowrate for the fire room in the single story structure based on the Iowa State University formula would be approximately 87~Lpm (23~gpm).  The required flowrate for the fire room in the lower level of the two story would be approximately 168~Lpm (44~gpm).
 
@@ -990,7 +1019,7 @@ Due to inefficiencies in applying the water, some feel that the fire flow value 
 \subsection{National Fire Academy (1884)~\cite{Klaene:1}}
 The National Fire Academy (NFA) developed a formula based on a study of fire flows, which were successful in controlling a large number of working fires~\cite{Klaene:1}. This formula sets the required fire flow, in gpm, equal to the floor area (in square feet) divided by 3.
 \begin{equation}\label{eq:nfa_form}
-\required fire flowrate = Area / 3
+required fire flowrate = Area / 3
 \end{equation}
 
 Our fire rooms ranged in floor area from approximately 27~$m^2$ (291~$ft^2$) to 51.4~$m^2$ (553~$ft^2$).
