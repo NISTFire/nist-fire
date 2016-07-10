@@ -1,0 +1,7 @@
+Test,Replicates,Old_Test_Name_Water,Old_Test_Name_CAFS,Test_Series_Water,Hallway_Start_Time_Water,Hallway_Stop_Time_Water,Door_Start_Time_Water,Door_Stop_Time_Water,Test_Series_CAFS,Hallway_Start_Time_CAFS,Hallway_Stop_Time_CAFS,Door_Start_Time_CAFS,Door_Stop_Time_CAFS
+1,6,2,1,FSW_Test_2_092812,230,250,272,287,FSE_Test_1_092812,230,248,269,284
+2,0,4,3,FSE_Test_4_092912,300,315,330,345,FSW_Test_3_092812,231,254,273,300
+3,0,5,6,FSE_Test_5_093912,230,248,269,284,FSW_Test_6_093012,239,254,268,283
+4,0,7,8,FSW_Test_7_093012,270,291,308,323,FSE_Test_8_093912,240,260,275,290
+5,0,11,12,FSE_Test_11_051613,315,330,345,360,FSW_Test_12_051613,233,248,263,278
+6,0,13,14,FSE_Test_13_052013,330,390,406,466,FSW_Test_14_052013,435,495,510,570
