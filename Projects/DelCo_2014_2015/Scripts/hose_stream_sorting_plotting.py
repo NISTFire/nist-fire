@@ -701,8 +701,8 @@ for f in os.listdir(data_dir):
 
 									flow_rate = avg_m_per_s*area
 									print
-									print '		m3/s    ' + str(round(flow_rate,1)) + ' (+/-)' + str(round(abs(flow_rate)*0.18, round_place))
-									print '		cfm     ' + str(round(flow_rate*m3s_to_cfm,1)) + ' (+/-)' + str(round(abs(m3s_to_cfm*flow_rate)*0.18, round_place))
+									print '			m3/s    ' + str(round(flow_rate,1)) + ' (+/-)' + str(round(abs(flow_rate)*0.18, round_place))
+									print '			cfm     ' + str(round(flow_rate*m3s_to_cfm,1)) + ' (+/-)' + str(round(abs(m3s_to_cfm*flow_rate)*0.18, round_place))
 									print
 						else:
 							m_per_s_data = []
@@ -728,8 +728,8 @@ for f in os.listdir(data_dir):
 							
 							flow_rate = avg_m_per_s*area
 							print
-							print '		m3/s    ' + str(round(flow_rate,1)) + ' (+/-)' + str(round(abs(flow_rate)*0.18, round_place))
-							print '		cfm     ' + str(round(flow_rate*m3s_to_cfm,1)) + ' (+/-)' + str(round(abs(m3s_to_cfm*flow_rate)*0.18, round_place))
+							print '			m3/s    ' + str(round(flow_rate,1)) + ' (+/-)' + str(round(abs(flow_rate)*0.18, round_place))
+							print '			cfm     ' + str(round(flow_rate*m3s_to_cfm,1)) + ' (+/-)' + str(round(abs(m3s_to_cfm*flow_rate)*0.18, round_place))
 							print
 					else:
 						PorL_options = stream_seq_info.groupby(P_or_L)
