@@ -50,7 +50,7 @@ all_times = all_times.set_index('Time')
 info = pd.read_csv(info_file, index_col=3)
 
 # Files to skip
-skip_files = ['_times','_reduced','description_','zero','bb','es_','cafs','_attic','sc','gas_cooling_','west_','east_','gcs']
+skip_files = ['_times','_reduced','description_','zero','bb','es_','cafs','_attic','sc','gas_cooling_','west_','east_','gcs','fire_suppress']
 
 #  ===============================
 #  = Loop through all data files =
@@ -283,7 +283,7 @@ for f in os.listdir(data_dir):
                     [plt.axvline(_x - start_of_test, color='0.50', lw=1) for _x in events.index.values]
                     ax3.set_xticks(events.index.values - start_of_test)
                     plt.setp(plt.xticks()[1], rotation=60)
-                    ax3.set_xticklabels(events.values, fontsize=8, ha='left')
+                    ax3.set_xticklabels(events.values, fontsize=12, ha='left')
                     plt.xlim([0, end_of_test - start_of_test])
                     # Increase figure size for plot labels at top
                     fig.set_size_inches(10, 6)
