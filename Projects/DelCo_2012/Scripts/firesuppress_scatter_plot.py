@@ -126,7 +126,7 @@ for f in os.listdir(data_dir):
 								continue
 							cafs_data_interval = current_channel_data[info2['Hallway_Start_Time_CAFS'][reps]:info2['Hallway_Stop_Time_CAFS'][reps]]
 							cafs_data_interval2 = current_channel_data[info2['Door_Start_Time_CAFS'][reps]:info2['Door_Stop_Time_CAFS'][reps]]
-							print(max(cafs_data_interval2),max(min(cafs_data_interval2),0))
+							# print(max(cafs_data_interval2),max(min(cafs_data_interval2),0))
 							del_TC_1_cafs_hall[ii,reps-1] =  max(max(cafs_data_interval),0) - max(min(cafs_data_interval),0.)
 							del_TC_1_cafs_door[ii,reps-1] =  max(max(cafs_data_interval2),0) - max(min(cafs_data_interval2),0.)
 							ii=ii+1

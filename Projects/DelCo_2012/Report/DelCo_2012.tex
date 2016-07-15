@@ -748,7 +748,6 @@ Water Test $\#$  & CAF Test  $\#$	& Stream			  & Position  \\
 \end{tabular}\par
 \end{table}
 
-
 \begin{figure}[!ht]
 	\includegraphics[width=.7\columnwidth]{../Figures/Gas_Cooling/Combined_scatter}
 	\caption{CAFS vs Water Gas Cooling Comparison for All Replicate Tests}
@@ -946,9 +945,33 @@ For tests CAF~1 and Water~1, the thermocouple data from TC A2 is shown in Figs.~
 	\label{fig:water1_tca2}
 \end{figure}
 
-Similar to the gas cooling tests, the impact of water and CAF during fire suppression can be analyzed by comparing the temperature differences during the suppression interval at the two the thermocouple arrays in the fire room. 
+Similar to the gas cooling tests, the impact of water and CAF during fire suppression can be analyzed by comparing the temperature differences during the suppression interval at the two the thermocouple arrays in the fire room. Figures~\ref{fig:fs_hall_a1} and \ref{fig:fs_door_a1} show the temperature difference comparison at thermocouple array A1 for CAF and water after the hallway nozzle was activated and then the doorway nozzle was actived, respectively. 
 
-\clearpage
+\begin{figure}[!ht]
+	\includegraphics[width=.7\columnwidth]{../Figures/Script_Figures/TCA1_hallnozzle_scatter}
+	\caption{CAFS vs Water Temperature Difference Comparison for Single Story Fire Suppression Tests at Thermocouple Array A1 after Hallway Nozzle}
+	\label{fig:fs_hall_a1}
+\end{figure}
+
+\begin{figure}[!ht]
+	\includegraphics[width=.7\columnwidth]{../Figures/Script_Figures/TCA1_doornozzle_scatter}
+	\caption{CAFS vs Water Temperature Difference Comparison for Single Story Fire Suppression Tests at Thermocouple Array A1 after Door Nozzle}
+	\label{fig:fs_door_a1}
+\end{figure}
+
+In Fig.~\ref{fig:fs_hall_a1}, the red dashed line (linear fit to the data, see Section~\ref{sec:Gas_Cooling}) closely follows the black line, indicates near equal cooling between CAF and water. The R$^2$ value of 0.901 shows a strong fit to the data. When the second nozzle is activated (doorway nozzle), note that the temperature differences are noticabley lower compared to the hallway nozzle, despite it being an indirect attack. While the fit is not as strong (R$^2$ = 0.643), the red line still falls within the experimental uncertainty, meaning that differences in the impact of CAF and water are indistinguishable. Despite being closer to the nozzles, thermocouple tree A2 shows similar the temperature difference results from the hallway nozzle activation to the A1 array (cf. Fig~\ref{fig:fs_door_a1}). At array A2, Fig.~\ref{fig:fs_door_a2}, for doorway nozzle, the red dashed falls outside of the experimental uncertainty, indicating a slight advantage of cooling for CAF.
+
+\begin{figure}[!ht]
+	\includegraphics[width=.7\columnwidth]{../Figures/Script_Figures/TCA2_hallnozzle_scatter}
+	\caption{CAFS vs Water Temperature Difference Comparison for Single Story Fire Suppression Tests at Thermocouple Array A2 after Hallway Nozzle}
+	\label{fig:fs_hall_a2}
+\end{figure}
+
+\begin{figure}[!ht]
+	\includegraphics[width=.7\columnwidth]{../Figures/Script_Figures/TCA2_doornozzle_scatter}
+	\caption{CAFS vs Water Temperature Difference Comparison for Single Story Fire Suppression Tests at Thermocouple Array A2 after Door Nozzle}
+	\label{fig:fs_door_a2}
+\end{figure}
 
 \subsubsection*{Two Story Structure}
 \label{sec:fire_supp_two}
@@ -1216,7 +1239,7 @@ Thank you for assisting NIST in generating data that will assist the fire servic
 \includegraphics[width=.7\columnwidth]{../Figures/Script_Figures/FSE_Test_1_092812_TC_A1}
 \includegraphics[width=.7\columnwidth]{../Figures/Script_Figures/FSE_Test_1_092812_TC_A2}
 \includegraphics[width=.7\columnwidth]{../Figures/Script_Figures/FSE_Test_1_092812_TC_A3}
-\caption{Thermocouple Data for Arrays in the Fire Room (top, middle) and in the Hallway (bottom) for Single-Story Fire Suppression Test CAF~1}
+\caption{Thermocouple Data for Arrays in the Fire Room (top - A1, middle - A2) and in the Hallway (bottom - A3) for Single-Story Fire Suppression Test CAF~1}
 \end{figure}
 
 

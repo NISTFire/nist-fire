@@ -15,7 +15,7 @@ rcParams.update({'figure.autolayout': True})
 data_dir = '../Experimental_Data/'
 
 # Skip files
-skip_files = ['_times','_reduced','description_','zero','cafs','_attic','sc','gas_cooling_','west_','east_','gcs','fse_','fsw']
+skip_files = ['_times','_reduced','description_','zero','cafs','_attic','sc','gas_cooling_','west_','east_','gcs','fse_','fsw','fire_suppress']
 
 for f in os.listdir(data_dir):
 	if f.endswith('.csv'):

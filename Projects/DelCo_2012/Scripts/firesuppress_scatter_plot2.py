@@ -128,7 +128,7 @@ for f in os.listdir(data_dir):
 	        				cafs_data_interval2 = current_channel_data[info2['Door_Start_Time_CAFS'][reps]:info2['Door_Stop_Time_CAFS'][reps]]
         					del_TC_2_cafs_hall[ii,reps-1] =  max(max(cafs_data_interval),0) - max(min(cafs_data_interval),0.)
         					del_TC_2_cafs_door[ii,reps-1] =  max(max(cafs_data_interval2),0) - max(min(cafs_data_interval2),0.)
-        					print(max(cafs_data_interval2))
+        					# print(max(cafs_data_interval2))
         					ii=ii+1
 
 del_water = del_TC_2_h2o_hall

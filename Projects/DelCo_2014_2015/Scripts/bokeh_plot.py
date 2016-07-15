@@ -19,7 +19,7 @@ def mtext(p, x, y, textstr):
 
 # Choose Test Number
 
-current_test = 'Test_41_West_061415'
+current_test = 'Test_40_West_061415'
 
 # Location of experimental data files
 data_dir = '../Experimental_Data/'

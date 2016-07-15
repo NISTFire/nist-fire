@@ -33,7 +33,7 @@ heatflux_cal = 5.5371
 info = pd.read_csv(info_file, index_col=0)
 zero = pd.read_csv(zero_file, header=0,index_col=0)
 # Skip files
-skip_files = ['_reduced', 'description_','zero','bb','es_','fse','cafs','fsw','_attic','sc','gas_cooling','west_','east_','all_']
+skip_files = ['_reduced', 'description_','zero','bb','es_','fse','cafs','fsw','_attic','sc','gas_cooling','west_','east_','all_','fire_suppress']
 
 #  ===============================
 #  = Loop through all data files =
