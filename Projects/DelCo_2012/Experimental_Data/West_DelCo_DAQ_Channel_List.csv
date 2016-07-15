@@ -46,9 +46,9 @@ FSW4_bdp_1-52mBC,99.52,-248.8,BDP 4 1.52 m BS,BDP A4,Velocity
 FSW4_bdp_1-83mBC,99.52,-248.8,BDP 4 1.83 m BS,BDP A4,Velocity
 FSW1_HF_0-15mAF,10960,0,Heat Flux 1,Heat Flux 1,Heat Flux
 FSW1_RAD_0-15mAF,12390,0,Radiometer 1,Heat Flux 1,Heat Flux
-FSW2_HF_0-15mAF,3000,0,Heat Flux 2,Heat Flux 2,Heat Flux
+FSW2_HF_0-15mAF,3000,0,Heat Flux 2,Heat Flux 1,Heat Flux
 FSW2_RAD_0-15mAF,6242,0,Radiometer 2,Heat Flux 2,Heat Flux
 FSW3_HF_Fire_1-52mBC,3370,0,Heat Flux 3 Horizontal,Heat Flux 3,Heat Flux
 FSW3_HF_Ceil_1-52mBC,2144,0,Heat Flux 3 Vertical,Heat Flux 3,Heat Flux
-FSW5_HF_Fire_1-52mBC,2203,0,Heat Flux 4 Horizontal,Heat Flux 5,Heat Flux
-FSW5_HF_Ceil_1-52mBC,2457,0,Heat Flux 4 Vertical,Heat Flux 5,Heat Flux
+FSW5_HF_Fire_1-52mBC,2203,0,Heat Flux 4 Horizontal,Heat Flux 3,Heat Flux
+FSW5_HF_Ceil_1-52mBC,2457,0,Heat Flux 4 Vertical,Heat Flux 3,Heat Flux
