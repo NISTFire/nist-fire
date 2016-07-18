@@ -87,7 +87,7 @@ for f in os.listdir(data_dir):
 						if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
 							continue
 						current_channel_data = data[channel]
-						if 'TC_A9' in channel:
+						if 'TC_A10' in channel:
 							water_data_interval = current_channel_data[info2['Water_On'][reps]:info2['Water_Off'][reps]]
 							del_TC_h2o[ii,reps-1] =  max(water_data_interval) - max(min(water_data_interval),0)
 							ii=ii+1
@@ -99,7 +99,7 @@ for f in os.listdir(data_dir):
 						if any([substring in channel for substring in info['Excluded Channels'][test_name].split('|')]):
 							continue
 						current_channel_data = data[channel]
-						if 'TC_A8' in channel:
+						if 'TC_A10' in channel:
 							cafs_data_interval = current_channel_data[info2['CAF_On'][reps]:info2['CAF_Off'][reps]]
 							del_TC_caf[ii,reps-1] =  max(max(cafs_data_interval),0) - max(min(cafs_data_interval),0.)
 							ii=ii+1
@@ -135,4 +135,4 @@ plt.text(0.1*max_axis , 0.95*max_axis, 'R$^2$ = ' + str(around(est.rsquared,deci
 	verticalalignment='center', bbox=dict(facecolor='none', edgecolor='black'))
 xlabel('$\Delta$T ($^{\circ}$C) CAFS')
 ylabel('$\Delta$T ($^{\circ}$C) WATER')
-savefig(save_dir + 'TC_A9_scatter.pdf',format='pdf')
+savefig(save_dir + 'TC_A10_scatter.pdf',format='pdf')
