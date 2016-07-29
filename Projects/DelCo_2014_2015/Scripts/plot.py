@@ -203,8 +203,6 @@ for f in os.listdir(data_dir):
             offset_time = events.index.values[0]
             new_times = events.index.values - int(offset_time)
             events = pd.Series(events.values, index=new_times)
-            # print events
-            # print
             data['Time'] = data['Time'].values - offset_time
             corrected_data = data.drop('Time', axis=1)
             corrected_data.insert(0, 'Time', data['Time'])
