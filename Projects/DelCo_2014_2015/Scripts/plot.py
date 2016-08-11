@@ -36,7 +36,7 @@ specific_struct = 'West'
 
 # Specify if creating data sets
 #  for gas burner exp. report
-burner_report = True
+burner_report = False
 burner_data = '../Reports/Propane_Gas_Fire_Experiments/Data/'
 
 # Plot mode: figure or video
@@ -156,12 +156,12 @@ for f in os.listdir(data_dir):
 
         test_type = info['Test Type'][test_name]
 
-        if burner_report:
-            try:
-                if 'Propane fire' not in info['Test Description'][test_name]:
-                    continue
-            except TypeError:
+        # if burner_report:
+        try:
+            if 'Propane fire' not in info['Test Description'][test_name]:
                 continue
+        except TypeError:
+            continue
 
         if check_name(test_name, test_year, test_type):     # check if file should be skipped
             continue
@@ -197,7 +197,7 @@ for f in os.listdir(data_dir):
                 events = all_times[test_name].dropna()[1:]
                 gasA_lag_time = 12   # [s]; gas analyzer A lag time for east burner tests
                 gasB_lag_time = 35   # [s]; gas analyzer B lag time for east burner tests
-            
+
             # adjust times so t=0 corresponds to ignition of 1st burner
             offset_time = events.index.values[0]
             new_times = events.index.values - int(offset_time)
@@ -230,12 +230,6 @@ for f in os.listdir(data_dir):
 
                     # Scale channel depending on quantity
                     current_channel_data = reduced_data[channel]
-                    print 'Test .loc function with current_channel_data'
-                    print current_channel_data.loc[-61:-5]
-                    print
-                    print '..without .loc'
-                    print current_channel_data[-61:-5]
-                    sys.exit()
                     calibration_slope = float(channel_list['Calibration Slope'][channel])
                     calibration_intercept = float(channel_list['Calibration Intercept'][channel])
                     
@@ -276,10 +270,7 @@ for f in os.listdir(data_dir):
                             sys.exit()
                         # Create list of data shifted according to analyzer lag time and calculate zero voltage
                         current_channel_data = current_channel_data.loc[-61+shift_data:].values
-                        print 'Check that data used to calculate gas zero voltage is correct:'
-                        print corrected_data[channel].loc[-120+shift_data:-60+shift_data]
-                        sys.exit()
-                        zero_voltage = np.mean(corrected_data[channel].loc[-120+shift_data:-60+shift_data])
+                        zero_voltage = np.mean(corrected_data[channel].loc[-71+shift_data:-15+shift_data])
 
                         if 'CO' in channel:
                             current_channel_data = (current_channel_data-zero_voltage)*calibration_slope + calibration_intercept
