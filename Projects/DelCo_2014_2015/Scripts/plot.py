@@ -36,7 +36,7 @@ specific_struct = 'West'
 
 # Specify if creating data sets
 #  for gas burner exp. report
-burner_report = False
+burner_report = True
 burner_data = '../Reports/Propane_Gas_Fire_Experiments/Data/'
 
 # Plot mode: figure or video
@@ -211,7 +211,7 @@ for f in os.listdir(data_dir):
             corrected_data.insert(0, 'Time', data['Time'])
             corrected_data = corrected_data.set_index('Time')
             
-            # reduce data to relevant data (60 seconds of background data + data collected during test)
+            # reduce data to relevant data (60 seconds of background data before experimental data)
             reduced_data = corrected_data.loc[-61:, :]  # row corresponding to -61 will be replaced with unit headers
             
             # set up dataframe to be filled with relevant processed sensor data
