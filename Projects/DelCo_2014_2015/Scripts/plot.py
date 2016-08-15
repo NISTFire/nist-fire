@@ -156,12 +156,12 @@ for f in os.listdir(data_dir):
 
         test_type = info['Test Type'][test_name]
 
-        if burner_report:
-            try:
-                if 'Propane fire' not in info['Test Description'][test_name]:
-                    continue
-            except TypeError:
+        # if burner_report:
+        try:
+            if 'Propane fire' not in info['Test Description'][test_name]:
                 continue
+        except TypeError:
+            continue
 
         if check_name(test_name, test_year, test_type):     # check if file should be skipped
             continue
@@ -189,25 +189,32 @@ for f in os.listdir(data_dir):
 
         # Read in test times to offset plots.
         if burner_report:
-            if 'West' in test_name:     # ignore first 2 time entries
+            if 'West' in test_name:     # ignore first 2 time entries => 3rd entry corresponds to 1st burner ignited
                 events = all_times[test_name].dropna()[2:]
                 gasA_lag_time = 12   # [s]; gas analyzer A lag time for west burner tests
                 gasB_lag_time = 12   # [s]; gas analyzer B lag time for west burner tests
-            else:      
-                if 'Test_5_' in test_name or 'Test_6_' in test_name:
-                    events = all_times[test_name].dropna()[3:]
-                else:
-                    events = all_times[test_name].dropna()[1:]
+            else:     # ignore first time entry => 2nd entry corresponds to 1st burner ignited 
+                events = all_times[test_name].dropna()[1:]
                 gasA_lag_time = 12   # [s]; gas analyzer A lag time for east burner tests
                 gasB_lag_time = 35   # [s]; gas analyzer B lag time for east burner tests
+
+            # adjust times so t=0 corresponds to ignition of 1st burner
             offset_time = events.index.values[0]
             new_times = events.index.values - int(offset_time)
+            
+            # create series of event names & new times 
             events = pd.Series(events.values, index=new_times)
+            
+            # adjust times in data file to correspond with t=0 being ignition of 1st burner
             data['Time'] = data['Time'].values - offset_time
             corrected_data = data.drop('Time', axis=1)
             corrected_data.insert(0, 'Time', data['Time'])
             corrected_data = corrected_data.set_index('Time')
-            reduced_data = corrected_data.loc[-61:, :]
+            
+            # reduce data to relevant data (60 seconds of background data before experimental data)
+            reduced_data = corrected_data.loc[-61:, :]  # row corresponding to -61 will be replaced with unit headers
+            
+            # set up dataframe to be filled with relevant processed sensor data
             final_reduced_data = pd.DataFrame(index=reduced_data.index)
 
             # Process data for each quantity group
@@ -236,7 +243,7 @@ for f in os.listdir(data_dir):
                     elif channel_list['Measurement Type'][channel] == 'Velocity':
                         conv_inch_h2o = 0.4
                         conv_pascal = 248.8
-                        zero_voltage = np.mean(current_channel_data[-61:-1])  # Get zero voltage from pre-test data
+                        zero_voltage = np.mean(current_channel_data.loc[-61:-5])  # Get zero voltage from pre-test data
                         pressure = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Convert voltage to pascals
                         if int(info['Test Number'][test_name]) >= 91 and 'East' in test_name and 'BDP A7' in group:
                             current_channel_data = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)
@@ -244,13 +251,13 @@ for f in os.listdir(data_dir):
                             current_channel_data = 0.0698 * np.sqrt(np.abs(pressure) * (reduced_data['TC_' + channel[4:]] + 273.15)) * np.sign(pressure)
                     # Heat Flux
                     elif channel_list['Measurement Type'][channel] == 'Heat Flux':
-                        zero_voltage = np.mean(current_channel_data[-61:-1])  # Get zero voltage from pre-test data
+                        zero_voltage = np.mean(current_channel_data.loc[-61:-5])  # Get zero voltage from pre-test data
                         current_channel_data = (current_channel_data - zero_voltage) * calibration_slope + calibration_intercept
                     # Pressure
                     elif channel_list['Measurement Type'][channel] == 'Pressure':
                         conv_inch_h2o = 0.4
                         conv_pascal = 248.8
-                        zero_voltage = np.mean(current_channel_data[-61:-1])  # Convert voltage to pascals
+                        zero_voltage = np.mean(current_channel_data.loc[-61:-5])  # Convert voltage to pascals
                         current_channel_data = conv_inch_h2o * conv_pascal * (current_channel_data - zero_voltage)  # Get zero voltage from pre-test data
                     # Gas
                     elif channel_list['Measurement Type'][channel] == 'Gas':
@@ -263,7 +270,7 @@ for f in os.listdir(data_dir):
                             sys.exit()
                         # Create list of data shifted according to analyzer lag time and calculate zero voltage
                         current_channel_data = current_channel_data.loc[-61+shift_data:].values
-                        zero_voltage = np.mean(corrected_data[channel].loc[-120+shift_data:-60+shift_data])
+                        zero_voltage = np.mean(corrected_data[channel].loc[-71+shift_data:-15+shift_data])
 
                         if 'CO' in channel:
                             current_channel_data = (current_channel_data-zero_voltage)*calibration_slope + calibration_intercept
