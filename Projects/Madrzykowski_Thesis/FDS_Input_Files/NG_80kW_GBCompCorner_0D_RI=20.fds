@@ -1,8 +1,13 @@
-&HEAD CHID='NG_80kW_GBCompCorner_0D', TITLE='Compartment Fire Natural Gas 80mm grid 80kW' /
+&HEAD CHID='NG_80kW_GBCompCorner_0D_RI=20', TITLE='Compartment Corner Fire Natural Gas 20mm grid 80kW' /
 &TIME T_END=300.0 /
-&MESH IJK=55,50,35, XB=-0.4,4.0,0.0,4.0,0.0,2.8  /
+#MESH IJK=220,200,140,XB=-0.4,4.0,0.0,4.0,0.0,2.8  /
+&MULT ID='mesh array', DY=2.0, DZ=0.7, J_UPPER = 1, K_UPPER = 3 /
+&MESH IJK=220,100,35, XB=0.0,4.4,0.0,2.0,0.0,0.7, MULT_ID='mesh array' / 8 meshes
+
+
 &DUMP DT_DEVC = 1, DT_HRR = 1 /
 &MISC BNDF_DEFAULT=.FALSE. /
+
 
 &REAC FUEL='METHANE'  /
 &SURF ID='FIRE', HRRPUA=888.89, COLOR='RED'  /

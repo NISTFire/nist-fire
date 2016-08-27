@@ -1,6 +1,6 @@
-&HEAD CHID='NG_80kW_GBComp_0D', TITLE='Compartment Fire Natural Gas 80mm grid 80kW' /
+&HEAD CHID='NG_80kW_GBComp_0D_RI=10', TITLE='Compartment Fire Natural Gas 40mm grid 80kW' /
 &TIME T_END=300.0 /
-&MESH IJK=55,50,35, XB=-0.4,4.0,0.0,4.0,0.0,2.8  /
+&MESH IJK=110,100,70,XB=-0.4,4.0,0.0,4.0,0.0,2.8  /
 &DUMP DT_DEVC = 1, DT_HRR = 1 /
 &MISC BNDF_DEFAULT=.FALSE. /
 
