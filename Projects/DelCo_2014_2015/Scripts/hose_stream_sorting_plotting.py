@@ -271,6 +271,13 @@ def sort_data(test_name, start_time, test_type):
 	
 	return group_results, zero_time_ls
 
+def m3s_2_cfm(flow_rate):
+	converted_rate = m3s_to_cfm*flow_rate
+	converted_error = abs(converted_rate)*0.18
+	rounded_rate = round(converted_rate/50.0, 0)*50.0
+	rounded_error = round(converted_error/50.0, 0)*50.0
+	return int(rounded_rate), int(rounded_error)
+
 def plot_stream_avgs(stream_data, updated_times, x_max_index, y_max, y_min, marker, color, plot_label):
 	stream_data = pd.Series(data = stream_data, index=range(-3, len(stream_data)-3))
 	ma_quantity = pd.rolling_mean(stream_data, 5, center=True)
@@ -700,9 +707,10 @@ for f in os.listdir(data_dir):
 									print '			mph 	' + str(round(avg_mph, 1)) + ' (+/-)' + str(round(abs(avg_mph)*0.18, round_place))
 
 									flow_rate = avg_m_per_s*area
+									flow_rate_cfm, flow_rate_error = m3s_2_cfm(flow_rate)
 									print
-									print '			m3/s    ' + str(round(flow_rate,1)) + ' (+/-)' + str(round(abs(flow_rate)*0.18, round_place))
-									print '			cfm     ' + str(round(flow_rate*m3s_to_cfm,1)) + ' (+/-)' + str(round(abs(m3s_to_cfm*flow_rate)*0.18, round_place))
+									print '			m3/s 	' + str(round(flow_rate,1)) + ' (+/-)' + str(round(abs(flow_rate)*0.18, round_place))
+									print '			cfm     ' + str(flow_rate_cfm) + ' (+/-)' + str(flow_rate_error)
 									print
 						else:
 							m_per_s_data = []
@@ -727,9 +735,10 @@ for f in os.listdir(data_dir):
 							print '			mph 	' + str(round(avg_mph, 1)) + ' (+/-)' + str(round(abs(avg_mph)*0.18, round_place))
 							
 							flow_rate = avg_m_per_s*area
+							flow_rate_cfm, flow_rate_error = m3s_2_cfm(flow_rate)
 							print
 							print '			m3/s    ' + str(round(flow_rate,1)) + ' (+/-)' + str(round(abs(flow_rate)*0.18, round_place))
-							print '			cfm     ' + str(round(flow_rate*m3s_to_cfm,1)) + ' (+/-)' + str(round(abs(m3s_to_cfm*flow_rate)*0.18, round_place))
+							print '			cfm     ' + str(flow_rate_cfm) + ' (+/-)' + str(flow_rate_error)
 							print
 					else:
 						PorL_options = stream_seq_info.groupby(P_or_L)
@@ -760,9 +769,10 @@ for f in os.listdir(data_dir):
 							print '		mph 	' + str(round(avg_mph, 1)) + ' (+/-)' + str(round(abs(avg_mph)*0.18, round_place))
 
 							flow_rate = avg_m_per_s*area
+							flow_rate_cfm, flow_rate_error = m3s_2_cfm(flow_rate)
 							print
 							print '		m3/s    ' + str(round(flow_rate,1)) + ' (+/-)' + str(round(abs(flow_rate)*0.18, round_place))
-							print '		cfm     ' + str(round(flow_rate*m3s_to_cfm,1)) + ' (+/-)' + str(round(abs(m3s_to_cfm*flow_rate)*0.18, round_place))
+							print '		cfm     ' + str(flow_rate_cfm) + ' (+/-)' + str(flow_rate_error)
 							print
 				print
 
