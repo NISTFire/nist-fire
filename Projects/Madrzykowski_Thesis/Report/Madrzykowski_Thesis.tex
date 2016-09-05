@@ -1413,7 +1413,14 @@ Values generated in the bench scale experiments will be utilized as input to pre
 
 \section{Evidence of a Fire Pattern}
 
-The first algorithm assumes that the heat release rate is emitted from a point source in a uniform manner.  Therefore for any given radii a sphere of uniform heat flux will be assumed. A schematic of this arrangement is shown... and the equation is presented below. Babrauskas applied this concept in his paper, "Will the Second Item Ignite"~\cite{Babrauskas:1981}.  The idea being that if you knew the threshold heat flux that a material needed to be exposed to for the item to ignite, then you could potentially determine the maximum distance that the material could be located from a fire of a given HRR, with a given radiant fraction and it would still ignite.   
+The first algorithm assumes that the heat release rate is emitted from a point source in a uniform manner.  Therefore for any given radii a sphere of nearly uniform heat flux will be assumed. A schematic of this arrangement is shown in Figure~\ref{PointSourceHF} and the equation is presented below. Babrauskas applied this concept in his paper, "Will the Second Item Ignite"~\cite{Babrauskas:1981}.  The idea being that if you knew the threshold heat flux that a material needed to be exposed to for the item to ignite.  Then given a fire with a specified HRR and radiant fraction, one could determine the range of distances from the fire where the material could recieve enough energy to ignite.  Radiation is assumed to be the only means of heat transfer.       
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{../Figures/PointSourceHF} \\
+	\caption[Schematic of heat flux estimation using the point source assumption]
+	\label{PointSourceHF}
+\end{figure}
 
 
 \begin{equation} \label{eq:second_item}
