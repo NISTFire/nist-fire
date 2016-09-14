@@ -102,3 +102,4 @@ for j in range(0,len(distance)):
 	temp_hf_wall_edge = temp_hf_wall_edge.drop(temp_hf_wall_edge.columns[[0]],axis=1)
 	temp_hf_wall_edge.columns = hf_edge_labels
 	temp_hf_wall_edge.to_csv('../FDS_Output_Files/hfwalledge_avg_'+distance[j]+'.csv')
+	
