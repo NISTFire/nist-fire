@@ -22,6 +22,25 @@
 
 \dedication{To my wife and family}  
 
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+\acknowledgments{
+I would like to thank Prof.~Fleischmann, my senior advisor with the University of Canterbury, as well as, Dr.~Kevin McGrattan, and Dr.~Craig Weinschenk from the National Institute of Standards and Technology for their guidance, assistance, and support throughout this study.
+
+The full-scale and bench-scale experiments were conducted over a period of several years whenever funding and laboratory availability coincided.  These experiments were conducted with the support of several engineering technicians from the NIST Fire Research Division, especially Roy McLane, Jay McElroy, Laurean DeLauter, and Anthony Chakalis.  Their assistance was essential. Their patience and attention to detail during this study is greatly appreciated.  
+
+This work was partially funded by the National Institute of Justice (NIJ) through an inter-agency agreement with the NIST Office of Law Enforcement Standards (OLES). I would like to thank Susan Ballou of OLES for her support of this project. This work was also partially supported by the U.S. Fire Administration.
+
+I would also like to thank Roger Nokes for his development and continued assistance with Streams and to the New Zealand Fire Commission for their financial support to the University of Canterbury
+
+Last but not least, I thank my wife, Liz, for her patience and support of my pursuit of higher education throughout our 37 years of marriage.  I would also like to thank my children; Catherine, Stephanie, Michael, Christina, and Veronica for ``buying me time'' to work on my studies.}
+
+
+
 \abstract{
 Unwanted fires result in loss of life and property.  These fires can also create an adverse economic impact on a community.  The investigation of fires provides a means to identify the cause of the fire in order to develop a knowledge base that could enable the elimination of that cause and thus reduce the losses from unwanted fires. Questions about the lack of science in the practice of fire investigation have been raised during the review of several arson homicide cases and a forensics science review by the U.S. National Academy of Sciences.  Specifically the National Academy of Sciences indicated that ``... research is needed on the natural variability of burn patterns...''
 This study addresses that need in two ways:
@@ -35,22 +54,21 @@ This trend is the same as exhibited by the repeatability of the heat release rat
 
 }
 
-\tableofcontents
 
-\listoffigures
-
-\listoftables
-
-\acknowledgments{
-I would like to thank Prof.~Fleishmann, my senior advisor with the University of Canterbury, as well as, Dr.~Kevin McGrattan, and Dr.~Craig Weinschenk from the National Institute of Standards and Technology for their guidance, assistance, and support throughout this study.
-
-The full-scale and bench-scale experiments were conducted over a period of several years whenever funding and laboratory availability coincided.  These experiments were conducted with the support of several engineering technicians from the NIST Fire Research Division, especially Roy McLane, Jay McElroy, Laurean DeLauter, and Anthony Chakalis.  Their assistance was essential. Their patience and attention to detail during this study is greatly appreciated.  
-
-This work was partially funded by the National Institute of Justice (NIJ) through an inter-agency agreement with the NIST Office of Law Enforcement Standards (OLES). I would like to thank Susan Ballou of OLES for her support of this project. This work was also partially supported by the U.S. Fire Administration.
-
-I would also like to thank Roger Nokes for his development and continued assistance with Streams and to the New Zealand Fire Commission for their financial support to the University of Canterbury
-
-Last but not least, I thank my wife, Liz, for her patience and support of my pursuit of higher education throughout our 37 years of marriage.  I would also like to thank my children; Catherine, Stephanie, Michael, Christina, and Veronica for ``buying me time'' to work on my studies.}
+\begin{table}[t!]
+  \centering
+  \begin{tabular}{l|l}
+  	Abbreviations \\
+     \hline
+     HRR	            & heat release rate (kW) \\
+     NIST        	    & National Institute of Standards and Technology (US) \\
+     PUF                & polyurethane foam  \\
+     $\dot{q}''$        & heat flux per unit area kW/m$^2$ \\
+	 $\dot{Q}$          & heat release rate (kW) \\ 
+	 $\chi_r$           & radiative fraction \\
+	 $R$                & distance from the point source to the target (m) \\
+   \end{tabular}
+ \end{table}
 
 \textpages
 
@@ -475,7 +493,25 @@ For both the natural gas and the gasoline experiments the 95~\% confidence limit
 
 \subsection{Summary}
 
-The source fires have been characterized in terms of heat release rate, plume temperature, total heat flux, mass loss and flame height.  This data has been collected for use in direct analysis of the burn patterns and as input into the engineering correlations and FDS models that are used later in this study.
+The source fires have been characterized in terms of heat release rate, total heat release, plume temperature, total heat flux, mass loss and flame height.  Table~\ref{tab:Source_fire_summary} is a summary of the average peak heat release rate, the total heat released, the average peak heat flux, the median flame height and the average peak temperature at the thermocouple closest to the median flame height. In the table each of the measurements is show with the 95~\% confidence limits.  This data has been collected for use in direct analysis of the burn patterns and as input into the engineering correlations and FDS models that are used later in this study.
+
+\begin{table}
+\small
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+Measurement     &   \multicolumn{3}{|c|}{Fuels} \\ \cline{2-4}
+type                    &       Natural Gas	            &   Gasoline	            & Polyurethane Foam \\ \hline \hline
+Avg. Peak HRR (kW)      &       80 $\pm$ 9 (11~\%)   &	80 $\pm$ 24 (30~\%) 	& 45 $\pm$ 21 (47~\%)   \\
+Total HR (MJ)           &   	23.3 $\pm$ 1.6 (7~\%)   &	13.6 $\pm$ 0.6 (4~\%) 	& 4.1 $\pm$ 0.2 (5~\%)   \\
+Avg Peak HF (kW/m$^2$)   &   	2.0 $\pm$ 0.5 (25~\%)   &	3.6 $\pm$ 0.9 (25~\%) 	& 2.5 $\pm$ 0.5 (20~\%)   \\
+Median FH (m)           &   	705 $\pm$ 106 (15~\%)   &	695 $\pm$ 95 (14~\%) 	& 470 $\pm$ 160 (34~\%)   \\
+Avg Peak Temp. (C)      &   	410 $\pm$ 103 (25~\%)   &	335 $\pm$ 41 (12~\%) 	& 334 $\pm$ 106 (32~\%)   \\
+\hline
+\end{tabular}
+ \caption[Select measurements for the three source fires]{Select measurements for the three source fires. Each measurement is shown with 95~\% confidence limits both in terms of a value and a percentage.}
+ \label{tab:Source_fire_summary}
+\end{table}
 
 
 
@@ -1239,7 +1275,7 @@ Prior to each burn, grid lines approximately 51~mm on center were drawn on the p
 
 \section{Wall Position Experiments}
 
- The initial set of compartment experiments were conducted to examine if the type of wall construction would impact the development of the fire patterns. These experiments would determine how the walls for the remaining compartment fire pattern experiments would be constructed.  Three cases were examined: 1) Open back, 12.7~mm thick, regular core, painted gypsum board on the front of a wood frame only, 2) Closed back, 12.7~mm thick, regular core, painted gypsum board on the front and back of a wood frame representative of an interior wall, and 3) Insulated, 12.7~mm thick, regular core, painted gypsum board on the front and back of a wood frame, with insulation in the voids of the wood frame representative of an exterior wall. The insulation was 90~mm thick fiber glass batting,a kraft paper facing, and an ``R value'' of 13.  From the instrumented gypsum wallboard experiments, the peak temperatures on the backside of the wallboard occurred when the burners were positioned against the wall.  The peak temperatures were similar for all of the fuels, approximately 80~$^\circ$C, although the duration of the higher temperatures on the rear of the wallboard was longer for the natural gas and the gasoline fueled burners. Therefore the wall construction experiments were only conducted with the natural gas and gasoline fueled burners as the impact of insulating the back of the walls exposed to the fuels with the highest energy would produce the most significant differences, if any, to the fire patterns.
+ The initial set of compartment experiments were conducted to examine if the type of wall construction would impact the development of the fire patterns. These experiments determined how the walls for the remaining compartment fire pattern experiments were constructed.  Three cases were examined: 1) Open back, 12.7~mm thick, regular core, painted gypsum board on the front of a wood frame only, 2) Closed back, 12.7~mm thick, regular core, painted gypsum board on the front and back of a wood frame representative of an interior wall, and 3) Insulated, 12.7~mm thick, regular core, painted gypsum board on the front and back of a wood frame, with insulation in the voids of the wood frame representative of an exterior wall. The insulation was 90~mm thick fiber glass batting,a kraft paper facing, and an ``R value'' of 13.  From the instrumented gypsum wallboard experiments, the peak temperatures on the backside of the wallboard occurred when the burners were positioned against the wall.  The peak temperatures were similar for all of the fuels, approximately 80~$^\circ$C, although the duration of the higher temperatures on the rear of the wallboard was longer for the natural gas and the gasoline fueled burners. Therefore the wall construction experiments were only conducted with the natural gas and gasoline fueled burners as the impact of insulating the back of the walls exposed to the fuels with the highest energy would produce the most significant differences, if any, to the fire patterns.
 
 
 \subsection{Experimental Arrangement}
@@ -1541,9 +1577,9 @@ Figure~\ref{Gas_Corner} shows a comparison of eight of the ten fire patterns gen
 
 \chapter{Comparison of Algebraic Fire Characterizations with Fire Pattern Results}
 
-Over the years, fire researchers have provided many methods for predicting flame characteristics such as: median flame height, plume temperatures and an estimation of the heat flux emitted. These methods range from simple, empirically based, algorithms to computational fluid dynamics models~\cite{Beyler:1986,Beyler:1999,FDS_Users_Guide},FDS_Tech_Guide}  
+Over the years, fire researchers have provided many methods for predicting flame characteristics such as: median flame height, plume temperatures and an estimation of the heat flux emitted. These methods range from simple, empirically based, algorithms to computational fluid dynamics models~\cite{Beyler:1986,Beyler:1999,FDS_Users_Guide,FDS_Tech_Guide}.  
 
-In this chapter the application of empirical algebraic flame characterizations will be compared against the results from the experiments documented in Chapter 2 and 4. Two different types of applications will be used.  In the first case relationships between the energy generated by a given fire source and the potential to transfer enough heat to generate thermal damage on a target, in this case gypsum board, will be examined.  In the second case, the height of the thermal damage on the gypsum board will be examined. Applications of algorithms such as these are presented in current fire dynamics and investigation textbooks~\cite{Icove:2013,Quintiere:1997,Asseal:2010,Beyler:1999}}. 
+In this chapter the application of empirical algebraic flame characterizations will be compared against the results from the experiments documented in Chapter 2 and 4. Two different types of applications will be used.  In the first case relationships between the energy generated by a given fire source and the potential to transfer enough heat to generate thermal damage on a target, in this case gypsum board, will be examined.  In the second case, the height of the thermal damage on the gypsum board will be examined. Applications of algorithms such as these are presented in current fire dynamics and investigation textbooks~\cite{Icove:2013,Quintiere:1997,Asseal:2010,Beyler:1999}. 
 
 Values generated in the bench scale experiments will be utilized as input to predict or simulate real scale results using the algorithms.  Then the predicted results will be compared with the full-scale experimental results.  
 
@@ -1557,6 +1593,7 @@ The first algorithm assumes that the heat release rate is emitted from a point s
 	\caption{Schematic of heat flux estimation using the point source assumption}
 	\label{PointSourceHF},
 \end{figure},
+
 
 
 \begin{equation} \label{eq:second_item}
