@@ -21,7 +21,7 @@ for i in range(4):
 	fds_slice = np.squeeze(np.asarray(fds.iloc[[i],1:]))
 
 	fig = figure()
-	plot(data_slice,y,linestyle='None',marker='o',ms=8,color='k',label='Experiment')
+	errorbar(data_slice,y,xerr=0.15*data_slice,linestyle='None',marker='o',ms=8,color='k',label='Experiment')
 	plot(fds_slice,y,'k',label = 'FDS')
 	ax1 = gca()
 	xlabel('Temperature ($^{\circ}$C)', fontsize=20)
