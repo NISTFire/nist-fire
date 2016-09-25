@@ -54,21 +54,29 @@ This trend is the same as exhibited by the repeatability of the heat release rat
 
 }
 
+\clearpage
+Abbreviations
+\begin{tabbing}
+\hspace{1.5in} \= \\
+EMS \> Emergency Medical Services \\
+FDS \> Fire Dynamics Simulator \\
+HGL \> Hot Gas Layer \\
+HRR \> Heat Release Rate \\
+HRRPUA \> Heat Release Rate per Unit Area \\
+NIST \> National Institute of Standards and Technology \\
+\end{tabbing}
 
-\begin{table}[t!]
-  \centering
-  \begin{tabular}{l|l}
-  	Abbreviations \\
-     \hline
-     HRR	            & heat release rate (kW) \\
-     NIST        	    & National Institute of Standards and Technology (US) \\
-     PUF                & polyurethane foam  \\
-     $\dot{q}''$        & heat flux per unit area kW/m$^2$ \\
-	 $\dot{Q}$          & heat release rate (kW) \\ 
-	 $\chi_r$           & radiative fraction \\
-	 $R$                & distance from the point source to the target (m) \\
-   \end{tabular}
- \end{table}
+List of Symbols
+\begin{tabbing}
+\hspace{1.5in} \= \\
+$c_{p}$ \> specific heat \\
+$k$ \> thermal conductivity \\
+$\chi_r$ \> radiative fraction \\
+$\dot{q}''$ \> heat flux per unit area kW/m$^2$ \\
+$\dot{Q}$ \> heat release rate (kW) \\ 
+$R$ \> distance from the point source to the target (m) \\
+$\rho$ \> density \\
+\end{tabbing}
 
 \textpages
 
@@ -1703,10 +1711,53 @@ Choosing the size of the grid when performing an amalysis with FDS is critical. 
 
 The characteristic fire diameter is defined by the relationship of the characteristic fire size to the physical diameter of the fire, ${Q^*} = ({D^*}/{D})^{5/2}$, where $D$ is the physical diameter of the fire. The quantity, $\dot Q$, is the total heat release rate of the fire. The quantity $({D^*}/{\delta x})$ is approximately the number of computational grid cells that span the characteristic diameter of the fire ~\cite{FDS_Users_Guide,FDS_Validation_Guide}.  
 
-Computational grid cell sizes of 80~mm, 40~mm, and 20~mm where used in FDS to model the fire.  The resulting plume resolutions were approximately 4.4, 8.8, and 17.5 respectively. Given the range of grid cell sizes and the characteristic diameter of fire, 0.35~m, a course, medium, and fine plume resolution results from the grid cell size choices.  Figure~\ref{FDS_Plume_Grid_TWNG_comp} contains graphic comparisons of the data from   
+Computational grid cell sizes of 80~mm, 40~mm, and 20~mm where used in FDS to model the fire.  The resulting plume resolutions were approximately 4.4, 8.8, and 17.5 respectively. Given the range of grid cell sizes and the characteristic diameter of fire, 0.35~m, a course, medium, and fine plume resolution results from the grid cell size choices. Tables~\ref{tab:FDSRI_Exp_Plume2d} and \ref{tab:FDSRI_Exp_Plume0d} shows the plume temperature results for the three grid resolutions compared the experimental data with a wall spacing of 0.61~m and 0.0~m respectively. Figure~\ref{FDS_Plume_Grid_TWNG_comp} contains graphic comparisons of the same data.   
 
+\begin{table}[ht!]
+  \small
+  \centering
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline Distance Above  & 80~mm grid      & 40~mm grid     & 20~mm grid    & Experiment Avg. \\
+    Burner~(m)     & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C)  & Temp.~($^{\circ}$C) \\ \hline
+    \hline 0.2         & 458            & 500           & 666     & 620   \\
+    \hline 0.4         & 738            & 819           & 761     & 527   \\
+    \hline 0.6         & 632            & 769           & 643     & 385   \\
+    \hline 0.8         & 442            & 600           & 522     & 198 \\
+    \hline 1.0         & 346            & 459           & 402     & 151 \\
+    \hline 1.2         & 251            & 307           & 284     & 119 \\
+    \hline 1.4         & 209            & 236           & 213     & 98  \\
+    \hline 1.6         & 166            & 188           & 164     & 86  \\
+    \hline 1.8         & 145            & 154           & 133     & 76  \\
+    \hline 2.0         & 123            & 130           & 112     & 69  \\
+    \hline 2.2         & 111            & 113           & 99      & 61  \\
+    \hline
+  \end{tabular}
+  \caption[Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperatures, 0.61~m from the Wall]{Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperature Averages with the Burner Located at 0.61~m from the Wall.}
+  \label{tab:FDSRI_Exp_Plume2d}
+\end{table}
 
-
+\begin{table}[ht!]
+  \small
+  \centering
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline Distance Above  & 80~mm grid      & 40~mm grid     & 20~mm grid    & Experiment Avg. \\
+    Burner~(m)     & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C)  & Temp.~($^{\circ}$C) \\ \hline
+    \hline 0.2         & 458            & 604           & 658     & 667   \\
+    \hline 0.4         & 751            & 824           & 793     & 643   \\
+    \hline 0.6         & 668            & 711           & 673     & 577   \\
+    \hline 0.8         & 519            & 575           & 581     & 353 \\
+    \hline 1.0         & 431            & 475           & 506     & 357 \\
+    \hline 1.2         & 326            & 357           & 406     & 306 \\
+    \hline 1.4         & 274            & 285           & 322     & 233 \\
+    \hline 1.6         & 218            & 234           & 257     & 201 \\
+    \hline 1.8         & 191            & 198           & 211     & 179 \\
+    \hline 2.0         & 162            & 170           & 178     & 150 \\
+    \hline 2.2         & 146            & 148           & 153     & 140 \\
+    \hline
+  \end{tabular}
+  \caption[Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperatures, 0.0~m from the Wall.]{Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperature Averages with the Burner Located at 0.0~m from the Wall.}
+  \label{tab:FDSRI_Exp_Plume0d}
+\end{table}
 
 \begin{figure}[ht!]
   \centering
@@ -1741,147 +1792,9 @@ One of the advantages of a computational fluid dynamics model such as FDS is the
 
 
 
-\begin{table}
-	\small
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline Distance Above  & 80~mm grid      & 40~mm grid     & 20~mm grid 		& Experiment Avg. \\
-		Burner~(m)	   & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C)  & Temp.~($^{\circ}$C)	\\ \hline
-		\hline 0.2 			   & 458						& 500					& 666 			& 620 	\\
-		\hline 0.4			   & 738					   	& 819					& 761			& 527 	\\
-		\hline 0.6			   & 632						& 769					& 643			& 385 	\\
-		\hline 0.8			   & 442						& 600					& 522			& 198	\\
-		\hline 1.0			   & 346						& 459 					& 402			& 151	\\
-		\hline 1.2			   & 251						& 307 					& 284			& 119	\\
-		\hline 1.4			   & 209						& 236 					& 213			& 98	\\
-		\hline 1.6			   & 166						& 188 					& 164			& 86	\\
-		\hline 1.8			   & 145						& 154 					& 133			& 76	\\
-		\hline 2.0			   & 123						& 130 					& 112			& 69	\\
-		\hline 2.2			   & 111						& 113 					& 99			& 61	\\
-		\hline
-	\end{tabular}
-	\caption[Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperatures, 0.61~m from the Wall]{Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperature Averages with the Burner Located at 0.61~m from the Wall.}
-	\label{tab:FDSRI_Exp_Plume2d}
-\end{table}
 
 
 
-
-\begin{table}
-	\small
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline Distance Above  & 80~mm grid      & 40~mm grid     & 20~mm grid 		& Experiment Avg. \\
-		Burner~(m)	   & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C)  & Temp.~($^{\circ}$C)	\\ \hline
-		\hline 0.2 			   & 458						& 604					& 658 			& 667 	\\
-		\hline 0.4			   & 751					   	& 824					& 793			& 643 	\\
-		\hline 0.6			   & 668						& 711					& 673			& 577 	\\
-		\hline 0.8			   & 519						& 575					& 581			& 353	\\
-		\hline 1.0			   & 431						& 475 					& 506			& 357	\\
-		\hline 1.2			   & 326						& 357 					& 406			& 306	\\
-		\hline 1.4			   & 274						& 285 					& 322			& 233	\\
-		\hline 1.6			   & 218						& 234 					& 257			& 201	\\
-		\hline 1.8			   & 191						& 198 					& 211			& 179	\\
-		\hline 2.0			   & 162						& 170 					& 178			& 150	\\
-		\hline 2.2			   & 146						& 148 					& 153			& 140	\\
-		\hline
-	\end{tabular}
-	\caption[Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperatures, 0.0~m from the Wall.]{Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperature Averages with the Burner Located at 0.0~m from the Wall.}
-	\label{tab:FDSRI_Exp_Plume0d}
-\end{table}
-
-
-\begin{table}
-	\small
-	\centering
-	\begin{tabular}{|c|c|c|c|}
-		\hline Distance Above  & Resolution Index = 5      & Resolution Index = 10     & Resolution Index = 20 \\
-		Burner~(m)	   & Temperature~($^{\circ}$C) & Temperature~($^{\circ}$C) & Temperature~($^{\circ}$C)	\\ \hline
-		\hline 0.2 			   & 207					   & 367					& 316 			 	\\
-		\hline 0.4			   & 518					   & 415					& 388			 	\\
-		\hline 0.6			   & 487					   & 445					& 434			 	\\
-		\hline 0.8			   & 368					   & 393					& 401				\\
-		\hline 1.0			   & 284					   & 326 					& 338				\\
-		\hline 1.2			   & 189					   & 226 					& 247				\\
-		\hline 1.4			   & 150					   & 167 					& 177				\\
-		\hline 1.6			   & 113					   & 126 					& 127				\\
-		\hline 1.8			   & 97						   & 100 					& 96				\\
-		\hline 2.0			   & 81						   & 82 					& 77				\\
-		\hline 2.2			   & 72						   & 71 					& 66				\\
-		\hline
-	\end{tabular}
-	\caption[Impact of Grid Resolution on FDS Wall Temperatures with Wall at 0~m]{Impact of Grid Resolution on FDS Wall Temperatures with Wall at 0~m}
-	\label{tab:FDSRI_wall0D}
-\end{table}
-
-\begin{table}
-	\small
-	\centering
-	\begin{tabular}{|c|c|c|c|}
-		\hline Distance Above  & Resolution Index = 5      & Resolution Index = 10     & Resolution Index = 20 \\
-		Burner~(m)	   & Temperature~($^{\circ}$C) & Temperature~($^{\circ}$C) & Temperature~($^{\circ}$C)	\\ \hline
-		\hline 0.2 			   & 219					   & 182					& 158 			 	\\
-		\hline 0.4			   & 310					   & 232					& 217			 	\\
-		\hline 0.6			   & 272					   & 231					& 250			 	\\
-		\hline 0.8			   & 192					   & 189					& 241				\\
-		\hline 1.0			   & 152					   & 149 					& 204				\\
-		\hline 1.2			   & 113					   & 104 					& 150				\\
-		\hline 1.4			   & 96						   & 82 					& 111				\\
-		\hline 1.6			   & 79						   & 69 					& 87				\\
-		\hline 1.8			   & 70						   & 61 					& 72				\\
-		\hline 2.0			   & 60						   & 55 					& 64				\\
-		\hline 2.2			   & 51						   & 52 					& 58				\\
-		\hline
-	\end{tabular}
-	\caption[Impact of Grid Resolution on FDS Wall Temperatures with Wall at 0.15~m]{Impact of Grid Resolution on FDS Wall Temperatures with Wall at 0.15~m}
-	\label{tab:FDSRI_wallp5D}
-\end{table}
-
-\begin{table}
-	\small
-	\centering
-	\begin{tabular}{|c|c|c|c|}
-		\hline Distance Above  & Resolution Index = 5      & Resolution Index = 10     & Resolution Index = 20 \\
-		Burner~(m)	   & Temperature~($^{\circ}$C) & Temperature~($^{\circ}$C) & Temperature~($^{\circ}$C)	\\ \hline
-		\hline 0.2 			   & 143					   & 132					& 109 			 	\\
-		\hline 0.4			   & 180					   & 165					& 142			 	\\
-		\hline 0.6			   & 158					   & 165					& 161			 	\\
-		\hline 0.8			   & 114					   & 139					& 157				\\
-		\hline 1.0			   & 90						   & 111 					& 136				\\
-		\hline 1.2			   & 66						   & 76 					& 100				\\
-		\hline 1.4			   & 57						   & 59 					& 74				\\
-		\hline 1.6			   & 48						   & 49 					& 58				\\
-		\hline 1.8			   & 44						   & 44 					& 50				\\
-		\hline 2.0			   & 40						   & 42 					& 47				\\
-		\hline 2.2			   & 38						   & 41 					& 45				\\
-		\hline
-	\end{tabular}
-	\caption[Impact of Grid Resolution on FDS Wall Temperatures with Wall at 0.30~m]{Impact of Grid Resolution on FDS Wall Temperatures with Wall at 0.30~m}
-	\label{tab:FDSRI_wall1D}
-\end{table}
-
-\begin{table}
-	\small
-	\centering
-	\begin{tabular}{|c|c|c|c|}
-		\hline Distance Above  & Resolution Index = 5      & Resolution Index = 10     & Resolution Index = 20 \\
-		Burner~(m)	   & Temperature~($^{\circ}$C) & Temperature~($^{\circ}$C) & Temperature~($^{\circ}$C)	\\ \hline
-		\hline 0.2 			   & 88						   & 69						& 59 			 	\\
-		\hline 0.4			   & 103					   & 82						& 74			 	\\
-		\hline 0.6			   & 95						   & 81						& 78			 	\\
-		\hline 0.8			   & 76						   & 74						& 76				\\
-		\hline 1.0			   & 64						   & 64 					& 67				\\
-		\hline 1.2			   & 50						   & 51 					& 55				\\
-		\hline 1.4			   & 43						   & 42 					& 45				\\
-		\hline 1.6			   & 36						   & 35 					& 37				\\
-		\hline 1.8			   & 32						   & 30 					& 31				\\
-		\hline 2.0			   & 28						   & 27 					& 28				\\
-		\hline 2.2			   & 26						   & 25 					& 26				\\
-		\hline
-	\end{tabular}
-	\caption[Impact of Grid Resolution on FDS Wall Temperatures with Wall at 0.61~m]{Impact of Grid Resolution on FDS Wall Temperatures with Wall at 0.61~m}
-	\label{tab:FDSRI_wall2D}
-\end{table}
 
 \subsection{Temperatures}
 
@@ -1936,34 +1849,6 @@ One of the advantages of a computational fluid dynamics model such as FDS is the
   \caption[FDS wall temperatures based on 40~mm grid compared with natural gas burner different distances from the wall]{FDS wall temperatures based on 40~mm grid compared with natural gas burner different distances from the wall. Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
   \label{FDS_TCWall_IWGB_comp}
 \end{figure}
-
-
-
-
-
-\begin{table}
-	\small
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline Distance Above  & 80~mm grid      & 40~mm grid     & 20~mm grid 		& Experiment Avg. \\
-		Burner~(m)	   & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C)  & Temp.~($^{\circ}$C)	\\ \hline
-		\hline 0.2 			   & 458						& 500					& 666 			& 620 	\\
-		\hline 0.4			   & 738					   	& 819					& 761			& 527 	\\
-		\hline 0.6			   & 632						& 769					& 643			& 385 	\\
-		\hline 0.8			   & 442						& 600					& 522			& 198	\\
-		\hline 1.0			   & 346						& 459 					& 402			& 151	\\
-		\hline 1.2			   & 251						& 307 					& 284			& 119	\\
-		\hline 1.4			   & 209						& 236 					& 213			& 98	\\
-		\hline 1.6			   & 166						& 188 					& 164			& 86	\\
-		\hline 1.8			   & 145						& 154 					& 133			& 76	\\
-		\hline 2.0			   & 123						& 130 					& 112			& 69	\\
-		\hline 2.2			   & 111						& 113 					& 99			& 61	\\
-		\hline
-	\end{tabular}
-	\caption[Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperatures]{Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperature Averages with the Burner Located at 0.61~m from the Wall.}
-	\label{tab:FDSRI_Exp_Plume}
-\end{table}
-
 
 \subsection{Heat Flux}
 
@@ -2065,4 +1950,5 @@ Modeling
 
 
 \bibliography{../References/Madrzykowski_Thesis}
+
 \end{document}
