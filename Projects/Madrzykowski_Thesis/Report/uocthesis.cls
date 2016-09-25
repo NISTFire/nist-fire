@@ -394,7 +394,8 @@
 \def\Title#1{\gdef\@Title{#1}}
 \def\Author#1{\gdef\@Author{#1}}
 \def\Year#1{\gdef\@Year{#1}}  \Year{\year}
-\def\Degree#1{\gdef\@Degree{#1}} \Degree{Doctor of Philosophy}
+\def\Degree#1{\gdef\@Degree{#1}} \Degree{Doctor of Philosophy in Fire Egineering\\
+in the Unviersity of Canterbury}
 
 %%TODO:
 %%  Add code to allow  M.Sc, M.A, M.E, M.FA degrees as well.
@@ -608,8 +609,6 @@
 \renewenvironment{glossary}
   {\begin{list}{}{\setlength\itemindent{\parindent}
    \def\makelabel##1{\footnotesize\uppercase{##1:}\hfill}}}
-  {\end{list}}
-
 % End of the uwthesis style
 
 %%
