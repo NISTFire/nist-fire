@@ -1569,9 +1569,6 @@ Figure~\ref{Gas_Corner} shows a comparison of eight of the ten fire patterns gen
 \end{figure}
 
 
-
-
-
 \subsubsection{Polyurethane Foam}
 
 
@@ -1706,7 +1703,9 @@ Choosing the size of the grid when performing an amalysis with FDS is critical. 
 
 The characteristic fire diameter is defined by the relationship of the characteristic fire size to the physical diameter of the fire, ${Q^*} = ({D^*}/{D})^{5/2}$, where $D$ is the physical diameter of the fire. The quantity, $\dot Q$, is the total heat release rate of the fire. The quantity $({D^*}/{\delta x})$ is approximately the number of computational grid cells that span the characteristic diameter of the fire ~\cite{FDS_Users_Guide,FDS_Validation_Guide}.  
 
-Computational grid cell sizes of 80~mm, 40~mm, and 20~mm where used in FDS to model the fire.  The resulting plume resolutions were approximately 4.4, 8.8, and 17.5 respectively. Given the range of grid cell sizes and the characteristic diameter of fire, 0.35~m, a course, medium, and fine plume resolution results from the grid cell size choices.  Figure~ref{FDS_Plume_Grid_TWNG_comp} contains graphic comparisons         
+Computational grid cell sizes of 80~mm, 40~mm, and 20~mm where used in FDS to model the fire.  The resulting plume resolutions were approximately 4.4, 8.8, and 17.5 respectively. Given the range of grid cell sizes and the characteristic diameter of fire, 0.35~m, a course, medium, and fine plume resolution results from the grid cell size choices.  Figure~\ref{FDS_Plume_Grid_TWNG_comp} contains graphic comparisons of the data from   
+
+
 
 
 \begin{figure}[ht!]
@@ -1718,6 +1717,28 @@ Computational grid cell sizes of 80~mm, 40~mm, and 20~mm where used in FDS to mo
   \caption[FDS values based on three different resolutions compared with plume temperature measurements along the centerline of the natural gas fueled burner]{FDS values based on three different resolutions compared with plume temperature measurements along the centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
   \label{FDS_Plume_Grid_TWNG_comp}
 \end{figure}
+
+One of the advantages of a computational fluid dynamics model such as FDS is the ability produce enough spatial data in 3 dimensions to allow the generation of visualizations.  The impact of the mesh resolution can be seen in the three images of the fire shown in Figure~\ref{FDS_Flame_Image_comp}
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=1.7in]{../Figures/NG_80kW_GBWall_2D_RI=05_0601crop}
+  \includegraphics[width=1.7in]{../Figures/NG_80kW_GBWall_2D_RI=10_0601crop}
+  \includegraphics[width=1.7in]{../Figures/NG_80kW_GBWall_2D_RI=20_0601crop}\\
+  \caption[Flame images generated with FDS and Smokeview]{Flame images generated with FDS and Smokeview. The left image has a mesh size of 80~mm, the center image has a mesh size of 40~mm and the image on the right has amesh size of 20~mm.}
+  \label{FDS_Flame_Image_comp}
+\end{figure}
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_2D}
+  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_1D}\\
+  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_0p5D}
+  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_0D}\\
+  \caption[FDS values based on three different resolutions compared with the wall surface temperature measurements along the centerline of the natural gas fueled burner]{FDS values based on three different resolutions compared with the wall surface temperature measurements along the centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
+  \label{FDS_Wall_Temp_TWNG_comp}
+\end{figure}
+
 
 
 \begin{table}
@@ -1873,8 +1894,27 @@ Computational grid cell sizes of 80~mm, 40~mm, and 20~mm where used in FDS to mo
   \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_0p5D}
   \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_0D}\\
   \caption[FDS values based on 40~mm grid compared with plume temperature measurements along the centerline of the natural gas fueled burner]{FDS values based on 40~mm grid compared with plume temperature measurements along the centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
-  \label{FDS_TCPlume_TWNG_comp}
+  \label{FDS_TCPlume_IWGB_comp}
 \end{figure}
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=.625\columnwidth]{../Figures/NG_80kW_GBWall_2D_RI=05_0601T}\\
+	\includegraphics[width=.625\columnwidth]{../Figures/NG_80kW_GBWall_2D_RI=10_601T}\\
+	\includegraphics[width=.625\columnwidth]{../Figures/NG_80kW_GBWall_2D_RI=20_0600T}\\
+	\caption[FDS Smokeview plume temperatures with the burner 0.61~m from the wall at approximately 180 s for the 80~mm, 40~mm, and 20~mm mesh resolution cases]{FDS Smokeview plume temperatures with the burner 0.61~m from the wall at approximately 180 s of the steady state simulation.  Beginning with the top graphic and moving down, the 80~mm, 40~mm, and 20~mm mesh resolution cases are presented.}
+	\label{FDS_Plume_Temp_IWGB_Comp_}
+\end{figure}
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=.625\columnwidth]{../Figures/NG_80kW_GBWall_2D_RI=05_0300WT}\\
+	\includegraphics[width=.625\columnwidth]{../Figures/NG_80kW_GBWall_2D_RI=10_0300WT}\\
+	\includegraphics[width=.625\columnwidth]{../Figures/NG_80kW_GBWall_2D_RI=20_0300WT}\\
+	\caption[FDS Smokeview wall temperatures with the burner 0.61~m from the wall at approximately 180 s for the 80~mm, 40~mm, and 20~mm mesh resolution cases]{FDS Smokeview wall temperatures with the burner 0.61~m from the wall at approximately 180 s of the steady state simulation.  Beginning with the top graphic and moving down, the 80~mm, 40~mm, and 20~mm mesh resolution cases are presented.}
+	\label{FDS_Wall_Temp_IWGB_Comp_}
+\end{figure}
+
 
 \begin{figure}[ht!]
   \centering
@@ -1883,8 +1923,22 @@ Computational grid cell sizes of 80~mm, 40~mm, and 20~mm where used in FDS to mo
   \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_0p5D}
   \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_0D}\\
   \caption[FDS values based on 40~mm grid compared with the wall temperature measurements along the centerline of the natural gas fueled burner]{FDS values based on 40~mm grid compared with the wall temperature measurements along the centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
-  \label{FDS_TCWall_TWNG_comp}
+  \label{FDS_TCSurface_IWGB_comp}
 \end{figure}
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_2D_RI=10_0300WT}
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_1D_RI=10_0300WT}\\
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_p5D_RI=10_0300WT}
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_0D_RI=10_0300WT}\\
+  \caption[FDS wall temperatures based on 40~mm grid compared with natural gas burner different distances from the wall]{FDS wall temperatures based on 40~mm grid compared with natural gas burner different distances from the wall. Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
+  \label{FDS_TCWall_IWGB_comp}
+\end{figure}
+
+
+
 
 
 \begin{table}
@@ -1934,6 +1988,16 @@ Computational grid cell sizes of 80~mm, 40~mm, and 20~mm where used in FDS to mo
   \label{FDS_HFEdge_TWNG_comp}
 \end{figure}
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_2D_RI=10_0300HF}
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_1D_RI=10_0300HF}\\
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_p5D_RI=10_0300HF}
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_0D_RI=10_0300HF}\\
+  \caption[FDS gauge heat flux values based on 40~mm grid with natural gas burner positioned different distances from the wall]{FDS gauge heat flux values based on 40~mm grid with natural gas burner positioned different distances from the wall. Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
+  \label{FDS_WallHF_IWGB_comp}
+\end{figure}
+
 
 
 \subsection{Flame Height}
@@ -1942,6 +2006,17 @@ Table to compare measured flame height with FDS cal.
 
 
 \section{Comparison of FDS with Fire Pattern Results}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=2.5in]{../Figures/WallTemp_10mm_0D_0_8m_guideline}
+  \includegraphics[width=2.5in]{../Figures/350CThresholdwall_temp_0_8m_guideline}\\
+  \hspace{4 mm}  \\ 
+  \includegraphics[width=.625\columnwidth]{../Figures/GBNGreps_w_1m_guideline}\\
+  \caption[FDS fire pattern surrogates based on 40~mm grid using a threshold temperature of 350~$^\circ$C compared with three replicate fire patterns from the natural gas burner positioned against the wall]{FDS fire pattern surrogates based on 40~mm grid using a threshold temperature of 350~$^\circ$C compared with three replicate fire patterns from the natural gas burner positioned against the wall.  The image with the three replicate fire patterns has a red line indicating a position approximately 1.0~m above the burner.  This height corresponds with the height of the top of the 350~$^\circ$C mark in the FDS image.}
+  \label{FDS_FirePattern_comp}
+\end{figure}
+
 
 \chapter{Discussion}
 
