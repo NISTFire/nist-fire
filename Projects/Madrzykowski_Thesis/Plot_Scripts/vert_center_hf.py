@@ -22,7 +22,7 @@ for i in range(4):
 	fds_slice = np.squeeze(np.asarray(fds.iloc[[i],1:]))
 
 	fig = figure()
-	plot(data_slice,y_data,linestyle='None',marker='o',ms=8,color='k',label='Experiment')
+	errorbar(data_slice,y_data,xerr=0.15*data_slice,linestyle='None',marker='o',ms=8,color='k',label='Experiment')
 	plot(fds_slice,y_fds,'k',label = 'FDS')
 	ax1 = gca()
 	xlabel('Heat Flux (kW/m$^{2}$)', fontsize=20)
