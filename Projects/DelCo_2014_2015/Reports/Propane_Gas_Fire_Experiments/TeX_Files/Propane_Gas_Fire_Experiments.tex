@@ -182,19 +182,19 @@ CODEN: NTNOEF }
 
 \begin{tabbing}
 \hspace{1.5in} \= \\
-FDS \> Fire Dynamics Simulator \\
-HGL \> Hot Gas Layer \\
-HRR \> Heat Release Rate \\
-HRRPUA \> Heat Release Rate per Unit Area \\
+PPA \> Positive Pressure Attack \\
+PPV \> Positive Pressure Ventilation \\ 
 NIST \> National Institute of Standards and Technology \\
+OSB \> Oriented Strand Board \\
+TJI \> Truss Joist I-beams \\ 
+UL FSRI \> Underwriters Laboratories Firefighter Safety Research Institute \\
 \end{tabbing}
 
 \mainmatter
 
 \chapter*{\centering Abstract}
 \pagenumbering{gobble}
-
-[NEED TO ADD ABSTRACT]
+Nine full-scale fire experiments were conducted in two residential-scale structures to study how different fire fighting tactics, specifically horizontal, vertical, and positive pressure ventilation, affect the fire environment within a structure. The fire source for each experiment was provided by three propane burners. Five of the tests were conducted in a structure designed to simulate a single-story residential structure, and four of the tests were conducted in a structure designed to simulate a two-story residential structure. The structures were instrumented with sensors to collect local measurements of temperature, gas velocity, heat flux, and gas concentrations at various locations during the experiments. Different doors and vents were opened and closed during the tests to simulate horizontal and vertical ventilation. A PPV fan was also used during some of the experiments to further affect the ventilation conditions. This report contains detailed descriptions of the setup and procedure used for each of the nine experiments.
 
 \mainmatter
 
@@ -735,28 +735,29 @@ A similar procedure was followed for all experiments described in this report. F
 
 \section{East Structure Tests}
 \label{sec:east_procedure}
-Five different tests, Tests~2--6, were conducted in the East Structure. Tables~\ref{table:HRR_Tests_2-4} and \ref{table:HRR_Tests_5-6} list the heat release rates for Tests~2--4 and Tests~5--6, respectively. The time between the ignition of each gas burner for Tests~2--4 was on the order of minutes, while the time between the ignition of each gas burner for Tests~5 and 6 was on the order of seconds. Thus, for Tests~2--4, heat release rates are reported for one, two, and three burners, and for Tests~5 and 6, a single heat release rate for three burners is reported.
+Five different tests, Tests~2--6, were conducted in the East Structure. Table~\ref{table:HRR_Tests_5-6} lists the heat release rates for Tests~5 and 6. The time between the ignition of each gas burner for Tests~5 and 6 was on the order of seconds. As a result, a single heat release rate, one for all three burners ignited, is reported. The heat release rates for Tests~2--4 are not reported because they were not able to be accurately measured during the tests.
+% The time between the ignition of each gas burner for Tests~2--4 was on the order of minutes, while the time between the ignition of each gas burner for Tests~5 and 6 was on the order of seconds. Thus, for Tests~2--4, heat release rates are reported for one, two, and three burners, and for Tests~5 and 6, a single heat release rate for three burners is reported.
 % Thus, for Tests~2--4, heat release rates are reported for each time period between a burner being turned on or off, and a single heat release rate for when all burners were ignited is reported for Tests~5 and 6.
 
 \subsection{Tests 2--4}
 Tests~2--4 followed a nearly identical order of events. Fig.~\ref{fig:Tests_2-4_layout} includes a floor plan schematic and table of event times corresponding to the data files for each test. A 0.61~cm (2.0~ft) diameter PPV fan located 1.6~m (5.2~ft) away from the south exterior door was aimed at the center of the doorway and used during Tests~2--4. During these experiments, the south exterior door was not able to completely close due to an obstruction caused by the hoses used to transport the propane to the burners. So, when the south door was in the ``closed'' position, a 133~mm (5.25~in) opening was present between the door and its frame. For all other experiments, however, the south exterior door was not used and the doorway remained closed for the entirety of the test. To fully close the doorway during these tests, the hinged door was removed, and gypsum board was used to cover the doorway.
 
-\begin{table}[!ht]
-\caption{Heat Release Rates for Tests~2--4}
-\begin{tabular}{lccc}
- \toprule
- 					& 	\multicolumn{3}{c}{\textbf{Heat Release Rate (kW)}} \\
-\textbf{Test} 		&	\begin{tabular}{c} \textbf{One} \\ \textbf{Burner On} \end{tabular} 
-					&	\begin{tabular}{c} \textbf{Two} \\ \textbf{Burners On} \end{tabular}
-					&	\begin{tabular}{c} \textbf{Three} \\ \textbf{Burners On} \end{tabular} \\
- \midrule
-Test 2 				& 560 & 1080 & 1470 \\
-Test 3 				& 530 & 1040 & 1470 \\
-Test 4				& 580 & 1140 & 1580 \\
-\bottomrule
-\end{tabular}
-\label{table:HRR_Tests_2-4}
-\end{table}
+% \begin{table}[!ht]
+% \caption{Heat Release Rates for Tests~2--4}
+% \begin{tabular}{lccc}
+%  \toprule
+%  					& 	\multicolumn{3}{c}{\textbf{Heat Release Rate (kW)}} \\
+% \textbf{Test} 		&	\begin{tabular}{c} \textbf{One} \\ \textbf{Burner On} \end{tabular} 
+% 					&	\begin{tabular}{c} \textbf{Two} \\ \textbf{Burners On} \end{tabular}
+% 					&	\begin{tabular}{c} \textbf{Three} \\ \textbf{Burners On} \end{tabular} \\
+%  \midrule
+% Test 2 				& 560 & 1080 & 1470 \\
+% Test 3 				& 530 & 1040 & 1470 \\
+% Test 4				& 580 & 1140 & 1580 \\
+% \bottomrule
+% \end{tabular}
+% \label{table:HRR_Tests_2-4}
+% \end{table}
 
 % \begin{table}[!ht]
 % \caption{Heat Release Rates for Tests~2--4}
@@ -988,6 +989,11 @@ Like Tests~22 and 23, Tests~24 and 25 followed a nearly identical procedure. The
 \chapter{Summary}
 \label{chap:Summary}
 Nine full-scale fire tests were conducted in two residential-sized structures to examine how changing ventilation patterns within a structure affects the fire environment. The fire source for each experiment was provided by a set of three diffusion flame burners with propane as the fuel. Various doors and vents were opened and closed during each test to change ventilation within the structure. A PPV fan was also used during some of the experiments to change the ventilation patterns. Local measurements of temperature, gas velocity, heat flux, and gas concentrations were collected at various locations throughout the structure during the experiments. The total volume of propane delivered to the burners was measured by a rotary gas meter and was used to calculate the heat release rate of the fire during each test.    
+
+
+\chapter{Acknowledgments}
+\label{chap:acknowledgments}
+The authors would like to thank Daniel Madrzykowski (currently with UL FSRI), Roy McLane (currently with Thermal Fabrication), Kristopher Overholt (currently with Continuum Analytics), and Keith Stakes (currently with UL FSRI) from NIST for their contributions in preparing and conducting these experiments. These experiments could not have been conducted without them. 
 
 \bibliography{../../../../../Bibliography/FDS_refs,../../../../../Bibliography/FDS_general}
 
