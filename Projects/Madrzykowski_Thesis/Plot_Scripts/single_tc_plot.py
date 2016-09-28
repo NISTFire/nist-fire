@@ -34,11 +34,11 @@ for j in range(len(test_name)):
 	except:
 		continue
 
-	if 'Plume' in test_name[j]:
+	if 'NG_TC_Plume_Avg' in test_name[j]:
 		labels = ['0.2 m Above Burner','0.4 m Above Burner','0.6 m Above Burner','0.8 m Above Burner','1.0 m Above Burner',
 			'1.2 m Above Burner','1.4 m Above Burner','1.6 m Above Burner','1.8 m Above Burner','2.0 m Above Burner',
 			'2.2 m Above Burner','2.4 m Above Burner']
-	if 'NG_TC_Surface_Offset' in test_name[j]:
+	elif 'NG_TC_Surface_Offset' in test_name[j]:
 		labels = ['0.2 m Above Burner','0.4 m Above Burner','0.6 m Above Burner','0.8 m Above Burner','1.0 m Above Burner',
 			'1.2 m Above Burner','1.4 m Above Burner','1.8 m Above Burner','2.0 m Above Burner',
 			'2.2 m Above Burner']
