@@ -12,9 +12,9 @@ from itertools import cycle
 #read in data file(s) -- point to relative path in repository
 #if more than one line of headers at top of document add header=n-1
 #typically one header line, header = 1-1 -> header=0 which is default
-data_dir = '../Experimental_Data/IWGBNG/'
+data_dir = '../Experimental_Data/IWGBGAS/'
 plot_dir = '../Figures/'
-test_name = ['IWGB_NG_HF_Offset_Avg','IWGB_NG_HF_Center_Avg']
+test_name = ['IWGB_GAS_HF_Offset_Avg','IWGB_GAS_HF_Center_Avg']
 #fds = pd.read_csv('../FDS_Output_Data/testname.csv', header=1)
 
 markers =['s', '*', '^', 'o', '<', '>', '8', 'h','d','x','p','v','H', 'D', '1', '2', '3', '4', '|','s']
