@@ -54,7 +54,7 @@ for j in range(len(test_name)):
 	yticks(fontsize=16)
 	grid(True)
 	ax = gca()
-	axis([0, 0.35, 0, 70])
+	axis([0, 0.7, 0, 60])
 	legend(numpoints=1,loc='upper right',fontsize=16 )
 	#point figures to be written in Figures directory and desired file name
 	savefig(plot_dir + test_name[j] + '.pdf',format='pdf')
