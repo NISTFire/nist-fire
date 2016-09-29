@@ -834,19 +834,7 @@ After receipt of the gypsum wallboard panels, the panels were laid out on the fl
 
 Table~\ref{tab:IWGB_experiments} lists the experiments that were conducted for each fuel type.  In this chapter, as in the previous chapter the averaged peak values for temperatures and heat fluxes will presented at varying distances from the wall.  For the gasoline and polyurethane fires, an additional position, 0.08~m from the wall was added.
 
-A complete set of data temperature and heat flux data for the natural gas burner experiments conducted at 0.31~m, 0.15~m, and 0.0~m are provided in Figures~\ref{IWGB_NG_TC_Plume_set},\ref{IWGB_NG_TC_Wall_set},\ref{IWGB_NG_TC_Backside_set},\ref{IWGB_NG_HF_CenterSet}, and \ref{IWGB_NG_HF_EdgeSet}.  The data for the burner positioned 0.31~m from the wall is the average of three replicate experiments.  Note that the data set for the burner position 0.0~m from the wall only has 180~seconds of fire data.  This was the result of a an early shut down of the gas supply.  This decrepancy was not noticed until the data was reviewed.  However at the point there was no opportunity to rerun the experiment.    
-
-The temperatures measured along the vertical center axis of the burner provide distinct differences between the flame regions and the buoyant plume region based on the significant differences in temperature see Figure~\ref{IWGB_NG_TC_Plume_set}.  The persistant flame region appears to be recorded at the thermocouple positions 0.2~ through 0.6~m above the burner.  Based on the temperature time histories, the thermocouples positioned 0.8~m through 1.2~m seem to be in the intermittent flame region.  The thermocouples position at or above 1.4~m appear to be in the buoyant plume region.  The fluctuations in the peak temperatures for this ``steady state'' fire are the result of the flame movement away from the thermocouples centered above the burner.  Note that the thermocouple positioned 0.2~m above the burner did not increase in temperature due to a connection problem in the data acquisition system.            
-
-The temperatures measured on the front surface of the painted gypsum wallboard are displayed in Figure~\ref{IWGB_NG_TC_Wall_set}.  When the burner was located 0.31~m and 0.15~m away from the wall the temperatures started at ambient and slowly increased  reaching the peak temperatures at 300~seconds when the burner was shut off.  For the case where the burner was in contact with the wall, the two of the thermocouples located in the persistant flame region indicated a decreasing temperature trend after after the paper on the gypsum wallboard had burned away.  The decrease in temperature my have had been the result of material from the burned gysum wallboard shielding otherwise impacting those thermocouples. The thermocouple positioned 0.2~m above the burner was exhibiting the same behavior as in the previous experiment, but the problem was resolved during the experiment.  The restored connection to the data system accounts for the rapid rise in temperature at 60~seconds into the experiment.  
-
-Figure~\ref{IWGB_NG_TC_Backside_set} has graphs of the temperature time histories of the themrocouples installed on the back face of the 12.7~mm thick gypsum wallboard.  In each case the temperatures increase while the front face of the gypsum wallboard is exposed to the fire.  As the position of the fire moves closer to the wall the rate of temperature rise on the back increases.  The peak temperatures in each case were approximately 80~$^\circ$C.   
-
-The heat flux values from the arrays of sensors mounted flush with the surface of the gypsum wallboard are given in Figures~\ref{IWGB_NG_HF_CenterSet}, and \ref{IWGB_NG_HF_EdgeSet}.  The data from the array centered on the burner and the data from the array located at the right edge of the burner are similar in response and magnitude when the burner is positioned away from the wall.  Similar to the wall surface temperatures the heat flux increase as the burner is moved closer to the wall.  However once the burner is in contact with the wall the flame is moving side to side.  As a result, the peaks in the heat flux alternate between the center array and the edge array, as the flame moves and changes shape.  This movement causes changes in the peak heat flux of approximately 20~kW/m$^2$.  The averaged heat flux values graphed with respect to the burner position from the wall are shown in Figure~\ref{IWGB_NG_HF_CandEAvg}.     
-
-
-
-\begin{table}
+\begin{table}[ht!]
 	\centering
 	\begin{tabular}{|c|c|c|c|}
 		\hline Distance from wall  	& Natural Gas 		& Gasoline			& Polyurethane Foam \\
@@ -862,7 +850,11 @@ The heat flux values from the arrays of sensors mounted flush with the surface o
 	\label{tab:IWGB_experiments}
 \end{table}
 
-\begin{figure}[p]
+A complete set of data temperature and heat flux data for the natural gas burner experiments conducted at 0.31~m, 0.15~m, and 0.0~m are provided in Figures~\ref{IWGB_NG_TC_Plume_set},\ref{IWGB_NG_TC_Wall_set},\ref{IWGB_NG_TC_Backside_set},\ref{IWGB_NG_HF_CenterSet}, and \ref{IWGB_NG_HF_EdgeSet}.  The data for the burner positioned 0.31~m from the wall is the average of three replicate experiments.  Note that the data set for the burner position 0.0~m from the wall only has 180~seconds of fire data.  This was the result of a an early shut down of the gas supply.  This decrepancy was not noticed until the data was reviewed.  However at the point there was no opportunity to rerun the experiment.    
+
+The temperatures measured along the vertical center axis of the burner provide distinct differences between the flame regions and the buoyant plume region based on the significant differences in temperature see Figure~\ref{IWGB_NG_TC_Plume_set}.  The persistant flame region appears to be recorded at the thermocouple positions 0.2~ through 0.6~m above the burner.  Based on the temperature time histories, the thermocouples positioned 0.8~m through 1.2~m seem to be in the intermittent flame region.  The thermocouples position at or above 1.4~m appear to be in the buoyant plume region.  The fluctuations in the peak temperatures for this ``steady state'' fire are the result of the flame movement away from the thermocouples centered above the burner.  Note that the thermocouple positioned 0.2~m above the burner did not increase in temperature due to a connection problem in the data acquisition system.            
+
+\begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.625\columnwidth]{../Figures/IWGBNG01_TC_Plume_Avg}\\
 	\includegraphics[width=.625\columnwidth]{../Figures/IWGBNG04_TC_Plume_Avg}\\
@@ -871,7 +863,9 @@ The heat flux values from the arrays of sensors mounted flush with the surface o
 	\label{IWGB_NG_TC_Plume_set}
 \end{figure}
 
-\begin{figure}[p]
+The temperatures measured on the front surface of the painted gypsum wallboard are displayed in Figure~\ref{IWGB_NG_TC_Wall_set}.  When the burner was located 0.31~m and 0.15~m away from the wall the temperatures started at ambient and slowly increased  reaching the peak temperatures at 300~seconds when the burner was shut off.  For the case where the burner was in contact with the wall, the two of the thermocouples located in the persistant flame region indicated a decreasing temperature trend after after the paper on the gypsum wallboard had burned away.  The decrease in temperature my have had been the result of material from the burned gysum wallboard shielding otherwise impacting those thermocouples. The thermocouple positioned 0.2~m above the burner was exhibiting the same behavior as in the previous experiment, but the problem was resolved during the experiment.  The restored connection to the data system accounts for the rapid rise in temperature at 60~seconds into the experiment.  
+
+\begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.625\columnwidth]{../Figures/IWGBNG01_TC_Surface_Center_Avg}\\
 	\includegraphics[width=.625\columnwidth]{../Figures/IWGBNG04_TC_Surface_Center_Avg}\\
@@ -880,7 +874,9 @@ The heat flux values from the arrays of sensors mounted flush with the surface o
 	\label{IWGB_NG_TC_Wall_set}
 \end{figure}
 
-\begin{figure}[p]
+Figure~\ref{IWGB_NG_TC_Backside_set} has graphs of the temperature time histories of the themrocouples installed on the back face of the 12.7~mm thick gypsum wallboard.  In each case the temperatures increase while the front face of the gypsum wallboard is exposed to the fire.  As the position of the fire moves closer to the wall the rate of temperature rise on the back increases.  The peak temperatures in each case were approximately 80~$^\circ$C.   
+
+\begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.625\columnwidth]{../Figures/IWGBNG01_TC_Back_Center_Avg}\\
 	\includegraphics[width=.625\columnwidth]{../Figures/IWGBNG04_TC_Back_Center_Avg}\\
@@ -889,8 +885,11 @@ The heat flux values from the arrays of sensors mounted flush with the surface o
 	\label{IWGB_NG_TC_Backside_set}
 \end{figure}
 
+\clearpage
 
- \begin{figure}[p]
+The heat flux values from the arrays of sensors mounted flush with the surface of the gypsum wallboard are given in Figures~\ref{IWGB_NG_HF_CenterSet}, and \ref{IWGB_NG_HF_EdgeSet}.  The data from the array centered on the burner and the data from the array located at the right edge of the burner are similar in response and magnitude when the burner is positioned away from the wall.  Similar to the wall surface temperatures the heat flux increase as the burner is moved closer to the wall.  However once the burner is in contact with the wall the flame is moving side to side.  As a result, the peaks in the heat flux alternate between the center array and the edge array, as the flame moves and changes shape.  This movement causes changes in the peak heat flux of approximately 20~kW/m$^2$.  The averaged heat flux values graphed with respect to the burner position from the wall are shown in Figure~\ref{IWGB_NG_HF_CandEAvg}.     
+
+ \begin{figure}[ht!]
  	\centering
  	\includegraphics[width=.625\columnwidth]{../Figures/IWGBNG01_HF_Center_Avg}\\
  	\includegraphics[width=.625\columnwidth]{../Figures/IWGBNG04_HF_Center_Avg}\\
@@ -899,22 +898,24 @@ The heat flux values from the arrays of sensors mounted flush with the surface o
  	\label{IWGB_NG_HF_CenterSet}
  \end{figure}
 
- \begin{figure}[p]
+  \begin{figure}[ht!]
  	\centering
  	\includegraphics[width=.625\columnwidth]{../Figures/IWGBNG01_HF_Offset_Avg}\\
- 	\includegraphics[width=.625\columnwidth]{../Figures/IWGBNG04_HF_Offset_Avg}\\
+ 	\includegraphics[width=.625\columnwidth]{../Figures/IWGBNG04_HF_Center_Avg}\\
  	\includegraphics[width=.625\columnwidth]{../Figures/IWGBNG05_HF_Offset_Avg}\\
- 	\caption[Wall heat flux along the edge of the natural gas fueled burner]{Wall heat flux along the edge of the natural gas fueled burner. Each graph displays data from a different distance between the edge of the burner and the instrumented gypsum wallboard.  Beginning with the top graph and moving down, the distances from the wall are 0.31~m, 0.15~m, and 0~m.}
+ \caption[Wall heat flux along the endge of the natural gas fueled burner]{Wall heat flux along the vertical edge of the natural gas fueled burner. Each graph displays data from a different distance between the edge of the burner and the instrumented gypsum wallboard.  Beginning with the top graph and moving down, the distances from the wall are 0.31~m, 0.15~m, and 0~m.}
  	\label{IWGB_NG_HF_EdgeSet}
  \end{figure}
 
-\begin{figure}
+\begin{figure}[ht!]
 	\centering
 	\includegraphics[width=.625\columnwidth]{../Figures/IWGB_NG_HF_Center_Avg}\\
 	\includegraphics[width=.625\columnwidth]{../Figures/IWGB_NG_HF_Offset_Avg}\\
-	\caption[Averaged peak heat flux on the gypsum board wall for the natural gas burner fires.]{Averaged peak heat flux on the gypsum board wall along the vertical centerline and edge of the natural gas burner fires. }
+	\caption[Averaged peak heat flux on the gypsum board wall for the natural gas burner fires.]{Averaged peak heat flux on the gypsum board wall along the vertical centerline and edge of the natural gas burner fires.}
 	\label{IWGB_NG_HF_CandEAvg}
 \end{figure}
+
+\clearpage
 
 \subsection{Wall Temperatures}
 
@@ -1002,11 +1003,11 @@ Soot and discoloration alone was not used in this study, since the gasoline and 
 \end{figure}
 
 
-A summary of the peak average temperatures and heat fluxes at the wall is provided in Table~\ref{tab:IWGB_Summary}. While the values in this summary table differ from the values in Table~\ref{tab:TW_Summary} a closer look reveals that most of the values are not ``significantly '' different.  In other words the range of expanded uncertainty values overlap.  For example at 0.0~m position with natural gas, the average peak temperature was 487~$^\circ$C~$pm$73~$^\circ$C (15~\%). So the upper bound would be 560~$^\circ$C, which includes the corresponding averaged peak value from the instrumented gypsum wallboard experiments of 539~$^\circ$C.  While all of the values do not have overlapping uncertainties, the point is that none of the averaged peak values are ``that '' different.        
+A summary of the peak average temperatures and heat fluxes at the wall is provided in Table~\ref{tab:IWGB_Summary}. While the values in this summary table differ from the values in Table~\ref{tab:TW_Summary} a closer look reveals that most of the values are not ``significantly '' different.  In other words the range of expanded uncertainty values overlap.  For example at 0.0~m position with natural gas, the average peak temperature was 487~$^\circ$C~$\pm$73~$^\circ$C (15~\%). So the upper bound would be 560~$^\circ$C, which includes the corresponding averaged peak value from the instrumented gypsum wallboard experiments of 539~$^\circ$C.  While all of the values do not have overlapping uncertainties, the point is that none of the averaged peak values are ``that '' different.        
 
 \begin{table}
 	\centering
-	\footnotesize
+	\scriptsize
 	\begin{tabular}{|c|c|c|c|c|c|c|}
 		\hline {Burner} & \multicolumn{2}{c}{Natural Gas} & \multicolumn{2}{c}{Gasoline} & \multicolumn{2}{c|}{PU Foam} \\
 		\hline  Position & Temp~($^\circ$C) & HF~(kW/m$^{2}$) & Temp~($^\circ$C) & HF~(kW/m$^{2}$) & Temp~($^\circ$C) & HF~(kW/m$^{2}$) 	\\
