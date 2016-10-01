@@ -1694,7 +1694,7 @@ Heskestad widely used  NRC CFITrainer  texts
 
 \subsection{Correlation Descriptions}
 Heskestad, developed an empirical method for calculating the mean visible flame height for fuels which do not have substantial in-depth combustion.  Appropriate fuels would ``include liquid pool fires and other horizontal surface fires'' add cites.  Given that the fuel configurations are square, a conversion of the fuel surface area to the effective diameter is required in order to use Heskestad's flame height equation directly.  Setting the area of the fuel surface, 0.093~m$^2$, equal to $\pi D^2/4$ and then solving for $D$ yields an effective diameter of 0.344~m.
-Calculating the flame heights with the average peak heat release rates measured from the three fuels yields 1.0~m and 0.73~m for natural gas, gasoline, and polyurethane foam respectively. Taking the uncertainty of the measurements used to determine the heat release rate ($\pm$ 11~\%) into account generates a range of values.   The range of calculated values are compared with the mean flame height and range for flame heights  based on photographic analysis for each of the fuels in Table z.
+Calculating the flame heights with the average peak heat release rates measured from the three fuels yields 1.0~m and 0.73~m for natural gas, gasoline, and polyurethane foam respectively. It should be noted that the coefficient, 0.235, is dependent on the ratio of the heat of combustion to the actual mass stoichiometric ratio of air to volatiles of the fuel.  For many liquid and gaseous fuels this coefficient is representative, Heskestad points out, however, that some common fuels, such as gasoline, deviate from the cited range. For gasoline a coefficient value of 0.2 should be used 32.          Taking the uncertainty of the measurements used to determine the heat release rate ($\pm$ 11~\%) into account generates a range of values.   The range of calculated values are compared with the mean flame height and range for flame heights  based on photographic analysis for each of the fuels in Table z.
 
 \begin{equation}\label{eq:flame_height}
 H_f = 0.235\: \dot{Q}^{\frac{2}{5}} - 1.02 D
@@ -1703,6 +1703,10 @@ where $H_{f}$ is the flame height (m), $\dot{Q}$ is the heat release rate (kW), 
 
 
 \section{Comparison of Results}
+
+From Interflam  Screening algorithms utilizing the heat release rate results were employed to estimate the flame height and heat flux to a target surface.  These calculated values were compared to the measured results from “real fuels” and provided reasonable results.  Ranges of values were calculated in order to address the uncertainty in the heat release rate measurements.  Other uncertainties, such as lack of knowledge on the exact fuel composition need to be addressed, as this may well be the case in a real fire investigation.  Even accounting for uncertainties in heat release rate measurement, the flame height estimates tended to be better aligned with the peak flame height than the median flame height.  A specific coefficient for “gasoline” was used in Heskestad’s equation which resulted in the measured median flame height being within the range of the predictions.  The heat flux estimations were calculated with a range of radiant heat fractions, with the intent of the “actual” value being in that range.  With the exception of gasoline, the estimated heat flux values tended to under predict the measured results.  Given the limitations of the data, the algorithms provided reasonable estimates of the mean flame height and the heat flux.  These algorithms are tools which can be used to provide insight into a problem, but not an accurate single value answer.       
+
+
 
 \chapter{Comparison of Field Model Simulations with Experimental Results}
 
@@ -1979,7 +1983,7 @@ Flame Height 0D  20~mm  at 99~\%  1.46~m
   \includegraphics[width=2.5in]{../Figures/11}\\
   \hspace{4 mm}  \\ 
   \includegraphics[width=.8\columnwidth]{../Figures/NGCorner_guideline}\\
-  \caption[FDS fire pattern surrogates based on 40~mm grid using a threshold temperature of 350~$^\circ$C compared with three replicate fire patterns from the natural gas burner positioned in the corner]{FDS fire pattern surrogates based on 40~mm grid using a threshold temperature of 350~$^\circ$C compared with three replicate fire patterns from the natural gas burner positioned in the corner.  The image with the three replicate fire patterns has a red line indicating a position approximately 1.0~m above the burner.  This height corresponds with the height of the top of the 350~$^\circ$C mark in the FDS image.}
+  \caption[FDS fire pattern surrogates based on 40~mm grid using a threshold temperature of 350~$^\circ$C compared with three replicate fire patterns from the natural gas burner positioned in the corner]{FDS fire pattern surrogates based on 40~mm grid using a threshold temperature of 350~$^\circ$C compared with three replicate fire patterns from the natural gas burner positioned in the corner.  The image with the three replicate fire patterns has a red line indicating a position approximately 1.6~m above the burner.  This height corresponds with the height of the top of the 350~$^\circ$C mark in the FDS image.}
 
 
 
@@ -2038,6 +2042,10 @@ duration
 lessons learned  cameras   black paint
 
 corners
+
+While the results from this project will provide some insight into the repeatability of pre-flashover fire patterns, a significant amount of research examining other fuels, wall coverings, the impacts of compartmentation, ventilation, and post-flashover conditions, are just a few of the parameters that need to be examined to develop a more complete understanding of fire patterns.          
+
+
 
 
 \chapter{Conclusions}
