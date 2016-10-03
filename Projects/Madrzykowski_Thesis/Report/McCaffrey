@@ -1,0 +1,11 @@
+McCaffery studied buoyancy driven diffusion flames and plumes and divided them into three regions.  Beginning at the base of the flame was the region where the flame was continuous or persistant, in the next region the flame was intermittent, and above that was a plume region~\cite{McCaffrey:1979}.  
+The empirical algorithms for the flame regions are provided below:  
+
+\begin{equation}\label{eq:z_c}
+Z_c = 0.08 \dot{Q}^{\frac{2}{5}}
+\end{equation}
+where $Z_c$ is the continuous flame height~(m)
+\begin{equation}\label{eq:z_i}
+Z_i = 0.20 \dot{Q}^{\frac{2}{5}}
+\end{equation}
+where $Z_i$ is the intermittent flame height~(m)
