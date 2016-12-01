@@ -713,13 +713,13 @@ Using the same data, the focus of this analysis was to look at trends within the
 	\label{fig:gas_cooling_exp4}
 \end{figure}
 
-There were three thermocouple arrays in the gas cooling room (adjacent to the burn room in Figure~\ref{fig:Gas_Cooling_Instrumentation_Dimensions}). Figures~\ref{fig:gas_cooling_sub1} and \ref{fig:gas_cooling_sub5} show the variation of the impact of the suppression stream on cooling location for three consecutive water and CAF tests, respectively. For both sets, a solid stream from a 22~mm (0.88~in) nozzle in the middle position was used. The data show that thermocouples from Gas Cooling Array 2 (GC\_2 in the legend), the middle plot of both figures, has more significant temperature decreases than the other two arrays (GC\_1 and GC\_3). This is the result of Gas Cooling Array 2 being directly ``hit'' by the suppression stream.  Gas Cooling Array 1 also exhibits some amount of suppression agent impact.  Gas Cooling Array 3 is located behind the area where the stream impacts the ceiling for both the middle and back nozzle positions.  As a result, it remained dry and seems to provide the best representation of the gas cooling.
+There were three thermocouple arrays in the gas cooling room (adjacent to the burn room in Figure~\ref{fig:Gas_Cooling_Instrumentation_Dimensions}). Figures~\ref{fig:gas_cooling_sub1} and \ref{fig:gas_cooling_sub5} show the variation of the impact of the suppression stream on cooling location for three consecutive water and CAF tests, respectively. For both sets, a solid stream from a 22~mm (0.88~in) nozzle in the middle position was used. The data show that thermocouples from Array 2 (TC\_A2 in the legend), the middle plot of both figures, has more significant temperature decreases than the other two arrays (TC\_A1 and TC\_A3). This is the result of Array 2 being directly ``hit'' by the suppression stream.  Gas Cooling Array 1 also exhibits some amount of suppression agent impact. Array 3 is located behind the area where the stream impacts the ceiling for both the middle and back nozzle positions. As a result, it remained dry and seems to provide the best representation of the gas cooling.
 
 \begin{figure}[ht!]
 	\includegraphics[width=.5\columnwidth]{../Figures/Gas_Cooling/GCSeries12_TC_A1}
 	\includegraphics[width=.5\columnwidth]{../Figures/Gas_Cooling/GCSeries12_TC_A2}
 	\includegraphics[width=.5\columnwidth]{../Figures/Gas_Cooling/GCSeries12_TC_A3}
-	\caption{Time Series of Thermocouple Data from 3 Arrays in Gas Cooling Room with Water as the Suppression Agent}
+	\caption{Time Series of Thermocouple Data from 3 Arrays in Gas Cooling Room with Water as the Suppression Agent. Shown are Tests 2, 3, and 4 from Table~\ref{tab:Gas_Cooling_Descriptions}}
 	\label{fig:gas_cooling_sub1}
 \end{figure}
 
@@ -727,7 +727,7 @@ There were three thermocouple arrays in the gas cooling room (adjacent to the bu
 	\includegraphics[width=.5\columnwidth]{../Figures/Gas_Cooling/GCSeries52_TC_A1}
 	\includegraphics[width=.5\columnwidth]{../Figures/Gas_Cooling/GCSeries52_TC_A2}
 	\includegraphics[width=.5\columnwidth]{../Figures/Gas_Cooling/GCSeries52_TC_A3}
-	\caption{Time Series of Thermocouple Data from 3 Arrays in Gas Cooling Room with CAF as the Suppression Agent}
+	\caption{Time Series of Thermocouple Data from 3 Arrays in Gas Cooling Room with CAF as the Suppression Agent. Shown are Tests 52, 53, and 54 from Table~\ref{tab:Gas_Cooling_Descriptions}}
 	\label{fig:gas_cooling_sub5}
 \end{figure}
 
@@ -819,7 +819,7 @@ There is a difference in the amount of direct impact from the suppression agent 
 
 \clearpage
 
-The thermocouple array data can also be decomposed as a function of nozzle position: 12 middle position experimental pairs and three back experimental pairs. Figures~\ref{fig:CAFS_Water_A1_mid}, \ref{fig:CAFS_Water_A2_mid}, and \ref{fig:CAFS_Water_A3_mid} show the temperature difference scatter at thermocouple arrays A1, A2, and A3 respectively for the 12 replicate tests with the monitor nozzle in the middle position. Figures~\ref{fig:CAFS_Water_A1_back}, \ref{fig:CAFS_Water_A2_back}, and \ref{fig:CAFS_Water_A3_back} show the temperature difference scatter at thermocouple arrays A1, A2, and A3 respectively for the three replicate tests with the monitor nozzle in the back position. Again, note that the best fit occurs with the data from thermocouple array 3 for both nozzle positions. This analysis of the data results in the same conclusions as the analysis from the Mitchell paper \cite{Mitchell:1}: the gas cooling performance of CAF is similar to water under these conditions. Or, more accurately, water is nearly always equal to or better than CAF.
+The thermocouple array data can also be decomposed as a function of nozzle position: 12 middle position experimental pairs and three back experimental pairs. Figures~\ref{fig:CAFS_Water_A1_mid}, \ref{fig:CAFS_Water_A2_mid}, and \ref{fig:CAFS_Water_A3_mid} show the temperature difference scatter at thermocouple arrays A1, A2, and A3 respectively for the 12 replicate tests with the monitor nozzle in the middle position. Figures~\ref{fig:CAFS_Water_A1_back}, \ref{fig:CAFS_Water_A2_back}, and \ref{fig:CAFS_Water_A3_back} show the temperature difference scatter at thermocouple arrays A1, A2, and A3 respectively for the three replicate tests with the monitor nozzle in the back position. Again, note that the best fit occurs with the data from thermocouple array 3 for both nozzle positions. This analysis of the data results in the same conclusions as the analysis from the Mitchell paper \cite{Mitchell:1}: the gas cooling performance of CAF is similar to water under these conditions. Or, more accurately, water is nearly always equal to or slightly better than CAF.
 
 \begin{figure}[!ht]
 	\includegraphics[width=.7\columnwidth]{../Figures/Gas_Cooling/Combined_mid_A1_scatter}
@@ -1113,13 +1113,13 @@ Both of the formulas listed above do not explicitly account for the ventilation 
 
 Shortly after the NFA equation was issued, another federal agency, the National Bureau of Standards (now NIST) released a finding about the relationship of oxygen to the heat release rate of a fire~\cite{Babrauskas:3}. NIST found that for many fuels, approximately 13.1~MJ of heat are generated for every kilogram of oxygen consumed during the combustion. This relationship led to simple algorithms that addressed the amount of oxygen that can flow through an opening with a theoretical heat release rate that assumes stoichiometric conditions (100~\% efficient burning where all of the fuel and the oxygen is consumed).
 
-All of the fire conditions generated during these experiments were ventilation limited or ventilation controlled fires. Essentially, the conditions in the compartment were fuel rich. If the ventilation was increased to allow additional oxygen to be supplied to the fuel gases in the fire compartment, the heat release rate of the fire would have increased. There are simple formulas which may provide some insight here, although this simple algorithm has not been validated with the geometries that were used in the experiments described in this report. The purpose here is to estimate the amount of heat energy that the hose streams needed to overcome. This algorithm, like the NFA formula, has never been validated for this application. The heat release rate is: 
+All of the fire conditions generated during these experiments were ventilation limited or ventilation controlled fires. Essentially, the conditions in the compartment were fuel rich. If the ventilation was increased to allow additional oxygen to be supplied to the fuel gases in the fire compartment, the heat release rate of the fire would have increased. There are simple formulas which may provide some insight here, although this simple algorithm has not been validated with the geometries that were used in the experiments described in this report~\cite{Babrauskas:4}. The purpose here is to estimate the amount of heat energy that the hose streams needed to overcome. This algorithm, like the NFA formula, has never been validated for this application. The heat release rate is: 
 
 \begin{equation} \label{eq:HRRSto_item}
 \dot{Q}_{stoichiometric} = 1500 A_0 \sqrt{H_0} \\
 \end{equation}
 
-In Equation~\ref{eq:HRRSto_item}, the maximum heat release rate ($\dot{Q}_{stoichiometric}$) in kW is based on airflow through the area of the opening ($A_0$) in square meters and the square root of the height of the opening ($H_0$) in meters.  
+In Equation~\ref{eq:HRRSto_item}, the maximum heat release rate ($\dot{Q}_{stoichiometric}$) in kW is based on airflow through the area of the opening ($A_0$) in square meters and the square root of the height of the opening ($H_0$) in meters~\cite{Babrauskas:4}.  
 
 Following Equation~\ref{eq:HRRSto_item}, a single open doorway to a residential scale room that is approximately 0.9~m (3~ft) wide and 2.1~m (6.9~ft) high could support a heat release rate of approximately 4~MW, assuming complete combustion of the oxygen that would flow through the doorway opening via natural convection. For twice the width of the open doorway (the doorway on the lower level of the two-story structure), the theoretical heat release rate that could be supported inside the compartment would be approximately 8~MW. This does not account for flames burning outside of the compartment, which were frequently observed during testing.  
 
