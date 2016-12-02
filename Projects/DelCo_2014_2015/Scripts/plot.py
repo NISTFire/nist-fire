@@ -27,7 +27,7 @@ specify_year = False
 specific_year = '2014'
 
 # Specify type
-specify_type = True
+specify_type = False
 specific_type = 'GAS'
 
 # Specify structure
@@ -36,7 +36,7 @@ specific_struct = 'West'
 
 # Specify if creating data sets
 #  for gas burner exp. report
-burner_report = True
+burner_report = False
 burner_data = '../Reports/Propane_Gas_Fire_Experiments/Data/'
 
 # Plot mode: figure or video
@@ -91,11 +91,11 @@ video_plots = collections.OrderedDict()
 #  ==========================
 
 # # Prints an error message and stops code
-# def error_message(message):
-#     lineno = inspect.currentframe().f_back.f_lineno
-#     print '[ERROR, line '+str(lineno)+']:'
-#     print '  ' + message
-#     sys.exit()
+def error_message(message):
+    lineno = inspect.currentframe().f_back.f_lineno
+    print '[ERROR, line '+str(lineno)+']:'
+    print '  ' + message
+    sys.exit()
 
 # checks if file should be skipped
 def check_name(test_name, test_year, test_type):
@@ -157,11 +157,11 @@ for f in os.listdir(data_dir):
         test_type = info['Test Type'][test_name]
 
         # if burner_report:
-        try:
-            if 'Propane fire' not in info['Test Description'][test_name]:
-                continue
-        except TypeError:
-            continue
+        # try:
+        #     if 'Propane fire' not in info['Test Description'][test_name]:
+        #         continue
+        # except TypeError:
+        #     continue
 
         if check_name(test_name, test_year, test_type):     # check if file should be skipped
             continue
