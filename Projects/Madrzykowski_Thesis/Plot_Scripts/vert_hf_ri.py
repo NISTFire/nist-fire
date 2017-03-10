@@ -32,7 +32,7 @@ errorbar(data_slice,y_data,xerr=0.15*data_slice,linestyle='None',marker='o',ms=8
 plot(fds_slice_05,y_fds,'k',label = 'FDS 05')
 plot(fds_slice_10,y_fds,'r',label = 'FDS 10')
 # plot(fds_slice_20,y_fds,'b',label = 'FDS 20')	
-xlabel('Temperature ($^{\circ}$C)', fontsize=20)
+xlabel('Heat flux (kW/m$^{2}$)', fontsize=20)
 ylabel('Distance above Burner (m)', fontsize=20)
 xticks(fontsize=16)
 yticks(fontsize=16)
