@@ -1769,7 +1769,7 @@ The goal of this chapter is to utilize an analytical tool to predict or simulate
 
 \section{Fire Dynamics Simulator and Smokeview}
 
-The Fire Dynamics Simulator (FDS) and the scientific visualization tool, Smokeview, are the most widely used and well documented CFD tools in the fire protection engineering community. In addition, these tools have on going verification and validation programs.  Given the extent and high quality of the existing FDS documentation, there is no value to attempting to recreate a description of the model here other than to direct the reader to the volumes of information and data repository that exist for the FDS and Smookeview suite.
+The Fire Dynamics Simulator (FDS) and the scientific visualization tool, Smokeview, are the most widely used and well documented CFD tools in the fire protection engineering community. In addition, these tools have on going verification and validation programs.  Given the extent and high quality of the existing FDS documentation, there is no value to attempting to recreate a description of the model here other than to direct the reader to the volumes of information and data repository that exist for the FDS and Smokeview suite.
 
 FDS~\cite{FDS_Users_Guide} is a CFD model initially developed and currently maintained by NIST that solves a form of the Navier-Stokes equations appropriate for low-speed, thermally driven flow with an emphasis on smoke and heat transport from fires. A CFD model has a computational domain that is divided into  three-dimensional rectangular control volumes or computational cells. The size and arrangement of computational cells is sometimes referred to as the grid or the mesh.  The CFD model computes the density, velocity, temperature, pressure, and gas concentrations in each cell. Based on the laws of conservation of mass, momentum, and energy, the model tracks the generation and movement of fire gases. One of the most important aspects of FDS is that it is mathematically verified~\cite{FDS_Verification_Guide}and validated against fire test data~\cite{FDS_Validation_Guide}to ensure that it is accurate and provides the expected results, given appropriate input data.  The data that FDS has been validated against can be found on-line is repository of the reports that were the source of the data~\cite{FDS-SMV_repository}. A complete description of the FDS model is provided in the FDS Technical Reference Guide~\cite{FDS_Tech_Guide}.  
 
@@ -1779,15 +1779,15 @@ Smokeview is a software tool specifically designed to visualize simulation resul
 
 Several FDS models were developed to correlate with the different types of experiments conducted over the course of this study: 1) simulations of the source fire characterization experiments documented in Chapter 2, 2) simulations of the instrumented gypsum wallboard experiments with the natural gas burner as documented in Chapter 4, and 3) simulations of the compartment fire pattern experiments with the natural gas burner in positions against a wall and in a corner as documented in Chapter 6.  
 
-Several source fire simulations will be modelled with a range of grid cell resolutions and radiative fraction values.  The results are compared against the source fire characterization data to determine which grid cell resolution and radiative fraction will provide the best fire simulation for use in the simulations of the wall and compartment experiments.      
+In this section, the natural gas burner will be modelled with a range of grid cell resolutions and radiative fraction values.  The results are compared against the source fire characterization data to determine which grid cell resolution and radiative fraction will provide the best fire simulation for use in the simulations of the wall and compartment experiments.      
 
-\subsection{Natural Gas Source Fires}
+\subsection{Natural Gas Source Fire}
 
-One of the key determinations that is required when developing an FDS model is the mesh or grid cell size.  If a single plane of the data from the model were compared to a digital image we might refer to the grid cell size as the resolution of the image.  The smaller the grid cells the better the resolution. However increased resolution will require more computational resources and additional run time. The question is does it provide a more realistic answer.  As with most pursuits there is no one answer.  The `best' grid size depends on the scenario being modeled.
+One of the key determinations that is required when developing an FDS model is the mesh or grid cell size.  If a single plane of the data from the model were compared to a digital image we might refer to the grid cell size as the resolution of the image.  The smaller the grid cells the better the resolution. However increased resolution will require more computational resources and additional run time. The question is, does it provide a more realistic answer?  As with most pursuits there is no one answer.  The `best' grid size may depend on a several different parameters of the scenario being modeled. 
 
-Choosing the size of the grid when performing an analysis with FDS is critical in order to get the level of resolution needed to adequately simulate the required details within a simulation. In studies where large rooms or portions of buildings have been involved grid cells on the order of 100~mm have been used and resulted in the successful simultation of fire flow and fire growth trends ~\cite{Grosshandler:Station,Vettori:2000,Barowy:2012,Overholt:San_Francisco,Weinschenk:Chicago}.
+Choosing the size of the grid when performing an analysis with FDS is critical in order to get the level of resolution needed to adequately simulate the required details within a simulation. In studies where large rooms or portions of buildings have been modeled grid cells on the order of 100~mm have been used and resulted in the successful simultation of fire flow and fire growth trends ~\cite{Grosshandler:Station,Madrzykowski:2004,Vettori:2000, Barowy:2012,Overholt:San_Francisco,Weinschenk:Chicago}.
 
- The FDS User Guide provides a method to determine how well a flow field will be resolved buy using the non-dimensional expression ${D^*}/{\delta x}$, where $D^*$ is a characteristic fire diameter and $\delta x$ is the nominal size of a mesh or grid cell. This value has been referred to as the plume resolution index. Given that the fire plume region is the focus of this study, it is important to understand how changes in plume mesh resolution impact the results.    
+ The FDS User Guide provides a method to determine how well a flow field will be resolved by using the non-dimensional expression ${D^*}/{\delta x}$, where $D^*$ is a characteristic fire diameter and $\delta x$ is the nominal size of a mesh or grid cell. This value has been referred to as the plume resolution index. Given that the fire plume region is the focus of this study, it is important to understand how changes in plume mesh resolution impact the results.    
 
 \begin{equation}
  D^* = \left(
@@ -1802,179 +1802,146 @@ To examime the impact of computational grid cell size on the results, three diff
 
 \subsubsection{Input Data Source Fire Characterization}
 
-The FDS model for simulating the source fires is very basic, consisting of the definition of the computational domain in space and time, a definition of the burner geometry and the combustion model for the fuel, and specification for measurement points that can be used for analysis temperature, heat flux, and flame height.
+The FDS model for simulating the source fires is very basic, consisting of the definition of the computational domain in space and time, a definition of the burner geometry, the combustion model for the fuel, and the specification of measurement points that can be used to examine temperature, heat flux, and flame height.
 
 The computational domain of the model had the geometry of a cube with 2.4~m on a side.  The resulting number of computational cells for each case ranged from 27,000 for the 80~mm cells to 1,728,000 for the 20~mm cells. For the 80 and 40~mm computational cell scenarios, the cases were run as a single mesh.  For the 20~mm case, the computational domain was divided into 8 uniform meshes.  Each mesh was 2.4~m by 1.2~m and 0.6~m tall.  The time domain for each model was chosen to be 300 seconds, which is similar to the burn time fior each of the fuels.    
 
 The burner was modeled as an obstruction with a open top area of 0.09 m$^2$, elevated 0.08~m above the test surface.  This is the same physical size of the natural gas burner used in the experiments.  It was modeled with a steady state heat release rate flux of 888.89 kW/m$^2$, or a heat release rate of 80~kW.   The chosen fuel reaction was `methane' since the natural gas used in the laboratory experiments contained approximately 95~\% methane.  In FDS version 6, the default radiant fraction for the `methane' reaction was set to 0.2.  
 
-FDS has devices, which are used to simulate thermocouples and total heat flux gauges.  These devices were positioned in locations similar to the locations used in the source fire experiments.  The thermocouples were positioned in a vertical array, centered on the burner, beginning 0.1~m above the burner surface and spaced every 0.1~m upto 1.2~m above the burner surface.  A total heat flux gauge was also modelled to provide data at the 0.95 m from the centerline of the burner and 1.0 m above the top of the burner.  
+FDS has devices, which are used to simulate thermocouples and total heat flux gauges.  These devices were positioned in locations similar to the locations used in the source fire experiments.  The thermocouples were positioned in a vertical array, centered on the burner, beginning 0.1~m above the burner surface and spaced every 0.1~m upto 1.2~m above the burner surface.  A total heat flux gauge was also modelled to provide data at the 0.95 m from the centerline of the burner and 0.5 m above the top of the burner.  
 In addition, FDS features devices that can not be physically implemented.  One such device, is used to determine the heat release rate per unit length.  This device was used to determine flame height based on that measure. 
 
 \section{Comparison of FDS with Source Fire Results}
 
-In Chapter 2 the fires from the burners were characterized.  In this section the results from FDS simulations of the fire generated by the natural gas burner experiments are compared with the experimental results.  The average plume temperatures at elevations from 0.1~m through 1.2~ above the top face of the burner in 0.1~m increments will be compared.   
+In Chapter 2 the fires from the burners were characterized in terms of plume temperature, heat flux remote from the plume, and flame height.  In this section the results from FDS simulations of the fire generated by the natural gas burner experiments are compared with the experimental results.  The average plume temperatures at elevations from 0.1~m through 1.2~m above the top face of the burner in 0.1~m increments will be compared.   
 
 \subsection{Grid Size Analysis}
-Figure~\ref{FHNG01_RI} shows the comparison of the centerline gas burner temperatures with three different sets of FDS results.  The only variable in the simulations is the RI. The RIs include three different computational cell sizes; 80~mm (RI=5), 40~mm~(RI=10), 20~mm~(RI=20).  The associated 95~\% confidence limits are also shown the temperature value for each height.  The FDS simulated temperatures based on the course cell size of 80~mm (RI=5) has the best agreement with the temperatures along centerline of the plume.  The two simulations with the higher RI values provide less agreement that the course mesh.  This seems to be counter intuitive to the results expected from an increased RI.  However in each of the FDS models, the results closest to the burner seem to indicate that the model may not be `burning' the appropriate amount of fuel (fuel rich) which results in temperatures significantly lower than measured.  The affect of this fuel rich area above the burner results in poorer agreement with increasing RI.  It appears that the the RI=10 and RI=20 models follow the correct trend, however the combuston zone is moved to a higher elevation relative to what was measured.  For example the values at 0.5~m and 0.8~m above the burner, from the RI=10 and RI=20 cases respectively, seem to coincide with the measured value at 0.3~m above the burner.  Making the adjustment appears to move the remaining temperatures above those points into alignment with the measurements along the centerline of the plume. 
+Figure~\ref{FHNG01_RI} shows the comparison of the centerline gas burner temperatures with three different sets of FDS results.  The only variable in the simulations is the RI. The RIs include three different computational cell sizes; 80~mm (RI=5), 40~mm~(RI=10), 20~mm~(RI=20).  The associated 95~\% confidence limits are also shown the temperature value for each height.  The FDS simulated temperatures based on the course cell size of 80~mm (RI=5) had the best agreement with the temperatures along centerline of the plume.  The two simulations with the higher RI values provided less agreement than the course mesh.  
 
-These simulation results are consistant with the comparison made to the McCaffery ref   in the FDS Validation Guide~\cite{FDS_Validation_Guide}.  
+This seemed to be counter intuitive to the results expected from an increased RI.  However in each of the FDS models, the results closest to the burner seem to indicate that the model may not be `burning' the appropriate amount of fuel (fuel rich), which resulted in temperatures significantly lower than measured.  The affect of this fuel rich area above the burner results in poorer agreement with increasing RI.  It appears that the the RI=10 and RI=20 models follow the correct trend, however the combuston zone was moved to a higher elevation relative to what was measured.  For example the values at 0.5~m and 0.8~m above the burner, from the RI=10 and RI=20 cases respectively, seemed to coincide with the measured value at 0.3~m above the burner.  Making the adjustment appears to move the remaining temperatures above those points into alignment with the measurements along the centerline of the plume. As FDS is a complex model, this explaination may be only one possibility. 
 
-Another comparison can be made examining the `thermocouple' results from FDS to see if the model of the thermocouple provides improved argeement with the temperatures measured via physical thermocouples.  This comparison is shown in Figure~\ref{FHNG01_RI_TC}.  Again the best agreement along the vertical array of temperatures was provided by the RI=5 model.  Not surprisely the sub model of the thermocouple device shifted the FDS values slightly.  Variables such as density and emissivity required for modeling the thermal response and heat transfer to the thermocouple bean are influencing the diffrences between the gas temperature and the mesuared temperature FDS values.  
-
-%Mc caffery plume    
-%continuous flame region 
-%intermittant flame region
-%plume region
-
- 
 \begin{figure}[h]
 	\includegraphics[width=5in]{../Figures/FHNG01_RI} \\
-	
-	\caption[Comparison of burner centerline gas temperatures with FDS simulated gas temperatures.]{Comparison of burner centerline gas temperatures with FDS simulated gas temperatures generated with three different RIs 5, 10 and 20.}
+	\caption[Comparison of vertical centerline temperatures above the natural gas burner with FDS simulated gas temperatures.]{Comparison of vertical centerline temperatures above the natural gas burner with FDS simulated gas temperatures generated with three different RIs 5, 10, and 20.}
 	\label{FHNG01_RI}
 \end{figure}
 
+These simulation results are consistant with the comparisons made to the McCaffery's plume correlation from his study, `Purely Buoyant Diffusion Flames'~\cite{McCaffrey:1979}, in the FDS Validation Guide~\cite{FDS_Validation_Guide}. McCaffery used a natural gas burner, 0.30~m square, which is similar in size to the burner used in this study.  McCaffery noted that, "visually non-axisymmetric behavior could be observed only very close to the burner surface".  In the study, temperatures were measured with Type K thermocouples covered with a 1.0~mm stainless steel sheath. The peak heat release rate in McCaffery's plume study was 57.5~kW, this heat release rate was also the closest to the 80~kW fires in the current study.  The comparison between the McCaffery plume correlation and the FDS simulations at RI values of 5, 10 and 20 are shown in Figure~\ref{McCaffrey_Plume_comp}. Focusing on the data between the burner surface and the 1~m above the burner surface, FDS underpredicted the temperature near the surface of the burner and then overpredicted as the elevation increased to approximately 0.4~m and 1.3~m above the burner for the RI=10 and 20 cases respectively. Once the temperature comparisons were above the continuous and intermittant flame regions, the agreement between the cases and the correlation began to improve.  Similar to the current study, increased RIs did not improve the simulation of the vertical centerline temperatures close to the burner.   
+
+\begin{figure}
+	\includegraphics[width=5in] {../Figures/McCaffrey_Plume_comp}  \\
+	\caption[Comparison of vertical centerline temperatures above a 0.3~m natural gas burner from McCaffrey with FDS simulated gas temperatures.] {Comparison of vertical centerline temperatures above a 0.3~m natural gas burner from McCaffrey with FDS simulated gas temperatures generated with three different RIs 5, 10, and 20 from the FDS Validation Guide~\cite{FDS_Validation_Guide}.}
+	\label{McCaffrey_Plume_comp}
+\end{figure}
+
+The comparisons above used the predicted gas temperature from the model. Another comparison can be made examining the `thermocouple' results from FDS to see if the model of the thermocouple provides improved argeement with the temperatures measured via physical thermocouples.  This comparison is shown in Figure~\ref{FHNG01_RI_TC}.  Not surprisely, the sub model of the thermocouple device shifted the FDS values slightly.  At temperatures greater than 700~$^\circ$C, the `thermocouple' temperatures tended to be lower than the gas temperatures, perhaps due to radiant heat transfer losses. At temperatures less than 700~$^\circ$C, the `thermocouple' temperatures tended to be a higher than the gas temperatures, perhaps due to gains from radiant heat transfer.  The best agreement along the vertical array of temperatures was provided by the RI=5 model.  Variables such as density and emissivity required for modeling the thermal response and heat transfer to the thermocouple bead are generating the diffrences between the gas temperature and the measured temperature FDS values.  
 
 \begin{figure}[h]
 	\includegraphics[width=5in]{../Figures/FHNG01_RI_TC} \\
-	
-	\caption[Comparison of burner centerline gas temperatures with FDS simulated gas temperatures.]{Comparison of burner centerline gas temperatures with FDS simulated gas temperatures generated with three different RIs 5, 10 and 20.}
+	\caption[Comparison of vertical centerline `thermocouple' temperatures above the natural gas burner with FDS simulated gas temperatures.]{Comparison of vertical centerline `thermocouple' temperatures above the natural gas burner with FDS simulated gas temperatures generated with three different RIs 5, 10, and 20.}
 	\label{FHNG01_RI_TC}
 \end{figure}
 
 \subsection{Radiative Fraction}
 
-From Chapter 2 the  
+From the Chapter 2 source fire characterization experiments, the measured heat flux at 0.95~m from the centerline of the burner and 0.5~m above the top of the burner. 
+In Figure~\ref{FHNG01_HF_RI} the averaged values from both heat flux gages are plotted against the FDS calculated heat flux at three different RIs of 5, 10 and 20.  These FDS simulations used the default radiative fraction value of 0.2.  As with the temperature comparisons, the course grid with an RI equal to 5 provided the best agreement to the measurements, however all of the values were lower than the measured heat flux.  
 
-\section{Natural Gas Instrumented Wall Fires}
-
-The next comparsions will be made with the natural gas source fire at 4 different distance from an gypsum board wall.  Experiments were conducted with the closest edge of the burner located in the following positions from the wall: two burner widths (0.610~m), one burner width (0.305~m), one half burner width (0.150~m), and then touching the wall (0.0~m).  The simulations will replicate the same distances.  The simulation includes a vertical gypsum board wall, 1.2~m wide, that extends from the floor of the model up to the top of the domain.  The material properties of the wall are based solely on the properties of gypsum that were cited in Chapter   
- 
-
-\subsection{Input Data Natural Gas Instrumented Wall Fires}
-
-The computational domain of the model was the same as the volume considered for the source fire simulations, a cube with 2.4~m on a side. 
-
-that was developed was the simultion of the instrumented gypsum wallboard experiments. The first input needed was the definition of the compuational domain.  The domain of the model had the geometry of a cube with 2.4~m on a side.  The resulting number of computational cells for each case ranged from 27,000 for the 80~mm cells to 1,728,000 for the 20~mm cells.  An isometric view of the model outlined by the domain is shown in Figure      .  The face of the wall is located 1.35~m from the front of the domain.  
-The wall was modeled with material properties for gypsum board.
-Thermal conductivity = 0.28
-Specific Heat = 1.00
-Density = 582
-
-Input data was collected from the experimental results presented in previous chapters of this study as well as from literature sources in order to simulate the instrumented wall experiments using FDS. 
-
-Instruments – FDS has devices, which are used to simulate thermocouples and total heat flux gauges.  This devices were positioned  in locations similar to the locations used in the physical experiments, in the plume region and on the wall.   A radiative heat flux gauge was also modelled to provide data at the 0.95 m from the centerline of the burner and 1.0 m above the top of the burner.  
-In addition, FDS features devices that can not be implemented such as a device, which can be used to examine the heat release rate per unit length.  In this case, this device was used to determine flame height based on that measure.     
-Fire 
-
-
-Then the data generated from the instrumented gypsum wallboard fires are compared with results from FDS simulations.  Four burner positions are examined, beginning 0.61~m from the wall to moving to 0.0~m, where one edge of the burner is in contact with the instrumented gypsum wallboard wall.
-
-Tables~\ref{tab:FDSRI_Exp_Plume2d} and \ref{tab:FDSRI_Exp_Plume0d} shows the plume temperature results for the three grid resolutions compared the experimental data with a wall spacing of 0.61~m and 0.0~m respectively. Figure~\ref{FDS_Plume_Grid_TWNG_comp} contains graphic comparisons of the same data.   
-
-\begin{table}[ht!]
-  \small
-  \centering
-  \begin{tabular}{|c|c|c|c|c|}
-    \hline Distance Above  & 80~mm grid      & 40~mm grid     & 20~mm grid    & Experiment Avg. \\
-    Burner~(m)     & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C)  & Temp.~($^{\circ}$C) \\ \hline
-    \hline 0.2         & 458            & 500           & 666     & 620   \\
-    \hline 0.4         & 738            & 819           & 761     & 527   \\
-    \hline 0.6         & 632            & 769           & 643     & 385   \\
-    \hline 0.8         & 442            & 600           & 522     & 198 \\
-    \hline 1.0         & 346            & 459           & 402     & 151 \\
-    \hline 1.2         & 251            & 307           & 284     & 119 \\
-    \hline 1.4         & 209            & 236           & 213     & 98  \\
-    \hline 1.6         & 166            & 188           & 164     & 86  \\
-    \hline 1.8         & 145            & 154           & 133     & 76  \\
-    \hline 2.0         & 123            & 130           & 112     & 69  \\
-    \hline 2.2         & 111            & 113           & 99      & 61  \\
-    \hline
-  \end{tabular}
-  \caption[Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperatures, 0.61~m from the Wall]{Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperature Averages with the Burner Located at 0.61~m from the Wall.}
-  \label{tab:FDSRI_Exp_Plume2d}
-\end{table}
-
-
-
-
-\begin{table}[ht!]
-  \small
-  \centering
-  \begin{tabular}{|c|c|c|c|c|}
-    \hline Distance Above  & 80~mm grid      & 40~mm grid     & 20~mm grid    & Experiment Avg. \\
-    Burner~(m)     & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C) & Temp.~($^{\circ}$C)  & Temp.~($^{\circ}$C) \\ \hline
-    \hline 0.2         & 458            & 604           & 658     & 667   \\
-    \hline 0.4         & 751            & 824           & 793     & 643   \\
-    \hline 0.6         & 668            & 711           & 673     & 577   \\
-    \hline 0.8         & 519            & 575           & 581     & 353 \\
-    \hline 1.0         & 431            & 475           & 506     & 357 \\
-    \hline 1.2         & 326            & 357           & 406     & 306 \\
-    \hline 1.4         & 274            & 285           & 322     & 233 \\
-    \hline 1.6         & 218            & 234           & 257     & 201 \\
-    \hline 1.8         & 191            & 198           & 211     & 179 \\
-    \hline 2.0         & 162            & 170           & 178     & 150 \\
-    \hline 2.2         & 146            & 148           & 153     & 140 \\
-    \hline
-  \end{tabular}
-  \caption[Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperatures, 0.0~m from the Wall.]{Comparison of FDS Grid Resolution and Experimental FDS Natural Gas Burner Plume Temperature Averages with the Burner Located at 0.0~m from the Wall.}
-  \label{tab:FDSRI_Exp_Plume0d}
-\end{table}
-
-\begin{figure}[ht!]
-  \centering
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_2D_RI}
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_1D_RI}\\
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_0pD_RI}
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_0D_RI}\\
-  \caption[FDS values based on three different resolutions compared with plume temperature measurements along the centerline of the natural gas fueled burner]{FDS values based on three different resolutions compared with plume temperature measurements along the centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
-  \label{FDS_Plume_Grid_TWNG_comp}
+\begin{figure}
+	\includegraphics[width=5in]{../Figures/FHNG01_HF_RI} \\
+	\caption[Comparison of the average heat flux measured 0.95~m from the centerline and 0.5~m above the top of the natural gas burner with FDS simulated heat flux values.]{Comparison of the average heat flux measured 0.95~m from the centerline and 0.5~m above the top of the natural gas burner with FDS simulated heat flux values generated with three different RIs 5, 10, and 20.}
+	\label{FHNG01_HF_RI}
 \end{figure}
 
-One of the advantages of a computational fluid dynamics model such as FDS is the ability produce enough spatial data in 3 dimensions to allow the generation of visualizations.  The impact of the mesh resolution can be seen in the three images of the fire shown in Figure~\ref{FDS_Flame_Image_comp}
+Reviewing the heat flux data documented in Chapter 2 from both the 0.95~m  and the 2.0~m from the vertical centerline of the burner positions provided average steady state heat flux values of approximately 2.0~kW/m$^2$ and 0.43~kW/m$^2$, respectively.  Applying the point source method, discussed in Chapter 7, conservative values for the radiative fraction were determined to be in the range of 0.25 to 0.28.  Values found in the literature for natural gas range from 0.15 to 0.25~\cite{Modak:1977,Hostikka:3}.   
+Therefore it was of interest to conduct FDS simulations with radiative fractions ranging from 0.2 to 0.3.  This was based on the default value used in FDS and the upper bound of the literature values as this range covered the radiative fraction values estimated from the experiments.  The course grid, RI=5, was used for the FDS models.  The comparison of the results is shown in~\ref{FHNG01_HF_RI5}.  The radiative fraction of 0.22 provided the best agreement with the measurement.  
+
+\begin{figure}
+	\includegraphics[width=5in]{../Figures/FHNG01_HF_RI5} \\
+	\caption[Comparison of the average heat flux measured 0.95~m from the centerline and 0.5~m above the top of the natural gas burner with FDS simulated heat flux values based on varied $\chi_r$ values.]{Comparison of the average heat flux measured 0.95~m from the centerline and 0.5~m above the top of the natural gas burner with FDS simulated heat flux values with $\chi_r$ values of 0.20, 0.22, 0.25, and 0.30.  The RI for the simulations was 5.}
+	\label{FHNG01_HF_RI5}
+\end{figure}
+
+One last check on the plume temperature predictions was made to examine the impact of the range of radiative fractions on the FDS results.  The comparisons were made using the course grid, RI=5, the radiative fraction values of 0.20, 0.22, 0.25, and 0.30, as before. The simulations with radiative fractions between 0.2 and 0.25 were within the 2~$\sigma$ limits of the temperature measurements at each elevation.   
+
+\begin{figure}
+	\includegraphics[width=5in]{../Figures/FHNG01_RF_RI5} \\
+	\caption[Comparison of vertical centerline temperatures above the natural gas burner with FDS simulated gas temperatures based on varied $\chi_r$.]{Comparison of vertical centerline temperatures above the natural gas burner with FDS simulated gas temperatures with $\chi_r$ values of 0.20, 0.22, 0.25, and 0.30.  The RI for the simulations was 5.}
+	\label{FHNG01_RF_RI5}
+\end{figure}
+
+\subsubsection{Flame Height}
+
+One of the outputs that can be gotten from FDS is a heat release rate per unit length (HRRPUL), it has been used to determine the height when energy stops being released along the vertical centerline of the gas burner.  Estimates of the flame height were made by estimating the height where 0.95 to 0.99~$\%$ of the total energy had been released. Table~\ref{tab:FDS_FH} displays estimated values from the models using all three RI values as well as the 95~$\%$ certainty range for the peak visible flame height from Chapter 2.  The course and medium grids, RI=5 and R=10, are not significantly different from the estimations of the peak visible flame height 95~$\%$ certainty value range.     
+
+\begin{table}[h]
+  \small
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline Peak Visible Flame Height   	& RI=5       		& RI=10      		& RI=20  \\
+    Range          						&  (80~mm grid)  	&  (40~mm grid)  	&  (20~mm grid)  \\
+    (m)     							& (m) 				& (m) 				& (m)  			 \\ \hline
+    \hline 0.73 to 1.14         		& 1.02 to 1.27      & 1.07 to 1.27      & 1.28 to 1.42   \\
+    \hline
+  \end{tabular}
+  \caption[Comparison of estimations of flame height from the natural gas burner experiments and FDS simulations with RIs of 5, 10 and 20.]{Comparison of estimations of flame height from the natural gas burner experiments and FDS simulations with RIs of 5, 10 and 20.}
+  \label{tab:FDS_FH}
+\end{table}
+
+One of the advantages of a computational fluid dynamics model such as FDS is the ability produce enough spatial data in 3 dimensions to allow the generation of visualizations.  The impact of the mesh resolution can be seen in the three images of the fire shown in Figure~\ref{FDS_Flame_Image_comp}.  The increased resolution leads to a flame structure that provides a better match to the look of the actual flame.  However in this scenario, the increased resolution within the flow field has not resulted in improved numerical agreement.
 
 \begin{figure}[ht!]
   \centering
   \includegraphics[width=1.7in]{../Figures/NG_80kW_GBWall_2D_RI=05_0601crop}
   \includegraphics[width=1.7in]{../Figures/NG_80kW_GBWall_2D_RI=10_0601crop}
   \includegraphics[width=1.7in]{../Figures/NG_80kW_GBWall_2D_RI=20_0601crop}\\
-  \caption[Flame images generated with FDS and Smokeview]{Flame images generated with FDS and Smokeview. The left image has a mesh size of 80~mm, the center image has a mesh size of 40~mm and the image on the right has amesh size of 20~mm.}
+  \caption[Flame images generated with FDS and Smokeview]{Flame images generated with FDS and Smokeview. The left image has a grid size of 80~mm (RI=5), the center image has a grid size of 40~mm (RI=10) and the image on the right has a grid size of 20~mm (RI=20).}
   \label{FDS_Flame_Image_comp}
 \end{figure}
 
-\begin{figure}[ht!]
-  \centering
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_2D}
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_1D}\\
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_0p5D}
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_0D}\\
-  \caption[FDS values based on three different resolutions compared with the wall surface temperature measurements along the centerline of the natural gas fueled burner]{FDS values based on three different resolutions compared with the wall surface temperature measurements along the centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
-  \label{FDS_Wall_Temp_TWNG_comp}
-\end{figure}
+\subsubsection{Source Fire Summary}
 
+The comparisons of the temperature, heat flux, and flame heights for this specific scenerio show the best agreement with the 80~mm grid (RI=5) FDS simulations.  Even though the differences between the radiative fractions of 0.2 and 0.22 are small, for the remaining simulation cases, 0.22 will be used.  While the best agreement for the fire was demonstrated with the RI= 5 grid, the RI=10 grid will also be used in the subsequent instrumented wall and the compartment model sections to see if the increased resolution comes into play as the models get additional obstructions and surfaces.  
 
+\section{Comparison of FDS with Natural Gas Instrumented Gypsum Board Wall Experiments}
 
+The next comparsions will be made with the natural gas source fire at 4 different distances from an instrumented gypsum board wall.  Experiments were conducted with the closest edge of the burner located in the following positions from the wall: two burner widths (0.610~m), one burner width (0.305~m), one half burner width (0.150~m), and then touching the wall (0.0~m).  The simulations will replicate the same distances.  The simulation includes a vertical gypsum board wall, 1.2~m wide, that extends from the floor of the model up to the top of the domain.  The material properties of the wall are based solely on the properties of gypsum that were cited in Chapter 4.  The values that are compared in the section include: vertical centerline temperatures above the burner, wall temperatures, and heat flux values at the position of the wall surface.    
+ 
+\subsection{Input Data Natural Gas Instrumented Gypsum Board Wall Experiments}
 
+The computational domain of the model was the same as the volume considered for the source fire simulations, a cube with 2.4~m on a side. The models were run with two different sized computational grid cells, an 80~mm (RI=5) grid and a 40~mm (RI=10) grid.  The face of the wall is located 1.95~m from the front of the domain.  
+The wall was modeled with material properties for gypsum wallboard that were documented in Chapter 4.  The input properties were: thermal conductivity (0.28 W/m K), specific heat (1.00 kJ/kg K) and density (807 kg/m$^3$).  In addition FDS includes a default value of 0.9 for emissivity, this value should be representative of the painted surface of the gypsum wallboard. As noted earlier in this study, gypsum wallboard undergoes chemical and physical changes as it is heated.  These changes include the loss of homogeneity of the gypsum material, a change in density and as the paper is charred or burned there is a potential for a change in emissivity.  The thermal conductivity and the specific heat of the gypsum wallboard varies on the order of 20~$\%$ over the temperature range from 20 to 500~$^\circ$C~\cite{Gross:1985}.  While FDS can accomodate changes in thermoconductivy and specific heat with respect to time, density and emissivity must be held constant~\cite{FDS_Users_Guide}.  For the purposes of this study, the input values will remain constant throught out the course of the simulations.  The only variable will be the distance between the edge of the burner and the wall.
 
-
+As before the FDS simultions will include devices, which are used to simulate thermocouples and total heat flux gauges.  This devices were positioned in locations similar to the locations used in the physical experiments, above the centerline of the burner and on the wall as shown in Chapter 4, Figure~\ref{Instrumented_GB_Wall}. In addition, HRRPUL will again be used as a means to gain insight into the peak flame height simluated by FDS.  
 
 \subsection{Temperatures}
 
-the data is plotted in the style used in FDS Validation
+ The temperatures measured by thermocouples positioned along the vertical centerline of the natural gas burner will be compared with FDS generated temperures from two simulations, one with RI-5 and one with RI=10.  The measurement points were at intervals of 0.2~m from 0.2~m to 2.2~m above the burner.  Figure~\ref{FDS_Plume_IWGB_comp} contains four graphs.  Each graph shows the same types of comparison, the only difference is the distance away from the gypsum wallboard.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.  
 
-continuous flame region 
-intermittant flame region
-plume region
+ There seem to be a couple of items that stick out from the graphs.  First is what appears to be a separation of the temperature data into three distinct sections.  The bottom three positions, 0.2~m through 0.6~m, represent the hottest section.  The next two measurement positions at 0.8~m and 1.0~m are similar in temperature.  The third section extends from 1.2 through 2.2~m above the burner and has the shape of a smooth curve decreasing in temperature with increasing elevation.  Comparing the temperatures to the flame height analysis in Chapter 2, the first section aligns with the median flame height, the second section aligns with the portion of the flame that intermittent, 40~$\%$ of the time or less.  The upper most section of the temperature data aligns with the thermal plume above the flame.  
+
+ The second issue is that the FDS predictions do not align equally well with the data from each position, with the best agreement occurring when the burner is positioned against the wall.  Further the temperatures for the burner position, 0.61~m from the was thought to be equivalent to the source fire experiments documented in Chapter 2. However that is not the case.  The installation of the wall resulted in movement of the flame and plume.  The flames oscillate toward the wall and as a result move away from the thermocouples centered over the burner. The resulting decrease in temperature may account for the difference between the plume tempertaures and the simulated temperatures from FDS.                     
 
 \begin{figure}[ht!]
   \centering
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_2D}
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_1D}\\
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_0p5D}
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_0D}\\
-  \caption[FDS values based on 40~mm grid compared with plume temperature measurements along the centerline of the natural gas fueled burner]{FDS values based on 40~mm grid compared with plume temperature measurements along the centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
-  \label{FDS_TCPlume_IWGB_comp}
+  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_2D_RF_RI}
+  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_1D_RF_RI}\\
+  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_0p5D_RF_RI}
+  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Plume_Avg_0D_RF_RI}\\
+  \caption[FDS values based on two different RI values compared with temperature measurements along the vertical centerline of the natural gas fueled burner]{FDS values based on two different RI values compared with temperature measurements along the vertical centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
+  \label{FDS_Plume_IWGB_comp}
+\end{figure}
+
+Figure~\ref{FDS_Wall_Temp_IWGB_comp} is analogous to Figure~\ref{FDS_Plume_IWGB_comp} except it compares the gypsum wallboard surface temperatures against the FDS simulated temperatures.  So while the FDS values for the plume over predicted the temperatures, the FDS values for the wall surface temperatures are underpredicting.  This is consistent with the flame and plume moving away from the plume centerline and toward the wall.  The agreement between the FDS results and the measurements improves as the burner moves closer to the wall, however once the burner is against the wall, the degree of agreement between the FDS results and the measured temperatures decreased.  At this position the FDS results are overpredicting the temperature. This differences at the wall are most distinct in the region where the flame impinged on the wall.  The agreement improves in the plume area above the flames.  In the comparisons with the source fire experiments, the FDS generated temperatures were underpredicting closer to the burner surface and the overpredicting in the flame region as a result of the `combustion' occuring at higher elevations above the burner.  If a similar phenomena is occuring here, the wall maybe exaggerating the effect.      
+
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_2D_RF_RI}
+  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_1D_RF_RI}\\
+  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_0p5D_RF_RI}
+  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_0D_RF_RI}\\
+  \caption[FDS values based on two different RI values compared with the wall surface temperature measurements.]{FDS values based on two different RI values compared with the wall surface temperature measurements. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
+  \label{FDS_Wall_Temp_IWGB_comp}
 \end{figure}
 
 \begin{figure}[p]
@@ -1996,16 +1963,6 @@ plume region
 \end{figure}
 
 
-\begin{figure}[ht!]
-  \centering
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_2D}
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_1D}\\
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_0p5D}
-  \includegraphics[width=2.5in]{../Figures/IWGB_NG_TC_Surface_Center_Avg_0D}\\
-  \caption[FDS values based on 40~mm grid compared with the wall temperature measurements along the centerline of the natural gas fueled burner]{FDS values based on 40~mm grid compared with the wall temperature measurements along the centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
-  \label{FDS_TCSurface_IWGB_comp}
-\end{figure}
-
 
 \begin{figure}[h]
   \centering
@@ -2019,15 +1976,21 @@ plume region
 
 \subsection{Heat Flux}
 
+The instrumented gypsum wallboard had two vertical arrays of total heat flux gauges positioned at 0.2~m intervals.  Each array had six gauges installed from 0.2~m up through 1.2~m above the burner.  One array was installed in line with the center of the burner and the other array was installed on the right edge of the burner.  The comparisons between the measured heat flux and the FDS simulations are provided in Figure~\ref{FDS_HFCL_IWNG_comp} and Figure~\ref{FDS_HFEdge_IWNG_comp}.  For the centerline gauges the trends between the heat flux measurements and the FDS values are similar to the trends with the temperatures and are consistant with the flame moving or leaning toward the wall.  This resulted in higher heat flux measures relative to the FDS values at the three positions away from the wall. When the burner was positioned against the wall the FDS values and the measurements converged to a higher level of agreement. 
+
+The FDS values significantly underpredict the measured heat flux values along the right edge of the burner.  The best agreement occurs at the burner positions away from the wall.  At this position, the fire pattern on the walls show that the lines of demarcation are occuring very close to the edge of the burner.  Again flame movement seems to to be the main cause of the difference that is accentuated by a measurement location that is very sensitive to heat flux and position.           
+
+
 \begin{figure}[ht!]
   \centering
   \includegraphics[width=2.5in]{../Figures/IWGB_NG_HF_Center_Avg_2D}
   \includegraphics[width=2.5in]{../Figures/IWGB_NG_HF_Center_Avg_1D}\\
   \includegraphics[width=2.5in]{../Figures/IWGB_NG_HF_Center_Avg_0p5D}
   \includegraphics[width=2.5in]{../Figures/IWGB_NG_HF_Center_Avg_0D}\\
-  \caption[FDS values based on 40~mm grid compared with heat flux measurements on the wall along the centerline of the natural gas fueled burner]{FDS values based on 40~mm grid compared with heat flux measurements on the wall along the centerline of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
-  \label{FDS_HFCL_TWNG_comp}
-\end{figure}
+  \caption[FDS values based on two different RI values compared with heat flux measurements on the wall along the centerline of the natural gas fueled burner.]{FDS values based on two different RI values compared with heat flux measurements on the wall along the centerline of the natural gas fueled burner. The heat fluxes are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
+  \label{FDS_HFCL_IWNG_comp}
+\end{figure}{}
+
 
 
 \begin{figure}[ht!]
@@ -2036,8 +1999,8 @@ plume region
   \includegraphics[width=2.5in]{../Figures/IWGB_NG_HF_Offset_Avg_1D}\\
   \includegraphics[width=2.5in]{../Figures/IWGB_NG_HF_Offset_Avg_0p5D}
   \includegraphics[width=2.5in]{../Figures/IWGB_NG_HF_Offset_Avg_0D}\\
-  \caption[FDS values based on 40~mm grid compared with heat flux measurements on the wall along the right edge of the natural gas fueled burner]{FDS values based on 40~mm grid compared with heat flux measurements on the wall along the right edge of the natural gas fueled burner. The temperatures are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
-  \label{FDS_HFEdge_TWNG_comp}
+  \caption[FDS values based on two different RI values compared with heat flux measurements on the wall along the right edge of the natural gas fueled burner]{FDS values based on two different RI values compared with heat flux measurements on the wall along the right edge of the natural gas fueled burner. The heat fluxes are averages of two replicate experiments. Each graph displays data from a different distance between the edge of the burner and the instrumented wall.  Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
+  \label{FDS_HFEdge_IWNG_comp}
 \end{figure}
 
 \begin{figure}[h]
@@ -2145,7 +2108,7 @@ From Interflam  Screening algorithms utilizing the heat release rate results wer
 While you are reviewing the scene you meet up with the fire captain and begin asking him about the fire.  The captain tells you that the doors and windows were closed upon arrival.  When the front door was opened heavy smoke and flame 
 flow path
 inconsistant fire pattern near the right side of the sofa.  It appears that pattern was generated pre-flashover.  The pattern height is on the order of   calc HRR and FH for cushion.
-
+air equation
 
 \chapter{Future Research Needs}
 
