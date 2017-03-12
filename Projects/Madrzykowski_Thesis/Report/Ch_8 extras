@@ -1,0 +1,46 @@
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=.625\columnwidth]{../Figures/NG_80kW_GBWall_2D_RI=05_0601T}\\
+	\includegraphics[width=.625\columnwidth]{../Figures/NG_80kW_GBWall_2D_RI=10_601T}\\
+	\includegraphics[width=.625\columnwidth]{../Figures/NG_80kW_GBWall_2D_RI=20_0600T}\\
+	\caption[FDS Smokeview plume temperatures with the burner 0.61~m from the wall at approximately 180 s for the 80~mm, 40~mm, and 20~mm mesh resolution cases]{FDS Smokeview plume temperatures with the burner 0.61~m from the wall at approximately 180 s of the steady state simulation.  Beginning with the top graphic and moving down, the 80~mm, 40~mm, and 20~mm mesh resolution cases are presented.}
+	\label{FDS_Plume_Temp_IWGB_Comp_}
+\end{figure}
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=.625\columnwidth]{../Figures/NG_80kW_GBWall_2D_RI=05_0300WT}\\
+	\includegraphics[width=.625\columnwidth]{../Figures/NG_80kW_GBWall_2D_RI=10_0300WT}\\
+	\includegraphics[width=.625\columnwidth]{../Figures/NG_80kW_GBWall_2D_RI=20_0300WT}\\
+	\caption[FDS Smokeview wall temperatures with the burner 0.61~m from the wall at approximately 180 s for the 80~mm, 40~mm, and 20~mm mesh resolution cases]{FDS Smokeview wall temperatures with the burner 0.61~m from the wall at approximately 180 s of the steady state simulation.  Beginning with the top graphic and moving down, the 80~mm, 40~mm, and 20~mm mesh resolution cases are presented.}
+	\label{FDS_Wall_Temp_IWGB_Comp_}
+\end{figure}
+
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_2D_RI=10_0300WT}
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_1D_RI=10_0300WT}\\
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_p5D_RI=10_0300WT}
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_0D_RI=10_0300WT}\\
+  \caption[FDS wall temperatures based on 40~mm grid compared with natural gas burner different distances from the wall]{FDS wall temperatures based on 40~mm grid compared with natural gas burner different distances from the wall. Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
+  \label{FDS_TCWall_IWGB_comp}
+\end{figure}
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_2D_RI=10_0300HF}
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_1D_RI=10_0300HF}\\
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_p5D_RI=10_0300HF}
+  \includegraphics[width=2.5in]{../Figures/NG_80kW_GBWall_0D_RI=10_0300HF}\\
+  \caption[FDS gauge heat flux values based on 40~mm grid with natural gas burner positioned different distances from the wall]{FDS gauge heat flux values based on 40~mm grid with natural gas burner positioned different distances from the wall. Beginning with the top left graph position and viewing left to right the distances from the wall are 0.61~m, 0.31~m, 0.15~m, and 0~m respectively.}
+  \label{FDS_WallHF_IWGB_comp}
+\end{figure}
+
+
+
+
+
+
