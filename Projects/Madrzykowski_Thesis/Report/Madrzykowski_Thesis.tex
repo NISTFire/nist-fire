@@ -2058,11 +2058,19 @@ Distance from Wall 		&  Peak Visible Flame Height 			  	& RI=5       		& RI=10  
 
 \section{Comparison of FDS with Fire Pattern Results}
 
-The program Smokeview uses the numerical results of FDS to create scientific visualizations.  In this section, comparisons were made between Smokeview generated images and photographs of fire patterns. The criteria for the `charred' area of the gypsum wall board was a threshold temperature of 360~$^\circ$C.  This value was chosen based on the ignition temperature data collected as part of this study and documented in Chapter~5. 
+The program Smokeview uses the numerical results of FDS to create scientific visualizations.  In this section, comparisons were made between Smokeview generated images and photographs of fire patterns. The values from the FDS boundary files are used to examine the temperature of the gypsum wall board and the heat flux exposure to the gypsum wallboard.  Based on the FDS values, Smokeview can create isosurface areas based on defined boundaries which can be set to a black color to represent a charred area on the target surface.  This isosurface char technique will be used visualize an FDS generated fire pattern and the peak heights of the fire pattern.
+
+\subsection{Temperature Based Comparison}
+
+The criteria for the `charred' area of the gypsum wall board was a threshold temperature of 360~$^\circ$C.  This value was chosen based on the ignition temperature data collected as part of this study and documented in Chapter~5. 
 
 Keep in mind that this ignition temperature is lower, by more than 150~$^\circ$C, than other values for the ignition temperature of gypsum wallboard in the literature~\cite{Dillon:1998,Babrauskas:2003}.  It is possible that the paint on the surface of the samples used in this study, had an impact or that during the decades between the studies the properties of the material have been changed in someway.  Thermal properties data on the gypsum board paper used in the study was not available from the manufacturer.  
 
-The comparisons were made for the natural gas burner fire positioned against a painted gypsum board wall.  Figure~\ref{FDS_FirePattern_comp} displays two Smokeview images.  In the image on the left the isothermal areas of the wall shown with a temperature range of 20~$^\circ$C to greater than 520~$^\circ$C.  The Smokeview image on the right has the `char' feature applied with the threshold temperature of 360~$^\circ$C to coincide with cone calorimeter ignition temperature data. The upper edge of the char area is approximately 1~m above the burner.  The upper edge of the 520~$^\circ$C area in the left image was approximately 0.8~m above the burner. This images were generated with the RI=10 model which has grid cells that were 0.04~m in size. The FDS images are compared with three photographs of fire patterns from the compartment fire pattern experiments documented in Chapter~6.  The three images from left to right exhibit a range of fire pattern heights from approximately 0.7 to 0.8~m.  The average height of the natural gas fire patterns from this open wall construction series was 0.74 with a 95~\% certainty range of $\pm$~0.12~m. The simulated fire pattern is taller than the actual patterns.  However if the upper ignition temperature was used the height values between the actual and the simulated would have been similar.  The RI=10 simulation was used as a means to optimize the graphical resolution, even though the temperature range of the flames were shifted up relative to the RI=5 case.            
+The comparisons were made for the natural gas burner fire positioned against a painted gypsum board wall.  Figure~\ref{FDS_FirePattern_comp} displays two Smokeview images.  In the image on the left the isothermal areas of the wall shown with a temperature range of 20~$^\circ$C to greater than 520~$^\circ$C.  The Smokeview image on the right has the `char' feature applied with the threshold temperature of 360~$^\circ$C to coincide with cone calorimeter ignition temperature data. The upper edge of the char area is approximately 1~m above the burner.  The upper edge of the 520~$^\circ$C area in the left image was approximately 0.8~m above the burner. This images were generated with the RI=10 model which has grid cells that were 0.04~m in size. The FDS images are compared with three photographs of fire patterns from the compartment fire pattern experiments documented in Chapter~6.  The three images from left to right exhibit a range of fire pattern heights from approximately 0.7 to 0.8~m.  The average height of the natural gas fire patterns from this open wall construction series was 0.74 with a 95~\% certainty range of $\pm$~0.12~m. The simulated fire pattern is taller than the actual patterns.  However if the upper ignition temperature was used the height values between the actual and the simulated would have been similar.  The RI=10 simulation was used as a means to optimize the graphical resolution, even though the temperature range of the flames were shifted up relative to the RI=5 case.   
+
+The visualization parameters for the wall temperature were changed to generate a isosurface `char' pattern in Smokeview.  Both the ignition temperatures for gypsum wall board from Dillon, 515~$^\circ$C, and Quintiere and Harkleroad, 565~$^\circ$C, were examined~\cite{Dillon:1998,Quintiere:1985}.  The result from both temperatures was a small, narrow, oval shaped area.  The peak heights of the char areas were 0.60 and 0.48~m above the burner, respectively.  These values are below the 95~\% certainty range of the measured fire pattern height, 0.74$\pm$~0.12~m. 
+
+The data from the bench scale experiments have a range that spans more than 200~$^\circ$C. These values used with Smokeview generated a range of fire pattern shapes and peak fire pattern heights.  The peak fire pattern heights bounded the measured heights. However, the lower ignition temperature provided a more realistic shape than the higher ignition temperatures, which provided a shape of such a small size that it was not reproduced here as it was be hard to discern on the printed image.  Clearly more data on the ignition temperature of gypsum wall board is needed to better resolve the actual value.  Based on the Smokeview tool the ignition temperature would be approximately 400~$^\circ$C to generate a char pattern with a similar height and shape as the measured fire patterns.
 
 \begin{figure}[h]
   \centering
@@ -2089,7 +2097,6 @@ The next set of comparison were made with the natural gas burner fire positioned
 	\includegraphics[width=1.2in]{../Figures/FDSNG_Corner8}
 	\includegraphics[width=1.2in]{../Figures/FDSNG_Corner9} \\
 	
-
 	\caption[Image sequence of an FDS/Smokeview simulation of the natural gas burner positioned in a corner.]{Image sequence of an FDS/Smokeview simulation of the natural gas burner positioned in a corner. The time interval between images is 0.3 of second.}
 	\label{FDS_Corner_Sequence}
 \end{figure}
@@ -2107,17 +2114,42 @@ The next comparison was between the Smokeview corner fire pattern images and pho
 
 Another difference that was not factored into the model, was the potential change in heat transfer between the corner and the wall experiments.  For the wall experiments the burner was centered on a void space between the vertical wood studs which formed the frame work of the compartment.  In the corner,the wood stud walls are attached and wood stud was positioned so that the corner edge of each gypsum wallboard panel could be attached to it.  As a result there was an additional heat sink extending approximately 35~mm out from the corner om each side and extending the height of the wall.
 
-As noted in the previous chapter the successful use of any model regardless is using the appropriate data and understanding the basis of the model and any subroutines.  FDS is a very complex set of equations and subroutines.  The model authors have done an incredible job providing digital documentation that is searchable and understandable.  The challenge in these case is the input data.  Our understanding of the physical portion of these comparisons may not be as good as the understanding of the theory. Hence more research is needed especially of the ignition criteria for gypsum board. 
+\subsection{Heat Flux Based Comparison}
 
-The observations of the flame movement provided some insight into the differences between the model results and the measurements during the wall experiments and the modeled combustion issues near the burner seem to address the temperature differences in the combustion zone just above the burner.    
+Smokeview can be used to provide visuals, based on values from FDS simulations, of instantaneous heat flux exposure to a surface.  Isosurface controls can be used to define an area with an outer boundary of a given minimum heat flux value.  Currently, Smokeview cannot generate a time averaged exposure to the surface, therefore the cumulative time history of the heat flux exposure cannot be visualized.  However the Smokeview simulation can be paused and numerical data relative to the geometry taken from the image.
+
+Table~\ref{tab:FDS_CriticalHF_IWNG} has a range of heat flux values that were based on the series of gypsum wall board experiments documented in Chapter 5 where a threshold or critical heat flux was measured to determine the line of demarcation between the burned and unburned section of the painted paper on the wallboard. The last two values 25 and 30 kW/m$^2$ bound the ignition heat flux of painted gypsum wall board.  The FDS values used for this examination were taken from the FDS simulation (RI=10) of the natural gas burner instrumented wall experiments.  The peak fire pattern heights based on heat flux from the FDS simulations were compared with the measured peak fire pattern heights of 0.74$\pm$~0.12~m.  The heights based on heat flux over predicted the height of the fire pattern.  These result were consistent with the FDS temperature based predictions which also generated fire pattern heights higher than the measured values. 
+
+\begin{table}[h]
+  \small
+  \centering
+  \begin{tabular}{|c|c|c|c|} \hline 
+Heat Flux 		&  Peak Fire Pattern Height  	      		  \\
+    			&  Based on FDS Heat Flux    	  	  	  \\
+    (kW/m$^2$)			&  (m) 					 				   \\ 
+\hline    15.0			&  1.04~$\pm$~0.08       		            \\
+\hline    17.5			&  1.04~$\pm$~0.08							    \\
+\hline    20.0			&  1.00~$\pm$~0.08								\\
+\hline	  25.0			&  0.96~$\pm$~0.08							   	  \\
+\hline    30.0   		&  0.92~$\pm$~0.07							\\  \hline
+  \end{tabular}
+  \caption[Heat flux based estimations of the peak fire pattern height from the FDS simulation (RI=10) of the natural gas burner instrumented wall experiments.]{Heat flux based estimations of the peak fire pattern height from the FDS simulation (RI=10) of the natural gas burner instrumented wall experiments.}
+  \label{tab:FDS_CriticalHF_IWNG}
+\end{table}
+
+\subsection{Summary}
+
+As noted in the previous chapter, the successful use of any model is using the appropriate data and understanding the basis of the model and any subroutines.  FDS is a very complex set of equations and subroutines.  The model authors have done an incredible job providing digital documentation that is searchable and understandable.  One of the  challenges in these cases is the input data.  Our understanding of the physical portion of these comparisons may not be as good as the understanding of the theory. Hence more research is needed especially on the ignition criteria for gypsum wall board. 
+
+The observations of the flame movement provided some insight into the differences between the model results and the measurements during the wall experiments.  The model's combustion issues near the burner seem to address the temperature differences in the combustion zone just above the burner.    
 
 \chapter{Discussion}
 
-The scope of this study has included several series of experiments that ranged in size from bench scale tests with 100~mm sized samples to full scale compartment experiments with samples 2.4~m tall. The key objective was to address the National Academy of Sciences call for research to address `the natural variability of burn patterns'. This study examined the repeatability of several similar small fire sources and the pre-flashover fire patterns that were generated by those fires. 
+The scope of this study has included several series of experiments that ranged in size from bench scale tests with 100~mm sized samples to full scale compartment experiments with samples 2.4~m tall. The key objective was to address the National Academy of Science's call for research to address `the natural variability of burn patterns'. This study examined the repeatability of several similar small fire sources and the pre-flashover fire patterns that were generated by those fires. 
 
-In addition a few popular numerical models were used to simulate the fires or the effects of the fires and the resulting fire patterns based on input data collected from engineering reference sources, the bench-scale experiments, and the full-scale fire experiments conducted as part of this study.  The results of the calculations were then compared to the measured values to examine the level of agreement.  
+In addition a few popular numerical models were used to simulate the effects of the fires and the resulting fire patterns based on input data collected from engineering reference sources, the bench-scale experiments, and the full-scale fire experiments conducted as part of this study.  The results of the calculations were then compared to the measured values to examine the level of agreement.  
 
-In Chapters 2 through 8 results from specific test series or calculations were presented.  Typically there was some discussion specific to the experiments or calculations being addressed in each chapter.  In this chapter the discussion will be more inclusive in examining the key outcomes and the remaining gaps.   
+In Chapters 2 through 8, results from specific test series or calculations were presented.  Typically there was some discussion specific to the experiments or calculations being addressed in each chapter.  In this chapter the discussion will be more overarching in examining the key outcomes and the remaining gaps.   
 
 \section{Repeatability of Pre-Flashover Fire Patterns}
 
@@ -2129,18 +2161,11 @@ As noted in the Introduction, gypsum wall board was chosen as a target for the f
 
 \subsection{Impact of Instrumentation on Walls}
 
-Compare flame height results IGWB with Fire Pattern Experiments
+Compare flame height results IGWB with Fire Pattern Experiments   steep thermal gradient
 
 \subsection{Impact of Wall Construction}
 
-In these experiments, no significant differences were noted between the patterns generated between the open, closed and insulated construction methods for the walls.  The results from the instrumented gypsum wallboard experiments in Chapter 4, which represented an open construction type of wall, showed that the peak temperatures on the backside of the gypsum board were approximately 80~$^\circ$C.  The corresponding peak temperatures on the face of the gypsum wall board ranged from the    ~$^\circ$C.  This demonstrates the insulation capability of the gypsum wallboard. Given the relatively low energy flow through the gypsum wallboard as represented by the limited temperature increase on the backside of the material, it follows that the additional insulation added with the closed and insulated construction methods would not have created temperature differences at the face of the gypsum wallboard.  
-
-steep thermal gradient
-
-
-Therefore with the limited fire exposure time of approximately 300~seconds, and the small, pre-flashover fires used in this study the     
-
-
+In these experiments, no significant differences were noted between the patterns generated between the open, closed and insulated construction methods for the walls.  The results from the instrumented gypsum wallboard experiments in Chapter 4, which represented an open construction type of wall, showed that the peak temperatures on the backside of the gypsum board were approximately 80~$^\circ$C.  The corresponding peak temperatures on the face of the gypsum wall board ranged from 415 to 540~$^\circ$C.  This demonstrates the insulation capability of the gypsum wallboard. Given the relatively low energy flow through the gypsum wallboard as represented by the limited temperature increase on the backside of the material.  Therefore with the limited fire exposure time of approximately 300~seconds and the small, pre-flashover fires used in this study, it follows that the additional insulation added with the closed and insulated construction methods would not have created temperature differences at the face of the gypsum wallboard.  
 
 Each of the two sets of experiments, the fire source characterization and the fire pattern, had uncertainties associated with them.  In the case of the fire source characterization, there were uncertainties associated with the fuel composition itself, the measurement of the heat release rate, temperature, heat flux and flame height.  The fire pattern experiments had additional uncertainties which included: the composition and thickness of the gypsum wallboard, moisture content and paint thickness.  In both sets of experiments, efforts were made to limit the uncertainties in the fuels, the measurement techniques and the gypsum wallboard. In this laboratory based study, the key question is – for a given fire pattern, is there a relationship that can be demonstrated to determine the source fire?
 
@@ -2164,8 +2189,12 @@ air equation
 
 \chapter{Future Research Needs}
 
+This study examined a very limited set of conditions as a means to provide a baseline for future research efforts that would expand on the results from this study in order more completely address the National Academy of Science ...   natural repeatability of fire patterns.   Since the National Academy of Science report was issued in 2009, the  the U.S. National Institute of Justice, Fire and Arson Investigation Technology Working Group has identified 5 areas where scientific research is needed: (1) understanding of the effects of ventilation on fire damage and patterns; (2) characterization of electrical system response as a means to study fire progression; (3) repeatability and reproducibility of test measurements of large-scale structure fires, (4) materials property data inputs for accurate computer models, and (5) evaluation of incident heat flux profiles to walls and neighboring items in support of fire model validation~\cite{NIJ:2016}.  The areas suggested for future research in this study involve 4 of the 5 topic areas from the NIJ working group.   
 
+Pre-flashover experiments in compartments using well characterized burner fires should be conducted with a broad range of heat release rates and varied burn sizes to 
+to determine if the repeatability results from this study can be replicated. 
 
+The flow field between the burner and the adjacent wall or walls should have further research conducted to better understand the movement of the flame and the plume.  The  when the fire was adjacent to the wall or a corner should receive further examination.   
 distance from the wall
 
 degradation of gypsum board full scale
@@ -2212,8 +2241,8 @@ Examining the capability of numerical models to simulate the fires and the resul
 The second objective of this study was to examine the capability of numerical models to simulate the fires and the resulting fire patterns based on input data collected from engineering reference sources, and bench-scale and full-scale fire experiments conducted in this study.  The numerical tools used ranged from simple empirical algorithms to a computational fluid dynamics model.  Each of the tools are freely available to investigators and many of the tools have been packaged in a form that allows the user to input the ``data'' and generate a result.  There is software available to aid with the development of the computational fluid dynamics model.  The first challenge in using the numerical tools is finding the appropriate data to us as input.        
 
 
-\item Examining the repeatability of several small fire sources and the fire patterns that were generated by those fires
-\item Examining the capability of numerical models to simulate the fires and the resulting fire patterns based on input data collected from engineering reference sources, and bench-scale and full-scale fire experiments conducted in this study.
+Examining the repeatability of several small fire sources and the fire patterns that were generated by those fires
+Examining the capability of numerical models to simulate the fires and the resulting fire patterns based on input data collected from engineering reference sources, and bench-scale and full-scale fire experiments conducted in this study.
 
 This manuscript highlights the many uncertainties involved in what appear to be simple fire experiments.  Uncertainties related to fuel type, measurement methods, and analysis techniques were examined.  The objective of the research was to examine the repeatability of pre-flashover fire patterns generated from exposure to short duration (300 s maximum) well characterized fires.  Three different fuels were used: natural gas, gasoline, and polyurethane foam.  Each fuel had a similar top surface area.  The heat release rate data showed that the variability between replicates was greater for more complex fuels.  The variation in peak heat release rate with the natural gas was similar to the expanded uncertainty of the measurement system, 11~\%.  However, the variation in the peak heat release rates of the gasoline and the polyurethane foam increased due to increased uncertainties in the burning behavior of the fuels.  
 
