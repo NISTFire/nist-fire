@@ -2140,6 +2140,47 @@ Heat Flux 		&  Peak Fire Pattern Height  	      		  \\
   \label{tab:FDS_CriticalHF_IWNG}
 \end{table}
 
+
+\begin{table}[h]
+  \small
+  \centering
+  \begin{tabular}{|c|c|c|c|} \hline 
+Char Criteria 					&  \multicolumn{3}{c} {Peak Wall Fire Pattern Height from FDS Smokeview (m)}	  	  \\
+\hline								&  RI=5					&  RI=10			&  RI=20            \\
+\hline Tign=360~$^\circ~C$  	&  0.72					&  1.04				&	0.86			    \\
+\hline Tign=515~$^\circ~C$		&  0.48					&  0.72				&   0.62                \\
+\hline Tign=565~$^\circ~C$		&  na					&  na				&   na                  \\ 
+\hline  CHF=15.0~kW/m$^2$		&  1.36     			& 1.44 		        &   1.40                \\
+\hline  CHF=17.5~kW/m$^2$		&  1.12					& 1.40				&   1.40                \\
+\hline  CHF=20.0~kW/m$^2$		&  1.04					& 1.36				&   1.36                \\
+\hline	CHF=25.~kW/m$^2$		&  0.88					& 1.28				&   1.26 	            \\
+\hline  CHF=30.0~kW/m$^2$   	&  0.80					& 1.12				&   1.16			    \\  \hline
+  \end{tabular}
+  \caption[Ignition temperature and heat flux based estimations of the peak fire pattern height from the FDS simulations of the natural gas burner compartment wall experiments.]{Ignition temperature and heat flux based estimations of the peak fire pattern height from the FDS simulations of the natural gas burner against the compartment wall experiments.  Values from three plume resolution indexes (RI) are shown.  The measured value for the peak fire pattern height was  0.74~$\pm$~0.12. na indicates that the value was not reached on the wall in the simulation.}
+  \label{tab:FDS_IGNT_CHF_Wall}
+\end{table}
+
+
+\begin{table}[h]
+  \small
+  \centering
+  \begin{tabular}{|c|c|c|c|} \hline 
+Char Criteria 					& \multicolumn{3}{c} {Peak Wall Fire Pattern Height from FDS Smokeview (m)}	\\
+\hline								&  RI=5					&  RI=10			&  RI=20            \\
+\hline Tign=360~$^\circ~C$  	&  1.60					&  1.56				&  1.56				    \\
+\hline Tign=515~$^\circ~C$		&  1.04					&  0.96				&  0.96                 \\
+\hline Tign=565~$^\circ~C$		&  0.72					&  na				&  na                   \\
+\hline  CHF=15.0~kW/m$^2$		&  2.08    				&  1.84		        &  1.94                 \\
+\hline  CHF=17.5~kW/m$^2$		&  2.00					&  1.80				&  1.90                 \\
+\hline  CHF=20.0~kW/m$^2$		&  1.92					&  1.76				&  1.86	                \\
+\hline	CHF=25.~kW/m$^2$		&  1.76     			&  1.68				&  1.80	                \\
+\hline  CHF=30.0~kW/m$^2$   	&  1.44 				&  1.60				&  1.60   				\\  \hline
+  \end{tabular}
+  \caption[Ignition temperature and heat flux based estimations of the peak fire pattern height from the FDS simulations of the natural gas burner compartment corner experiments.]{Ignition temperature and heat flux based estimations of the peak fire pattern height from the FDS simulations of the natural gas burner against the compartment corner experiments.  Values from three plume resolution indexes (RI) are shown.  The measured value for the peak fire pattern height was  0.74~$\pm$~0.13.  na indicates that the value was not reached on the wall in the simulation.}    
+  \label{tab:FDS_IGNT_CHF_Corner}
+\end{table}
+
+
 \subsection{Summary}
 
 As noted in the previous chapter, the successful use of any model is using the appropriate data and understanding the basis of the model and any subroutines.  FDS is a very complex set of equations and subroutines.  The model authors have done an incredible job providing digital documentation that is searchable and understandable.  One of the  challenges in these cases is the input data.  Our understanding of the physical portion of these comparisons may not be as good as the understanding of the theory. Hence more research is needed especially on the ignition criteria for gypsum wall board. 
