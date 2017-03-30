@@ -3,6 +3,7 @@
 \usepackage{graphicx}
 \usepackage{rotating}
 \usepackage{url}
+\urlstyle{same}
 \frenchspacing
 
 \Title{Repeatability of Pre-Flashover Fire Patterns on Gypsum Wallboard}
@@ -2162,46 +2163,48 @@ Heat Flux 		&  Peak Fire Pattern Height  	      		  \\
   \label{tab:FDS_CriticalHF_IWNG}
 \end{table}
 
+Table~\ref{tab:FDS_IGNT_CHF_Wall} summarizes the peak fire pattern heights predicted for the compartment experiments with the natural gas burner position against the wall.  The values were determined using both the char feature in Smokeview with ignition temperatures for the gypsum wallboard ranging from 360$^\circ~C$ to 565$^\circ~C$ and heat flux values ranging from 15~kW/m$^2$ to 30.0~kW/m$^2$.  In addition the table presents values for all three of the RI cases (5,10, 20). The measured value to use for comparison is 0.74~$\pm$~0.12.  As with the initial source fire comparison, the RI=5 model provides the best agreement, not only with the peak height but also with the shape of the char area that was produced. The best agreement occurs either at an ignition temperature of 360$^\circ~C$ or a critical heat flux of 30.0~kW/m$^2$. Genrally the heat flux-generated values over-predicted the measured values. 
 
 \begin{table}[h]
   \small
   \centering
   \begin{tabular}{|c|c|c|c|} \hline 
-Char Criteria 					&  \multicolumn{3}{c} {Peak Wall Fire Pattern Height from FDS Smokeview (m)}	  	  \\
-\hline								&  RI=5					&  RI=10			&  RI=20            \\
-\hline Tign=360$^\circ~C$  	&  0.72					&  1.04				&	0.86			    \\
-\hline Tign=515$^\circ~C$		&  0.48					&  0.72				&   0.62                \\
-\hline Tign=565$^\circ~C$		&  na					&  na				&   na                  \\ 
-\hline  CHF=15.0~kW/m$^2$		&  1.36     			& 1.44 		        &   1.40                \\
-\hline  CHF=17.5~kW/m$^2$		&  1.12					& 1.40				&   1.40                \\
-\hline  CHF=20.0~kW/m$^2$		&  1.04					& 1.36				&   1.36                \\
-\hline	CHF=25.~kW/m$^2$		&  0.88					& 1.28				&   1.26 	            \\
-\hline  CHF=30.0~kW/m$^2$   	&  0.80					& 1.12				&   1.16			    \\  \hline
+Char Criteria 					&  \multicolumn{3}{c} {Peak Wall Fire Pattern Height from Smokeview (m)}	  	  \\
+\hline								&  RI=5					&  RI=10			&  RI=20               \\
+\hline Tign=360$^\circ~C$  			&  0.72					&  1.04				&	0.86			    \\
+\hline Tign=515$^\circ~C$			&  0.48					&  0.72				&   0.62                \\
+\hline Tign=565$^\circ~C$			&  na					&  na				&   na                  \\ 
+\hline  CHF=15.0~kW/m$^2$			&  1.36     			& 1.44 		        &   1.40                \\
+\hline  CHF=17.5~kW/m$^2$			&  1.12					& 1.40				&   1.40                \\
+\hline  CHF=20.0~kW/m$^2$			&  1.04					& 1.36				&   1.36                \\
+\hline	CHF=25.0~kW/m$^2$			&  0.88					& 1.28				&   1.26 	            \\
+\hline  CHF=30.0~kW/m$^2$   		&  0.80					& 1.12				&   1.16			    \\  \hline
   \end{tabular}
-  \caption[Ignition temperature and heat flux based estimations of the peak fire pattern height from the FDS simulations of the natural gas burner compartment wall experiments.]{Ignition temperature and heat flux based estimations of the peak fire pattern height from the FDS simulations of the natural gas burner against the compartment wall experiments.  Values from three plume resolution indexes (RI) are shown.  The measured value for the peak fire pattern height was  0.74~$\pm$~0.12. na indicates that the value was not reached on the wall in the simulation.}
+  \caption[Ignition temperature and heat flux based estimations of the peak fire pattern height from the FDS simulations of the natural gas burner compartment wall experiments.]{Ignition temperature and heat flux based estimations of the peak fire pattern height from the FDS simulations of the natural gas burner against the compartment wall experiments.  Values from three plume resolution indexes (RI) are shown.  The measured value for the peak fire pattern height was 0.74~$\pm$~0.12. na indicates that the value was not reached on the wall in the simulation.}
   \label{tab:FDS_IGNT_CHF_Wall}
 \end{table}
 
+Table~\ref{tab:FDS_IGNT_CHF_Corner} summarizes the peak fire pattern heights predicted for the compartment experiments with the natural gas burner position in the corner.
+The values were determined as described for the table above. The measured value to use for comparison is 0.74~$\pm$~0.13.  Again, the RI=5 model provides the best agreement, not only with the peak height but also with the shape of the char area that was produced. The best agreement occurs either at an ignition temperature of 565$^\circ~C$.  All of the other values were significantly over-predicted.  The trends that were shown before with the model predictions are repeated with the Smokeview analysis, as it should be. 
 
 \begin{table}[h]
   \small
   \centering
   \begin{tabular}{|c|c|c|c|} \hline 
-Char Criteria 					& \multicolumn{3}{c} {Peak Wall Fire Pattern Height from FDS Smokeview (m)}	\\
-\hline								&  RI=5					&  RI=10			&  RI=20            \\
-\hline Tign=360$^\circ~C$  	&  1.60					&  1.56				&  1.56				    \\
-\hline Tign=515$^\circ~C$		&  1.04					&  0.96				&  0.96                 \\
-\hline Tign=565$^\circ~C$		&  0.72					&  na				&  na                   \\
-\hline  CHF=15.0~kW/m$^2$		&  2.08    				&  1.84		        &  1.94                 \\
-\hline  CHF=17.5~kW/m$^2$		&  2.00					&  1.80				&  1.90                 \\
-\hline  CHF=20.0~kW/m$^2$		&  1.92					&  1.76				&  1.86	                \\
-\hline	CHF=25.~kW/m$^2$		&  1.76     			&  1.68				&  1.80	                \\
-\hline  CHF=30.0~kW/m$^2$   	&  1.44 				&  1.60				&  1.60   				\\  \hline
+Char Criteria 					& \multicolumn{3}{c} {Peak Wall Fire Pattern Height from Smokeview (m)}	\\
+\hline								&  RI=5					&  RI=10			&  RI=20           		 \\
+\hline Tign=360$^\circ~C$  			&  1.60					&  1.56				&  1.56				    \\
+\hline Tign=515$^\circ~C$			&  1.04					&  0.96				&  0.96                 \\
+\hline Tign=565$^\circ~C$			&  0.72					&  na				&  na                   \\
+\hline  CHF=15.0~kW/m$^2$			&  2.08    				&  1.84		        &  1.94                 \\
+\hline  CHF=17.5~kW/m$^2$			&  2.00					&  1.80				&  1.90                 \\
+\hline  CHF=20.0~kW/m$^2$			&  1.92					&  1.76				&  1.86	                \\
+\hline	CHF=25.~kW/m$^2$			&  1.76     			&  1.68				&  1.80	                \\
+\hline  CHF=30.0~kW/m$^2$   		&  1.44 				&  1.60				&  1.60   				\\  \hline
   \end{tabular}
   \caption[Ignition temperature and heat flux based estimations of the peak fire pattern height from the FDS simulations of the natural gas burner compartment corner experiments.]{Ignition temperature and heat flux based estimations of the peak fire pattern height from the FDS simulations of the natural gas burner against the compartment corner experiments.  Values from three plume resolution indexes (RI) are shown.  The measured value for the peak fire pattern height was  0.74~$\pm$~0.13.  na indicates that the value was not reached on the wall in the simulation.}    
   \label{tab:FDS_IGNT_CHF_Corner}
 \end{table}
-
 
 \subsection{Summary}
 
@@ -2307,7 +2310,7 @@ N.B.: This section was included to provide a sense of how a fire investigator mi
 
 \chapter{Future Research}
 
-This study examined a very limited set of conditions to provide a baseline for future research efforts that would expand on the results to completely address the National Academy of Science ...   natural repeatability of fire patterns~\cite{Forensic:2009}.   Since 2009, when the National Academy of Science report was issued, the U.S. National Institute of Justice (NIJ), Fire and Arson Investigation Technology Working Group has identified five areas that need scientific research: 1) understanding of the effects of ventilation on fire damage and patterns; 2) characterization of electrical system response as a means to study fire progression; 3) repeatability and reproducibility of test measurements of large-scale structure fires; 4) materials property data inputs for accurate computer models; and 5) evaluation of incident heat flux profiles to walls and neighboring items in support of fire model validation~\cite{NIJ:2016}.  The areas suggested for future research in this study involve four of the five topic areas from the NIJ working group.   
+This study examined a very limited set of conditions to provide a baseline for future research efforts that would expand on the results to completely address the National Academy of Sciences' call for research on the natural repeatability of fire patterns~\cite{Forensic:2009}.   Since 2009, when the National Academy of Science report was issued, the U.S. National Institute of Justice (NIJ), Fire and Arson Investigation Technology Working Group has identified five areas that need scientific research: 1) understanding of the effects of ventilation on fire damage and patterns; 2) characterization of electrical system response as a means to study fire progression; 3) repeatability and reproducibility of test measurements of large-scale structure fires; 4) materials property data inputs for accurate computer models; and 5) evaluation of incident heat flux profiles to walls and neighboring items in support of fire model validation~\cite{NIJ:2016}.  The areas suggested for future research in this study involve four of the five topic areas from the NIJ working group.   
 
 \section{Experiments}
 
